@@ -1,85 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.PetKing5_480x800"
     android:versionCode="2"
-    android:versionName="2.0"
-    package="com.PetKing5_480x800">
+    android:versionName="2.0">
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
     <application
-        android:label="@string/app_name"
-        android:icon="@drawable/icon">
+        android:icon="@drawable/icon"
+        android:label="@string/app_name">
         <activity
-            android:label="@string/app_name"
             android:name="com.PetKing5_480x800.PetKing5"
-            android:screenOrientation="landscape"
-            android:configChanges="orientation|keyboardHidden">
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="soars.Choose">
             <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.tencent.webnet.WebNetMain"
-            android:configChanges="orientation"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity
-            android:name="com.skymobi.appstore.pay.PayActivity"
-            android:configChanges="orientation|keyboardHidden"/>
-        <activity
-            android:name="com.skymobi.appstore.pay.PayActivity"
-            android:configChanges="orientation|keyboardHidden"/>
+        <!--        <activity-->
+        <!--            android:name="com.tencent.webnet.WebNetMain"-->
+        <!--            android:configChanges="orientation"-->
+        <!--            android:windowSoftInputMode="adjustPan"/>-->
+        <!--        <activity-->
+        <!--            android:name="com.skymobi.appstore.pay.PayActivity"-->
+        <!--            android:configChanges="orientation|keyboardHidden"/>-->
+        <!--        <activity-->
+        <!--            android:name="com.skymobi.appstore.pay.PayActivity"-->
+        <!--            android:configChanges="orientation|keyboardHidden"/>-->
         <activity
             android:name="com.uc.paymentsdk.payment.PaymentsActivity"
-            android:configChanges="orientation|keyboardHidden"/>
-        <service android:name="com.skymobi.pay.sdk.SkyPayCheckService"/>
-        <receiver android:name="com.skymobi.pay.sdk.SkyPayNetworkReceiver">
-            <intent-filter android:priority="2147483647">
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-            </intent-filter>
-        </receiver>
-        <service android:name="com.skymobi.pay.sdk.SkyPayCheckService"/>
-        <receiver android:name="com.skymobi.pay.sdk.SkyPayNetworkReceiver">
-            <intent-filter android:priority="2147483647">
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-            </intent-filter>
-        </receiver>
+            android:configChanges="orientation|keyboardHidden" />
+        <!--        <service android:name="com.skymobi.pay.sdk.SkyPayCheckService"/>-->
+        <!--        <receiver android:name="com.skymobi.pay.sdk.SkyPayNetworkReceiver">-->
+        <!--            <intent-filter android:priority="2147483647">-->
+        <!--                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>-->
+        <!--            </intent-filter>-->
+        <!--        </receiver>-->
+        <!--        <service android:name="com.skymobi.pay.sdk.SkyPayCheckService"/>-->
+        <!--        <receiver android:name="com.skymobi.pay.sdk.SkyPayNetworkReceiver">-->
+        <!--            <intent-filter android:priority="2147483647">-->
+        <!--                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>-->
+        <!--            </intent-filter>-->
+        <!--        </receiver>-->
         <meta-data
             android:name="ucgame_cpid"
-            android:value="161"/>
+            android:value="161" />
     </application>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="Android.permission.CHANGE_CONFIGURATION"/>
-    <supports-screens android:anyDensity="false"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.WRITE_SMS"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.WRITE_SMS"/>
+
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.INSTALL_PACKAGES"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="Android.permission.CHANGE_CONFIGURATION" />
+
+    <supports-screens android:anyDensity="false" />
+
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 </manifest>

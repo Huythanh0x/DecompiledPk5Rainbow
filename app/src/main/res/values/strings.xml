@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">请选择支付方式</string>
+    <string name="app_name">宠物王国5-彩虹</string>
+    <string name="first">短信支付</string>
+    <string name="second">第三方支付</string>
+</resources>

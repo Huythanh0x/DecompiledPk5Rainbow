@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="FontSize">
+        <item>17</item>
+        <item>22</item>
+        <item>26</item>
+    </array>
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Animation image1="D:\俯视ARPG资料\口袋-彩虹\初评版\stream\data\item.png" imgNum="1" version="4">
+    <Modules>
+        <Module h="16" image_id="0" w="16" x="0" y="0"/>
+        <Module h="16" image_id="0" w="16" x="16" y="0"/>
+        <Module h="16" image_id="0" w="16" x="32" y="0"/>
+        <Module h="16" image_id="0" w="16" x="48" y="0"/>
+        <Module h="16" image_id="0" w="16" x="64" y="0"/>
+        <Module h="16" image_id="0" w="16" x="80" y="0"/>
+        <Module h="16" image_id="0" w="16" x="96" y="0"/>
+        <Module h="16" image_id="0" w="16" x="0" y="16"/>
+        <Module h="16" image_id="0" w="16" x="16" y="16"/>
+        <Module h="16" image_id="0" w="16" x="32" y="16"/>
+        <Module h="16" image_id="0" w="16" x="48" y="16"/>
+        <Module h="16" image_id="0" w="16" x="80" y="16"/>
+        <Module h="16" image_id="0" w="16" x="96" y="16"/>
+        <Module h="16" image_id="0" w="16" x="0" y="32"/>
+        <Module h="16" image_id="0" w="16" x="16" y="32"/>
+        <Module h="16" image_id="0" w="16" x="64" y="16"/>
+        <Module h="16" image_id="0" w="16" x="32" y="32"/>
+        <Module h="16" image_id="0" w="16" x="48" y="32"/>
+        <Module h="16" image_id="0" w="16" x="64" y="32"/>
+        <Module h="16" image_id="0" w="16" x="80" y="32"/>
+        <Module h="16" image_id="0" w="16" x="96" y="32"/>
+        <Module h="16" image_id="0" w="16" x="0" y="48"/>
+        <Module h="16" image_id="0" w="16" x="16" y="48"/>
+        <Module h="16" image_id="0" w="16" x="32" y="48"/>
+        <Module h="16" image_id="0" w="16" x="48" y="48"/>
+        <Module h="16" image_id="0" w="16" x="64" y="48"/>
+        <Module h="16" image_id="0" w="16" x="48" y="64"/>
+        <Module h="16" image_id="0" w="16" x="64" y="64"/>
+        <Module h="16" image_id="0" w="16" x="80" y="64"/>
+        <Module h="16" image_id="0" w="16" x="96" y="64"/>
+        <Module h="16" image_id="0" w="16" x="0" y="80"/>
+        <Module h="16" image_id="0" w="16" x="16" y="80"/>
+        <Module h="16" image_id="0" w="16" x="48" y="80"/>
+        <Module h="16" image_id="0" w="16" x="64" y="80"/>
+        <Module h="16" image_id="0" w="16" x="32" y="80"/>
+        <Module h="16" image_id="0" w="16" x="80" y="48"/>
+        <Module h="16" image_id="0" w="16" x="96" y="48"/>
+        <Module h="16" image_id="0" w="16" x="0" y="64"/>
+        <Module h="16" image_id="0" w="16" x="16" y="64"/>
+        <Module h="16" image_id="0" w="16" x="32" y="64"/>
+        <Module h="16" image_id="0" w="16" x="80" y="80"/>
+        <Module h="16" image_id="0" w="16" x="96" y="80"/>
+        <Module h="16" image_id="0" w="16" x="0" y="96"/>
+        <Module h="16" image_id="0" w="16" x="16" y="96"/>
+        <Module h="16" image_id="0" w="16" x="32" y="96"/>
+    </Modules>
+    <Frames/>
+    <Actions/>
+</Animation>
+

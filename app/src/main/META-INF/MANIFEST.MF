@@ -1,0 +1,1725 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android)
+
+Name: assets/data/npc2/19.data
+SHA1-Digest: s5J/AM5OBn3e66N51XCQHGG9l5c=
+
+Name: assets/data/map/56.mid
+SHA1-Digest: M9SmIcdiBJ9fY5AWsucQHs737n8=
+
+Name: assets/data/battle/s2.png
+SHA1-Digest: un+uIMWE6MXhEDL4jqRDHp5TnjA=
+
+Name: assets/data/npc0/61.data
+SHA1-Digest: SUDE/zrz8b2eZDzYaIRRdasdEoA=
+
+Name: assets/data/npc0/36.data
+SHA1-Digest: 5xM6EFKeQCj+E0ftW2nFF9RJPoc=
+
+Name: assets/data/map/10.mid
+SHA1-Digest: pYBMbbXgDvcrNfBr9pg4gCRSe+Q=
+
+Name: assets/data/npc0/63.data
+SHA1-Digest: hqocmER9ZqzdjsT/l+nXONWRhP0=
+
+Name: assets/data/map/m50.d
+SHA1-Digest: jEG4UoZy/kMOa4pRUpbVzZ8nh3c=
+
+Name: assets/music/1.mid
+SHA1-Digest: GAu6VZw2Vtt0IvTnWtK9dPhPFYg=
+
+Name: assets/data/npc0/49.data
+SHA1-Digest: 60alFqTXTFjuq6yS+yoIsKd+7XU=
+
+Name: assets/data/npc2/16.data
+SHA1-Digest: AEDjtNlA677WJUn8vNP5WjDdF2U=
+
+Name: assets/data/map/m3.d
+SHA1-Digest: FKYJIsX8VVwF3HuWCN6l78knVms=
+
+Name: assets/data/map/61.mid
+SHA1-Digest: xDAqTbt4bviOh5SFVfhGXWTxMCs=
+
+Name: assets/data/map/10.data
+SHA1-Digest: PdRSwLu7k+Y5y/G07C/yiRDWbGU=
+
+Name: assets/data/npc2/50.png
+SHA1-Digest: ivvjTuytF+bTOdUyJC/r+p4Wjnc=
+
+Name: assets/data/map/m58.d
+SHA1-Digest: c4B98wkp2jReuHxxG8T0cps/q38=
+
+Name: assets/data/map/m54.d
+SHA1-Digest: R+scR55CJpe6ozpUfu+jlCqWW/k=
+
+Name: assets/data/map/58.mid
+SHA1-Digest: AQv+dWFFwoWdHplT5A8h5vbH4s4=
+
+Name: assets/data/monN.d
+SHA1-Digest: AaA8aGf7oS1AdcA3JCy17DC/RVM=
+
+Name: assets/data/map/m69.d
+SHA1-Digest: rotZwxABaYeQDCAvV37zpZUmvNY=
+
+Name: assets/data/npc1/r2.data
+SHA1-Digest: vFHo6VYRDfZPcAR6C4HTSVaoIqE=
+
+Name: assets/data/map/m27.d
+SHA1-Digest: 1t/yc7ZLEIo9ErxSdS2xTnEwZRw=
+
+Name: assets/data/npc0/29.png
+SHA1-Digest: +oyyTygp1VVP0uv04Ze5AEvCFro=
+
+Name: assets/data/map/m57.d
+SHA1-Digest: mfDrgtQRwyq/ab06I5vENXwuDFw=
+
+Name: assets/data/npc2/24.data
+SHA1-Digest: gT6mB0SdwhKIX9gGuBbHtnirN8A=
+
+Name: assets/data/map/m67.d
+SHA1-Digest: Svfd9YPFd5VNVt4UE8iarEqLWUE=
+
+Name: assets/data/npc2/21.png
+SHA1-Digest: R8Mna2SkS18S5FpjmqoW+iaM3DE=
+
+Name: assets/data/npc0/73.data
+SHA1-Digest: X8vOcdRMDf8cmXp6gQFLyPcUW0A=
+
+Name: assets/data/npc0/22.data
+SHA1-Digest: EuUZNbGB5+ATD4DkcPhHC2iZQKY=
+
+Name: assets/data/map/64.mid
+SHA1-Digest: BXvR/sclmVI8D2sL985Rfs7XgOA=
+
+Name: assets/data/map/36.mid
+SHA1-Digest: aNOHnsHiqQ1tY4MJyxMb6tZnuag=
+
+Name: assets/data/map/46.mid
+SHA1-Digest: izbCA1u+vHvVT6HLQTwHSdcC90k=
+
+Name: assets/data/map/m52.d
+SHA1-Digest: r8zFWT1dTDDdfks2OUc1QsykTfU=
+
+Name: assets/data/shadow.png
+SHA1-Digest: YEZuHdc2PccTaa12zOQauI6jxEo=
+
+Name: assets/data/brow/i3.png
+SHA1-Digest: aA0FqXhixPXayQh+11WH6ZKt/1Y=
+
+Name: assets/data/npc0/40.data
+SHA1-Digest: ioQfr7VfJQ9/8WoTfewclVG+wdw=
+
+Name: assets/data/npc0/47.data
+SHA1-Digest: 5y1gHfWNJCI8R6dc/RHwGG+UNac=
+
+Name: assets/data/npc2/26.data
+SHA1-Digest: 6ZxQ73+/pXqkR0g4UBWoga3R3fY=
+
+Name: assets/data/npc2/15.data
+SHA1-Digest: Ku5pmGuS38PnM+x7UzqrXEDRX18=
+
+Name: assets/data/map/m6.d
+SHA1-Digest: SftaMJFt8nZ9OIgqToaACLe8bTk=
+
+Name: assets/data/brow/i0.png
+SHA1-Digest: 84rXsAphz37hFy/xonpBnWvVNbA=
+
+Name: assets/data/npc0/15.data
+SHA1-Digest: A62QqljOg7IF80GJ6lM27w7SUzo=
+
+Name: assets/data/npc0/63.png
+SHA1-Digest: /mbR+MSb/mw+xBUF1zAr/V8fj+Y=
+
+Name: assets/data/cloud.png
+SHA1-Digest: 6NjtJdT6UgZrMnw1Nyq/rk9F+rU=
+
+Name: assets/data/npc0/66.png
+SHA1-Digest: JEf8Alxzri9mA9HETs8lA5EZlYw=
+
+Name: assets/data/npc0/31.png
+SHA1-Digest: D1sauNorm6KRjC7bBaHC0p2fBkc=
+
+Name: assets/data/brow/m1.png
+SHA1-Digest: MY3XnF9ZVUvmN5wzD4jm4XmgQgc=
+
+Name: assets/data/map/24.mid
+SHA1-Digest: cF/Cy0CdvVeD6Y0bNX/K9goKOeU=
+
+Name: assets/data/npc1/r1.data
+SHA1-Digest: qk2soxEojDrsPgl6jHWIXeefu6U=
+
+Name: assets/data/npc2/37.data
+SHA1-Digest: iwWRGFxAcmqeQqt62lRuFknL/uo=
+
+Name: assets/data/npc2/23.data
+SHA1-Digest: gMXbRkzgKU400hYgbJOy0Z8qZ6g=
+
+Name: assets/data/npc0/53.data
+SHA1-Digest: hTQxX36TNHqBlpWsIiFJehHTP+g=
+
+Name: assets/data/npc2/10.data
+SHA1-Digest: F7Bi21UYTKyAYbgxHyc4bWhO+Qw=
+
+Name: assets/data/map/12.mid
+SHA1-Digest: tj32vpb26iZ5unU8GBpLGOX6dOQ=
+
+Name: assets/data/npc0/34.data
+SHA1-Digest: A9udnYFwgZFzVkYnJWVcjnL/uKg=
+
+Name: assets/data/npc0/43.png
+SHA1-Digest: 2fYrvOKthv8u0BGuNzbU7xtmKDw=
+
+Name: assets/data/npc0/0.data
+SHA1-Digest: othz2ihvob9PqXmLAvqgg9WsQgQ=
+
+Name: assets/data/map/m4.d
+SHA1-Digest: uZGeB3FA0B/gQb72LeIwkYVHeWs=
+
+Name: assets/data/map/65.mid
+SHA1-Digest: Ti8NR60s9Cs9877EcOEWr+820xU=
+
+Name: assets/data/map/55.mid
+SHA1-Digest: 9uZU1s2lK6QRt/7Z19Cw2LS19S8=
+
+Name: assets/data/npc2/45.png
+SHA1-Digest: 5ShxBg6+tOZPOxQ96PDyLgObWj8=
+
+Name: assets/data/npc0/16.png
+SHA1-Digest: /oOIDEymzO0HIRdjcGkhXzYSs4Y=
+
+Name: assets/data/npc0/23.png
+SHA1-Digest: Q/ovYghu5GtYRUr5IFIW7yigbi8=
+
+Name: assets/data/npc0/24.data
+SHA1-Digest: mYWf8MlKCikEOx5M7KXRUtL1Wb0=
+
+Name: assets/data/npc2/9.data
+SHA1-Digest: jdMiwzs9/tz2EDiXGsAZrhXBpNo=
+
+Name: assets/data/map/2.data
+SHA1-Digest: uZKA4m6yxJ7ooQkYTuHKijGzyE4=
+
+Name: assets/data/map/m8.d
+SHA1-Digest: R+scR55CJpe6ozpUfu+jlCqWW/k=
+
+Name: assets/data/npc2/47.data
+SHA1-Digest: zmjJWObf92ISZpC0X2/WBjdQuTM=
+
+Name: assets/data/map/21.mid
+SHA1-Digest: 3akbXjYm6ws76T7tbfP6ZKPpz78=
+
+Name: assets/data/npc0/76.data
+SHA1-Digest: RKyyz6xufgivk0xCxywmg1jNFjY=
+
+Name: assets/data/battle/s0.data
+SHA1-Digest: V9d1cWMwajMSeemimlpLoX6z49o=
+
+Name: res/upoint_logo_hdpi.png
+SHA1-Digest: /VuOeD3Xn/3Fte5ASM0YbdGFKoY=
+
+Name: assets/data/npc0/30.data
+SHA1-Digest: TUXkzjq2OdEdNT8Spd9r4y8grTQ=
+
+Name: assets/data/npc2/12.data
+SHA1-Digest: rU/YRfjO4YhC4lSNFOnp1TNXnZE=
+
+Name: assets/data/npc0/46.data
+SHA1-Digest: 0umYnM/qOy7+4FQA4LNsPqpxafQ=
+
+Name: assets/data/npc0/37.data
+SHA1-Digest: P15SDUbTt9Znl9vhlgidsGVj850=
+
+Name: assets/data/gamee.data
+SHA1-Digest: INv6scYaGkbdU9oNEC5cpmy6R38=
+
+Name: assets/data/map/37.mid
+SHA1-Digest: yjoCBw/cWU1WolSi5fMgVZ0KZz4=
+
+Name: assets/data/npc2/20.data
+SHA1-Digest: eX7GMw5aacZwe71YoKn4IRo3nSw=
+
+Name: assets/data/npc0/67.data
+SHA1-Digest: IBdy2RgXiwghjB+14LLg+qEWelI=
+
+Name: assets/data/map/m60.d
+SHA1-Digest: R+scR55CJpe6ozpUfu+jlCqWW/k=
+
+Name: assets/data/brow/m0.png
+SHA1-Digest: 9hrbDq6I3m1TjpzYszoysE08aIk=
+
+Name: assets/data/battle/4.png
+SHA1-Digest: HroPGoMMWl/jZdg9MoB/aLJCn/0=
+
+Name: assets/data/npc0/33.png
+SHA1-Digest: 63lUG+iHd8bMNtJAvFdnHOJ3YJ8=
+
+Name: assets/data/npc0/44.data
+SHA1-Digest: kwhA58csdsJL+u7Eq4Pj82n6qpo=
+
+Name: assets/data/map/m20.d
+SHA1-Digest: pDKFXZ+GkPJhMu699FyjQJ6wwc0=
+
+Name: assets/data/shop.d
+SHA1-Digest: kHfd7QGuVxGKl7WOSgIiIEipgb0=
+
+Name: assets/data/map/1.data
+SHA1-Digest: o31LyjqYvv/iwWe6BZLVsSB5Rz4=
+
+Name: assets/data/npc2/11.data
+SHA1-Digest: at8CiklITlRbfBP66Kh48+beFsI=
+
+Name: assets/data/npc0/23.data
+SHA1-Digest: 3tKGggYz5L6arUxZrNbSbimbL+k=
+
+Name: assets/data/map/10.png
+SHA1-Digest: XBT7IlsB+HY83rvJIadHKkPIfr4=
+
+Name: assets/data/mission0.t
+SHA1-Digest: bTgYaglZaDaJWILgeM1M10Pwh14=
+
+Name: assets/data/map/54.mid
+SHA1-Digest: w9Ao0bfZYx8lXt5ZxW3kH8+AwmQ=
+
+Name: assets/data/npc0/30.png
+SHA1-Digest: ZjDEFXVT+IeCNOzl7Tc57PU9TNg=
+
+Name: assets/data/npc0/16.data
+SHA1-Digest: q3nqmWaV3Ii9u+31UZmCKjKAaic=
+
+Name: assets/music/5.mid
+SHA1-Digest: WELae6VP9QxCEr6s2BP8VKKZc+I=
+
+Name: assets/data/npc2/4.png
+SHA1-Digest: 4eBlPHnGyqJkMYiII4kNobOgwiI=
+
+Name: assets/data/gameb.d
+SHA1-Digest: rRfwhJ6c/WW4LjOsL1iQMfkdLTg=
+
+Name: assets/data/map/0.mid
+SHA1-Digest: kEUmoAh+swrvsolaah6O16TZMfQ=
+
+Name: assets/data/map/m26.d
+SHA1-Digest: iqLEqI6UjH6NWrW6Kz4W6cJspcU=
+
+Name: assets/data/map/m78.d
+SHA1-Digest: YsyileaRch7n60QpfQHzmrkM5Ac=
+
+Name: assets/data/gamec.d
+SHA1-Digest: WIRLZRyvUfil6OEQpo69Ke2BiA4=
+
+Name: assets/qq/qq1.png
+SHA1-Digest: gAMIJxIdRgyG42tfzMhmfffthvM=
+
+Name: assets/data/map/m68.d
+SHA1-Digest: rotZwxABaYeQDCAvV37zpZUmvNY=
+
+Name: assets/data/map/39.mid
+SHA1-Digest: 6c1rXFnXzlTjmU5t49sJj/i5FBU=
+
+Name: assets/data/battle/s3.data
+SHA1-Digest: mgqO1cskuuxAgJAA4SpHSQTtpyU=
+
+Name: assets/data/npc0/59.png
+SHA1-Digest: Z9yy3VybcS8KCJ4+OMvZCZkouLo=
+
+Name: assets/data/npc0/60.png
+SHA1-Digest: aUb/5d6LxE4FwLHvPiUpZf10x5g=
+
+Name: assets/data/npc0/56.data
+SHA1-Digest: dI46LHFPriIrvdVR5F2W+DgkrBA=
+
+Name: assets/data/map/m28.d
+SHA1-Digest: vCVE/XREaDJHpBaEkzrUppj3mWs=
+
+Name: assets/data/face/brow.png
+SHA1-Digest: db/c7DAmEDJzbl2KCcH/2uzEbio=
+
+Name: assets/data/data.d
+SHA1-Digest: MGT7t+f5i6BgB2HAl0wLyERn7zQ=
+
+Name: assets/data/brow/i6.png
+SHA1-Digest: WDQIrrrSxWVfnyCAWusgKIi6j4U=
+
+Name: assets/data/map/m53.d
+SHA1-Digest: GjMFr40SZgkR4zu4E4SVkVUZVAY=
+
+Name: assets/data/map/40.mid
+SHA1-Digest: r9r63S7T6yaAO/Ur2zHpW+FPTRU=
+
+Name: assets/data/map/27.mid
+SHA1-Digest: 0mf5XJktTBwSJQKAKesNR7w0LlU=
+
+Name: assets/data/npc2/13.png
+SHA1-Digest: TqUctlJ1o2ZMgjBktkd1FBzY9bU=
+
+Name: assets/data/npc0/17.data
+SHA1-Digest: wQMhM+T85h4/QWTD/YP0YSp7jYw=
+
+Name: assets/data/map/53.mid
+SHA1-Digest: 58cNX2x4cxKKWTkig5oQMc2RafI=
+
+Name: assets/data/npc0/15.png
+SHA1-Digest: dCOuPKVaLSjAMCilOR67gTCWbss=
+
+Name: assets/data/map.d
+SHA1-Digest: eziqJbHQbFFZz8uTl1rmxltlMqs=
+
+Name: assets/data/battle/s3.png
+SHA1-Digest: mFBL69YndGAxu2s+NYGWnb8Cejg=
+
+Name: assets/data/npc0/11.data
+SHA1-Digest: VQ65CjWEOqF39EjN3dDtcvG+b40=
+
+Name: assets/data/brow/e5.png
+SHA1-Digest: e8uKO9y3OyBYCuST8p2jGbVy1WA=
+
+Name: assets/data/map/2.mid
+SHA1-Digest: OICQBsnehwOo/3c4JCehe5je/Cw=
+
+Name: assets/data/npc2/14.data
+SHA1-Digest: 7kayJ5LRnZTTUPTcNuaOWFXoFS8=
+
+Name: assets/data/map/41.mid
+SHA1-Digest: bQM3Ul8ur9fLrGIVobwBYeZGLgo=
+
+Name: assets/data/npc0/39.data
+SHA1-Digest: rWvtqhhyetUnHv+ua8FxVjcW2C8=
+
+Name: assets/data/ui_m.d
+SHA1-Digest: nxYh+UHD9R7DCKMBVvjp5B0fAHQ=
+
+Name: assets/data/map/4.data
+SHA1-Digest: tps+uXiMZRweiMarh+R1isMdPOw=
+
+Name: assets/data/npc0/48.data
+SHA1-Digest: cdZTK94cYyKb0q07++KT6nGGPvU=
+
+Name: assets/data/npc0/69.data
+SHA1-Digest: S1Q35L643Y8M1TTFlnxLZmT2Rqk=
+
+Name: assets/data/npc0/75.png
+SHA1-Digest: /24GzSTIWdyJjO0J69ESK0kvbgA=
+
+Name: assets/data/item.xml
+SHA1-Digest: tkpk2N2fEANQiLv4QWAiKl2pTKY=
+
+Name: assets/data/npc2/27.png
+SHA1-Digest: WhisvtwwrRx/u0jmqh9t63x2WOI=
+
+Name: assets/data/brow/e0.png
+SHA1-Digest: Zhi+NYgjKBSNIDjqfLcBSIVVoCE=
+
+Name: assets/data/npc0/13.png
+SHA1-Digest: FDSwrl0QNGxkzYI2dhpw03QtVUs=
+
+Name: assets/data/map/m5.d
+SHA1-Digest: /O8kio7TtV3TTk0skgc2ywSJlIw=
+
+Name: assets/data/map/51.mid
+SHA1-Digest: I9BKa9R/F7RIBFijHD4/03I3eJI=
+
+Name: assets/data/npc2/2.png
+SHA1-Digest: RuGEX+LhnCAloGizkU3VXCW8PU4=
+
+Name: assets/data/npc0/3.data
+SHA1-Digest: hx1F+gvFAKLoxnyIa80K5xFa1eU=
+
+Name: assets/data/map/m9.d
+SHA1-Digest: RRjT8KA+HCemW7fp4stMMZcJq2Q=
+
+Name: assets/data/npc2/3.png
+SHA1-Digest: HYRLZCzyxdNzUAMzDeuvk/b2X3A=
+
+Name: assets/data/npc1/r5.data
+SHA1-Digest: 9KCRRsPA3nNH66MZbb1N5k6U530=
+
+Name: assets/data/npc2/5.data
+SHA1-Digest: O48VfzCLmEDxDuxn1PiJ96MMIV0=
+
+Name: res/drawable-hdpi/icon.png
+SHA1-Digest: ehVQwBhsa3y07TmfJH6pJTtJQGE=
+
+Name: assets/data/map/m42.d
+SHA1-Digest: FgUOacsuVwZFzhEnGZ5UWbZUzHk=
+
+Name: assets/data/npc2/10.png
+SHA1-Digest: q2vVqixqArrvpNeDlLoCd0u/gHs=
+
+Name: assets/data/map/m39.d
+SHA1-Digest: 5lIH9LD/FdHcy11SXsKVR7bhil8=
+
+Name: assets/data/npc0/65.data
+SHA1-Digest: GoWYsoLx68kgBBNWsdxrRcte4qI=
+
+Name: assets/data/map/5.mid
+SHA1-Digest: N0R2J7eZJbXAeYiicX6W9thzU50=
+
+Name: assets/data/npc0/26.png
+SHA1-Digest: cFvvkv8G8EqbGgb0gwRjG0YLUQU=
+
+Name: assets/data/npc2/35.png
+SHA1-Digest: GWflxvFwMX5W1+2CJSapTYcOgjY=
+
+Name: assets/data/npc0/13.data
+SHA1-Digest: zZD3iPfgJR75NH2NGYOvW8w/Lbs=
+
+Name: assets/data/map/8.data
+SHA1-Digest: eBsFAQ4j25LQw+aCNN6tJY7hDuA=
+
+Name: assets/data/map/49.mid
+SHA1-Digest: d5iFmMnf3YRys96qb+QrnBCOwX8=
+
+Name: assets/data/face/6.png
+SHA1-Digest: ugNGVwfUk64oteJVI4EZZ4oCKuI=
+
+Name: assets/data/npc0/1.data
+SHA1-Digest: bP6fV/wmmEbfzCHN70NL0RU73fg=
+
+Name: assets/data/face/0.png
+SHA1-Digest: qprsRGMeD9O8YGXDB9b2GLWuHHU=
+
+Name: assets/data/map/23.mid
+SHA1-Digest: uEJMecGhPJmzhY86MA1uUuFaj58=
+
+Name: assets/data/map/m40.d
+SHA1-Digest: wxHDKmgiCHle9IXBGkkUKI9d08A=
+
+Name: assets/data/map/6.data
+SHA1-Digest: NS4SsO/KCvzIRtgbYnJrs0Zz2to=
+
+Name: assets/data/npc2/39.png
+SHA1-Digest: 1iSS2N3nbAmu6JpKjbm+cBvelII=
+
+Name: assets/data/map/5.png
+SHA1-Digest: issXMvdEMQFqyg8WEQ8xqlDwwp8=
+
+Name: assets/data/battle/s5.data
+SHA1-Digest: 0X/Pg5PI8/gqsV1InL1wmu87+e4=
+
+Name: assets/data/box.d
+SHA1-Digest: qiUUMgz4550hwPaSbnbOh3PeyCs=
+
+Name: assets/data/npc0/43.data
+SHA1-Digest: FSvozs+hJ64JvYKiQs0dpuUJm7c=
+
+Name: assets/data/battle/b3.png
+SHA1-Digest: NJYjjAmywbgJeGvPerlYGoGR3HA=
+
+Name: assets/data/map/m72.d
+SHA1-Digest: vgwIlu4g/JAMrAs2r7OyarELxEQ=
+
+Name: assets/data/map/m30.d
+SHA1-Digest: TmPkMY2i9BHBqi4oXL2HBDbxhpQ=
+
+Name: assets/data/npc0/33.data
+SHA1-Digest: g9/gNI/JQW42zRG/rfpn6QMV3PU=
+
+Name: assets/data/map/m59.d
+SHA1-Digest: PkU4IAYdaJBNLFa25C8UwveSP2I=
+
+Name: assets/data/map/m73.d
+SHA1-Digest: vgwIlu4g/JAMrAs2r7OyarELxEQ=
+
+Name: assets/data/npc2/38.png
+SHA1-Digest: bhFQvNNxabP1dT9dNKW0wTXRFS8=
+
+Name: assets/data/map/m31.d
+SHA1-Digest: qoxhznA3fem0+x5YxPA9GTRuy8s=
+
+Name: assets/data/brow/w2.png
+SHA1-Digest: VSq2/ppu3/5qapd8gP3xeugdoCA=
+
+Name: assets/data/map/14.mid
+SHA1-Digest: RO6JRRFTlUYMiwx4LA8W93+F2/A=
+
+Name: assets/data/battle/b2.png
+SHA1-Digest: hhsUVOKn6YK1Tlu3lLaLLLqDSew=
+
+Name: assets/data/npc1/r3.data
+SHA1-Digest: /0wdnSv8bcfwnjYwYYBTRUVmsoo=
+
+Name: assets/data/map/m71.d
+SHA1-Digest: YD7AxrpNOyamTFEcqH4MGRsQroY=
+
+Name: assets/data/npc2/38.data
+SHA1-Digest: 3d9ebWOIMT3TnVuLF1GaiagVSCs=
+
+Name: assets/data/map/m70.d
+SHA1-Digest: rotZwxABaYeQDCAvV37zpZUmvNY=
+
+Name: assets/data/brow/m1.data
+SHA1-Digest: XLVzjmogj1NdVtB9LvYzD3FAjQE=
+
+Name: assets/data/map/8.png
+SHA1-Digest: 71DeY1nPhml92uHpU7YX1WTMyi4=
+
+Name: res/cancel_btn_hdpi.png
+SHA1-Digest: 2adTo6+/9ACVF07+Z0cZnDHgsvc=
+
+Name: assets/data/npc0/6.png
+SHA1-Digest: eDoEsG5YF2stx38S3FmL2vz22No=
+
+Name: assets/data/npc0/25.data
+SHA1-Digest: Dm8DTkCf2u7LL4QGWCDBXWMCwow=
+
+Name: assets/data/map/8.mid
+SHA1-Digest: 2iBRb317t/5Go+4o1vWm9wAhtr4=
+
+Name: assets/data/npc0/75.data
+SHA1-Digest: yL7dZ+bGJYNyxN+eu30eSlCHSpY=
+
+Name: assets/data/battle/s2.data
+SHA1-Digest: kDFg8Ib+Wm+jkdXGjVONaGzSsO8=
+
+Name: res/sms_logo_hdpi.png
+SHA1-Digest: /Mnt/N/BTKufabC5uytG9kvYv6s=
+
+Name: AndroidManifest.xml
+SHA1-Digest: OmbSrmMFd6p1AP9l+67g3uzQu7k=
+
+Name: assets/data/npc1/r4.png
+SHA1-Digest: kZKQchfsCluP+q3HT853Tge+4A0=
+
+Name: assets/data/npc0/28.png
+SHA1-Digest: 16sVYeElf7iu6hERq6bmgYwCsVU=
+
+Name: assets/data/npc0/56.png
+SHA1-Digest: u4K5NAXE8mHGycp0MaNnAgqdKvk=
+
+Name: assets/data/npc2/46.png
+SHA1-Digest: ALPmxUxCd0UtkYiCyUXQmKNgfNY=
+
+Name: assets/data/map/62.mid
+SHA1-Digest: z5zXNTy8X1jIvZsGdiWWU/p72ds=
+
+Name: assets/data/brow/e6.png
+SHA1-Digest: ERG1o0puZb96kTkVjGPk+ipvT5A=
+
+Name: assets/data/npc2/51.data
+SHA1-Digest: qW50hCjTfS7T0pQ1c8awhQe0XIQ=
+
+Name: assets/data/npc0/38.png
+SHA1-Digest: 0WAUjBx3EynTIF96psfvd3gMKSk=
+
+Name: assets/data/npc2/48.data
+SHA1-Digest: 0Pq9IExa9h/0NyToJyddxgvtJTw=
+
+Name: assets/data/npc2/22.png
+SHA1-Digest: ybMyx/k5yMUMWOw9Vh/AJ0bIj+4=
+
+Name: assets/data/npc2/43.png
+SHA1-Digest: /1Pf2d/Uficjry7oc557btXZJ9Y=
+
+Name: assets/data/npc2/31.data
+SHA1-Digest: FS08LjV8APMgHu8ig5Dd1CmyI4k=
+
+Name: assets/data/npc2/11.png
+SHA1-Digest: EoUefC8VUw+Kln1niwe8OuCK2xo=
+
+Name: assets/data/npc0/44.png
+SHA1-Digest: 4Bx50FugM81/7DLli7i9uiuO9tE=
+
+Name: assets/qq/qq2.png
+SHA1-Digest: y3M2MpgZnNfNXkRuqe3CFMrSZIs=
+
+Name: assets/data/npc0/55.data
+SHA1-Digest: 4VD8aua5YxLTGwpYQEqQC7/xQpo=
+
+Name: assets/music/4.mid
+SHA1-Digest: E8rrqbKxT2MUYjqdibhtOK36itw=
+
+Name: assets/data/npc2/30.data
+SHA1-Digest: xPeFaqlRuu5/xTeRbEGjYtk6i+8=
+
+Name: assets/data/brow/e3.png
+SHA1-Digest: 4rsiyixNIfLV1xaLvyBnOKuROKU=
+
+Name: assets/data/npc0/50.data
+SHA1-Digest: 9c2kYyTjFIGXL1K/wUECoTbQz6I=
+
+Name: res/more.png
+SHA1-Digest: lj6zsikvhENTj+JCx1q6AfcpDbs=
+
+Name: classes.dex
+SHA1-Digest: oo2zMpIVQNYepxydJ9yqKGTLnx4=
+
+Name: assets/data/map/16.mid
+SHA1-Digest: gcE92lSOJDZaYV32J01GAE7O0oo=
+
+Name: assets/data/npc0/36.png
+SHA1-Digest: PL4SIBm9smUayW2HiAoTLPlzGSg=
+
+Name: assets/data/npc0/56.xml
+SHA1-Digest: 57HLRWkP2eDJnA1MI1J08UOtRbo=
+
+Name: assets/data/book.d
+SHA1-Digest: ksesGXwfJGG38LS3UiZ5tKUh9Zg=
+
+Name: assets/data/ball.png
+SHA1-Digest: C31eTvg1MWreaa4YC4i0kT/ppm0=
+
+Name: assets/data/npc0/34.png
+SHA1-Digest: dQL4te3AfLDqUfx5L2Tems8hN+M=
+
+Name: assets/data/face/5.png
+SHA1-Digest: pnCbe8kwkV18zGhaqlSVQpCyGbM=
+
+Name: assets/data/boss.d
+SHA1-Digest: SEzNSiRwjH/ZebFKZFmsZjif1XA=
+
+Name: assets/data/map/m45.d
+SHA1-Digest: R+scR55CJpe6ozpUfu+jlCqWW/k=
+
+Name: assets/data/map/17.mid
+SHA1-Digest: QBamOUHlApqY1rrBJNgH9cNisCU=
+
+Name: assets/data/npc0/39.png
+SHA1-Digest: zOnB5Kjpppp5F66CsegftVIoFSY=
+
+Name: assets/data/map/m44.d
+SHA1-Digest: R+scR55CJpe6ozpUfu+jlCqWW/k=
+
+Name: assets/data/map/m41.d
+SHA1-Digest: RLPWcGybYRXqsCaJ2E6/IKr5S0Q=
+
+Name: assets/data/map/m51.d
+SHA1-Digest: jEG4UoZy/kMOa4pRUpbVzZ8nh3c=
+
+Name: assets/data/npc0/77.png
+SHA1-Digest: 12JUqsSKLcddpLVAUC0Gx6zOYbU=
+
+Name: assets/data/brow/m3.png
+SHA1-Digest: 69TvyfxjgGzx1NIs+b242iDBZFo=
+
+Name: assets/data/npc0/20.png
+SHA1-Digest: Vl+SMI0BvMXoawFDSt3PRZNvo/4=
+
+Name: assets/data/npc0/77.data
+SHA1-Digest: TT6Y4xgh/+Wq1dSd8bl6MkOZaw8=
+
+Name: assets/data/npc2/7.png
+SHA1-Digest: 1fEzTGFn6shNZZjBjja8yERZrhY=
+
+Name: assets/data/npc2/47.png
+SHA1-Digest: x0DN6pzSJn/ymyvXu5yJPVzWY0M=
+
+Name: res/drawable-ldpi/icon.png
+SHA1-Digest: ehVQwBhsa3y07TmfJH6pJTtJQGE=
+
+Name: assets/data/map/m46.d
+SHA1-Digest: R+scR55CJpe6ozpUfu+jlCqWW/k=
+
+Name: assets/data/npc0/47.png
+SHA1-Digest: 5bh+va9a66GI2j8V3lWbYPoMccc=
+
+Name: assets/qq/qq0.png
+SHA1-Digest: kpPE3ueav0GNVjr2HDkKAwsXB1M=
+
+Name: assets/data/npc0/11.png
+SHA1-Digest: SJ4257BIRDtwOeCmsaFIgCdBZf0=
+
+Name: assets/data/map/30.mid
+SHA1-Digest: 5XYjyVLgx5uxAruOAN0ndC6Op4Y=
+
+Name: assets/data/npc2/26.png
+SHA1-Digest: CPnDQhPDYED4pZlkkksbXa/OYDc=
+
+Name: assets/data/map/m47.d
+SHA1-Digest: 04f8JOTP6W5kW7lRz0kBr2ot2VY=
+
+Name: assets/data/npc2/6.png
+SHA1-Digest: HZ+KKD620RHfUBYAFpU7UxeYSYQ=
+
+Name: assets/data/4
+SHA1-Digest: XpMxDI3ODmg8EkO/ZWCZnFoYioA=
+
+Name: assets/data/event
+SHA1-Digest: TCMey3pEbbSESwkb6PpygPs+6XQ=
+
+Name: assets/music/3.mid
+SHA1-Digest: y3KjLBA4wWiwDVp3qQU3tM+TGEQ=
+
+Name: assets/data/npc2/21.data
+SHA1-Digest: OjieUIZCwSK8mCkd+aYToWsq0Uk=
+
+Name: assets/data/npc2/28.data
+SHA1-Digest: +q9vNhEt3PI9uxctwL52sbTpizQ=
+
+Name: assets/data/npc0/53.png
+SHA1-Digest: 2FRgKLQcINi+5dhG6zTD+qi2fG4=
+
+Name: assets/data/map/m10.d
+SHA1-Digest: zT2CWu4EbFDvLDKpxmajmPXKA0s=
+
+Name: assets/data/npc0/41.png
+SHA1-Digest: jliQwPczfAlbx3qk6BTFRU2ZtMQ=
+
+Name: assets/data/npc2/25.data
+SHA1-Digest: u3X6F4PrJqf2uodPAU8k84uqE6g=
+
+Name: assets/data/map/28.mid
+SHA1-Digest: UI77RESvqwuh00TOgPb81kbZxz8=
+
+Name: assets/event
+SHA1-Digest: 0EUw5GOViAYgsiEAwlYFqKRVghM=
+
+Name: assets/data/map/66.mid
+SHA1-Digest: TaNohrAcfCI6i1nrV7AWw8p9pqk=
+
+Name: assets/data/map/m12.d
+SHA1-Digest: SXWMOC3T2hXmOYwO1Xa9+mCSUq8=
+
+Name: assets/data/npc0/40.png
+SHA1-Digest: csvdu60qEba/z8ofumr23WaVO6s=
+
+Name: assets/data/map/m11.d
+SHA1-Digest: SeL+yGaPjmJhcits+6s1w4iBFwY=
+
+Name: assets/data/npc0/7.data
+SHA1-Digest: oMr2ajN0YG1sBgTTTw6sWlgz4Ko=
+
+Name: assets/data/npc2/43.data
+SHA1-Digest: +On8JtBjj2MRZ6KcFJJP/ZQkf1o=
+
+Name: assets/data/npc0/65.png
+SHA1-Digest: JELbLV2oIoqiqbSO9WvcxEX2c40=
+
+Name: assets/data/map/m49.d
+SHA1-Digest: jEG4UoZy/kMOa4pRUpbVzZ8nh3c=
+
+Name: assets/data/npc0/71.data
+SHA1-Digest: KEZ45M00bFYSUh+iDYz/ISJkFRU=
+
+Name: assets/data/map/m48.d
+SHA1-Digest: Z51ybvioKY1mh321nQat9gzxuLc=
+
+Name: res/cancel_btn.png
+SHA1-Digest: 7Fi9zCNdKmOdEQ6bkzMUdNVRtKY=
+
+Name: assets/data/npc2/8.png
+SHA1-Digest: m5VWEwB3zpuZcphYXp9KPiZVLto=
+
+Name: assets/data/map/m17.d
+SHA1-Digest: JW2AYdATde0BC2sYR/mER6eS2UY=
+
+Name: assets/data/npc0/9.data
+SHA1-Digest: OJ4g3Z5MhgJGYvKFZl8cex45HCg=
+
+Name: assets/data/map/m18.d
+SHA1-Digest: p92Id2/ErE+yIO7CHcnM8uHjc2Y=
+
+Name: assets/data/npc0/60.data
+SHA1-Digest: rq71iUyewpFTBLb35XxPMb74HGc=
+
+Name: assets/data/map/34.mid
+SHA1-Digest: CayodGs6jUnI0nTMXHONXZWDSuU=
+
+Name: assets/data/brow/i2.png
+SHA1-Digest: oyCjIGtPRbE8Rh+gMyReTor/JrI=
+
+Name: assets/data/npc2/36.png
+SHA1-Digest: hDfXUHdOP9GSyyh8N7F7CrT6OSw=
+
+Name: assets/data/map/m7.d
+SHA1-Digest: R+scR55CJpe6ozpUfu+jlCqWW/k=
+
+Name: assets/music/6.mid
+SHA1-Digest: pFB369QDnPfvP6RLF8LTQrc9kSs=
+
+Name: assets/data/npc2/49.data
+SHA1-Digest: DNhZW5xs9pe9k6AefT3d4/uiAgM=
+
+Name: assets/data/npc0/49.png
+SHA1-Digest: y19YQ6QVDeYZ8o0eytmlAvK1EZE=
+
+Name: assets/data/npc0/10.png
+SHA1-Digest: NBLcxoHgRdq4ffmAJqdq0CK5YBg=
+
+Name: assets/data/npc0/29.data
+SHA1-Digest: Iu2ABhivi3aSIK1xg18mFSRLZYQ=
+
+Name: assets/data/npc0/70.data
+SHA1-Digest: nNkABBPqaXdkXDsvAIBtwXv6COY=
+
+Name: assets/data/npc0/1.png
+SHA1-Digest: h7pmzbcMrB0SdianvGt96Efv3ec=
+
+Name: assets/data/npc0/28.data
+SHA1-Digest: FMXtOKrqb/Xuy8iUAkkNIKqVfZg=
+
+Name: assets/data/map/43.mid
+SHA1-Digest: kU9DAilqCPZore3dpjQyaLr5xmE=
+
+Name: assets/data/map/m19.d
+SHA1-Digest: YjG38GJNCNqrCMM2LMxuzBdu7W4=
+
+Name: assets/data/npc0/69.png
+SHA1-Digest: g00MZb4rVFKVYGtDigvBUOIQTL8=
+
+Name: assets/data/npc2/52.data
+SHA1-Digest: e4nWVWLxW44wWhlJhELkHe/DdL8=
+
+Name: assets/data/npc0/20.data
+SHA1-Digest: fPnc2WX+B76iX+4ujn+SGF5AJNA=
+
+Name: assets/data/face/1.png
+SHA1-Digest: yxCJdARCH7InscvaV7y+3e5lgEI=
+
+Name: assets/data/brow/hudong.png
+SHA1-Digest: Hzhgnvkdks3jp2cR82WxFKLJKdg=
+
+Name: assets/data/npc2/42.data
+SHA1-Digest: j5qNOGGWkL2fY24jArAxTUL2HR4=
+
+Name: assets/data/npc2/17.data
+SHA1-Digest: X9Rh/Ml/bK83tZVqmQuAWJS0lFQ=
+
+Name: assets/data/npc0/22.png
+SHA1-Digest: Uj94YP9JR4SPmDzNLXWbtHRcCCo=
+
+Name: assets/data/npc2/13.data
+SHA1-Digest: KXx6TQiFm2GT16EnMuixiJK9sIU=
+
+Name: assets/data/npc0/61.png
+SHA1-Digest: 3Ym5VPOIrJml0AKU92q/mSr7mFI=
+
+Name: assets/data/map/0.png
+SHA1-Digest: bp1hCZ5rA/IAOS+ITDDjXeTc6FI=
+
+Name: assets/data/npc0/27.png
+SHA1-Digest: YByC/6pJPzNVEKPlab7kZ0Mgti4=
+
+Name: assets/data/map/67.mid
+SHA1-Digest: NF6ZzP/cYgnb1oERcjJsaNRsfzg=
+
+Name: assets/data/bf/fm.png
+SHA1-Digest: 2OWreh1pPcGRYs4DA+KpSFstSlE=
+
+Name: assets/data/npc2/6.data
+SHA1-Digest: zuLZcv9k7Rm03DRC5c309GVRyMw=
+
+Name: assets/data/npc2/40.png
+SHA1-Digest: zYH0o1KhiYlfWTZ8vzOK2bRhpjE=
+
+Name: assets/data/npc0/64.data
+SHA1-Digest: cpKRybSLawZPKi6b/S3QRU1iSfQ=
+
+Name: assets/data/ui.png
+SHA1-Digest: z6LR2IIqM8VNCSEEYNyBEIECOG4=
+
+Name: assets/data/map/59.mid
+SHA1-Digest: fdFvnpPtNh4V+YPdNS0LxF2t0Eo=
+
+Name: assets/data/npc0/46.png
+SHA1-Digest: atCDp5vmY+w3XdXMmcXS1fmX+bo=
+
+Name: assets/data/battle/1.png
+SHA1-Digest: OcBmFvcfdpTcWfs8mP3La73P1ec=
+
+Name: assets/data/npc0/74.png
+SHA1-Digest: kLk4LRJ4sSdt7k57NA2yC9jjkbk=
+
+Name: assets/data/npc2/42.png
+SHA1-Digest: sADH8NtQ3HXFwWJDbVsuJeGnXw8=
+
+Name: assets/data/npc0/19.png
+SHA1-Digest: hZz0F1lds28OsGgtcQdaHHOiPZ8=
+
+Name: assets/data/map/1.mid
+SHA1-Digest: gSBq6CAqWSoELspxKeyfDga+utw=
+
+Name: assets/data/npc2/2.data
+SHA1-Digest: rVgzu9dvNY2eDqzASeUQ666Cw44=
+
+Name: assets/data/npc0/35.png
+SHA1-Digest: C1HHxW4RHqEzyyrgTrOJVFzIOv0=
+
+Name: assets/data/npc0/72.png
+SHA1-Digest: YvHBDxV5/Z4/EQh32aqBgz2S4Wo=
+
+Name: assets/cwa.png
+SHA1-Digest: QUN1pTB6DuLo4xWfO0PImLBau08=
+
+Name: assets/data/face/brow.data
+SHA1-Digest: yPQq5jHHBG2a/3bG+gN6/xI2jrc=
+
+Name: assets/data/npc0/68.png
+SHA1-Digest: MbQqSNchSyyfm69YVMPRccjXuxc=
+
+Name: assets/data/ll.png
+SHA1-Digest: SrVIUkVWb0lur1K/4hiAfTlE12Y=
+
+Name: assets/data/npc2/7.data
+SHA1-Digest: aGOJymk1u0EaJMnN7B3jYyTC6EM=
+
+Name: assets/data/npc2/34.data
+SHA1-Digest: pZEceDGhb9Uou7jE7jKyw4E91Cg=
+
+Name: assets/data/npc0/78.png
+SHA1-Digest: cctKyTiumeaWM9+2HjeygMFvn9A=
+
+Name: assets/data/npc2/18.png
+SHA1-Digest: bGSG7Dydcg4PdZFv1qCHv5cw8GU=
+
+Name: assets/data/npc0/58.data
+SHA1-Digest: q2oK//o5kj2rs8BUAunpdoocmyU=
+
+Name: assets/data/map/48.mid
+SHA1-Digest: SchXcjUIkQ1m8xTWiHVR67bFxE4=
+
+Name: assets/data/npc0/55.png
+SHA1-Digest: W3Iu8ZcTHfdNaze6z6Uoerh0Yos=
+
+Name: assets/data/npc0/62.data
+SHA1-Digest: ISvioMJkes6o8znCBuZh6FTxFHc=
+
+Name: assets/data/brow/w1.png
+SHA1-Digest: iSlwgKefrelA3PRoWF+r4wkZ3mw=
+
+Name: assets/data/battle/s4.png
+SHA1-Digest: nRmKg9oDJ5isNiOmUf82T4WQ7Hg=
+
+Name: assets/data/npc0/78.data
+SHA1-Digest: SLxrzhLv9yzyI1SvV20UWq9anKg=
+
+Name: assets/data/npc2/40.data
+SHA1-Digest: N1p6uCW+n4O6MoHyeW2enjdA87I=
+
+Name: assets/data/npc0/72.data
+SHA1-Digest: 0S3QwXKOxRGBkdl/QKTEbFdbuoI=
+
+Name: assets/data/map/13.mid
+SHA1-Digest: L+9efGG3QFkjdrBPMYTnJLAsqPM=
+
+Name: assets/data/npc0/54.png
+SHA1-Digest: aNgDPCNs6m2XcDKygMeg6XHJkug=
+
+Name: assets/data/map/m33.d
+SHA1-Digest: yYpFf6Oqf07FE3WUbVAK9+0thyM=
+
+Name: assets/data/npc0/32.data
+SHA1-Digest: r+McqtDpKttpbIch1JOqXPnZBVU=
+
+Name: assets/data/npc2/37old.png
+SHA1-Digest: ay4Z7kxSh5X1XTD/M3k6cqAu3Bs=
+
+Name: assets/data/map/m23.d
+SHA1-Digest: GSN12HXuMGmhVkBhZoOHr7Fwko8=
+
+Name: assets/data/npc2/18.data
+SHA1-Digest: RpzMkNvwekLVhO6Fp9gPgZqXnMU=
+
+Name: assets/data/npc0/12.data
+SHA1-Digest: j1s7/jzsWltuPXD1z4Rkka40fTY=
+
+Name: assets/data/map/19.mid
+SHA1-Digest: GV18de1e3uRkW5xIJ79DwtBkEGg=
+
+Name: assets/data/npc0/70.png
+SHA1-Digest: BWb2ip5A22FKqlHVyHNhVl8DPBg=
+
+Name: assets/data/npc0/76.png
+SHA1-Digest: VHGqw2q8nHV2B2ri1qiV85EfFlw=
+
+Name: assets/data/npc0/4.data
+SHA1-Digest: qzj+h8Rbc6OIcVMIL6M5n46APZQ=
+
+Name: assets/data/npc0/52.data
+SHA1-Digest: B/PfsAo9ebYXAlrsy8ChaHmlCxI=
+
+Name: assets/data/npc0/54.data
+SHA1-Digest: VZEOnVN0Yvm6ymrrfng3yu+15hM=
+
+Name: assets/data/npc2/41.data
+SHA1-Digest: 92Dw6AUQ2K4vSKFPKtB6kR5DAm8=
+
+Name: assets/data/map/m37.d
+SHA1-Digest: MWZEvMeS8JKNLWrwmTSCMOZQ/7w=
+
+Name: assets/data/map/22.mid
+SHA1-Digest: badlW3nEIBQZ0Ru3sJSuY5FNets=
+
+Name: assets/data/npc2/25.png
+SHA1-Digest: K+B9MLjJJcwfgRwHuDLt8tWg794=
+
+Name: assets/data/npc0/32.png
+SHA1-Digest: y9KxtSqkHfpZxo5CYDWhAW4Thuo=
+
+Name: assets/data/npc0/51.png
+SHA1-Digest: 75UN58Sm3oKN7rOCPCL12oxqwc8=
+
+Name: assets/data/npc2/3.data
+SHA1-Digest: gET1TITFFufdxwgJS70+1KvRSqU=
+
+Name: assets/data/map/m43.d
+SHA1-Digest: R+scR55CJpe6ozpUfu+jlCqWW/k=
+
+Name: assets/data/npc2/31.png
+SHA1-Digest: SEPSRT03c00snJ9J/jQ0Yzme8uQ=
+
+Name: assets/data/npc2/41.png
+SHA1-Digest: KOqKSq0WR9/x2Zg1iCxwIvngJnk=
+
+Name: assets/data/npc0/52.png
+SHA1-Digest: s/JjHU9Fbh9WW+o5HteqI4JF3qs=
+
+Name: assets/data/battle/3.png
+SHA1-Digest: s2LVeFokq2oN0G2PxT8IDgcsJTM=
+
+Name: assets/data/map/15.mid
+SHA1-Digest: nLMgH2TjiM4cz+a1oq32Yw/KPAI=
+
+Name: assets/data/map/44.mid
+SHA1-Digest: ujZlPfM+mNAhiTC11cBB1rNVQW0=
+
+Name: assets/data/battle/b0.png
+SHA1-Digest: YxRtn2IYTZAe2KdWLqnNHdEYshg=
+
+Name: assets/data/npc0/37.png
+SHA1-Digest: ZhQjoYAONucMfFi/9ytNS8eWzy8=
+
+Name: assets/data/npc1/r0.data
+SHA1-Digest: AGMHw3og6wKH0nVoIN3yBqUblr4=
+
+Name: assets/data/map/9.data
+SHA1-Digest: p9Dw7aB/1dCZlpW6X/wztEmDxi0=
+
+Name: assets/data/map/57.mid
+SHA1-Digest: J8osnQhdHrE04/xnbcQSxeSEpic=
+
+Name: assets/data/mypro.d
+SHA1-Digest: pdqhXVRrlIVExuygF53OGLVJLls=
+
+Name: assets/data/map/47.mid
+SHA1-Digest: 4W0gyDkfWzCQfzucjE2BDna2598=
+
+Name: assets/data/map/20.mid
+SHA1-Digest: wPoWKrtb8qpb6j7YMOm6L4Jyoio=
+
+Name: assets/data/item_m.d
+SHA1-Digest: H89yIysXvyMZYYi28FLympffzrI=
+
+Name: assets/data/npc2/53.data
+SHA1-Digest: KRsHLF4O5XWST8GlfBgnmF0iaak=
+
+Name: assets/data/npc2/5.png
+SHA1-Digest: 4fUUNaC3Gr671LmRdpb/4Zg9AA0=
+
+Name: assets/data/npc2/28.png
+SHA1-Digest: JJf+VraZ8yCMgRUi90lyPi5dX3Q=
+
+Name: assets/data/npc0/26.data
+SHA1-Digest: G1Z+lIt0s4DZC3WEvM1UH2PpsrQ=
+
+Name: assets/data/npc0/68.data
+SHA1-Digest: T4r7xL/YkvFh/cinKqG9g1uH/kU=
+
+Name: res/drawable-mdpi/icon.png
+SHA1-Digest: ehVQwBhsa3y07TmfJH6pJTtJQGE=
+
+Name: assets/data/npc2/33.png
+SHA1-Digest: ZtJ9ixastEt6LYz3YAcKZv2pd2k=
+
+Name: assets/data/face/4.png
+SHA1-Digest: sgammfXl4UrfkYQDFWQljk58SYc=
+
+Name: assets/data/npc0/8.data
+SHA1-Digest: n85NKAqq8DGY48jm+a/CNraTsPg=
+
+Name: assets/data/map/35.mid
+SHA1-Digest: 3a+IsFN07+OduREqe+2Q7Our6z0=
+
+Name: assets/data/npc2/19.png
+SHA1-Digest: eiXtWzugZh/MhDWbfzeCoPZUvmI=
+
+Name: assets/data/npc1/r4.data
+SHA1-Digest: 8u7i73CSvsD5ctGx02MJPx+u1Bg=
+
+Name: assets/data/map/25.mid
+SHA1-Digest: /kStmKpysw1n0oAjnaRTwceQ7SQ=
+
+Name: assets/data/map/3.data
+SHA1-Digest: JhXM7XNcHpCzi/97MidQzZFvwjg=
+
+Name: assets/data/npc2/49.png
+SHA1-Digest: jIao9TgXhC9JA7PjEMrPJlcqN2Y=
+
+Name: assets/data/npc0/50.png
+SHA1-Digest: SNPCEJAheNurRC24x5z0JAkIoAQ=
+
+Name: assets/data/battle/s4.data
+SHA1-Digest: rqgVCkH0bbI9u1IUHYl/cV+1UvA=
+
+Name: assets/data/npc0/25.png
+SHA1-Digest: YdM5F0ggnbBs57MFikd5Oxvzy0s=
+
+Name: assets/data/npc0/62.png
+SHA1-Digest: 2zadgkHIKESwIrY1Y0YX8WUi3cU=
+
+Name: res/upoint_logo.png
+SHA1-Digest: eUFxg8gWJpk/8h3NIZTv01isOsY=
+
+Name: assets/data/npc2/37.png
+SHA1-Digest: GWRcsxmsUcutqbtapsBjn4q34R4=
+
+Name: assets/data/npc1/r0.png
+SHA1-Digest: tkZx0qXIaCTEXIYJIvovbPOLUZw=
+
+Name: assets/data/npc2/20.png
+SHA1-Digest: nIa62qJfI7+DwhbxqH4l6g8g6rI=
+
+Name: assets/data/map/m24.d
+SHA1-Digest: VqnxtuOU8Sd3TOdBj1E9F+sNgK0=
+
+Name: res/back_btn_hdpi.png
+SHA1-Digest: 5E+DV7BbPglOZEJhqQWdUIJRq2I=
+
+Name: assets/logo.png
+SHA1-Digest: KBxtd49DM8w14UHk8/TP/20Z/vk=
+
+Name: assets/data/npc2/1.data
+SHA1-Digest: 0roN7Zu6s130uxlt7LY1ErQud0g=
+
+Name: assets/data/map/m34.d
+SHA1-Digest: yYpFf6Oqf07FE3WUbVAK9+0thyM=
+
+Name: assets/data/npc0/5.png
+SHA1-Digest: mpomJpup09YHBAgzKKnI7sZPeik=
+
+Name: assets/data/map/29.mid
+SHA1-Digest: AIBx6Y1kOYVRK8888edJTbpzTlA=
+
+Name: assets/music/2.mid
+SHA1-Digest: q+y6UCjzdQKk3YX0/D40VhlAVJY=
+
+Name: assets/data/npc0/4.png
+SHA1-Digest: NPdUWrFNtDn/6UT0Q3IjuYVaoL8=
+
+Name: assets/data/npc1/r2.png
+SHA1-Digest: mjUyUEp7TNKrKDc8DhW9OVFGqQA=
+
+Name: assets/data/map/m32.d
+SHA1-Digest: HBqX0lXDKso/7s2UgWrqwVRm2yg=
+
+Name: assets/data/npc2/27.data
+SHA1-Digest: iRoodEyRuq6hrFGeP8q5W9rPKt4=
+
+Name: assets/data/map/m22.d
+SHA1-Digest: 3rbu1YACd1oWJx/iI4Dp4juGleo=
+
+Name: assets/data/npc0/51.data
+SHA1-Digest: Y5g8rBn4LO+FApSZQnjSYRkab+M=
+
+Name: assets/data/fm.data
+SHA1-Digest: o39VLpR9pwzpnHuT8VuSDC1oAtM=
+
+Name: assets/data/map/9.png
+SHA1-Digest: mnoql+3OuHO/sE7+tC86Qmhld2U=
+
+Name: assets/data/npc2/8.data
+SHA1-Digest: geZ1YZrpUkUdGUL7eQmOd5gNVHw=
+
+Name: assets/data/npc0/64.png
+SHA1-Digest: x7idWOtkGKBr3t38r8Qliza0Jvk=
+
+Name: assets/data/brow/m2.png
+SHA1-Digest: PlowGtjZkrNiVenDtw5stmB6Hxg=
+
+Name: assets/data/map/9.mid
+SHA1-Digest: X5hjCaJnGz2I7qBsapvGwIu3l70=
+
+Name: assets/data/map/32.mid
+SHA1-Digest: HXN/dxQ0SJCiMVetDR6Xo3Se2u0=
+
+Name: assets/data/map/m36.d
+SHA1-Digest: hEnCo2dM0KRsYS11OE/NKX0mh4c=
+
+Name: assets/data/npc2/14.png
+SHA1-Digest: jCNQHBhSFlpXhZwQfG2x7fNKmXo=
+
+Name: assets/data/map/50.mid
+SHA1-Digest: AoB+fkub0E9nKcwO6UKB0r6tlDw=
+
+Name: assets/data/brow/i1.png
+SHA1-Digest: +QgyoWhd2WCkvs+Dj6w8IY0Sbn8=
+
+Name: assets/data/map/m63.d
+SHA1-Digest: jEG4UoZy/kMOa4pRUpbVzZ8nh3c=
+
+Name: assets/data/npc2/17.png
+SHA1-Digest: 0WSFmNAzRoEB31mAk+IqG9IwkmY=
+
+Name: assets/data/map/m38.d
+SHA1-Digest: rVT0fxCPT7hK4BnSCMniYWhY3MU=
+
+Name: assets/data/npc0/8.png
+SHA1-Digest: 99dP+U8S9thDDiQ4lKnZma3QdwU=
+
+Name: assets/data/battle/0.png
+SHA1-Digest: Acby7j+o0SD4GpXZ+DfKv02O/GM=
+
+Name: assets/data/npc0/10.data
+SHA1-Digest: 4oTR0US4NNwPGBIhqoIk9IbI7rs=
+
+Name: assets/music/7.mid
+SHA1-Digest: OUkPO+p0PZG9DlpKa7mZS3dOS8E=
+
+Name: assets/data/npc0/9.png
+SHA1-Digest: lPBnY50uDnUAT1/KgSWx9tCJWv4=
+
+Name: assets/data/npc2/12.png
+SHA1-Digest: 16nkPPYdoeUCp+R3Ot3Bm7hfElw=
+
+Name: assets/data/battle/s1.data
+SHA1-Digest: C8Z7rwFJfv6aGM0ckZmCI/qONMM=
+
+Name: assets/data/map/m64.d
+SHA1-Digest: jEG4UoZy/kMOa4pRUpbVzZ8nh3c=
+
+Name: assets/data/battle/boss.d
+SHA1-Digest: Stv+j4v7KSZFriRsm+4YXHX6udA=
+
+Name: assets/data/brow/e2.png
+SHA1-Digest: 7tHNBAZSOgsBnSlJ2zHfTfsSGQU=
+
+Name: assets/data/map/7.data
+SHA1-Digest: Yd+1265Q8RDiDq1BiUYWolOMrxs=
+
+Name: assets/data/map/3.mid
+SHA1-Digest: 4HVD3kWPr4Cd6orqbGRW+XcWwcE=
+
+Name: assets/data/npc2/29.png
+SHA1-Digest: NsSOC7WXbuINbZQCAMdG4pUL0Xk=
+
+Name: assets/data/battle/b1.png
+SHA1-Digest: K9hW75mqelS7Vf9TWjcnWAxHp/Y=
+
+Name: assets/data/npc2/15.png
+SHA1-Digest: /sFHbRBC4FicUm3jsGmUL36neNM=
+
+Name: assets/data/npc0/17.png
+SHA1-Digest: mvX6Yf6sB3ugn2r3nDSwEqEXufQ=
+
+Name: assets/data/map/m29.d
+SHA1-Digest: oJcB3N8a2GpKWtxQqQ4kEtN/lFA=
+
+Name: assets/data/npc0/7.png
+SHA1-Digest: xex95VrlzFProl0+9u5B5vXxZlI=
+
+Name: assets/data/map/45.mid
+SHA1-Digest: esKQ6IGnwDECVevf+TKnWz782sc=
+
+Name: assets/data/npc0/31.data
+SHA1-Digest: AGc5U59u6KPcGYp51bNl6+MMCj4=
+
+Name: assets/data/npc0/73.png
+SHA1-Digest: HlwtpLlsNESiQmdOK9u5FnE/eH0=
+
+Name: assets/data/map/7.png
+SHA1-Digest: /FewkfBdQqmNUCxiBMdCuzEhoRk=
+
+Name: assets/data/npc0/58.png
+SHA1-Digest: B9d38EB3AzOyrXTRV2TI7dMhOwI=
+
+Name: assets/data/npc2/52.png
+SHA1-Digest: qTHw6SB4GfBgSyEX+xfvzcQzZ/Q=
+
+Name: assets/data/npc2/39.data
+SHA1-Digest: C3MwWjFSIFLDJhE7/k8NoAiq/+Y=
+
+Name: assets/data/brow/i4.png
+SHA1-Digest: 2zBnfxAZIfJr8qN8DHV9/vHqyEc=
+
+Name: assets/data/npc0/45.data
+SHA1-Digest: 9xSZWfwSm/d1832LaR7eUIXrAmM=
+
+Name: assets/data/npc0/57.png
+SHA1-Digest: HH5a/tzq0ZzVFZ8/tgrUgE5S5Dc=
+
+Name: assets/skymobipay.apk
+SHA1-Digest: 5S31LMhkm+MjLXv+MJpHWVmfR4w=
+
+Name: assets/4
+SHA1-Digest: b6WN/p6HxHsC6W1nXFLNlV1jTKg=
+
+Name: assets/data/map/7.mid
+SHA1-Digest: 4cWDd9UgYBdEMSxDOQn0U6bRKG0=
+
+Name: assets/data/npc2/36.data
+SHA1-Digest: T/TIeB0PatQ2r2uv3mzN9ztQhS4=
+
+Name: assets/data/map/4.mid
+SHA1-Digest: ar2fcYGyO/LUtVdWpoP39OfkFJs=
+
+Name: assets/data/npc2/48.png
+SHA1-Digest: CkbzS/3cMbrICuKL5pTCRbEmCN0=
+
+Name: assets/data/map/38.mid
+SHA1-Digest: Mn435ddV7UQZGxNe3XuaXWcDvlE=
+
+Name: assets/data/map/4.png
+SHA1-Digest: AQnsFip1EkqY1NzFKwRb9gT5zRc=
+
+Name: assets/data/brow/w0.png
+SHA1-Digest: gnHqGgoxnqTzlEgH1FSpyWrse5Y=
+
+Name: assets/data/npc2/4.data
+SHA1-Digest: GoX8ItJ4nnOD+CPEzPGxTLspxbw=
+
+Name: assets/data/npc0/67.png
+SHA1-Digest: QWv9KFp8NpKY/6BtmB95U/9bMAU=
+
+Name: assets/data/mission1.t
+SHA1-Digest: 7wusOslwzAM8+UEga6uh0plf9/o=
+
+Name: assets/data/help.t
+SHA1-Digest: Z6xmnYZSI2xc3kLlWxIOkzQSgQo=
+
+Name: assets/data/npc0/38.data
+SHA1-Digest: XbsYxVv62MbVVMENZB3wZOaOLLQ=
+
+Name: assets/data/map/3.png
+SHA1-Digest: NxljppnthqwvnljDIpZ7Ql7Bfkw=
+
+Name: assets/data/npc2/45.data
+SHA1-Digest: 7qNck/FF48YO7IGsr3ikQGLe8JM=
+
+Name: assets/data/map/6.mid
+SHA1-Digest: ECZ6RJEnuPhPd7ycjzUCn4tdkIA=
+
+Name: assets/data/map/11.mid
+SHA1-Digest: hY720m1rZNDyoR24v8fbSZbGHL4=
+
+Name: assets/data/map/m1.d
+SHA1-Digest: ywB1agb/203zbolUXK5uzM7drSw=
+
+Name: assets/data/npc0/19.data
+SHA1-Digest: vP6tDtBZT/RumNMpkDhSsGva7EA=
+
+Name: assets/data/npc0/14.data
+SHA1-Digest: Ii68c9kfbmdqYa5PHgZ/0wfn+/k=
+
+Name: assets/data/item.png
+SHA1-Digest: X3gCOcVbGD2gzWzgoPbBnCmzPT8=
+
+Name: assets/data/npc2/9.png
+SHA1-Digest: WJDUmEGgJVQse+7wHaO79Ag8Xj4=
+
+Name: assets/data/battle/s5.png
+SHA1-Digest: o+k0414hUbhTPTKd9lSq9IINy3k=
+
+Name: assets/data/npc0/3.png
+SHA1-Digest: y02XKuqiy5EFbRJaSOVxoAeCIAA=
+
+Name: assets/data/map/m75.d
+SHA1-Digest: vgwIlu4g/JAMrAs2r7OyarELxEQ=
+
+Name: assets/data/npc2/35.data
+SHA1-Digest: VUImzAqVZFSAzewGMVsVj8lWlYA=
+
+Name: assets/data/npc2/24.png
+SHA1-Digest: 48QFg2ehbHTBEdHV11T6MlBicPo=
+
+Name: resources.arsc
+SHA1-Digest: lpZa/W3xbxEcZHIXYWQDbmU1XtM=
+
+Name: assets/data/map/m74.d
+SHA1-Digest: vgwIlu4g/JAMrAs2r7OyarELxEQ=
+
+Name: assets/data/npc0/24.png
+SHA1-Digest: gFIJUpUKmvcFCjJGYQa9WbKx65g=
+
+Name: assets/data/npc0/35.data
+SHA1-Digest: UXMDxgUgdoYs0PF0wZSX5iOJwsA=
+
+Name: assets/data/map/m76.d
+SHA1-Digest: vgwIlu4g/JAMrAs2r7OyarELxEQ=
+
+Name: assets/data/npc2/32.data
+SHA1-Digest: 9HlHrrUjkekWr1zDarH4Z6UoIHE=
+
+Name: assets/data/map/26.mid
+SHA1-Digest: PJvzf+otTceKIVUTJbNQIUM+6bM=
+
+Name: assets/data/npc2/50.data
+SHA1-Digest: 0LYxhcHVcdQ9pFUwJcEfWDEDq8s=
+
+Name: assets/data/battle/b4.png
+SHA1-Digest: 7naOpITgnbdeaOwlqDpalvWPU+E=
+
+Name: assets/data/map/m25.d
+SHA1-Digest: TrAtxba2WZEDviW0UNicXXRn81g=
+
+Name: assets/data/map/63.mid
+SHA1-Digest: jBL7iBeremDJNRtGywilBB32ckg=
+
+Name: assets/data/face/2.png
+SHA1-Digest: 6FwPObCDEZTBQMMcqqgz0UOrO0M=
+
+Name: assets/data/npc0/74.data
+SHA1-Digest: TK3XAI1gT4WeR7Vc0F8i5VbpqQQ=
+
+Name: assets/data/fm.png
+SHA1-Digest: f9vAg4u9Q0Lm9GwtxmnUbIRIyd4=
+
+Name: assets/data/map/6.png
+SHA1-Digest: 3zukHpvVIWf5l3EsnPkwf6IFymE=
+
+Name: assets/data/map/m77.d
+SHA1-Digest: 1Nie2YDTE0baEYMRPOnZTOuHL64=
+
+Name: assets/data/npc0/59.data
+SHA1-Digest: q6dLsJgipzJ35mwG1dBiGkm93ns=
+
+Name: assets/data/brow/i5.png
+SHA1-Digest: kWQveZtpyTW0bjmbMK51guaa5Zg=
+
+Name: assets/data/npc0/71.png
+SHA1-Digest: mqsHdVoIBDRS85/LLPeg+kmmbB0=
+
+Name: assets/data/npc2/44.png
+SHA1-Digest: 5Orw96/k2vtaKpfzKze6MceOjGc=
+
+Name: assets/data/npc2/33.data
+SHA1-Digest: 7GXGh0Os/XxN/YqGul+TysZAbu8=
+
+Name: assets/data/map/60.mid
+SHA1-Digest: C5h0BGfPdl56rD6yChJ5kFoCjME=
+
+Name: assets/data/npc1/0.data
+SHA1-Digest: othz2ihvob9PqXmLAvqgg9WsQgQ=
+
+Name: assets/data/gamee.d
+SHA1-Digest: l/1LBbr5l7YFB9V+/tYp3weAckk=
+
+Name: assets/data/npc2/32.png
+SHA1-Digest: 1r9+LM8MU+WRSFgsxm9741ic88U=
+
+Name: assets/data/map/1.png
+SHA1-Digest: 8O0RiNGfCtRuaV/yRv+Ss8z3sTI=
+
+Name: assets/data/npc1/0.png
+SHA1-Digest: bvQCV2E+GFJF4CU7D5K9iqCUpOs=
+
+Name: assets/data/map/m21.d
+SHA1-Digest: Myzw4OUW9vGmuPZl+pgI/C2R+BA=
+
+Name: assets/data/npc0/48.png
+SHA1-Digest: Q4yjq//cXyMG7POd1wpFaVvXxmg=
+
+Name: assets/data/battle/s1.png
+SHA1-Digest: h2+u2Fo5BoWNHO1KB8kwddI+iNc=
+
+Name: assets/data/monType.d
+SHA1-Digest: xU+Y1FM9HgL1oODKDzSm9m59B0c=
+
+Name: assets/data/map/18.mid
+SHA1-Digest: 1cGe3FiF4PPRQQyPjtmsRAab4WY=
+
+Name: assets/data/npc2/22.data
+SHA1-Digest: 9IrR5pI80EMlxSAgLsLxC0WCk1Q=
+
+Name: assets/data/npc0/42.png
+SHA1-Digest: MmYFsMAb6+mz943ITqSe1WL40GI=
+
+Name: assets/data/gamed.d
+SHA1-Digest: n9bhvlCZlCD55fP+SxWqZHxswoM=
+
+Name: assets/data/npc2/1.png
+SHA1-Digest: NfO/Xl7dvGBi2WUYk6nYU9q8IVg=
+
+Name: assets/data/map/m35.d
+SHA1-Digest: ogbzytc1QI0WcPyum6jtaCqnhOg=
+
+Name: assets/data/brow/e1.png
+SHA1-Digest: tcpqPcMxRvl/rJuj76izwOBr1ao=
+
+Name: assets/data/map/2.png
+SHA1-Digest: +cLDrsYmjyNQMD/FfzpF81D8Iic=
+
+Name: assets/data/npc0/6.data
+SHA1-Digest: jfmz9GATosVLQI6FyUZXqS0EDOw=
+
+Name: assets/music/0.mid
+SHA1-Digest: q9UAGgmxEKzDMDNusvgOuyhrfFI=
+
+Name: assets/data/battle/2.png
+SHA1-Digest: UsnTbvCZljhId5C4o5rT2jSuRNc=
+
+Name: assets/data/npc0/18.data
+SHA1-Digest: 5kGjvK4B0cxP0JHlqRYwSBvjYbI=
+
+Name: assets/data/face/3.png
+SHA1-Digest: +KTuY22W/9DQqA5dptiwg1vOINU=
+
+Name: assets/data/npc2/46.data
+SHA1-Digest: 1GjmIqjd6tQBGY4BNG/xs87e/tI=
+
+Name: assets/qq/qqlogo.png
+SHA1-Digest: JjVYsd2jWBAwZhW7tnG1kSz8Vnk=
+
+Name: assets/data/npc1/r5.png
+SHA1-Digest: PPUxwFYy6K2Ku69pPKjwILfTRQQ=
+
+Name: assets/data/map/31.mid
+SHA1-Digest: lla0NLKwC8b6A+W9pYt34/3LEqg=
+
+Name: assets/data/map/m2.d
+SHA1-Digest: TPNVXbVEx3PCCK8yBQ7AvcxvdsE=
+
+Name: assets/data/battle/s0.png
+SHA1-Digest: ZuCWNX+oJmd0dg9cUyNXMt35wv4=
+
+Name: assets/data/help_d.t
+SHA1-Digest: aGunIApBB8tFG5cfFGCCNxwYqbs=
+
+Name: assets/data/map/5.data
+SHA1-Digest: PjgzFbuJ5RItSRnGKZvOZse7XA8=
+
+Name: assets/data/npc0/2.data
+SHA1-Digest: zTEt26Y0680SJHLySJs5qaqcADI=
+
+Name: assets/data/npc2/16.png
+SHA1-Digest: MNXGwPK7XPauWlbD30PSWubZzE4=
+
+Name: res/layout/main.xml
+SHA1-Digest: bVX9dQH2IFxllFzyKOKWySiKEcM=
+
+Name: assets/data/brow/e4.png
+SHA1-Digest: EPgRyJIK4+7Ub1ZQ4i0me3QMc3U=
+
+Name: assets/data/npc0/41.data
+SHA1-Digest: h3n+M0YtFujHxa1g4+sT6DDnXRA=
+
+Name: assets/data/map/m0.d
+SHA1-Digest: g/FKTftGUASwwrZaCpaQrcVCq0o=
+
+Name: assets/data/npc2/23.png
+SHA1-Digest: Jj35ysdsM97YOUATOJJtKAb/XNk=
+
+Name: assets/data/npc0/18.png
+SHA1-Digest: QwHTz8pLWViKTCNPB/gV56RSTL0=
+
+Name: assets/data/map/m16.d
+SHA1-Digest: +BHrMKPaO+xOfnbp9iFemoOEcB4=
+
+Name: assets/data/map/m66.d
+SHA1-Digest: jEG4UoZy/kMOa4pRUpbVzZ8nh3c=
+
+Name: assets/data/npc0/45.png
+SHA1-Digest: yvqYcnfYricx1nO+iiXZsCciEUc=
+
+Name: assets/data/npc1/r1.png
+SHA1-Digest: ONaKWXO9VtLlqMUubV1C1cpgDJc=
+
+Name: assets/data/map/m65.d
+SHA1-Digest: jEG4UoZy/kMOa4pRUpbVzZ8nh3c=
+
+Name: assets/data/sms.t
+SHA1-Digest: +c4n4/y4z9zSPICkL0CPiusT2lk=
+
+Name: assets/data/map/m15.d
+SHA1-Digest: Bp3ViVal+sDq3Wl0OXqYAQxc52c=
+
+Name: assets/snow.png
+SHA1-Digest: b5FAEesK13yGqSsNOeN5sRuzlXY=
+
+Name: assets/data/map/m13.d
+SHA1-Digest: CYtZzS7n9aEjE2tzSTV7q3awwnY=
+
+Name: assets/data/npc0/21.data
+SHA1-Digest: OU4DqTFyIYEhhBO98Z9iRMPRDvY=
+
+Name: assets/data/npc1/r3.png
+SHA1-Digest: a22j82oTBiKZtjmG3bmQE0Mzvzg=
+
+Name: assets/data/map/m14.d
+SHA1-Digest: ooqxYKo8eB6wUf0VfS5srBi85/A=
+
+Name: assets/data/npc2/53.png
+SHA1-Digest: 0YYLEy0fmbyPpMmMjB/u6DwefO0=
+
+Name: assets/data/map/m56.d
+SHA1-Digest: R+scR55CJpe6ozpUfu+jlCqWW/k=
+
+Name: assets/data/map/0.data
+SHA1-Digest: w+Yjig+WSN/2Fr5rwTNiTEZF9hY=
+
+Name: assets/data/map/m55.d
+SHA1-Digest: RfP2MMIFCS+8Zi9m137F6dJpO9k=
+
+Name: assets/data/npc0/57.data
+SHA1-Digest: 5Zbv45M6YVBr0kifCPPbkO1ZG9Q=
+
+Name: assets/data/map/52.mid
+SHA1-Digest: rpJDNEAcUXnzVa1cbOlk8vM9nrU=
+
+Name: assets/data/npc0/27.data
+SHA1-Digest: IpSns2W2CYrQ3egJgPw094Xt2Ws=
+
+Name: assets/data/npc0/5.data
+SHA1-Digest: oiLHIGBE7cdvgu3WEPCiGvTK3hE=
+
+Name: assets/music/8.mid
+SHA1-Digest: /3vRwBcda0WEx7X9xbpr4qY1MR8=
+
+Name: assets/data/npc2/34.png
+SHA1-Digest: faF/Fuko1YOWTYJcgspJV/KS8VY=
+
+Name: assets/data/npc0/14.png
+SHA1-Digest: Q7g1mpDn5KbqLV9896BhsYhYFv4=
+
+Name: assets/data/npc0/2.png
+SHA1-Digest: +SDnM3wMOGQ4dIoremwl5s2xgN4=
+
+Name: res/sms_logo.png
+SHA1-Digest: K1yvHvYmPiV3TCzE0xZ9QgwY6V4=
+
+Name: assets/data/npc2/29.data
+SHA1-Digest: SB7ZWh7cx8J//0AFKXj05BNPduU=
+
+Name: assets/data/map/area.dat
+SHA1-Digest: glLNUqZhFbpb2vKhqCmJzgIUHRA=
+
+Name: assets/data/npc2/44.data
+SHA1-Digest: URZspgB4kvjGm6u4M1F4hDb24yY=
+
+Name: assets/data/map/m62.d
+SHA1-Digest: jEG4UoZy/kMOa4pRUpbVzZ8nh3c=
+
+Name: assets/data/npc0/66.data
+SHA1-Digest: mHdh45gGMkaICLAyWw5Va/I0ItI=
+
+Name: assets/data/npc0/21.png
+SHA1-Digest: ZtHs2YAVbUl+HHptMpZCPpHBoq4=
+
+Name: assets/data/npc2/51.png
+SHA1-Digest: Fyn+QXRAUkfrxfGaS0//+Q2C2WY=
+
+Name: res/back_btn.png
+SHA1-Digest: sVDLbqceuUGVyVuLe7+AR84nGgY=
+
+Name: assets/data/npc0/0.png
+SHA1-Digest: bvQCV2E+GFJF4CU7D5K9iqCUpOs=
+
+Name: assets/data/npc0/42.data
+SHA1-Digest: pDsv+AkM2RE1sYZPf9R+yvSByQU=
+
+Name: assets/data/map/33.mid
+SHA1-Digest: rBb7RvDAPk0VltemyT7oAPFofaE=
+
+Name: assets/data/map/m61.d
+SHA1-Digest: jEG4UoZy/kMOa4pRUpbVzZ8nh3c=
+
+Name: assets/data/npc2/30.png
+SHA1-Digest: ByxNWVysdaDyoMgo5OJVYQ1Jsdc=
+
+Name: assets/3.png
+SHA1-Digest: Npu4KP/gfho/O09egs47vJDLzV0=
+
+Name: assets/data/map/42.mid
+SHA1-Digest: lS0WsFDLmljWsk+JyVdhEBiorXE=
+
+Name: assets/data/npc0/12.png
+SHA1-Digest: 2cf6Ly6RN0CxVyZaqzAlh4oLALU=
+

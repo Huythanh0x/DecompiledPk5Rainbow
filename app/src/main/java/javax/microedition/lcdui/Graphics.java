@@ -1,540 +1,553 @@
 package javax.microedition.lcdui;
 
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.DashPathEffect;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.PathEffect;
-import android.graphics.Rect;
+import android.graphics.Color;
+import android.graphics.Path;
+import android.graphics.Paint$Align;
 import android.graphics.RectF;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.Style;
-import android.graphics.Region.Op;
+import android.graphics.Paint$Style;
+import android.graphics.Region$Op;
+import android.graphics.Paint;
+import android.graphics.Canvas;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.graphics.DashPathEffect;
 
-public final class Graphics {
-   public static final int BASELINE = 64;
-   public static final int BOTTOM = 32;
-   public static final int DOTTED = 1;
-   public static final int HCENTER = 1;
-   public static final int LEFT = 4;
-   public static final int RIGHT = 8;
-   public static final int SOLID = 0;
-   public static final int TOP = 16;
-   public static final int VCENTER = 2;
-   private static final DashPathEffect dashPathEffect = new DashPathEffect(new float[]{5.0F, 5.0F}, 0.0F);
-   private static Rect rect1;
-   private static Rect rect2;
-   protected static Matrix regionMatrix = new Matrix();
-   private static final StringBuffer sb = new StringBuffer();
-   protected static float[][] tTrans = new float[][]{{1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F}, {1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F}, {-1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F}, {-1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F}, {0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F}, {0.0F, -1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F}, {0.0F, 1.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F}, {0.0F, -1.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F}};
-   protected static float[] tTransTemp = new float[9];
-   protected static int[][] tTransXY;
-   private static Matrix ttmatrix;
-   private Bitmap area;
-   private android.graphics.Canvas canvas;
-   private int cliph;
-   private int clipw;
-   private int clipx;
-   private int clipy;
-   private Font font = Font.getDefaultFont();
-   private Bitmap graphicbitmap;
-   private boolean isResetPainter = false;
-   private int[] rgb;
-   float scale_x = 1.0F;
-   float scale_y = 1.0F;
-   private int strokeStyle = 0;
-   private int translateX = 0;
-   private int translateY = 0;
-
-   static {
-      int[] var3 = new int[2];
-      int[] var4 = new int[]{0, 1};
-      int[] var5 = new int[]{1, 0};
-      int[] var2 = new int[]{1, 1};
-      int[] var0 = new int[2];
-      int[] var6 = new int[]{1, 0};
-      int[] var1 = new int[]{0, 1};
-      tTransXY = new int[][]{var3, var4, var5, var2, var0, var6, var1, {1, 1}};
-      rect1 = new Rect();
-      rect2 = new Rect();
-   }
-
-   public Graphics() {
-      super();
-      this.initPaint();
-   }
-
-   public Graphics(android.graphics.Canvas var1) {
-      super();
-      this.canvas = var1;
-      this.initPaint();
-   }
-
-   Graphics(android.graphics.Canvas var1, Paint var2, Bitmap var3) {
-      super();
-      this.canvas = var1;
-      this.graphicbitmap = var3;
-      this.font.tmpPaint = var2;
-      this.initPaint();
-   }
-
-   private void initPaint() {
-      this.font.tmpPaint.setAntiAlias(true);
-   }
-
-   public void clipRect(int var1, int var2, int var3, int var4) {
-      this.canvas.clipRect((float)var1, (float)var2, (float)(var1 + var3), (float)(var2 + var4), Op.INTERSECT);
-      Rect var5 = this.canvas.getClipBounds();
-      this.clipx = var5.left;
-      this.clipy = var5.top;
-      this.clipw = var5.right - var5.left;
-      this.cliph = var5.bottom - var5.top;
-   }
-
-   public void copyArea(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-      if (this.graphicbitmap != null) {
-         boolean var8 = false;
-         int var9 = var7;
-         if (var7 == 0) {
-            var9 = 20;
-         }
-
-         boolean var10 = var8;
-         if ((var9 & 64) != 0) {
-            var10 = true;
-         }
-
-         int var11;
-         if ((var9 & 16) != 0) {
-            var11 = var6;
-            if ((var9 & 34) != 0) {
-               var10 = true;
-               var11 = var6;
+public final class Graphics
+{
+    public static final int BASELINE = 64;
+    public static final int BOTTOM = 32;
+    public static final int DOTTED = 1;
+    public static final int HCENTER = 1;
+    public static final int LEFT = 4;
+    public static final int RIGHT = 8;
+    public static final int SOLID = 0;
+    public static final int TOP = 16;
+    public static final int VCENTER = 2;
+    private static final DashPathEffect dashPathEffect;
+    private static Rect rect1;
+    private static Rect rect2;
+    protected static Matrix regionMatrix;
+    private static final StringBuffer sb;
+    protected static float[][] tTrans;
+    protected static float[] tTransTemp;
+    protected static int[][] tTransXY;
+    private static Matrix ttmatrix;
+    private Bitmap area;
+    private Canvas canvas;
+    private int cliph;
+    private int clipw;
+    private int clipx;
+    private int clipy;
+    private Font font;
+    private Bitmap graphicbitmap;
+    private boolean isResetPainter;
+    private int[] rgb;
+    float scale_x;
+    float scale_y;
+    private int strokeStyle;
+    private int translateX;
+    private int translateY;
+    
+    static {
+        dashPathEffect = new DashPathEffect(new float[] { 5.0f, 5.0f }, 0.0f);
+        sb = new StringBuffer();
+        Graphics.tTrans = new float[][] { { 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f }, { 1.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f }, { -1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f }, { -1.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f }, { 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f }, { 0.0f, -1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f }, { 0.0f, 1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f }, { 0.0f, -1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f } };
+        Graphics.tTransTemp = new float[9];
+        Graphics.regionMatrix = new Matrix();
+        Graphics.tTransXY = new int[][] { new int[2], { 0, 1 }, { 1, 0 }, { 1, 1 }, new int[2], { 1, 0 }, { 0, 1 }, { 1, 1 } };
+        Graphics.rect1 = new Rect();
+        Graphics.rect2 = new Rect();
+    }
+    
+    public Graphics() {
+        super();
+        this.font = Font.getDefaultFont();
+        this.strokeStyle = 0;
+        this.translateX = 0;
+        this.translateY = 0;
+        this.isResetPainter = false;
+        this.scale_x = 1.0f;
+        this.scale_y = 1.0f;
+        this.initPaint();
+    }
+    
+    public Graphics(final Canvas canvas) {
+        super();
+        this.font = Font.getDefaultFont();
+        this.strokeStyle = 0;
+        this.translateX = 0;
+        this.translateY = 0;
+        this.isResetPainter = false;
+        this.scale_x = 1.0f;
+        this.scale_y = 1.0f;
+        this.canvas = canvas;
+        this.initPaint();
+    }
+    
+    Graphics(final Canvas canvas, final Paint tmpPaint, final Bitmap graphicbitmap) {
+        super();
+        this.font = Font.getDefaultFont();
+        this.strokeStyle = 0;
+        this.translateX = 0;
+        this.translateY = 0;
+        this.isResetPainter = false;
+        this.scale_x = 1.0f;
+        this.scale_y = 1.0f;
+        this.canvas = canvas;
+        this.graphicbitmap = graphicbitmap;
+        this.font.tmpPaint = tmpPaint;
+        this.initPaint();
+    }
+    
+    private void initPaint() {
+        this.font.tmpPaint.setAntiAlias(true);
+    }
+    
+    public void clipRect(final int n, final int n2, final int n3, final int n4) {
+        this.canvas.clipRect((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4), Region$Op.INTERSECT);
+        final Rect clipBounds = this.canvas.getClipBounds();
+        this.clipx = clipBounds.left;
+        this.clipy = clipBounds.top;
+        this.clipw = clipBounds.right - clipBounds.left;
+        this.cliph = clipBounds.bottom - clipBounds.top;
+    }
+    
+    public void copyArea(final int n, final int n2, final int n3, final int n4, final int n5, int n6, int n7) {
+        if (this.graphicbitmap != null) {
+            final int n8 = 0;
+            int n9;
+            if ((n9 = n7) == 0) {
+                n9 = 20;
             }
-         } else if ((var9 & 32) != 0) {
-            if ((var9 & 2) != 0) {
-               var10 = true;
-               var11 = var6;
-            } else {
-               var11 = var6 - (var4 - 1);
+            n7 = n8;
+            if ((n9 & 0x40) != 0x0) {
+                n7 = 1;
             }
-         } else if ((var9 & 2) != 0) {
-            var11 = var6 - (var4 - 1 >>> 1);
-         } else {
-            var10 = true;
-            var11 = var6;
-         }
-
-         if ((var9 & 4) != 0) {
-            var6 = var5;
-            if ((var9 & 9) != 0) {
-               var10 = true;
-               var6 = var5;
+            int n10;
+            if ((n9 & 0x10) != 0x0) {
+                n10 = n6;
+                if ((n9 & 0x22) != 0x0) {
+                    n7 = 1;
+                    n10 = n6;
+                }
             }
-         } else if ((var9 & 8) != 0) {
-            if ((var9 & 1) != 0) {
-               var10 = true;
-               var6 = var5;
-            } else {
-               var6 = var5 - (var3 - 1);
+            else if ((n9 & 0x20) != 0x0) {
+                if ((n9 & 0x2) != 0x0) {
+                    n7 = 1;
+                    n10 = n6;
+                }
+                else {
+                    n10 = n6 - (n4 - 1);
+                }
             }
-         } else if ((var9 & 1) != 0) {
-            var6 = var5 - (var3 - 1 >>> 1);
-         } else {
-            var10 = true;
-            var6 = var5;
-         }
-
-         if (var10) {
-            throw new IllegalArgumentException("anchor error");
-         }
-
-         if (this.area != null && this.area.getWidth() == var3 && this.area.getHeight() == var4) {
-            if (this.rgb == null || this.rgb != null && this.rgb.length != var3 * var4) {
-               this.rgb = new int[var3 * var4];
+            else if ((n9 & 0x2) != 0x0) {
+                n10 = n6 - (n4 - 1 >>> 1);
             }
-
-            this.graphicbitmap.getPixels(this.rgb, 0, var3, var1, var2, var3, var4);
-            this.area.setPixels(this.rgb, 0, var3, 0, 0, var3, var4);
-         } else {
-            this.area = Bitmap.createBitmap(this.graphicbitmap, var1, var2, var3, var4);
-         }
-
-         this.font.tmpPaint.setStyle(Style.STROKE);
-         this.canvas.drawBitmap(this.area, (float)var6, (float)var11, this.font.tmpPaint);
-         this.font.tmpPaint.setStyle(Style.FILL);
-      }
-
-   }
-
-   public void drawArc(int var1, int var2, int var3, int var4, int var5, int var6) {
-      this.font.tmpPaint.setStyle(Style.STROKE);
-      this.canvas.drawArc(new RectF((float)var1, (float)var2, (float)(var1 + var3), (float)(var2 + var4)), (float)var5, (float)var6, false, this.font.tmpPaint);
-      this.font.tmpPaint.setStyle(Style.FILL);
-   }
-
-   public void drawChar(char var1, int var2, int var3, int var4) {
-      sb.delete(0, sb.length());
-      sb.append(var1);
-      this.drawString(sb.toString(), var2, var3, var4);
-   }
-
-   public void drawChars(char[] var1, int var2, int var3, int var4, int var5, int var6) {
-      sb.delete(0, sb.length());
-      sb.append(var1, var2, var3);
-      this.drawString(sb.toString(), var4, var5, var6);
-   }
-
-   public void drawImage(Image var1, int var2, int var3, int var4) {
-      int var5;
-      if ((var4 & 8) != 0) {
-         var5 = var2 - var1.getWidth();
-      } else {
-         var5 = var2;
-         if ((var4 & 1) != 0) {
-            var5 = var2 - var1.getWidth() / 2;
-         }
-      }
-
-      if ((var4 & 32) != 0) {
-         var2 = var3 - var1.getHeight();
-      } else {
-         var2 = var3;
-         if ((var4 & 2) != 0) {
-            var2 = var3 - var1.getHeight() / 2;
-         }
-      }
-
-      this.canvas.drawBitmap(var1.getBitMapInpackage(), (float)var5, (float)var2, this.font.tmpPaint);
-   }
-
-   public void drawLine(float var1, float var2, float var3, float var4) {
-      this.canvas.drawLine(var1, var2, var3, var4, this.font.tmpPaint);
-   }
-
-   public void drawRGB(int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8) {
-      if (var1 == null) {
-         throw new NullPointerException();
-      } else {
-         if (var6 > 0 && var7 > 0) {
-            int var14 = var1.length;
-            if (var6 < 0 || var7 < 0 || var2 < 0 || var2 >= var14 || var3 < 0 && (var7 - 1) * var3 < 0 || var3 >= 0 && (var7 - 1) * var3 + var6 - 1 >= var14) {
-               throw new ArrayIndexOutOfBoundsException();
+            else {
+                n7 = 1;
+                n10 = n6;
             }
-
-            int var11 = var1[0];
-            int var12 = var1[var14 / 2];
-            int var13 = var1[var14 / 3];
-            int var9 = var1[var14 / 4];
-            int var10 = var1[var14 * 5 / 8];
-            var14 = var1[var14 * 4 / 5];
-            if (var11 == var12 && var12 == var13 && var13 == var9 && var9 == var10 && var10 == var14) {
-               this.font.tmpPaint.setColor(var11);
-               this.fillRect(var4, var5, var6, var7);
-            } else {
-               var9 = var3;
-               if (var3 < var6) {
-                  var9 = var6;
-               }
-
-               this.font.tmpPaint.setStyle(Style.STROKE);
-               this.canvas.drawBitmap(var1, var2, var9, var4, var5, var6, var7, var8, this.font.tmpPaint);
-               this.font.tmpPaint.setStyle(Style.FILL);
+            if ((n9 & 0x4) != 0x0) {
+                n6 = n5;
+                if ((n9 & 0x9) != 0x0) {
+                    n7 = 1;
+                    n6 = n5;
+                }
             }
-         }
-
-      }
-   }
-
-   public void drawRect(int var1, int var2, int var3, int var4) {
-      this.font.tmpPaint.setStyle(Style.STROKE);
-      this.canvas.drawRect((float)var1, (float)var2, (float)(var1 + var3), (float)(var2 + var4), this.font.tmpPaint);
-      this.font.tmpPaint.setStyle(Style.FILL);
-   }
-
-   public void drawRegion(Image var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
-      int var12 = var4;
-      int var11 = var5;
-      if (var6 > 3) {
-         var12 = var5;
-         var11 = var4;
-      }
-
-      int var10;
-      if ((var9 & 8) != 0) {
-         var10 = var7 - var12;
-      } else {
-         var10 = var7;
-         if ((var9 & 1) != 0) {
-            var10 = var7 - var12 / 2;
-         }
-      }
-
-      if ((var9 & 32) != 0) {
-         var7 = var8 - var11;
-      } else {
-         var7 = var8;
-         if ((var9 & 2) != 0) {
-            var7 = var8 - var11 / 2;
-         }
-      }
-
-      if (var6 == 0) {
-         rect1.set(var2, var3, var2 + var4, var3 + var5);
-         rect2.set(var10, var7, var10 + var4, var7 + var5);
-         this.canvas.drawBitmap(var1.getBitMapInpackage(), rect1, rect2, this.font.tmpPaint);
-      } else {
-         ttmatrix = this.canvas.getMatrix();
-         System.arraycopy(tTrans[var6], 0, tTransTemp, 0, 9);
-         tTransTemp[2] = (float)(tTransXY[var6][0] * var12 + var10);
-         tTransTemp[5] = (float)(tTransXY[var6][1] * var11 + var7);
-         regionMatrix.setValues(tTransTemp);
-         if (this.scale_x != 1.0F || this.scale_y != 1.0F) {
-            regionMatrix.postScale(this.scale_x, this.scale_y);
-         }
-
-         this.canvas.setMatrix(regionMatrix);
-         rect1.set(var2, var3, var2 + var4, var3 + var5);
-         rect2.set(0, 0, var4 + 1, var5);
-         this.canvas.drawBitmap(var1.getBitMapInpackage(), rect1, rect2, this.font.tmpPaint);
-         this.canvas.setMatrix(ttmatrix);
-      }
-
-   }
-
-   public void drawRoundRect(int var1, int var2, int var3, int var4, int var5, int var6) {
-      this.font.tmpPaint.setStyle(Style.STROKE);
-      RectF var7 = new RectF((float)var1, (float)var2, (float)(var1 + var3), (float)(var2 + var4));
-      this.canvas.drawRoundRect(var7, (float)var5, (float)var6, this.font.tmpPaint);
-      this.font.tmpPaint.setStyle(Style.FILL);
-   }
-
-   public void drawString(String var1, int var2, int var3, int var4) {
-      int var6 = var3 - 5;
-      int var5 = var4;
-      if (var4 == 0) {
-         var5 = 20;
-      }
-
-      if ((var5 & 16) != 0) {
-         var3 = var6 - this.font.getMetricsInt().top;
-      } else if ((var5 & 32) != 0) {
-         var3 = var6 - this.font.getMetricsInt().bottom;
-      } else {
-         var3 = var6;
-         if ((var5 & 2) != 0) {
-            var3 = var6 + ((this.font.getMetricsInt().descent - this.font.getMetricsInt().ascent) / 2 - this.font.getMetricsInt().descent);
-         }
-      }
-
-      if ((var5 & 1) != 0) {
-         this.font.tmpPaint.setTextAlign(Align.CENTER);
-      } else if ((var5 & 8) != 0) {
-         this.font.tmpPaint.setTextAlign(Align.RIGHT);
-      } else if ((var5 & 4) != 0) {
-         this.font.tmpPaint.setTextAlign(Align.LEFT);
-      }
-
-      this.canvas.drawText(var1, (float)var2, (float)var3, this.font.tmpPaint);
-   }
-
-   public void drawSubstring(String var1, int var2, int var3, int var4, int var5, int var6) {
-      int var7 = var6;
-      if (var6 == 0) {
-         var7 = 20;
-      }
-
-      if ((var7 & 16) != 0) {
-         var6 = var5 - this.font.getMetricsInt().top;
-      } else if ((var7 & 32) != 0) {
-         var6 = var5 - this.font.getMetricsInt().bottom;
-      } else {
-         var6 = var5;
-         if ((var7 & 2) != 0) {
-            var6 = var5 + ((this.font.getMetricsInt().descent - this.font.getMetricsInt().ascent) / 2 - this.font.getMetricsInt().descent);
-         }
-      }
-
-      if ((var7 & 1) != 0) {
-         this.font.tmpPaint.setTextAlign(Align.CENTER);
-      } else if ((var7 & 8) != 0) {
-         this.font.tmpPaint.setTextAlign(Align.RIGHT);
-      } else if ((var7 & 4) != 0) {
-         this.font.tmpPaint.setTextAlign(Align.LEFT);
-      }
-
-      this.canvas.drawText(var1, var2, var3 + var2, (float)var4, (float)var6, this.font.tmpPaint);
-   }
-
-   public void fillArc(int var1, int var2, int var3, int var4, int var5, int var6) {
-      this.canvas.drawArc(new RectF((float)var1, (float)var2, (float)(var1 + var3), (float)(var2 + var4)), (float)var5, (float)var6, false, this.font.tmpPaint);
-   }
-
-   public void fillRect(int var1, int var2, int var3, int var4) {
-      this.canvas.drawRect((float)var1, (float)var2, (float)(var1 + var3), (float)(var2 + var4), this.font.tmpPaint);
-   }
-
-   public void fillRoundRect(int var1, int var2, int var3, int var4, int var5, int var6) {
-      this.canvas.drawRoundRect(new RectF((float)var1, (float)var2, (float)(var1 + var3), (float)(var2 + var4)), (float)var5, (float)var6, this.font.tmpPaint);
-   }
-
-   public void fillTriangle(int var1, int var2, int var3, int var4, int var5, int var6) {
-      Path var7 = new Path();
-      var7.moveTo((float)var1, (float)var2);
-      var7.lineTo((float)var3, (float)var4);
-      var7.lineTo((float)var5, (float)var6);
-      var7.lineTo((float)var1, (float)var2);
-      this.canvas.drawPath(var7, this.font.tmpPaint);
-   }
-
-   public int getBlueComponent() {
-      return this.font.tmpPaint.getColor() & 255;
-   }
-
-   public android.graphics.Canvas getCanvas() throws NullPointerException {
-      if (this.canvas == null) {
-         throw new NullPointerException();
-      } else {
-         return this.canvas;
-      }
-   }
-
-   public int getClipHeight() {
-      return this.cliph;
-   }
-
-   public int getClipWidth() {
-      return this.clipw;
-   }
-
-   public int getClipX() {
-      return this.clipx;
-   }
-
-   public int getClipY() {
-      return this.clipy;
-   }
-
-   public int getColor() {
-      return this.font.tmpPaint.getColor();
-   }
-
-   public int getDisplayColor(int var1) {
-      return var1;
-   }
-
-   public Font getFont() {
-      return this.font;
-   }
-
-   public int getGrayScale() {
-      return (this.getRedComponent() + this.getGreenComponent() + this.getBlueComponent()) / 3;
-   }
-
-   public int getGreenComponent() {
-      return this.font.tmpPaint.getColor() >> 8 & 255;
-   }
-
-   public int getRedComponent() {
-      return this.font.tmpPaint.getColor() >> 16 & 255;
-   }
-
-   public int getStrokeStyle() {
-      return this.strokeStyle;
-   }
-
-   public int getTranslateX() {
-      return this.translateX;
-   }
-
-   public int getTranslateY() {
-      return this.translateY;
-   }
-
-   public void getXY(float var1, float var2) {
-      this.scale_x = var1;
-      this.scale_y = var2;
-   }
-
-   public boolean isAutoResetPainter() {
-      return this.isResetPainter;
-   }
-
-   public void painterAutoReset(boolean var1) {
-      this.isResetPainter = var1;
-   }
-
-   public void painterReset() {
-      this.font.tmpPaint.reset();
-   }
-
-   public void restCanvas() {
-      this.canvas.restore();
-      this.canvas.save(2);
-   }
-
-   void setCanvas(android.graphics.Canvas var1) {
-      this.canvas = var1;
-      this.initPaint();
-   }
-
-   public void setClip(int var1, int var2, int var3, int var4) {
-      this.clipx = var1;
-      this.clipy = var2;
-      this.clipw = var3;
-      this.cliph = var4;
-      if (var3 >= 0 && var4 >= 0) {
-         this.canvas.clipRect((float)var1, (float)var2, (float)(var1 + var3), (float)(var2 + var4), Op.REPLACE);
-      }
-
-   }
-
-   public void setColor(int var1) {
-      if ((var1 & -16777216) != 0) {
-         this.font.tmpPaint.setColor(var1);
-      } else {
-         this.font.tmpPaint.setColor(-16777216 | var1);
-      }
-
-   }
-
-   public void setColor(int var1, int var2, int var3) {
-      this.setColor(Color.rgb(var1, var2, var3));
-   }
-
-   public void setFont(Font var1) {
-      this.font = var1;
-   }
-
-   public void setGrayScale(int var1) {
-      if (var1 >= 0 && var1 <= 255) {
-         this.setColor(var1, var1, var1);
-      } else {
-         throw new IllegalArgumentException();
-      }
-   }
-
-   public void setStrokeStyle(int var1) {
-      if (var1 == 0 && var1 == 1) {
-         this.strokeStyle = var1;
-         if (var1 == 0) {
+            else if ((n9 & 0x8) != 0x0) {
+                if ((n9 & 0x1) != 0x0) {
+                    n7 = 1;
+                    n6 = n5;
+                }
+                else {
+                    n6 = n5 - (n3 - 1);
+                }
+            }
+            else if ((n9 & 0x1) != 0x0) {
+                n6 = n5 - (n3 - 1 >>> 1);
+            }
+            else {
+                n7 = 1;
+                n6 = n5;
+            }
+            if (n7 != 0) {
+                throw new IllegalArgumentException("anchor error");
+            }
+            if (this.area != null && this.area.getWidth() == n3 && this.area.getHeight() == n4) {
+                if (this.rgb == null || (this.rgb != null && this.rgb.length != n3 * n4)) {
+                    this.rgb = new int[n3 * n4];
+                }
+                this.graphicbitmap.getPixels(this.rgb, 0, n3, n, n2, n3, n4);
+                this.area.setPixels(this.rgb, 0, n3, 0, 0, n3, n4);
+            }
+            else {
+                this.area = Bitmap.createBitmap(this.graphicbitmap, n, n2, n3, n4);
+            }
+            this.font.tmpPaint.setStyle(Paint$Style.STROKE);
+            this.canvas.drawBitmap(this.area, (float)n6, (float)n10, this.font.tmpPaint);
+            this.font.tmpPaint.setStyle(Paint$Style.FILL);
+        }
+    }
+    
+    public void drawArc(final int n, final int n2, final int n3, final int n4, final int n5, final int n6) {
+        this.font.tmpPaint.setStyle(Paint$Style.STROKE);
+        this.canvas.drawArc(new RectF((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4)), (float)n5, (float)n6, false, this.font.tmpPaint);
+        this.font.tmpPaint.setStyle(Paint$Style.FILL);
+    }
+    
+    public void drawChar(final char c, final int n, final int n2, final int n3) {
+        Graphics.sb.delete(0, Graphics.sb.length());
+        Graphics.sb.append(c);
+        this.drawString(Graphics.sb.toString(), n, n2, n3);
+    }
+    
+    public void drawChars(final char[] str, final int offset, final int len, final int n, final int n2, final int n3) {
+        Graphics.sb.delete(0, Graphics.sb.length());
+        Graphics.sb.append(str, offset, len);
+        this.drawString(Graphics.sb.toString(), n, n2, n3);
+    }
+    
+    public void drawImage(final Image image, int n, final int n2, final int n3) {
+        int n4;
+        if ((n3 & 0x8) != 0x0) {
+            n4 = n - image.getWidth();
+        }
+        else {
+            n4 = n;
+            if ((n3 & 0x1) != 0x0) {
+                n4 = n - image.getWidth() / 2;
+            }
+        }
+        if ((n3 & 0x20) != 0x0) {
+            n = n2 - image.getHeight();
+        }
+        else {
+            n = n2;
+            if ((n3 & 0x2) != 0x0) {
+                n = n2 - image.getHeight() / 2;
+            }
+        }
+        this.canvas.drawBitmap(image.getBitMapInpackage(), (float)n4, (float)n, this.font.tmpPaint);
+    }
+    
+    public void drawLine(final float n, final float n2, final float n3, final float n4) {
+        this.canvas.drawLine(n, n2, n3, n4, this.font.tmpPaint);
+    }
+    
+    public void drawRGB(final int[] array, final int n, final int n2, final int n3, final int n4, final int n5, final int n6, final boolean b) {
+        if (array == null) {
+            throw new NullPointerException();
+        }
+        if (n5 > 0 && n6 > 0) {
+            final int length = array.length;
+            if (n5 < 0 || n6 < 0 || n < 0 || n >= length || (n2 < 0 && (n6 - 1) * n2 < 0) || (n2 >= 0 && (n6 - 1) * n2 + n5 - 1 >= length)) {
+                throw new ArrayIndexOutOfBoundsException();
+            }
+            final int color = array[0];
+            final int n7 = array[length / 2];
+            final int n8 = array[length / 3];
+            final int n9 = array[length / 4];
+            final int n10 = array[length * 5 / 8];
+            final int n11 = array[length * 4 / 5];
+            if (color == n7 && n7 == n8 && n8 == n9 && n9 == n10 && n10 == n11) {
+                this.font.tmpPaint.setColor(color);
+                this.fillRect(n3, n4, n5, n6);
+            }
+            else {
+                int n12;
+                if ((n12 = n2) < n5) {
+                    n12 = n5;
+                }
+                this.font.tmpPaint.setStyle(Paint$Style.STROKE);
+                this.canvas.drawBitmap(array, n, n12, n3, n4, n5, n6, b, this.font.tmpPaint);
+                this.font.tmpPaint.setStyle(Paint$Style.FILL);
+            }
+        }
+    }
+    
+    public void drawRect(final int n, final int n2, final int n3, final int n4) {
+        this.font.tmpPaint.setStyle(Paint$Style.STROKE);
+        this.canvas.drawRect((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4), this.font.tmpPaint);
+        this.font.tmpPaint.setStyle(Paint$Style.FILL);
+    }
+    
+    public void drawRegion(final Image image, final int n, final int n2, final int n3, final int n4, final int n5, int n6, final int n7, final int n8) {
+        int n9 = n3;
+        int n10 = n4;
+        if (n5 > 3) {
+            n9 = n4;
+            n10 = n3;
+        }
+        int n11;
+        if ((n8 & 0x8) != 0x0) {
+            n11 = n6 - n9;
+        }
+        else {
+            n11 = n6;
+            if ((n8 & 0x1) != 0x0) {
+                n11 = n6 - n9 / 2;
+            }
+        }
+        if ((n8 & 0x20) != 0x0) {
+            n6 = n7 - n10;
+        }
+        else {
+            n6 = n7;
+            if ((n8 & 0x2) != 0x0) {
+                n6 = n7 - n10 / 2;
+            }
+        }
+        if (n5 == 0) {
+            Graphics.rect1.set(n, n2, n + n3, n2 + n4);
+            Graphics.rect2.set(n11, n6, n11 + n3, n6 + n4);
+            this.canvas.drawBitmap(image.getBitMapInpackage(), Graphics.rect1, Graphics.rect2, this.font.tmpPaint);
+        }
+        else {
+            Graphics.ttmatrix = this.canvas.getMatrix();
+            System.arraycopy(Graphics.tTrans[n5], 0, Graphics.tTransTemp, 0, 9);
+            Graphics.tTransTemp[2] = (float)(Graphics.tTransXY[n5][0] * n9 + n11);
+            Graphics.tTransTemp[5] = (float)(Graphics.tTransXY[n5][1] * n10 + n6);
+            Graphics.regionMatrix.setValues(Graphics.tTransTemp);
+            if (this.scale_x != 1.0f || this.scale_y != 1.0f) {
+                Graphics.regionMatrix.postScale(this.scale_x, this.scale_y);
+            }
+            this.canvas.setMatrix(Graphics.regionMatrix);
+            Graphics.rect1.set(n, n2, n + n3, n2 + n4);
+            Graphics.rect2.set(0, 0, n3 + 1, n4);
+            this.canvas.drawBitmap(image.getBitMapInpackage(), Graphics.rect1, Graphics.rect2, this.font.tmpPaint);
+            this.canvas.setMatrix(Graphics.ttmatrix);
+        }
+    }
+    
+    public void drawRoundRect(final int n, final int n2, final int n3, final int n4, final int n5, final int n6) {
+        this.font.tmpPaint.setStyle(Paint$Style.STROKE);
+        this.canvas.drawRoundRect(new RectF((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4)), (float)n5, (float)n6, this.font.tmpPaint);
+        this.font.tmpPaint.setStyle(Paint$Style.FILL);
+    }
+    
+    public void drawString(final String s, final int n, int n2, final int n3) {
+        final int n4 = n2 - 5;
+        int n5 = n3;
+        if (n3 == 0) {
+            n5 = 20;
+        }
+        if ((n5 & 0x10) != 0x0) {
+            n2 = n4 - this.font.getMetricsInt().top;
+        }
+        else if ((n5 & 0x20) != 0x0) {
+            n2 = n4 - this.font.getMetricsInt().bottom;
+        }
+        else {
+            n2 = n4;
+            if ((n5 & 0x2) != 0x0) {
+                n2 = n4 + ((this.font.getMetricsInt().descent - this.font.getMetricsInt().ascent) / 2 - this.font.getMetricsInt().descent);
+            }
+        }
+        if ((n5 & 0x1) != 0x0) {
+            this.font.tmpPaint.setTextAlign(Paint$Align.CENTER);
+        }
+        else if ((n5 & 0x8) != 0x0) {
+            this.font.tmpPaint.setTextAlign(Paint$Align.RIGHT);
+        }
+        else if ((n5 & 0x4) != 0x0) {
+            this.font.tmpPaint.setTextAlign(Paint$Align.LEFT);
+        }
+        this.canvas.drawText(s, (float)n, (float)n2, this.font.tmpPaint);
+    }
+    
+    public void drawSubstring(final String s, final int n, final int n2, final int n3, final int n4, int n5) {
+        int n6 = n5;
+        if (n5 == 0) {
+            n6 = 20;
+        }
+        if ((n6 & 0x10) != 0x0) {
+            n5 = n4 - this.font.getMetricsInt().top;
+        }
+        else if ((n6 & 0x20) != 0x0) {
+            n5 = n4 - this.font.getMetricsInt().bottom;
+        }
+        else {
+            n5 = n4;
+            if ((n6 & 0x2) != 0x0) {
+                n5 = n4 + ((this.font.getMetricsInt().descent - this.font.getMetricsInt().ascent) / 2 - this.font.getMetricsInt().descent);
+            }
+        }
+        if ((n6 & 0x1) != 0x0) {
+            this.font.tmpPaint.setTextAlign(Paint$Align.CENTER);
+        }
+        else if ((n6 & 0x8) != 0x0) {
+            this.font.tmpPaint.setTextAlign(Paint$Align.RIGHT);
+        }
+        else if ((n6 & 0x4) != 0x0) {
+            this.font.tmpPaint.setTextAlign(Paint$Align.LEFT);
+        }
+        this.canvas.drawText(s, n, n2 + n, (float)n3, (float)n5, this.font.tmpPaint);
+    }
+    
+    public void fillArc(final int n, final int n2, final int n3, final int n4, final int n5, final int n6) {
+        this.canvas.drawArc(new RectF((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4)), (float)n5, (float)n6, false, this.font.tmpPaint);
+    }
+    
+    public void fillRect(final int n, final int n2, final int n3, final int n4) {
+        this.canvas.drawRect((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4), this.font.tmpPaint);
+    }
+    
+    public void fillRoundRect(final int n, final int n2, final int n3, final int n4, final int n5, final int n6) {
+        this.canvas.drawRoundRect(new RectF((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4)), (float)n5, (float)n6, this.font.tmpPaint);
+    }
+    
+    public void fillTriangle(final int n, final int n2, final int n3, final int n4, final int n5, final int n6) {
+        final Path path = new Path();
+        path.moveTo((float)n, (float)n2);
+        path.lineTo((float)n3, (float)n4);
+        path.lineTo((float)n5, (float)n6);
+        path.lineTo((float)n, (float)n2);
+        this.canvas.drawPath(path, this.font.tmpPaint);
+    }
+    
+    public int getBlueComponent() {
+        return this.font.tmpPaint.getColor() & 0xFF;
+    }
+    
+    public Canvas getCanvas() throws NullPointerException {
+        if (this.canvas == null) {
+            throw new NullPointerException();
+        }
+        return this.canvas;
+    }
+    
+    public int getClipHeight() {
+        return this.cliph;
+    }
+    
+    public int getClipWidth() {
+        return this.clipw;
+    }
+    
+    public int getClipX() {
+        return this.clipx;
+    }
+    
+    public int getClipY() {
+        return this.clipy;
+    }
+    
+    public int getColor() {
+        return this.font.tmpPaint.getColor();
+    }
+    
+    public int getDisplayColor(final int n) {
+        return n;
+    }
+    
+    public Font getFont() {
+        return this.font;
+    }
+    
+    public int getGrayScale() {
+        return (this.getRedComponent() + this.getGreenComponent() + this.getBlueComponent()) / 3;
+    }
+    
+    public int getGreenComponent() {
+        return this.font.tmpPaint.getColor() >> 8 & 0xFF;
+    }
+    
+    public int getRedComponent() {
+        return this.font.tmpPaint.getColor() >> 16 & 0xFF;
+    }
+    
+    public int getStrokeStyle() {
+        return this.strokeStyle;
+    }
+    
+    public int getTranslateX() {
+        return this.translateX;
+    }
+    
+    public int getTranslateY() {
+        return this.translateY;
+    }
+    
+    public void getXY(final float scale_x, final float scale_y) {
+        this.scale_x = scale_x;
+        this.scale_y = scale_y;
+    }
+    
+    public boolean isAutoResetPainter() {
+        return this.isResetPainter;
+    }
+    
+    public void painterAutoReset(final boolean isResetPainter) {
+        this.isResetPainter = isResetPainter;
+    }
+    
+    public void painterReset() {
+        this.font.tmpPaint.reset();
+    }
+    
+    public void restCanvas() {
+        this.canvas.restore();
+        this.canvas.save(2);
+    }
+    
+    void setCanvas(final Canvas canvas) {
+        this.canvas = canvas;
+        this.initPaint();
+    }
+    
+    public void setClip(final int clipx, final int clipy, final int clipw, final int cliph) {
+        this.clipx = clipx;
+        this.clipy = clipy;
+        this.clipw = clipw;
+        this.cliph = cliph;
+        if (clipw >= 0 && cliph >= 0) {
+            this.canvas.clipRect((float)clipx, (float)clipy, (float)(clipx + clipw), (float)(clipy + cliph), Region$Op.REPLACE);
+        }
+    }
+    
+    public void setColor(final int color) {
+        if ((color & 0xFF000000) != 0x0) {
+            this.font.tmpPaint.setColor(color);
+        }
+        else {
+            this.font.tmpPaint.setColor(0xFF000000 | color);
+        }
+    }
+    
+    public void setColor(final int n, final int n2, final int n3) {
+        this.setColor(Color.rgb(n, n2, n3));
+    }
+    
+    public void setFont(final Font font) {
+        this.font = font;
+    }
+    
+    public void setGrayScale(final int n) {
+        if (n < 0 || n > 255) {
+            throw new IllegalArgumentException();
+        }
+        this.setColor(n, n, n);
+    }
+    
+    public void setStrokeStyle(final int strokeStyle) {
+        if (strokeStyle != 0 || strokeStyle != 1) {
+            throw new IllegalArgumentException();
+        }
+        if ((this.strokeStyle = strokeStyle) == 0) {
             this.font.tmpPaint.setPathEffect((PathEffect)null);
-         } else if (var1 == 1) {
-            this.font.tmpPaint.setPathEffect(dashPathEffect);
-         }
-
-      } else {
-         throw new IllegalArgumentException();
-      }
-   }
-
-   public void translate(int var1, int var2) {
-      this.canvas.translate((float)var1, (float)var2);
-      this.translateX += var1;
-      this.translateY += var2;
-      this.clipx -= var1;
-      this.clipy -= var2;
-   }
+        }
+        else if (strokeStyle == 1) {
+            this.font.tmpPaint.setPathEffect((PathEffect)Graphics.dashPathEffect);
+        }
+    }
+    
+    public void translate(final int n, final int n2) {
+        this.canvas.translate((float)n, (float)n2);
+        this.translateX += n;
+        this.translateY += n2;
+        this.clipx -= n;
+        this.clipy -= n2;
+    }
 }

@@ -1,9 +1,10 @@
 package javax.microedition.rms;
 
-public interface RecordComparator {
-   int EQUIVALENT = 0;
-   int FOLLOWS = 1;
-   int PRECEDES = -1;
-
-   int compare(byte[] var1, byte[] var2);
+public interface RecordComparator
+{
+    public static final int EQUIVALENT = 0;
+    public static final int FOLLOWS = 1;
+    public static final int PRECEDES = -1;
+    
+    int compare(final byte[] p0, final byte[] p1);
 }

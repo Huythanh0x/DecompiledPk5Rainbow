@@ -1,18 +1,19 @@
 package soars;
 
-import android.view.View;
 import main.SMSSender;
+import android.view.View;
+import android.view.View$OnClickListener;
 
-class Choose$1 implements View.OnClickListener {
-   final Choose this$0;
-
-   Choose$1(Choose var1) {
-      super();
-      this.this$0 = var1;
-   }
-
-   public void onClick(View var1) {
-      SMSSender.smsSender.setSmsValue(0);
-      this.this$0.finishFromChild(this.this$0.getParent());
-   }
+class Choose$1 implements View$OnClickListener {
+    final Choose this$0;
+    
+    Choose$1(final Choose this$0) {
+        this.this$0 = this$0;
+        super();
+    }
+    
+    public void onClick(final View view) {
+        SMSSender.smsSender.setSmsValue(0);
+        this.this$0.finishFromChild(this.this$0.getParent());
+    }
 }

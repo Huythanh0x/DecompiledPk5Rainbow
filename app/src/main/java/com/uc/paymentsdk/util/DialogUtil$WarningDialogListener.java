@@ -1,7 +1,8 @@
 package com.uc.paymentsdk.util;
 
-public interface DialogUtil$WarningDialogListener {
-   void onWarningDialogCancel(int var1);
-
-   void onWarningDialogOK(int var1);
+public interface WarningDialogListener
+{
+    void onWarningDialogCancel(final int p0);
+    
+    void onWarningDialogOK(final int p0);
 }

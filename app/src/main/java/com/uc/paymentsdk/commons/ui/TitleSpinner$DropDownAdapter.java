@@ -1,136 +1,106 @@
 package com.uc.paymentsdk.commons.ui;
 
 import android.database.DataSetObserver;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
+import android.view.View;
 import android.widget.SpinnerAdapter;
+import android.widget.ListAdapter;
 
-class TitleSpinner$DropDownAdapter implements ListAdapter, SpinnerAdapter {
-   private SpinnerAdapter mAdapter;
-   private ListAdapter mListAdapter;
-
-   public TitleSpinner$DropDownAdapter(SpinnerAdapter var1) {
-      super();
-      this.mAdapter = var1;
-      if (var1 instanceof SpinnerAdapter) {
-         this.mListAdapter = (ListAdapter)var1;
-      }
-
-   }
-
-   public boolean areAllItemsEnabled() {
-      ListAdapter var2 = this.mListAdapter;
-      boolean var1;
-      if (var2 != null) {
-         var1 = var2.areAllItemsEnabled();
-      } else {
-         var1 = true;
-      }
-
-      return var1;
-   }
-
-   public int getCount() {
-      int var1;
-      if (this.mAdapter == null) {
-         var1 = 0;
-      } else {
-         var1 = this.mAdapter.getCount();
-      }
-
-      return var1;
-   }
-
-   public View getDropDownView(int var1, View var2, ViewGroup var3) {
-      if (this.mAdapter == null) {
-         var2 = null;
-      } else {
-         var2 = this.mAdapter.getDropDownView(var1, var2, var3);
-      }
-
-      return var2;
-   }
-
-   public Object getItem(int var1) {
-      Object var2;
-      if (this.mAdapter == null) {
-         var2 = null;
-      } else {
-         var2 = this.mAdapter.getItem(var1);
-      }
-
-      return var2;
-   }
-
-   public long getItemId(int var1) {
-      long var2;
-      if (this.mAdapter == null) {
-         var2 = -1L;
-      } else {
-         var2 = this.mAdapter.getItemId(var1);
-      }
-
-      return var2;
-   }
-
-   public int getItemViewType(int var1) {
-      return 0;
-   }
-
-   public View getView(int var1, View var2, ViewGroup var3) {
-      return this.getDropDownView(var1, var2, var3);
-   }
-
-   public int getViewTypeCount() {
-      return 1;
-   }
-
-   public boolean hasStableIds() {
-      boolean var1;
-      if (this.mAdapter != null && this.mAdapter.hasStableIds()) {
-         var1 = true;
-      } else {
-         var1 = false;
-      }
-
-      return var1;
-   }
-
-   public boolean isEmpty() {
-      boolean var1;
-      if (this.getCount() == 0) {
-         var1 = true;
-      } else {
-         var1 = false;
-      }
-
-      return var1;
-   }
-
-   public boolean isEnabled(int var1) {
-      ListAdapter var3 = this.mListAdapter;
-      boolean var2;
-      if (var3 != null) {
-         var2 = var3.isEnabled(var1);
-      } else {
-         var2 = true;
-      }
-
-      return var2;
-   }
-
-   public void registerDataSetObserver(DataSetObserver var1) {
-      if (this.mAdapter != null) {
-         this.mAdapter.registerDataSetObserver(var1);
-      }
-
-   }
-
-   public void unregisterDataSetObserver(DataSetObserver var1) {
-      if (this.mAdapter != null) {
-         this.mAdapter.unregisterDataSetObserver(var1);
-      }
-
-   }
+private static class DropDownAdapter implements ListAdapter, SpinnerAdapter
+{
+    private SpinnerAdapter mAdapter;
+    private ListAdapter mListAdapter;
+    
+    public DropDownAdapter(final SpinnerAdapter mAdapter) {
+        super();
+        this.mAdapter = mAdapter;
+        if (mAdapter instanceof SpinnerAdapter) {
+            this.mListAdapter = (ListAdapter)mAdapter;
+        }
+    }
+    
+    public boolean areAllItemsEnabled() {
+        final ListAdapter mListAdapter = this.mListAdapter;
+        return mListAdapter == null || mListAdapter.areAllItemsEnabled();
+    }
+    
+    public int getCount() {
+        int count;
+        if (this.mAdapter == null) {
+            count = 0;
+        }
+        else {
+            count = this.mAdapter.getCount();
+        }
+        return count;
+    }
+    
+    public View getDropDownView(final int n, View dropDownView, final ViewGroup viewGroup) {
+        if (this.mAdapter == null) {
+            dropDownView = null;
+        }
+        else {
+            dropDownView = this.mAdapter.getDropDownView(n, dropDownView, viewGroup);
+        }
+        return dropDownView;
+    }
+    
+    public Object getItem(final int n) {
+        Object item;
+        if (this.mAdapter == null) {
+            item = null;
+        }
+        else {
+            item = this.mAdapter.getItem(n);
+        }
+        return item;
+    }
+    
+    public long getItemId(final int n) {
+        long itemId;
+        if (this.mAdapter == null) {
+            itemId = -1L;
+        }
+        else {
+            itemId = this.mAdapter.getItemId(n);
+        }
+        return itemId;
+    }
+    
+    public int getItemViewType(final int n) {
+        return 0;
+    }
+    
+    public View getView(final int n, final View view, final ViewGroup viewGroup) {
+        return this.getDropDownView(n, view, viewGroup);
+    }
+    
+    public int getViewTypeCount() {
+        return 1;
+    }
+    
+    public boolean hasStableIds() {
+        return this.mAdapter != null && this.mAdapter.hasStableIds();
+    }
+    
+    public boolean isEmpty() {
+        return this.getCount() == 0;
+    }
+    
+    public boolean isEnabled(final int n) {
+        final ListAdapter mListAdapter = this.mListAdapter;
+        return mListAdapter == null || mListAdapter.isEnabled(n);
+    }
+    
+    public void registerDataSetObserver(final DataSetObserver dataSetObserver) {
+        if (this.mAdapter != null) {
+            this.mAdapter.registerDataSetObserver(dataSetObserver);
+        }
+    }
+    
+    public void unregisterDataSetObserver(final DataSetObserver dataSetObserver) {
+        if (this.mAdapter != null) {
+            this.mAdapter.unregisterDataSetObserver(dataSetObserver);
+        }
+    }
 }

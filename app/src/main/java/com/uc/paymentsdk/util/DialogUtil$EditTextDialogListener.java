@@ -1,7 +1,8 @@
 package com.uc.paymentsdk.util;
 
-public interface DialogUtil$EditTextDialogListener {
-   void onEditTextDialogCancel(int var1);
-
-   void onEditTextDialogOK(int var1, String var2);
+public interface EditTextDialogListener
+{
+    void onEditTextDialogCancel(final int p0);
+    
+    void onEditTextDialogOK(final int p0, final String p1);
 }

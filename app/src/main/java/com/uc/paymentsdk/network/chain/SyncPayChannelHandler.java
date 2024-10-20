@@ -1,77 +1,158 @@
 package com.uc.paymentsdk.network.chain;
 
-import android.content.Context;
-import android.text.TextUtils;
-import com.uc.paymentsdk.network.Api;
-import com.uc.paymentsdk.network.ApiTask$TaskHandler;
+import com.uc.paymentsdk.util.PrefUtil;
 import com.uc.paymentsdk.network.XMLParser;
+import android.text.TextUtils;
 import com.uc.paymentsdk.util.Utils;
 import org.apache.http.HttpResponse;
+import com.uc.paymentsdk.network.Api;
+import android.content.Context;
+import com.uc.paymentsdk.network.ApiTask;
 
-public class SyncPayChannelHandler extends Handler implements ApiTask$TaskHandler {
-   private static int sStatus;
-   private final Integer LOCK = 0;
-   private Handler$OnFinishListener mOnFinishListener;
-
-   public SyncPayChannelHandler(Context var1) {
-      super(var1);
-   }
-
-   public SyncPayChannelHandler(Context var1, Handler$OnFinishListener var2) {
-      super(var1);
-      this.mOnFinishListener = var2;
-   }
-
-   // $FF: synthetic method
-   static Integer access$0(SyncPayChannelHandler var0) {
-      return var0.LOCK;
-   }
-
-   public static void init() {
-      sStatus = 0;
-   }
-
-   public void handleRequest() {
-      switch (sStatus) {
-         case 0:
-            sStatus = 1;
-            Api.syncPayChannel(this.mContext, this);
-            break;
-         case 1:
-            (new Thread(new SyncPayChannelHandler$1(this))).start();
-            break;
-         case 2:
-            if (this.getSuccessor() == null) {
-               if (this.mOnFinishListener != null) {
-                  this.mOnFinishListener.onFinish();
-               }
-            } else {
-               this.getSuccessor().handleRequest();
+public class SyncPayChannelHandler extends Handler implements TaskHandler
+{
+    private static int sStatus;
+    private final Integer LOCK;
+    private OnFinishListener mOnFinishListener;
+    
+    public SyncPayChannelHandler(final Context context) {
+        super(context);
+        this.LOCK = Integer.valueOf(0);
+    }
+    
+    public SyncPayChannelHandler(final Context context, final OnFinishListener mOnFinishListener) {
+        super(context);
+        this.LOCK = Integer.valueOf(0);
+        this.mOnFinishListener = mOnFinishListener;
+    }
+    
+    static /* synthetic */ Integer access$0(final SyncPayChannelHandler syncPayChannelHandler) {
+        return syncPayChannelHandler.LOCK;
+    }
+    
+    public static void init() {
+        SyncPayChannelHandler.sStatus = 0;
+    }
+    
+    @Override
+    public void handleRequest() {
+        switch (SyncPayChannelHandler.sStatus) {
+            case 2: {
+                if (this.getSuccessor() != null) {
+                    this.getSuccessor().handleRequest();
+                    break;
+                }
+                if (this.mOnFinishListener != null) {
+                    this.mOnFinishListener.onFinish();
+                    break;
+                }
+                break;
             }
-      }
-
-   }
-
-   public void onError(int param1, int param2) {
-      // $FF: Couldn't be decompiled
-   }
-
-   public Object onPreHandle(int var1, HttpResponse var2) {
-      String var4 = Utils.getBodyString(var1, var2);
-      if (TextUtils.isEmpty(var4)) {
-         var4 = null;
-      } else {
-         try {
-            var4 = XMLParser.parsePayChannel(var4);
-         } catch (Exception var3) {
-            var4 = null;
-         }
-      }
-
-      return var4;
-   }
-
-   public void onSuccess(int param1, Object param2) {
-      // $FF: Couldn't be decompiled
-   }
+            case 1: {
+                new Thread(new Runnable(this) {
+                    final SyncPayChannelHandler this$0;
+                    
+                    SyncPayChannelHandler$1(final SyncPayChannelHandler this$0) {
+                        this.this$0 = this$0;
+                        super();
+                    }
+                    
+                    static /* synthetic */ SyncPayChannelHandler access$0(final SyncPayChannelHandler$1 runnable) {
+                        return runnable.this$0;
+                    }
+                    
+                    @Override
+                    public void run() {
+                        synchronized (LOCK) {
+                            while (true) {
+                                try {
+                                    LOCK.wait();
+                                    monitorexit(LOCK);
+                                    this.this$0.mHandler.post((Runnable)new Runnable(this) {
+                                        final SyncPayChannelHandler$1 this$1;
+                                        
+                                        SyncPayChannelHandler$1$1(final SyncPayChannelHandler$1 this$1) {
+                                            this.this$1 = this$1;
+                                            super();
+                                        }
+                                        
+                                        @Override
+                                        public void run() {
+                                            this$0.handleRequest();
+                                        }
+                                    });
+                                }
+                                catch (final InterruptedException ex) {
+                                    ex.printStackTrace();
+                                    continue;
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }).start();
+                break;
+            }
+            case 0: {
+                SyncPayChannelHandler.sStatus = 1;
+                Api.syncPayChannel(this.mContext, this);
+                break;
+            }
+        }
+    }
+    
+    @Override
+    public void onError(final int n, final int n2) {
+        while (true) {
+            SyncPayChannelHandler.sStatus = 0;
+            synchronized (this.LOCK) {
+                this.LOCK.notifyAll();
+                monitorexit(this.LOCK);
+                if (this.getSuccessor() == null) {
+                    if (this.mOnFinishListener != null) {
+                        this.mOnFinishListener.onFinish();
+                    }
+                    return;
+                }
+            }
+            this.getSuccessor().handleRequest();
+        }
+    }
+    
+    @Override
+    public Object onPreHandle(final int n, final HttpResponse httpResponse) {
+        final String bodyString = Utils.getBodyString(n, httpResponse);
+        Object payChannel;
+        if (TextUtils.isEmpty((CharSequence)bodyString)) {
+            payChannel = null;
+        }
+        else {
+            try {
+                payChannel = XMLParser.parsePayChannel(bodyString);
+            }
+            catch (final Exception ex) {
+                payChannel = null;
+            }
+        }
+        return payChannel;
+    }
+    
+    @Override
+    public void onSuccess(final int n, final Object o) {
+        while (true) {
+            PrefUtil.syncPayChannels(this.mContext, (String)o);
+            SyncPayChannelHandler.sStatus = 2;
+            synchronized (this.LOCK) {
+                this.LOCK.notifyAll();
+                monitorexit(this.LOCK);
+                if (this.getSuccessor() == null) {
+                    if (this.mOnFinishListener != null) {
+                        this.mOnFinishListener.onFinish();
+                    }
+                    return;
+                }
+            }
+            this.getSuccessor().handleRequest();
+        }
+    }
 }

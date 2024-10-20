@@ -1,7 +1,8 @@
 package com.uc.paymentsdk.util;
 
-public interface DialogUtil$RatingDialogListener {
-   void onRatingDialogCancel();
-
-   void onRatingDialogOK(int var1, float var2);
+public interface RatingDialogListener
+{
+    void onRatingDialogCancel();
+    
+    void onRatingDialogOK(final int p0, final float p1);
 }

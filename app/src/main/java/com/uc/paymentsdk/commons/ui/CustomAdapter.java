@@ -1,67 +1,65 @@
 package com.uc.paymentsdk.commons.ui;
 
+import android.text.Html;
+import android.view.ViewGroup;
+import android.view.View;
+import com.uc.paymentsdk.util.Utils;
+import com.uc.paymentsdk.model.IType;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.text.Html;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.uc.paymentsdk.model.IType;
-import com.uc.paymentsdk.util.Utils;
 
-public class CustomAdapter extends BaseAdapter {
-   private static Drawable sIcon;
-   private Context mContext;
-   private IType[] mItems;
-
-   public CustomAdapter(Context var1, IType[] var2) {
-      super();
-      this.mContext = var1;
-      this.mItems = var2;
-      if (sIcon == null) {
-         sIcon = Utils.getDrawableFromFile("more.png");
-      }
-
-   }
-
-   public int getCount() {
-      int var1;
-      if (this.mItems == null) {
-         var1 = 0;
-      } else {
-         var1 = this.mItems.length;
-      }
-
-      return var1;
-   }
-
-   public IType getItem(int var1) {
-      IType var2;
-      if (this.mItems == null) {
-         var2 = null;
-      } else {
-         var2 = this.mItems[var1];
-      }
-
-      return var2;
-   }
-
-   // $FF: synthetic method
-   // $FF: bridge method
-   public Object getItem(int var1) {
-      return this.getItem(var1);
-   }
-
-   public long getItemId(int var1) {
-      return (long)var1;
-   }
-
-   public View getView(int var1, View var2, ViewGroup var3) {
-      CustomTextView var4 = new CustomTextView(this.mContext, var1);
-      var4.setTextColor(-12303292);
-      var4.setText(Html.fromHtml(this.mItems[var1].getDesc()));
-      var4.setCompoundDrawablePadding(6);
-      var4.setCompoundDrawablesWithIntrinsicBounds(this.mItems[var1].getIcon(), (Drawable)null, sIcon, (Drawable)null);
-      return var4;
-   }
+public class CustomAdapter extends BaseAdapter
+{
+    private static Drawable sIcon;
+    private Context mContext;
+    private IType[] mItems;
+    
+    public CustomAdapter(final Context mContext, final IType[] mItems) {
+        super();
+        this.mContext = mContext;
+        this.mItems = mItems;
+        if (CustomAdapter.sIcon == null) {
+            CustomAdapter.sIcon = Utils.getDrawableFromFile("more.png");
+        }
+    }
+    
+    public int getCount() {
+        int length;
+        if (this.mItems == null) {
+            length = 0;
+        }
+        else {
+            length = this.mItems.length;
+        }
+        return length;
+    }
+    
+    public IType getItem(final int n) {
+        IType type;
+        if (this.mItems == null) {
+            type = null;
+        }
+        else {
+            type = this.mItems[n];
+        }
+        return type;
+    }
+    
+    public /* bridge */ Object getItem(final int n) {
+        return this.getItem(n);
+    }
+    
+    public long getItemId(final int n) {
+        return n;
+    }
+    
+    public View getView(final int n, final View view, final ViewGroup viewGroup) {
+        final CustomTextView customTextView = new CustomTextView(this.mContext, n);
+        customTextView.setTextColor(-12303292);
+        customTextView.setText((CharSequence)Html.fromHtml(this.mItems[n].getDesc()));
+        customTextView.setCompoundDrawablePadding(6);
+        customTextView.setCompoundDrawablesWithIntrinsicBounds(this.mItems[n].getIcon(), (Drawable)null, CustomAdapter.sIcon, (Drawable)null);
+        return (View)customTextView;
+    }
 }

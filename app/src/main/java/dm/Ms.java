@@ -1,1309 +1,994 @@
 package dm;
 
 import android.util.Log;
-import com.android.Util.AndroidUtil;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.util.Random;
 import java.util.Vector;
-import javax.microedition.lcdui.Font;
+import java.io.DataInputStream;
+import com.android.Util.AndroidUtil;
+import java.io.ByteArrayOutputStream;
 import javax.microedition.lcdui.Image;
 import javax.microedition.rms.RecordStore;
+import java.util.Random;
+import javax.microedition.lcdui.Font;
 import main.Key_H;
 
-public class Ms implements Key_H {
-   public static Font font = Font.getFont(0, 0, 26);
-   public static int key;
-   public static boolean keyRepeat;
-   public static byte key_delay = 0;
-   public static byte key_time = 10;
-   private static Ms msListener;
-   private static Random random = new Random();
-   private static RecordStore rms;
-   public static int skip;
-   public static int skip2;
-   final int RMSSIZE = 15360;
-   private int sleep_time;
-   private final byte[] transA;
-
-   public Ms() {
-      super();
-      byte[] var1 = new byte[]{0, 6, 3, 5, 2, 7, 1, 4};
-      this.transA = var1;
-      msListener = this;
-   }
-
-   public static int abs(int var0) {
-      if (var0 <= 0) {
-         var0 = -var0;
-      }
-
-      return var0;
-   }
-
-   private boolean checkIsSimulate() {
-      boolean var1;
-      if (Runtime.getRuntime().totalMemory() >= 8000000L) {
-         var1 = true;
-      } else {
-         try {
-            Class.forName("emulator.Emulator");
-            Class.forName("com.sprintpcs.util.System");
-         } catch (Exception var3) {
-            String var2 = System.getProperty("microedition.platform");
-            if (var2.toLowerCase().indexOf("wtk") == -1 && var2.toLowerCase().indexOf("javasdk") == -1 && var2.toLowerCase().indexOf("j2me") == -1) {
-               var1 = false;
-            } else {
-               var1 = true;
-            }
-
-            return var1;
-         }
-
-         var1 = true;
-      }
-
-      return var1;
-   }
-
-   public static int compare_min(int var0, int var1) {
-      if (var0 > var1) {
-         var0 = var1;
-      }
-
-      return var0;
-   }
-
-   public static long getNum(byte[] var0) {
-      int var3 = 0;
-      int var4 = var0.length;
-
-      int var1;
-      for(int var2 = 0; var2 < var4; var3 = var1) {
-         var1 = var3;
-         switch (var4) {
-            case 1:
-               var1 = var3 + (byte)((var0[var2] & 255) << var2 * 8);
-               break;
-            case 2:
-               var1 = var3 + (short)((var0[var2] & 255) << var2 * 8);
-            case 3:
-            case 5:
-            case 6:
-            case 7:
-               break;
-            case 4:
-               var1 = var3 + ((var0[var2] & 255) << var2 * 8);
-               break;
-            case 8:
-               var1 = (int)((long)var3 + (long)((var0[var2] & 255) << var2 * 8));
-               break;
-            default:
-               var1 = var3;
-         }
-
-         ++var2;
-      }
-
-      return (long)var3;
-   }
-
-   public static int getRandom(int var0) {
-      return (random.nextInt() & Integer.MAX_VALUE) % var0;
-   }
-
-   private short getStreamL(byte[] var1, int var2) {
-      short var3;
-      if (var2 == 0) {
-         var2 = skip++;
-         var3 = var1[var2];
-      } else if (var2 == 1) {
-         var2 = skip++;
-         var3 = (short)(var1[var2] + 100);
-      } else {
-         int var4;
-         if (var2 == 2) {
-            var2 = skip++;
-            var4 = var1[var2];
-            var2 = skip++;
-            var3 = (short)((var4 & 255) << 8 | var1[var2] & 255);
-         } else {
-            var2 = skip++;
-            byte var5 = var1[var2];
-            var4 = skip++;
-            var3 = (short)(var5 & 255 | (var1[var4] & 255) << 8);
-         }
-      }
-
-      return var3;
-   }
-
-   public static Ms i() {
-      if (msListener == null) {
-         msListener = new Ms();
-      }
-
-      return msListener;
-   }
-
-   public short[] byteArrayToShortArray(byte[] var1) {
-      skip = 0;
-      int var3 = var1.length >> 1;
-      short[] var4 = new short[var3];
-
-      for(int var2 = 0; var2 < var3; ++var2) {
-         var4[var2] = this.getStreamL(var1, 2);
-      }
-
-      return var4;
-   }
-
-   public void correctSelect(byte[] var1, int var2, int var3) {
-      if (var1[0] < var2) {
-         var1[1] = (byte)(var1[0] - var3 + 1);
-      } else {
-         var1[0] = (byte)(var2 - 1);
-         var1[1] = (byte)(var2 - var3);
-      }
-
-      if (var1[0] < 0) {
-         var1[0] = 0;
-      }
-
-      if (var1[1] < 0) {
-         var1[1] = 0;
-      }
-
-   }
-
-   public byte[][] create2Array(byte[] var1) {
-      int var2 = skip++;
-      byte[][] var3 = new byte[this.getLen_byte(var1[var2])][];
-
-      for(var2 = 0; var2 < var3.length; ++var2) {
-         var3[var2] = this.createArray(var1);
-      }
-
-      return var3;
-   }
-
-   public byte[][][] create3Array(byte[] var1) {
-      int var2 = skip++;
-      byte[][][] var3 = new byte[this.getLen_byte(var1[var2])][][];
-
-      for(var2 = 0; var2 < var3.length; ++var2) {
-         var3[var2] = this.create2Array(var1);
-      }
-
-      return var3;
-   }
-
-   public byte[][][][] create4Array(byte[] var1) {
-      int var2 = skip++;
-      byte[][][][] var3 = new byte[this.getLen_byte(var1[var2])][][][];
-
-      for(var2 = 0; var2 < var3.length; ++var2) {
-         var3[var2] = this.create3Array(var1);
-      }
-
-      return var3;
-   }
-
-   public byte[] createArray(byte[] var1) {
-      int var2 = skip++;
-      byte[] var4 = new byte[this.getLen_byte(var1[var2])];
-
-      for(var2 = 0; var2 < var4.length; ++var2) {
-         int var3 = skip++;
-         var4[var2] = var1[var3];
-      }
-
-      return var4;
-   }
-
-   Image createCellImage(Image var1, int var2, int var3, int var4, int var5) {
-      return this.createImage(var1, var2 % (var1.getWidth() / var3) * var3, var2 % (var1.getHeight() / var4) * var4, var3, var4, var5);
-   }
-
-   public Image createImage(String var1) {
-      Image var4;
-      try {
-         StringBuilder var2 = new StringBuilder("/");
-         var4 = Image.createImage(var2.append(var1).append(".png").toString());
-      } catch (Exception var3) {
-         var4 = null;
-      }
-
-      return var4;
-   }
-
-   public Image createImage(String var1, int var2) {
-      byte[] var3 = this.getStream(var1, var2);
-      return Image.createImage(var3, 0, var3.length);
-   }
-
-   Image createImage(Image var1, int var2, int var3, int var4, int var5, int var6) {
-      int var7 = var4;
-      if (var2 + var4 > var1.getWidth()) {
-         var7 = var1.getWidth() - var2;
-      }
-
-      var4 = var5;
-      if (var3 + var5 > var1.getHeight()) {
-         var4 = var1.getHeight() - var3;
-      }
-
-      return Image.createImage(var1, var2, var3, var7, var4, this.transA[var6]);
-   }
-
-   public Image[] createImageArray(int var1, String var2) {
-      Image[] var3 = new Image[var1];
-
-      for(short var4 = 0; var4 < var3.length; ++var4) {
-         var3[var4] = this.createImage(var2 + var4);
-      }
-
-      return var3;
-   }
-
-   public Image[] createImageArray_(int var1, String var2, int var3) {
-      Image[] var4 = new Image[var1];
-
-      for(short var5 = 0; var5 < var4.length; ++var5) {
-         var4[var5] = this.createImage_(var2 + var5, var3);
-      }
-
-      return var4;
-   }
-
-   public Image createImage_(String var1, int var2) {
-      Image var5;
-      try {
-         StringBuilder var3 = new StringBuilder("/");
-         var5 = Image.createImage(var3.append(var1).append(".png").toString(), var2);
-      } catch (Exception var4) {
-         var5 = null;
-      }
-
-      return var5;
-   }
-
-   public int[] createIntArray(byte[] var1) {
-      int[] var7 = new int[this.getStreamL(var1, 0)];
-
-      for(int var2 = 0; var2 < var7.length; ++var2) {
-         int var3 = skip++;
-         byte var8 = var1[var3];
-         int var4 = skip++;
-         byte var9 = var1[var4];
-         int var5 = skip++;
-         byte var6 = var1[var5];
-         var5 = skip++;
-         var7[var2] = var8 & 255 | (var9 & 255) << 8 | (var6 & 255) << 16 | (var1[var5] & 255) << 24;
-      }
-
-      return var7;
-   }
-
-   public short[][] createShort2Array(byte[] var1, int var2) {
-      short[][] var4 = new short[this.getStreamL(var1, var2)][];
-
-      for(int var3 = 0; var3 < var4.length; ++var3) {
-         var4[var3] = this.createShortArray(var1, var2);
-      }
-
-      return var4;
-   }
-
-   public short[][][] createShort3Array(byte[] var1, int var2) {
-      short[][][] var4 = new short[this.getStreamL(var1, var2)][][];
-
-      for(int var3 = 0; var3 < var4.length; ++var3) {
-         var4[var3] = this.createShort2Array(var1, var2);
-      }
-
-      return var4;
-   }
-
-   public short[] createShortArray(byte[] var1, int var2) {
-      short[] var5 = new short[this.getStreamL(var1, var2)];
-
-      for(int var3 = 0; var3 < var5.length; ++var3) {
-         byte var4;
-         if (var2 == 2) {
-            var4 = 2;
-         } else {
-            var4 = -1;
-         }
-
-         var5[var3] = this.getStreamL(var1, var4);
-      }
-
-      return var5;
-   }
-
-   public Sprite createSprite(String var1, boolean var2) {
-      byte[] var3 = this.getStream(var1 + ".data", -1);
-      skip = 0;
-      Sprite var4;
-      if (var2) {
-         var4 = Sprite.Create(this.createImage(var1), this.create2Array(var3), this.create3Array(var3), this.create3Array(var3));
-      } else {
-         var4 = Sprite.Create(this.createImage(var1), this.createShort2Array(var3, 2), this.createShort3Array(var3, 2), this.createShort3Array(var3, 2));
-      }
-
-      return var4;
-   }
-
-   public StringBuffer[][] createString2Array(byte[] var1) {
-      int var2 = skip++;
-      StringBuffer[][] var3 = new StringBuffer[var1[var2]][];
-
-      for(byte var4 = 0; var4 < var3.length; ++var4) {
-         var3[var4] = this.createStringArray(var1);
-      }
-
-      return var3;
-   }
-
-   public StringBuffer[] createStringArray(byte[] var1) {
-      int var2 = skip++;
-      StringBuffer[] var5 = new StringBuffer[this.getLen_byte(var1[var2])];
-
-      for(byte var6 = 0; var6 < var5.length; ++var6) {
-         byte var4 = var1[skip];
-         short var3 = var4;
-         if (var4 < 0) {
-            var3 = (short)(var4 + 256);
-         }
-
-         var5[var6] = new StringBuffer(this.getDialogs(var1, skip + 1, var3));
-         skip += var3 * 2 + 1;
-      }
-
-      return var5;
-   }
-
-   public StringBuffer createStringArrayOne(byte[] var1) {
-      return new StringBuffer(this.getDialogs(var1, 2, this.getLen_byte(var1[1])));
-   }
-
-   public boolean equals(StringBuffer var1, String var2) {
-      return var1.toString().equals(var2);
-   }
-
-   public String getDialogs(byte[] var1, int var2, int var3) {
-      StringBuffer var5 = new StringBuffer();
-
-      for(int var4 = 0; var4 < var3; ++var4) {
-         var5.append((char)(var1[(var4 << 1) + var2] << 8 | var1[(var4 << 1) + var2 + 1] & 255));
-      }
-
-      return var5.toString();
-   }
-
-   public byte[] getEventNowData(short[][] var1) {
-      ByteArrayOutputStream var4 = new ByteArrayOutputStream();
-      var4.write(var1.length);
-
-      for(int var2 = 0; var2 < var1.length; ++var2) {
-         if (var1[var2] == null) {
-            var4.write(0);
-         } else {
-            var4.write(var1[var2].length);
-
-            for(int var3 = 0; var3 < var1[var2].length; ++var3) {
-               var4.write(var1[var2][var3] & 255);
-               var4.write(var1[var2][var3] >> 8 & 255);
-            }
-         }
-      }
-
-      return var4.toByteArray();
-   }
-
-   public int getInt(byte[] var1, int var2) {
-      return (var1[var2] & 255) << 24 | (var1[var2 + 1] & 255) << 16 | (var1[var2 + 2] & 255) << 8 | var1[var2 + 3] & 255;
-   }
-
-   public int getLen_byte(byte var1) {
-      if (var1 < 0) {
-         var1 += 256;
-      }
-
-      return var1;
-   }
-
-   public int getLen_short(short var1) {
-      if (var1 < 0) {
-         var1 += 65536;
-      }
-
-      return var1;
-   }
-
-   public byte getMin(byte var1, byte var2) {
-      if (var1 > var2) {
-         var1 = var2;
-      }
-
-      return var1;
-   }
-
-   public String getPrecision(int var1) {
-      return var1 / 10 + "." + var1 % 10;
-   }
-
-   public short getShort(byte[] var1, int var2) {
-      return (short)((var1[var2] & 255) << 8 | var1[var2 + 1] & 255);
-   }
-
-   public int getSleep() {
-      return this.sleep_time;
-   }
-
-   public byte[] getStream(String var1, int var2) {
-      byte[] var5 = (byte[])null;
-      byte[] var4 = var5;
-
-      Exception var10000;
-      byte[] var17;
-      label92: {
-         DataInputStream var6;
-         boolean var10001;
-         try {
-            var6 = new DataInputStream;
-         } catch (Exception var16) {
-            var10000 = var16;
-            var10001 = false;
-            break label92;
-         }
-
-         var4 = var5;
-
-         StringBuilder var7;
-         try {
-            var7 = new StringBuilder;
-         } catch (Exception var15) {
-            var10000 = var15;
-            var10001 = false;
-            break label92;
-         }
-
-         var4 = var5;
-
-         try {
-            var7.<init>("/");
-         } catch (Exception var14) {
-            var10000 = var14;
-            var10001 = false;
-            break label92;
-         }
-
-         var4 = var5;
-
-         try {
-            var6.<init>(AndroidUtil.getResourceAsStream(var7.append(var1).toString()));
-         } catch (Exception var13) {
-            var10000 = var13;
-            var10001 = false;
-            break label92;
-         }
-
-         if (var2 > -1) {
-            var4 = var5;
-
+public class Ms implements Key_H
+{
+    public static Font font;
+    public static int key;
+    public static boolean keyRepeat;
+    public static byte key_delay;
+    public static byte key_time;
+    private static Ms msListener;
+    private static Random random;
+    private static RecordStore rms;
+    public static int skip;
+    public static int skip2;
+    final int RMSSIZE;
+    private int sleep_time;
+    private final byte[] transA;
+    
+    static {
+        Ms.random = new Random();
+        Ms.font = Font.getFont(0, 0, 26);
+        Ms.key_delay = 0;
+        Ms.key_time = 10;
+    }
+    
+    public Ms() {
+        super();
+        this.RMSSIZE = 15360;
+        this.transA = new byte[] { 0, 6, 3, 5, 2, 7, 1, 4 };
+        Ms.msListener = this;
+    }
+    
+    public static int abs(int n) {
+        if (n <= 0) {
+            n = -n;
+        }
+        return n;
+    }
+    
+    private boolean checkIsSimulate() {
+        boolean b;
+        if (Runtime.getRuntime().totalMemory() >= 8000000L) {
+            b = true;
+        }
+        else {
             try {
-               var6.readByte();
-            } catch (Exception var12) {
-               var10000 = var12;
-               var10001 = false;
-               break label92;
+                Class.forName("emulator.Emulator");
+                Class.forName("com.sprintpcs.util.System");
+                b = true;
             }
-
-            for(byte var3 = 0; var3 < var2; ++var3) {
-               var4 = var5;
-
-               try {
-                  var6.skip((long)this.getLen_short(var6.readShort()));
-               } catch (Exception var11) {
-                  var10000 = var11;
-                  var10001 = false;
-                  break label92;
-               }
+            catch (final Exception ex) {
+                final String property = System.getProperty("microedition.platform");
+                b = (property.toLowerCase().indexOf("wtk") != -1 || property.toLowerCase().indexOf("javasdk") != -1 || property.toLowerCase().indexOf("j2me") != -1);
             }
-         }
-
-         var4 = var5;
-
-         try {
-            var17 = new byte[this.getLen_short(var6.readShort())];
-         } catch (Exception var10) {
-            var10000 = var10;
-            var10001 = false;
-            break label92;
-         }
-
-         var4 = var17;
-
-         try {
-            var6.read(var17);
-         } catch (Exception var9) {
-            var10000 = var9;
-            var10001 = false;
-            break label92;
-         }
-
-         var4 = var17;
-
-         try {
-            var6.close();
-            return var17;
-         } catch (Exception var8) {
-            var10000 = var8;
-            var10001 = false;
-         }
-      }
-
-      Exception var18 = var10000;
-      var18.printStackTrace();
-      var17 = var4;
-      return var17;
-   }
-
-   public int getStringWidth(String var1) {
-      return font.stringWidth(var1);
-   }
-
-   public StringBuffer[] groupString(String var1, int var2) {
-      StringBuffer[] var15 = new StringBuffer[30];
-      StringBuffer var12 = new StringBuffer();
-      StringBuffer var16 = new StringBuffer(var1);
-      short var10 = (short)var1.length();
-      byte var3 = 0;
-      byte var11 = (byte)this.getStringWidth("#0");
-      byte var8 = -1;
-      boolean var4 = false;
-      var1 = "";
-
-      StringBuffer var14;
-      for(int var5 = 0; var5 < var10; var12 = var14) {
-         int var9;
-         String var13;
-         byte var18;
-         if (var16.charAt(0) == '#') {
-            if (var16.charAt(1) == 'n') {
-               var4 = true;
-            } else {
-               var1 = "#" + var16.charAt(1);
-               var12.append(var1);
-               ++var3;
+        }
+        return b;
+    }
+    
+    public static int compare_min(int n, final int n2) {
+        if (n > n2) {
+            n = n2;
+        }
+        return n;
+    }
+    
+    public static long getNum(final byte[] array) {
+        byte b = 0;
+        final int length = array.length;
+        int i = 0;
+        while (i < length) {
+            int n = b;
+            Label_0070: {
+                switch (length) {
+                    default: {
+                        n = b;
+                        break Label_0070;
+                    }
+                    case 8: {
+                        n = (int)(b + (long)((array[i] & 0xFF) << i * 8));
+                        break Label_0070;
+                    }
+                    case 4: {
+                        n = b + ((array[i] & 0xFF) << i * 8);
+                        break Label_0070;
+                    }
+                    case 2: {
+                        n = b + (short)((array[i] & 0xFF) << i * 8);
+                        break Label_0070;
+                    }
+                    case 1: {
+                        n = b + (byte)((array[i] & 0xFF) << i * 8);
+                    }
+                    case 3:
+                    case 5:
+                    case 6:
+                    case 7: {
+                        ++i;
+                        b = (byte)n;
+                        continue;
+                    }
+                }
             }
-
-            var16.deleteCharAt(0);
-            var16.deleteCharAt(0);
-            var9 = var5 + 1;
-            var13 = var1;
-            var18 = var3;
-         } else {
-            var12.append(var16.charAt(0));
-            int var6;
-            boolean var7;
-            if (var2 != 0 && this.getStringWidth(var12.toString()) <= var11 * var3 + var2) {
-               var16.deleteCharAt(0);
-               var7 = var4;
-               var6 = var5;
-            } else if (var2 != 0) {
-               var6 = var5 - 1;
-               var12.deleteCharAt(var12.length() - 1);
-               var7 = true;
-            } else {
-               var16.deleteCharAt(0);
-               var6 = var5;
-               var7 = var4;
+        }
+        return b;
+    }
+    
+    public static int getRandom(final int n) {
+        return (Ms.random.nextInt() & Integer.MAX_VALUE) % n;
+    }
+    
+    private short getStreamL(final byte[] array, int n) {
+        short n2;
+        if (n == 0) {
+            n = Ms.skip;
+            Ms.skip = n + 1;
+            n2 = array[n];
+        }
+        else if (n == 1) {
+            n = Ms.skip;
+            Ms.skip = n + 1;
+            n2 = (short)(array[n] + 100);
+        }
+        else if (n == 2) {
+            n = Ms.skip;
+            Ms.skip = n + 1;
+            final byte b = array[n];
+            n = Ms.skip;
+            Ms.skip = n + 1;
+            n2 = (short)((b & 0xFF) << 8 | (array[n] & 0xFF));
+        }
+        else {
+            n = Ms.skip;
+            Ms.skip = n + 1;
+            n = array[n];
+            final int skip = Ms.skip;
+            Ms.skip = skip + 1;
+            n2 = (short)((n & 0xFF) | (array[skip] & 0xFF) << 8);
+        }
+        return n2;
+    }
+    
+    public static Ms i() {
+        if (Ms.msListener == null) {
+            Ms.msListener = new Ms();
+        }
+        return Ms.msListener;
+    }
+    
+    public short[] byteArrayToShortArray(final byte[] array) {
+        Ms.skip = 0;
+        final int n = array.length >> 1;
+        final short[] array2 = new short[n];
+        for (int i = 0; i < n; ++i) {
+            array2[i] = this.getStreamL(array, 2);
+        }
+        return array2;
+    }
+    
+    public void correctSelect(final byte[] array, final int n, final int n2) {
+        if (array[0] < n) {
+            array[1] = (byte)(array[0] - n2 + 1);
+        }
+        else {
+            array[0] = (byte)(n - 1);
+            array[1] = (byte)(n - n2);
+        }
+        if (array[0] < 0) {
+            array[0] = 0;
+        }
+        if (array[1] < 0) {
+            array[1] = 0;
+        }
+    }
+    
+    public byte[][] create2Array(final byte[] array) {
+        final int skip = Ms.skip;
+        Ms.skip = skip + 1;
+        final byte[][] array2 = new byte[this.getLen_byte(array[skip])][];
+        for (int i = 0; i < array2.length; ++i) {
+            array2[i] = this.createArray(array);
+        }
+        return array2;
+    }
+    
+    public byte[][][] create3Array(final byte[] array) {
+        final int skip = Ms.skip;
+        Ms.skip = skip + 1;
+        final byte[][][] array2 = new byte[this.getLen_byte(array[skip])][][];
+        for (int i = 0; i < array2.length; ++i) {
+            array2[i] = this.create2Array(array);
+        }
+        return array2;
+    }
+    
+    public byte[][][][] create4Array(final byte[] array) {
+        final int skip = Ms.skip;
+        Ms.skip = skip + 1;
+        final byte[][][][] array2 = new byte[this.getLen_byte(array[skip])][][][];
+        for (int i = 0; i < array2.length; ++i) {
+            array2[i] = this.create3Array(array);
+        }
+        return array2;
+    }
+    
+    public byte[] createArray(final byte[] array) {
+        final int skip = Ms.skip;
+        Ms.skip = skip + 1;
+        final byte[] array2 = new byte[this.getLen_byte(array[skip])];
+        for (int i = 0; i < array2.length; ++i) {
+            final int skip2 = Ms.skip;
+            Ms.skip = skip2 + 1;
+            array2[i] = array[skip2];
+        }
+        return array2;
+    }
+    
+    Image createCellImage(final Image image, final int n, final int n2, final int n3, final int n4) {
+        return this.createImage(image, n % (image.getWidth() / n2) * n2, n % (image.getHeight() / n3) * n3, n2, n3, n4);
+    }
+    
+    public Image createImage(final String str) {
+        try {
+            return Image.createImage("/" + str + ".png");
+        }
+        catch (final Exception ex) {
+            return null;
+        }
+    }
+    
+    public Image createImage(final String s, final int n) {
+        final byte[] stream = this.getStream(s, n);
+        return Image.createImage(stream, 0, stream.length);
+    }
+    
+    Image createImage(final Image image, final int n, final int n2, int n3, final int n4, final int n5) {
+        int n6 = n3;
+        if (n + n3 > image.getWidth()) {
+            n6 = image.getWidth() - n;
+        }
+        n3 = n4;
+        if (n2 + n4 > image.getHeight()) {
+            n3 = image.getHeight() - n2;
+        }
+        return Image.createImage(image, n, n2, n6, n3, this.transA[n5]);
+    }
+    
+    public Image[] createImageArray(int i, final String obj) {
+        Image[] array;
+        for (array = new Image[i], i = 0; i < array.length; i = (short)(i + 1)) {
+            array[i] = this.createImage(String.valueOf(obj) + i);
+        }
+        return array;
+    }
+    
+    public Image[] createImageArray_(int i, final String obj, final int n) {
+        Image[] array;
+        for (array = new Image[i], i = 0; i < array.length; i = (short)(i + 1)) {
+            array[i] = this.createImage_(String.valueOf(obj) + i, n);
+        }
+        return array;
+    }
+    
+    public Image createImage_(final String str, final int n) {
+        try {
+            return Image.createImage("/" + str + ".png", n);
+        }
+        catch (final Exception ex) {
+            return null;
+        }
+    }
+    
+    public int[] createIntArray(final byte[] array) {
+        final int[] array2 = new int[this.getStreamL(array, 0)];
+        for (int i = 0; i < array2.length; ++i) {
+            final int skip = Ms.skip;
+            Ms.skip = skip + 1;
+            final byte b = array[skip];
+            final int skip2 = Ms.skip;
+            Ms.skip = skip2 + 1;
+            final byte b2 = array[skip2];
+            final int skip3 = Ms.skip;
+            Ms.skip = skip3 + 1;
+            final byte b3 = array[skip3];
+            final int skip4 = Ms.skip;
+            Ms.skip = skip4 + 1;
+            array2[i] = ((b & 0xFF) | (b2 & 0xFF) << 8 | (b3 & 0xFF) << 16 | (array[skip4] & 0xFF) << 24);
+        }
+        return array2;
+    }
+    
+    public short[][] createShort2Array(final byte[] array, final int n) {
+        final short[][] array2 = new short[this.getStreamL(array, n)][];
+        for (int i = 0; i < array2.length; ++i) {
+            array2[i] = this.createShortArray(array, n);
+        }
+        return array2;
+    }
+    
+    public short[][][] createShort3Array(final byte[] array, final int n) {
+        final short[][][] array2 = new short[this.getStreamL(array, n)][][];
+        for (int i = 0; i < array2.length; ++i) {
+            array2[i] = this.createShort2Array(array, n);
+        }
+        return array2;
+    }
+    
+    public short[] createShortArray(final byte[] array, final int n) {
+        final short[] array2 = new short[this.getStreamL(array, n)];
+        for (int i = 0; i < array2.length; ++i) {
+            int n2;
+            if (n == 2) {
+                n2 = 2;
             }
-
-            var9 = var6;
-            var4 = var7;
-            var18 = var3;
-            var13 = var1;
-            if (var6 == var10 - 1) {
-               var9 = var6;
-               var4 = var7;
-               var18 = var3;
-               var13 = var1;
-               if (!var7) {
-                  var4 = true;
-                  var9 = var6;
-                  var18 = var3;
-                  var13 = var1;
-               }
+            else {
+                n2 = -1;
             }
-         }
-
-         boolean var19 = var4;
-         byte var20 = var8;
-         var3 = var18;
-         var14 = var12;
-         if (var4) {
-            var20 = (byte)(var8 + 1);
-            if (var13.length() == 0) {
-               var3 = 0;
-            } else {
-               var3 = 1;
+            array2[i] = this.getStreamL(array, n2);
+        }
+        return array2;
+    }
+    
+    public Sprite createSprite(final String obj, final boolean b) {
+        final byte[] stream = this.getStream(String.valueOf(obj) + ".data", -1);
+        Ms.skip = 0;
+        Sprite sprite;
+        if (b) {
+            sprite = Sprite.Create(this.createImage(obj), this.create2Array(stream), this.create3Array(stream), this.create3Array(stream));
+        }
+        else {
+            sprite = Sprite.Create(this.createImage(obj), this.createShort2Array(stream, 2), this.createShort3Array(stream, 2), this.createShort3Array(stream, 2));
+        }
+        return sprite;
+    }
+    
+    public StringBuffer[][] createString2Array(final byte[] array) {
+        final int skip = Ms.skip;
+        Ms.skip = skip + 1;
+        final StringBuffer[][] array2 = new StringBuffer[array[skip]][];
+        for (int i = 0; i < array2.length; i = (byte)(i + 1)) {
+            array2[i] = this.createStringArray(array);
+        }
+        return array2;
+    }
+    
+    public StringBuffer[] createStringArray(final byte[] array) {
+        final int skip = Ms.skip;
+        Ms.skip = skip + 1;
+        final StringBuffer[] array2 = new StringBuffer[this.getLen_byte(array[skip])];
+        for (int i = 0; i < array2.length; i = (byte)(i + 1)) {
+            final byte b = array[Ms.skip];
+            short n;
+            if ((n = b) < 0) {
+                n = (short)(b + 256);
             }
-
-            var3 = (byte)var3;
-            var19 = false;
-            var15[var20] = var12;
-            var14 = new StringBuffer();
-            var14.append(var13);
-         }
-
-         var5 = var9 + 1;
-         var4 = var19;
-         var8 = var20;
-         var1 = var13;
-      }
-
-      StringBuffer[] var17 = new StringBuffer[var8 + 1];
-      System.arraycopy(var15, 0, var17, 0, var8 + 1);
-      StringBuffer[] var21 = (StringBuffer[])null;
-      return var17;
-   }
-
-   public boolean isRect(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
-      boolean var9;
-      if (var1 < var5 + var7 && var1 + var3 > var5 && var2 < var6 + var8 && var2 + var4 > var6) {
-         var9 = true;
-      } else {
-         var9 = false;
-      }
-
-      return var9;
-   }
-
-   public void keyRelease() {
-      keyRepeat = false;
-      key_delay = 0;
-      key_time = 10;
-   }
-
-   public boolean key_Down() {
-      boolean var1;
-      if (key == -2) {
-         var1 = true;
-      } else {
-         var1 = false;
-      }
-
-      return var1;
-   }
-
-   public boolean key_Left() {
-      boolean var1;
-      if (key == -3) {
-         var1 = true;
-      } else {
-         var1 = false;
-      }
-
-      return var1;
-   }
-
-   public boolean key_Left_Right() {
-      boolean var1;
-      if (key != -3 && key != -4) {
-         var1 = false;
-      } else {
-         var1 = true;
-      }
-
-      return var1;
-   }
-
-   public boolean key_Num0() {
-      boolean var1;
-      if (key == 48) {
-         var1 = true;
-      } else {
-         var1 = false;
-      }
-
-      return var1;
-   }
-
-   public boolean key_Num1() {
-      boolean var1;
-      if (key == 49) {
-         var1 = true;
-      } else {
-         var1 = false;
-      }
-
-      return var1;
-   }
-
-   public boolean key_Num3() {
-      boolean var1;
-      if (key == 51) {
-         var1 = true;
-      } else {
-         var1 = false;
-      }
-
-      return var1;
-   }
-
-   public boolean key_Num9() {
-      boolean var1;
-      if (key == 57) {
-         var1 = true;
-      } else {
-         var1 = false;
-      }
-
-      return var1;
-   }
-
-   public boolean key_Right() {
-      boolean var1;
-      if (key == -4) {
-         var1 = true;
-      } else {
-         var1 = false;
-      }
-
-      return var1;
-   }
-
-   public boolean key_S1() {
-      boolean var1;
-      if (key == -6) {
-         var1 = true;
-      } else {
-         var1 = false;
-      }
-
-      return var1;
-   }
-
-   public boolean key_S1_Num5() {
-      boolean var1;
-      if (key != -6 && key != 53 && key != -5) {
-         var1 = false;
-      } else {
-         var1 = true;
-      }
-
-      return var1;
-   }
-
-   public boolean key_S2() {
-      boolean var1;
-      if (key == -7) {
-         var1 = true;
-      } else {
-         var1 = false;
-      }
-
-      return var1;
-   }
-
-   public boolean key_Up() {
-      boolean var1;
-      if (key == -1) {
-         var1 = true;
-      } else {
-         var1 = false;
-      }
-
-      return var1;
-   }
-
-   public boolean key_Up_Down() {
-      boolean var1;
-      if (key != -1 && key != -2) {
-         var1 = false;
-      } else {
-         var1 = true;
-      }
-
-      return var1;
-   }
-
-   public boolean key_delay() {
-      boolean var1;
-      if (key_delay == 0) {
-         key_delay = key_time;
-         if (key_time > 1) {
-            --key_time;
-         }
-
-         var1 = false;
-      } else {
-         var1 = true;
-      }
-
-      return var1;
-   }
-
-   public String[] loadText(byte[] var1) {
-      Exception var10000;
-      String[] var17;
-      label98: {
-         StringBuffer var6;
-         boolean var10001;
-         try {
-            var6 = new StringBuffer("");
-         } catch (Exception var15) {
-            var10000 = var15;
-            var10001 = false;
-            break label98;
-         }
-
-         int var2 = 2;
-
-         int var3;
-         int var4;
-         int var5;
-         String var16;
-         Vector var20;
-         while(true) {
-            try {
-               if (var2 >= var1.length) {
-                  var16 = var6.toString();
-                  var20 = new Vector();
-                  break;
-               }
-            } catch (Exception var14) {
-               var10000 = var14;
-               var10001 = false;
-               break label98;
+            array2[i] = new StringBuffer(this.getDialogs(array, Ms.skip + 1, n));
+            Ms.skip += n * 2 + 1;
+        }
+        return array2;
+    }
+    
+    public StringBuffer createStringArrayOne(final byte[] array) {
+        return new StringBuffer(this.getDialogs(array, 2, this.getLen_byte(array[1])));
+    }
+    
+    public boolean equals(final StringBuffer sb, final String anObject) {
+        return sb.toString().equals(anObject);
+    }
+    
+    public String getDialogs(final byte[] array, final int n, final int n2) {
+        final StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < n2; ++i) {
+            sb.append((char)(array[(i << 1) + n] << 8 | (array[(i << 1) + n + 1] & 0xFF)));
+        }
+        return sb.toString();
+    }
+    
+    public byte[] getEventNowData(final short[][] array) {
+        final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        byteArrayOutputStream.write(array.length);
+        for (int i = 0; i < array.length; ++i) {
+            if (array[i] == null) {
+                byteArrayOutputStream.write(0);
             }
-
-            var5 = var2 + 1;
-            var3 = var1[var2];
-            var2 = var3;
-            if (var3 < 0) {
-               var2 = var3 + 256;
+            else {
+                byteArrayOutputStream.write(array[i].length);
+                for (int j = 0; j < array[i].length; ++j) {
+                    byteArrayOutputStream.write(array[i][j] & 0xFF);
+                    byteArrayOutputStream.write(array[i][j] >> 8 & 0xFF);
+                }
             }
-
-            var4 = var5 + 1;
-            byte var19 = var1[var5];
-            var3 = var19;
-            if (var19 < 0) {
-               var3 = var19 + 256;
+        }
+        return byteArrayOutputStream.toByteArray();
+    }
+    
+    public int getInt(final byte[] array, final int n) {
+        return (array[n] & 0xFF) << 24 | (array[n + 1] & 0xFF) << 16 | (array[n + 2] & 0xFF) << 8 | (array[n + 3] & 0xFF);
+    }
+    
+    public int getLen_byte(byte b) {
+        if (b < 0) {
+            b += 256;
+        }
+        return b;
+    }
+    
+    public int getLen_short(short n) {
+        if (n < 0) {
+            n += 65536;
+        }
+        return n;
+    }
+    
+    public byte getMin(byte b, final byte b2) {
+        if (b > b2) {
+            b = b2;
+        }
+        return b;
+    }
+    
+    public String getPrecision(final int n) {
+        return String.valueOf(n / 10) + "." + n % 10;
+    }
+    
+    public short getShort(final byte[] array, final int n) {
+        return (short)((array[n] & 0xFF) << 8 | (array[n + 1] & 0xFF));
+    }
+    
+    public int getSleep() {
+        return this.sleep_time;
+    }
+    
+    public byte[] getStream(final String str, final int n) {
+        byte[] array2;
+        final byte[] array = array2 = null;
+        try {
+            array2 = array;
+            array2 = array;
+            final StringBuilder sb = new StringBuilder("/");
+            array2 = array;
+            final DataInputStream dataInputStream = new DataInputStream(AndroidUtil.getResourceAsStream(sb.append(str).toString()));
+            if (n > -1) {
+                array2 = array;
+                dataInputStream.readByte();
+                for (int i = 0; i < n; i = (byte)(i + 1)) {
+                    array2 = array;
+                    dataInputStream.skip(this.getLen_short(dataInputStream.readShort()));
+                }
             }
-
-            try {
-               var6.append((char)((var3 << 8) + var2));
-            } catch (Exception var13) {
-               var10000 = var13;
-               var10001 = false;
-               break label98;
+            array2 = array;
+            final byte[] b = array2 = new byte[this.getLen_short(dataInputStream.readShort())];
+            dataInputStream.read(b);
+            array2 = b;
+            dataInputStream.close();
+            return b;
+        }
+        catch (final Exception ex) {
+            ex.printStackTrace();
+            return array2;
+        }
+    }
+    
+    public int getStringWidth(final String s) {
+        return Ms.font.stringWidth(s);
+    }
+    
+    public StringBuffer[] groupString(String string, final int n) {
+        final StringBuffer[] array = new StringBuffer[30];
+        StringBuffer sb = new StringBuffer();
+        final StringBuffer sb2 = new StringBuffer(string);
+        final short n2 = (short)string.length();
+        byte b = 0;
+        final byte b2 = (byte)this.getStringWidth("#0");
+        int n3 = -1;
+        int n4 = 0;
+        string = "";
+        int n5;
+        String str;
+        int n8;
+        int n9;
+        StringBuffer sb3;
+        for (int i = 0; i < n2; i = n5 + 1, n4 = n8, n3 = n9, string = str, sb = sb3) {
+            byte b3;
+            if (sb2.charAt(0) == '#') {
+                if (sb2.charAt(1) == 'n') {
+                    n4 = 1;
+                }
+                else {
+                    string = "#" + sb2.charAt(1);
+                    sb.append(string);
+                    ++b;
+                }
+                sb2.deleteCharAt(0);
+                sb2.deleteCharAt(0);
+                n5 = i + 1;
+                str = string;
+                b3 = b;
             }
-
-            var2 = var4;
-         }
-
-         var3 = 0;
-         var2 = 0;
-         var5 = 0;
-
-         while(true) {
-            try {
-               if (var5 >= var16.length()) {
-                  var17 = new String[var20.size()];
-                  break;
-               }
-            } catch (Exception var10) {
-               var10000 = var10;
-               var10001 = false;
-               break label98;
+            else {
+                sb.append(sb2.charAt(0));
+                int n6;
+                int n7;
+                if (n != 0 && this.getStringWidth(sb.toString()) <= b2 * b + n) {
+                    sb2.deleteCharAt(0);
+                    n6 = n4;
+                    n7 = i;
+                }
+                else if (n != 0) {
+                    n7 = i - 1;
+                    sb.deleteCharAt(sb.length() - 1);
+                    n6 = 1;
+                }
+                else {
+                    sb2.deleteCharAt(0);
+                    n7 = i;
+                    n6 = n4;
+                }
+                n5 = n7;
+                n4 = n6;
+                b3 = b;
+                str = string;
+                if (n7 == n2 - 1) {
+                    n5 = n7;
+                    n4 = n6;
+                    b3 = b;
+                    str = string;
+                    if (n6 == 0) {
+                        n4 = 1;
+                        n5 = n7;
+                        b3 = b;
+                        str = string;
+                    }
+                }
             }
-
-            label101: {
-               label102: {
-                  try {
-                     if (var16.charAt(var5) == '\n') {
-                        break label102;
-                     }
-                  } catch (Exception var12) {
-                     var10000 = var12;
-                     var10001 = false;
-                     break label98;
-                  }
-
-                  var4 = var3;
-
-                  try {
-                     if (var5 != var16.length()) {
-                        break label101;
-                     }
-                  } catch (Exception var11) {
-                     var10000 = var11;
-                     var10001 = false;
-                     break label98;
-                  }
-               }
-
-               try {
-                  var20.addElement(var16.substring(var3, var2));
-               } catch (Exception var9) {
-                  var10000 = var9;
-                  var10001 = false;
-                  break label98;
-               }
-
-               var4 = var2 + 1;
+            n8 = n4;
+            n9 = n3;
+            b = b3;
+            sb3 = sb;
+            if (n4 != 0) {
+                n9 = (byte)(n3 + 1);
+                int n10;
+                if (str.length() == 0) {
+                    n10 = 0;
+                }
+                else {
+                    n10 = 1;
+                }
+                b = (byte)n10;
+                n8 = 0;
+                array[n9] = sb;
+                sb3 = new StringBuffer();
+                sb3.append(str);
             }
-
-            ++var2;
-            ++var5;
-            var3 = var4;
-         }
-
-         var2 = 0;
-
-         while(true) {
-            try {
-               if (var2 >= var20.size()) {
-                  return var17;
-               }
-            } catch (Exception var8) {
-               var10000 = var8;
-               var10001 = false;
-               break;
+        }
+        final StringBuffer[] array2 = new StringBuffer[n3 + 1];
+        System.arraycopy(array, 0, array2, 0, n3 + 1);
+        final StringBuffer[] array3 = (StringBuffer[])null;
+        return array2;
+    }
+    
+    public boolean isRect(final int n, final int n2, final int n3, final int n4, final int n5, final int n6, final int n7, final int n8) {
+        return n < n5 + n7 && n + n3 > n5 && n2 < n6 + n8 && n2 + n4 > n6;
+    }
+    
+    public void keyRelease() {
+        Ms.keyRepeat = false;
+        Ms.key_delay = 0;
+        Ms.key_time = 10;
+    }
+    
+    public boolean key_Down() {
+        return Ms.key == -2;
+    }
+    
+    public boolean key_Left() {
+        return Ms.key == -3;
+    }
+    
+    public boolean key_Left_Right() {
+        return Ms.key == -3 || Ms.key == -4;
+    }
+    
+    public boolean key_Num0() {
+        return Ms.key == 48;
+    }
+    
+    public boolean key_Num1() {
+        return Ms.key == 49;
+    }
+    
+    public boolean key_Num3() {
+        return Ms.key == 51;
+    }
+    
+    public boolean key_Num9() {
+        return Ms.key == 57;
+    }
+    
+    public boolean key_Right() {
+        return Ms.key == -4;
+    }
+    
+    public boolean key_S1() {
+        return Ms.key == -6;
+    }
+    
+    public boolean key_S1_Num5() {
+        return Ms.key == -6 || Ms.key == 53 || Ms.key == -5;
+    }
+    
+    public boolean key_S2() {
+        return Ms.key == -7;
+    }
+    
+    public boolean key_Up() {
+        return Ms.key == -1;
+    }
+    
+    public boolean key_Up_Down() {
+        return Ms.key == -1 || Ms.key == -2;
+    }
+    
+    public boolean key_delay() {
+        boolean b;
+        if (Ms.key_delay == 0) {
+            Ms.key_delay = Ms.key_time;
+            if (Ms.key_time > 1) {
+                --Ms.key_time;
             }
-
-            try {
-               var17[var2] = (String)var20.elementAt(var2);
-            } catch (Exception var7) {
-               var10000 = var7;
-               var10001 = false;
-               break;
+            b = false;
+        }
+        else {
+            b = true;
+        }
+        return b;
+    }
+    
+    public String[] loadText(final byte[] array) {
+    Label_0064_Outer:
+        while (true) {
+            while (true) {
+                Vector vector = null;
+                String[] array2 = null;
+                int index2 = 0;
+            Label_0203:
+                while (true) {
+                    String string;
+                    int beginIndex;
+                    int endIndex;
+                    int index;
+                    try {
+                        final StringBuffer sb = new StringBuffer("");
+                        int n3;
+                        for (int i = 2; i < array.length; i = n3) {
+                            final int n = i + 1;
+                            final byte b = array[i];
+                            int n2;
+                            if ((n2 = b) < 0) {
+                                n2 = b + 256;
+                            }
+                            n3 = n + 1;
+                            final byte b2 = array[n];
+                            int n4;
+                            if ((n4 = b2) < 0) {
+                                n4 = b2 + 256;
+                            }
+                            sb.append((char)((n4 << 8) + n2));
+                        }
+                        string = sb.toString();
+                        vector = new Vector();
+                        beginIndex = 0;
+                        endIndex = 0;
+                        index = 0;
+                        if (index >= string.length()) {
+                            array2 = new String[vector.size()];
+                            index2 = 0;
+                            if (index2 >= vector.size()) {
+                                return array2;
+                            }
+                            break Label_0203;
+                        }
+                    }
+                    catch (final Exception ex) {
+                        ex.printStackTrace();
+                        array2 = null;
+                        return array2;
+                    }
+                    int n5 = 0;
+                    Label_0191: {
+                        if (string.charAt(index) != '\n') {
+                            n5 = beginIndex;
+                            if (index != string.length()) {
+                                break Label_0191;
+                            }
+                        }
+                        vector.addElement(string.substring(beginIndex, endIndex));
+                        n5 = endIndex + 1;
+                    }
+                    ++endIndex;
+                    ++index;
+                    beginIndex = n5;
+                    continue Label_0064_Outer;
+                }
+                array2[index2] = (String)vector.elementAt(index2);
+                ++index2;
+                continue;
             }
-
-            ++var2;
-         }
-      }
-
-      Exception var18 = var10000;
-      var18.printStackTrace();
-      var17 = null;
-      return var17;
-   }
-
-   public short mathPercent(int var1, int var2, int var3) {
-      int var4 = var3;
-      if (var3 < 1) {
-         var4 = 1;
-      }
-
-      return (short)(var1 * var2 / var4);
-   }
-
-   public short mathSpeedDown(int var1, int var2, boolean var3) {
-      if (var1 / var2 != 0) {
-         var1 -= var1 / var2;
-      } else if (var3 && var1 > 0) {
-         --var1;
-      } else if (var3 && var1 < 0) {
-         ++var1;
-      } else {
-         var1 = 0;
-      }
-
-      return (short)var1;
-   }
-
-   public short mathSpeedN(int var1, int var2, int var3, boolean var4) {
-      if (var1 > var2 && var1 - var3 > var2) {
-         var1 -= var3;
-      } else if (var1 < var2 && var1 + var3 < var2) {
-         var1 += var3;
-      } else if (var4 && var1 > var2) {
-         --var1;
-      } else if (var4 && var1 < var2) {
-         ++var1;
-      } else {
-         var1 = var2;
-      }
-
-      return (short)var1;
-   }
-
-   public short mathSpeedUp(int var1, int var2, int var3) {
-      var1 -= (var2 - var1) / var3;
-      if (var1 < 0) {
-         var1 = 0;
-      }
-
-      return (short)var1;
-   }
-
-   public void putInt(int var1, byte[] var2, int var3) {
-      var2[var3] = (byte)(var1 >> 24 & 255);
-      var2[var3 + 1] = (byte)(var1 >> 16 & 255);
-      var2[var3 + 2] = (byte)(var1 >> 8 & 255);
-      var2[var3 + 3] = (byte)(var1 & 255);
-   }
-
-   public void putShort(int var1, byte[] var2, int var3) {
-      var2[var3] = (byte)(var1 >> 8 & 255);
-      var2[var3 + 1] = (byte)(var1 & 255);
-   }
-
-   public void putShort(byte[] var1, int var2) {
-      int var3 = skip++;
-      var1[var3] = (byte)(var2 >> 8 & 255);
-      var3 = skip++;
-      var1[var3] = (byte)(var2 >> 0 & 255);
-   }
-
-   public short[][] readEventNowData() {
-      short[][] var3 = (short[][])null;
-      ByteArrayInputStream var5 = new ByteArrayInputStream(this.rmsOptions(12, (byte[])null, 1));
-      short[][] var4 = new short[var5.read()][];
-
-      for(int var1 = 0; var1 < var4.length; ++var1) {
-         int var2 = var5.read();
-         if (var2 != 0) {
-            var4[var1] = new short[var2];
-
-            for(var2 = 0; var2 < var4[var1].length; ++var2) {
-               var4[var1][var2] = (short)(var5.read() | var5.read() << 8);
+        }
+    }
+    
+    public short mathPercent(final int n, final int n2, final int n3) {
+        int n4 = n3;
+        if (n3 < 1) {
+            n4 = 1;
+        }
+        return (short)(n * n2 / n4);
+    }
+    
+    public short mathSpeedDown(int n, final int n2, final boolean b) {
+        if (n / n2 != 0) {
+            n -= n / n2;
+        }
+        else if (b && n > 0) {
+            --n;
+        }
+        else if (b && n < 0) {
+            ++n;
+        }
+        else {
+            n = 0;
+        }
+        return (short)n;
+    }
+    
+    public short mathSpeedN(int n, final int n2, final int n3, final boolean b) {
+        if (n > n2 && n - n3 > n2) {
+            n -= n3;
+        }
+        else if (n < n2 && n + n3 < n2) {
+            n += n3;
+        }
+        else if (b && n > n2) {
+            --n;
+        }
+        else if (b && n < n2) {
+            ++n;
+        }
+        else {
+            n = n2;
+        }
+        return (short)n;
+    }
+    
+    public short mathSpeedUp(int n, final int n2, final int n3) {
+        n -= (n2 - n) / n3;
+        if (n < 0) {
+            n = 0;
+        }
+        return (short)n;
+    }
+    
+    public void putInt(final int n, final byte[] array, final int n2) {
+        array[n2] = (byte)(n >> 24 & 0xFF);
+        array[n2 + 1] = (byte)(n >> 16 & 0xFF);
+        array[n2 + 2] = (byte)(n >> 8 & 0xFF);
+        array[n2 + 3] = (byte)(n & 0xFF);
+    }
+    
+    public void putShort(final int n, final byte[] array, final int n2) {
+        array[n2] = (byte)(n >> 8 & 0xFF);
+        array[n2 + 1] = (byte)(n & 0xFF);
+    }
+    
+    public void putShort(final byte[] array, final int n) {
+        final int skip = Ms.skip;
+        Ms.skip = skip + 1;
+        array[skip] = (byte)(n >> 8 & 0xFF);
+        final int skip2 = Ms.skip;
+        Ms.skip = skip2 + 1;
+        array[skip2] = (byte)(n >> 0 & 0xFF);
+    }
+    
+    public short[][] readEventNowData() {
+        final short[][] array = (short[][])null;
+        final ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(this.rmsOptions(12, null, 1));
+        final short[][] array2 = new short[byteArrayInputStream.read()][];
+        for (int i = 0; i < array2.length; ++i) {
+            final int read = byteArrayInputStream.read();
+            if (read != 0) {
+                array2[i] = new short[read];
+                for (int j = 0; j < array2[i].length; ++j) {
+                    array2[i][j] = (short)(byteArrayInputStream.read() | byteArrayInputStream.read() << 8);
+                }
             }
-         }
-      }
-
-      return var4;
-   }
-
-   public byte[] rmsOptions(int var1, byte[] var2, int var3) {
-      label73: {
-         Exception var10000;
-         label76: {
-            boolean var10001;
-            try {
-               if (rms == null) {
-                  rms = RecordStore.openRecordStore("pk5_caihong", true);
-               }
-            } catch (Exception var10) {
-               var10000 = var10;
-               var10001 = false;
-               break label76;
+        }
+        return array2;
+    }
+    
+    public byte[] rmsOptions(final int n, byte[] record, final int n2) {
+        while (true) {
+            while (true) {
+                Label_0091: {
+                    try {
+                        if (Ms.rms == null) {
+                            Ms.rms = RecordStore.openRecordStore("pk5_caihong", true);
+                        }
+                        if (Ms.rms.getNumRecords() == 0) {
+                            this.setRmsInit(true);
+                        }
+                        if (n2 == 0) {
+                            return null;
+                        }
+                        if (n2 == 1) {
+                            record = Ms.rms.getRecord(n);
+                        }
+                        else {
+                            if (n2 == 2) {
+                                Ms.rms.setRecord(n, record, 0, record.length);
+                                return null;
+                            }
+                            if (n2 == 3) {
+                                this.setRmsInit(false);
+                                return null;
+                            }
+                            break Label_0091;
+                        }
+                        return record;
+                        record = null;
+                        return record;
+                    }
+                    catch (final Exception ex) {
+                        ex.printStackTrace();
+                        return null;
+                    }
+                }
+                if (n2 == 4) {
+                    if (Ms.rms != null) {
+                        Ms.rms.closeRecordStore();
+                        Ms.rms = null;
+                        continue;
+                    }
+                    continue;
+                }
+                else {
+                    if (n2 == 5) {
+                        Log.e("rms.getSizeAvailable() = ", new StringBuilder().append(Ms.rms.getSizeAvailable()).toString());
+                        record = null;
+                        return record;
+                    }
+                    continue;
+                }
+                break;
             }
-
-            try {
-               if (rms.getNumRecords() == 0) {
-                  this.setRmsInit(true);
-               }
-            } catch (Exception var9) {
-               var10000 = var9;
-               var10001 = false;
-               break label76;
+        }
+    }
+    
+    public void runDelay() {
+        if (Ms.key_delay > 0) {
+            --Ms.key_delay;
+        }
+    }
+    
+    public byte select(int n, final int n2, final int n3) {
+        byte b;
+        if (n3 == 0) {
+            b = (byte)n;
+        }
+        else {
+            int n4 = n;
+            Label_0046: {
+                if (abs(Ms.key) % 2 != 1) {
+                    break Label_0046;
+                }
+                n4 = --n;
+                if (n >= n2) {
+                    break Label_0046;
+                }
+                n = n3;
+                b = (byte)n;
+                return b;
             }
-
-            if (var3 == 0) {
-               break label73;
+            n = n4;
+            if (abs(Ms.key) % 2 != 0) {
+                return (byte)n;
             }
-
-            if (var3 == 1) {
-               try {
-                  var2 = rms.getRecord(var1);
-                  return var2;
-               } catch (Exception var4) {
-                  var10000 = var4;
-                  var10001 = false;
-               }
-            } else if (var3 == 2) {
-               try {
-                  rms.setRecord(var1, var2, 0, var2.length);
-                  break label73;
-               } catch (Exception var8) {
-                  var10000 = var8;
-                  var10001 = false;
-               }
-            } else if (var3 == 3) {
-               try {
-                  this.setRmsInit(false);
-                  break label73;
-               } catch (Exception var6) {
-                  var10000 = var6;
-                  var10001 = false;
-               }
-            } else if (var3 == 4) {
-               try {
-                  if (rms != null) {
-                     rms.closeRecordStore();
-                     rms = null;
-                  }
-                  break label73;
-               } catch (Exception var7) {
-                  var10000 = var7;
-                  var10001 = false;
-               }
-            } else {
-               label85: {
-                  if (var3 != 5) {
-                     break label73;
-                  }
-
-                  try {
-                     StringBuilder var12 = new StringBuilder();
-                     Log.e("rms.getSizeAvailable() = ", var12.append(rms.getSizeAvailable()).toString());
-                  } catch (Exception var5) {
-                     var10000 = var5;
-                     var10001 = false;
-                     break label85;
-                  }
-
-                  var2 = null;
-                  return var2;
-               }
+            n = ++n4;
+            if (n4 > n3) {
+                n = n2;
+                return (byte)n;
             }
-         }
-
-         Exception var11 = var10000;
-         var11.printStackTrace();
-      }
-
-      var2 = null;
-      return var2;
-   }
-
-   public void runDelay() {
-      if (key_delay > 0) {
-         --key_delay;
-      }
-
-   }
-
-   public byte select(int var1, int var2, int var3) {
-      byte var4;
-      if (var3 == 0) {
-         var4 = (byte)var1;
-      } else {
-         label19: {
-            int var5 = var1;
-            if (abs(key) % 2 == 1) {
-               --var1;
-               var5 = var1;
-               if (var1 < var2) {
-                  var1 = var3;
-                  break label19;
-               }
+            return (byte)n;
+        }
+        return b;
+    }
+    
+    public void selectS(final byte[] array, int n, final int n2, final int n3) {
+        if (n2 != 0) {
+            array[0] = this.select(array[0], n, n2 - 1);
+            if (array[1] - 1 == array[0]) {
+                --array[1];
             }
-
-            var1 = var5;
-            if (abs(key) % 2 == 0) {
-               ++var5;
-               var1 = var5;
-               if (var5 > var3) {
-                  var1 = var2;
-               }
+            else if (array[1] + n3 == array[0]) {
+                ++array[1];
             }
-         }
-
-         var4 = (byte)var1;
-      }
-
-      return var4;
-   }
-
-   public void selectS(byte[] var1, int var2, int var3, int var4) {
-      if (var3 != 0) {
-         var1[0] = this.select(var1[0], var2, var3 - 1);
-         if (var1[1] - 1 == var1[0]) {
-            --var1[1];
-         } else if (var1[1] + var4 == var1[0]) {
-            ++var1[1];
-         } else if (var1[0] == var3 - 1) {
-            if (var3 - var2 >= var4) {
-               var2 = var3 - var4;
+            else if (array[0] == n2 - 1) {
+                if (n2 - n >= n3) {
+                    n = n2 - n3;
+                }
+                array[1] = (byte)n;
             }
-
-            var1[1] = (byte)var2;
-         } else if (var1[0] == var2) {
-            var1[1] = (byte)var2;
-         }
-      }
-
-   }
-
-   public void setRmsInit(boolean var1) throws Exception {
-      byte[] var4 = new byte[140];
-      var4[0] = -1;
-      byte[] var3 = new byte[280];
-
-      for(int var2 = 0; var2 < 83; ++var2) {
-         if (var1 || var2 != 4) {
-            if (var2 != 12) {
-               if (var1) {
-                  rms.addRecord(var4, 0, var4.length);
-               } else {
-                  rms.setRecord(var2 + 1, var4, 0, var4.length);
-               }
-            } else if (var1) {
-               rms.addRecord(var3, 0, var3.length);
-            } else {
-               rms.setRecord(var2 + 1, var3, 0, var3.length);
+            else if (array[0] == n) {
+                array[1] = (byte)n;
             }
-         }
-      }
-
-      var3 = (byte[])null;
-   }
-
-   public void setSprite(Sprite var1, String var2, boolean var3) {
-      byte[] var4 = this.getStream(var2 + ".data", -1);
-      skip = 0;
-      var1.nullIMFA();
-      if (var3) {
-         var1.Set(this.createImage(var2), this.create2Array(var4), this.create3Array(var4), this.create3Array(var4));
-      } else {
-         var1.Set(this.createImage(var2), this.createShort2Array(var4, 2), this.createShort3Array(var4, 2), this.createShort3Array(var4, 2));
-      }
-
-      byte[] var5 = (byte[])null;
-   }
-
-   public byte[] shortArrayToByteArray(short[] var1) {
-      skip = 0;
-      int var3 = var1.length;
-      byte[] var4 = new byte[var3 << 1];
-
-      for(int var2 = 0; var2 < var3; ++var2) {
-         this.putShort(var4, var1[var2]);
-      }
-
-      return var4;
-   }
-
-   public void sleep(int var1) {
-      this.sleep_time = var1;
-   }
-
-   public int sqrt(int var1) {
-      if (var1 > 0) {
-         int var2 = 10000;
-
-         int var3;
-         int var4;
-         do {
-            var4 = var2;
-            var3 = var1 * 10000 / var2 + var2 >> 1;
-            var2 = var3;
-         } while(var3 < var4);
-
-         var1 = var4 / 100;
-      } else {
-         var1 = 0;
-      }
-
-      return var1;
-   }
+        }
+    }
+    
+    public void setRmsInit(final boolean b) throws Exception {
+        final byte[] array = new byte[140];
+        array[0] = -1;
+        final byte[] array2 = new byte[280];
+        for (int i = 0; i < 83; ++i) {
+            if (b || i != 4) {
+                if (i != 12) {
+                    if (b) {
+                        Ms.rms.addRecord(array, 0, array.length);
+                    }
+                    else {
+                        Ms.rms.setRecord(i + 1, array, 0, array.length);
+                    }
+                }
+                else if (b) {
+                    Ms.rms.addRecord(array2, 0, array2.length);
+                }
+                else {
+                    Ms.rms.setRecord(i + 1, array2, 0, array2.length);
+                }
+            }
+        }
+        final byte[] array3 = (byte[])null;
+    }
+    
+    public void setSprite(final Sprite sprite, final String obj, final boolean b) {
+        final byte[] stream = this.getStream(String.valueOf(obj) + ".data", -1);
+        Ms.skip = 0;
+        sprite.nullIMFA();
+        if (b) {
+            sprite.Set(this.createImage(obj), this.create2Array(stream), this.create3Array(stream), this.create3Array(stream));
+        }
+        else {
+            sprite.Set(this.createImage(obj), this.createShort2Array(stream, 2), this.createShort3Array(stream, 2), this.createShort3Array(stream, 2));
+        }
+        final byte[] array = (byte[])null;
+    }
+    
+    public byte[] shortArrayToByteArray(final short[] array) {
+        Ms.skip = 0;
+        final int length = array.length;
+        final byte[] array2 = new byte[length << 1];
+        for (int i = 0; i < length; ++i) {
+            this.putShort(array2, array[i]);
+        }
+        return array2;
+    }
+    
+    public void sleep(final int sleep_time) {
+        this.sleep_time = sleep_time;
+    }
+    
+    public int sqrt(int n) {
+        if (n > 0) {
+            int n2 = 10000;
+            int n3;
+            do {
+                n3 = n2;
+            } while ((n2 = n * 10000 / n3 + n3 >> 1) < n3);
+            n = n3 / 100;
+        }
+        else {
+            n = 0;
+        }
+        return n;
+    }
 }

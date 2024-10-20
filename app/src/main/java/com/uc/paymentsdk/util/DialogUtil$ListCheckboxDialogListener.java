@@ -1,7 +1,8 @@
 package com.uc.paymentsdk.util;
 
-public interface DialogUtil$ListCheckboxDialogListener {
-   void onListDialogCancel(int var1, CharSequence[] var2);
-
-   void onListDialogOK(int var1, CharSequence[] var2, int var3, int var4);
+public interface ListCheckboxDialogListener
+{
+    void onListDialogCancel(final int p0, final CharSequence[] p1);
+    
+    void onListDialogOK(final int p0, final CharSequence[] p1, final int p2, final int p3);
 }

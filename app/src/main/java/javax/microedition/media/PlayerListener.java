@@ -1,15 +1,16 @@
 package javax.microedition.media;
 
-public interface PlayerListener {
-   String CLOSED = "closed";
-   String DEVICE_AVAILABLE = "deviceAvailable";
-   String DEVICE_UNAVAILABLE = "deviceUnavailable";
-   String DURATION_UPDATED = "durationUpdated";
-   String END_OF_MEDIA = "endOfMedia";
-   String ERROR = "error";
-   String STARTED = "started";
-   String STOPPED = "stopped";
-   String VOLUME_CHANGED = "volumeChanged";
-
-   void playerUpdate(Player var1, String var2, Object var3);
+public interface PlayerListener
+{
+    public static final String CLOSED = "closed";
+    public static final String DEVICE_AVAILABLE = "deviceAvailable";
+    public static final String DEVICE_UNAVAILABLE = "deviceUnavailable";
+    public static final String DURATION_UPDATED = "durationUpdated";
+    public static final String END_OF_MEDIA = "endOfMedia";
+    public static final String ERROR = "error";
+    public static final String STARTED = "started";
+    public static final String STOPPED = "stopped";
+    public static final String VOLUME_CHANGED = "volumeChanged";
+    
+    void playerUpdate(final Player p0, final String p1, final Object p2);
 }

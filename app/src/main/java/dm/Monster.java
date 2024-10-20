@@ -3,221 +3,186 @@ package dm;
 import main.GameRun;
 import main.Key_H;
 
-public class Monster implements Key_H {
-   public byte effect;
-   public byte effect_time;
-   public byte[] monster;
-   public short[] monsterPro;
-
-   public Monster() {
-      super();
-   }
-
-   public Monster(GameRun var1, int var2, int var3, int var4) {
-      super();
-      this.monsterPro = new short[8];
-      this.monster = new byte[18];
-      this.monster[0] = (byte)var2;
-      this.monster[2] = (byte)var3;
-      byte[] var6 = var1.monster_pro[var2];
-      this.monster[3] = var6[6];
-      this.monster[4] = var6[5];
-      this.monster[5] = var6[12];
-      this.monster[8] = 25;
-      this.monster[9] = -1;
-      this.monster[10] = -1;
-      this.monster[11] = -1;
-      this.monster[12] = -1;
-      this.monster[13] = -1;
-      this.monster[14] = -1;
-      this.monster[15] = -1;
-      byte[] var7;
-      byte var9;
-      if (var4 == -1) {
-         this.monster[16] = (byte)(this.monster[3] * 2 + 4);
-         this.monster[17] = 2;
-      } else if (var4 == 0) {
-         var7 = this.monster;
-         var9 = this.monster[3];
-         Ms.i();
-         var7[16] = (byte)(var9 * 2 + 3 + Ms.getRandom(2));
-         var7 = this.monster;
-         Ms.i();
-         var7[17] = (byte)Ms.getRandom(3);
-      } else if (var4 == 1) {
-         var7 = this.monster;
-         byte var5 = this.monster[3];
-         Ms.i();
-         if (Ms.getRandom(100) < 70) {
-            var9 = 1;
-         } else {
-            var9 = 0;
-         }
-
-         var7[16] = (byte)(var5 * 2 + 3 + var9);
-         var7 = this.monster;
-         Ms.i();
-         if (Ms.getRandom(100) < 70) {
-            var4 = 2;
-         } else {
+public class Monster implements Key_H
+{
+    public byte effect;
+    public byte effect_time;
+    public byte[] monster;
+    public short[] monsterPro;
+    
+    public Monster() {
+        super();
+    }
+    
+    public Monster(final GameRun gameRun, final int n, final int n2, int random) {
+        super();
+        this.monsterPro = new short[8];
+        (this.monster = new byte[18])[0] = (byte)n;
+        this.monster[2] = (byte)n2;
+        final byte[] proAFD = gameRun.monster_pro[n];
+        this.monster[3] = proAFD[6];
+        this.monster[4] = proAFD[5];
+        this.monster[5] = proAFD[12];
+        this.monster[8] = 25;
+        this.monster[9] = -1;
+        this.monster[10] = -1;
+        this.monster[11] = -1;
+        this.monster[12] = -1;
+        this.monster[13] = -1;
+        this.monster[14] = -1;
+        this.monster[15] = -1;
+        if (random == -1) {
+            this.monster[16] = (byte)(this.monster[3] * 2 + 4);
+            this.monster[17] = 2;
+        }
+        else if (random == 0) {
+            final byte[] monster = this.monster;
+            random = this.monster[3];
             Ms.i();
-            var4 = Ms.getRandom(2);
-         }
-
-         var7[17] = (byte)var4;
-      }
-
-      var7 = this.monster;
-      if (this.monster[4] > 3) {
-         var9 = 120;
-      } else {
-         var9 = 100;
-      }
-
-      var7[6] = (byte)var9;
-      this.monsterPro[2] = (short)(var6[0] + var6[7] * var3 / 10);
-      this.monsterPro[3] = (short)(var6[1] + var6[8] * var3 / 10);
-      this.monsterPro[1] = this.monsterPro[3];
-      this.monsterPro[0] = this.monsterPro[2];
-      this.monsterPro[4] = 0;
-      this.setProAFD(var6);
-      if (this.monster[3] != -1) {
-         var1.getMagic(this);
-      }
-
-      if (var1.monInfoList[var2] == 0) {
-         var1.monInfoList[var2] = 1;
-         var6 = var1.monInfoList;
-         ++var6[102];
-         var1.say("\u5ba0\u7269\u56fe\u9274\u5df2\u66f4\u65b0", 0);
-      }
-
-      this.effect = 7;
-      this.effect_time = 0;
-      byte[] var8 = (byte[])null;
-   }
-
-   public void evolveMonster(GameRun var1, int var2, int var3) {
-      this.monster[0] = (byte)var2;
-      byte[] var5 = var1.monster_pro[var2];
-      this.monster[4] = var5[5];
-      byte[] var4 = this.monster;
-      var4[5] = (byte)(var4[5] - var3);
-      this.setProAFD(var5);
-      this.monsterPro[2] = (short)(var5[0] + var5[7] * this.monster[2] / 10);
-      this.monsterPro[3] = (short)(var5[1] + var5[8] * this.monster[2] / 10);
-      this.resetPro(var1);
-      this.monsterPro[1] = this.monsterPro[3];
-      var4 = (byte[])null;
-      if (var1.monInfoList[var2] != 2) {
-         if (var1.monInfoList[var2] == 0) {
-            var4 = var1.monInfoList;
-            ++var4[102];
-         }
-
-         var1.addMonInfoListBH();
-         var1.monInfoList[var2] = 2;
-      }
-
-   }
-
-   public boolean isBuffRate(int var1) {
-      boolean var2;
-      if (this.monster[16] != var1 && this.monster[17] != var1) {
-         var2 = false;
-      } else {
-         var2 = true;
-      }
-
-      return var2;
-   }
-
-   public boolean isEffect(int var1) {
-      boolean var2;
-      if (this.effect == var1) {
-         var2 = true;
-      } else {
-         var2 = false;
-      }
-
-      return var2;
-   }
-
-   public boolean isMonEffect(int var1) {
-      boolean var2;
-      if (this.effect == var1 && this.effect_time != 0) {
-         var2 = true;
-      } else {
-         var2 = false;
-      }
-
-      return var2;
-   }
-
-   public boolean isMonReel(int var1) {
-      boolean var2;
-      if (this.monster[14] != var1 && this.monster[15] != var1) {
-         var2 = false;
-      } else {
-         var2 = true;
-      }
-
-      return var2;
-   }
-
-   public void resetBoss(int var1) {
-      this.monster[16] = 4;
-      this.monster[17] = 10;
-      this.monster[9] = 4;
-      this.monster[10] = 9;
-      this.monster[11] = 14;
-      this.monster[12] = 19;
-      this.monster[13] = 24;
-      this.monster[14] = 30;
-      this.monster[15] = 48;
-      this.monster[6] = (byte)var1;
-   }
-
-   public void resetMonster(int var1, int var2, int var3) {
-      this.monster[16] = (byte)(this.monster[3] * 2 + 4);
-      this.monster[17] = 2;
-      this.monster[14] = (byte)var1;
-      this.monster[15] = (byte)var2;
-      this.monster[6] = (byte)var3;
-   }
-
-   public void resetMonster(GameRun var1, int var2) {
-      if (var2 > -1) {
-         this.monster[5] = (byte)var2;
-      } else if (var2 == -1) {
-         byte[] var3 = this.monster;
-         Ms.i();
-         var3[5] = (byte)Ms.getRandom(this.monster[5] + 1);
-      }
-
-      this.resetPro(var1);
-   }
-
-   public void resetPro(GameRun var1) {
-      short[] var2;
-      if (this.isBuffRate(2)) {
-         var2 = this.monsterPro;
-         var2[2] = (short)(var2[2] + this.monsterPro[2] * var1.inhesion[2] / 100);
-      } else if (this.isBuffRate(1)) {
-         var2 = this.monsterPro;
-         var2[2] = (short)(var2[2] + this.monsterPro[2] * var1.inhesion[1] / 100);
-      }
-
-      if (this.monsterPro[2] < 1) {
-         this.monsterPro[2] = 1;
-      }
-
-      this.monsterPro[0] = this.monsterPro[2];
-   }
-
-   public void setProAFD(byte[] var1) {
-      this.monsterPro[5] = (short)(var1[2] + var1[9] * this.monster[2] / 10);
-      this.monsterPro[6] = (short)(var1[3] + var1[10] * this.monster[2] / 10);
-      this.monsterPro[7] = (short)(var1[4] + var1[11] * this.monster[2] / 10);
-   }
+            monster[16] = (byte)(random * 2 + 3 + Ms.getRandom(2));
+            final byte[] monster2 = this.monster;
+            Ms.i();
+            monster2[17] = (byte)Ms.getRandom(3);
+        }
+        else if (random == 1) {
+            final byte[] monster3 = this.monster;
+            final byte b = this.monster[3];
+            Ms.i();
+            if (Ms.getRandom(100) < 70) {
+                random = 1;
+            }
+            else {
+                random = 0;
+            }
+            monster3[16] = (byte)(b * 2 + 3 + random);
+            final byte[] monster4 = this.monster;
+            Ms.i();
+            if (Ms.getRandom(100) < 70) {
+                random = 2;
+            }
+            else {
+                Ms.i();
+                random = Ms.getRandom(2);
+            }
+            monster4[17] = (byte)random;
+        }
+        final byte[] monster5 = this.monster;
+        if (this.monster[4] > 3) {
+            random = 120;
+        }
+        else {
+            random = 100;
+        }
+        monster5[6] = (byte)random;
+        this.monsterPro[2] = (short)(proAFD[0] + proAFD[7] * n2 / 10);
+        this.monsterPro[3] = (short)(proAFD[1] + proAFD[8] * n2 / 10);
+        this.monsterPro[1] = this.monsterPro[3];
+        this.monsterPro[0] = this.monsterPro[2];
+        this.monsterPro[4] = 0;
+        this.setProAFD(proAFD);
+        if (this.monster[3] != -1) {
+            gameRun.getMagic(this);
+        }
+        if (gameRun.monInfoList[n] == 0) {
+            gameRun.monInfoList[n] = 1;
+            final byte[] monInfoList = gameRun.monInfoList;
+            ++monInfoList[102];
+            gameRun.say("\u5ba0\u7269\u56fe\u9274\u5df2\u66f4\u65b0", 0);
+        }
+        this.effect = 7;
+        this.effect_time = 0;
+        final byte[] array = (byte[])null;
+    }
+    
+    public void evolveMonster(final GameRun gameRun, final int n, final int n2) {
+        this.monster[0] = (byte)n;
+        final byte[] proAFD = gameRun.monster_pro[n];
+        this.monster[4] = proAFD[5];
+        final byte[] monster = this.monster;
+        monster[5] -= (byte)n2;
+        this.setProAFD(proAFD);
+        this.monsterPro[2] = (short)(proAFD[0] + proAFD[7] * this.monster[2] / 10);
+        this.monsterPro[3] = (short)(proAFD[1] + proAFD[8] * this.monster[2] / 10);
+        this.resetPro(gameRun);
+        this.monsterPro[1] = this.monsterPro[3];
+        final byte[] array = (byte[])null;
+        if (gameRun.monInfoList[n] != 2) {
+            if (gameRun.monInfoList[n] == 0) {
+                final byte[] monInfoList = gameRun.monInfoList;
+                ++monInfoList[102];
+            }
+            gameRun.addMonInfoListBH();
+            gameRun.monInfoList[n] = 2;
+        }
+    }
+    
+    public boolean isBuffRate(final int n) {
+        return this.monster[16] == n || this.monster[17] == n;
+    }
+    
+    public boolean isEffect(final int n) {
+        return this.effect == n;
+    }
+    
+    public boolean isMonEffect(final int n) {
+        return this.effect == n && this.effect_time != 0;
+    }
+    
+    public boolean isMonReel(final int n) {
+        return this.monster[14] == n || this.monster[15] == n;
+    }
+    
+    public void resetBoss(final int n) {
+        this.monster[16] = 4;
+        this.monster[17] = 10;
+        this.monster[9] = 4;
+        this.monster[10] = 9;
+        this.monster[11] = 14;
+        this.monster[12] = 19;
+        this.monster[13] = 24;
+        this.monster[14] = 30;
+        this.monster[15] = 48;
+        this.monster[6] = (byte)n;
+    }
+    
+    public void resetMonster(final int n, final int n2, final int n3) {
+        this.monster[16] = (byte)(this.monster[3] * 2 + 4);
+        this.monster[17] = 2;
+        this.monster[14] = (byte)n;
+        this.monster[15] = (byte)n2;
+        this.monster[6] = (byte)n3;
+    }
+    
+    public void resetMonster(final GameRun gameRun, final int n) {
+        if (n > -1) {
+            this.monster[5] = (byte)n;
+        }
+        else if (n == -1) {
+            final byte[] monster = this.monster;
+            Ms.i();
+            monster[5] = (byte)Ms.getRandom(this.monster[5] + 1);
+        }
+        this.resetPro(gameRun);
+    }
+    
+    public void resetPro(final GameRun gameRun) {
+        if (this.isBuffRate(2)) {
+            final short[] monsterPro = this.monsterPro;
+            monsterPro[2] += (short)(this.monsterPro[2] * gameRun.inhesion[2] / 100);
+        }
+        else if (this.isBuffRate(1)) {
+            final short[] monsterPro2 = this.monsterPro;
+            monsterPro2[2] += (short)(this.monsterPro[2] * gameRun.inhesion[1] / 100);
+        }
+        if (this.monsterPro[2] < 1) {
+            this.monsterPro[2] = 1;
+        }
+        this.monsterPro[0] = this.monsterPro[2];
+    }
+    
+    public void setProAFD(final byte[] array) {
+        this.monsterPro[5] = (short)(array[2] + array[9] * this.monster[2] / 10);
+        this.monsterPro[6] = (short)(array[3] + array[10] * this.monster[2] / 10);
+        this.monsterPro[7] = (short)(array[4] + array[11] * this.monster[2] / 10);
+    }
 }

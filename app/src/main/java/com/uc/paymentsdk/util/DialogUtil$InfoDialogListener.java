@@ -1,5 +1,6 @@
 package com.uc.paymentsdk.util;
 
-public interface DialogUtil$InfoDialogListener {
-   void onInfoDialogOK(int var1);
+public interface InfoDialogListener
+{
+    void onInfoDialogOK(final int p0);
 }

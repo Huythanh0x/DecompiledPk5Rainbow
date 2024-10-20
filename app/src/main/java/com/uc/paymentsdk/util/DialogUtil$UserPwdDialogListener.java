@@ -1,9 +1,10 @@
 package com.uc.paymentsdk.util;
 
-public interface DialogUtil$UserPwdDialogListener {
-   void onUserPwdDialogCancel(int var1);
-
-   void onUserPwdDialogOK(int var1, String var2, String var3, boolean var4);
-
-   void onUserPwdDialogRegister(int var1);
+public interface UserPwdDialogListener
+{
+    void onUserPwdDialogCancel(final int p0);
+    
+    void onUserPwdDialogOK(final int p0, final String p1, final String p2, final boolean p3);
+    
+    void onUserPwdDialogRegister(final int p0);
 }

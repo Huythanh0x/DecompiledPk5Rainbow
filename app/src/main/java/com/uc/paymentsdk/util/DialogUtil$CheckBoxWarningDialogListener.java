@@ -1,7 +1,8 @@
 package com.uc.paymentsdk.util;
 
-public interface DialogUtil$CheckBoxWarningDialogListener {
-   void onWarningDialogCancel(int var1);
-
-   void onWarningDialogOK(int var1, boolean var2);
+public interface CheckBoxWarningDialogListener
+{
+    void onWarningDialogCancel(final int p0);
+    
+    void onWarningDialogOK(final int p0, final boolean p1);
 }

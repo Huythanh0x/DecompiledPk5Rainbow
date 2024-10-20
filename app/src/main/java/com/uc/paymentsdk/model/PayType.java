@@ -1,7 +1,8 @@
 package com.uc.paymentsdk.model;
 
-public class PayType extends AbstractType {
-   public PayType(String var1, String var2, String var3, String var4) {
-      super(var1, var2, var3, var4);
-   }
+public class PayType extends AbstractType
+{
+    public PayType(final String s, final String s2, final String s3, final String s4) {
+        super(s, s2, s3, s4);
+    }
 }

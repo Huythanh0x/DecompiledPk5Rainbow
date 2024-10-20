@@ -1,47 +1,54 @@
 package dm;
 
-public class Battle {
-   public byte act_num = 1;
-   public byte action;
-   public boolean b_renascence = false;
-   public byte baoji;
-   public byte bg_id;
-   public short[] cThrow = new short[4];
-   public byte[] ceff = new byte[6];
-   public short cexp;
-   public short chp;
-   public byte[] countS = new byte[10];
-   public byte dead;
-   public byte fs_level;
-   public short[][] hit = new short[3][5];
-   public Monster[] mon;
-   public byte now_id;
-   public byte rate_off;
-   public byte skill;
-   public byte throw_state = -1;
-
-   public Battle(Monster[] var1) {
-      super();
-      this.mon = var1;
-   }
-
-   public void addHit(int var1, int var2, int var3) {
-      this.hit[var3][0] = (short)var2;
-      short[] var4 = this.hit[var3];
-      var4[1] = (short)(var4[1] + var1);
-      this.hit[var3][2] = 0;
-      this.hit[var3][3] = 0;
-      this.hit[var3][4] = 0;
-   }
-
-   public Monster getMon() {
-      return this.mon[this.now_id];
-   }
-
-   public void initHit() {
-      for(byte var1 = 0; var1 < this.hit.length; ++var1) {
-         this.hit[var1][1] = 0;
-      }
-
-   }
+public class Battle
+{
+    public byte act_num;
+    public byte action;
+    public boolean b_renascence;
+    public byte baoji;
+    public byte bg_id;
+    public short[] cThrow;
+    public byte[] ceff;
+    public short cexp;
+    public short chp;
+    public byte[] countS;
+    public byte dead;
+    public byte fs_level;
+    public short[][] hit;
+    public Monster[] mon;
+    public byte now_id;
+    public byte rate_off;
+    public byte skill;
+    public byte throw_state;
+    
+    public Battle(final Monster[] mon) {
+        super();
+        this.throw_state = -1;
+        this.countS = new byte[10];
+        this.ceff = new byte[6];
+        this.cThrow = new short[4];
+        this.hit = new short[3][5];
+        this.b_renascence = false;
+        this.act_num = 1;
+        this.mon = mon;
+    }
+    
+    public void addHit(final int n, final int n2, final int n3) {
+        this.hit[n3][0] = (short)n2;
+        final short[] array = this.hit[n3];
+        array[1] += (short)n;
+        this.hit[n3][2] = 0;
+        this.hit[n3][3] = 0;
+        this.hit[n3][4] = 0;
+    }
+    
+    public Monster getMon() {
+        return this.mon[this.now_id];
+    }
+    
+    public void initHit() {
+        for (int i = 0; i < this.hit.length; i = (byte)(i + 1)) {
+            this.hit[i][1] = 0;
+        }
+    }
 }

@@ -1,7 +1,8 @@
 package com.uc.paymentsdk.util;
 
-public interface DialogUtil$ListDialogListener2 {
-   void onListDialogCancel2(int var1, Object[] var2);
-
-   void onListDialogOK2(int var1, Object[] var2, int var3);
+public interface ListDialogListener2
+{
+    void onListDialogCancel2(final int p0, final Object[] p1);
+    
+    void onListDialogOK2(final int p0, final Object[] p1, final int p2);
 }

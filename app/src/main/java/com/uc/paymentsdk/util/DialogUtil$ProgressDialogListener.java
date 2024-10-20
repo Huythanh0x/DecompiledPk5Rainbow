@@ -1,5 +1,6 @@
 package com.uc.paymentsdk.util;
 
-public interface DialogUtil$ProgressDialogListener {
-   void onProgressDialogCancel(int var1);
+public interface ProgressDialogListener
+{
+    void onProgressDialogCancel(final int p0);
 }

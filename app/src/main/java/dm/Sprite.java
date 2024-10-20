@@ -2,130 +2,135 @@ package dm;
 
 import javax.microedition.lcdui.Image;
 
-public class Sprite {
-   private byte[][][] action_byte = null;
-   private short[][][] action_short = null;
-   private byte[][][] frame_byte = null;
-   private short[][][] frame_short = null;
-   public Image img;
-   private byte[][] module_byte = null;
-   private short[][] module_short = null;
-   private boolean type = true;
-
-   public Sprite() {
-      super();
-      this.nullIMFA();
-   }
-
-   public static Sprite Create(Image var0, byte[][] var1, byte[][][] var2, byte[][][] var3) {
-      Sprite var4 = new Sprite();
-      var4.type = true;
-      var4.img = var0;
-      var4.module_byte = var1;
-      var4.frame_byte = var2;
-      var4.action_byte = var3;
-      return var4;
-   }
-
-   public static Sprite Create(Image var0, short[][] var1, short[][][] var2, short[][][] var3) {
-      Sprite var4 = new Sprite();
-      var4.type = false;
-      var4.img = var0;
-      var4.module_short = var1;
-      var4.frame_short = var2;
-      var4.action_short = var3;
-      return var4;
-   }
-
-   public void Set(Image var1, byte[][] var2, byte[][][] var3, byte[][][] var4) {
-      this.nullIMFA();
-      this.type = true;
-      this.img = var1;
-      this.module_byte = var2;
-      this.frame_byte = var3;
-      this.action_byte = var4;
-   }
-
-   public void Set(Image var1, short[][] var2, short[][][] var3, short[][][] var4) {
-      this.nullIMFA();
-      this.type = false;
-      this.img = var1;
-      this.module_short = var2;
-      this.frame_short = var3;
-      this.action_short = var4;
-   }
-
-   public int aLength() {
-      int var1;
-      if (this.type) {
-         var1 = this.action_byte.length;
-      } else {
-         var1 = this.action_short.length;
-      }
-
-      return var1;
-   }
-
-   public int aLength(int var1) {
-      if (this.type) {
-         var1 = this.action_byte[var1].length;
-      } else {
-         var1 = this.action_short[var1].length;
-      }
-
-      return var1;
-   }
-
-   public int action(int var1, int var2, int var3) {
-      short var4;
-      if (this.type) {
-         var4 = this.action_byte[var1][var2][var3];
-      } else {
-         var4 = this.action_short[var1][var2][var3];
-      }
-
-      return var4;
-   }
-
-   public int fLength(int var1) {
-      if (this.type) {
-         var1 = this.frame_byte[var1].length;
-      } else {
-         var1 = this.frame_short[var1].length;
-      }
-
-      return var1;
-   }
-
-   public int frame(int var1, int var2, int var3) {
-      short var4;
-      if (this.type) {
-         var4 = this.frame_byte[var1][var2][var3];
-      } else {
-         var4 = this.frame_short[var1][var2][var3];
-      }
-
-      return var4;
-   }
-
-   public int module(int var1, int var2) {
-      short var3;
-      if (this.type) {
-         var3 = this.module_byte[var1][var2];
-      } else {
-         var3 = this.module_short[var1][var2];
-      }
-
-      return var3;
-   }
-
-   public void nullIMFA() {
-      this.img = null;
-      this.module_byte = null;
-      this.frame_byte = null;
-      this.action_byte = null;
-      this.module_short = null;
-      this.frame_short = null;
-      this.action_short = null;
-   }
+public class Sprite
+{
+    private byte[][][] action_byte;
+    private short[][][] action_short;
+    private byte[][][] frame_byte;
+    private short[][][] frame_short;
+    public Image img;
+    private byte[][] module_byte;
+    private short[][] module_short;
+    private boolean type;
+    
+    public Sprite() {
+        super();
+        this.type = true;
+        this.module_byte = null;
+        this.frame_byte = null;
+        this.action_byte = null;
+        this.module_short = null;
+        this.frame_short = null;
+        this.action_short = null;
+        this.nullIMFA();
+    }
+    
+    public static Sprite Create(final Image img, final byte[][] module_byte, final byte[][][] frame_byte, final byte[][][] action_byte) {
+        final Sprite sprite = new Sprite();
+        sprite.type = true;
+        sprite.img = img;
+        sprite.module_byte = module_byte;
+        sprite.frame_byte = frame_byte;
+        sprite.action_byte = action_byte;
+        return sprite;
+    }
+    
+    public static Sprite Create(final Image img, final short[][] module_short, final short[][][] frame_short, final short[][][] action_short) {
+        final Sprite sprite = new Sprite();
+        sprite.type = false;
+        sprite.img = img;
+        sprite.module_short = module_short;
+        sprite.frame_short = frame_short;
+        sprite.action_short = action_short;
+        return sprite;
+    }
+    
+    public void Set(final Image img, final byte[][] module_byte, final byte[][][] frame_byte, final byte[][][] action_byte) {
+        this.nullIMFA();
+        this.type = true;
+        this.img = img;
+        this.module_byte = module_byte;
+        this.frame_byte = frame_byte;
+        this.action_byte = action_byte;
+    }
+    
+    public void Set(final Image img, final short[][] module_short, final short[][][] frame_short, final short[][][] action_short) {
+        this.nullIMFA();
+        this.type = false;
+        this.img = img;
+        this.module_short = module_short;
+        this.frame_short = frame_short;
+        this.action_short = action_short;
+    }
+    
+    public int aLength() {
+        int n;
+        if (this.type) {
+            n = this.action_byte.length;
+        }
+        else {
+            n = this.action_short.length;
+        }
+        return n;
+    }
+    
+    public int aLength(int n) {
+        if (this.type) {
+            n = this.action_byte[n].length;
+        }
+        else {
+            n = this.action_short[n].length;
+        }
+        return n;
+    }
+    
+    public int action(int n, final int n2, final int n3) {
+        if (this.type) {
+            n = this.action_byte[n][n2][n3];
+        }
+        else {
+            n = this.action_short[n][n2][n3];
+        }
+        return n;
+    }
+    
+    public int fLength(int n) {
+        if (this.type) {
+            n = this.frame_byte[n].length;
+        }
+        else {
+            n = this.frame_short[n].length;
+        }
+        return n;
+    }
+    
+    public int frame(int n, final int n2, final int n3) {
+        if (this.type) {
+            n = this.frame_byte[n][n2][n3];
+        }
+        else {
+            n = this.frame_short[n][n2][n3];
+        }
+        return n;
+    }
+    
+    public int module(int n, final int n2) {
+        if (this.type) {
+            n = this.module_byte[n][n2];
+        }
+        else {
+            n = this.module_short[n][n2];
+        }
+        return n;
+    }
+    
+    public void nullIMFA() {
+        this.img = null;
+        this.module_byte = null;
+        this.frame_byte = null;
+        this.action_byte = null;
+        this.module_short = null;
+        this.frame_short = null;
+        this.action_short = null;
+    }
 }

@@ -1,7 +1,8 @@
 package res;
 
-public class FileLoader {
-   public FileLoader() {
-      super();
-   }
+public class FileLoader
+{
+    public FileLoader() {
+        super();
+    }
 }

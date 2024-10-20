@@ -12,6 +12,78 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Region;
 
+/**
+ * The {@code Graphics} class provides methods for drawing shapes, text, and images
+ * onto a {@link Canvas}. It includes various constants for alignment and styles,
+ * and supports operations such as clipping, translating, and setting colors.
+ * 
+ * <h2>Constants</h2>
+ * <ul>
+ *   <li>{@code BASELINE} - Align text to the baseline.</li>
+ *   <li>{@code BOTTOM} - Align text to the bottom.</li>
+ *   <li>{@code DOTTED} - Use dotted stroke style.</li>
+ *   <li>{@code HCENTER} - Align text horizontally centered.</li>
+ *   <li>{@code LEFT} - Align text to the left.</li>
+ *   <li>{@code RIGHT} - Align text to the right.</li>
+ *   <li>{@code SOLID} - Use solid stroke style.</li>
+ *   <li>{@code TOP} - Align text to the top.</li>
+ *   <li>{@code VCENTER} - Align text vertically centered.</li>
+ * </ul>
+ * 
+ * <h2>Dependencies</h2>
+ * <ul>
+ *   <li>{@link Canvas} - The canvas to draw on.</li>
+ *   <li>{@link Bitmap} - Represents the bitmap image.</li>
+ *   <li>{@link Font} - Represents the font used for drawing text.</li>
+ *   <li>{@link Paint} - Represents the paint used for drawing.</li>
+ *   <li>{@link Rect} - Represents a rectangle.</li>
+ *   <li>{@link RectF} - Represents a rectangle with floating point coordinates.</li>
+ *   <li>{@link Path} - Represents a geometric path.</li>
+ *   <li>{@link Matrix} - Represents a 3x3 matrix for transformations.</li>
+ *   <li>{@link DashPathEffect} - Represents a path effect for dashed lines.</li>
+ *   <li>{@link Region} - Represents a region for clipping.</li>
+ * </ul>
+ * 
+ * <h2>Usage</h2>
+ * <p>To use the {@code Graphics} class, create an instance by passing a {@link Canvas} object.
+ * You can then call various methods to draw shapes, text, and images on the canvas.</p>
+ * 
+ * <pre>
+ * {@code
+ * Canvas canvas = new Canvas();
+ * Graphics graphics = new Graphics(canvas);
+ * graphics.setColor(Color.RED);
+ * graphics.drawRect(10, 10, 100, 50);
+ * graphics.drawString("Hello, World!", 20, 30, Graphics.BASELINE | Graphics.HCENTER);
+ * }
+ * </pre>
+ * 
+ * <h2>Initialization</h2>
+ * <p>The {@code Graphics} class initializes various static fields and matrices
+ * used for transformations and clipping.</p>
+ * 
+ * <h2>Methods</h2>
+ * <p>The {@code Graphics} class provides methods for:</p>
+ * <ul>
+ *   <li>Clipping: {@link #clipRect(int, int, int, int)}, {@link #setClip(int, int, int, int)}</li>
+ *   <li>Drawing shapes: {@link #drawRect(int, int, int, int)}, {@link #drawRoundRect(int, int, int, int, int, int)}, {@link #drawArc(int, int, int, int, int, int)}, {@link #drawLine(float, float, float, float)}</li>
+ *   <li>Drawing text: {@link #drawString(String, int, int, int)}, {@link #drawChar(char, int, int, int)}, {@link #drawChars(char[], int, int, int, int, int)}, {@link #drawSubstring(String, int, int, int, int, int)}</li>
+ *   <li>Drawing images: {@link #drawImage(Image, int, int, int)}, {@link #drawRegion(Image, int, int, int, int, int, int, int, int)}</li>
+ *   <li>Filling shapes: {@link #fillRect(int, int, int, int)}, {@link #fillRoundRect(int, int, int, int, int, int)}, {@link #fillArc(int, int, int, int, int, int)}, {@link #fillTriangle(int, int, int, int, int, int)}</li>
+ *   <li>Setting colors and styles: {@link #setColor(int)}, {@link #setColor(int, int, int)}, {@link #setGrayScale(int)}, {@link #setStrokeStyle(int)}</li>
+ *   <li>Transformations: {@link #translate(int, int)}, {@link #getXY(float, float)}</li>
+ *   <li>Getting properties: {@link #getClipX()}, {@link #getClipY()}, {@link #getClipWidth()}, {@link #getClipHeight()}, {@link #getColor()}, {@link #getRedComponent()}, {@link #getGreenComponent()}, {@link #getBlueComponent()}, {@link #getGrayScale()}, {@link #getFont()}, {@link #getStrokeStyle()}, {@link #getTranslateX()}, {@link #getTranslateY()}</li>
+ *   <li>Resetting: {@link #painterReset()}, {@link #painterAutoReset(boolean)}, {@link #restCanvas()}</li>
+ * </ul>
+ * 
+ * <h2>Exceptions</h2>
+ * <p>Methods in the {@code Graphics} class may throw the following exceptions:</p>
+ * <ul>
+ *   <li>{@link IllegalArgumentException} - If an invalid argument is passed.</li>
+ *   <li>{@link NullPointerException} - If a required object is null.</li>
+ *   <li>{@link ArrayIndexOutOfBoundsException} - If an array index is out of bounds.</li>
+ * </ul>
+ */
 public final class Graphics {
     public static final int BASELINE = 64;
 

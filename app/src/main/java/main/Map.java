@@ -14,6 +14,51 @@ import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 import minigame.Mg;
 
+/**
+ * The Map class represents a game map and implements the Key_H interface.
+ * It manages various aspects of the game map including NPCs, events, and player interactions.
+ * 
+ * <h2>Dependencies:</h2>
+ * <ul>
+ *   <li>Key_H</li>
+ *   <li>Npc</li>
+ *   <li>Graphics</li>
+ *   <li>Sprite</li>
+ *   <li>GameRun</li>
+ *   <li>Image</li>
+ *   <li>PointerKey</li>
+ *   <li>Constants_H</li>
+ *   <li>Ms</li>
+ *   <li>Ui</li>
+ *   <li>Log</li>
+ *   <li>AndroidUtil</li>
+ * </ul>
+ * 
+ * <h2>Fields:</h2>
+ * <ul>
+ *   <li>cur_npc: Current NPC being interacted with.</li>
+ *   <li>g: Graphics object for rendering.</li>
+ *   <li>npcSp: Array of NPC sprites.</li>
+ *   <li>action_5, anoleSel, anole_temp, anole_type: Various action and selection states.</li>
+ *   <li>bDirTalk, bExitBoss, bPause, bSrc, bMission, bStep: Various boolean and byte flags.</li>
+ *   <li>bgColor, black_0, black_1, black_width: Color and dimension settings.</li>
+ *   <li>boatCourse, boatSelect: Boat-related data.</li>
+ *   <li>bottomData, bottomRow, brow, checkNpcT, checkType: Map and NPC data.</li>
+ *   <li>cloud, cols, dialog, dialog_no, dir_select, door, event, eventCount, eventGoing, event_now, event_now_list, event_state: Event and dialog data.</li>
+ *   <li>fString, faceDir, faceLast, face_c, firstDrawMap, fmap, fontSizeControl, frontData, get_meet, gmErr, go, gr, hudong, i, ii, imgCloud, imgFace, imgShadow, inShop, isNeedWait, item, lastExit, lastMap, leftCol, littleMapClipY, mDirect, mapChange, mapDown_NOmove, mapImg, mapInfo, mapLeft_NOmove, mapNo, mapNotemp, mapRight_NOmove, mapTemp, mapUp_NOmove, map_bottom, map_key, map_left, map_right, map_top, map_x, map_y, mapdataArea, mapdataMap, mapoffx, mapoffy, meet_step, miniMapMode, moduleData, my, myMiniMap, notMeet, now_eV1, now_eV2, npc, npcDirTalk, npcList, npcName, npcNameData, npcPos, npcStringData, pkey, rightCol, roadType, rows, sEvent_eV1, sEvent_eV2, sIfElse, sMission, selectMap, showArea, sleep_count, smissionLength, srcFlash_c, srcNpcNo, step_MEET, time_5, topRow, walkIco, worldData, xxx: Various fields for managing map state, NPCs, events, and rendering.</li>
+ * </ul>
+ * 
+ * <h2>Constructor:</h2>
+ * <ul>
+ *   <li>Map(GameRun var1): Initializes the map with the given GameRun instance.</li>
+ * </ul>
+ * 
+ * <h2>Usage:</h2>
+ * <p>
+ * The Map class is used to manage the game map, including NPC interactions, events, and rendering.
+ * It provides methods for initializing and updating the map, handling player movement, and managing events and dialogs.
+ * </p>
+ */
 public class Map implements Key_H {
     private static Npc cur_npc;
     private static Graphics g;

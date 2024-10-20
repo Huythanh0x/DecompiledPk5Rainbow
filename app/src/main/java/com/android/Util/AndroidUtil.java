@@ -10,14 +10,47 @@ import java.io.InputStream;
 import javax.microedition.lcdui.CwaActivity;
 
 /* loaded from: classes.dex */
+/**
+ * Utility class for Android-related operations.
+ */
 public class AndroidUtil {
+
+    /**
+     * Log tag for error messages.
+     */
     private static final String LOG = "PIC_ERROR";
+
+    /**
+     * Screen height of the device.
+     */
     public static int SCREEN_HEIGHT;
+
+    /**
+     * Screen width of the device.
+     */
     public static int SCREEN_WIDTH;
+
+    /**
+     * AudioManager instance for managing audio streams.
+     */
     private static AudioManager aManager;
+
+    /**
+     * ConditionVariable instance for synchronization.
+     */
     public static ConditionVariable cv = new ConditionVariable(true);
+
+    /**
+     * AssetManager instance for accessing application assets.
+     */
     public static AssetManager am = CwaActivity.getInstance().getAssets();
 
+    /**
+     * Retrieves an InputStream for a given resource name.
+     *
+     * @param name the name of the resource
+     * @return InputStream for the resource, or null if the resource does not exist
+     */
     public static InputStream getResourceAsStream(String name) {
         InputStream is = null;
         try {
@@ -36,6 +69,11 @@ public class AndroidUtil {
         return is;
     }
 
+    /**
+     * Gets the current music stream volume.
+     *
+     * @return the current music stream volume, or -1 if the context is null
+     */
     public static int getCurrentMusic() {
         if (CwaActivity.getContextInstance() == null) {
             return -1;
@@ -44,6 +82,11 @@ public class AndroidUtil {
         return aManager.getStreamVolume(3);
     }
 
+    /**
+     * Sets the music stream volume to the specified level.
+     *
+     * @param volume the desired volume level
+     */
     public static void setMusic(int volume) {
         if (CwaActivity.getContextInstance() != null) {
             aManager = (AudioManager) CwaActivity.getContextInstance().getSystemService(Context.AUDIO_SERVICE);

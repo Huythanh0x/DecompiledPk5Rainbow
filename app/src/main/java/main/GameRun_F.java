@@ -16,6 +16,77 @@ import javax.microedition.lcdui.Image;
 import javax.microedition.media.Player;
 
 /* loaded from: classes.dex */
+/**
+ * The GameRun_F class implements the Key_H interface and serves as the main game loop and state manager for the game.
+ * This class handles various game states, rendering, and user interactions.
+ * 
+ * <h2>Dependencies:</h2>
+ * <ul>
+ *   <li>DirectGraphics</li>
+ *   <li>Graphics</li>
+ *   <li>MainCanvas</li>
+ *   <li>Image</li>
+ *   <li>Monster</li>
+ *   <li>Map</li>
+ *   <li>PointerKey</li>
+ *   <li>Ui</li>
+ *   <li>Ms</li>
+ *   <li>Constants_H</li>
+ *   <li>Sound</li>
+ * </ul>
+ * 
+ * <h2>Usage:</h2>
+ * <p>This class is used to manage the game state, render graphics, handle user input, and manage game data such as monsters, items, and game settings.</p>
+ * 
+ * <h2>Methods:</h2>
+ * <ul>
+ *   <li><code>initGraphics(Graphics _g)</code>: Initializes the main graphics context.</li>
+ *   <li><code>initOffG()</code>: Initializes the off-screen graphics context.</li>
+ *   <li><code>setStringB(String str, int w, int mode)</code>: Sets the string buffer based on the mode.</li>
+ *   <li><code>getSIndexW(String str)</code>: Calculates the width of a string with special characters.</li>
+ *   <li><code>drawZero(int x, int y, int anchor, int color)</code>: Draws a string at the specified location with the given color.</li>
+ *   <li><code>drawZero(String str, int y)</code>: Draws a string at the specified location.</li>
+ *   <li><code>gogoWord(String string, int x, int y, int w, int color, int strT, int speed)</code>: Animates a string horizontally.</li>
+ *   <li><code>gogoWordM(String string, int y, int w, int color, int strT, int speed)</code>: Animates a string horizontally with a different method.</li>
+ *   <li><code>setGogoWord()</code>: Sets the gogo word for animation.</li>
+ *   <li><code>drawSnare5(int x, int y)</code>: Draws a snare animation.</li>
+ *   <li><code>showString(StringBuffer[] showS, int y, int offx, int mode)</code>: Displays a string buffer array on the screen.</li>
+ *   <li><code>showString(String string, int y, int offx)</code>: Displays a string on the screen.</li>
+ *   <li><code>showStringM(String str, int x, int y, int num, int c)</code>: Displays a string with multiple lines.</li>
+ *   <li><code>showStringM_(String str, int x, int y, int num, int c)</code>: Displays a string with multiple lines (alternative method).</li>
+ *   <li><code>drawHelpStr(Graphics g2, StringBuffer[] help_strbuff, int line_num, int x, int y, int anchor)</code>: Draws help strings on the screen.</li>
+ *   <li><code>drawSrcLine(Graphics g2, int y, int h, int piece, boolean dir, boolean mode)</code>: Draws a source line animation.</li>
+ *   <li><code>createString(String name)</code>: Creates a string from a resource file.</li>
+ *   <li><code>createData(int no)</code>: Creates data from a resource file.</li>
+ *   <li><code>setAction_str(String[] temp_str)</code>: Sets the action strings.</li>
+ *   <li><code>drawMenu(StringBuffer[] menu, int x, int y, int w)</code>: Draws a menu on the screen.</li>
+ *   <li><code>drawSelectMenu(Object[] menu, int x, int y, int w, int dis, int cn, int s_f)</code>: Draws a selectable menu on the screen.</li>
+ *   <li><code>drawSelectMenu_(Object[] menu, int x, int y, int w, int dis, int cn, int s_f)</code>: Draws a selectable menu on the screen (alternative method).</li>
+ *   <li><code>setPauseS(int mode)</code>: Sets the pause menu strings based on the mode.</li>
+ *   <li><code>drawPauseMenu(int x, int y, int w, int h)</code>: Draws the pause menu on the screen.</li>
+ *   <li><code>saveMon(ByteArrayOutputStream byteArray, Monster mon)</code>: Saves a monster to a byte array.</li>
+ *   <li><code>loadMon(ByteArrayInputStream byteArray, Monster mon, byte[][] data)</code>: Loads a monster from a byte array.</li>
+ *   <li><code>saveMon(int flag)</code>: Saves the current monsters to persistent storage.</li>
+ *   <li><code>loadMon(int flag, byte[][] data)</code>: Loads the monsters from persistent storage.</li>
+ *   <li><code>saveInfoList()</code>: Saves the monster info list to persistent storage.</li>
+ *   <li><code>loadInfoList()</code>: Loads the monster info list from persistent storage.</li>
+ *   <li><code>loadRmsOther()</code>: Loads other game settings from persistent storage.</li>
+ *   <li><code>setMaxTakes(boolean bb)</code>: Sets the maximum number of takes and monsters based on the game settings.</li>
+ *   <li><code>isMyLevel(boolean bb)</code>: Checks the player's level and updates it if necessary.</li>
+ *   <li><code>saveItem()</code>: Saves the current items to persistent storage.</li>
+ *   <li><code>loadItem()</code>: Loads the items from persistent storage.</li>
+ *   <li><code>initRmsOther()</code>: Initializes other game settings.</li>
+ *   <li><code>loadRmsSms()</code>: Loads SMS settings from persistent storage.</li>
+ *   <li><code>loadRmsNidus()</code>: Loads nidus settings from persistent storage.</li>
+ *   <li><code>getRid(int i)</code>: Gets the rid value for a given index.</li>
+ *   <li><code>getNid(int i)</code>: Gets the nid value for a given index.</li>
+ *   <li><code>getNLevel(int i)</code>: Gets the nidus level for a given index.</li>
+ *   <li><code>getNexp(int i, int n)</code>: Gets the nidus experience for a given index and level.</li>
+ *   <li><code>addNidus(int id)</code>: Adds a nidus to the list.</li>
+ *   <li><code>delNidus(int i)</code>: Deletes a nidus from the list.</li>
+ *   <li><code>setNidusExp(int exp)</code>: Sets the nidus experience.</li>
+ * </ul>
+ */
 public class GameRun_F implements Key_H {
     static DirectGraphics dg;
     static Graphics g;

@@ -7,6 +7,10 @@ import javax.microedition.lcdui.Image;
 import main.Constants_H;
 import main.GameRun;
 
+/**
+ * The Racing class implements the MiniGame_H interface and represents a racing mini-game.
+ * It handles the game logic, drawing, and user interactions for the racing game.
+ */
 public class Racing implements MiniGame_H {
     private final short MAP_HEIGHT = 450;
     private final byte NUM = 4;
@@ -28,6 +32,11 @@ public class Racing implements MiniGame_H {
     private byte state;
     private byte time;
 
+    /**
+     * Constructs a new Racing instance with the specified GameRun object.
+     *
+     * @param var1 the GameRun object associated with this Racing instance
+     */
     public Racing(GameRun var1) {
         super();
         byte[] var2 = new byte[4];
@@ -40,6 +49,11 @@ public class Racing implements MiniGame_H {
         this.gr = var1;
     }
 
+    /**
+     * Adds a cloud to the game at the specified index.
+     *
+     * @param var1 the index at which to add the cloud
+     */
     private void addCloud(int var1) {
         short[] var3 = this.cloud[var1];
         Ms.i();
@@ -53,6 +67,14 @@ public class Racing implements MiniGame_H {
         var3[2] = (short)(Ms.getRandom(5) + 2);
     }
 
+    /**
+     * Draws the initial game screen with the specified parameters.
+     *
+     * @param var1 the x-coordinate for drawing
+     * @param var2 the y-coordinate for drawing
+     * @param var3 the width for drawing
+     * @param var4 the height for drawing
+     */
     private void draw0(int var1, int var2, int var3, int var4) {
         Ui.i().fillRectB();
         Ui.i().drawString("游戏规则", 320, var2 + var4 + 3, 33, 3, 1);
@@ -85,6 +107,13 @@ public class Racing implements MiniGame_H {
         Ui.i().drawYesNo(true, true);
     }
 
+    /**
+     * Draws the game screen for state 1 with the specified parameters.
+     *
+     * @param var1 the x-coordinate for drawing
+     * @param var2 the y-coordinate for drawing
+     * @param var3 the height for drawing
+     */
     private void draw1(int var1, int var2, int var3) {
         Ui.i().drawK(215, 33, 210, 325, 4);
 
@@ -159,6 +188,9 @@ public class Racing implements MiniGame_H {
         var11.drawYesNo(true, var6);
     }
 
+    /**
+     * Draws the clouds in the game.
+     */
     private void drawCloud() {
         byte var1;
         for(var1 = 0; var1 < this.cloud.length; ++var1) {
@@ -176,6 +208,9 @@ public class Racing implements MiniGame_H {
 
     }
 
+    /**
+     * Draws the end screen of the game.
+     */
     private void drawEnd() {
         int var2 = (640 - 70) / 35;
         Ui.i().drawModuleOne(this.sp[1], 0, 0, 40 - this.srcY, 0, 0);
@@ -187,6 +222,9 @@ public class Racing implements MiniGame_H {
         Ui.i().drawModuleOne(this.sp[1], 0, 640, 40 - this.srcY, 1, 0);
     }
 
+    /**
+     * Draws the main game screen.
+     */
     private void drawGame() {
         Ui.i().fillRect(5423359, 0, 0, 640, 360);
         this.drawCloud();
@@ -203,6 +241,13 @@ public class Racing implements MiniGame_H {
 
     }
 
+    /**
+     * Checks if the specified coordinates are outside the NPC source area.
+     *
+     * @param var1 the x-coordinate to check
+     * @param var2 the y-coordinate to check
+     * @return true if the coordinates are outside the NPC source area, false otherwise
+     */
     private boolean isNpcSrc(int var1, int var2) {
         boolean var3;
         if (var1 >= -40 && var2 - this.srcY <= Constants_H.HEIGHT + 20) {
@@ -214,6 +259,9 @@ public class Racing implements MiniGame_H {
         return var3;
     }
 
+    /**
+     * Resets the game state and nullifies game-related objects.
+     */
     private void nullGame() {
         this.sp = null;
         this.myDate = null;
@@ -225,6 +273,9 @@ public class Racing implements MiniGame_H {
         this.gDate = null;
     }
 
+    /**
+     * Sets the speed of the game based on the current game state.
+     */
     private void setSpeed() {
         if (this.speedLv < this.gDate.length) {
             byte var1;
@@ -244,6 +295,11 @@ public class Racing implements MiniGame_H {
 
     }
 
+    /**
+     * Starts or progresses the game based on the specified state.
+     *
+     * @param var1 the state to progress to
+     */
     public void go(int var1) {
         if (var1 < 1) {
             this.sel = 0;
@@ -281,6 +337,12 @@ public class Racing implements MiniGame_H {
 
     }
 
+    /**
+     * Initializes the game with the specified state and level.
+     *
+     * @param var1 the state to initialize
+     * @param var2 the level to initialize
+     */
     public void go(int var1, int var2) {
         this.lv = (byte)var2;
         this.sp = new Sprite[3];
@@ -290,6 +352,11 @@ public class Racing implements MiniGame_H {
         this.go(var1);
     }
 
+    /**
+     * Handles key input for the game.
+     *
+     * @return true if a key action was handled, false otherwise
+     */
     public boolean key() {
         boolean var1;
         if (Ms.i().key_delay()) {
@@ -328,6 +395,9 @@ public class Racing implements MiniGame_H {
         return var1;
     }
 
+    /**
+     * Paints the game screen based on the current game state.
+     */
     public void patin() {
         if (this.state != 0 && this.state != 1 && this.state != 2) {
             this.drawGame();
@@ -340,6 +410,9 @@ public class Racing implements MiniGame_H {
 
     }
 
+    /**
+     * Runs the game logic for each frame.
+     */
     public void run() {
         if (this.state == 3) {
             if (this.time == 0) {

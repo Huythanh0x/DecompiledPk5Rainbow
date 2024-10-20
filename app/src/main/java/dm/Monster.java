@@ -5,12 +5,45 @@ import main.GameRun;
 import main.Key_H;
 
 /* loaded from: classes.dex */
+/**
+ * The Monster class represents a monster entity in the game. It implements the Key_H interface.
+ * This class contains various properties and methods to manage the monster's attributes, effects, and behaviors.
+ */
+/**
+ * The Monster class represents a monster in the game with various attributes and properties.
+ * It provides methods to manipulate and check the state of the monster.
+ * This class implements the Key_H interface.
+ */
 public class Monster implements Key_H {
+    
+    /**
+     * The effect currently applied to the monster.
+     */
     public byte effect;
+
+    /**
+     * The duration of the effect currently applied to the monster.
+     */
     public byte effect_time;
+
+    /**
+     * An array representing various attributes of the monster.
+     */
     public byte[] monster;
+
+    /**
+     * An array representing various properties of the monster.
+     */
     public short[] monsterPro;
 
+    /**
+     * Constructs a new Monster with the specified parameters.
+     *
+     * @param data The game data.
+     * @param enemy_name The name of the enemy.
+     * @param enemylevel The level of the enemy.
+     * @param enemy_no The number of the enemy.
+     */
     public Monster(GameRun data, int enemy_name, int enemylevel, int enemy_no) {
         int random;
         this.monsterPro = new short[8];
@@ -75,31 +108,70 @@ public class Monster implements Key_H {
         this.effect_time = (byte) 0;
     }
 
+    /**
+     * Default constructor for the Monster class.
+     */
     public Monster() {
+        // Default constructor implementation
     }
 
+    /**
+     * Sets the properties of the monster based on the provided data.
+     *
+     * @param data The data to set the properties from.
+     */
     public void setProAFD(byte[] data) {
         this.monsterPro[5] = (short) (data[2] + ((data[9] * this.monster[2]) / 10));
         this.monsterPro[6] = (short) (data[3] + ((data[10] * this.monster[2]) / 10));
         this.monsterPro[7] = (short) (data[4] + ((data[11] * this.monster[2]) / 10));
     }
 
+    /**
+     * Checks if the monster has the specified effect.
+     *
+     * @param id The effect ID to check.
+     * @return true if the monster has the specified effect, false otherwise.
+     */
     public boolean isEffect(int id) {
         return this.effect == id;
     }
 
+    /**
+     * Checks if the monster has the specified effect and the effect time is not zero.
+     *
+     * @param id The effect ID to check.
+     * @return true if the monster has the specified effect and the effect time is not zero, false otherwise.
+     */
     public boolean isMonEffect(int id) {
         return this.effect == id && this.effect_time != 0;
     }
 
+    /**
+     * Checks if the monster has the specified reel.
+     *
+     * @param reel The reel to check.
+     * @return true if the monster has the specified reel, false otherwise.
+     */
     public boolean isMonReel(int reel) {
         return this.monster[14] == reel || this.monster[15] == reel;
     }
 
+    /**
+     * Checks if the monster has the specified buff rate.
+     *
+     * @param effect_id The effect ID to check.
+     * @return true if the monster has the specified buff rate, false otherwise.
+     */
     public boolean isBuffRate(int effect_id) {
         return this.monster[16] == effect_id || this.monster[17] == effect_id;
     }
 
+    /**
+     * Resets the monster's attributes based on the provided game data and evolve parameter.
+     *
+     * @param data The game data.
+     * @param evolve The evolve parameter.
+     */
     public void resetMonster(GameRun data, int evolve) {
         if (evolve > -1) {
             this.monster[5] = (byte) evolve;
@@ -111,6 +183,11 @@ public class Monster implements Key_H {
         resetPro(data);
     }
 
+    /**
+     * Resets the monster's properties based on the provided game data.
+     *
+     * @param data The game data.
+     */
     public void resetPro(GameRun data) {
         if (isBuffRate(2)) {
             short[] sArr = this.monsterPro;
@@ -125,6 +202,13 @@ public class Monster implements Key_H {
         this.monsterPro[0] = this.monsterPro[2];
     }
 
+    /**
+     * Resets the monster's attributes based on the provided skill and fealty parameters.
+     *
+     * @param skill6 The skill6 parameter.
+     * @param skill7 The skill7 parameter.
+     * @param fealty The fealty parameter.
+     */
     public void resetMonster(int skill6, int skill7, int fealty) {
         this.monster[16] = (byte) ((this.monster[3] * 2) + 4);
         this.monster[17] = 2;
@@ -133,6 +217,11 @@ public class Monster implements Key_H {
         this.monster[6] = (byte) fealty;
     }
 
+    /**
+     * Resets the monster's attributes for a boss monster based on the provided fealty parameter.
+     *
+     * @param fealty The fealty parameter.
+     */
     public void resetBoss(int fealty) {
         this.monster[16] = 4;
         this.monster[17] = 10;
@@ -146,6 +235,13 @@ public class Monster implements Key_H {
         this.monster[6] = (byte) fealty;
     }
 
+    /**
+     * Evolves the monster based on the provided game data, enemy name, and evolve parameter.
+     *
+     * @param data The game data.
+     * @param enemy_name The name of the enemy.
+     * @param evolve The evolve parameter.
+     */
     public void evolveMonster(GameRun data, int enemy_name, int evolve) {
         this.monster[0] = (byte) enemy_name;
         byte[] temp_pro = data.monster_pro[enemy_name];

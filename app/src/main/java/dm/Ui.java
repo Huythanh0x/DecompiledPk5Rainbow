@@ -9,6 +9,74 @@ import main.Constants_H;
 import main.Key_H;
 
 /* loaded from: classes.dex */
+/**
+ * The Ui class is responsible for managing and rendering various UI components in the application.
+ * It provides methods to draw images, shapes, text, and other UI elements on the screen.
+ * 
+ * <h2>Dependencies:</h2>
+ * <ul>
+ *   <li>DirectGraphics</li>
+ *   <li>Graphics</li>
+ *   <li>Image</li>
+ *   <li>Sprite</li>
+ *   <li>Ms</li>
+ *   <li>Constants_H</li>
+ * </ul>
+ * 
+ * <h2>Usage:</h2>
+ * <p>To use the Ui class, follow these steps:</p>
+ * <ol>
+ *   <li>Initialize the Ui instance using the constructor or the static method {@link #i()}.</li>
+ *   <li>Initialize the graphics context using {@link #initGraphics(Graphics)}.</li>
+ *   <li>Use the various drawing methods to render UI components on the screen.</li>
+ * </ol>
+ * 
+ * <h2>Methods:</h2>
+ * <ul>
+ *   <li>{@link #initGraphics(Graphics)}: Initializes the graphics context.</li>
+ *   <li>{@link #drawRegion(Image, int, int, int, int, int, int, int, int, Graphics)}: Draws a region of an image.</li>
+ *   <li>{@link #drawModuleOne(Sprite, int, int, int, int, int)}: Draws a module of a sprite.</li>
+ *   <li>{@link #drawFrameOne(Sprite, int, int, int, int)}: Draws a frame of a sprite.</li>
+ *   <li>{@link #drawActionOne(Sprite, int, int, int, byte[], int, boolean)}: Draws an action of a sprite.</li>
+ *   <li>{@link #drawImage(Image, int, int, int)}: Draws an image.</li>
+ *   <li>{@link #drawImage(Image, int, int, int, int)}: Draws an image with transformation.</li>
+ *   <li>{@link #fillRect(int, int, int, int, int)}: Fills a rectangle with a color.</li>
+ *   <li>{@link #drawLine(int, int, int, int, int)}: Draws a line with a color.</li>
+ *   <li>{@link #drawRect(int, int, int, int, int)}: Draws a rectangle with a color.</li>
+ *   <li>{@link #fillArc(int, int, int, int, int, int)}: Fills an arc with a color.</li>
+ *   <li>{@link #drawString(String, int, int, int, int, int)}: Draws a string with a color and mode.</li>
+ *   <li>{@link #drawStringColor(String, int, int, int, int)}: Draws a string with multiple colors.</li>
+ *   <li>{@link #drawStringY(StringBuffer[], int, int, int, int, int)}: Draws multiple strings vertically.</li>
+ *   <li>{@link #initUiModules()}: Initializes UI modules.</li>
+ *   <li>{@link #drawUi(int, int, int, int, int)}: Draws a UI component.</li>
+ *   <li>{@link #drawBDir(int, int, int, int)}: Draws a directional button.</li>
+ *   <li>{@link #drawVolume(int, int, int, boolean)}: Draws a volume indicator.</li>
+ *   <li>{@link #drawK(int, int, int, int, int)}: Draws a filled rectangle with a specific color.</li>
+ *   <li>{@link #drawK0(int, int, int, int, int)}: Draws a bordered rectangle with a specific color.</li>
+ *   <li>{@link #drawK1(int, int, int, int, int)}: Draws a bordered rectangle with a different style.</li>
+ *   <li>{@link #drawK2(int, int, int, int, int)}: Draws a filled rectangle with a border.</li>
+ *   <li>{@link #drawK3(int, int, int, int)}: Draws a filled rectangle with a border and background color.</li>
+ *   <li>{@link #drawK4(int, int, int, int)}: Draws a bordered rectangle with a different style.</li>
+ *   <li>{@link #drawKuang(int, int, int, int)}: Draws a bordered rectangle with a background color.</li>
+ *   <li>{@link #drawKuangSelect(int, int, int, int, int)}: Draws a selectable bordered rectangle.</li>
+ *   <li>{@link #drawKuangMap(int, int, int, int, boolean)}: Draws a map bordered rectangle.</li>
+ *   <li>{@link #drawKuangAdorn(int, int, int, int, int)}: Draws an adorned bordered rectangle.</li>
+ *   <li>{@link #drawBarOne(int, int, int, int, int, int)}: Draws a progress bar.</li>
+ *   <li>{@link #sliding(int, int, int, int, int, boolean)}: Draws a sliding bar.</li>
+ *   <li>{@link #drawNum(String, int, int, int, int)}: Draws a number string.</li>
+ *   <li>{@link #drawRectZ(int, int, int, int, int, int)}: Draws a rectangle with a specific color and size.</li>
+ *   <li>{@link #fillRectB()}: Fills the entire screen with a background color.</li>
+ *   <li>{@link #drawTriangle(int, int, int, boolean, boolean)}: Draws a triangle.</li>
+ *   <li>{@link #drawTriangle1(int, int, int, boolean, boolean)}: Draws a triangle with a different style.</li>
+ *   <li>{@link #drawYesNo(boolean, boolean)}: Draws Yes/No options.</li>
+ *   <li>{@link #drawYesNo_(boolean, boolean)}: Draws Yes/No options with a different style.</li>
+ *   <li>{@link #drawYesNo__(boolean, boolean)}: Draws Yes/No options with another style.</li>
+ *   <li>{@link #drawListSY(Object[], int, int, int, int, int, int, int, int)}: Draws a list of items vertically.</li>
+ *   <li>{@link #drawListKY(int, int, int, int, int, int, int, int, int, int)}: Draws a list of items with a different style.</li>
+ *   <li>{@link #drawStringY(Object[], int, int, int, int, int, int, int)}: Draws multiple strings vertically with a specific range.</li>
+ *   <li>{@link #drawListSYHasSound(Object[], int, int, int, int, int, int, int, int)}: Draws a list of items with sound options.</li>
+ * </ul>
+ */
 public class Ui {
     public static DirectGraphics dg;
     public static Graphics g;

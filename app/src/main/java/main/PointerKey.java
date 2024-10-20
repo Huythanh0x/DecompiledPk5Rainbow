@@ -5,6 +5,10 @@ import com.uc.paymentsdk.util.Constants;
 import dm.Ms;
 
 /* loaded from: classes.dex */
+/**
+ * The PointerKey class handles the input and interaction logic for the game.
+ * It processes touch events, checks button presses, and manages movement.
+ */
 public class PointerKey implements Key_H {
     boolean dir;
     int gox;
@@ -21,16 +25,35 @@ public class PointerKey implements Key_H {
     int i0 = -1;
     int i1 = -1;
 
+    /**
+     * Constructor for PointerKey.
+     *
+     * @param mc_ The MainCanvas instance.
+     */
     public PointerKey(MainCanvas mc_) {
         this.mc = mc_;
         this.gr = this.mc.gr;
         this.map = this.gr.map;
     }
 
+    /**
+     * Checks if a button is pressed based on the given check number.
+     *
+     * @param check_no The check number to identify the button set.
+     * @return The index of the button if pressed, otherwise -1.
+     */
     public int checkButton(int check_no) {
         return checkButton(check_no, this.i0, this.i1);
     }
 
+    /**
+     * Checks if a button is pressed based on the given check number and coordinates.
+     *
+     * @param check_no The check number to identify the button set.
+     * @param x        The x-coordinate of the touch event.
+     * @param y        The y-coordinate of the touch event.
+     * @return The index of the button if pressed, otherwise -1.
+     */
     public int checkButton(int check_no, int x, int y) {
         for (int i = 0; i < this.button_pos[check_no].length; i++) {
             if (Ms.i().isRect(x - 1, y - 1, 2, 2, this.button_pos[check_no][i][0], this.button_pos[check_no][i][1], this.button_pos[check_no][i][2], this.button_pos[check_no][i][3])) {
@@ -46,6 +69,12 @@ public class PointerKey implements Key_H {
         return -1;
     }
 
+    /**
+     * Processes the touch event at the given coordinates.
+     *
+     * @param x The x-coordinate of the touch event.
+     * @param y The y-coordinate of the touch event.
+     */
     public void process(int x, int y) {
         if (this.map.my.state != 20 || checkButton(7, x, y) == -1) {
             if (GameRun.run_state != -10 || (this.map.my.state != 0 && this.map.my.state != 20)) {
@@ -89,6 +118,12 @@ public class PointerKey implements Key_H {
         }
     }
 
+    /**
+     * Runs the key state logic based on the current game state and touch coordinates.
+     *
+     * @param x The x-coordinate of the touch event.
+     * @param y The y-coordinate of the touch event.
+     */
     public void runKeySate(int x, int y) {
         switch (GameRun.run_state) {
             case -31:
@@ -160,16 +195,29 @@ public class PointerKey implements Key_H {
         }
     }
 
+    /**
+     * Sets the key to a specific value (53) and enables key repeat.
+     */
     public void setKey5() {
         Ms.key = 53;
         Ms.keyRepeat = true;
     }
 
+    /**
+     * Sets the key to a specific value (-6) and enables key repeat.
+     */
     public void setKeySoftkey1() {
         Ms.key = -6;
         Ms.keyRepeat = true;
     }
 
+    /**
+     * Checks if the given coordinates are within the movement area.
+     *
+     * @param x The x-coordinate to check.
+     * @param y The y-coordinate to check.
+     * @return True if the coordinates are within the movement area, otherwise false.
+     */
     private boolean isMove(int x, int y) {
         int npcX;
         int npcY;
@@ -192,6 +240,15 @@ public class PointerKey implements Key_H {
         return true;
     }
 
+    /**
+     * Checks if the given coordinates are within the selection area.
+     *
+     * @param x The x-coordinate of the selection area.
+     * @param y The y-coordinate of the selection area.
+     * @param w The width of the selection area.
+     * @param h The height of the selection area.
+     * @return True if the coordinates are within the selection area, otherwise false.
+     */
     public boolean isSelect(int x, int y, int w, int h) {
         if (!Ms.i().isRect(this.i0, this.i1, 1, 1, x, y, w, h)) {
             return false;
@@ -200,6 +257,18 @@ public class PointerKey implements Key_H {
         return true;
     }
 
+    /**
+     * Selects an item from a list based on the touch coordinates.
+     *
+     * @param len The length of the list.
+     * @param x   The x-coordinate of the list.
+     * @param y   The y-coordinate of the list.
+     * @param w   The width of the list items.
+     * @param kw  The width of the selection area.
+     * @param kh  The height of the selection area.
+     * @param dis The distance between list items.
+     * @param sel The selected item index.
+     */
     public void selectListSY(int len, int x, int y, int w, int kw, int kh, int dis, int sel) {
         for (int i = 0; i < len; i++) {
             if (Ms.i().isRect(this.i0, this.i1, 1, 1, x, y + ((kh + dis) * i), w, kh)) {
@@ -212,6 +281,16 @@ public class PointerKey implements Key_H {
         }
     }
 
+    /**
+     * Selects a menu item based on the touch coordinates.
+     *
+     * @param len The length of the menu.
+     * @param x   The x-coordinate of the menu.
+     * @param y   The y-coordinate of the menu.
+     * @param w   The width of the menu items.
+     * @param h   The height of the menu items.
+     * @return The index of the selected menu item, otherwise -1.
+     */
     public byte selectMenuX(int len, int x, int y, int w, int h) {
         for (int i = 0; i < len; i++) {
             if (Ms.i().isRect(this.i0, this.i1, 1, 1, x + (i * w), y, w, h)) {
@@ -222,6 +301,9 @@ public class PointerKey implements Key_H {
         return (byte) -1;
     }
 
+    /**
+     * Initializes the pointer by resetting coordinates and states.
+     */
     public void initPointer() {
         this.i1 = -1;
         this.i0 = -1;
@@ -229,6 +311,12 @@ public class PointerKey implements Key_H {
         this.m0 = -1;
     }
 
+    /**
+     * Sets the movement coordinates and direction based on the touch event.
+     *
+     * @param x The x-coordinate of the touch event.
+     * @param y The y-coordinate of the touch event.
+     */
     public void setMove(int x, int y) {
         this.m0 = (((-this.map.map_x) + x) / 20) * 20;
         this.m1 = (((-this.map.map_y) + y) / 20) * 20;
@@ -240,12 +328,18 @@ public class PointerKey implements Key_H {
         this.goy = (-this.map.map_y) + this.tempy;
     }
 
+    /**
+     * Stops the movement and resets the pointer.
+     */
     public void stopMove() {
         Ms.i().keyRelease();
         initPointer();
         this.isGo = false;
     }
 
+    /**
+     * Runs the movement logic based on the current game state.
+     */
     public void runMove() {
         if (GameRun.run_state == -10 && this.map.my.state == 0 && this.m0 != -1) {
             int x = this.m0 - this.map.my.x;

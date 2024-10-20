@@ -15,6 +15,79 @@ import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 
 /* loaded from: classes.dex */
+/**
+ * <h1>MainCanvas</h1>
+ * <p>
+ * MainCanvas is a core class that extends FullCanvas and implements Runnable. It handles the main game loop, 
+ * rendering, and user input for the game. This class is responsible for initializing the game, starting and stopping 
+ * the game loop, and managing the game's state transitions.
+ * </p>
+ * 
+ * <h2>Dependencies</h2>
+ * <ul>
+ *   <li>FullCanvas</li>
+ *   <li>Runnable</li>
+ *   <li>DirectGraphics</li>
+ *   <li>Graphics</li>
+ *   <li>Sprite</li>
+ *   <li>XConnection</li>
+ *   <li>SMSSender</li>
+ *   <li>PointerKey</li>
+ *   <li>GameRun</li>
+ *   <li>Sound</li>
+ *   <li>Ms</li>
+ *   <li>AndroidUtil</li>
+ *   <li>Ui</li>
+ *   <li>Constants_H</li>
+ * </ul>
+ * 
+ * <h2>Usage</h2>
+ * <p>
+ * The MainCanvas class is instantiated with an XConnection object. It initializes various game parameters and 
+ * starts the game loop in a new thread. The game loop handles the main game logic, including state transitions, 
+ * rendering, and user input processing.
+ * </p>
+ * 
+ * <h2>Key Methods</h2>
+ * <ul>
+ *   <li><code>game_init()</code>: Initializes the game.</li>
+ *   <li><code>game_start()</code>: Starts the game loop in a new thread.</li>
+ *   <li><code>game_stop()</code>: Stops the game and releases resources.</li>
+ *   <li><code>run()</code>: The main game loop that handles game logic, rendering, and user input.</li>
+ *   <li><code>paint(Graphics g)</code>: Renders the game screen based on the current game state.</li>
+ *   <li><code>pointerPressed(int x, int y)</code>: Handles pointer press events.</li>
+ *   <li><code>pointerReleased(int x, int y)</code>: Handles pointer release events.</li>
+ *   <li><code>keyPressed(int key)</code>: Handles key press events.</li>
+ *   <li><code>keyReleased(int key)</code>: Handles key release events.</li>
+ * </ul>
+ * 
+ * <h2>Game States</h2>
+ * <p>
+ * The game has multiple states managed by the <code>game_state</code> variable. Key states include:
+ * </p>
+ * <ul>
+ *   <li><code>0</code>: Initial state, displays the mobile logo.</li>
+ *   <li><code>10</code>: Main menu state.</li>
+ *   <li><code>20</code>: Game loading state.</li>
+ *   <li><code>30</code>: Main game running state.</li>
+ *   <li><code>40</code>: Help and About menu state.</li>
+ *   <li><code>98</code>: Paused state.</li>
+ *   <li><code>101</code>: Quit state.</li>
+ * </ul>
+ * 
+ * <h2>Additional Features</h2>
+ * <ul>
+ *   <li>Handles sound management and state transitions.</li>
+ *   <li>Supports pointer and key input for game control.</li>
+ *   <li>Manages game resources and state persistence.</li>
+ * </ul>
+ * 
+ * <h2>Logging</h2>
+ * <p>
+ * The class uses logging for debugging and state tracking, particularly in methods like <code>hideNotifyMy()</code> 
+ * and <code>showNotifyMy()</code>.
+ * </p>
+ */
 public final class MainCanvas extends FullCanvas implements Runnable {
     private static DirectGraphics dg;
     private static Graphics g;

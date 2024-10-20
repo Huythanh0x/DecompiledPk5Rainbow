@@ -12,6 +12,51 @@ import javax.microedition.media.control.ToneControl;
 import javax.microedition.media.control.VolumeControl;
 
 /* loaded from: classes.dex */
+/**
+ * The Player class implements the MediaPlayer.OnCompletionListener interface and provides
+ * methods to control media playback, including setting data sources, realizing, prefetching,
+ * starting, stopping, and closing the media player. It also supports event listeners and 
+ * looping playback.
+ * 
+ * Constants:
+ * - CLOSED: Indicates the player is closed.
+ * - PREFETCHED: Indicates the player is prefetched.
+ * - REALIZED: Indicates the player is realized.
+ * - STARTED: Indicates the player is started.
+ * - TIME_UNKNOWN: Indicates the media time is unknown.
+ * - UNREALIZED: Indicates the player is unrealized.
+ * 
+ * Fields:
+ * - dateSource: The data source of the media.
+ * - loopCount: The number of times the media should loop.
+ * - playedCount: The number of times the media has played.
+ * - type: The type of the media.
+ * - state: The current state of the player.
+ * - mp: The MediaPlayer instance.
+ * - playerListeners: A list of PlayerListener instances.
+ * 
+ * Methods:
+ * - Player(): Constructor that initializes the MediaPlayer and sets default values.
+ * - setDatasource(String dataSource): Sets the data source for the media.
+ * - setType(String type): Sets the type of the media.
+ * - getControl(String controlType): Returns a Control instance based on the control type.
+ * - realize(): Realizes the player by setting the data source.
+ * - prefetch(): Prefetches the player by preparing the MediaPlayer.
+ * - start(): Starts the media playback.
+ * - stop(): Stops the media playback.
+ * - deallocate(): Deallocates resources (not implemented).
+ * - close(): Closes the player and releases resources.
+ * - setMediaTime(long now): Sets the media time to the specified value.
+ * - getMediaTime(): Returns the current media time.
+ * - getState(): Returns the current state of the player.
+ * - getDuration(): Returns the duration of the media.
+ * - getContentType(): Returns the content type of the media.
+ * - setLoopCount(int count): Sets the loop count for the media playback.
+ * - addPlayerListener(PlayerListener playerListener): Adds a PlayerListener to the list.
+ * - removePlayerListener(PlayerListener playerListener): Removes a PlayerListener from the list.
+ * - onCompletion(MediaPlayer mp): Handles the completion event of the media playback.
+ * - onEvent(String event, Object eventData): Notifies all registered PlayerListeners of an event.
+ */
 public class Player implements MediaPlayer.OnCompletionListener {
     public static final int CLOSED = 0;
     public static final int PREFETCHED = 300;

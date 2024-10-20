@@ -1,16 +1,31 @@
 package main;
 
 /* loaded from: classes.dex */
+/**
+ * The CreateThread class extends the Thread class to handle different types of game-related tasks
+ * in a separate thread. It initializes the game map, loads items and monsters, or initializes a battle
+ * based on the thread type.
+ */
 public class CreateThread extends Thread {
     GameRun gr;
 
+    /**
+     * Constructs a CreateThread object with the specified GameRun instance and thread type.
+     *
+     * @param gr_ the GameRun instance to be used by this thread
+     * @param type the type of thread to be created
+     */
     public CreateThread(GameRun gr_, int type) {
         this.gr = gr_;
         this.gr.threadType = (byte) type;
         new Thread(this).start();
     }
 
-    @Override // java.lang.Thread, java.lang.Runnable
+    /**
+     * The run method is executed when the thread is started. It performs different tasks based on the
+     * thread type, such as initializing the game map, loading items and monsters, or initializing a battle.
+     */
+    @Override
     public void run() {
         try {
             this.gr.createOver = (byte) 0;

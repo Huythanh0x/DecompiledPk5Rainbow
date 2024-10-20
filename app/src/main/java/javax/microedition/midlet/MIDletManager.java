@@ -1,78 +1,84 @@
-package javax.microedition.midlet;
-
+package javax.microedition.midlet.MIDletManager;
+import java.lang.Object;
 import java.util.LinkedHashMap;
+import javax.microedition.midlet.MIDlet;
+import java.lang.String;
 import java.util.Map;
+import javax.microedition.midlet.MIDletStateChangeException;
 import javax.microedition.lcdui.CwaActivity;
+import javax.microedition.lcdui.Canvas;
 import javax.microedition.lcdui.Display;
 
-/* loaded from: classes.dex */
-public class MIDletManager {
-    private static MIDletManager jam;
+public class MIDletManager	// class@000151 from classes.dex
+{
+    private boolean autoLaunch;
     private MIDlet currentMidlet;
-    private boolean autoLaunch = true;
-    private boolean paused = false;
-    private boolean destroyed = true;
-    private Map<String, String> midlets = new LinkedHashMap();
-    private Map<String, String> jad = new LinkedHashMap();
+    private boolean destroyed;
+    private Map jad;
+    private Map midlets;
+    private boolean paused;
+    private static MIDletManager jam;
 
-    private MIDletManager() {
+    private void MIDletManager(){
+       super();
+       this.autoLaunch = true;
+       this.paused = false;
+       this.destroyed = true;
+       this.midlets = new LinkedHashMap();
+       this.jad = new LinkedHashMap();
     }
-
-    public static final MIDletManager getInstance() {
-        if (jam == null) {
-            jam = new MIDletManager();
-        }
-        return jam;
+    public static final MIDletManager getInstance(){
+       if (MIDletManager.jam == null) {
+          MIDletManager.jam = new MIDletManager();
+       }
+       return MIDletManager.jam;
     }
-
-    public void setAutoLaunch(boolean autoLaunch) {
-        this.autoLaunch = autoLaunch;
+    public final String getAppProperty(MIDlet midlet,String key){
+       MIDletManager mIDletManage = this.jad.get(key);
+       return this;
     }
-
-    public boolean isAutoLaunch() {
-        return this.autoLaunch;
+    public MIDlet getCurrenMIDlet(){
+       return this.currentMidlet;
     }
-
-    public final String getAppProperty(MIDlet midlet, String key) {
-        return this.jad.get(key);
+    public boolean isAutoLaunch(){
+       return this.autoLaunch;
     }
-
-    public final void notifyDestroyed() {
-        if (this.currentMidlet != null && !this.destroyed) {
-            this.destroyed = true;
-            try {
-                this.currentMidlet.destroyApp(true);
-            } catch (MIDletStateChangeException e) {
-                e.printStackTrace();
-            }
-        }
-        this.jad.clear();
-        this.midlets.clear();
+    public final void notifyDestroyed(){
+       try{
+          boolean b = true;
+          if (this.currentMidlet != null && this.destroyed == null) {
+             this.destroyed = b;
+             this.currentMidlet.destroyApp(true);
+          }
+       }catch(javax.microedition.midlet.MIDletStateChangeException e1){
+          MIDletStateChangeException e = e1;
+          e.printStackTrace();
+       }
+       this.jad.clear();
+       this.midlets.clear();
+       return;
     }
-
-    public final void notifyExit() {
-        CwaActivity.getInstance().finish();
+    public final void notifyExit(){
+       CwaActivity.getInstance().finish();
     }
-
-    public final void notifyPaused() {
-        if (this.currentMidlet != null && !this.paused) {
-            this.paused = true;
-            Display.getCanvas().hideNotify();
-        }
+    public final void notifyPaused(){
+       if (this.currentMidlet != null && this.paused == null) {
+          this.paused = true;
+          Display.getCanvas().hideNotify();
+       }
+       return;
     }
-
-    public final void notifyResumed() {
-        if (this.currentMidlet != null && this.paused) {
-            this.paused = false;
-            Display.getCanvas().showNotify();
-        }
+    public final void notifyResumed(){
+       if (this.currentMidlet != null && this.paused != null) {
+          this.paused = false;
+          Display.getCanvas().showNotify();
+       }
+       return;
     }
-
-    public MIDlet getCurrenMIDlet() {
-        return this.currentMidlet;
+    public void setAutoLaunch(boolean autoLaunch){
+       this.autoLaunch = autoLaunch;
     }
-
-    public void setMIDlet(MIDlet midlet) {
-        this.currentMidlet = midlet;
+    public void setMIDlet(MIDlet midlet){
+       this.currentMidlet = midlet;
     }
 }

@@ -1,5 +1,6 @@
-package javax.microedition.media;
+package javax.microedition.media.Control;
 
-/* loaded from: classes.dex */
-public interface Control {
+public interface abstract Control	// class@000149 from classes.dex
+{
+	/* No methods */
 }

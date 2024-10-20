@@ -1,5 +1,10 @@
-package res;
+package res.FileLoader;
+import java.lang.Object;
 
-/* loaded from: classes.dex */
-public class FileLoader {
+public class FileLoader	// class@0001a2 from classes.dex
+{
+
+    public void FileLoader(){
+       super();
+    }
 }

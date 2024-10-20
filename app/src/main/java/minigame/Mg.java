@@ -1,63 +1,63 @@
-package minigame;
-
+package minigame.Mg;
+import java.lang.Object;
 import main.GameRun;
+import minigame.Racing;
+import minigame.Bearer;
+import minigame.Cards;
+import minigame.Guess;
+import minigame.MiniGame_H;
 
-/* loaded from: classes.dex */
-public class Mg {
-    private static Mg mgListener;
+public class Mg	// class@00016d from classes.dex
+{
     private MiniGame_H mg;
     public byte type;
+    private static Mg mgListener;
 
-    public Mg() {
-        mgListener = this;
+    public void Mg(){
+       super();
+       Mg.mgListener = this;
     }
-
-    public static Mg i() {
-        if (mgListener == null) {
-            mgListener = new Mg();
-        }
-        return mgListener;
+    public static Mg i(){
+       if (Mg.mgListener == null) {
+          Mg.mgListener = new Mg();
+       }
+       return Mg.mgListener;
     }
-
-    private void setGame(GameRun gr, int i) {
-        this.mg = null;
-        this.type = (byte) i;
-        switch (i) {
-            case 0:
-                this.mg = new Racing(gr);
-                return;
-            case 1:
-                this.mg = new Bearer(gr);
-                return;
-            case 2:
-                this.mg = new Cards(gr);
-                return;
-            case 3:
-                this.mg = new Guess(gr);
-                return;
-            default:
-                return;
-        }
+    private void setGame(GameRun gr,int i){
+       this.mg = null;
+       this.type = (byte)i;
+       switch (i){
+           case 0:
+             this.mg = new Racing(gr);
+             break;
+           case 1:
+             this.mg = new Bearer(gr);
+             break;
+           case 2:
+             this.mg = new Cards(gr);
+             break;
+           case 3:
+             this.mg = new Guess(gr);
+             break;
+       }
+       return;
     }
-
-    public void go(GameRun gr, int i, int mode, int lv) {
-        GameRun.run_state = 69;
-        setGame(gr, i);
-        this.mg.go(mode, lv);
+    public void go(GameRun gr,int i,int mode,int lv){
+       GameRun.run_state = 69;
+       this.setGame(gr, i);
+       this.mg.go(mode, lv);
     }
-
-    public void paint() {
-        this.mg.patin();
+    public void key(GameRun gr){
+       if (this.mg.key()) {
+          GameRun.run_state = -10;
+          this.mg = null;
+       }
+       return;
     }
-
-    public void run() {
-        this.mg.run();
+    public void paint(){
+       this.mg.patin();
     }
-
-    public void key(GameRun gr) {
-        if (this.mg.key()) {
-            GameRun.run_state = -10;
-            this.mg = null;
-        }
+    public void run(){
+       this.mg.run();
     }
 }

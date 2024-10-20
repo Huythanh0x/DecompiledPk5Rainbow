@@ -1,5 +1,10 @@
-package javax.microedition.lcdui.game;
+package javax.microedition.lcdui.game.LayerManager;
+import java.lang.Object;
 
-/* loaded from: classes.dex */
-public class LayerManager {
+public class LayerManager	// class@000146 from classes.dex
+{
+
+    public void LayerManager(){
+       super();
+    }
 }

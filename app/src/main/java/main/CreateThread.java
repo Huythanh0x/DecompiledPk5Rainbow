@@ -1,33 +1,39 @@
-package main;
+package main.CreateThread;
+import java.lang.Thread;
+import main.GameRun;
+import java.lang.Runnable;
+import main.Map;
+import java.lang.Exception;
 
-/* loaded from: classes.dex */
-public class CreateThread extends Thread {
+public class CreateThread extends Thread	// class@000160 from classes.dex
+{
     GameRun gr;
 
-    public CreateThread(GameRun gr_, int type) {
-        this.gr = gr_;
-        this.gr.threadType = (byte) type;
-        new Thread(this).start();
+    public void CreateThread(GameRun gr_,int type){
+       super();
+       this.gr = gr_;
+       this.gr.threadType = (byte)type;
+       new Thread(this).start();
     }
-
-    @Override // java.lang.Thread, java.lang.Runnable
-    public void run() {
-        try {
-            this.gr.createOver = (byte) 0;
-            if (this.gr.threadType == 0) {
-                this.gr.map.initMap();
-                this.gr.loadItem();
-                this.gr.loadMon(0, this.gr.monster_pro);
-                this.gr.loadMon(1, this.gr.monster_pro);
-                this.gr.loadInfoList();
-            } else if (this.gr.threadType == 1) {
-                this.gr.initBattle();
-            } else if (this.gr.threadType != 2 && this.gr.threadType != 3 && this.gr.threadType != 4) {
-                byte b = this.gr.threadType;
-            }
-            this.gr.createOver = (byte) -1;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void run(){
+       int i = 1;
+       try{
+          if ((this.gr.createOver = 0) == null) {
+             this.gr.map.initMap();
+             this.gr.loadItem();
+             this.gr.loadMon(0, this.gr.monster_pro);
+             this.gr.loadMon(1, this.gr.monster_pro);
+             this.gr.loadInfoList();
+          }else if(this.gr.threadType == i){
+             this.gr.initBattle();
+          }else if(this.gr.threadType != 2 && (this.gr.threadType != 3 && this.gr.threadType != 4)){
+             GameRun threadType = this.gr.threadType;
+          }
+          this.gr.createOver = -1;
+       }catch(java.lang.Exception e1){
+          Exception e = e1;
+          e.printStackTrace();
+       }
+       return;
     }
 }

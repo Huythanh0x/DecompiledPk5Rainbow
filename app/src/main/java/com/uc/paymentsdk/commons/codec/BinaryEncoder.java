@@ -1,6 +1,8 @@
-package com.uc.paymentsdk.commons.codec;
+package com.uc.paymentsdk.commons.codec.BinaryEncoder;
+import com.uc.paymentsdk.commons.codec.Encoder;
 
-/* loaded from: classes.dex */
-public interface BinaryEncoder extends Encoder {
-    byte[] encode(byte[] bArr) throws EncoderException;
+public interface abstract BinaryEncoder implements Encoder	// class@000087 from classes.dex
+{
+
+    byte[] encode(byte[] p0);
 }

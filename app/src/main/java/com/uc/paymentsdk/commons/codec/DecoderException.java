@@ -1,10 +1,12 @@
-package com.uc.paymentsdk.commons.codec;
+package com.uc.paymentsdk.commons.codec.DecoderException;
+import java.lang.Exception;
+import java.lang.String;
 
-/* loaded from: classes.dex */
-public class DecoderException extends Exception {
-    private static final long serialVersionUID = -1315051953604789788L;
+public class DecoderException extends Exception	// class@00008a from classes.dex
+{
+    private static final long serialVersionUID = 0xedbfff373433f9e4;
 
-    public DecoderException(String paramString) {
-        super(paramString);
+    public void DecoderException(String paramString){
+       super(paramString);
     }
 }

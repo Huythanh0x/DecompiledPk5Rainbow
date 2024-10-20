@@ -1,200 +1,149 @@
-package javax.microedition.lcdui;
-
+package javax.microedition.lcdui.CwaActivity;
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.res.Configuration;
-import android.media.AudioManager;
-import android.os.Bundle;
-import android.os.Process;
-import android.util.Log;
-import android.view.KeyEvent;
-import com.uc.paymentsdk.util.Constants;
-import dalvik.system.VMRuntime;
-import java.util.List;
-import javax.microedition.lcdui.game.GameCanvas;
-import javax.microedition.midlet.MIDlet;
 import javax.microedition.midlet.MIDletManager;
-import main.Constants_H;
+import android.content.Context;
+import dalvik.system.VMRuntime;
+import android.view.Window;
+import java.lang.String;
+import java.lang.Object;
+import android.app.ActivityManager;
+import java.util.List;
+import android.os.Process;
+import java.util.Iterator;
+import android.app.ActivityManager$RunningAppProcessInfo;
+import android.view.KeyEvent;
+import javax.microedition.lcdui.Canvas;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.media.AudioManager;
+import java.lang.System;
+import android.view.View;
+import android.util.Log;
+import javax.microedition.midlet.MIDlet;
+import android.app.AlertDialog$Builder;
+import java.lang.CharSequence;
+import javax.microedition.lcdui.CwaActivity$1;
+import android.content.DialogInterface$OnClickListener;
+import javax.microedition.lcdui.CwaActivity$2;
+import android.app.AlertDialog;
 
-/* loaded from: classes.dex */
-public class CwaActivity extends Activity {
+public class CwaActivity extends Activity	// class@00013f from classes.dex
+{
+    public AudioManager audioManager;
+    private boolean isFullWindow;
+    private MIDletManager jam;
     private static final String LOG_TAG = "CwaActivity";
     private static final int MIN_HEAP_SIZE = 12582912;
-    private static final float TARGET_HEAP_UTILIZATION = 0.75f;
+    private static final float TARGET_HEAP_UTILIZATION = 0.000000;
     private static Context context;
     private static Canvas curCanvas;
     private static CwaActivity cwaActivity;
-    public AudioManager audioManager;
-    private MIDletManager jam = MIDletManager.getInstance();
-    private boolean isFullWindow = false;
 
-    public CwaActivity() {
-        if (cwaActivity == null) {
-            cwaActivity = this;
-        }
+    protected void CwaActivity(){
+       super();
+       this.jam = MIDletManager.getInstance();
+       this.isFullWindow = false;
+       if (CwaActivity.cwaActivity == null) {
+          CwaActivity.cwaActivity = this;
+       }
+       return;
     }
-
-    private void killBackgroundProcess() {
-        ActivityManager activityManager = (ActivityManager) getSystemService("activity");
-        List<ActivityManager.RunningAppProcessInfo> apps = activityManager.getRunningAppProcesses();
-        int mypid = Process.myPid();
-        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : apps) {
-            if (runningAppProcessInfo.pid != mypid && runningAppProcessInfo.importance > 300) {
-                Process.killProcess(runningAppProcessInfo.pid);
-            }
-        }
+    static MIDletManager access$0(CwaActivity p0){
+       return p0.jam;
     }
-
-    public static CwaActivity getInstance() {
-        return cwaActivity;
+    public static Context getContextInstance(){
+       if (CwaActivity.context == null) {
+          CwaActivity.context = CwaActivity.cwaActivity.getApplicationContext();
+       }
+       return CwaActivity.context;
     }
-
-    public static Context getContextInstance() {
-        if (context == null) {
-            context = cwaActivity.getApplicationContext();
-        }
-        return context;
+    public static CwaActivity getInstance(){
+       return CwaActivity.cwaActivity;
     }
-
-    public void setCanvas(Canvas canvas) {
-        curCanvas = canvas;
+    private void initActivity(){
+       VMRuntime.getRuntime().setMinimumHeapSize(0xc00000);
+       VMRuntime.getRuntime().setTargetHeapUtilization(0.75f);
+       this.getWindow().setFlags(128, 128);
     }
-
-    public Canvas getCanvas() {
-        return curCanvas;
+    private void killBackgroundProcess(){
+       List apps = this.getSystemService("activity").getRunningAppProcesses();
+       int mypid = Process.myPid();
+       Iterator iterator = apps.iterator();
+       while (iterator.hasNext()) {
+          ActivityManager$RunningAppProcessInfo runningAppPr = iterator.next();
+          if (runningAppPr.pid != mypid && runningAppPr.importance > 300) {
+             Process.killProcess(runningAppPr.pid);
+          }
+       }
+       return;
     }
-
-    private void setFullScreen() {
-        getWindow().setFlags(GameCanvas.GAME_B_PRESSED, GameCanvas.GAME_B_PRESSED);
-        requestWindowFeature(1);
+    private void setFullScreen(){
+       this.getWindow().setFlags(1024, 1024);
+       this.requestWindowFeature(1);
     }
-
-    private void initActivity() {
-        VMRuntime.getRuntime().setMinimumHeapSize(12582912L);
-        VMRuntime.getRuntime().setTargetHeapUtilization(TARGET_HEAP_UTILIZATION);
-        getWindow().setFlags(128, 128);
+    public boolean dispatchKeyEvent(KeyEvent event){
+       boolean b;
+       switch (event.getKeyCode()){
+           case 27:
+           case 'P':
+             b = true;
+             break;
+           default:
+             b = super.dispatchKeyEvent(event);
+       }
+       return b;
     }
-
-    @Override // android.app.Activity, android.content.ComponentCallbacks
-    public void onLowMemory() {
-        killBackgroundProcess();
-        super.onLowMemory();
+    public Canvas getCanvas(){
+       return CwaActivity.curCanvas;
     }
-
-    public void setFullWindow(boolean mode) {
-        this.isFullWindow = mode;
+    public void onConfigurationChanged(Configuration newConfig){
+       super.onConfigurationChanged(newConfig);
     }
-
-    @Override // android.app.Activity, android.content.ComponentCallbacks
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
+    public void onCreate(Bundle savedInstanceState){
+       super.onCreate(savedInstanceState);
+       this.killBackgroundProcess();
+       this.initActivity();
+       this.audioManager = this.getSystemService("audio");
+       if (this.isFullWindow != null) {
+          this.setFullScreen();
+       }
+       return;
     }
-
-    @Override // android.app.Activity
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        killBackgroundProcess();
-        initActivity();
-        this.audioManager = (AudioManager) getSystemService("audio");
-        if (this.isFullWindow) {
-            setFullScreen();
-        }
+    protected void onDestroy(){
+       super.onDestroy();
+       System.exit(0);
+       Process.killProcess(Process.myPid());
     }
-
-    public void setMIDlet(MIDlet midlet) {
-        this.jam.setMIDlet(midlet);
+    public void onLowMemory(){
+       this.killBackgroundProcess();
+       super.onLowMemory();
     }
-
-    public void setContentView() {
-        if (curCanvas != null) {
-            getInstance().setContentView(curCanvas);
-        } else {
-            Log.e(LOG_TAG, "current canvas is null");
-        }
+    protected void onPause(){
+       super.onPause();
+       this.jam.notifyPaused();
     }
-
-    @Override // android.app.Activity
-    protected void onPause() {
-        super.onPause();
-        this.jam.notifyPaused();
+    protected void onResume(){
+       super.onResume();
+       this.jam.notifyResumed();
     }
-
-    @Override // android.app.Activity
-    protected void onResume() {
-        super.onResume();
-        this.jam.notifyResumed();
+    public void setCanvas(Canvas canvas){
+       CwaActivity.curCanvas = canvas;
     }
-
-    @Override // android.app.Activity
-    public void onDestroy() {
-        super.onDestroy();
-        System.exit(0);
-        Process.killProcess(Process.myPid());
+    public void setContentView(){
+       if (CwaActivity.curCanvas != null) {
+          CwaActivity.getInstance().setContentView(CwaActivity.curCanvas);
+       }else {
+          Log.e("CwaActivity", "current canvas is null");
+       }
+       return;
     }
-
-    @Override // android.app.Activity, android.view.Window.Callback
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        switch (event.getKeyCode()) {
-            case 27:
-            case Constants.CUSTOM_TEXTVIEW_HEIGHT_HDPI /* 80 */:
-                return true;
-            default:
-                return super.dispatchKeyEvent(event);
-        }
+    public void setFullWindow(boolean mode){
+       this.isFullWindow = mode;
     }
-
-    public void showExitDialog() {
-        new AlertDialog.Builder(this).setMessage("确认退出？").setPositiveButton(Constants_H.PAUSE_TXT_22, new DialogInterface.OnClickListener() { // from class: javax.microedition.lcdui.CwaActivity.1
-            AnonymousClass1() {
-            }
-
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface dialog, int which) {
-                if (which == -1) {
-                    CwaActivity.this.jam.notifyDestroyed();
-                    CwaActivity.this.jam.notifyExit();
-                }
-            }
-        }).setNegativeButton(Constants_H.PAUSE_TXT_23, new DialogInterface.OnClickListener() { // from class: javax.microedition.lcdui.CwaActivity.2
-            AnonymousClass2() {
-            }
-
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                CwaActivity.this.jam.notifyResumed();
-            }
-        }).show();
+    protected void setMIDlet(MIDlet midlet){
+       this.jam.setMIDlet(midlet);
     }
-
-    /* renamed from: javax.microedition.lcdui.CwaActivity$1 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass1 implements DialogInterface.OnClickListener {
-        AnonymousClass1() {
-        }
-
-        @Override // android.content.DialogInterface.OnClickListener
-        public void onClick(DialogInterface dialog, int which) {
-            if (which == -1) {
-                CwaActivity.this.jam.notifyDestroyed();
-                CwaActivity.this.jam.notifyExit();
-            }
-        }
-    }
-
-    /* renamed from: javax.microedition.lcdui.CwaActivity$2 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass2 implements DialogInterface.OnClickListener {
-        AnonymousClass2() {
-        }
-
-        @Override // android.content.DialogInterface.OnClickListener
-        public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
-            CwaActivity.this.jam.notifyResumed();
-        }
+    public void showExitDialog(){
+       new AlertDialog$Builder(this).setMessage("\x78\x02\x8b\x02\x90\x02\x51\x02\xff\x02").setPositiveButton("\x66\x02", new CwaActivity$1(this)).setNegativeButton("\x54\x02", new CwaActivity$2(this)).show();
     }
 }

@@ -1,7 +1,10 @@
-package javax.microedition.rms;
-
+package javax.microedition.rms.App;
 import android.app.Application;
 
-/* loaded from: classes.dex */
-public class App extends Application {
+public class App extends Application	// class@000153 from classes.dex
+{
+
+    public void App(){
+       super();
+    }
 }

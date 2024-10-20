@@ -1,13 +1,15 @@
-package javax.microedition.rms;
+package javax.microedition.rms.RecordStoreNotOpenException;
+import javax.microedition.rms.RecordStoreException;
+import java.lang.String;
 
-/* loaded from: classes.dex */
-public class RecordStoreNotOpenException extends RecordStoreException {
-    private static final long serialVersionUID = 1;
+public class RecordStoreNotOpenException extends RecordStoreException	// class@00015e from classes.dex
+{
+    private static final long serialVersionUID = 0x1;
 
-    public RecordStoreNotOpenException(String message) {
-        super(message);
+    public void RecordStoreNotOpenException(){
+       super();
     }
-
-    public RecordStoreNotOpenException() {
+    public void RecordStoreNotOpenException(String message){
+       super(message);
     }
 }

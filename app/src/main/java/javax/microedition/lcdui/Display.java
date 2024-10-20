@@ -1,24 +1,24 @@
-package javax.microedition.lcdui;
-
+package javax.microedition.lcdui.Display;
+import java.lang.Object;
+import javax.microedition.lcdui.Canvas;
 import javax.microedition.midlet.MIDlet;
+import javax.microedition.lcdui.CwaActivity;
 
-/* loaded from: classes.dex */
-public class Display {
+public class Display	// class@000140 from classes.dex
+{
     private static Canvas canvas;
 
-    private Display() {
+    private void Display(){
+       super();
     }
-
-    public static Display getDisplay(MIDlet midlet) {
-        return new Display();
+    public static Canvas getCanvas(){
+       return Display.canvas;
     }
-
-    public void setCurrent(Canvas gCanvas) {
-        CwaActivity.getInstance().setCanvas(gCanvas);
-        canvas = gCanvas;
+    public static Display getDisplay(MIDlet midlet){
+       return new Display();
     }
-
-    public static Canvas getCanvas() {
-        return canvas;
+    public void setCurrent(Canvas gCanvas){
+       CwaActivity.getInstance().setCanvas(gCanvas);
+       Display.canvas = gCanvas;
     }
 }

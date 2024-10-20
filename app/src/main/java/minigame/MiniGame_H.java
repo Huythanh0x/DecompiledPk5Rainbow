@@ -1,14 +1,11 @@
-package minigame;
+package minigame.MiniGame_H;
 
-/* loaded from: classes.dex */
-public interface MiniGame_H {
-    void go(int i);
+public interface abstract MiniGame_H	// class@00016e from classes.dex
+{
 
-    void go(int i, int i2);
-
+    void go(int p0);
+    void go(int p0,int p1);
     boolean key();
-
     void patin();
-
     void run();
 }

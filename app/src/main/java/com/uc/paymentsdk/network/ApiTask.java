@@ -1,134 +1,143 @@
-package com.uc.paymentsdk.network;
-
-import android.app.Activity;
-import android.content.Context;
+package com.uc.paymentsdk.network.ApiTask;
 import android.os.AsyncTask;
-import com.uc.paymentsdk.util.Constants;
-import com.uc.paymentsdk.util.Utils;
-import java.net.ConnectException;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
+import android.content.Context;
+import com.uc.paymentsdk.network.ApiTask$TaskHandler;
 import java.util.HashMap;
+import java.lang.String;
+import com.uc.paymentsdk.network.HttpClientFactory;
+import com.uc.paymentsdk.network.AndroidHttpClient;
+import java.lang.Object;
+import java.lang.Void;
+import com.uc.paymentsdk.util.Constants;
+import org.apache.http.client.methods.HttpPost;
+import com.uc.paymentsdk.util.Utils;
+import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ByteArrayEntity;
+import java.lang.StringBuilder;
+import org.apache.http.StatusLine;
+import java.lang.Integer;
+import android.app.Activity;
+import java.lang.Exception;
 
-/* loaded from: classes.dex */
-public class ApiTask extends AsyncTask<Void, Void, Object> {
-    private static final String TAG = "pay";
+public class ApiTask extends AsyncTask	// class@0000a0 from classes.dex
+{
     private String httpmethod;
-    private AndroidHttpClient mClient = HttpClientFactory.get().getSDKHttpClient(null);
+    private AndroidHttpClient mClient;
     private Context mContext;
-    private TaskHandler mHandler;
-    private HashMap<String, Object> mParameter;
+    private ApiTask$TaskHandler mHandler;
+    private HashMap mParameter;
     private int mReuqestAction;
+    private static final String TAG = "pay";
 
-    /* loaded from: classes.dex */
-    public interface TaskHandler {
-        void onError(int i, int i2);
-
-        Object onPreHandle(int i, HttpResponse httpResponse);
-
-        void onSuccess(int i, Object obj);
+    void ApiTask(Context paramContext,int paramInt,ApiTask$TaskHandler paramTaskHandler,HashMap paramHashMap,String httpMethod){
+       super();
+       this.mContext = paramContext;
+       this.mReuqestAction = paramInt;
+       this.mHandler = paramTaskHandler;
+       this.mParameter = paramHashMap;
+       this.mClient = HttpClientFactory.get().getSDKHttpClient(null);
+       this.httpmethod = httpMethod;
     }
-
-    public ApiTask(Context paramContext, int paramInt, TaskHandler paramTaskHandler, HashMap<String, Object> paramHashMap, String httpMethod) {
-        this.mContext = paramContext;
-        this.mReuqestAction = paramInt;
-        this.mHandler = paramTaskHandler;
-        this.mParameter = paramHashMap;
-        this.httpmethod = httpMethod;
+    protected Object doInBackground(Object[] p0){
+       return this.doInBackground(p0);
     }
-
-    @Override // android.os.AsyncTask
-    public Object doInBackground(Void[] paramArrayOfVoid) {
-        HttpResponse localHttpResponse;
-        try {
-            String requestUrl = Constants.API_URLS[this.mReuqestAction];
-            HttpPost localHttpPost = null;
-            HttpGet localHttpGet = null;
-            if (this.httpmethod.equals(Constants.POST)) {
-                localHttpPost = new HttpPost(requestUrl);
-                try {
-                    localHttpPost.setEntity(new ByteArrayEntity(Utils.getQueryString(this.mParameter).getBytes("UTF-8")));
-                } catch (ArrayIndexOutOfBoundsException e) {
+    protected Object doInBackground(Void[] paramArrayOfVoid){
+       Integer integer;
+       String querystr;
+       HttpResponse localObject2;
+       int i = -1;
+       try{
+          String requestUrl = Constants.API_URLS[this.mReuqestAction];
+          HttpPost localHttpPost = null;
+          HttpGet localHttpGet = null;
+          if (this.httpmethod.equals("post")) {
+             localHttpPost = new HttpPost(requestUrl);
+             querystr = Utils.getQueryString(this.mParameter);
+             localHttpPost.setEntity(new ByteArrayEntity(querystr.getBytes("UTF-8")));
+          }else {
+             querystr = Utils.getQueryString(this.mParameter);
+             String str = (requestUrl.indexOf("?") > 0)? String.valueOf(requestUrl).append("&").append(querystr).toString(): String.valueOf(requestUrl).append("?").append(querystr).toString();
+             localHttpGet = new HttpGet(str);
+             HttpResponse localHttpResponse = this.mClient.execute(localHttpGet);
+             try{
+                if (localHttpResponse == null) {
+                   integer = null;
+                }else {
+                   int j = localHttpResponse.getStatusLine().getStatusCode();
+                   if (200 != j) {
+                      integer = Integer.valueOf(j);
+                   }else if(this.mHandler != null){
+                      if (this.mContext instanceof Activity && this.mContext.isFinishing()) {
+                         localObject2 = localHttpResponse;
+                         if (localHttpPost != null) {
+                            localHttpPost.abort();
+                         }else if(localHttpGet != null){
+                            localHttpGet.abort();
+                         }
+                         if (localHttpResponse != null) {
+                            localHttpResponse.getEntity().consumeContent();
+                         }
+                         integer = localObject2;
+                      }else {
+                         Object localObject21 = this.mHandler.onPreHandle(this.mReuqestAction, localHttpResponse);
+                         if (localHttpPost != null) {
+                            localHttpPost.abort();
+                         }else if(localHttpGet != null){
+                            localHttpGet.abort();
+                         }
+                         if (localHttpResponse != null) {
+                            localHttpResponse.getEntity().consumeContent();
+                         }
+                         integer = localObject2;
+                      }
+                   }else {
+                      localObject2 = localHttpResponse;
+                      if (localHttpPost != null) {
+                         localHttpPost.abort();
+                      }else if(localHttpGet != null){
+                         localHttpGet.abort();
+                      }
+                      if (localHttpResponse != null) {
+                         localHttpResponse.getEntity().consumeContent();
+                      }
+                      integer = localObject2;
+                   }
                 }
-                localHttpPost.addHeader("Content-Type", "application/x-www-form-urlencoded");
-                localHttpResponse = this.mClient.execute(localHttpPost);
-            } else {
-                String querystr = Utils.getQueryString(this.mParameter);
-                localHttpGet = new HttpGet(requestUrl.indexOf("?") > 0 ? String.valueOf(requestUrl) + "&" + querystr : String.valueOf(requestUrl) + "?" + querystr);
-                localHttpResponse = this.mClient.execute(localHttpGet);
-            }
-            if (localHttpResponse == null) {
-                return null;
-            }
-            int j = localHttpResponse.getStatusLine().getStatusCode();
-            if (200 != j) {
-                return Integer.valueOf(j);
-            }
-            try {
-                if (this.mHandler == null) {
-                    HttpResponse localObject2 = localHttpResponse;
-                    if (localHttpPost != null) {
-                        localHttpPost.abort();
-                    } else if (localHttpGet != null) {
-                        localHttpGet.abort();
-                    }
-                    if (localHttpResponse != null) {
-                        localHttpResponse.getEntity().consumeContent();
-                    }
-                    return localObject2;
-                }
-                if ((this.mContext instanceof Activity) && ((Activity) this.mContext).isFinishing()) {
-                    HttpResponse localObject22 = localHttpResponse;
-                    return localObject22;
-                }
-                Object localObject23 = this.mHandler.onPreHandle(this.mReuqestAction, localHttpResponse);
-                if (localHttpPost != null) {
-                    localHttpPost.abort();
-                } else if (localHttpGet != null) {
-                    localHttpGet.abort();
-                }
-                if (localHttpResponse != null) {
-                    localHttpResponse.getEntity().consumeContent();
-                }
-                return localObject23;
-            } finally {
-                if (localHttpPost != null) {
-                    localHttpPost.abort();
-                } else if (localHttpGet != null) {
-                    localHttpGet.abort();
-                }
-                if (localHttpResponse != null) {
-                    localHttpResponse.getEntity().consumeContent();
-                }
-            }
-        } catch (ConnectException e2) {
-            return -1;
-        } catch (SocketException e3) {
-            return -1;
-        } catch (SocketTimeoutException e4) {
-            return -1;
-        } catch (Exception localException) {
-            localException.printStackTrace();
-            return -3;
-        }
+             }catch( e0){
+             }catch(java.net.SocketTimeoutException e11){
+                SocketTimeoutException localSocketTimeoutException = e11;
+                integer = Integer.valueOf(i);
+             }catch(java.net.SocketException e11){
+                SocketException localSocketException = e11;
+                integer = Integer.valueOf(i);
+             }
+          }
+          return integer;
+       }catch(java.net.ConnectException e11){
+          ConnectException localConnectException = e11;
+          integer = Integer.valueOf(i);
+       }catch(java.net.SocketTimeoutException e11){
+       }catch(java.net.SocketException e11){
+       }catch(java.lang.Exception e11){
+          Exception localException = e11;
+          localException.printStackTrace();
+          integer = Integer.valueOf(-3);
+       }catch(java.lang.ArrayIndexOutOfBoundsException e11){
+       }
     }
-
-    @Override // android.os.AsyncTask
-    protected void onPostExecute(Object paramObject) {
-        if (this.mHandler != null) {
-            if (!(this.mContext instanceof Activity) || !((Activity) this.mContext).isFinishing()) {
-                if (paramObject == null) {
-                    this.mHandler.onError(this.mReuqestAction, Constants.ERROR_CODE_UNKNOWN);
-                } else if (paramObject instanceof Integer) {
-                    this.mHandler.onError(this.mReuqestAction, ((Integer) paramObject).intValue());
-                } else {
-                    this.mHandler.onSuccess(this.mReuqestAction, paramObject);
-                }
-            }
-        }
+    protected void onPostExecute(Object paramObject){
+       if (this.mHandler != null && (!this.mContext instanceof Activity || !this.mContext.isFinishing())) {
+          if (paramObject == null) {
+             this.mHandler.onError(this.mReuqestAction, 500);
+          }else if(paramObject instanceof Integer){
+             this.mHandler.onError(this.mReuqestAction, paramObject.intValue());
+          }else {
+             this.mHandler.onSuccess(this.mReuqestAction, paramObject);
+          }
+       }
+       return;
     }
 }

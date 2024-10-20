@@ -1,6 +1,8 @@
-package com.uc.paymentsdk.commons.codec;
+package com.uc.paymentsdk.commons.codec.Encoder;
+import java.lang.Object;
 
-/* loaded from: classes.dex */
-public interface Encoder {
-    Object encode(Object obj) throws EncoderException;
+public interface abstract Encoder	// class@00008c from classes.dex
+{
+
+    Object encode(Object p0);
 }

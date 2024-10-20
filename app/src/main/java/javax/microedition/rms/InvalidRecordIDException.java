@@ -1,13 +1,15 @@
-package javax.microedition.rms;
+package javax.microedition.rms.InvalidRecordIDException;
+import javax.microedition.rms.RecordStoreException;
+import java.lang.String;
 
-/* loaded from: classes.dex */
-public class InvalidRecordIDException extends RecordStoreException {
-    private static final long serialVersionUID = 1;
+public class InvalidRecordIDException extends RecordStoreException	// class@000155 from classes.dex
+{
+    private static final long serialVersionUID = 0x1;
 
-    public InvalidRecordIDException(String message) {
-        super(message);
+    public void InvalidRecordIDException(){
+       super();
     }
-
-    public InvalidRecordIDException() {
+    public void InvalidRecordIDException(String message){
+       super(message);
     }
 }

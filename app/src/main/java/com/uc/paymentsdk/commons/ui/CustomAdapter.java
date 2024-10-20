@@ -1,57 +1,53 @@
-package com.uc.paymentsdk.commons.ui;
-
+package com.uc.paymentsdk.commons.ui.CustomAdapter;
+import android.widget.BaseAdapter;
 import android.content.Context;
+import com.uc.paymentsdk.model.IType;
+import java.lang.String;
 import android.graphics.drawable.Drawable;
-import android.text.Html;
+import com.uc.paymentsdk.util.Utils;
+import java.lang.Object;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.uc.paymentsdk.model.IType;
-import com.uc.paymentsdk.util.Constants;
-import com.uc.paymentsdk.util.Utils;
+import com.uc.paymentsdk.commons.ui.CustomTextView;
+import android.text.Spanned;
+import android.text.Html;
+import java.lang.CharSequence;
 
-/* loaded from: classes.dex */
-public class CustomAdapter extends BaseAdapter {
-    private static Drawable sIcon;
+public class CustomAdapter extends BaseAdapter	// class@000090 from classes.dex
+{
     private Context mContext;
     private IType[] mItems;
+    private static Drawable sIcon;
 
-    public CustomAdapter(Context paramContext, IType[] paramArrayOfIType) {
-        this.mContext = paramContext;
-        this.mItems = paramArrayOfIType;
-        if (sIcon == null) {
-            sIcon = Utils.getDrawableFromFile(Constants.RES_LIST_ITEM_MORE_ICON);
-        }
+    public void CustomAdapter(Context paramContext,IType[] paramArrayOfIType){
+       super();
+       this.mContext = paramContext;
+       this.mItems = paramArrayOfIType;
+       if (CustomAdapter.sIcon == null) {
+          CustomAdapter.sIcon = Utils.getDrawableFromFile("more.png");
+       }
+       return;
     }
-
-    @Override // android.widget.Adapter
-    public View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
-        CustomTextView localCustomTextView = new CustomTextView(this.mContext, paramInt);
-        localCustomTextView.setTextColor(-12303292);
-        localCustomTextView.setText(Html.fromHtml(this.mItems[paramInt].getDesc()));
-        localCustomTextView.setCompoundDrawablePadding(6);
-        localCustomTextView.setCompoundDrawablesWithIntrinsicBounds(this.mItems[paramInt].getIcon(), (Drawable) null, sIcon, (Drawable) null);
-        return localCustomTextView;
+    public int getCount(){
+       int i = (this.mItems == null)? 0: this.mItems.length;
+       return i;
     }
-
-    @Override // android.widget.Adapter
-    public int getCount() {
-        if (this.mItems == null) {
-            return 0;
-        }
-        return this.mItems.length;
+    public IType getItem(int paramInt){
+       IType iType = (this.mItems == null)? null: this.mItems[paramInt];
+       return iType;
     }
-
-    @Override // android.widget.Adapter
-    public IType getItem(int paramInt) {
-        if (this.mItems == null) {
-            return null;
-        }
-        return this.mItems[paramInt];
+    public Object getItem(int p0){
+       return this.getItem(p0);
     }
-
-    @Override // android.widget.Adapter
-    public long getItemId(int paramInt) {
-        return paramInt;
+    public long getItemId(int paramInt){
+       return (long)paramInt;
+    }
+    public View getView(int paramInt,View paramView,ViewGroup paramViewGroup){
+       CustomTextView localCustomTextView = new CustomTextView(this.mContext, paramInt);
+       localCustomTextView.setTextColor(-12303292);
+       localCustomTextView.setText(Html.fromHtml(this.mItems[paramInt].getDesc()));
+       localCustomTextView.setCompoundDrawablePadding(6);
+       localCustomTextView.setCompoundDrawablesWithIntrinsicBounds(this.mItems[paramInt].getIcon(), null, CustomAdapter.sIcon, null);
+       return localCustomTextView;
     }
 }

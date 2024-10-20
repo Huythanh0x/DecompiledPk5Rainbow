@@ -1,5 +1,10 @@
-package javax.microedition.lcdui.game;
+package javax.microedition.lcdui.game.Layer;
+import java.lang.Object;
 
-/* loaded from: classes.dex */
-public abstract class Layer {
+public abstract class Layer	// class@000145 from classes.dex
+{
+
+    public void Layer(){
+       super();
+    }
 }

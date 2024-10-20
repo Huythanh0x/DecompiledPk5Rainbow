@@ -4,217 +4,225 @@ import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.util.Log;
 import com.android.Util.AndroidUtil;
-import com.uc.paymentsdk.util.Constants;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Vector;
 import javax.microedition.media.control.ToneControl;
 import javax.microedition.media.control.VolumeControl;
 
-/* loaded from: classes.dex */
 public class Player implements MediaPlayer.OnCompletionListener {
-    public static final int CLOSED = 0;
-    public static final int PREFETCHED = 300;
-    public static final int REALIZED = 200;
-    public static final int STARTED = 400;
-    public static final long TIME_UNKNOWN = -1;
-    public static final int UNREALIZED = 100;
-    private String dateSource;
-    private int loopCount;
-    private int playedCount;
-    private String type;
-    private int state = 100;
-    private MediaPlayer mp = new MediaPlayer();
-    private Vector<PlayerListener> playerListeners = new Vector<>();
-
-    public Player() {
-        this.mp.setOnCompletionListener(this);
-        this.mp.setLooping(false);
-        this.dateSource = null;
-        this.type = null;
-    }
-
-    public void setDatasource(String dataSource) {
-        this.dateSource = dataSource;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Control getControl(String controlType) {
-        if (controlType.indexOf("VolumeControl") != -1) {
-            VolumeControl vc = new VolumeControl();
-            return vc;
-        }
-        if (controlType.indexOf("ToneControl") != -1) {
-            ToneControl tc = new ToneControl();
-            return tc;
-        }
-        Log.e("ERROR", "PLAYER IS ERROR");
-        return null;
-    }
-
-    public void realize() throws MediaException {
-        if (this.state < 200) {
-            try {
-                if (Manager.getIsLocator()) {
-                    this.mp.setDataSource(this.dateSource);
-                } else {
-                    AssetFileDescriptor afd = AndroidUtil.am.openFd(this.dateSource);
-                    this.mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-                }
-                this.state = REALIZED;
-            } catch (IOException e) {
-                throw new MediaException();
-            }
-        }
-    }
-
-    public void prefetch() throws MediaException {
-        if (this.state < 300) {
-            if (this.state < 200) {
-                realize();
-            }
-            try {
-                this.mp.prepare();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (IllegalStateException e2) {
-                e2.printStackTrace();
-            }
-            this.state = PREFETCHED;
-        }
-    }
-
-    public void start() throws MediaException {
-        if (this.state < 400) {
-            if (this.state < 200) {
-                realize();
-            }
-            if (this.state < 300) {
-                prefetch();
-            }
-            if (this.state == 200 || this.state == 300) {
-                this.playedCount = 0;
-                try {
-                    this.mp.start();
-                    onEvent(PlayerListener.STARTED, null);
-                    this.state = STARTED;
-                } catch (IllegalStateException e) {
-                    onEvent("error", e.getMessage());
-                    throw new MediaException();
-                }
-            }
-        }
-    }
-
-    public void stop() throws MediaException {
-        if (this.state >= 400) {
-            try {
-                this.mp.pause();
-                onEvent(PlayerListener.STOPPED, null);
-                this.state = PREFETCHED;
-            } catch (IllegalStateException e) {
-                onEvent("error", e.getMessage());
-                throw new MediaException();
-            }
-        }
-    }
-
-    public void deallocate() {
-    }
-
-    public void close() {
-        if (this.mp != null) {
-            if (this.state == 400) {
-                onEvent(PlayerListener.STOPPED, null);
-                this.mp.stop();
-            }
-            this.mp.release();
-            onEvent(PlayerListener.CLOSED, null);
-            this.state = 0;
-        }
-    }
-
-    public long setMediaTime(long now) throws MediaException {
-        int mill_now = ((int) now) / Constants.PAYMENT_MAX;
-        if (mill_now < 0) {
-            mill_now = 0;
-            now = 0;
-        } else if (mill_now > this.mp.getDuration()) {
-            mill_now = this.mp.getDuration();
-            now = this.mp.getDuration() * Constants.PAYMENT_MAX;
-        }
-        this.mp.seekTo(mill_now);
-        return now;
-    }
-
-    public long getMediaTime() {
-        long mediaTime = this.mp.getCurrentPosition() * Constants.PAYMENT_MAX;
-        if (mediaTime <= 0) {
-            return -1L;
-        }
-        return mediaTime;
-    }
-
-    public int getState() {
-        return this.state;
-    }
-
-    public long getDuration() {
-        long duration = this.mp.getDuration() * Constants.PAYMENT_MAX;
-        if (duration <= 0) {
-            return -1L;
-        }
-        return duration;
-    }
-
-    public String getContentType() {
-        return this.type;
-    }
-
-    public void setLoopCount(int count) throws IllegalArgumentException, IllegalStateException {
-        if (this.state == 400) {
-            throw new IllegalStateException("player is close");
-        }
-        if (count == 0) {
-            throw new IllegalArgumentException("loopcount is 0");
-        }
-        if (count == -1 || count > 1) {
-            this.mp.setLooping(true);
-            this.loopCount = count;
+  public static final int CLOSED = 0;
+  
+  public static final int PREFETCHED = 300;
+  
+  public static final int REALIZED = 200;
+  
+  public static final int STARTED = 400;
+  
+  public static final long TIME_UNKNOWN = -1L;
+  
+  public static final int UNREALIZED = 100;
+  
+  private String dateSource;
+  
+  private int loopCount;
+  
+  private MediaPlayer mp = new MediaPlayer();
+  
+  private int playedCount;
+  
+  private Vector<PlayerListener> playerListeners = new Vector<PlayerListener>();
+  
+  private int state = 100;
+  
+  private String type;
+  
+  public Player() {
+    this.mp.setOnCompletionListener(this);
+    this.mp.setLooping(false);
+    this.dateSource = null;
+    this.type = null;
+  }
+  
+  private final void onEvent(String paramString, Object paramObject) {
+    Iterator<PlayerListener> iterator = this.playerListeners.iterator();
+    while (true) {
+      if (!iterator.hasNext())
+        return; 
+      ((PlayerListener)iterator.next()).playerUpdate(this, paramString, paramObject);
+    } 
+  }
+  
+  public void addPlayerListener(PlayerListener paramPlayerListener) {
+    if (!this.playerListeners.contains(paramPlayerListener))
+      this.playerListeners.add(paramPlayerListener); 
+  }
+  
+  public void close() {
+    if (this.mp != null) {
+      if (this.state == 400) {
+        onEvent("stopped", null);
+        this.mp.stop();
+      } 
+      this.mp.release();
+      onEvent("closed", null);
+      this.state = 0;
+    } 
+  }
+  
+  public void deallocate() {}
+  
+  public String getContentType() {
+    return this.type;
+  }
+  
+  public Control getControl(String paramString) {
+    if (paramString.indexOf("VolumeControl") != -1)
+      return (Control)new VolumeControl(); 
+    if (paramString.indexOf("ToneControl") != -1)
+      return (Control)new ToneControl(); 
+    Log.e("ERROR", "PLAYER IS ERROR");
+    return null;
+  }
+  
+  public long getDuration() {
+    long l = (this.mp.getDuration() * 1000);
+    if (l <= 0L)
+      l = -1L; 
+    return l;
+  }
+  
+  public long getMediaTime() {
+    long l = (this.mp.getCurrentPosition() * 1000);
+    if (l <= 0L)
+      l = -1L; 
+    return l;
+  }
+  
+  public int getState() {
+    return this.state;
+  }
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer) {
+    if (paramMediaPlayer == this.mp) {
+      this.playedCount++;
+      if (this.playedCount >= this.loopCount && this.loopCount != -1) {
+        paramMediaPlayer.setLooping(false);
+        onEvent("endOfMedia", null);
+      } 
+    } 
+  }
+  
+  public void prefetch() throws MediaException {
+    if (this.state < 300) {
+      if (this.state < 200)
+        realize(); 
+      try {
+        this.mp.prepare();
+      } catch (IllegalStateException illegalStateException) {
+        illegalStateException.printStackTrace();
+      } catch (IOException iOException) {
+        iOException.printStackTrace();
+      } 
+      this.state = 300;
+    } 
+  }
+  
+  public void realize() throws MediaException {
+    if (this.state < 200)
+      try {
+        if (Manager.getIsLocator()) {
+          this.mp.setDataSource(this.dateSource);
         } else {
-            Log.e("Player", "Loop count < -1");
-        }
-    }
-
-    public void addPlayerListener(PlayerListener playerListener) {
-        if (!this.playerListeners.contains(playerListener)) {
-            this.playerListeners.add(playerListener);
-        }
-    }
-
-    public void removePlayerListener(PlayerListener playerListener) {
-        this.playerListeners.remove(playerListener);
-    }
-
-    @Override // android.media.MediaPlayer.OnCompletionListener
-    public void onCompletion(MediaPlayer mp) {
-        if (mp == this.mp) {
-            this.playedCount++;
-            if (this.playedCount >= this.loopCount && this.loopCount != -1) {
-                mp.setLooping(false);
-                onEvent(PlayerListener.END_OF_MEDIA, null);
-            }
-        }
-    }
-
-    private final void onEvent(String event, Object eventData) {
-        Iterator<PlayerListener> it = this.playerListeners.iterator();
-        while (it.hasNext()) {
-            PlayerListener playerListener = it.next();
-            playerListener.playerUpdate(this, event, eventData);
-        }
-    }
+          AssetFileDescriptor assetFileDescriptor = AndroidUtil.am.openFd(this.dateSource);
+          this.mp.setDataSource(assetFileDescriptor.getFileDescriptor(), assetFileDescriptor.getStartOffset(), assetFileDescriptor.getLength());
+        } 
+        this.state = 200;
+        return;
+      } catch (IOException iOException) {
+        throw new MediaException();
+      }  
+  }
+  
+  public void removePlayerListener(PlayerListener paramPlayerListener) {
+    this.playerListeners.remove(paramPlayerListener);
+  }
+  
+  public void setDatasource(String paramString) {
+    this.dateSource = paramString;
+  }
+  
+  public void setLoopCount(int paramInt) throws IllegalArgumentException, IllegalStateException {
+    if (this.state == 400)
+      throw new IllegalStateException("player is close"); 
+    if (paramInt == 0)
+      throw new IllegalArgumentException("loopcount is 0"); 
+    if (paramInt == -1 || paramInt > 1) {
+      this.mp.setLooping(true);
+      this.loopCount = paramInt;
+      return;
+    } 
+    Log.e("Player", "Loop count < -1");
+  }
+  
+  public long setMediaTime(long paramLong) throws MediaException {
+    int j = (int)paramLong / 1000;
+    if (j < 0) {
+      boolean bool = false;
+      paramLong = 0L;
+      this.mp.seekTo(bool);
+      return paramLong;
+    } 
+    int i = j;
+    if (j > this.mp.getDuration()) {
+      i = this.mp.getDuration();
+      paramLong = (this.mp.getDuration() * 1000);
+    } 
+    this.mp.seekTo(i);
+    return paramLong;
+  }
+  
+  public void setType(String paramString) {
+    this.type = paramString;
+  }
+  
+  public void start() throws MediaException {
+    if (this.state < 400) {
+      if (this.state < 200)
+        realize(); 
+      if (this.state < 300)
+        prefetch(); 
+      if (this.state == 200 || this.state == 300) {
+        this.playedCount = 0;
+        try {
+          this.mp.start();
+          onEvent("started", null);
+          this.state = 400;
+          return;
+        } catch (IllegalStateException illegalStateException) {
+          onEvent("error", illegalStateException.getMessage());
+          throw new MediaException();
+        } 
+      } 
+    } 
+  }
+  
+  public void stop() throws MediaException {
+    if (this.state >= 400)
+      try {
+        this.mp.pause();
+        onEvent("stopped", null);
+        this.state = 300;
+        return;
+      } catch (IllegalStateException illegalStateException) {
+        onEvent("error", illegalStateException.getMessage());
+        throw new MediaException();
+      }  
+  }
 }
+
+
+/* Location:              /Users/thanh0x/DevTools0x/Rb2.0vip-dex2jar.jar!/javax/microedition/media/Player.class
+ * Java compiler version: 6 (50.0)
+ * JD-Core Version:       1.1.3
+ */

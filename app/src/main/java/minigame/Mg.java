@@ -2,62 +2,65 @@ package minigame;
 
 import main.GameRun;
 
-/* loaded from: classes.dex */
 public class Mg {
-    private static Mg mgListener;
-    private MiniGame_H mg;
-    public byte type;
-
-    public Mg() {
-        mgListener = this;
-    }
-
-    public static Mg i() {
-        if (mgListener == null) {
-            mgListener = new Mg();
-        }
-        return mgListener;
-    }
-
-    private void setGame(GameRun gr, int i) {
-        this.mg = null;
-        this.type = (byte) i;
-        switch (i) {
-            case 0:
-                this.mg = new Racing(gr);
-                return;
-            case 1:
-                this.mg = new Bearer(gr);
-                return;
-            case 2:
-                this.mg = new Cards(gr);
-                return;
-            case 3:
-                this.mg = new Guess(gr);
-                return;
-            default:
-                return;
-        }
-    }
-
-    public void go(GameRun gr, int i, int mode, int lv) {
-        GameRun.run_state = 69;
-        setGame(gr, i);
-        this.mg.go(mode, lv);
-    }
-
-    public void paint() {
-        this.mg.patin();
-    }
-
-    public void run() {
-        this.mg.run();
-    }
-
-    public void key(GameRun gr) {
-        if (this.mg.key()) {
-            GameRun.run_state = -10;
-            this.mg = null;
-        }
-    }
+  private static Mg mgListener;
+  
+  private MiniGame_H mg;
+  
+  public byte type;
+  
+  public Mg() {
+    mgListener = this;
+  }
+  
+  public static Mg i() {
+    if (mgListener == null)
+      mgListener = new Mg(); 
+    return mgListener;
+  }
+  
+  private void setGame(GameRun paramGameRun, int paramInt) {
+    this.mg = null;
+    this.type = (byte)paramInt;
+    switch (paramInt) {
+      default:
+        return;
+      case 0:
+        this.mg = new Racing(paramGameRun);
+      case 1:
+        this.mg = new Bearer(paramGameRun);
+      case 2:
+        this.mg = new Cards(paramGameRun);
+      case 3:
+        break;
+    } 
+    this.mg = new Guess(paramGameRun);
+  }
+  
+  public void go(GameRun paramGameRun, int paramInt1, int paramInt2, int paramInt3) {
+    GameRun.run_state = 69;
+    setGame(paramGameRun, paramInt1);
+    this.mg.go(paramInt2, paramInt3);
+  }
+  
+  public void key(GameRun paramGameRun) {
+    if (this.mg.key()) {
+      GameRun.run_state = -10;
+      this.mg = null;
+    } 
+  }
+  
+  public void paint() {
+    this.mg.patin();
+  }
+  
+  public void run() {
+    this.mg.run();
+  }
 }
+
+
+/* Location:              /Users/thanh0x/DevTools0x/Rb2.0vip-dex2jar.jar!/minigame/Mg.class
+ * Java compiler version: 6 (50.0)
+ * JD-Core Version:       1.1.3
+ */

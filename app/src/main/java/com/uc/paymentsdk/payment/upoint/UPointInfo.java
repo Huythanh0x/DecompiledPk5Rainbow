@@ -1,68 +1,79 @@
 package com.uc.paymentsdk.payment.upoint;
 
-/* loaded from: classes.dex */
 public class UPointInfo {
-    String discount = "";
-    String discounttext = "";
-    String userphone = "";
-    String vipdiscount = "";
-    String vipdiscounttext = "";
-    String vipdiscounttime = "";
-    String discountinfo = "";
-
-    public String getDiscount() {
-        return this.discount;
-    }
-
-    public void setDiscount(String discount) {
-        this.discount = discount;
-    }
-
-    public String getDiscounttext() {
-        return this.discounttext;
-    }
-
-    public void setDiscounttext(String discounttext) {
-        this.discounttext = discounttext;
-    }
-
-    public String getUserphone() {
-        return this.userphone;
-    }
-
-    public void setUserphone(String userphone) {
-        this.userphone = userphone;
-    }
-
-    public String getVipdiscount() {
-        return this.vipdiscount;
-    }
-
-    public void setVipdiscount(String vipdiscount) {
-        this.vipdiscount = vipdiscount;
-    }
-
-    public String getVipdiscounttext() {
-        return this.vipdiscounttext;
-    }
-
-    public void setVipdiscounttext(String vipdiscounttext) {
-        this.vipdiscounttext = vipdiscounttext;
-    }
-
-    public String getVipdiscounttime() {
-        return this.vipdiscounttime;
-    }
-
-    public void setVipdiscounttime(String vipdiscounttime) {
-        this.vipdiscounttime = vipdiscounttime;
-    }
-
-    public String getDiscountinfo() {
-        return this.discountinfo;
-    }
-
-    public void setDiscountinfo(String discountinfo) {
-        this.discountinfo = discountinfo;
-    }
+  String discount = "";
+  
+  String discountinfo = "";
+  
+  String discounttext = "";
+  
+  String userphone = "";
+  
+  String vipdiscount = "";
+  
+  String vipdiscounttext = "";
+  
+  String vipdiscounttime = "";
+  
+  public String getDiscount() {
+    return this.discount;
+  }
+  
+  public String getDiscountinfo() {
+    return this.discountinfo;
+  }
+  
+  public String getDiscounttext() {
+    return this.discounttext;
+  }
+  
+  public String getUserphone() {
+    return this.userphone;
+  }
+  
+  public String getVipdiscount() {
+    return this.vipdiscount;
+  }
+  
+  public String getVipdiscounttext() {
+    return this.vipdiscounttext;
+  }
+  
+  public String getVipdiscounttime() {
+    return this.vipdiscounttime;
+  }
+  
+  public void setDiscount(String paramString) {
+    this.discount = paramString;
+  }
+  
+  public void setDiscountinfo(String paramString) {
+    this.discountinfo = paramString;
+  }
+  
+  public void setDiscounttext(String paramString) {
+    this.discounttext = paramString;
+  }
+  
+  public void setUserphone(String paramString) {
+    this.userphone = paramString;
+  }
+  
+  public void setVipdiscount(String paramString) {
+    this.vipdiscount = paramString;
+  }
+  
+  public void setVipdiscounttext(String paramString) {
+    this.vipdiscounttext = paramString;
+  }
+  
+  public void setVipdiscounttime(String paramString) {
+    this.vipdiscounttime = paramString;
+  }
 }
+
+
+/* Location:              /Users/thanh0x/DevTools0x/Rb2.0vip-dex2jar.jar!/com/uc/paymentsdk/payment/upoint/UPointInfo.class
+ * Java compiler version: 6 (50.0)
+ * JD-Core Version:       1.1.3
+ */

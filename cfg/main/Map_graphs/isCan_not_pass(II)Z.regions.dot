@@ -1,0 +1,124 @@
+digraph "CFG formain.Map.isCan_not_pass(II)Z" {
+subgraph cluster_Region_1100333247 {
+label = "R(1:(2:(1:4)|(1:7)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1706330186 {
+label = "R(2:(1:4)|(1:7))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1040350001 {
+label = "IF [B:2:0x000b] THEN: R(1:4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000b|lif (r6.worldData[r7][r8] == 1) goto L48l}"];
+subgraph cluster_Region_313070278 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000e|RETURN\lORIG_RETURN\l|lreturn truel}"];
+}
+}
+subgraph cluster_Region_2111223828 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0011|RETURN\l|lreturn r6.anole_type == 0 ? r6.worldData[r7][r8] == 2 \|\| r6.worldData[r7][r8] == 4 : r6.anole_type == 2 ? r6.worldData[r7][r8] == 3 \|\| r6.worldData[r7][r8] == 2 : r6.anole_type == 4 ? r6.worldData[r7][r8] != 2 : r6.worldData[r7][r8] == 2 \|\| r6.worldData[r7][r8] == 3 \|\| r6.worldData[r7][r8] == 4l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000d|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x000f|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0013|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0019|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x001b|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0021|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0023|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0025|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ ?|SYNTHETIC\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x0027|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0029|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x002b|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x0031|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x0033|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ 0x0039|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x003b|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ ?|SYNTHETIC\l|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x003d|l}"];
+Node_25 [shape=record,color=red,label="{25\:\ ?|SYNTHETIC\l|l}"];
+Node_26 [shape=record,color=red,label="{26\:\ 0x003f|l}"];
+Node_27 [shape=record,color=red,label="{27\:\ 0x0041|l}"];
+Node_28 [shape=record,color=red,label="{28\:\ 0x0043|l}"];
+Node_29 [shape=record,color=red,label="{29\:\ 0x0049|l}"];
+Node_30 [shape=record,color=red,label="{30\:\ 0x004b|l}"];
+Node_31 [shape=record,color=red,label="{31\:\ ?|SYNTHETIC\l|l}"];
+Node_32 [shape=record,color=red,label="{32\:\ 0x004d|l}"];
+Node_33 [shape=record,color=red,label="{33\:\ ?|SYNTHETIC\l|l}"];
+Node_34 [shape=record,color=red,label="{34\:\ 0x004f|l}"];
+Node_35 [shape=record,color=red,label="{35\:\ 0x0055|l}"];
+Node_36 [shape=record,color=red,label="{36\:\ 0x0057|l}"];
+Node_37 [shape=record,color=red,label="{37\:\ 0x005d|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_38 [shape=record,color=red,label="{38\:\ 0x005f|l}"];
+Node_39 [shape=record,color=red,label="{39\:\ 0x0065|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_40 [shape=record,color=red,label="{40\:\ 0x0067|l}"];
+Node_41 [shape=record,color=red,label="{41\:\ ?|SYNTHETIC\l|l}"];
+Node_42 [shape=record,color=red,label="{42\:\ 0x0069|l}"];
+Node_43 [shape=record,color=red,label="{43\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private boolean main.Map.isCan_not_pass((r6v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r7v0 'ix' int A[D('ix' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'iy' int A[D('iy' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:12:0x0023 \-\> B:4:0x000e, CROSS_EDGE: B:14:0x0025 \-\> B:4:0x000e, CROSS_EDGE: B:9:0x0019 \-\> B:14:0x0025, CROSS_EDGE: B:22:0x003b \-\> B:4:0x000e, CROSS_EDGE: B:24:0x003d \-\> B:4:0x000e, CROSS_EDGE: B:19:0x0031 \-\> B:24:0x003d, CROSS_EDGE: B:30:0x004b \-\> B:4:0x000e, CROSS_EDGE: B:32:0x004d \-\> B:4:0x000e, CROSS_EDGE: B:40:0x0067 \-\> B:4:0x000e, CROSS_EDGE: B:42:0x0069 \-\> B:4:0x000e, CROSS_EDGE: B:37:0x005d \-\> B:42:0x0069, CROSS_EDGE: B:35:0x0055 \-\> B:42:0x0069\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_7 -> Node_16;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_9 -> Node_14;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_11 -> Node_14;
+Node_12 -> Node_13;
+Node_13 -> Node_5;
+Node_14 -> Node_15;
+Node_15 -> Node_5;
+Node_16 -> Node_17;
+Node_17 -> Node_18;
+Node_17 -> Node_26;
+Node_18 -> Node_19;
+Node_19 -> Node_20;
+Node_19 -> Node_24;
+Node_20 -> Node_21;
+Node_21 -> Node_22;
+Node_21 -> Node_24;
+Node_22 -> Node_23;
+Node_23 -> Node_5;
+Node_24 -> Node_25;
+Node_25 -> Node_5;
+Node_26 -> Node_27;
+Node_27 -> Node_28;
+Node_27 -> Node_34;
+Node_28 -> Node_29;
+Node_29 -> Node_30;
+Node_29 -> Node_32;
+Node_30 -> Node_31;
+Node_31 -> Node_5;
+Node_32 -> Node_33;
+Node_33 -> Node_5;
+Node_34 -> Node_35;
+Node_35 -> Node_36;
+Node_35 -> Node_42;
+Node_36 -> Node_37;
+Node_37 -> Node_38;
+Node_37 -> Node_42;
+Node_38 -> Node_39;
+Node_39 -> Node_40;
+Node_39 -> Node_42;
+Node_40 -> Node_41;
+Node_41 -> Node_5;
+Node_42 -> Node_43;
+Node_43 -> Node_5;
+}
+

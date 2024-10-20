@@ -1,0 +1,12 @@
+digraph "CFG forjavax.microedition.lcdui.Font.\<init\>()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr1.tmpPaint = new android.graphics.Paint()lr1.cHarr = new char[1]lr1.tmpSize = \-1l}"];
+Node_2 [shape=record,label="{2\:\ 0x0012|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void javax.microedition.lcdui.Font.\<init\>((r1v0 'this' javax.microedition.lcdui.Font A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

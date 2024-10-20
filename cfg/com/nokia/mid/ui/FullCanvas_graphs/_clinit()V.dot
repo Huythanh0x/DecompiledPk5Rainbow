@@ -1,0 +1,12 @@
+digraph "CFG forcom.nokia.mid.ui.FullCanvas.\<clinit\>()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lcom.nokia.mid.ui.FullCanvas.KEY_UP_ARROW = 19lcom.nokia.mid.ui.FullCanvas.KEY_DOWN_ARROW = 20lcom.nokia.mid.ui.FullCanvas.KEY_LEFT_ARROW = 21lcom.nokia.mid.ui.FullCanvas.KEY_RIGHT_ARROW = 22lcom.nokia.mid.ui.FullCanvas.KEY_END = 6lcom.nokia.mid.ui.FullCanvas.KEY_SEND = 5lcom.nokia.mid.ui.FullCanvas.KEY_SOFTKEY1 = 1lcom.nokia.mid.ui.FullCanvas.KEY_SOFTKEY2 = 2lcom.nokia.mid.ui.FullCanvas.KEY_SOFTKEY3 = 23l}"];
+Node_2 [shape=record,label="{2\:\ 0x0020|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{static void com.nokia.mid.ui.FullCanvas.\<clinit\>()  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

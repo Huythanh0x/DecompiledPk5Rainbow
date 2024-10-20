@@ -1,0 +1,39 @@
+digraph "CFG forcom.uc.paymentsdk.commons.codec.Hex.toDigit(CI)I" {
+subgraph cluster_Region_219976015 {
+label = "R(2:1|(2:(1:4)|(1:6)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint int r0 = java.lang.Character.digit(r4, 16)l}"];
+subgraph cluster_Region_1054959802 {
+label = "R(2:(1:4)|(1:6))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_807723118 {
+label = "IF [B:2:0x0007] THEN: R(1:4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0007|lif (r0 == (\-1)) goto L11l}"];
+subgraph cluster_Region_1966709543 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0027|lthrow new com.uc.paymentsdk.commons.codec.DecoderException(\"Illegal hexadecimal charcter \" + r4 + \" at index \" + r5)l}"];
+}
+}
+subgraph cluster_Region_1195679498 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0028|RETURN\l|lreturn r0l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0009|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{protected static int com.uc.paymentsdk.commons.codec.Hex.toDigit((r4v0 'paramChar' char A[D('paramChar' char), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'paramInt' int A[D('paramInt' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Lcom\/uc\/paymentsdk\/commons\/codec\/DecoderException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0028 \-\> B:5:?\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+}
+

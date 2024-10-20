@@ -1,0 +1,40 @@
+digraph "CFG forjavax.microedition.lcdui.Graphics.setClip(IIII)V" {
+subgraph cluster_Region_1982400979 {
+label = "R(2:1|(1:(1:4)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr6.clipx = r7lr6.clipy = r8lr6.clipw = r9lr6.cliph = r10l}"];
+subgraph cluster_Region_762795085 {
+label = "R(1:(1:4))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1701771584 {
+label = "IF [B:2:0x0008, B:3:0x000a] THEN: R(1:4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0008|lif (r9 \>= 0) goto L13l}"];
+Node_3 [shape=record,label="{3\:\ 0x000a|ADDED_TO_REGION\l|lif (r10 \>= 0) goto L15l}"];
+subgraph cluster_Region_584443221 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000d|lr6.canvas.clipRect(r7, r8, r7 + r9, r8 + r10, android.graphics.Region.Op.REPLACE)l}"];
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|SYNTHETIC\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|SYNTHETIC\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x000c|RETURN\lORIG_RETURN\lADDED_TO_REGION\l|lreturnl}"];
+MethodNode[shape=record,label="{public void javax.microedition.lcdui.Graphics.setClip((r6v0 'this' javax.microedition.lcdui.Graphics A[IMMUTABLE_TYPE, THIS]), (r7v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'width' int A[D('width' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'height' int A[D('height' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x000d \-\> B:8:0x000c, CROSS_EDGE: B:2:0x0008 \-\> B:8:0x000c\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_8[style=dashed];
+Node_3 -> Node_4;
+Node_3 -> Node_7[style=dashed];
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_5 -> Node_6;
+Node_7 -> Node_6;
+Node_8 -> Node_6;
+}
+

@@ -1,0 +1,23 @@
+digraph "CFG formain.GameRun.dItemIn(II)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr0 = r7l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|LOOP_START\lPHI: r0l  0x0002: PHI (r0v1 'i' int) = (r0v0 'i' int), (r0v2 'i' int) binds: [B:1:0x0000, B:4:0x002a] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0002\-\>B:4:0x002a\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0007|lif (r0 \< (r5.itemsLength[r6] \- 1)) goto L16l}"];
+Node_4 [shape=record,label="{4\:\ 0x002a|LOOP_END\lLOOP:0: B:2:0x0002\-\>B:4:0x002a\l|lr5.items[r6][r0] = r5.items[r6][r0 + 1]lint r0 = r0 + 1l}"];
+Node_5 [shape=record,label="{5\:\ 0x0009|SYNTHETIC\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0009|lbyte[] r1 = r5.itemsLengthlr1[r6] = (byte) (r1[r6] \- 1)lr5.items[r6][r5.itemsLength[r6]] = nulllr5.items[r6][r5.itemsLength[r6]] = new byte[2]l}"];
+Node_7 [shape=record,label="{7\:\ 0x0029|RETURN\l|lreturnl}"];
+Node_8 [shape=record,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.dItemIn((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r6v0 'item_type' int A[D('item_type' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'item_no' int A[D('item_no' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lBACK_EDGE: B:4:0x002a \-\> B:2:0x0002\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+}
+

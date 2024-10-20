@@ -1,0 +1,121 @@
+digraph "CFG forjavax.microedition.lcdui.Canvas.onKey(Landroid\/view\/View;ILandroid\/view\/KeyEvent;)Z" {
+subgraph cluster_Region_1806907384 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+subgraph cluster_SwitchRegion_986626500 {
+label = "Switch: 3
+ case 0 -> R(2:(1:8)(1:(1:13)(1:(1:(1:18))(1:19)))|10)
+ case 1 -> R(2:20|21)
+ case default -> R(2:3|4)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0007|lswitch(r8.getAction()) \{l    case 0: goto L28;l    case 1: goto L41;l    default: goto L26;l\}l}"];
+subgraph cluster_Region_593586413 {
+label = "R(2:(1:8)(1:(1:13)(1:(1:(1:18))(1:19)))|10)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_117460716 {
+label = "IF [B:7:0x0015] THEN: R(1:8) ELSE: R(1:(1:13)(1:(1:(1:18))(1:19)))";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0015|lif (r7 == 25) goto L30l}"];
+subgraph cluster_Region_1971234051 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0017|ljavax.microedition.lcdui.CwaActivity.getInstance().audioManager.adjustStreamVolume(3, \-1, 0)l}"];
+}
+subgraph cluster_Region_976298737 {
+label = "R(1:(1:13)(1:(1:(1:18))(1:19))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_306123610 {
+label = "IF [B:12:0x0025] THEN: R(1:13) ELSE: R(1:(1:(1:18))(1:19)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0025|lif (r7 == 24) goto L34l}"];
+subgraph cluster_Region_399333599 {
+label = "R(1:13)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0027|ljavax.microedition.lcdui.CwaActivity.getInstance().audioManager.adjustStreamVolume(3, 1, 0)l}"];
+}
+subgraph cluster_Region_396079512 {
+label = "R(1:(1:(1:18))(1:19)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_613302064 {
+label = "IF [B:15:0x0032] THEN: R(1:(1:18)) ELSE: R(1:19) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0032|lif (r7 == 4) goto L37l}"];
+subgraph cluster_Region_1312906552 {
+label = "R(1:(1:18))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_859307919 {
+label = "IF [B:17:0x0038] THEN: R(1:18) ELSE: null";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x0038|lif (r8.getRepeatCount() == 0) goto L39l}"];
+subgraph cluster_Region_2045419264 {
+label = "R(1:18)";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x003a|ljavax.microedition.midlet.MIDletManager.getInstance().notifyPaused()ljavax.microedition.lcdui.CwaActivity.getInstance().showExitDialog()l}"];
+}
+}
+}
+subgraph cluster_Region_751323314 {
+label = "R(1:19)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x0049|lkeyPressed(r8.getKeyCode())l}"];
+}
+}
+}
+}
+}
+}
+Node_10 [shape=record,label="{10\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+subgraph cluster_Region_1747216526 {
+label = "R(2:20|21)";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x0051|lkeyReleased(r8.getKeyCode())l}"];
+Node_21 [shape=record,label="{21\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+subgraph cluster_Region_1684224386 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000a|landroid.util.Log.e(\"Canvas\", \"not this key\")l}"];
+Node_4 [shape=record,label="{4\:\ 0x0012|RETURN\lORIG_RETURN\l|lreturn falsel}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0013|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0021|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0023|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0031|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x0034|l}"];
+MethodNode[shape=record,label="{public boolean javax.microedition.lcdui.Canvas.onKey((r5v0 'this' javax.microedition.lcdui.Canvas A[IMMUTABLE_TYPE, THIS]), (r6v0 'v' android.view.View A[D('v' android.view.View), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'keyCode' int A[D('keyCode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'event' android.view.KeyEvent A[D('event' android.view.KeyEvent), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lCOMPUTE_POST_DOM\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{android.view.View.OnKeyListener.onKey(android.view.View, int, android.view.KeyEvent):boolean\}]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x0021 \-\> B:4:0x0012, CROSS_EDGE: B:13:0x0027 \-\> B:9:0x0021, CROSS_EDGE: B:17:0x0038 \-\> B:9:0x0021, CROSS_EDGE: B:18:0x003a \-\> B:9:0x0021, CROSS_EDGE: B:19:0x0049 \-\> B:9:0x0021, CROSS_EDGE: B:20:0x0051 \-\> B:4:0x0012\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6;
+Node_2 -> Node_20;
+Node_7 -> Node_8;
+Node_7 -> Node_11[style=dashed];
+Node_8 -> Node_9;
+Node_12 -> Node_13;
+Node_12 -> Node_14[style=dashed];
+Node_13 -> Node_9;
+Node_15 -> Node_16;
+Node_15 -> Node_19[style=dashed];
+Node_17 -> Node_9[style=dashed];
+Node_17 -> Node_18;
+Node_18 -> Node_9;
+Node_19 -> Node_9;
+Node_10 -> Node_5;
+Node_20 -> Node_21;
+Node_21 -> Node_5;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+Node_14 -> Node_15;
+Node_16 -> Node_17;
+}
+

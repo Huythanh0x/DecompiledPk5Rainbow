@@ -1,0 +1,88 @@
+digraph "CFG forjavax.microedition.media.Player.setLoopCount(I)V" {
+subgraph cluster_Region_1261130073 {
+label = "R(1:(2:(1:4)|(1:(2:(1:8)|(1:(1:14)(1:12))))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_2132248021 {
+label = "R(2:(1:4)|(1:(2:(1:8)|(1:(1:14)(1:12)))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_56501436 {
+label = "IF [B:2:0x0005] THEN: R(1:4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0005|lif (r3.state == 400) goto L20l}"];
+subgraph cluster_Region_1146174557 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000e|lthrow new java.lang.IllegalStateException(\"player is close\")l}"];
+}
+}
+subgraph cluster_Region_1440812055 {
+label = "R(1:(2:(1:8)|(1:(1:14)(1:12))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_370872915 {
+label = "R(2:(1:8)|(1:(1:14)(1:12)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1687338984 {
+label = "IF [B:6:0x000f] THEN: R(1:8) ELSE: null";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x000f|lif (r4 == 0) goto L23l}"];
+subgraph cluster_Region_703386867 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0018|lthrow new java.lang.IllegalArgumentException(\"loopcount is 0\")l}"];
+}
+}
+subgraph cluster_Region_1949365357 {
+label = "R(1:(1:14)(1:12))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_989325618 {
+label = "IF [B:10:0x001a, B:11:0x001c] THEN: R(1:14) ELSE: R(1:12)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x001a|lif (r4 == (\-1)) goto L28l}"];
+Node_11 [shape=record,label="{11\:\ 0x001c|ADDED_TO_REGION\l|lif (r4 \> 1) goto L28l}"];
+subgraph cluster_Region_1265331323 {
+label = "R(1:14)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x001e|lr3.mp.setLooping(true)lr3.loopCount = r4l}"];
+}
+subgraph cluster_Region_82797225 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0026|landroid.util.Log.e(\"Player\", \"Loop count \< \-1\")l}"];
+}
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0007|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0011|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0019|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|SYNTHETIC\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0025|ORIG_RETURN\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.media.Player.setLoopCount((r3v0 'this' javax.microedition.media.Player A[IMMUTABLE_TYPE, THIS]), (r4v0 'count' int A[D('count' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljava\/lang\/IllegalArgumentException;, Ljava\/lang\/IllegalStateException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x0018 \-\> B:5:?, CROSS_EDGE: B:15:0x0025 \-\> B:5:?, CROSS_EDGE: B:12:0x0026 \-\> B:15:0x0025, CROSS_EDGE: B:10:0x001a \-\> B:14:0x001e\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_6 -> Node_9[style=dashed];
+Node_8 -> Node_5;
+Node_10 -> Node_11[style=dashed];
+Node_10 -> Node_14;
+Node_11 -> Node_14;
+Node_11 -> Node_12[style=dashed];
+Node_14 -> Node_15;
+Node_12 -> Node_13;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_13 -> Node_5;
+Node_15 -> Node_5;
+}
+

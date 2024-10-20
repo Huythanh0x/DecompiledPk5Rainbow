@@ -1,0 +1,90 @@
+digraph "CFG formain.Map.getNpcData(Ljava\/io\/ByteArrayOutputStream;[Ldm\/Npc;)V" {
+subgraph cluster_Region_963789935 {
+label = "R(2:1|(1:(2:(1:7)(0)|9)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint r1 = 0l}"];
+subgraph cluster_LoopRegion_550133091 {
+label = "LOOP:0: (1:(2:(1:7)(0)|9))";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0002|ADDED_TO_REGION\l|lif (r1 \< r6.length) goto L24l}"];
+subgraph cluster_Region_692825049 {
+label = "R(1:(2:(1:7)(0)|9))";
+node [shape=record,color=blue];
+subgraph cluster_TryCatchRegion_1710336811 {
+label = "Try: R(2:(1:7)(0)|9) catches: R(3:15|16|17)";
+node [shape=record,color=blue];
+subgraph cluster_Region_537900460 {
+label = "R(2:(1:7)(0)|9)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_905552740 {
+label = "IF [B:6:0x000e] THEN: R(1:7) ELSE: R(0)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x000e|lif (r6[r1].other[9] == 1) goto L26l}"];
+subgraph cluster_Region_503568520 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0010|TRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x001a, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x0010), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x001a\l|lr5.write(r6[r1].other)     \/\/ Catch: java.lang.Exception \-\> L1al}"];
+}
+subgraph cluster_Region_1524948340 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+Node_9 [shape=record,label="{9\:\ 0x0017|LOOP_END\lLOOP:0: B:2:0x0001\-\>B:9:0x0017\l|lr1++l}"];
+}
+subgraph cluster_Region_867797443 {
+label = "R(3:15|16|17) | ExcHandler: Exception \-\> 0x001a\l";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x001a|ExcHandler: Exception \-\> 0x001a\l|l}"];
+Node_16 [shape=record,label="{16\:\ 0x001b|lr2.printStackTrace()l}"];
+Node_17 [shape=record,label="{17\:\ 0x0004|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+}
+}
+}
+subgraph cluster_Region_867797443 {
+label = "R(3:15|16|17) | ExcHandler: Exception \-\> 0x001a\l";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x001a|ExcHandler: Exception \-\> 0x001a\l|l}"];
+Node_16 [shape=record,label="{16\:\ 0x001b|lr2.printStackTrace()l}"];
+Node_17 [shape=record,label="{17\:\ 0x0004|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0001|LOOP_START\lSYNTHETIC\lEXC_TOP_SPLITTER\lPHI: r1l  0x0001: PHI (r1v1 'i' int) = (r1v0 'i' int), (r1v2 'i' int) binds: [B:1:0x0000, B:9:0x0017] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0001\-\>B:9:0x0017\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0001|TRY_ENTER\lTryCatch #0 \{Exception \-\> 0x001a, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x0010), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x001a\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0005|TryCatch #0 \{Exception \-\> 0x001a, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x0010), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x001a\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0017|SYNTHETIC\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0017|SYNTHETIC\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0004|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.getNpcData((r4v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r5v0 'byteArray' java.io.ByteArrayOutputStream A[D('byteArray' java.io.ByteArrayOutputStream), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'npc' dm.Npc[] A[D('npc' dm.Npc[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{Exception \-\> 0x001a, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x0010), top: B:2:0x0001 \}\lBACK_EDGE: B:9:0x0017 \-\> B:2:0x0001, CROSS_EDGE: B:6:0x000e \-\> B:9:0x0017, CROSS_EDGE: B:16:0x001b \-\> B:17:0x0004, CROSS_EDGE: B:2:0x0001 \-\> B:15:0x001a\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_4 -> Node_11[style=dashed];
+Node_6 -> Node_7;
+Node_6 -> Node_10[style=dashed];
+Node_7 -> Node_8;
+Node_9 -> Node_2;
+Node_15 -> Node_16;
+Node_16 -> Node_17;
+Node_17 -> Node_13;
+Node_15 -> Node_16;
+Node_16 -> Node_17;
+Node_17 -> Node_13;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_15;
+Node_3 -> Node_4;
+Node_3 -> Node_14;
+Node_5 -> Node_6;
+Node_8 -> Node_9;
+Node_10 -> Node_9;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_14 -> Node_15;
+}
+

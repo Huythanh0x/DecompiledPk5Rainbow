@@ -1,0 +1,40 @@
+digraph "CFG fordm.Ui.drawStringY([Ljava\/lang\/Object;IIIIIII)V" {
+subgraph cluster_Region_331895334 {
+label = "R(2:1|(1:5))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte byte r7 = (byte) r12l}"];
+subgraph cluster_LoopRegion_2066251002 {
+label = "LOOP:0: (1:5)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0001|LOOP_START\lADDED_TO_REGION\lPHI: r7l  0x0001: PHI (r7v1 'i' byte) = (r7v0 'i' byte), (r7v2 'i' byte) binds: [B:1:0x0000, B:5:0x0007] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0001\-\>B:5:0x0007\l|lif (r7 \< r13) goto L15l}"];
+Node_4 [shape=record,label="{4\:\ 0x0004|ADDED_TO_REGION\l|lif (r7 \< r9.length) goto L18l}"];
+subgraph cluster_Region_1523722433 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0007|LOOP_END\lLOOP:0: B:2:0x0001\-\>B:5:0x0007\l|li().drawString(r9[r7].toString(), r10, r11 + ((r7 \- r12) * r14), 0, r15, r16)lbyte r7 = (byte) (r7 + 1)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0003|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0006|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0006|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0006|RETURN\lORIG_RETURN\lADDED_TO_REGION\l|lreturnl}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawStringY((r8v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r9v0 'str' java.lang.Object[] A[D('str' java.lang.Object[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'start' int A[D('start' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'end' int A[D('end' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'sh' int A[D('sh' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'c' int A[D('c' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r16v0 'strT' int A[D('strT' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:5:0x0007 \-\> B:2:0x0001, CROSS_EDGE: B:2:0x0001 \-\> B:10:0x0006\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_9[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_2;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_10 -> Node_8;
+}
+

@@ -1,0 +1,45 @@
+digraph "CFG formain.GameRun.getInfoType(I)Ljava\/lang\/String;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0001|lif (r2 != (\-1)) goto L30l}"];
+Node_3 [shape=record,label="{3\:\ 0x0003|RETURN\lORIG_RETURN\l|lreturn main.Constants_H.TXT_86l}"];
+Node_4 [shape=record,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0006|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0007|lif (r2 != (\-2)) goto L33l}"];
+Node_7 [shape=record,label="{7\:\ 0x0009|SYNTHETIC\lRETURN\l|lreturn \"进化\"l}"];
+Node_8 [shape=record,label="{8\:\ 0x000c|l}"];
+Node_9 [shape=record,label="{9\:\ 0x000d|lif (r2 != (\-3)) goto L36l}"];
+Node_10 [shape=record,label="{10\:\ 0x000f|SYNTHETIC\lRETURN\l|lreturn main.Constants_H.TXT_88l}"];
+Node_11 [shape=record,label="{11\:\ 0x0012|l}"];
+Node_12 [shape=record,label="{12\:\ 0x0013|lif (r2 != (\-4)) goto L39l}"];
+Node_13 [shape=record,label="{13\:\ 0x0015|SYNTHETIC\lRETURN\l|lreturn main.Constants_H.TXT_89l}"];
+Node_14 [shape=record,label="{14\:\ 0x0018|l}"];
+Node_15 [shape=record,label="{15\:\ 0x0019|lif (r2 != (\-5)) goto L42l}"];
+Node_16 [shape=record,label="{16\:\ 0x001b|SYNTHETIC\lRETURN\l|lreturn \"孵化\"l}"];
+Node_17 [shape=record,label="{17\:\ 0x001e|SYNTHETIC\lRETURN\l|lreturn \"捕获\"l}"];
+MethodNode[shape=record,label="{private java.lang.String main.GameRun.getInfoType((r1v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r2v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0009 \-\> B:4:0x0005, CROSS_EDGE: B:10:0x000f \-\> B:4:0x0005, CROSS_EDGE: B:13:0x0015 \-\> B:4:0x0005, CROSS_EDGE: B:16:0x001b \-\> B:4:0x0005, CROSS_EDGE: B:17:0x001e \-\> B:4:0x0005\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_8;
+Node_7 -> Node_4;
+Node_8 -> Node_9;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_11;
+Node_10 -> Node_4;
+Node_11 -> Node_12;
+Node_12 -> Node_13[style=dashed];
+Node_12 -> Node_14;
+Node_13 -> Node_4;
+Node_14 -> Node_15;
+Node_15 -> Node_16[style=dashed];
+Node_15 -> Node_17;
+Node_16 -> Node_4;
+Node_17 -> Node_4;
+}
+

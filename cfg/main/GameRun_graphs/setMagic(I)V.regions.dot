@@ -1,0 +1,31 @@
+digraph "CFG formain.GameRun.setMagic(I)V" {
+subgraph cluster_Region_787817187 {
+label = "R(2:(1:3)|4)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1054166944 {
+label = "IF [B:2:0x0002] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r3 \> 5) goto L11l}"];
+subgraph cluster_Region_35182117 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0004|lr3 = 5l}"];
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x0005|PHI: r3l  0x0005: PHI (r3v1 'pro' int) = (r3v0 'pro' int), (r3v2 'pro' int) binds: [B:2:0x0002, B:3:0x0004] A[DONT_GENERATE, DONT_INLINE]\l|linitMagicStream(r3)lr2.now_action_Magic[r3] = 0lr2.now_time_Magic[r3] = 0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0010|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.setMagic((r2v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r3v0 'pro' int A[D('pro' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0002 \-\> B:4:0x0005\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_5 -> Node_6;
+}
+

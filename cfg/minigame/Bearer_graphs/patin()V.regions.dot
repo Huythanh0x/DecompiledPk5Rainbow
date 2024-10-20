@@ -1,0 +1,35 @@
+digraph "CFG forminigame.Bearer.patin()V" {
+subgraph cluster_Region_1709300368 {
+label = "R(2:1|(1:(1:3)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldraw0(10, 2, r4.length * 25)l}"];
+subgraph cluster_Region_1871298503 {
+label = "R(1:(1:3))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_411636876 {
+label = "IF [B:2:0x000c] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000c|lif (r4.state != 0) goto L11l}"];
+subgraph cluster_Region_560989593 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000e|ldrawGame(javax.microedition.media.Player.REALIZED, 0, 240, main.Constants_H.WIDTH_H_)l}"];
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0018|ORIG_RETURN\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void minigame.Bearer.patin((r4v0 'this' minigame.Bearer A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [minigame.MiniGame_H.patin():void]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x000c \-\> B:4:0x0018\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

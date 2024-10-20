@@ -1,0 +1,43 @@
+digraph "CFG fordm.Ui.drawK1(IIIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljavax.microedition.lcdui.Graphics r0 = dm.Ui.gl}"];
+Node_2 [shape=record,label="{2\:\ 0x0005|lif (r13 != 0) goto L28l}"];
+Node_3 [shape=record,label="{3\:\ 0x0007|lr1 = 5461075l}"];
+Node_4 [shape=record,label="{4\:\ 0x000a|PHI: r1l  0x000a: PHI (r1v1 int) = (r1v0 int), (r1v7 int) binds: [B:16:0x0047, B:3:0x0007] A[DONT_GENERATE, DONT_INLINE]\l|lr0.setColor(r1)ldm.Ui.g.drawRect(r9, r10 + 2, r11, r12 \- 3)ldm.Ui.g.drawLine((float) (r9 + 1), (float) (r10 + r12), (float) ((r9 + r11) \- 1), (float) (r10 + r12))l}"];
+Node_5 [shape=record,label="{5\:\ 0x0028|lif (r13 == 0) goto L25l}"];
+Node_6 [shape=record,label="{6\:\ 0x002a|lif (r13 != 1) goto L29l}"];
+Node_7 [shape=record,label="{7\:\ 0x004b|lif (r13 != 2) goto L31l}"];
+Node_8 [shape=record,label="{8\:\ 0x004d|lr13 = 13892607l}"];
+Node_9 [shape=record,label="{9\:\ 0x002f|PHI: r13l  0x002f: PHI (r13v2 'c' int) = (r13v1 'c' int), (r13v3 'c' int), (r13v4 'c' int), (r13v5 'c' int) binds: [B:15:0x002c, B:14:0x0057, B:13:0x0053, B:8:0x004d] A[DONT_GENERATE, DONT_INLINE]\l|ldm.Ui.g.setColor(r13)ldm.Ui.g.fillRect(r9 + 1, r10, r11 \- 2, r12)ldm.Ui.g.fillRect(r9, r10 + 1, r11, r12 \- 2)l}"];
+Node_10 [shape=record,label="{10\:\ 0x0046|RETURN\l|lreturnl}"];
+Node_11 [shape=record,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_12 [shape=record,label="{12\:\ 0x0051|lif (r13 != 3) goto L33l}"];
+Node_13 [shape=record,label="{13\:\ 0x0053|lr13 = 7727871l}"];
+Node_14 [shape=record,label="{14\:\ 0x0057|lr13 = 12352252l}"];
+Node_15 [shape=record,label="{15\:\ 0x002c|lr13 = 15400191l}"];
+Node_16 [shape=record,label="{16\:\ 0x0047|lr1 = 1908277l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawK1((r8v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r9v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'h' int A[D('h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'c' int A[D('c' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x004d \-\> B:9:0x002f, CROSS_EDGE: B:13:0x0053 \-\> B:9:0x002f, CROSS_EDGE: B:14:0x0057 \-\> B:9:0x002f, CROSS_EDGE: B:5:0x0028 \-\> B:15:0x002c, CROSS_EDGE: B:16:0x0047 \-\> B:4:0x000a\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_16;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_15;
+Node_6 -> Node_15[style=dashed];
+Node_6 -> Node_7;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_12;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_12 -> Node_13[style=dashed];
+Node_12 -> Node_14;
+Node_13 -> Node_9;
+Node_14 -> Node_9;
+Node_15 -> Node_9;
+Node_16 -> Node_4;
+}
+

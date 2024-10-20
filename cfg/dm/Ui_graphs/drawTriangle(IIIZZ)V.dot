@@ -1,0 +1,10 @@
+digraph "CFG fordm.Ui.drawTriangle(IIIZZ)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|RETURN\l|lreturnl}"];
+Node_2 [shape=record,label="{2\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawTriangle((r0v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r1v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r2v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'dir' boolean A[D('dir' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'ct' boolean A[D('ct' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+}
+

@@ -1,0 +1,12 @@
+digraph "CFG formain.GameRun.\<init\>(Lmain\/MainCanvas;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr8.immueEnemy = 0lr8.money = com.uc.paymentsdk.util.Constants.PAYMENT_MAXlr8.coin = 10lr8.view_state = 1lr8.threadType = 0lr8.mini_state = 0lr8.isKillAll = falselr8.buyItemID = 0lr8.battle_state = 0lr8.buyOk = 0lr8.off = 0lr8.list_rows = 8lr8.infoStart = 0lr8.sell_money = 0lr8.mon_action_c = 0lr8.initFealty = new byte[]\{100, 120\}lr8.isChangeSound = falselr8.sayStr = new java.util.ArrayList\<\>()lr8.sayFlag = new java.util.ArrayList\<\>()lr8.sayOverSms = \-1lr8.zb = new byte[]\{\-6, \-4, \-3, \-2, \-1, 0, 1, 2, 3, 4, 8, \-3, 2, \-1, 1, 1\}lr8.Shuxing = new byte[][]\{new byte[]\{2, 3\}, new byte[]\{3, 4\}, new byte[]\{4\}, new byte[]\{0, 1\}, new byte[]\{1, 2\}\}lr8.hit_rate = 0lr8.magic_id = \-2lr8.magic_x = 0lr8.magic_y = 0lr8.mon = new dm.Sprite[2]lr8.magic = new dm.Sprite[6]lr8.now_action_Magic = new short[6]lr8.now_time_Magic = new short[6]lr8.overMode = 0lr8.evolve = new boolean[]\{true, true, true, true, true\}lr8.now_action = new byte[2]lr8.now_time = new byte[2]lr8.battleSay = new java.lang.String[]\{main.Constants_H.BATTLE_TXT_12, main.Constants_H.BATTLE_TXT_13, main.Constants_H.BATTLE_TXT_14\}lr8.isUpdateList = falselr8.first_battle = 0lr8.lastSkill = 0lr8.skill_list = new byte[9]lr8.b_ico = 2lmain.GameRun.mc = r9lr8.map = nulllr8.map = new main.Map(r8)linitOtherImage()ldm.Ui.i().initUiModules()lloadRmsOther()lloadRmsSms()lmain.SMSSender.i(r8)lcom.PetKing5_480x800.PetKing5.gr = r8l}"];
+Node_2 [shape=record,label="{2\:\ 0x011c|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.\<init\>((r8v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r9v0 'maincanvas' main.MainCanvas A[D('maincanvas' main.MainCanvas), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

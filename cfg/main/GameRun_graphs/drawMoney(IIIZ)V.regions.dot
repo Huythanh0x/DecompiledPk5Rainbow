@@ -1,0 +1,43 @@
+digraph "CFG formain.GameRun.drawMoney(IIIZ)V" {
+subgraph cluster_Region_1369470628 {
+label = "R(3:7|8|10)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0012|PHI: r1l  0x0012: PHI (r1v4 java.lang.String) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|ljava.lang.String java.lang.String r7 = java.lang.String.valueOf(r12 ? r8.coin : r8.money) + (r12 ? \"徽章\" : main.Constants_H.MONEY_TXT_0)ldm.Ui dm.Ui r0 = dm.Ui.i()l}"];
+Node_8 [shape=record,label="{8\:\ 0x001e|lint r1 = r12 ? 53 : 52l}"];
+Node_10 [shape=record,label="{10\:\ 0x0022|PHI: r1l  0x0022: PHI (r1v6 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lint int r2 = (r9 \- (dm.Ms.i().getStringWidth(r7) \>\> 1)) \- 1ljavax.microedition.lcdui.Graphics javax.microedition.lcdui.Graphics r3 = main.GameRun.gljavax.microedition.lcdui.Graphics javax.microedition.lcdui.Graphics r4 = main.GameRun.glr0.drawUi(r1, r2, r10, 8 \| 32, 0)ljavax.microedition.lcdui.Graphics javax.microedition.lcdui.Graphics r1 = main.GameRun.gljavax.microedition.lcdui.Graphics javax.microedition.lcdui.Graphics r1 = main.GameRun.gldm.Ui.i().drawString(r7, r9, r10 + 3, 1 \| 32, r11, 1)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0003|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0005|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0007|PHI: r1l  0x0007: PHI (r1v1 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000e|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0010|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0020|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x004f|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0056|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0053|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0050|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.drawMoney((r8v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r9v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'c' int A[D('c' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:13:0x0056 \-\> B:10:0x0022, CROSS_EDGE: B:14:0x0053 \-\> B:7:0x0012, CROSS_EDGE: B:15:0x0050 \-\> B:4:0x0007\l}"];
+MethodNode -> Node_0;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_13;
+Node_10 -> Node_11;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_15;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_14;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+Node_13 -> Node_10;
+Node_14 -> Node_7;
+Node_15 -> Node_4;
+}
+

@@ -1,0 +1,69 @@
+digraph "CFG formain.GameRun.goMY_BAG(I)V" {
+subgraph cluster_Region_1929669065 {
+label = "R(3:1|(1:3)(1:(1:9)(1:(1:12)))|4)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr6.mini_state = (byte) 15lr6.list_rows = (byte) 6lmain.GameRun.run_state = 25lr6.popMenu = (byte) \-1l}"];
+subgraph cluster_IfRegion_1336611523 {
+label = "IF [B:2:0x0013] THEN: R(1:3) ELSE: R(1:(1:9)(1:(1:12)))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0013|lif (r6.view_state == 1) goto L17l}"];
+subgraph cluster_Region_1347553529 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0015|lsetAction_str(new java.lang.String[]\{\"道具\", main.Constants_H.ITEM_TXT_1, main.Constants_H.ITEM_TXT_2, \"孵化\"\})l}"];
+}
+subgraph cluster_Region_1518442058 {
+label = "R(1:(1:9)(1:(1:12))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_169604850 {
+label = "IF [B:8:0x007b] THEN: R(1:9) ELSE: R(1:(1:12)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x007b|lif (r6.view_state == (\-1)) goto L22l}"];
+subgraph cluster_Region_489803896 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x007d|lsetAction_str(new java.lang.String[]\{\"道具\"\})l}"];
+}
+subgraph cluster_Region_1566840551 {
+label = "R(1:(1:12)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_184678599 {
+label = "IF [B:11:0x0089] THEN: R(1:12) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0089|lif (r6.view_state == 2) goto L25l}"];
+subgraph cluster_Region_1593320243 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x008b|lsetAction_str(new java.lang.String[]\{\"孵化\"\})l}"];
+}
+}
+}
+}
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x002c|lr6.selectx = (byte) r7lr6.selecty = (byte) 0lr6.select[0][1] = r6.select_st[r6.selectx]lr6.select[0][0] = r6.select_it[r6.selectx]ldm.Ms.i().correctSelect(r6.select[0], r6.itemsLength[r6.selectx], r6.list_rows)lr6.itemMine = nullldm.Ms.i()ldm.Ms.skip = 0lr6.itemMine = dm.Ms.i().create2Array(dm.Ms.i().getStream(\"data\/box.d\", \-1))l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0078|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0079|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0087|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.goMY_BAG((r6v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r7v0 'type' int A[D('type' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x007d \-\> B:4:0x002c, CROSS_EDGE: B:11:0x0089 \-\> B:4:0x002c, CROSS_EDGE: B:12:0x008b \-\> B:4:0x002c\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_7[style=dashed];
+Node_3 -> Node_4;
+Node_8 -> Node_9;
+Node_8 -> Node_10[style=dashed];
+Node_9 -> Node_4;
+Node_11 -> Node_4[style=dashed];
+Node_11 -> Node_12;
+Node_12 -> Node_4;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_10 -> Node_11;
+}
+

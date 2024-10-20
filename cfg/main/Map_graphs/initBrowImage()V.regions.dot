@@ -1,0 +1,35 @@
+digraph "CFG formain.Map.initBrowImage()V" {
+subgraph cluster_Region_1981629343 {
+label = "R(1:(1:(1:3)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1577985930 {
+label = "R(1:(1:3))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1879843299 {
+label = "IF [B:2:0x0002] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r3.brow == null) goto L11l}"];
+subgraph cluster_Region_1417881395 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0004|lr3.brow = dm.Ms.i().createSprite(\"data\/face\/brow\", true)l}"];
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0011|ORIG_RETURN\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void main.Map.initBrowImage((r3v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0002 \-\> B:4:0x0011\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

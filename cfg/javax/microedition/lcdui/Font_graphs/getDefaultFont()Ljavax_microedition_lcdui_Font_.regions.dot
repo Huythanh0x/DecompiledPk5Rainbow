@@ -1,0 +1,16 @@
+digraph "CFG forjavax.microedition.lcdui.Font.getDefaultFont()Ljavax\/microedition\/lcdui\/Font;" {
+subgraph cluster_Region_2040735565 {
+label = "R(2:1|2)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljavax.microedition.lcdui.Font javax.microedition.lcdui.Font r0 = new javax.microedition.lcdui.Font()lint r1 = 0 \| 0lr0.tTypeface = android.graphics.Typeface.create(android.graphics.Typeface.SANS_SERIF, r1)lr0.tmpPaint.setTypeface(r0.tTypeface)lr0.tmpPaint.setTextSize(javax.microedition.lcdui.Font.fontSize[0])lr0.metrics = r0.tmpPaint.getFontMetricsInt()l}"];
+Node_2 [shape=record,label="{2\:\ 0x002a|RETURN\l|lreturn r0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static javax.microedition.lcdui.Font javax.microedition.lcdui.Font.getDefaultFont()  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_0 -> Node_1;
+}
+

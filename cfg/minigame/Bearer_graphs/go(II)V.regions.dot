@@ -1,0 +1,16 @@
+digraph "CFG forminigame.Bearer.go(II)V" {
+subgraph cluster_Region_254128036 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr7.lv = (byte) r9lr7.sp = new dm.Sprite[2]lr7.sp[0] = dm.Ms.i().createSprite(\"data\/npc2\/38\", true)lr7.img = dm.Ms.i().createImage(\"data\/brow\/m0\")lbyte[] byte[] r0 = dm.Ms.i().getStream(\"data\/gamee.data\", \-1)ldm.Ms.i()ldm.Ms.skip = 0lr7.bsp = dm.Sprite.Create(dm.Ms.i().createImage(\"data\/map\/5\"), dm.Ms.i().createShort2Array(r0, 2), dm.Ms.i().createShort3Array(r0, 2), dm.Ms.i().createShort3Array(r0, 2))lgo(r8)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x005f|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void minigame.Bearer.go((r7v0 'this' minigame.Bearer A[IMMUTABLE_TYPE, THIS]), (r8v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'lv_' int A[D('lv_' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [minigame.MiniGame_H.go(int, int):void]\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

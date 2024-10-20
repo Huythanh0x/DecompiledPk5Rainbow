@@ -1,0 +1,75 @@
+digraph "CFG formain.Map.initNpcAni_1(II[B)V" {
+subgraph cluster_Region_187721236 {
+label = "R(2:1|(2:(1:(1:7)(0))(1:11)|9))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint int r0 = r4 \- 1l}"];
+subgraph cluster_LoopRegion_647311605 {
+label = "LOOP:0: (2:(1:(1:7)(0))(1:11)|9)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|LOOP_START\lADDED_TO_REGION\lPHI: r0l  0x0003: PHI (r0v1 'i' int) = (r0v0 'i' int), (r0v2 'i' int) binds: [B:1:0x0000, B:9:0x0022] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0003\-\>B:9:0x0022\l|lif (r0 \> 0) goto L21l}"];
+subgraph cluster_Region_1782362759 {
+label = "R(2:(1:(1:7)(0))(1:11)|9)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_600757719 {
+label = "IF [B:4:0x0008] THEN: R(1:(1:7)(0)) ELSE: R(1:11)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0008|lif (r6[r0] != 0) goto L23l}"];
+subgraph cluster_Region_430076437 {
+label = "R(1:(1:7)(0))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_734402428 {
+label = "IF [B:6:0x0010] THEN: R(1:7) ELSE: R(0)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0010|lif (main.Map.npcSp[r5][r0] == null) goto L25l}"];
+subgraph cluster_Region_618371177 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0012|linitNpcAniOne(new java.lang.StringBuilder().append(r0).toString(), r0, r5)l}"];
+}
+subgraph cluster_Region_2021442431 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+}
+subgraph cluster_Region_729595647 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0025|lmain.Map.npcSp[r5][r0] = nulll}"];
+}
+}
+Node_9 [shape=record,label="{9\:\ 0x0022|LOOP_END\lLOOP:0: B:2:0x0003\-\>B:9:0x0022\l|lr0\-\-l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0006|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000a|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0022|SYNTHETIC\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0022|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0022|SYNTHETIC\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0005|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0005|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.initNpcAni_1((r3v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r4v0 'length' int A[D('length' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'type' int A[D('type' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'em' byte[] A[D('em' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lJadxCommentsAttr\{l DEBUG: l \-\> TODO: convert one arg to string using `String.valueOf()`, args: r0v1\}\lINLINE_NOT_NEEDED\lBACK_EDGE: B:9:0x0022 \-\> B:2:0x0003, CROSS_EDGE: B:6:0x0010 \-\> B:9:0x0022, CROSS_EDGE: B:11:0x0025 \-\> B:9:0x0022\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_13[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_11[style=dashed];
+Node_6 -> Node_7;
+Node_6 -> Node_10[style=dashed];
+Node_7 -> Node_8;
+Node_11 -> Node_12;
+Node_9 -> Node_2;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_8 -> Node_9;
+Node_10 -> Node_9;
+Node_12 -> Node_9;
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+}
+

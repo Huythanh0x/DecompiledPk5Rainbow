@@ -1,0 +1,16 @@
+digraph "CFG forjavax.microedition.lcdui.CwaActivity.onPause()V" {
+subgraph cluster_Region_418673754 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lsuper.onPause()lr1.jam.notifyPaused()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0008|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{protected void javax.microedition.lcdui.CwaActivity.onPause((r1v0 'this' javax.microedition.lcdui.CwaActivity A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{android.app.Activity.onPause():void\}]\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

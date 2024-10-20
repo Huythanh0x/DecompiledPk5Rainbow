@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.payment.sms.SmsInfo.getSmsConfirmContent()Ljava\/lang\/String;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.lang.String r0 = r4.smsconfirmheader.replaceAll(\"(*)\", \"#\")l}"];
+Node_2 [shape=record,label="{2\:\ 0x001d|RETURN\l|lreturn new java.lang.StringBuilder(java.lang.String.valueOf(r0)).append(r4.extinfo).toString()l}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public java.lang.String com.uc.paymentsdk.payment.sms.SmsInfo.getSmsConfirmContent((r4v0 'this' com.uc.paymentsdk.payment.sms.SmsInfo A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

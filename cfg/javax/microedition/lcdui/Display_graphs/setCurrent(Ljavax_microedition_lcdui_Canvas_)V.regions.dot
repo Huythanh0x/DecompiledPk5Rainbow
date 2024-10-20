@@ -1,0 +1,16 @@
+digraph "CFG forjavax.microedition.lcdui.Display.setCurrent(Ljavax\/microedition\/lcdui\/Canvas;)V" {
+subgraph cluster_Region_1204424505 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljavax.microedition.lcdui.CwaActivity.getInstance().setCanvas(r2)ljavax.microedition.lcdui.Display.canvas = r2l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0009|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.lcdui.Display.setCurrent((r1v0 'this' javax.microedition.lcdui.Display A[IMMUTABLE_TYPE, THIS]), (r2v0 'gCanvas' javax.microedition.lcdui.Canvas A[D('gCanvas' javax.microedition.lcdui.Canvas), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

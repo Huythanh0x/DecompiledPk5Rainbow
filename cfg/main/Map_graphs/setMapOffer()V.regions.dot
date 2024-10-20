@@ -1,0 +1,136 @@
+digraph "CFG formain.Map.setMapOffer()V" {
+subgraph cluster_Region_1198095042 {
+label = "R(1:(2:(1:(2:(1:(2:(1:(2:(1:26)|(2:24|25)))|(2:18|19)))|(2:12|13)))|(1:5)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1049454970 {
+label = "R(2:(1:(2:(1:(2:(1:(2:(1:26)|(2:24|25)))|(2:18|19)))|(2:12|13)))|(1:5))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_214352929 {
+label = "IF [B:2:0x000a, B:4:0x0010] THEN: R(1:(2:(1:(2:(1:(2:(1:26)|(2:24|25)))|(2:18|19)))|(2:12|13))) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000a|lif ((r3.map_y + (r3.rows * 20)) \>= main.Constants_H.HEIGHT) goto L36l}"];
+Node_4 [shape=record,label="{4\:\ 0x0010|ADDED_TO_REGION\l|lif (r3.rows \<= main.Constants_H.YCELLS) goto L36l}"];
+subgraph cluster_Region_700242872 {
+label = "R(1:(2:(1:(2:(1:(2:(1:26)|(2:24|25)))|(2:18|19)))|(2:12|13)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_621746983 {
+label = "R(2:(1:(2:(1:(2:(1:26)|(2:24|25)))|(2:18|19)))|(2:12|13))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1880911941 {
+label = "IF [B:9:0x001e, B:11:0x0024] THEN: R(1:(2:(1:(2:(1:26)|(2:24|25)))|(2:18|19))) ELSE: null";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x001e|lif (r3.map_y \<= 0) goto L41l}"];
+Node_11 [shape=record,label="{11\:\ 0x0024|ADDED_TO_REGION\l|lif (r3.rows \<= main.Constants_H.YCELLS) goto L41l}"];
+subgraph cluster_Region_1245795755 {
+label = "R(1:(2:(1:(2:(1:26)|(2:24|25)))|(2:18|19)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_91174464 {
+label = "R(2:(1:(2:(1:26)|(2:24|25)))|(2:18|19))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1483002857 {
+label = "IF [B:15:0x002b, B:17:0x0031] THEN: R(1:(2:(1:26)|(2:24|25))) ELSE: null";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x002b|lif (r3.map_x \<= 0) goto L46l}"];
+Node_17 [shape=record,label="{17\:\ 0x0031|ADDED_TO_REGION\l|lif (r3.cols \<= main.Constants_H.XCELLS) goto L46l}"];
+subgraph cluster_Region_1265180408 {
+label = "R(1:(2:(1:26)|(2:24|25)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_189130291 {
+label = "R(2:(1:26)|(2:24|25))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_2003045421 {
+label = "IF [B:21:0x003f, B:23:0x0045] THEN: R(1:26) ELSE: null";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x003f|lif ((r3.map_x + (r3.cols * 20)) \>= main.Constants_H.WIDTH) goto L53l}"];
+Node_23 [shape=record,label="{23\:\ 0x0045|ADDED_TO_REGION\l|lif (r3.cols \<= main.Constants_H.XCELLS) goto L54l}"];
+subgraph cluster_Region_165769907 {
+label = "R(1:26)";
+node [shape=record,color=blue];
+Node_26 [shape=record,label="{26\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_184296361 {
+label = "R(2:24|25)";
+node [shape=record,color=blue];
+Node_24 [shape=record,label="{24\:\ 0x0047|lr3.map_x = main.Constants_H.WIDTH \- (r3.cols * 20)l}"];
+Node_25 [shape=record,label="{25\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_Region_783034555 {
+label = "R(2:18|19)";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x0033|lr3.map_x = 0l}"];
+Node_19 [shape=record,label="{19\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_Region_2038320167 {
+label = "R(2:12|13)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0026|lr3.map_y = 0l}"];
+Node_13 [shape=record,label="{13\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_Region_2072563025 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0012|lr3.map_y = main.Constants_H.HEIGHT \- (r3.rows * 20)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000c|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x001b|ORIG_RETURN\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x001c|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0020|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0029|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x002d|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x0036|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x0041|l}"];
+Node_27 [shape=record,color=red,label="{27\:\ ?|SYNTHETIC\lRETURN\lADDED_TO_REGION\l|lreturnl}"];
+MethodNode[shape=record,label="{private void main.Map.setMapOffer((r3v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:12:0x0026 \-\> B:6:0x001b, CROSS_EDGE: B:18:0x0033 \-\> B:6:0x001b, CROSS_EDGE: B:21:0x003f \-\> B:6:0x001b, CROSS_EDGE: B:23:0x0045 \-\> B:6:0x001b, CROSS_EDGE: B:24:0x0047 \-\> B:6:0x001b, CROSS_EDGE: B:15:0x002b \-\> B:20:0x0036, CROSS_EDGE: B:9:0x001e \-\> B:14:0x0029, CROSS_EDGE: B:2:0x000a \-\> B:8:0x001c\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_8;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_8;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_14;
+Node_11 -> Node_12[style=dashed];
+Node_11 -> Node_14;
+Node_15 -> Node_16[style=dashed];
+Node_15 -> Node_20;
+Node_17 -> Node_18[style=dashed];
+Node_17 -> Node_20;
+Node_21 -> Node_22[style=dashed];
+Node_21 -> Node_27;
+Node_23 -> Node_24[style=dashed];
+Node_23 -> Node_26;
+Node_26 -> Node_7;
+Node_24 -> Node_25;
+Node_25 -> Node_7;
+Node_18 -> Node_19;
+Node_19 -> Node_7;
+Node_12 -> Node_13;
+Node_13 -> Node_7;
+Node_5 -> Node_6;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_14 -> Node_15;
+Node_16 -> Node_17;
+Node_20 -> Node_21;
+Node_22 -> Node_23;
+Node_27 -> Node_7;
+}
+

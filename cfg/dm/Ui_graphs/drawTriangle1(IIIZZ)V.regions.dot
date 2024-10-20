@@ -1,0 +1,54 @@
+digraph "CFG fordm.Ui.drawTriangle1(IIIZZ)V" {
+subgraph cluster_Region_1483524028 {
+label = "R(2:1|(1:(2:3|(1:(1:5)))))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ms.i()ldrawUi(30, (r7 \- r9) \- dm.Ms.abs(r6.cTriangle), r8, 4 \| 2, 4)ldm.Ms.i()ldrawUi(30, dm.Ms.abs(r6.cTriangle) + r7 + r9, r8, 8 \| 2, 0)l}"];
+subgraph cluster_Region_2053801881 {
+label = "R(1:(2:3|(1:(1:5))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1752817037 {
+label = "IF [B:2:0x0030] THEN: R(2:3|(1:(1:5))) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0030|lif (r11 == true) goto L14l}"];
+subgraph cluster_Region_554917721 {
+label = "R(2:3|(1:(1:5)))";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0032|lbyte byte r0 = (byte) (r6.cTriangle + 1)lr6.cTriangle = r0l}"];
+subgraph cluster_Region_1139027002 {
+label = "R(1:(1:5))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1381913946 {
+label = "IF [B:4:0x003a] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x003a|lif (r0 \> 4) goto L16l}"];
+subgraph cluster_Region_2106282717 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x003c|lr6.cTriangle = (byte) \-3l}"];
+}
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x003f|ORIG_RETURN\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|SYNTHETIC\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawTriangle1((r6v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r7v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'dir' boolean A[D('dir' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'ct' boolean A[D('ct' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x003a \-\> B:6:0x003f, CROSS_EDGE: B:2:0x0030 \-\> B:6:0x003f\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_9[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_8[style=dashed];
+Node_5 -> Node_6;
+Node_0 -> Node_1;
+Node_6 -> Node_7;
+Node_8 -> Node_7;
+Node_9 -> Node_7;
+}
+

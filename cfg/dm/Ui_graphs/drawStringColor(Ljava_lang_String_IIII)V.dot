@@ -1,0 +1,35 @@
+digraph "CFG fordm.Ui.drawStringColor(Ljava\/lang\/String;IIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr8 = (byte) r23lr17 = 0lr18 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0008|LOOP_START\lPHI: r8 r17 r18l  0x0008: PHI (r8v1 'c' byte) = (r8v0 'c' byte), (r8v2 'c' byte) binds: [B:1:0x0000, B:12:?] A[DONT_GENERATE, DONT_INLINE]l  0x0008: PHI (r17v1 'start' byte) = (r17v0 'start' byte), (r17v2 'start' byte) binds: [B:1:0x0000, B:12:?] A[DONT_GENERATE, DONT_INLINE]l  0x0008: PHI (r18v1 'tw' short) = (r18v0 'tw' short), (r18v2 'tw' short) binds: [B:1:0x0000, B:12:?] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:12:?\l|lbyte r0 = (byte) r20.indexOf(\"#\", r17)l}"];
+Node_3 [shape=record,label="{3\:\ 0x001b|lif (r0 == (\-1)) goto L25l}"];
+Node_4 [shape=record,label="{4\:\ 0x001d|ljava.lang.String r4 = r20.substring(r17, r0)ldrawString(r4, r21 + r18, r22, 0, r8, r24)lr18 = (short) (dm.Ms.i().getStringWidth(r4) + r18)lbyte r8 = (byte) (java.lang.Integer.parseInt(r20.substring(r0 + 1, r0 + 2)) \- 1)lr17 = (byte) (r0 + 2)l}"];
+Node_5 [shape=record,label="{5\:\ 0x005b|lif (r8 != (\-1)) goto L22l}"];
+Node_6 [shape=record,label="{6\:\ 0x005d|lr8 = (byte) r23l}"];
+Node_7 [shape=record,label="{7\:\ 0x0061|PHI: r8 r17 r18l  0x0061: PHI (r8v2 'c' byte) = (r8v1 'c' byte), (r8v3 'c' byte), (r8v4 'c' byte) binds: [B:13:0x0068, B:5:0x005b, B:6:0x005d] A[DONT_GENERATE, DONT_INLINE]l  0x0061: PHI (r17v2 'start' byte) = (r17v1 'start' byte), (r17v3 'start' byte), (r17v3 'start' byte) binds: [B:13:0x0068, B:5:0x005b, B:6:0x005d] A[DONT_GENERATE, DONT_INLINE]l  0x0061: PHI (r18v2 'tw' short) = (r18v1 'tw' short), (r18v3 'tw' short), (r18v3 'tw' short) binds: [B:13:0x0068, B:5:0x005b, B:6:0x005d] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x0065|lif (r0 != (\-1)) goto L27l}"];
+Node_9 [shape=record,label="{9\:\ 0x0067|SYNTHETIC\l|l}"];
+Node_10 [shape=record,label="{10\:\ 0x0067|RETURN\l|lreturnl}"];
+Node_11 [shape=record,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_12 [shape=record,label="{12\:\ ?|LOOP_END\lSYNTHETIC\lLOOP:0: B:2:0x0008\-\>B:12:?\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x0068|lr1 = r17ldrawString(r20.substring(r1, r20.length()), r21 + r18, r22, 0, r8, r24)l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawStringColor((r19v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r20v0 'str' java.lang.String A[D('str' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r21v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r22v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r23v0 'color' int A[D('color' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r24v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:8:0x0065 \-\> B:2:0x0008, CROSS_EDGE: B:5:0x005b \-\> B:7:0x0061, CROSS_EDGE: B:13:0x0068 \-\> B:7:0x0061\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4[style=dashed];
+Node_3 -> Node_13;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_7;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_12;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_12 -> Node_2;
+Node_13 -> Node_7;
+}
+

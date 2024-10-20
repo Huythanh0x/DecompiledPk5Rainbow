@@ -1,0 +1,12 @@
+digraph "CFG forjavax.microedition.media.control.ToneControl.\<clinit\>()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljavax.microedition.media.control.ToneControl.BLOCK_END = \-6ljavax.microedition.media.control.ToneControl.BLOCK_START = \-5ljavax.microedition.media.control.ToneControl.C4 = 60ljavax.microedition.media.control.ToneControl.PLAY_BLOCK = \-7ljavax.microedition.media.control.ToneControl.REPEAT = \-9ljavax.microedition.media.control.ToneControl.RESOLUTION = \-4ljavax.microedition.media.control.ToneControl.SET_VOLUME = \-8ljavax.microedition.media.control.ToneControl.SILENCE = \-1ljavax.microedition.media.control.ToneControl.TEMPO = \-3ljavax.microedition.media.control.ToneControl.VERSION = \-2l}"];
+Node_2 [shape=record,label="{2\:\ 0x0020|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{static void javax.microedition.media.control.ToneControl.\<clinit\>()  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

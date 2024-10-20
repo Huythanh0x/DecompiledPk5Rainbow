@@ -1,0 +1,19 @@
+digraph "CFG forminigame.Cards.patin()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldraw0(10, 2, 280)l}"];
+Node_2 [shape=record,label="{2\:\ 0x000a|lif (r3.state == 0) goto L6l}"];
+Node_3 [shape=record,label="{3\:\ 0x000c|ldrawGame(10, 2, (r3.length + 3) * 25)l}"];
+Node_4 [shape=record,label="{4\:\ 0x0015|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void minigame.Cards.patin((r3v0 'this' minigame.Cards A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [minigame.MiniGame_H.patin():void]\lCROSS_EDGE: B:2:0x000a \-\> B:4:0x0015\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

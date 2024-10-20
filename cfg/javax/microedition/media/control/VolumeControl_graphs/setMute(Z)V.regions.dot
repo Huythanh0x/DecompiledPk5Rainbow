@@ -1,0 +1,35 @@
+digraph "CFG forjavax.microedition.media.control.VolumeControl.setMute(Z)V" {
+subgraph cluster_Region_1139653907 {
+label = "R(1:(1:2)(1:5))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1970037879 {
+label = "IF [B:1:0x0000] THEN: R(1:2) ELSE: R(1:5)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lif (r1 != false) goto L10l}"];
+subgraph cluster_Region_437041182 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lmute()l}"];
+}
+subgraph cluster_Region_1484876772 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0006|lunmute()l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0005|ORIG_RETURN\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.media.control.VolumeControl.setMute((r0v0 'this' javax.microedition.media.control.VolumeControl A[IMMUTABLE_TYPE, THIS]), (r1v0 'mute' boolean A[D('mute' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x0006 \-\> B:3:0x0005\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_1 -> Node_5[style=dashed];
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_6 -> Node_4;
+}
+

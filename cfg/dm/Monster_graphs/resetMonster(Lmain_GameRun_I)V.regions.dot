@@ -1,0 +1,48 @@
+digraph "CFG fordm.Monster.resetMonster(Lmain\/GameRun;I)V" {
+subgraph cluster_Region_1715797921 {
+label = "R(2:(1:3)(1:(1:8))|4)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1242018769 {
+label = "IF [B:2:0x0002] THEN: R(1:3) ELSE: R(1:(1:8))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r5 \> (\-1)) goto L13l}"];
+subgraph cluster_Region_1114917068 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0004|lr3.monster[5] = (byte) r5l}"];
+}
+subgraph cluster_Region_1986936172 {
+label = "R(1:(1:8)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_932609527 {
+label = "IF [B:7:0x000d] THEN: R(1:8) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x000d|lif (r5 == (\-1)) goto L17l}"];
+subgraph cluster_Region_28047769 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x000f|lbyte[] byte[] r0 = r3.monsterldm.Ms.i()lr0[5] = (byte) dm.Ms.getRandom(r3.monster[5] + 1)l}"];
+}
+}
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x0009|lresetPro(r4)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000c|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Monster.resetMonster((r3v0 'this' dm.Monster A[IMMUTABLE_TYPE, THIS]), (r4v0 'data' main.GameRun A[D('data' main.GameRun), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'evolve' int A[D('evolve' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x000d \-\> B:4:0x0009, CROSS_EDGE: B:8:0x000f \-\> B:4:0x0009\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_7[style=dashed];
+Node_3 -> Node_4;
+Node_7 -> Node_4[style=dashed];
+Node_7 -> Node_8;
+Node_8 -> Node_4;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_5 -> Node_6;
+}
+

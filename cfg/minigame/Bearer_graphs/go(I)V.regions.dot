@@ -1,0 +1,75 @@
+digraph "CFG forminigame.Bearer.go(I)V" {
+subgraph cluster_Region_774077304 {
+label = "R(1:(2:(2:3|4)|(1:(1:(2:7|(1:10))))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_188070697 {
+label = "R(2:(2:3|4)|(1:(1:(2:7|(1:10)))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1483774846 {
+label = "IF [B:2:0x0002] THEN: R(2:3|4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r7 \< 1) goto L18l}"];
+subgraph cluster_Region_641390409 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0004|lr6.state = (byte) 0lr6.length = (byte) 10lr6.gr.setStringB(main.Constants_H.GAME_TXT_13, 160, 0)lr6.gr.setStringB(main.Constants_H.GAME_TXT_27, main.Constants_H.WIDTH, 1)l}"];
+Node_4 [shape=record,label="{4\:\ 0x001c|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_334987341 {
+label = "R(1:(1:(2:7|(1:10)))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_901615081 {
+label = "R(1:(2:7|(1:10)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1774865227 {
+label = "IF [B:6:0x001d] THEN: R(2:7|(1:10)) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x001d|lif (r7 == 1) goto L21l}"];
+subgraph cluster_Region_1110527027 {
+label = "R(2:7|(1:10))";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x001f|lr6.state = (byte) 1lr6.count = (short) 0lr6.cur = (byte) 0lr6.ballC0 = r6.gDate[1][r6.lv]linitABall(true)lbyte r0 = 0l}"];
+subgraph cluster_LoopRegion_331640518 {
+label = "LOOP:0: (1:10)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0036|ADDED_TO_REGION\l|lif (r0 \< r6.xy.length) goto L24l}"];
+subgraph cluster_Region_1722723513 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0038|LOOP_END\lLOOP:0: B:8:0x0033\-\>B:10:0x0038\l|lr6.xy[r0][5] = \-1lbyte r0 = (byte) (r0 + 1)l}"];
+}
+}
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0033|LOOP_START\lPHI: r0l  0x0033: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v2 'i' byte) binds: [B:7:0x001f, B:10:0x0038] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:8:0x0033\-\>B:10:0x0038\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x001c|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void minigame.Bearer.go((r6v0 'this' minigame.Bearer A[IMMUTABLE_TYPE, THIS]), (r7v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [minigame.MiniGame_H.go(int):void]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x001d \-\> B:4:0x001c, CROSS_EDGE: B:9:0x0036 \-\> B:4:0x001c, BACK_EDGE: B:10:0x0038 \-\> B:8:0x0033\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_6 -> Node_13[style=dashed];
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_9 -> Node_11[style=dashed];
+Node_10 -> Node_8;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_8 -> Node_9;
+Node_11 -> Node_12;
+Node_12 -> Node_5;
+Node_13 -> Node_5;
+}
+

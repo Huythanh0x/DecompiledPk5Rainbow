@@ -1,0 +1,14 @@
+digraph "CFG forjavax.microedition.lcdui.Canvas.setFullScreenMode(Z)V" {
+subgraph cluster_Region_541526088 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.lcdui.Canvas.setFullScreenMode((r0v0 'this' javax.microedition.lcdui.Canvas A[IMMUTABLE_TYPE, THIS]), (r1v0 'mode' boolean A[D('mode' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+}
+

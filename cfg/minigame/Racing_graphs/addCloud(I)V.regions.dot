@@ -1,0 +1,16 @@
+digraph "CFG forminigame.Racing.addCloud(I)V" {
+subgraph cluster_Region_1910927772 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lshort[] short[] r0 = r4.cloud[r5]ldm.Ms.i()lr0[0] = (short) (dm.Ms.getRandom(main.Constants_H.WIDTH_H) + main.Constants_H.WIDTH_)lshort[] short[] r0 = r4.cloud[r5]lint int r2 = r4.srcY \- 80ldm.Ms.i()lr0[1] = (short) (r2 + ((dm.Ms.getRandom(25) + 55) * r5))lshort[] short[] r0 = r4.cloud[r5]ldm.Ms.i()lr0[2] = (short) (dm.Ms.getRandom(5) + 2)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x003f|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void minigame.Racing.addCloud((r4v0 'this' minigame.Racing A[IMMUTABLE_TYPE, THIS]), (r5v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

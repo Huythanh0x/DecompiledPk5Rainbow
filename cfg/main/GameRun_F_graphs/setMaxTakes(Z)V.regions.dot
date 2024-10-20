@@ -1,0 +1,127 @@
+digraph "CFG formain.GameRun_F.setMaxTakes(Z)V" {
+subgraph cluster_Region_1467761606 {
+label = "R(1:(2:(2:3|4)|(1:(2:(2:8|9)|(1:(1:12)(1:(1:16)(1:(1:(1:20)))))))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1045871131 {
+label = "R(2:(2:3|4)|(1:(2:(2:8|9)|(1:(1:12)(1:(1:16)(1:(1:(1:20))))))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1612114865 {
+label = "IF [B:2:0x0003] THEN: R(2:3|4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif (r6 != false) goto L27l}"];
+subgraph cluster_Region_724853394 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0005|lr5.max_takes = (byte) 3lr5.max_monsters = (byte) 10l}"];
+Node_4 [shape=record,label="{4\:\ 0x000b|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_518223425 {
+label = "R(1:(2:(2:8|9)|(1:(1:12)(1:(1:16)(1:(1:(1:20))))))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_367952356 {
+label = "R(2:(2:8|9)|(1:(1:12)(1:(1:16)(1:(1:(1:20))))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1114811275 {
+label = "IF [B:7:0x0011] THEN: R(2:8|9) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0011|lif (r5.rmsOther[3] == 2) goto L31l}"];
+subgraph cluster_Region_1255825829 {
+label = "R(2:8|9)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0013|lr5.max_takes = (byte) 4lr5.max_monsters = (byte) 20l}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1326335937 {
+label = "R(1:(1:12)(1:(1:16)(1:(1:(1:20))))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_781065829 {
+label = "IF [B:11:0x001e] THEN: R(1:12) ELSE: R(1:(1:16)(1:(1:(1:20)))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x001e|lif (r5.rmsOther[3] == 3) goto L34l}"];
+subgraph cluster_Region_2046285516 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0020|lr5.max_takes = (byte) 5lr5.max_monsters = (byte) 40l}"];
+}
+subgraph cluster_Region_1622759198 {
+label = "R(1:(1:16)(1:(1:(1:20)))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1563698311 {
+label = "IF [B:15:0x002b] THEN: R(1:16) ELSE: R(1:(1:(1:20))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x002b|lif (r5.rmsOther[3] == 4) goto L37l}"];
+subgraph cluster_Region_60257394 {
+label = "R(1:16)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x002d|lr5.max_takes = (byte) 5lr5.max_monsters = (byte) 80l}"];
+}
+subgraph cluster_Region_1150387066 {
+label = "R(1:(1:(1:20))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_1849306449 {
+label = "R(1:(1:20))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_307641357 {
+label = "IF [B:19:0x0038] THEN: R(1:20) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x0038|lif (r5.rmsOther[3] == 5) goto L40l}"];
+subgraph cluster_Region_718995153 {
+label = "R(1:20)";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x003a|lr5.max_takes = (byte) 5lr5.max_monsters = main.Constants_H.MAX_MONSTERSl}"];
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x000c|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x001a|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0027|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ ?|SYNTHETIC\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0034|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ ?|SYNTHETIC\l|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun_F.setMaxTakes((r5v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]), (r6v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x0013 \-\> B:4:0x000b, CROSS_EDGE: B:12:0x0020 \-\> B:4:0x000b, CROSS_EDGE: B:16:0x002d \-\> B:4:0x000b, CROSS_EDGE: B:19:0x0038 \-\> B:4:0x000b, CROSS_EDGE: B:20:0x003a \-\> B:4:0x000b\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_7 -> Node_10[style=dashed];
+Node_8 -> Node_9;
+Node_9 -> Node_5;
+Node_11 -> Node_12;
+Node_11 -> Node_14[style=dashed];
+Node_12 -> Node_13;
+Node_15 -> Node_16;
+Node_15 -> Node_18[style=dashed];
+Node_16 -> Node_17;
+Node_19 -> Node_20;
+Node_19 -> Node_22[style=dashed];
+Node_20 -> Node_21;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_6 -> Node_7;
+Node_10 -> Node_11;
+Node_13 -> Node_5;
+Node_14 -> Node_15;
+Node_17 -> Node_5;
+Node_18 -> Node_19;
+Node_21 -> Node_5;
+Node_22 -> Node_5;
+}
+

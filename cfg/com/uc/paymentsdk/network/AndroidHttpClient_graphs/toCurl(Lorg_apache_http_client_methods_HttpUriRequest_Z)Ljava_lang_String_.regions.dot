@@ -1,0 +1,136 @@
+digraph "CFG forcom.uc.paymentsdk.network.AndroidHttpClient.toCurl(Lorg\/apache\/http\/client\/methods\/HttpUriRequest;Z)Ljava\/lang\/String;" {
+subgraph cluster_Region_1886268155 {
+label = "R(7:1|(3:3|(1:12)|10)|15|(2:17|(1:19))|20|(1:(1:28)(1:29))|31) | DECL_VAR: org.apache.http.HttpEntity localHttpEntity\l";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.lang.StringBuilder java.lang.StringBuilder r6 = new java.lang.StringBuilder()lr6.append(\"curl \")lint r10 = 0ll}"];
+subgraph cluster_LoopRegion_208995411 {
+label = "LOOP:0: (3:3|(1:12)|10)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0010|LOOP_START\lADDED_TO_REGION\lPHI: r10l  0x0010: PHI (r10v1 int) = (r10v0 int), (r10v3 int) binds: [B:1:0x0000, B:10:0x0092] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0010\-\>B:10:0x0092\l|llif (r10 \< r9) goto L53l}"];
+subgraph cluster_Region_1324471103 {
+label = "R(3:3|(1:12)|10)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0076|lr1 = r8[r10]l}"];
+subgraph cluster_IfRegion_251437236 {
+label = "IF [B:4:0x0078, B:6:0x0084, B:8:0x0090] THEN: R(1:12) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0078|lif (r14 != false) goto L60l}"];
+Node_6 [shape=record,label="{6\:\ 0x0084|ADDED_TO_REGION\l|lif (r1.getName().equals(\"Authorization\") == false) goto L57l}"];
+Node_8 [shape=record,label="{8\:\ 0x0090|ADDED_TO_REGION\l|lif (r1.getName().equals(\"Cookie\") == false) goto L60l}"];
+subgraph cluster_Region_1433385591 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0096|lr6.append(\"\-\-header \"\")lr6.append(r1.toString().trim())lr6.append(\"\" \")l}"];
+}
+}
+Node_10 [shape=record,label="{10\:\ 0x0092|LOOP_END\lLOOP:0: B:2:0x0010\-\>B:10:0x0092\l|lr10++l}"];
+}
+}
+Node_15 [shape=record,label="{15\:\ 0x0012|ljava.net.URI java.net.URI r2 = r13.getURI()l}"];
+subgraph cluster_IfRegion_1351545348 {
+label = "IF [B:16:0x0018] THEN: R(2:17|(1:19)) ELSE: null";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x0018|lif ((r13 instanceof org.apache.http.impl.client.RequestWrapper) != false) goto L39l}"];
+subgraph cluster_Region_1349170254 {
+label = "R(2:17|(1:19))";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x001a|lorg.apache.http.HttpRequest org.apache.http.HttpRequest r5 = ((org.apache.http.impl.client.RequestWrapper) r13).getOriginal()l}"];
+subgraph cluster_IfRegion_1462403301 {
+label = "IF [B:18:0x0024] THEN: R(1:19) ELSE: null";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x0024|lif ((r5 instanceof org.apache.http.client.methods.HttpUriRequest) != false) goto L41l}"];
+subgraph cluster_Region_1717920916 {
+label = "R(1:19)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x0026|ljava.net.URI r2 = ((org.apache.http.client.methods.HttpUriRequest) r5).getURI()l}"];
+}
+}
+}
+}
+Node_20 [shape=record,label="{20\:\ 0x002c|PHI: r2l  0x002c: PHI (r2v1 'aurl' java.net.URI) = (r2v0 'aurl' java.net.URI), (r2v0 'aurl' java.net.URI), (r2v2 'aurl' java.net.URI) binds: [B:16:0x0018, B:18:0x0024, B:19:0x0026] A[DONT_GENERATE, DONT_INLINE]\l|lr6.append(\"\"\")lr6.append(r2)lr6.append(\"\"\")l}"];
+subgraph cluster_IfRegion_1480248519 {
+label = "IF [B:21:0x003b, B:23:0x0044, B:25:0x004a] THEN: R(1:(1:28)(1:29)) ELSE: null";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x003b|lif ((r13 instanceof org.apache.http.HttpEntityEnclosingRequest) != false) goto L44l}"];
+Node_23 [shape=record,label="{23\:\ 0x0044|ADDED_TO_REGION\l|lif ((r4 = ((org.apache.http.HttpEntityEnclosingRequest) r13).getEntity()) != null) goto L46l}"];
+Node_25 [shape=record,label="{25\:\ 0x004a|ADDED_TO_REGION\l|lif (r4.isRepeatable() != false) goto L48l}"];
+subgraph cluster_Region_2093550607 {
+label = "R(1:(1:28)(1:29))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_391899682 {
+label = "IF [B:27:0x0054] THEN: R(1:28) ELSE: R(1:29)";
+node [shape=record,color=blue];
+Node_27 [shape=record,label="{27\:\ 0x0054|lif (r4.getContentLength() \< 1024) goto L50l}"];
+subgraph cluster_Region_559086963 {
+label = "R(1:28)";
+node [shape=record,color=blue];
+Node_28 [shape=record,label="{28\:\ 0x0056|ljava.io.ByteArrayOutputStream java.io.ByteArrayOutputStream r3 = new java.io.ByteArrayOutputStream()lr4.writeTo(r3)ljava.lang.String java.lang.String r7 = r3.toString()lr6.append(\" \-\-data\-ascii \"\").append(r7).append(\"\"\")l}"];
+}
+subgraph cluster_Region_1338577359 {
+label = "R(1:29)";
+node [shape=record,color=blue];
+Node_29 [shape=record,label="{29\:\ 0x00ac|lr6.append(\" [TOO MUCH DATA TO INCLUDE]\")l}"];
+}
+}
+}
+}
+Node_31 [shape=record,label="{31\:\ 0x0075|RETURN\l|lreturn r6.toString()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x007a|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0086|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0092|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0092|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0092|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0012|SYNTHETIC\l|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x003d|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x0046|l}"];
+Node_26 [shape=record,color=red,label="{26\:\ 0x004c|l}"];
+Node_30 [shape=record,color=red,label="{30\:\ 0x0071|l}"];
+Node_32 [shape=record,color=red,label="{32\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private static java.lang.String com.uc.paymentsdk.network.AndroidHttpClient.toCurl((r13v0 'paramHttpUriRequest' org.apache.http.client.methods.HttpUriRequest A[D('paramHttpUriRequest' org.apache.http.client.methods.HttpUriRequest), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'paramBoolean' boolean A[D('paramBoolean' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljava\/io\/IOException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:29:0x00ac \-\> B:30:0x0071, CROSS_EDGE: B:25:0x004a \-\> B:30:0x0071, CROSS_EDGE: B:23:0x0044 \-\> B:30:0x0071, CROSS_EDGE: B:21:0x003b \-\> B:30:0x0071, CROSS_EDGE: B:18:0x0024 \-\> B:20:0x002c, CROSS_EDGE: B:16:0x0018 \-\> B:20:0x002c, BACK_EDGE: B:10:0x0092 \-\> B:2:0x0010, CROSS_EDGE: B:12:0x0096 \-\> B:10:0x0092, CROSS_EDGE: B:6:0x0084 \-\> B:10:0x0092, CROSS_EDGE: B:4:0x0078 \-\> B:12:0x0096\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_14[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_12;
+Node_6 -> Node_7;
+Node_6 -> Node_11[style=dashed];
+Node_8 -> Node_12;
+Node_8 -> Node_9[style=dashed];
+Node_12 -> Node_13;
+Node_10 -> Node_2;
+Node_15 -> Node_16;
+Node_16 -> Node_17;
+Node_16 -> Node_20[style=dashed];
+Node_17 -> Node_18;
+Node_18 -> Node_19;
+Node_18 -> Node_20[style=dashed];
+Node_19 -> Node_20;
+Node_20 -> Node_21;
+Node_21 -> Node_22;
+Node_21 -> Node_30[style=dashed];
+Node_23 -> Node_24;
+Node_23 -> Node_30[style=dashed];
+Node_25 -> Node_26;
+Node_25 -> Node_30[style=dashed];
+Node_27 -> Node_28;
+Node_27 -> Node_29[style=dashed];
+Node_28 -> Node_30;
+Node_29 -> Node_30;
+Node_31 -> Node_32;
+Node_0 -> Node_1;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_11 -> Node_10;
+Node_13 -> Node_10;
+Node_14 -> Node_15;
+Node_22 -> Node_23;
+Node_24 -> Node_25;
+Node_26 -> Node_27;
+Node_30 -> Node_31;
+}
+

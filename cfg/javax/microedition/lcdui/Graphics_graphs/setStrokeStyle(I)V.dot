@@ -1,0 +1,38 @@
+digraph "CFG forjavax.microedition.lcdui.Graphics.setStrokeStyle(I)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0001|lif (r3 != 0) goto L20l}"];
+Node_3 [shape=record,label="{3\:\ 0x0003|lif (r3 == 1) goto L22l}"];
+Node_4 [shape=record,label="{4\:\ 0x000b|lr2.strokeStyle = r3l}"];
+Node_5 [shape=record,label="{5\:\ 0x000d|lif (r3 != 0) goto L26l}"];
+Node_6 [shape=record,label="{6\:\ 0x000f|lr2.font.tmpPaint.setPathEffect(null)l}"];
+Node_7 [shape=record,label="{7\:\ 0x0017|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_8 [shape=record,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0018|lif (r3 != 1) goto L28l}"];
+Node_10 [shape=record,label="{10\:\ 0x001a|lr2.font.tmpPaint.setPathEffect(javax.microedition.lcdui.Graphics.dashPathEffect)l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_13 [shape=record,label="{13\:\ 0x0005|l}"];
+Node_14 [shape=record,label="{14\:\ 0x000a|lthrow new java.lang.IllegalArgumentException()l}"];
+MethodNode[shape=record,label="{public void javax.microedition.lcdui.Graphics.setStrokeStyle((r2v0 'this' javax.microedition.lcdui.Graphics A[IMMUTABLE_TYPE, THIS]), (r3v0 'style' int A[D('style' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0017 \-\> B:8:?, CROSS_EDGE: B:9:0x0018 \-\> B:7:0x0017, CROSS_EDGE: B:10:0x001a \-\> B:7:0x0017, CROSS_EDGE: B:2:0x0001 \-\> B:13:0x0005\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_13;
+Node_3 -> Node_13[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_9;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_12;
+Node_10 -> Node_11;
+Node_11 -> Node_8;
+Node_12 -> Node_8;
+Node_13 -> Node_14;
+Node_14 -> Node_8;
+}
+

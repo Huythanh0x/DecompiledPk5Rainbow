@@ -1,0 +1,56 @@
+digraph "CFG forcom.nokia.mid.ui.DirectGraphics.drawImage(Ljavax\/microedition\/lcdui\/Image;IIII)V" {
+subgraph cluster_Region_105977526 {
+label = "R(2:(1:3)(1:(1:9)(1:10))|4) | DECL_VAR: int tmpTrans\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1600310703 {
+label = "IF [B:2:0x0004] THEN: R(1:3) ELSE: R(1:(1:9)(1:10))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif ((r15 & 8192) != 0) goto L15l}"];
+subgraph cluster_Region_1520656404 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0006|lr6 = com.nokia.mid.ui.DirectGraphics.transA[((r15 \- 8192) \/ com.nokia.mid.ui.DirectGraphics.ROTATE_90) + 4]l}"];
+}
+subgraph cluster_Region_1408694044 {
+label = "R(1:(1:9)(1:10)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_7548128 {
+label = "IF [B:8:0x0027] THEN: R(1:9) ELSE: R(1:10) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0027|lif ((r15 & 16384) != 0) goto L20l}"];
+subgraph cluster_Region_704563804 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0029|lr6 = com.nokia.mid.ui.DirectGraphics.transB[(r15 \- 16384) \/ com.nokia.mid.ui.DirectGraphics.ROTATE_90]l}"];
+}
+subgraph cluster_Region_2090435105 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0034|lr6 = com.nokia.mid.ui.DirectGraphics.transA[r15 \/ com.nokia.mid.ui.DirectGraphics.ROTATE_90]l}"];
+}
+}
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x0012|PHI: r6l  0x0012: PHI (r6v3 'tmpTrans' int) = (r6v1 'tmpTrans' int), (r6v2 'tmpTrans' int), (r6v4 'tmpTrans' int) binds: [B:10:0x0034, B:9:0x0029, B:3:0x0006] A[DONT_GENERATE, DONT_INLINE]\l|lr10.g.drawRegion(r11, 0, 0, r11.getWidth(), r11.getHeight(), r6, r12, r13, r14)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0024|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0025|l}"];
+MethodNode[shape=record,label="{public void com.nokia.mid.ui.DirectGraphics.drawImage((r10v0 'this' com.nokia.mid.ui.DirectGraphics A[IMMUTABLE_TYPE, THIS]), (r11v0 'img' javax.microedition.lcdui.Image A[D('img' javax.microedition.lcdui.Image), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'anchor' int A[D('anchor' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'trans' int A[D('trans' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x0029 \-\> B:4:0x0012, CROSS_EDGE: B:10:0x0034 \-\> B:4:0x0012\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_7[style=dashed];
+Node_3 -> Node_4;
+Node_8 -> Node_9;
+Node_8 -> Node_10[style=dashed];
+Node_9 -> Node_4;
+Node_10 -> Node_4;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+}
+

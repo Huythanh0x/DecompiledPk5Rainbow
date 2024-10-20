@@ -1,0 +1,21 @@
+digraph "CFG fordm.Ms.createShort3Array([BI)[[[S" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lshort[][][] r0 = new short[getStreamL(r4, r5)][]lr1 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0007|LOOP_START\lPHI: r1l  0x0007: PHI (r1v1 'i' int) = (r1v0 'i' int), (r1v2 'i' int) binds: [B:1:0x0000, B:4:0x000b] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0007\-\>B:4:0x000b\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0008|lif (r1 \< r0.length) goto L14l}"];
+Node_4 [shape=record,label="{4\:\ 0x000b|LOOP_END\lLOOP:0: B:2:0x0007\-\>B:4:0x000b\l|lr0[r1] = createShort2Array(r4, r5)lint r1 = r1 + 1l}"];
+Node_5 [shape=record,label="{5\:\ 0x000a|SYNTHETIC\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000a|RETURN\l|lreturn r0l}"];
+Node_7 [shape=record,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public short[][][] dm.Ms.createShort3Array((r3v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r4v0 'data' byte[] A[D('data' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:4:0x000b \-\> B:2:0x0007\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+}
+

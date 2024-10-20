@@ -1,0 +1,46 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.buildSmsPaymentView()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr12.mType = 4lr12.mSmsId = 0landroid.widget.RelativeLayout r7 = new android.widget.RelativeLayout(getApplicationContext())lr7.setBackgroundColor(\-1)lr7.setLayoutParams(new android.view.ViewGroup.LayoutParams(\-1, \-1))landroid.widget.RelativeLayout r11 = com.uc.paymentsdk.util.Utils.initSubTitle(getApplicationContext(), r12, \"短信支付\", false)lr11.setId(1)lr11.setLayoutParams(new android.widget.RelativeLayout.LayoutParams(\-1, \-2))lr7.addView(r11)landroid.widget.TextView r2 = new android.widget.TextView(r12)lr2.setId(2)lr2.setTextSize(18.0f)lr2.setTextColor(\-12303292)lr2.setPadding(10, 10, 0, 0)lr2.setFocusable(true)lr2.setClickable(true)lr2.setLinkTextColor(com.uc.paymentsdk.util.Constants.COLOR_LINK_TEXT)lr2.setText(\"尊敬的用户，正在获取信息，请稍后......\")landroid.widget.RelativeLayout$LayoutParams r8 = new android.widget.RelativeLayout.LayoutParams(\-1, \-2)lr8.addRule(3, 1)lr2.setLayoutParams(r8)lr7.addView(r2)landroid.widget.TextView r3 = new android.widget.TextView(r12)lr3.setId(3)lr3.setTextSize(16.0f)lr3.setTextColor(\-7829368)lr3.setPadding(10, com.uc.paymentsdk.payment.PaymentsActivity.DIALOG_USERNAME_IS_EMPTY, 0, 0)lr3.setFocusable(true)lr3.setClickable(true)lr3.setLinkTextColor(com.uc.paymentsdk.util.Constants.COLOR_LINK_TEXT)landroid.widget.RelativeLayout$LayoutParams r9 = new android.widget.RelativeLayout.LayoutParams(\-1, \-2)lr9.addRule(3, 2)lr3.setLayoutParams(r9)lr7.addView(r3)landroid.widget.Button r6 = new android.widget.Button(getApplicationContext())lr6.setText(\"点播\")lr6.setId(3)lr6.setOnClickListener(r12)landroid.widget.Button r5 = new android.widget.Button(getApplicationContext())lr5.setText(\"取消\")lr5.setId(4)lr5.setOnClickListener(r12)l}"];
+Node_2 [shape=record,label="{2\:\ 0x00e0|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x00e0|TRY_ENTER\lTRY_LEAVE\lTryCatch #0 \{SimCardNotSupportException \-\> 0x00ff, blocks: (B:3:0x00e0), top: B:2:0x00e0 \}\lCatch: SimCardNotSupportException \-\> 0x00ff\l|lcom.uc.paymentsdk.util.Utils.CheckSimCardSupprotInfo(getApplicationContext())     \/\/ Catch: com.uc.paymentsdk.payment.sms.SimCardNotSupportException \-\> Lffl}"];
+Node_4 [shape=record,label="{4\:\ 0x00e7|lint r4 = com.uc.paymentsdk.util.Utils.getSmsPayment()l}"];
+Node_5 [shape=record,label="{5\:\ 0x00f3|lif (r4 \> com.uc.paymentsdk.util.PrefUtil.getPayedAmount(getApplicationContext())) goto L10l}"];
+Node_6 [shape=record,label="{6\:\ 0x00f5|lr12.mSmsResultInfo = \"您已支付完成，将返回您的游戏中。\"lshowDialog(20)l}"];
+Node_7 [shape=record,label="{7\:\ 0x00fe|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_8 [shape=record,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,label="{9\:\ 0x010d|l}"];
+Node_10 [shape=record,label="{10\:\ 0x010f|lif (r12.mIsSynced != false) goto L13l}"];
+Node_11 [shape=record,label="{11\:\ 0x0111|lshowDialog(19)lnew com.uc.paymentsdk.network.chain.SyncSmsInfoHandler(getApplicationContext(), new com.uc.paymentsdk.payment.PaymentsActivity.AnonymousClass3(r12, r2, r3, r4, r5, r6, r7)).handleRequest()l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_13 [shape=record,label="{13\:\ 0x0129|linitSmsPayView(r2, r3, r4, r5, r6, r7)l}"];
+Node_14 [shape=record,label="{14\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_15 [shape=record,label="{15\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_16 [shape=record,label="{16\:\ 0x00ff|ExcHandler: SimCardNotSupportException \-\> 0x00ff\l|lcom.uc.paymentsdk.payment.sms.SimCardNotSupportException r0 = move\-exceptionl}"];
+Node_17 [shape=record,label="{17\:\ 0x0100|lr12.mSmsResultInfo = r0.getMessage()lshowDialog(16)l}"];
+Node_18 [shape=record,label="{18\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void com.uc.paymentsdk.payment.PaymentsActivity.buildSmsPaymentView((r12v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lJadxCommentsAttr\{l INFO: l \-\> Access modifiers changed from: private\}\lCROSS_EDGE: B:11:0x0111 \-\> B:7:0x00fe, CROSS_EDGE: B:13:0x0129 \-\> B:7:0x00fe, CROSS_EDGE: B:17:0x0100 \-\> B:7:0x00fe, CROSS_EDGE: B:2:0x00e0 \-\> B:16:0x00ff\lTryCatch #0 \{SimCardNotSupportException \-\> 0x00ff, blocks: (B:3:0x00e0), top: B:2:0x00e0 \}\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_16;
+Node_3 -> Node_4;
+Node_3 -> Node_15;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_9;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_10 -> Node_11[style=dashed];
+Node_10 -> Node_13;
+Node_11 -> Node_12;
+Node_12 -> Node_8;
+Node_13 -> Node_14;
+Node_14 -> Node_8;
+Node_15 -> Node_16;
+Node_16 -> Node_17;
+Node_17 -> Node_18;
+Node_18 -> Node_8;
+}
+

@@ -1,0 +1,48 @@
+digraph "CFG formain.GameRun.drawItem(IIII)V" {
+subgraph cluster_Region_245778713 {
+label = "R(2:(1:3)(1:(1:8))|4)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_2071784406 {
+label = "IF [B:2:0x0005] THEN: R(1:3) ELSE: R(1:(1:8))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0005|lif (r12 \>= 58) goto L13l}"];
+subgraph cluster_Region_367430797 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0007|lint r12 = r11.monster_pro[r11.nidusList[0][r12 \- 58]][6] + 40l}"];
+}
+subgraph cluster_Region_646860703 {
+label = "R(1:(1:8)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_442250454 {
+label = "IF [B:7:0x0042] THEN: R(1:8) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0042|lif (r12 \>= 35) goto L17l}"];
+subgraph cluster_Region_107109904 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0044|lint r12 = r11.makeLevel[r12 \- 35] + 34l}"];
+}
+}
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x0018|PHI: r12l  0x0018: PHI (r12v2 'action' int) = (r12v0 'action' int), (r12v1 'action' int), (r12v3 'action' int) binds: [B:7:0x0042, B:8:0x0044, B:3:0x0007] A[DONT_GENERATE, DONT_INLINE]\l|ldm.Ui.i().drawRegion(r11.item_img, r11.item_modules[r12][0], r11.item_modules[r12][1], r11.item_modules[r12][2], r11.item_modules[r12][3], r13, r14, r15, 0, main.GameRun.g)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0041|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.drawItem((r11v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r12v0 'action' int A[D('action' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'anchor' int A[D('anchor' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0042 \-\> B:4:0x0018, CROSS_EDGE: B:8:0x0044 \-\> B:4:0x0018\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_7[style=dashed];
+Node_3 -> Node_4;
+Node_7 -> Node_4[style=dashed];
+Node_7 -> Node_8;
+Node_8 -> Node_4;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_5 -> Node_6;
+}
+

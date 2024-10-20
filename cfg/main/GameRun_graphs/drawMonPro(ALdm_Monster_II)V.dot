@@ -1,0 +1,19 @@
+digraph "CFG formain.GameRun.drawMonPro([Ldm\/Monster;II)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.i().drawStringY(r9.about_a, r11 + 18, r12 + 44, 0, 3, 31, 3, 0)ldm.Ui.i().drawStringY(r9.about_b, r11 + 160, r12 + 44, 0, 3, 31, 3, 0)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0028|lif (r9.t_length == 0) goto L13l}"];
+Node_3 [shape=record,label="{3\:\ 0x002a|ldm.Ui.i().drawStringY(r9.about_c, (r11 + 165) + 50, r12 + 44, 0, 3, 31, \-1, 0)ldrawMonsterHp(r10[r9.select[0][0]], ((r11 + 19) + 50) + 4, r12 + 59, 48, 0, 0, r10[r9.select[0][0]].monsterPro[0])ldrawMonsterHp(r10[r9.select[0][0]], ((r11 + 19) + 50) + 4, ((r12 + 59) + 25) + 3, 48, 1, 0, r10[r9.select[0][0]].monsterPro[1])ldrawMonKind(r10[r9.select[0][0]].monster[4], ((r11 + 19) + 50) + 4, (r12 + 76) + 28, 0)l}"];
+Node_4 [shape=record,label="{4\:\ 0x00b2|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawMonPro((r9v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r10v0 'monsters' dm.Monster[] A[D('monsters' dm.Monster[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'lx' int A[D('lx' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'ly' int A[D('ly' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0028 \-\> B:4:0x00b2\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

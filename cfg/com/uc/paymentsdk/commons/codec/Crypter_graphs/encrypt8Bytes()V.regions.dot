@@ -1,0 +1,79 @@
+digraph "CFG forcom.uc.paymentsdk.commons.codec.Crypter.encrypt8Bytes()V" {
+subgraph cluster_Region_1786516747 {
+label = "R(5:1|(2:(1:6)(1:9)|8)|12|(1:15)|17)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr13.pos = 0l}"];
+subgraph cluster_LoopRegion_921970369 {
+label = "LOOP:0: (2:(1:6)(1:9)|8)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0007|ADDED_TO_REGION\l|lif (r13.pos \< 8) goto L30l}"];
+subgraph cluster_Region_1481007454 {
+label = "R(2:(1:6)(1:9)|8)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1077743577 {
+label = "IF [B:5:0x0034] THEN: R(1:6) ELSE: R(1:9)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0034|lif (r13.header != false) goto L32l}"];
+subgraph cluster_Region_1986449993 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0036|lint int r4 = r13.poslbyte[] byte[] r3 = r13.plainlr3[r4] = (byte) (r3[r4] ^ r13.prePlain[r13.pos])l}"];
+}
+subgraph cluster_Region_1549329458 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x004d|lint int r6 = r13.poslbyte[] byte[] r5 = r13.plainlr5[r6] = (byte) (r5[r6] ^ r13.out[r13.preCrypt + r13.pos])l}"];
+}
+}
+Node_8 [shape=record,label="{8\:\ 0x0046|LOOP_END\lLOOP:0: B:2:0x0005\-\>B:8:0x0046\l|lr13.pos++l}"];
+}
+}
+Node_12 [shape=record,label="{12\:\ 0x0009|lbyte[] byte[] r0 = encipher(r13.plain)ljava.lang.System.arraycopy(r0, 0, r13.out, r13.crypt, 8)lr13.pos = 0l}"];
+subgraph cluster_LoopRegion_1756759140 {
+label = "LOOP:1: (1:15)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x001a|ADDED_TO_REGION\l|lif (r13.pos \< 8) goto L35l}"];
+subgraph cluster_Region_350853511 {
+label = "R(1:15)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0061|LOOP_END\lLOOP:1: B:13:0x0018\-\>B:15:0x0061\l|lint int r2 = r13.crypt + r13.poslbyte[] byte[] r1 = r13.outlr1[r2] = (byte) (r1[r2] ^ r13.prePlain[r13.pos])lr13.pos++l}"];
+}
+}
+Node_17 [shape=record,label="{17\:\ 0x001c|ljava.lang.System.arraycopy(r13.plain, 0, r13.prePlain, 0, 8)lr13.preCrypt = r13.cryptlr13.crypt += 8lr13.pos = 0lr13.header = falsel}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0005|LOOP_START\lLOOP:0: B:2:0x0005\-\>B:8:0x0046\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0032|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0046|SYNTHETIC\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0046|SYNTHETIC\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0009|SYNTHETIC\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0018|LOOP_START\lLOOP:1: B:13:0x0018\-\>B:15:0x0061\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x001c|SYNTHETIC\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0031|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void com.uc.paymentsdk.commons.codec.Crypter.encrypt8Bytes((r13v0 'this' com.uc.paymentsdk.commons.codec.Crypter A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:15:0x0061 \-\> B:13:0x0018, BACK_EDGE: B:8:0x0046 \-\> B:2:0x0005, CROSS_EDGE: B:9:0x004d \-\> B:8:0x0046\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_11[style=dashed];
+Node_5 -> Node_6;
+Node_5 -> Node_9[style=dashed];
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_8 -> Node_2;
+Node_12 -> Node_13;
+Node_14 -> Node_15;
+Node_14 -> Node_16[style=dashed];
+Node_15 -> Node_13;
+Node_17 -> Node_18;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_10 -> Node_8;
+Node_11 -> Node_12;
+Node_13 -> Node_14;
+Node_16 -> Node_17;
+Node_18 -> Node_19;
+}
+

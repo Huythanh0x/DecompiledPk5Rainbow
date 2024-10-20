@@ -1,0 +1,122 @@
+digraph "CFG formain.GameRun.drawMagicC(IIIIII)Z" {
+subgraph cluster_Region_658581685 {
+label = "R(1:(2:(2:3|4)|(2:6|(2:7|(2:(1:1)|(3:(1:11)|12|(2:(2:16|17)|(1:14))))))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1936157045 {
+label = "R(2:(2:3|4)|(2:6|(2:7|(2:(1:1)|(3:(1:11)|12|(2:(2:16|17)|(1:14)))))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_149293387 {
+label = "IF [B:2:0x000f] THEN: R(2:3|4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000f|lif (r7.now_action_Magic[r8] \>= r7.magic[r9].aLength(r10)) goto L26l}"];
+subgraph cluster_Region_484463769 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0011|lr7.now_action_Magic[r8] = 0l}"];
+Node_4 [shape=record,label="{4\:\ 0x0016|RETURN\lORIG_RETURN\l|lreturn truel}"];
+}
+}
+subgraph cluster_Region_1715619455 {
+label = "R(2:6|(2:7|(2:(1:1)|(3:(1:11)|12|(2:(2:16|17)|(1:14))))))";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0017|lint int r0 = r7.magic[r9].action(r10, r7.now_action_Magic[r8], 0)l}"];
+subgraph cluster_LoopRegion_852153136 {
+label = "LOOP:0: (2:7|(2:(1:1)|(3:(1:11)|12|(2:(2:16|17)|(1:14)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1919080013 {
+label = "R(2:7|(2:(1:1)|(3:(1:11)|12|(2:(2:16|17)|(1:14)))))";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0024|LOOP_START\lPHI: r0l  0x0024: PHI (r0v5 int) = (r0v4 int), (r0v18 int) binds: [B:6:0x0017, B:14:0x0062] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:7:0x0024\-\>B:14:0x0062\l|lshort short r2 = (short) r0l}"];
+subgraph cluster_Region_2049849565 {
+label = "R(2:(1:1)|(3:(1:11)|12|(2:(2:16|17)|(1:14))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_681352725 {
+label = "IF [B:8:0x0026, B:9:0x0028] THEN: R(1:1) ELSE: null";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0026|lif (r7.f133dm == null) goto L39l}"];
+Node_9 [shape=record,label="{9\:\ 0x0028|ADDED_TO_REGION\l|lif (r2 \>= 2) goto L40l}"];
+subgraph cluster_Region_1111153282 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_InsnContainer_1549798080 [shape=record,label="{|lbreakl}"];
+}
+}
+subgraph cluster_Region_2020687014 {
+label = "R(3:(1:11)|12|(2:(2:16|17)|(1:14)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1553552583 {
+label = "IF [B:10:0x003d] THEN: R(1:11) ELSE: null";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x003d|lif (r2 == 0) goto L34l}"];
+subgraph cluster_Region_945226031 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x003f|lr7.f133dm.ceff[0] = 2l}"];
+}
+}
+Node_12 [shape=record,label="{12\:\ 0x0045|lr7.now_time_Magic[r8] = 0lshort[] short[] r0 = r7.now_action_Magiclshort short r1 = (short) (r0[r8] + 1)lr0[r8] = r1l}"];
+subgraph cluster_Region_859061800 {
+label = "R(2:(2:16|17)|(1:14))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_482692443 {
+label = "IF [B:13:0x005a] THEN: R(2:16|17) ELSE: null";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x005a|lif (r1 \>= r7.magic[r9].aLength(r10)) goto L41l}"];
+subgraph cluster_Region_659426310 {
+label = "R(2:16|17)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x005c|lr7.now_action_Magic[r8] = 0l}"];
+Node_17 [shape=record,label="{17\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+}
+subgraph cluster_Region_846383069 {
+label = "R(1:14)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0062|LOOP_END\lLOOP:0: B:7:0x0024\-\>B:14:0x0062\l|lint r0 = r7.magic[r9].action(r10, r7.now_action_Magic[r8], 0)l}"];
+}
+}
+}
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x005c|SYNTHETIC\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x002a|SYNTHETIC\lADDED_TO_REGION\lEDGE_INSN: B:18:0x002a\-\>B:19:0x002a BREAK  A[LOOP:0: B:7:0x0024\-\>B:14:0x0062]\l|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x002a|EDGE_INSN: B:21:0x002a\-\>B:19:0x002a BREAK  A[LOOP:0: B:7:0x0024\-\>B:14:0x0062], EDGE_INSN: B:18:0x002a\-\>B:19:0x002a BREAK  A[LOOP:0: B:7:0x0024\-\>B:14:0x0062]\l|ldm.Ui.i().drawFrameOne(r7.magic[r9], r2, r11, r12, r13)l}"];
+Node_20 [shape=record,color=red,label="{20\:\ ?|SYNTHETIC\lRETURN\l|lreturn setCartoonFrameMagic_C(r8, r9, r10, true)l}"];
+Node_21 [shape=record,color=red,label="{21\:\ 0x002a|SYNTHETIC\lADDED_TO_REGION\lEDGE_INSN: B:21:0x002a\-\>B:19:0x002a BREAK  A[LOOP:0: B:7:0x0024\-\>B:14:0x0062]\l|l}"];
+MethodNode[shape=record,label="{public boolean main.GameRun.drawMagicC((r7v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r8v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'skill_mode' int A[D('skill_mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'select' int A[D('select' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'dir' int A[D('dir' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | INCONSISTENT_CODE\lUSE_LINES_HINTS\lTYPE_VARS: EMPTY\lJadxCommentsAttr\{l WARN: l \-\> Code restructure failed: missing block: B:19:0x002a, code lost:ll    dm.Ui.i().drawFrameOne(r7.magic[r9], r2, r11, r12, r13);ll \-\> Code restructure failed: missing block: B:20:?, code lost:ll    return setCartoonFrameMagic_C(r8, r9, r10, true);l\}\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:19:0x002a \-\> B:4:0x0016, CROSS_EDGE: B:16:0x005c \-\> B:4:0x0016, BACK_EDGE: B:14:0x0062 \-\> B:7:0x0024, CROSS_EDGE: B:10:0x003d \-\> B:12:0x0045, CROSS_EDGE: B:8:0x0026 \-\> B:19:0x002a\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_21;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_18;
+Node_10 -> Node_11;
+Node_10 -> Node_12[style=dashed];
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_13 -> Node_14[style=dashed];
+Node_13 -> Node_15;
+Node_16 -> Node_17;
+Node_17 -> Node_5;
+Node_14 -> Node_7;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_15 -> Node_16;
+Node_18 -> Node_19;
+Node_19 -> Node_20;
+Node_20 -> Node_5;
+Node_21 -> Node_19;
+}
+

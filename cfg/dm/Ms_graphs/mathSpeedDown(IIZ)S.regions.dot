@@ -1,0 +1,65 @@
+digraph "CFG fordm.Ms.mathSpeedDown(IIZ)S" {
+subgraph cluster_Region_256254555 {
+label = "R(2:(1:3)(1:(1:10)(1:9))|5) | DECL_VAR: int volue\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1518870721 {
+label = "IF [B:2:0x0002] THEN: R(1:3) ELSE: R(1:(1:10)(1:9))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif ((r2 \/ r3) != 0) goto L18l}"];
+subgraph cluster_Region_1152403960 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0004|lint r2 = r2 \- (r2 \/ r3)l}"];
+}
+subgraph cluster_Region_1307666346 {
+label = "R(1:(1:10)(1:9)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_440953448 {
+label = "IF [B:7:0x0009, B:8:0x000b] THEN: R(1:10) ELSE: R(1:9) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0009|lif (r4 == true) goto L22l}"];
+Node_8 [shape=record,label="{8\:\ 0x000b|ADDED_TO_REGION\l|lif (r2 \<= 0) goto L24l}"];
+subgraph cluster_Region_674959252 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0010|lr2 = (!r4 \|\| r2 \>= 0) ? 0 : r2 + 1l}"];
+}
+subgraph cluster_Region_977981726 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x000d|lint r2 = r2 \- 1l}"];
+}
+}
+}
+}
+Node_5 [shape=record,label="{5\:\ 0x0008|RETURN\l|lreturn (short) r2l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0007|PHI: r2l  0x0007: PHI (r2v4 'volue' int) = (r2v1 'volue' int), (r2v3 'volue' int), (r2v5 'volue' int) binds: [B:13:0x0017, B:9:0x000d, B:3:0x0004] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0012|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0014|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0017|l}"];
+MethodNode[shape=record,label="{public short dm.Ms.mathSpeedDown((r1v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r2v0 'volue' int A[D('volue' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 'num' int A[D('num' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x000d \-\> B:4:0x0007, CROSS_EDGE: B:12:0x0014 \-\> B:4:0x0007, CROSS_EDGE: B:13:0x0017 \-\> B:4:0x0007, CROSS_EDGE: B:10:0x0010 \-\> B:13:0x0017, CROSS_EDGE: B:7:0x0009 \-\> B:10:0x0010\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_7[style=dashed];
+Node_3 -> Node_4;
+Node_7 -> Node_8;
+Node_7 -> Node_10[style=dashed];
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_10;
+Node_10 -> Node_11;
+Node_10 -> Node_13;
+Node_9 -> Node_4;
+Node_5 -> Node_6;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_11 -> Node_12;
+Node_11 -> Node_13;
+Node_12 -> Node_4;
+Node_13 -> Node_4;
+}
+

@@ -1,0 +1,16 @@
+digraph "CFG fordm.Ms.putShort([BI)V" {
+subgraph cluster_Region_1215914946 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint int r0 = dm.Ms.skipldm.Ms.skip = r0 + 1lr3[r0] = (byte) ((r4 \>\> 8) & 255)lint int r0 = dm.Ms.skipldm.Ms.skip = r0 + 1lr3[r0] = (byte) ((r4 \>\> 0) & 255)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x001a|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ms.putShort((r2v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r3v0 'buf' byte[] A[D('buf' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'value' int A[D('value' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

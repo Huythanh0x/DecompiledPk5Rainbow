@@ -1,0 +1,42 @@
+digraph "CFG formain.GameRun.valueMend(Ldm\/Monster;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0008|lif (r7.monsterPro[0] \>= 0) goto L26l}"];
+Node_3 [shape=record,label="{3\:\ 0x000a|lr7.monsterPro[0] = 0l}"];
+Node_4 [shape=record,label="{4\:\ 0x000e|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0012|lif (r7.monsterPro[1] \>= 0) goto L29l}"];
+Node_6 [shape=record,label="{6\:\ 0x0014|lr7.monsterPro[1] = 0l}"];
+Node_7 [shape=record,label="{7\:\ 0x0018|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_8 [shape=record,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,label="{9\:\ 0x002c|l}"];
+Node_10 [shape=record,label="{10\:\ 0x0034|lif (r7.monsterPro[1] \<= r7.monsterPro[3]) goto L32l}"];
+Node_11 [shape=record,label="{11\:\ 0x0036|lr7.monsterPro[1] = r7.monsterPro[3]l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_13 [shape=record,label="{13\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_14 [shape=record,label="{14\:\ 0x0019|l}"];
+Node_15 [shape=record,label="{15\:\ 0x0021|lif (r7.monsterPro[0] \<= r7.monsterPro[2]) goto L22l}"];
+Node_16 [shape=record,label="{16\:\ 0x0023|lr7.monsterPro[0] = r7.monsterPro[2]l}"];
+MethodNode[shape=record,label="{public void main.GameRun.valueMend((r6v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r7v0 'monster' dm.Monster A[D('monster' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0034 \-\> B:7:0x0018, CROSS_EDGE: B:11:0x0036 \-\> B:7:0x0018, CROSS_EDGE: B:15:0x0021 \-\> B:4:0x000e, CROSS_EDGE: B:16:0x0023 \-\> B:4:0x000e\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_14;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_9;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_10 -> Node_11[style=dashed];
+Node_10 -> Node_13;
+Node_11 -> Node_12;
+Node_12 -> Node_8;
+Node_13 -> Node_8;
+Node_14 -> Node_15;
+Node_15 -> Node_4;
+Node_15 -> Node_16[style=dashed];
+Node_16 -> Node_4;
+}
+

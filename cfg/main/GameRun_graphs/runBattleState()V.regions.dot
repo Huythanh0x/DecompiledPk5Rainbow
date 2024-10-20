@@ -1,0 +1,683 @@
+digraph "CFG formain.GameRun.runBattleState()V" {
+subgraph cluster_Region_334800073 {
+label = "R(2:1|2)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr11.myB.countS[0] = (byte) dm.Ms.i().mathSpeedN(r11.myB.countS[0], r11.myB.countS[1], 1, false)lr11.enB.countS[0] = (byte) dm.Ms.i().mathSpeedN(r11.enB.countS[0], r11.enB.countS[1], 1, false)l}"];
+subgraph cluster_SwitchRegion_1339753423 {
+label = "Switch: 5
+ case -5 -> R(1:(2:(2:80|81)|(4:82|(1:(3:(1:88)|89|(1:91))(1:94))(1:(1:97)(1:(1:(1:105)(1:104))(1:(1:(2:116|(1:118))))))|92|93)))
+ case -4 -> R(1:(2:(2:123|(2:125|126)(2:127|128))|(1:129)))
+ case com.uc.paymentsdk.util.Constants.ERROR_UNKNOWN :int, default -> R(1:3)
+ case 1 -> R(1:(2:(2:7|(2:(2:12|13)|(1:11)))|(2:14|15)))
+ case 9 -> R(3:(2:20|(1:22)(3:23|(1:25)(1:(1:33)(1:(1:36)(1:(1:39))))|(2:(2:28|29)|(1:30))))|(1:47)(1:74)|(2:(3:50|(2:52|(2:54|55))|(2:58|59)(2:60|61))|(1:(2:(2:64|(2:(2:66|67)|(1:68)))|(1:69)))))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x003d|lswitch(r11.battle_state) \{l    case \-5: goto L195;l    case \-4: goto L238;l    case \-3: goto L134;l    case 1: goto L135;l    case 9: goto L143;l    default: goto L134;l\}l}"];
+subgraph cluster_Region_1261960641 {
+label = "R(1:(2:(2:80|81)|(4:82|(1:(3:(1:88)|89|(1:91))(1:94))(1:(1:97)(1:(1:(1:105)(1:104))(1:(1:(2:116|(1:118))))))|92|93)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1636570901 {
+label = "R(2:(2:80|81)|(4:82|(1:(3:(1:88)|89|(1:91))(1:94))(1:(1:97)(1:(1:(1:105)(1:104))(1:(1:(2:116|(1:118))))))|92|93))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1466443009 {
+label = "IF [B:77:0x0187, B:79:0x018f] THEN: R(2:80|81) ELSE: null";
+node [shape=record,color=blue];
+Node_77 [shape=record,label="{77\:\ 0x0187|lif (r11.b_c == 0) goto L197l}"];
+Node_79 [shape=record,label="{79\:\ 0x018f|ADDED_TO_REGION\l|lif (r11.cur_c \>= r11.mon_in_battle[0]) goto L199l}"];
+subgraph cluster_Region_1077580120 {
+label = "R(2:80|81)";
+node [shape=record,color=blue];
+Node_80 [shape=record,label="{80\:\ 0x0191|lgoBattleOver()lsetNidusExp(r11.exp)l}"];
+Node_81 [shape=record,label="{81\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1411753148 {
+label = "R(4:82|(1:(3:(1:88)|89|(1:91))(1:94))(1:(1:97)(1:(1:(1:105)(1:104))(1:(1:(2:116|(1:118))))))|92|93)";
+node [shape=record,color=blue];
+Node_82 [shape=record,label="{82\:\ 0x019b|lbyte r0 = r11.mon_in_battle[r11.cur_c + 1]l}"];
+subgraph cluster_IfRegion_882353515 {
+label = "IF [B:83:0x01a5] THEN: R(1:(3:(1:88)|89|(1:91))(1:94)) ELSE: R(1:(1:97)(1:(1:(1:105)(1:104))(1:(1:(2:116|(1:118))))))";
+node [shape=record,color=blue];
+Node_83 [shape=record,label="{83\:\ 0x01a5|lif (r11.b_c == 0) goto L202l}"];
+subgraph cluster_Region_899823699 {
+label = "R(1:(3:(1:88)|89|(1:91))(1:94))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_769300685 {
+label = "IF [B:85:0x01af] THEN: R(3:(1:88)|89|(1:91)) ELSE: R(1:94)";
+node [shape=record,color=blue];
+Node_85 [shape=record,label="{85\:\ 0x01af|lif (r11.myMonsters[r0].monsterPro[0] \> 0) goto L204l}"];
+subgraph cluster_Region_711689348 {
+label = "R(3:(1:88)|89|(1:91))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_2102787272 {
+label = "IF [B:87:0x01bb] THEN: R(1:88) ELSE: null";
+node [shape=record,color=blue];
+Node_87 [shape=record,label="{87\:\ 0x01bb|lif (r11.myMonsters[r0].isMonReel(40) == false) goto L206l}"];
+subgraph cluster_Region_1393740318 {
+label = "R(1:88)";
+node [shape=record,color=blue];
+Node_88 [shape=record,label="{88\:\ 0x01bd|lbyte[] byte[] r2 = r11.myMonsters[r0].monsterlr2[6] = (byte) (r2[6] \- 1)l}"];
+}
+}
+Node_89 [shape=record,label="{89\:\ 0x01ca|lr11.myB.now_id = r0lr11.myB.chp = r11.myMonsters[r0].monsterPro[0]lr11.myB.cexp = r11.myMonsters[r0].monsterPro[4]linitMonStream(2, r11.mList_id[r11.myMonsters[r0].monster[0]][0], 1)l}"];
+subgraph cluster_IfRegion_1393454580 {
+label = "IF [B:90:0x01fb] THEN: R(1:91) ELSE: null";
+node [shape=record,color=blue];
+Node_90 [shape=record,label="{90\:\ 0x01fb|lif (level_up(r0, 0) != false) goto L209l}"];
+subgraph cluster_Region_603210699 {
+label = "R(1:91)";
+node [shape=record,color=blue];
+Node_91 [shape=record,label="{91\:\ 0x01fd|lr11.b_c = (byte) 1l}"];
+}
+}
+}
+subgraph cluster_Region_928036540 {
+label = "R(1:94)";
+node [shape=record,color=blue];
+Node_94 [shape=record,label="{94\:\ 0x021b|lr11.cur_c = (byte) (r11.cur_c + 1)l}"];
+}
+}
+}
+subgraph cluster_Region_1055252928 {
+label = "R(1:(1:97)(1:(1:(1:105)(1:104))(1:(1:(2:116|(1:118)))))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_438384367 {
+label = "IF [B:96:0x0225] THEN: R(1:97) ELSE: R(1:(1:(1:105)(1:104))(1:(1:(2:116|(1:118))))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_96 [shape=record,label="{96\:\ 0x0225|lif (r11.b_c == 1) goto L214l}"];
+subgraph cluster_Region_32467169 {
+label = "R(1:97)";
+node [shape=record,color=blue];
+Node_97 [shape=record,label="{97\:\ 0x0227|llevel_up(r0, 1)lr11.b_c = (byte) 2l}"];
+}
+subgraph cluster_Region_466273403 {
+label = "R(1:(1:(1:105)(1:104))(1:(1:(2:116|(1:118))))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1147670776 {
+label = "IF [B:99:0x022f, B:101:0x023d] THEN: R(1:(1:105)(1:104)) ELSE: R(1:(1:(2:116|(1:118)))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_99 [shape=record,label="{99\:\ 0x022f|lif (r11.b_c == 2) goto L217l}"];
+Node_101 [shape=record,label="{101\:\ 0x023d|ADDED_TO_REGION\l|lif (r11.myB.cexp == r11.myMonsters[r0].monsterPro[4]) goto L219l}"];
+subgraph cluster_Region_689796328 {
+label = "R(1:(1:105)(1:104))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_844227413 {
+label = "IF [B:103:0x0243] THEN: R(1:105) ELSE: R(1:104)";
+node [shape=record,color=blue];
+Node_103 [shape=record,label="{103\:\ 0x0243|lif (level_up(r0, 2) == true) goto L222l}"];
+subgraph cluster_Region_946306026 {
+label = "R(1:105)";
+node [shape=record,color=blue];
+Node_105 [shape=record,label="{105\:\ 0x024a|lr11.b_c = (byte) 1l}"];
+}
+subgraph cluster_Region_736277575 {
+label = "R(1:104)";
+node [shape=record,color=blue];
+Node_104 [shape=record,label="{104\:\ 0x0245|lr11.b_c = (byte) 15l}"];
+}
+}
+}
+subgraph cluster_Region_1715885148 {
+label = "R(1:(1:(2:116|(1:118)))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_608093768 {
+label = "IF [B:107:0x024f] THEN: R(1:(2:116|(1:118))) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_107 [shape=record,label="{107\:\ 0x024f|lif (r11.b_c \> 2) goto L225l}"];
+subgraph cluster_Region_654659854 {
+label = "R(1:(2:116|(1:118)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_303061286 {
+label = "IF [B:115:0x0268] THEN: R(2:116|(1:118)) ELSE: null";
+node [shape=record,color=blue];
+Node_115 [shape=record,label="{115\:\ 0x0268|lif (((r11.b_c \< 21) & (r11.myB.cexp == r11.myMonsters[r0].monsterPro[4])) != false) goto L233l}"];
+subgraph cluster_Region_1757578213 {
+label = "R(2:116|(1:118))";
+node [shape=record,color=blue];
+Node_116 [shape=record,label="{116\:\ 0x026a|lbyte byte r2 = (byte) (r11.b_c \- 1)lr11.b_c = r2l}"];
+subgraph cluster_IfRegion_1823056341 {
+label = "IF [B:117:0x0271] THEN: R(1:118) ELSE: null";
+node [shape=record,color=blue];
+Node_117 [shape=record,label="{117\:\ 0x0271|lif (r2 == 3) goto L235l}"];
+subgraph cluster_Region_435915045 {
+label = "R(1:118)";
+node [shape=record,color=blue];
+Node_118 [shape=record,label="{118\:\ 0x0273|lr11.b_c = (byte) 0lr11.cur_c = (byte) (r11.cur_c + 1)l}"];
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+Node_92 [shape=record,label="{92\:\ 0x01ff|lr11.myB.cexp = dm.Ms.i().mathSpeedN(r11.myB.cexp, r11.myMonsters[r0].monsterPro[4], 8, false)l}"];
+Node_93 [shape=record,label="{93\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+subgraph cluster_Region_1305205490 {
+label = "R(1:(2:(2:123|(2:125|126)(2:127|128))|(1:129)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_521488773 {
+label = "R(2:(2:123|(2:125|126)(2:127|128))|(1:129))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_303425096 {
+label = "IF [B:122:0x0283] THEN: R(2:123|(2:125|126)(2:127|128)) ELSE: null";
+node [shape=record,color=blue];
+Node_122 [shape=record,label="{122\:\ 0x0283|lif (r11.say_c == 0) goto L240l}"];
+subgraph cluster_Region_699346448 {
+label = "R(2:123|(2:125|126)(2:127|128))";
+node [shape=record,color=blue];
+Node_123 [shape=record,label="{123\:\ 0x0285|lbyte byte r2 = (byte) (r11.cur_b + 1)lr11.cur_b = r2l}"];
+subgraph cluster_IfRegion_1340874940 {
+label = "IF [B:124:0x028f] THEN: R(2:125|126) ELSE: R(2:127|128)";
+node [shape=record,color=blue];
+Node_124 [shape=record,label="{124\:\ 0x028f|lif (r2 \>= r11.about_a.length) goto L242l}"];
+subgraph cluster_Region_1466099598 {
+label = "R(2:125|126)";
+node [shape=record,color=blue];
+Node_125 [shape=record,label="{125\:\ 0x0291|lr11.about_a = nulllgoBattleExp(true)l}"];
+Node_126 [shape=record,label="{126\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_1156430810 {
+label = "R(2:127|128)";
+node [shape=record,color=blue];
+Node_127 [shape=record,label="{127\:\ 0x0299|landroid.util.Log.e(\"soars\", r11.about_a[r11.cur_b].toString())lsay(r11.about_a[r11.cur_b].toString(), 0)l}"];
+Node_128 [shape=record,label="{128\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_Region_1895930787 {
+label = "R(1:129)";
+node [shape=record,color=blue];
+Node_129 [shape=record,label="{129\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+subgraph cluster_Region_1276843117 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0040|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_201708791 {
+label = "R(1:(2:(2:7|(2:(2:12|13)|(1:11)))|(2:14|15)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_631213510 {
+label = "R(2:(2:7|(2:(2:12|13)|(1:11)))|(2:14|15))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1480509013 {
+label = "IF [B:6:0x004b] THEN: R(2:7|(2:(2:12|13)|(1:11))) ELSE: null";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x004b|lif (bufferAI(r11.enB.getMon()) != false) goto L137l}"];
+subgraph cluster_Region_1276254531 {
+label = "R(2:7|(2:(2:12|13)|(1:11)))";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x004d|laiEnemy()l}"];
+subgraph cluster_Region_1855118938 {
+label = "R(2:(2:12|13)|(1:11))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_926588915 {
+label = "IF [B:8:0x0059, B:10:0x0064] THEN: R(2:12|13) ELSE: null";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0059|lif (r11.enB.getMon().effect != 6) goto L141l}"];
+Node_10 [shape=record,label="{10\:\ 0x0064|ADDED_TO_REGION\l|lif (getSkillLevel(r11.enB.skill) \<= 3) goto L141l}"];
+subgraph cluster_Region_421067567 {
+label = "R(2:12|13)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0066|lsetAcionSkill(r11.enB)l}"];
+Node_13 [shape=record,label="{13\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1159471438 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_Region_1032083385 {
+label = "R(2:14|15)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x006c|lr11.enB.act_num = (byte) 0lr11.battle_state = (byte) \-2l}"];
+Node_15 [shape=record,label="{15\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+subgraph cluster_Region_1587712765 {
+label = "R(3:(2:20|(1:22)(3:23|(1:25)(1:(1:33)(1:(1:36)(1:(1:39))))|(2:(2:28|29)|(1:30))))|(1:47)(1:74)|(2:(3:50|(2:52|(2:54|55))|(2:58|59)(2:60|61))|(1:(2:(2:64|(2:(2:66|67)|(1:68)))|(1:69)))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_12438405 {
+label = "IF [B:17:0x0078, B:19:0x007e] THEN: R(2:20|(1:22)(3:23|(1:25)(1:(1:33)(1:(1:36)(1:(1:39))))|(2:(2:28|29)|(1:30)))) ELSE: null";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x0078|lif (r11.myB.act_num == 0) goto L145l}"];
+Node_19 [shape=record,label="{19\:\ 0x007e|ADDED_TO_REGION\l|lif (r11.enB.act_num == 0) goto L147l}"];
+subgraph cluster_Region_613387405 {
+label = "R(2:20|(1:22)(3:23|(1:25)(1:(1:33)(1:(1:36)(1:(1:39))))|(2:(2:28|29)|(1:30))))";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x0080|lr11.myB.act_num = (byte) 1lr11.enB.act_num = (byte) 1l}"];
+subgraph cluster_IfRegion_1000943162 {
+label = "IF [B:21:0x0092] THEN: R(1:22) ELSE: R(3:23|(1:25)(1:(1:33)(1:(1:36)(1:(1:39))))|(2:(2:28|29)|(1:30)))";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x0092|lif (r11.myB.getMon().isMonEffect(0) != false) goto L149l}"];
+subgraph cluster_Region_1901487816 {
+label = "R(1:22)";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x0094|lr11.myB.act_num = (byte) 0lsay(main.Constants_H.EFFECT_TXT_0, \-1)l}"];
+}
+subgraph cluster_Region_1373613150 {
+label = "R(3:23|(1:25)(1:(1:33)(1:(1:36)(1:(1:39))))|(2:(2:28|29)|(1:30)))";
+node [shape=record,color=blue];
+Node_23 [shape=record,label="{23\:\ 0x00f0|lsetAimBattle(1)lgoBattleState()ljava.lang.String java.lang.String r1 = \"\"l}"];
+subgraph cluster_IfRegion_525957764 {
+label = "IF [B:24:0x0102] THEN: R(1:25) ELSE: R(1:(1:33)(1:(1:36)(1:(1:39))))";
+node [shape=record,color=blue];
+Node_24 [shape=record,label="{24\:\ 0x0102|lif (r11.myB.getMon().isMonEffect(2) == true) goto L167l}"];
+subgraph cluster_Region_815801256 {
+label = "R(1:25)";
+node [shape=record,color=blue];
+Node_25 [shape=record,label="{25\:\ 0x0104|ljava.lang.String r1 = main.Constants_H.EFFECT_TXT_2l}"];
+}
+subgraph cluster_Region_1206547974 {
+label = "R(1:(1:33)(1:(1:36)(1:(1:39)))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_893409343 {
+label = "IF [B:32:0x011e] THEN: R(1:33) ELSE: R(1:(1:36)(1:(1:39))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_32 [shape=record,label="{32\:\ 0x011e|lif (r11.myB.getMon().isMonEffect(3) == true) goto L173l}"];
+subgraph cluster_Region_481415484 {
+label = "R(1:33)";
+node [shape=record,color=blue];
+Node_33 [shape=record,label="{33\:\ 0x0120|ljava.lang.String r1 = main.Constants_H.EFFECT_TXT_3l}"];
+}
+subgraph cluster_Region_2002917497 {
+label = "R(1:(1:36)(1:(1:39))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_591118667 {
+label = "IF [B:35:0x012d] THEN: R(1:36) ELSE: R(1:(1:39)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_35 [shape=record,label="{35\:\ 0x012d|lif (r11.myB.getMon().isMonEffect(4) == true) goto L176l}"];
+subgraph cluster_Region_1027041350 {
+label = "R(1:36)";
+node [shape=record,color=blue];
+Node_36 [shape=record,label="{36\:\ 0x012f|ljava.lang.String r1 = main.Constants_H.EFFECT_TXT_4l}"];
+}
+subgraph cluster_Region_930466156 {
+label = "R(1:(1:39)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_12844573 {
+label = "IF [B:38:0x013d] THEN: R(1:39) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_38 [shape=record,label="{38\:\ 0x013d|lif (r11.myB.getMon().isMonEffect(5) != false) goto L179l}"];
+subgraph cluster_Region_1091966506 {
+label = "R(1:39)";
+node [shape=record,color=blue];
+Node_39 [shape=record,label="{39\:\ 0x013f|ljava.lang.String r1 = main.Constants_H.EFFECT_TXT_5l}"];
+}
+}
+}
+}
+}
+}
+}
+}
+subgraph cluster_Region_1728421804 {
+label = "R(2:(2:28|29)|(1:30))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1106691280 {
+label = "IF [B:27:0x010c] THEN: R(2:28|29) ELSE: null";
+node [shape=record,color=blue];
+Node_27 [shape=record,label="{27\:\ 0x010c|lif (r1.equals(\"\") == false) goto L170l}"];
+subgraph cluster_Region_1199960560 {
+label = "R(2:28|29)";
+node [shape=record,color=blue];
+Node_28 [shape=record,label="{28\:\ 0x010e|lsay(r1, 0)l}"];
+Node_29 [shape=record,label="{29\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_441002910 {
+label = "R(1:30)";
+node [shape=record,color=blue];
+Node_30 [shape=record,label="{30\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+}
+}
+subgraph cluster_IfRegion_57585426 {
+label = "IF [B:41:0x00a1, B:43:0x00a7] THEN: R(1:47) ELSE: R(1:74)";
+node [shape=record,color=blue];
+Node_41 [shape=record,label="{41\:\ 0x00a1|lif (r11.myB.act_num != 0) goto L152l}"];
+Node_43 [shape=record,label="{43\:\ 0x00a7|ADDED_TO_REGION\l|lif (r11.enB.act_num != 0) goto L154l}"];
+subgraph cluster_Region_482515572 {
+label = "R(1:47)";
+node [shape=record,color=blue];
+Node_47 [shape=record,label="{47\:\ 0x00c2|PHI: r2l  0x00c2: PHI (r2v93 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lsetAimBattle(r11.myB.getMon().monsterPro[5] \>= r11.enB.getMon().monsterPro[5] ? 1 : 0)l}"];
+}
+subgraph cluster_Region_1475452607 {
+label = "R(1:74)";
+node [shape=record,color=blue];
+Node_74 [shape=record,label="{74\:\ 0x014c|PHI: r2l  0x014c: PHI (r2v65 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lsetAimBattle(r11.myB.act_num != 0 ? 1 : 0)l}"];
+}
+}
+subgraph cluster_Region_70732292 {
+label = "R(2:(3:50|(2:52|(2:54|55))|(2:58|59)(2:60|61))|(1:(2:(2:64|(2:(2:66|67)|(1:68)))|(1:69))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1926718383 {
+label = "IF [B:49:0x00c7] THEN: R(3:50|(2:52|(2:54|55))|(2:58|59)(2:60|61)) ELSE: null";
+node [shape=record,color=blue];
+Node_49 [shape=record,label="{49\:\ 0x00c7|lif (r11.mini_state == 1) goto L160l}"];
+subgraph cluster_Region_2060342971 {
+label = "R(3:50|(2:52|(2:54|55))|(2:58|59)(2:60|61))";
+node [shape=record,color=blue];
+Node_50 [shape=record,label="{50\:\ 0x00c9|lr11.myB.act_num = (byte) 0l}"];
+subgraph cluster_IfRegion_563161915 {
+label = "IF [B:51:0x00da] THEN: R(2:52|(2:54|55)) ELSE: null";
+node [shape=record,color=blue];
+Node_51 [shape=record,label="{51\:\ 0x00da|lif (r11.myB.getMon().monster[6] \< 41) goto L162l}"];
+subgraph cluster_Region_524825191 {
+label = "R(2:52|(2:54|55))";
+node [shape=record,color=blue];
+Node_52 [shape=record,label="{52\:\ 0x00dc|ldm.Ms.i()l}"];
+subgraph cluster_IfRegion_1456201786 {
+label = "IF [B:53:0x00e7] THEN: R(2:54|55) ELSE: null";
+node [shape=record,color=blue];
+Node_53 [shape=record,label="{53\:\ 0x00e7|lif (dm.Ms.getRandom(100) \< 25) goto L164l}"];
+subgraph cluster_Region_1580736470 {
+label = "R(2:54|55)";
+node [shape=record,color=blue];
+Node_54 [shape=record,label="{54\:\ 0x00e9|lsay(main.Constants_H.BATTLE_TXT_6, \-1)l}"];
+Node_55 [shape=record,label="{55\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_IfRegion_1993883609 {
+label = "IF [B:57:0x015d] THEN: R(2:58|59) ELSE: R(2:60|61)";
+node [shape=record,color=blue];
+Node_57 [shape=record,label="{57\:\ 0x015d|lif (r11.myB.getMon().isMonEffect(0) != false) goto L188l}"];
+subgraph cluster_Region_677245039 {
+label = "R(2:58|59)";
+node [shape=record,color=blue];
+Node_58 [shape=record,label="{58\:\ 0x015f|lsay(main.Constants_H.EFFECT_TXT_0, \-1)l}"];
+Node_59 [shape=record,label="{59\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_564010862 {
+label = "R(2:60|61)";
+node [shape=record,color=blue];
+Node_60 [shape=record,label="{60\:\ 0x0166|lsetAcionSkill(r11.myB)l}"];
+Node_61 [shape=record,label="{61\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_Region_1061577252 {
+label = "R(1:(2:(2:64|(2:(2:66|67)|(1:68)))|(1:69))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_139961570 {
+label = "R(2:(2:64|(2:(2:66|67)|(1:68)))|(1:69))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1338958607 {
+label = "IF [B:63:0x016f] THEN: R(2:64|(2:(2:66|67)|(1:68))) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_63 [shape=record,label="{63\:\ 0x016f|lif (r11.say_c == 0) goto L192l}"];
+subgraph cluster_Region_519762167 {
+label = "R(2:64|(2:(2:66|67)|(1:68)))";
+node [shape=record,color=blue];
+Node_64 [shape=record,label="{64\:\ 0x0171|lr11.enB.act_num = (byte) 0l}"];
+subgraph cluster_Region_304215630 {
+label = "R(2:(2:66|67)|(1:68))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_660877404 {
+label = "IF [B:65:0x017f] THEN: R(2:66|67) ELSE: null";
+node [shape=record,color=blue];
+Node_65 [shape=record,label="{65\:\ 0x017f|lif (r11.enB.getMon().isMonEffect(0) == false) goto L194l}"];
+subgraph cluster_Region_520780068 {
+label = "R(2:66|67)";
+node [shape=record,color=blue];
+Node_66 [shape=record,label="{66\:\ 0x0181|lr11.battle_state = (byte) 1l}"];
+Node_67 [shape=record,label="{67\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1446928250 {
+label = "R(1:68)";
+node [shape=record,color=blue];
+Node_68 [shape=record,label="{68\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_Region_1269846133 {
+label = "R(1:69)";
+node [shape=record,color=blue];
+Node_69 [shape=record,label="{69\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0041|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x005b|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x0074|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x007a|l}"];
+Node_26 [shape=record,color=red,label="{26\:\ 0x0106|PHI: r1l  0x0106: PHI (r1v4 's' java.lang.String) = l  (r1v0 's' java.lang.String)l  (r1v1 's' java.lang.String)l  (r1v2 's' java.lang.String)l  (r1v3 's' java.lang.String)l  (r1v5 's' java.lang.String)l binds: [B:38:0x013d, B:39:0x013f, B:36:0x012f, B:33:0x0120, B:25:0x0104] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_31 [shape=record,color=red,label="{31\:\ 0x0113|l}"];
+Node_34 [shape=record,color=red,label="{34\:\ 0x0123|l}"];
+Node_37 [shape=record,color=red,label="{37\:\ 0x0132|l}"];
+Node_40 [shape=record,color=red,label="{40\:\ 0x009d|l}"];
+Node_42 [shape=record,color=red,label="{42\:\ 0x00a3|l}"];
+Node_44 [shape=record,color=red,label="{44\:\ 0x00a9|l}"];
+Node_45 [shape=record,color=red,label="{45\:\ 0x00bf|l}"];
+Node_46 [shape=record,color=red,label="{46\:\ 0x00c1|l}"];
+Node_48 [shape=record,color=red,label="{48\:\ 0x00c5|l}"];
+Node_56 [shape=record,color=red,label="{56\:\ 0x0153|l}"];
+Node_62 [shape=record,color=red,label="{62\:\ 0x016d|l}"];
+Node_70 [shape=record,color=red,label="{70\:\ 0x0142|l}"];
+Node_71 [shape=record,color=red,label="{71\:\ 0x0145|l}"];
+Node_72 [shape=record,color=red,label="{72\:\ 0x0149|l}"];
+Node_73 [shape=record,color=red,label="{73\:\ 0x014b|l}"];
+Node_75 [shape=record,color=red,label="{75\:\ 0x0151|l}"];
+Node_76 [shape=record,color=red,label="{76\:\ 0x0185|l}"];
+Node_78 [shape=record,color=red,label="{78\:\ 0x0189|l}"];
+Node_84 [shape=record,color=red,label="{84\:\ 0x01a7|l}"];
+Node_86 [shape=record,color=red,label="{86\:\ 0x01b1|l}"];
+Node_95 [shape=record,color=red,label="{95\:\ 0x0223|l}"];
+Node_98 [shape=record,color=red,label="{98\:\ 0x022d|l}"];
+Node_100 [shape=record,color=red,label="{100\:\ 0x0231|l}"];
+Node_102 [shape=record,color=red,label="{102\:\ 0x023f|l}"];
+Node_106 [shape=record,color=red,label="{106\:\ 0x024d|l}"];
+Node_108 [shape=record,color=red,label="{108\:\ 0x0251|l}"];
+Node_109 [shape=record,color=red,label="{109\:\ 0x0255|l}"];
+Node_110 [shape=record,color=red,label="{110\:\ 0x0257|l}"];
+Node_111 [shape=record,color=red,label="{111\:\ 0x0258|PHI: r2l  0x0258: PHI (r2v22 boolean) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_112 [shape=record,color=red,label="{112\:\ 0x0264|l}"];
+Node_113 [shape=record,color=red,label="{113\:\ 0x0266|l}"];
+Node_114 [shape=record,color=red,label="{114\:\ 0x0267|PHI: r3l  0x0267: PHI (r3v18 boolean) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_119 [shape=record,color=red,label="{119\:\ 0x027f|l}"];
+Node_120 [shape=record,color=red,label="{120\:\ 0x027d|l}"];
+Node_121 [shape=record,color=red,label="{121\:\ 0x0281|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.runBattleState((r11v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lCOMPUTE_POST_DOM\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0064 \-\> B:3:0x0040, CROSS_EDGE: B:12:0x0066 \-\> B:3:0x0040, CROSS_EDGE: B:8:0x0059 \-\> B:12:0x0066, CROSS_EDGE: B:14:0x006c \-\> B:3:0x0040, CROSS_EDGE: B:54:0x00e9 \-\> B:3:0x0040, CROSS_EDGE: B:58:0x015f \-\> B:3:0x0040, CROSS_EDGE: B:60:0x0166 \-\> B:3:0x0040, CROSS_EDGE: B:51:0x00da \-\> B:56:0x0153, CROSS_EDGE: B:63:0x016f \-\> B:3:0x0040, CROSS_EDGE: B:65:0x017f \-\> B:3:0x0040, CROSS_EDGE: B:66:0x0181 \-\> B:3:0x0040, CROSS_EDGE: B:70:0x0142 \-\> B:47:0x00c2, CROSS_EDGE: B:74:0x014c \-\> B:48:0x00c5, CROSS_EDGE: B:75:0x0151 \-\> B:74:0x014c, CROSS_EDGE: B:41:0x00a1 \-\> B:71:0x0145, CROSS_EDGE: B:27:0x010c \-\> B:3:0x0040, CROSS_EDGE: B:28:0x010e \-\> B:3:0x0040, CROSS_EDGE: B:33:0x0120 \-\> B:26:0x0106, CROSS_EDGE: B:36:0x012f \-\> B:26:0x0106, CROSS_EDGE: B:38:0x013d \-\> B:26:0x0106, CROSS_EDGE: B:39:0x013f \-\> B:26:0x0106, CROSS_EDGE: B:19:0x007e \-\> B:40:0x009d, CROSS_EDGE: B:17:0x0078 \-\> B:40:0x009d, CROSS_EDGE: B:80:0x0191 \-\> B:3:0x0040, CROSS_EDGE: B:92:0x01ff \-\> B:3:0x0040, CROSS_EDGE: B:90:0x01fb \-\> B:92:0x01ff, CROSS_EDGE: B:87:0x01bb \-\> B:89:0x01ca, CROSS_EDGE: B:94:0x021b \-\> B:92:0x01ff, CROSS_EDGE: B:97:0x0227 \-\> B:92:0x01ff, CROSS_EDGE: B:104:0x0245 \-\> B:92:0x01ff, CROSS_EDGE: B:105:0x024a \-\> B:92:0x01ff, CROSS_EDGE: B:107:0x024f \-\> B:92:0x01ff, CROSS_EDGE: B:115:0x0268 \-\> B:92:0x01ff, CROSS_EDGE: B:117:0x0271 \-\> B:92:0x01ff, CROSS_EDGE: B:118:0x0273 \-\> B:92:0x01ff, CROSS_EDGE: B:119:0x027f \-\> B:114:0x0267, CROSS_EDGE: B:120:0x027d \-\> B:111:0x0258, CROSS_EDGE: B:99:0x022f \-\> B:106:0x024d, CROSS_EDGE: B:77:0x0187 \-\> B:82:0x019b, CROSS_EDGE: B:122:0x0283 \-\> B:3:0x0040, CROSS_EDGE: B:125:0x0291 \-\> B:3:0x0040, CROSS_EDGE: B:127:0x0299 \-\> B:3:0x0040\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_5;
+Node_2 -> Node_16;
+Node_2 -> Node_76;
+Node_2 -> Node_121;
+Node_77 -> Node_78;
+Node_77 -> Node_82[style=dashed];
+Node_79 -> Node_80;
+Node_79 -> Node_82[style=dashed];
+Node_80 -> Node_81;
+Node_81 -> Node_4;
+Node_82 -> Node_83;
+Node_83 -> Node_84;
+Node_83 -> Node_95[style=dashed];
+Node_85 -> Node_86;
+Node_85 -> Node_94[style=dashed];
+Node_87 -> Node_88;
+Node_87 -> Node_89[style=dashed];
+Node_88 -> Node_89;
+Node_89 -> Node_90;
+Node_90 -> Node_91;
+Node_90 -> Node_92[style=dashed];
+Node_91 -> Node_92;
+Node_94 -> Node_92;
+Node_96 -> Node_97;
+Node_96 -> Node_98[style=dashed];
+Node_97 -> Node_92;
+Node_99 -> Node_100;
+Node_99 -> Node_106[style=dashed];
+Node_101 -> Node_102;
+Node_101 -> Node_106[style=dashed];
+Node_103 -> Node_104[style=dashed];
+Node_103 -> Node_105;
+Node_105 -> Node_92;
+Node_104 -> Node_92;
+Node_107 -> Node_92[style=dashed];
+Node_107 -> Node_108;
+Node_115 -> Node_92[style=dashed];
+Node_115 -> Node_116;
+Node_116 -> Node_117;
+Node_117 -> Node_92[style=dashed];
+Node_117 -> Node_118;
+Node_118 -> Node_92;
+Node_92 -> Node_93;
+Node_93 -> Node_4;
+Node_122 -> Node_123;
+Node_122 -> Node_129[style=dashed];
+Node_123 -> Node_124;
+Node_124 -> Node_125;
+Node_124 -> Node_127[style=dashed];
+Node_125 -> Node_126;
+Node_126 -> Node_4;
+Node_127 -> Node_128;
+Node_128 -> Node_4;
+Node_129 -> Node_4;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_6 -> Node_14[style=dashed];
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_12;
+Node_10 -> Node_12;
+Node_10 -> Node_11[style=dashed];
+Node_12 -> Node_13;
+Node_13 -> Node_4;
+Node_11 -> Node_4;
+Node_14 -> Node_15;
+Node_15 -> Node_4;
+Node_17 -> Node_18;
+Node_17 -> Node_40[style=dashed];
+Node_19 -> Node_20;
+Node_19 -> Node_40[style=dashed];
+Node_20 -> Node_21;
+Node_21 -> Node_22;
+Node_21 -> Node_23[style=dashed];
+Node_22 -> Node_40;
+Node_23 -> Node_24;
+Node_24 -> Node_25;
+Node_24 -> Node_31[style=dashed];
+Node_25 -> Node_26;
+Node_32 -> Node_33;
+Node_32 -> Node_34[style=dashed];
+Node_33 -> Node_26;
+Node_35 -> Node_36;
+Node_35 -> Node_37[style=dashed];
+Node_36 -> Node_26;
+Node_38 -> Node_26[style=dashed];
+Node_38 -> Node_39;
+Node_39 -> Node_26;
+Node_27 -> Node_28;
+Node_27 -> Node_30[style=dashed];
+Node_28 -> Node_29;
+Node_29 -> Node_4;
+Node_30 -> Node_4;
+Node_41 -> Node_42;
+Node_41 -> Node_71[style=dashed];
+Node_43 -> Node_44;
+Node_43 -> Node_71[style=dashed];
+Node_47 -> Node_48;
+Node_74 -> Node_48;
+Node_49 -> Node_50;
+Node_49 -> Node_62[style=dashed];
+Node_50 -> Node_51;
+Node_51 -> Node_52;
+Node_51 -> Node_56[style=dashed];
+Node_52 -> Node_53;
+Node_53 -> Node_54;
+Node_53 -> Node_56[style=dashed];
+Node_54 -> Node_55;
+Node_55 -> Node_4;
+Node_57 -> Node_58;
+Node_57 -> Node_60[style=dashed];
+Node_58 -> Node_59;
+Node_59 -> Node_4;
+Node_60 -> Node_61;
+Node_61 -> Node_4;
+Node_63 -> Node_64;
+Node_63 -> Node_69[style=dashed];
+Node_64 -> Node_65;
+Node_65 -> Node_66;
+Node_65 -> Node_68[style=dashed];
+Node_66 -> Node_67;
+Node_67 -> Node_4;
+Node_68 -> Node_4;
+Node_69 -> Node_4;
+Node_0 -> Node_1;
+Node_5 -> Node_6;
+Node_9 -> Node_10;
+Node_16 -> Node_17;
+Node_18 -> Node_19;
+Node_26 -> Node_27;
+Node_31 -> Node_32;
+Node_34 -> Node_35;
+Node_37 -> Node_38;
+Node_40 -> Node_41;
+Node_42 -> Node_43;
+Node_44 -> Node_45;
+Node_45 -> Node_46;
+Node_45 -> Node_70;
+Node_46 -> Node_47;
+Node_48 -> Node_49;
+Node_56 -> Node_57;
+Node_62 -> Node_63;
+Node_70 -> Node_47;
+Node_71 -> Node_72;
+Node_72 -> Node_73;
+Node_72 -> Node_75;
+Node_73 -> Node_74;
+Node_75 -> Node_74;
+Node_76 -> Node_77;
+Node_78 -> Node_79;
+Node_84 -> Node_85;
+Node_86 -> Node_87;
+Node_95 -> Node_96;
+Node_98 -> Node_99;
+Node_100 -> Node_101;
+Node_102 -> Node_103;
+Node_106 -> Node_107;
+Node_108 -> Node_109;
+Node_109 -> Node_110;
+Node_109 -> Node_120;
+Node_110 -> Node_111;
+Node_111 -> Node_112;
+Node_112 -> Node_113;
+Node_112 -> Node_119;
+Node_113 -> Node_114;
+Node_114 -> Node_115;
+Node_119 -> Node_114;
+Node_120 -> Node_111;
+Node_121 -> Node_122;
+}
+

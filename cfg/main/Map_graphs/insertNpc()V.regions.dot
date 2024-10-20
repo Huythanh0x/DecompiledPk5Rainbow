@@ -1,0 +1,111 @@
+digraph "CFG formain.Map.insertNpc()V" {
+subgraph cluster_Region_1398771001 {
+label = "R(1:(1:(2:5|(3:8|(2:10|(2:(1:19)|17))|22))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_770141578 {
+label = "R(1:(2:5|(3:8|(2:10|(2:(1:19)|17))|22)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1645816474 {
+label = "IF [B:2:0x0003] THEN: R(2:5|(3:8|(2:10|(2:(1:19)|17))|22)) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif (r9.npc != null) goto L31l}"];
+subgraph cluster_Region_472678108 {
+label = "R(2:5|(3:8|(2:10|(2:(1:19)|17))|22))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0006|lbyte r0 = 1l}"];
+subgraph cluster_LoopRegion_140492759 {
+label = "LOOP:0: (3:8|(2:10|(2:(1:19)|17))|22)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x000b|ADDED_TO_REGION\l|lif (r0 \< r9.npcList.length) goto L34l}"];
+subgraph cluster_Region_275640337 {
+label = "R(3:8|(2:10|(2:(1:19)|17))|22)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x000d|lbyte r1 = r0l}"];
+subgraph cluster_LoopRegion_902443505 {
+label = "LOOP:1: (2:10|(2:(1:19)|17))";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x000e|LOOP_START\lADDED_TO_REGION\lPHI: r1l  0x000e: PHI (r1v1 'j' byte) = (r1v0 'j' byte), (r1v2 'j' byte) binds: [B:8:0x000d, B:17:0x0041] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:9:0x000e\-\>B:17:0x0041\l|lif (r1 \> 0) goto L37l}"];
+subgraph cluster_Region_1060887703 {
+label = "R(2:10|(2:(1:19)|17))";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0014|lshort short r3 = getNpcListY(r1)lshort short r4 = getNpcListY(r1 \- 1)l}"];
+subgraph cluster_IfRegion_365882108 {
+label = "IF [B:11:0x001e] THEN: R(2:(1:19)|17) ELSE: null";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x001e|EDGE_INSN: B:11:0x001e\-\>B:21:0x0010 BREAK  A[LOOP:1: B:9:0x000e\-\>B:17:0x0041]\l|lif (r3 \<= r4) goto L39l}"];
+subgraph cluster_Region_1248813834 {
+label = "R(2:(1:19)|17)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1084837401 {
+label = "IF [B:12:0x0020, B:13:0x0022, B:15:0x002b] THEN: R(1:19) ELSE: null";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0020|lif (r3 != r4) goto L43l}"];
+Node_13 [shape=record,label="{13\:\ 0x0022|ADDED_TO_REGION\l|lif (r3 == r4) goto L41l}"];
+Node_15 [shape=record,label="{15\:\ 0x002b|ADDED_TO_REGION\l|lif (r9.npcList[r1 \- 1] == (\-1)) goto L43l}"];
+subgraph cluster_Region_604551748 {
+label = "R(1:19)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x002d|lbyte byte r2 = r9.npcList[r1]lr9.npcList[r1] = r9.npcList[r1 \- 1]lr9.npcList[r1 \- 1] = r2l}"];
+}
+}
+Node_17 [shape=record,label="{17\:\ 0x0041|LOOP_END\lLOOP:1: B:9:0x000e\-\>B:17:0x0041\l|lbyte r1 = (byte) (r1 \- 1)l}"];
+}
+}
+}
+}
+Node_22 [shape=record,label="{22\:\ 0x0010|LOOP_END\lLOOP:0: B:6:0x0008\-\>B:22:0x0010\l|lbyte r0 = (byte) (r0 + 1)l}"];
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0005|ORIG_RETURN\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0008|LOOP_START\lPHI: r0l  0x0008: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v2 'i' byte) binds: [B:5:0x0006, B:22:0x0010] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:6:0x0008\-\>B:22:0x0010\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0024|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x0041|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0041|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x0041|SYNTHETIC\l|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ 0x0010|SYNTHETIC\lEDGE_INSN: B:11:0x001e\-\>B:21:0x0010 BREAK  A[LOOP:1: B:9:0x000e\-\>B:17:0x0041]\l|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ 0x0010|SYNTHETIC\l|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x0005|SYNTHETIC\l|l}"];
+Node_25 [shape=record,color=red,label="{25\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void main.Map.insertNpc((r9v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x000b \-\> B:3:0x0005, BACK_EDGE: B:22:0x0010 \-\> B:6:0x0008, CROSS_EDGE: B:11:0x001e \-\> B:22:0x0010, BACK_EDGE: B:17:0x0041 \-\> B:9:0x000e, CROSS_EDGE: B:15:0x002b \-\> B:17:0x0041, CROSS_EDGE: B:13:0x0022 \-\> B:17:0x0041, CROSS_EDGE: B:12:0x0020 \-\> B:19:0x002d\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_7 -> Node_24[style=dashed];
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_9 -> Node_23[style=dashed];
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_11 -> Node_21[style=dashed];
+Node_12 -> Node_13[style=dashed];
+Node_12 -> Node_19;
+Node_13 -> Node_14;
+Node_13 -> Node_18[style=dashed];
+Node_15 -> Node_19;
+Node_15 -> Node_16[style=dashed];
+Node_19 -> Node_20;
+Node_17 -> Node_9;
+Node_22 -> Node_6;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_14 -> Node_15;
+Node_16 -> Node_17;
+Node_18 -> Node_17;
+Node_20 -> Node_17;
+Node_21 -> Node_22;
+Node_23 -> Node_22;
+Node_24 -> Node_25;
+Node_25 -> Node_4;
+}
+

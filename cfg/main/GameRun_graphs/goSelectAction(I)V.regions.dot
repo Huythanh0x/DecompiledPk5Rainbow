@@ -1,0 +1,40 @@
+digraph "CFG formain.GameRun.goSelectAction(I)V" {
+subgraph cluster_Region_915473031 {
+label = "R(4:1|4|(1:6)|7)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lmain.GameRun.run_state = \-31l}"];
+Node_4 [shape=record,label="{4\:\ 0x0008|PHI: r0l  0x0008: PHI (r0v2 byte) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr3.battle_state = r4 == 1 ? (byte) 2 : (byte) 1lsetAimBattle(r4)l}"];
+subgraph cluster_IfRegion_1279158927 {
+label = "IF [B:5:0x000d] THEN: R(1:6) ELSE: null";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000d|lif (r4 == 1) goto L18l}"];
+subgraph cluster_Region_1450154383 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x000f|linitSkillList(r3.myB.getMon())l}"];
+}
+}
+Node_7 [shape=record,label="{7\:\ 0x0018|lgetHitCoefficient(r3.myB, r3.myB.getMon(), r3.enB.getMon())lgetHitCoefficient(r3.enB, r3.enB.getMon(), r3.myB.getMon())l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0005|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0007|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x003a|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x003b|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.goSelectAction((r3v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r4v0 'mini' int A[D('mini' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x000d \-\> B:7:0x0018, CROSS_EDGE: B:10:0x003b \-\> B:4:0x0008\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_7[style=dashed];
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_10;
+Node_3 -> Node_4;
+Node_8 -> Node_9;
+Node_10 -> Node_4;
+}
+

@@ -1,0 +1,16 @@
+digraph "CFG formain.MainCanvas.goGameLoading()V" {
+subgraph cluster_Region_2101527672 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|landroid.util.Log.e(\"loading\", \"游戏状态：GAME_LOADING\")lr3.game_state = 20lr3.gr.time_count = (byte) 0lr3.flashSP = nulllr3.gr.map.loadDate_Rms()lr3.gr.loadRmsOther()lr3.gr.map.anole_temp = r3.gr.map.anole_typelmain.Map main.Map r0 = r3.gr.mapldm.Ms.i()lr0.anole_type = (byte) dm.Ms.getRandom(5)lr3.gr.map.setAnole()lpaint()lnew main.CreateThread(r3.gr, 0)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x004b|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.MainCanvas.goGameLoading((r3v0 'this' main.MainCanvas A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

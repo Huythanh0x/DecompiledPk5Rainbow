@@ -1,0 +1,37 @@
+digraph "CFG formain.GameRun.goBUY_ITEM(II)V" {
+subgraph cluster_Region_582392610 {
+label = "R(2:(1:3)(1:7)|4)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1907471566 {
+label = "IF [B:2:0x0005] THEN: R(1:3) ELSE: R(1:7)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0005|lif (r9 != 1) goto L12l}"];
+subgraph cluster_Region_1807919719 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0007|lsetAction_str(new java.lang.String[]\{\"道具\", main.Constants_H.ITEM_TXT_5, \"徽章\"\})l}"];
+}
+subgraph cluster_Region_1607378703 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x005c|lsetAction_str(new java.lang.String[]\{\"道具\", main.Constants_H.ITEM_TXT_1, main.Constants_H.ITEM_TXT_2\})l}"];
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x0018|lr7.cur_a = (byte) r8lr7.cur_b = (byte) r9lbyte[] byte[] r1 = r7.select[0]lr7.select[0][0] = 0lr1[1] = 0lmain.GameRun.run_state = 18lr7.list_rows = (byte) 6lr7.buyOk = (byte) 0lr7.popMenu = (byte) \-1lbyte[] byte[] r0 = dm.Ms.i().getStream(\"data\/shop.d\", \-1)ldm.Ms.i()ldm.Ms.skip = 0lr7.buyItem = dm.Ms.i().create2Array(r0)lr7.buyPrice = dm.Ms.i().createShort2Array(r0, 0)l(byte[]) nulll}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x005b|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.goBUY_ITEM((r7v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r8v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x005c \-\> B:4:0x0018\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_7[style=dashed];
+Node_3 -> Node_4;
+Node_7 -> Node_4;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_5 -> Node_6;
+}
+

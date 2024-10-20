@@ -1,0 +1,16 @@
+digraph "CFG fordm.Monster.resetBoss(I)V" {
+subgraph cluster_Region_95529300 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr6.monster[16] = 4lr6.monster[17] = 10lr6.monster[9] = 4lr6.monster[10] = 9lr6.monster[11] = 14lr6.monster[12] = 19lr6.monster[13] = 24lr6.monster[14] = 30lr6.monster[15] = 48lr6.monster[6] = (byte) r7l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0045|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Monster.resetBoss((r6v0 'this' dm.Monster A[IMMUTABLE_TYPE, THIS]), (r7v0 'fealty' int A[D('fealty' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

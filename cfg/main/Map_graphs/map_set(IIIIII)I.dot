@@ -1,0 +1,35 @@
+digraph "CFG formain.Map.map_set(IIIIII)I" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lif (r5 \> r6) goto L20l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|lint r0 = (r8 \- (r9 * r5)) \>\> 1l}"];
+Node_3 [shape=record,label="{3\:\ 0x0008|RETURN\lORIG_RETURN\l|lreturn r0l}"];
+Node_4 [shape=record,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0009|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000b|lif ((r4 + 1) \> r7) goto L23l}"];
+Node_7 [shape=record,label="{7\:\ 0x000d|SYNTHETIC\lRETURN\l|lreturn 0l}"];
+Node_8 [shape=record,label="{8\:\ 0x000f|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0011|lif (r4 \< (r5 \- r7)) goto L26l}"];
+Node_10 [shape=record,label="{10\:\ 0x0013|lint r0 = r8 \- (r5 * r9)l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0l}"];
+Node_12 [shape=record,label="{12\:\ 0x0018|lint r0 = ((r8 \/ 2) \- (r4 * r9)) \- (r9 \/ 2)l}"];
+Node_13 [shape=record,label="{13\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0l}"];
+MethodNode[shape=record,label="{private int main.Map.map_set((r3v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r4v0 '_my_x' int A[D('_my_x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'cols' int A[D('cols' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'xcells' int A[D('xcells' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'half_xcells' int A[D('half_xcells' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'show_width' int A[D('show_width' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'cell_width' int A[D('cell_width' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x000d \-\> B:3:0x0008, CROSS_EDGE: B:10:0x0013 \-\> B:3:0x0008, CROSS_EDGE: B:12:0x0018 \-\> B:3:0x0008\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2[style=dashed];
+Node_1 -> Node_5;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_8;
+Node_7 -> Node_4;
+Node_8 -> Node_9;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_12;
+Node_10 -> Node_11;
+Node_11 -> Node_4;
+Node_12 -> Node_13;
+Node_13 -> Node_4;
+}
+

@@ -1,0 +1,48 @@
+digraph "CFG formain.Map.setSIfElse(IZZ)Z" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif (r4 != 2) goto L28l}"];
+Node_3 [shape=record,label="{3\:\ 0x0005|lif (r5 == false) goto L27l}"];
+Node_4 [shape=record,label="{4\:\ 0x0007|lr0 = 0l}"];
+Node_5 [shape=record,label="{5\:\ 0x0008|PHI: r0l  0x0008: PHI (r0v5 int) = (r0v4 int), (r0v8 int) binds: [B:8:0x000d, B:4:0x0007] A[DONT_GENERATE, DONT_INLINE]\l|lr3.sIfElse = (byte) r0l}"];
+Node_6 [shape=record,label="{6\:\ 0x000c|RETURN\lORIG_RETURN\l|lreturn truel}"];
+Node_7 [shape=record,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x000d|lr0 = 1l}"];
+Node_9 [shape=record,label="{9\:\ 0x000f|lif (r6 == false) goto L31l}"];
+Node_10 [shape=record,label="{10\:\ 0x0011|lif (r5 == false) goto L31l}"];
+Node_11 [shape=record,label="{11\:\ 0x0013|l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+Node_13 [shape=record,label="{13\:\ 0x0015|lif (r6 != false) goto L34l}"];
+Node_14 [shape=record,label="{14\:\ 0x0017|lif (r4 != 1) goto L34l}"];
+Node_15 [shape=record,label="{15\:\ 0x0019|l}"];
+Node_16 [shape=record,label="{16\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+Node_17 [shape=record,label="{17\:\ 0x001b|l}"];
+Node_18 [shape=record,label="{18\:\ ?|SYNTHETIC\lRETURN\l|lreturn falsel}"];
+MethodNode[shape=record,label="{private boolean main.Map.setSIfElse((r3v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r4v0 '_mode' int A[D('_mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 '_bt' boolean A[D('_bt' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 '_bmode' boolean A[D('_bmode' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x000d \-\> B:5:0x0008, CROSS_EDGE: B:11:0x0013 \-\> B:6:0x000c, CROSS_EDGE: B:15:0x0019 \-\> B:6:0x000c, CROSS_EDGE: B:17:0x001b \-\> B:6:0x000c, CROSS_EDGE: B:13:0x0015 \-\> B:17:0x001b, CROSS_EDGE: B:9:0x000f \-\> B:13:0x0015\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_9;
+Node_3 -> Node_4[style=dashed];
+Node_3 -> Node_8;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_5;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_13;
+Node_10 -> Node_11[style=dashed];
+Node_10 -> Node_13;
+Node_11 -> Node_12;
+Node_12 -> Node_7;
+Node_13 -> Node_14[style=dashed];
+Node_13 -> Node_17;
+Node_14 -> Node_15[style=dashed];
+Node_14 -> Node_17;
+Node_15 -> Node_16;
+Node_16 -> Node_7;
+Node_17 -> Node_18;
+Node_18 -> Node_7;
+}
+

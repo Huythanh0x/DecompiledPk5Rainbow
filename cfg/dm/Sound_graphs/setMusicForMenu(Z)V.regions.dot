@@ -1,0 +1,105 @@
+digraph "CFG fordm.Sound.setMusicForMenu(Z)V" {
+subgraph cluster_Region_1623698151 {
+label = "R(1:(1:(1:(2:(3:13|(1:15)|16)|9))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_184971371 {
+label = "R(1:(1:(2:(3:13|(1:15)|16)|9)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_553008139 {
+label = "IF [B:2:0x0003, B:4:0x0007] THEN: R(1:(2:(3:13|(1:15)|16)|9)) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif (r4.sound_on != false) goto L27l}"];
+Node_4 [shape=record,label="{4\:\ 0x0007|ADDED_TO_REGION\l|lif (r4.musicId \>= 0) goto L41l}"];
+subgraph cluster_Region_1684350455 {
+label = "R(1:(2:(3:13|(1:15)|16)|9))";
+node [shape=record,color=blue];
+subgraph cluster_TryCatchRegion_967322382 {
+label = "Try: R(2:(3:13|(1:15)|16)|9) catches: R(1:18)";
+node [shape=record,color=blue];
+subgraph cluster_Region_26575224 {
+label = "R(2:(3:13|(1:15)|16)|9)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_269673253 {
+label = "IF [B:7:0x000e, B:8:0x0010] THEN: R(3:13|(1:15)|16) ELSE: null";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x000e|lif (r4.musicId_temp != r4.musicId) goto L33l}"];
+Node_8 [shape=record,label="{8\:\ 0x0010|ADDED_TO_REGION\l|lif (r5 != false) goto L33l}"];
+subgraph cluster_Region_1561671245 {
+label = "R(3:13|(1:15)|16)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0012|TryCatch #0 \{Exception \-\> 0x0038, blocks: (B:6:0x000a, B:9:0x0034, B:13:0x0012, B:15:0x0026, B:16:0x002b), top: B:5:0x000a \}\lCatch: Exception \-\> 0x0038\l|lr4.loop_s = r4.loop[r4.musicId]     \/\/ Catch: java.lang.Exception \-\> L38lr4.play_music = r4.musicId     \/\/ Catch: java.lang.Exception \-\> L38lr4.musicId_temp = r4.play_music     \/\/ Catch: java.lang.Exception \-\> L38l}"];
+subgraph cluster_IfRegion_631084730 {
+label = "IF [B:14:0x0024] THEN: R(1:15) ELSE: null";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0024|lif (r4.snd_music != null) goto L35l}"];
+subgraph cluster_Region_137252144 {
+label = "R(1:15)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0026|TryCatch #0 \{Exception \-\> 0x0038, blocks: (B:6:0x000a, B:9:0x0034, B:13:0x0012, B:15:0x0026, B:16:0x002b), top: B:5:0x000a \}\lCatch: Exception \-\> 0x0038\l|lr4.snd_music.close()     \/\/ Catch: java.lang.Exception \-\> L38l}"];
+}
+}
+Node_16 [shape=record,label="{16\:\ 0x002b|TryCatch #0 \{Exception \-\> 0x0038, blocks: (B:6:0x000a, B:9:0x0034, B:13:0x0012, B:15:0x0026, B:16:0x002b), top: B:5:0x000a \}\lCatch: Exception \-\> 0x0038\l|lr4.snd_music = null     \/\/ Catch: java.lang.Exception \-\> L38lcreateMusicForMenu(r4.play_music, 0)     \/\/ Catch: java.lang.Exception \-\> L38l}"];
+}
+}
+Node_9 [shape=record,label="{9\:\ 0x0034|TRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x0038, blocks: (B:6:0x000a, B:9:0x0034, B:13:0x0012, B:15:0x0026, B:16:0x002b), top: B:5:0x000a \}\lCatch: Exception \-\> 0x0038\l|lr4.sound_play = true     \/\/ Catch: java.lang.Exception \-\> L38l}"];
+}
+subgraph cluster_Region_262311131 {
+label = "R(1:18) | ExcHandler: Exception \-\> 0x0038\l";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x0039|lr4.sound_play = falsel}"];
+}
+}
+}
+}
+}
+}
+subgraph cluster_Region_262311131 {
+label = "R(1:18) | ExcHandler: Exception \-\> 0x0038\l";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x0039|lr4.sound_play = falsel}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0005|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000a|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x000a|TRY_ENTER\lTryCatch #0 \{Exception \-\> 0x0038, blocks: (B:6:0x000a, B:9:0x0034, B:13:0x0012, B:15:0x0026, B:16:0x002b), top: B:5:0x000a \}\lCatch: Exception \-\> 0x0038\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0038|ExcHandler: Exception \-\> 0x0038\l|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ ?|SYNTHETIC\l|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ ?|SYNTHETIC\l|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ 0x0009|RETURN\lORIG_RETURN\lADDED_TO_REGION\l|lreturnl}"];
+MethodNode[shape=record,label="{public void dm.Sound.setMusicForMenu((r4v0 'this' dm.Sound A[IMMUTABLE_TYPE, THIS]), (r5v0 'b' boolean A[D('b' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{Exception \-\> 0x0038, blocks: (B:6:0x000a, B:9:0x0034, B:13:0x0012, B:15:0x0026, B:16:0x002b), top: B:5:0x000a \}\lCROSS_EDGE: B:9:0x0034 \-\> B:21:0x0009, CROSS_EDGE: B:18:0x0039 \-\> B:21:0x0009, CROSS_EDGE: B:14:0x0024 \-\> B:16:0x002b, CROSS_EDGE: B:8:0x0010 \-\> B:9:0x0034, CROSS_EDGE: B:7:0x000e \-\> B:13:0x0012, CROSS_EDGE: B:5:0x000a \-\> B:17:0x0038, CROSS_EDGE: B:2:0x0003 \-\> B:21:0x0009\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_21[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_20[style=dashed];
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_13;
+Node_8 -> Node_13;
+Node_8 -> Node_9[style=dashed];
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+Node_14 -> Node_16[style=dashed];
+Node_15 -> Node_16;
+Node_16 -> Node_9;
+Node_9 -> Node_10;
+Node_9 -> Node_11;
+Node_18 -> Node_19;
+Node_18 -> Node_19;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_5 -> Node_17;
+Node_6 -> Node_7;
+Node_10 -> Node_17;
+Node_11 -> Node_12;
+Node_17 -> Node_18;
+Node_19 -> Node_12;
+Node_20 -> Node_12;
+Node_21 -> Node_12;
+}
+

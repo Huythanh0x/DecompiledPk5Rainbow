@@ -1,0 +1,12 @@
+digraph "CFG fordm.Battle.\<init\>([Ldm\/Monster;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr2.throw_state = \-1lr2.countS = new byte[10]lr2.ceff = new byte[6]lr2.cThrow = new short[4]ljava.lang.Class r1 = java.lang.Short.TYPElr2.hit = (short[][]) java.lang.reflect.Array.newInstance(r1, new int[]\{3, 5\})lr2.b_renascence = falselr2.act_num = 1lr2.mon = r3l}"];
+Node_2 [shape=record,label="{2\:\ 0x002e|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Battle.\<init\>((r2v0 'this' dm.Battle A[IMMUTABLE_TYPE, THIS]), (r3v0 '_mon' dm.Monster[] A[D('_mon' dm.Monster[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

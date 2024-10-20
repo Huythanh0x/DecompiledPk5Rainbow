@@ -1,0 +1,19 @@
+digraph "CFG fordm.Npc.setNpcNum(I)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr2.npc_num = (byte) (r2.other[7] \/ 6)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0010|lif (((r2.npc_num + 1) * 6) \<= r3) goto L13l}"];
+Node_3 [shape=record,label="{3\:\ 0x0012|lr2.npc_num = 0l}"];
+Node_4 [shape=record,label="{4\:\ 0x0015|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void dm.Npc.setNpcNum((r2v0 'this' dm.Npc A[IMMUTABLE_TYPE, THIS]), (r3v0 'length' int A[D('length' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0010 \-\> B:4:0x0015\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

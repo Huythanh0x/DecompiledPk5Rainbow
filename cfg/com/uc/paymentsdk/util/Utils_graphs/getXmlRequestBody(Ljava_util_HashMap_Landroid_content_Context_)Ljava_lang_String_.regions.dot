@@ -1,0 +1,50 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.getXmlRequestBody(Ljava\/util\/HashMap;Landroid\/content\/Context;)Ljava\/lang\/String;" {
+subgraph cluster_Region_1305983527 {
+label = "R(6:1|(1:3)|4|(1:7)|9|10)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.lang.StringBuilder java.lang.StringBuilder r1 = new java.lang.StringBuilder()lr1.append(\"\<request\")l}"];
+subgraph cluster_IfRegion_351261115 {
+label = "IF [B:2:0x0010] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0010|lif (r5.containsKey(\"local_version\") != false) goto L16l}"];
+subgraph cluster_Region_2144355900 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0012|lr1.append(\" local_version=\"\" + r5.get(\"local_version\") + \"\" \")lr5.remove(\"local_version\")l}"];
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x0035|lr1.append(\"\>\")ljava.util.Iterator r0 = r5.keySet().iterator()ll}"];
+subgraph cluster_LoopRegion_120795530 {
+label = "LOOP:0: (1:7)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0046|ADDED_TO_REGION\l|ljava.lang.String lif (r0.hasNext() != false) goto L22l}"];
+subgraph cluster_Region_1668789565 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0052|LOOP_END\lLOOP:0: B:5:0x0042\-\>B:7:0x0052\l|lr0.next()lr1.append(\"\<\").append(r2).append(\"\>\")lr1.append(r5.get(r2))lr1.append(\"\<\/\").append(r2).append(\"\>\")l}"];
+}
+}
+Node_9 [shape=record,label="{9\:\ 0x0048|lr1.append(\"\<\/request\>\")l}"];
+Node_10 [shape=record,label="{10\:\ 0x0051|RETURN\l|lreturn r1.toString()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0042|LOOP_START\lLOOP:0: B:5:0x0042\-\>B:7:0x0052\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0048|SYNTHETIC\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static java.lang.String com.uc.paymentsdk.util.Utils.getXmlRequestBody((r5v0 'paramHashMap' java.util.HashMap\<java.lang.String, java.lang.Object\> A[D('paramHashMap' java.util.HashMap\<java.lang.String, java.lang.Object\>), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'paramContext' android.content.Context A[D('paramContext' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lSIGNATURE: (Ljava\/util\/HashMap\<Ljava\/lang\/String;Ljava\/lang\/Object;\>;Landroid\/content\/Context;)Ljava\/lang\/String;\lINLINE_NOT_NEEDED\lBACK_EDGE: B:7:0x0052 \-\> B:5:0x0042, CROSS_EDGE: B:2:0x0010 \-\> B:4:0x0035\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_6 -> Node_8[style=dashed];
+Node_7 -> Node_5;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_0 -> Node_1;
+Node_5 -> Node_6;
+Node_8 -> Node_9;
+}
+

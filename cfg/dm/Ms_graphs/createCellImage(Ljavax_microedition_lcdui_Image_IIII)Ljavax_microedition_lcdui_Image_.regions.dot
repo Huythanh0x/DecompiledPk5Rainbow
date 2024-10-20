@@ -1,0 +1,16 @@
+digraph "CFG fordm.Ms.createCellImage(Ljavax\/microedition\/lcdui\/Image;IIII)Ljavax\/microedition\/lcdui\/Image;" {
+subgraph cluster_Region_43709808 {
+label = "R(2:1|2)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint int r2 = (r9 % (r8.getWidth() \/ r10)) * r10lint int r3 = (r9 % (r8.getHeight() \/ r11)) * r11l}"];
+Node_2 [shape=record,label="{2\:\ 0x001b|RETURN\l|lreturn createImage(r8, r2, r3, r10, r11, r12)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{javax.microedition.lcdui.Image dm.Ms.createCellImage((r7v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r8v0 'image' javax.microedition.lcdui.Image A[D('image' javax.microedition.lcdui.Image), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'cell_index' int A[D('cell_index' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'cell_width' int A[D('cell_width' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'cell_height' int A[D('cell_height' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'trans' int A[D('trans' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_0 -> Node_1;
+}
+

@@ -1,0 +1,21 @@
+digraph "CFG formain.GameRun.levelPro(IZ)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0005|lif (r13 == false) goto L14l}"];
+Node_3 [shape=record,label="{3\:\ 0x0007|lbyte r1 = (byte) r11.proReplace[r12][6]lbyte[] r3 = r11.monster_pro[r11.myMonsters[r12].monster[0]]lshort r2 = (short) (r3[0] + ((r3[7] * r1) \/ 10))lshort r2 = getbuffRateV(r11.myMonsters[r12], r2)lr11.proReplace[r12][0] = (short) (r11.myMonsters[r12].monsterPro[2] \- r2)lshort r2 = (short) (r3[1] + ((r3[8] * r1) \/ 10))lr11.proReplace[r12][1] = (short) (r11.myMonsters[r12].monsterPro[3] \- r2)lshort r2 = (short) (r3[3] + ((r3[10] * r1) \/ 10))lr11.proReplace[r12][3] = (short) (r11.myMonsters[r12].monsterPro[6] \- r2)lshort r2 = (short) (r3[4] + ((r3[11] * r1) \/ 10))lr11.proReplace[r12][4] = (short) (r11.myMonsters[r12].monsterPro[7] \- r2)lshort r2 = (short) (r3[2] + ((r3[9] * r1) \/ 10))lr11.proReplace[r12][5] = (short) (r11.myMonsters[r12].monsterPro[5] \- r2)lbyte[] r3 = (byte[]) nulll}"];
+Node_4 [shape=record,label="{4\:\ 0x00b0|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x00b1|lbyte[] r4 = r11.myMonsters[r12].monsterlbyte r0 = (byte) (r4[2] + 1)lr4[2] = r0lbyte[] r3 = r11.monster_pro[r11.myMonsters[r12].monster[0]]lr11.myMonsters[r12].monsterPro[2] = (short) (r3[0] + ((r3[7] * r0) \/ 10))lr11.myMonsters[r12].monsterPro[3] = (short) (r3[1] + ((r3[8] * r0) \/ 10))lr11.myMonsters[r12].monsterPro[6] = (byte) (r3[3] + ((r3[10] * r0) \/ 10))lr11.myMonsters[r12].monsterPro[7] = (byte) (r3[4] + ((r3[11] * r0) \/ 10))lr11.myMonsters[r12].monsterPro[5] = (byte) (r3[2] + ((r3[9] * r0) \/ 10))lr11.myMonsters[r12].resetPro(r11)lbyte[] r3 = (byte[]) nulllhealMonster(r11.myMonsters[r12])l}"];
+Node_7 [shape=record,label="{7\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void main.GameRun.levelPro((r11v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r12v0 'no' int A[D('no' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x00b1 \-\> B:4:0x00b0\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_5;
+}
+

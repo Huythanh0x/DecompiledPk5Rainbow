@@ -1,0 +1,33 @@
+digraph "CFG formain.GameRun.drawEffectImage(Ldm\/Monster;II)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0005|lif (r7.effect \<= (\-1)) goto L23l}"];
+Node_3 [shape=record,label="{3\:\ 0x0007|l}"];
+Node_4 [shape=record,label="{4\:\ 0x000a|lif (r7.effect \>= 7) goto L24l}"];
+Node_5 [shape=record,label="{5\:\ 0x000c|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000e|lif (r7.effect_time \<= 0) goto L25l}"];
+Node_7 [shape=record,label="{7\:\ 0x0010|ldm.Ui r0 = dm.Ui.i()lr1 = r6.effectImage[r7.effect]ljavax.microedition.lcdui.Graphics r2 = main.GameRun.gljavax.microedition.lcdui.Graphics r2 = main.GameRun.glr0.drawImage(r1, r8, r9, 8 \| 32)ldm.Ui r0 = dm.Ui.i()ljava.lang.String r1 = new java.lang.StringBuilder().append(r7.effect_time).toString()ljavax.microedition.lcdui.Graphics r2 = main.GameRun.gljavax.microedition.lcdui.Graphics r2 = main.GameRun.glr0.drawNum(r1, r8, r9, 8 \| 32, 0)l}"];
+Node_8 [shape=record,label="{8\:\ 0x0042|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_9 [shape=record,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,label="{10\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawEffectImage((r6v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r7v0 'monster' dm.Monster A[D('monster' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x000e \-\> B:8:0x0042, CROSS_EDGE: B:4:0x000a \-\> B:8:0x0042, CROSS_EDGE: B:2:0x0005 \-\> B:8:0x0042\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_12;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_11;
+Node_5 -> Node_6;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_10;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_10 -> Node_9;
+Node_11 -> Node_9;
+Node_12 -> Node_9;
+}
+

@@ -1,0 +1,35 @@
+digraph "CFG fordm.Ui.drawRectZ(IIIIII)V" {
+subgraph cluster_Region_1934088790 {
+label = "R(2:1|(1:(1:3)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.g.setColor(r6)ljavax.microedition.lcdui.Graphics javax.microedition.lcdui.Graphics r0 = dm.Ui.gldm.Ms.i()lint int r1 = r7 \- dm.Ms.abs(r5.rz)ldm.Ms.i()lint int r2 = r8 \- dm.Ms.abs(r5.rz)ldm.Ms.i()lint int r3 = (dm.Ms.abs(r5.rz) \<\< 1) + r9ldm.Ms.i()lr0.drawRect(r1, r2, r3, (dm.Ms.abs(r5.rz) \<\< 1) + r10)lbyte byte r0 = (byte) (r5.rz + 1)lr5.rz = r0l}"];
+subgraph cluster_Region_1896117587 {
+label = "R(1:(1:3))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1165882410 {
+label = "IF [B:2:0x003f] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x003f|lif (r0 \> r11) goto L11l}"];
+subgraph cluster_Region_604257823 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0041|lr5.rz = (byte) (\-r11)l}"];
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0045|ORIG_RETURN\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawRectZ((r5v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r6v0 'color' int A[D('color' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'h' int A[D('h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 's' int A[D('s' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x003f \-\> B:4:0x0045\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

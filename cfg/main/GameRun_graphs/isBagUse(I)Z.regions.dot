@@ -1,0 +1,63 @@
+digraph "CFG formain.GameRun.isBagUse(I)Z" {
+subgraph cluster_Region_264608299 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0005|RETURN\l|lreturn r4.view_state == \-1 ? (r5 == 14 \|\| r5 == 15) ? false : true : (r5 == 9 \|\| r5 == 10 \|\| r5 == 11 \|\| r5 == 8) ? false : truel}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0007|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0009|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000b|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x000d|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x000f|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0010|ORIG_RETURN\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0011|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0013|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0015|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0017|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0019|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x001b|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x001d|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x001f|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x0021|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x0023|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ ?|SYNTHETIC\l|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x0025|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private boolean main.GameRun.isBagUse((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0011 \-\> B:8:0x0010, CROSS_EDGE: B:4:0x0009 \-\> B:10:0x0011, CROSS_EDGE: B:20:0x0023 \-\> B:8:0x0010, CROSS_EDGE: B:22:0x0025 \-\> B:8:0x0010, CROSS_EDGE: B:17:0x001d \-\> B:22:0x0025, CROSS_EDGE: B:15:0x0019 \-\> B:22:0x0025, CROSS_EDGE: B:13:0x0015 \-\> B:22:0x0025\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_12;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_10;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_6 -> Node_10;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_11 -> Node_9;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_13 -> Node_22;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_15 -> Node_22;
+Node_16 -> Node_17;
+Node_17 -> Node_18;
+Node_17 -> Node_22;
+Node_18 -> Node_19;
+Node_19 -> Node_20;
+Node_19 -> Node_22;
+Node_20 -> Node_21;
+Node_21 -> Node_9;
+Node_22 -> Node_23;
+Node_23 -> Node_9;
+}
+

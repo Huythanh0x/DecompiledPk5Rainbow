@@ -1,0 +1,113 @@
+digraph "CFG formain.CreateThread.run()V" {
+subgraph cluster_Region_1035293840 {
+label = "R(1:(3:3|(1:5)(1:(1:12)(1:(1:19)))|6))";
+node [shape=record,color=blue];
+subgraph cluster_TryCatchRegion_1217098684 {
+label = "Try: R(3:3|(1:5)(1:(1:12)(1:(1:19)))|6) catches: R(2:20|21)";
+node [shape=record,color=blue];
+subgraph cluster_Region_897396932 {
+label = "R(3:3|(1:5)(1:(1:12)(1:(1:19)))|6)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0001|TRY_ENTER\lTryCatch #0 \{Exception \-\> 0x0043, blocks: (B:3:0x0001, B:5:0x000c, B:6:0x0031, B:10:0x0037, B:12:0x003d, B:13:0x0049, B:15:0x0050, B:17:0x0057, B:19:0x005e), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0043\l|lr4.gr.createOver = (byte) 0     \/\/ Catch: java.lang.Exception \-\> L43l}"];
+subgraph cluster_IfRegion_243812740 {
+label = "IF [B:4:0x000a] THEN: R(1:5) ELSE: R(1:(1:12)(1:(1:19)))";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000a|lif (r4.gr.threadType == 0) goto L5l}"];
+subgraph cluster_Region_420384017 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000c|TryCatch #0 \{Exception \-\> 0x0043, blocks: (B:3:0x0001, B:5:0x000c, B:6:0x0031, B:10:0x0037, B:12:0x003d, B:13:0x0049, B:15:0x0050, B:17:0x0057, B:19:0x005e), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0043\l|lr4.gr.map.initMap()     \/\/ Catch: java.lang.Exception \-\> L43lr4.gr.loadItem()     \/\/ Catch: java.lang.Exception \-\> L43lr4.gr.loadMon(0, r4.gr.monster_pro)     \/\/ Catch: java.lang.Exception \-\> L43lr4.gr.loadMon(1, r4.gr.monster_pro)     \/\/ Catch: java.lang.Exception \-\> L43lr4.gr.loadInfoList()     \/\/ Catch: java.lang.Exception \-\> L43l}"];
+}
+subgraph cluster_Region_168499999 {
+label = "R(1:(1:12)(1:(1:19))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1454170506 {
+label = "IF [B:11:0x003b] THEN: R(1:12) ELSE: R(1:(1:19)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x003b|lif (r4.gr.threadType == 1) goto L10l}"];
+subgraph cluster_Region_438589106 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x003d|TRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x0043, blocks: (B:3:0x0001, B:5:0x000c, B:6:0x0031, B:10:0x0037, B:12:0x003d, B:13:0x0049, B:15:0x0050, B:17:0x0057, B:19:0x005e), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0043\l|lr4.gr.initBattle()     \/\/ Catch: java.lang.Exception \-\> L43l}"];
+}
+subgraph cluster_Region_2007967458 {
+label = "R(1:(1:19)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_632166635 {
+label = "IF [B:14:0x004e, B:16:0x0055, B:18:0x005c] THEN: R(1:19) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x004e|lif (r4.gr.threadType != 2) goto L16l}"];
+Node_16 [shape=record,label="{16\:\ 0x0055|ADDED_TO_REGION\l|lif (r4.gr.threadType != 3) goto L18l}"];
+Node_18 [shape=record,label="{18\:\ 0x005c|ADDED_TO_REGION\l|lif (r4.gr.threadType != 4) goto L20l}"];
+subgraph cluster_Region_1828847912 {
+label = "R(1:19)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x005e|TRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x0043, blocks: (B:3:0x0001, B:5:0x000c, B:6:0x0031, B:10:0x0037, B:12:0x003d, B:13:0x0049, B:15:0x0050, B:17:0x0057, B:19:0x005e), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0043\l|lbyte byte r1 = r4.gr.threadType     \/\/ Catch: java.lang.Exception \-\> L43l}"];
+}
+}
+}
+}
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0031|TryCatch #0 \{Exception \-\> 0x0043, blocks: (B:3:0x0001, B:5:0x000c, B:6:0x0031, B:10:0x0037, B:12:0x003d, B:13:0x0049, B:15:0x0050, B:17:0x0057, B:19:0x005e), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0043\l|lr4.gr.createOver = (byte) \-1     \/\/ Catch: java.lang.Exception \-\> L43l}"];
+}
+subgraph cluster_Region_348069221 {
+label = "R(2:20|21) | ExcHandler: Exception \-\> 0x0043\l";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x0043|ExcHandler: Exception \-\> 0x0043\l|l}"];
+Node_21 [shape=record,label="{21\:\ 0x0044|lr1.printStackTrace()l}"];
+}
+}
+}
+subgraph cluster_Region_348069221 {
+label = "R(2:20|21) | ExcHandler: Exception \-\> 0x0043\l";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x0043|ExcHandler: Exception \-\> 0x0043\l|l}"];
+Node_21 [shape=record,label="{21\:\ 0x0044|lr1.printStackTrace()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0001|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0036|ORIG_RETURN\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0037|TryCatch #0 \{Exception \-\> 0x0043, blocks: (B:3:0x0001, B:5:0x000c, B:6:0x0031, B:10:0x0037, B:12:0x003d, B:13:0x0049, B:15:0x0050, B:17:0x0057, B:19:0x005e), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0043\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0049|TRY_ENTER\lTryCatch #0 \{Exception \-\> 0x0043, blocks: (B:3:0x0001, B:5:0x000c, B:6:0x0031, B:10:0x0037, B:12:0x003d, B:13:0x0049, B:15:0x0050, B:17:0x0057, B:19:0x005e), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0043\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0050|TryCatch #0 \{Exception \-\> 0x0043, blocks: (B:3:0x0001, B:5:0x000c, B:6:0x0031, B:10:0x0037, B:12:0x003d, B:13:0x0049, B:15:0x0050, B:17:0x0057, B:19:0x005e), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0043\l|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0057|TryCatch #0 \{Exception \-\> 0x0043, blocks: (B:3:0x0001, B:5:0x000c, B:6:0x0031, B:10:0x0037, B:12:0x003d, B:13:0x0049, B:15:0x0050, B:17:0x0057, B:19:0x005e), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0043\l|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void main.CreateThread.run((r4v0 'this' main.CreateThread A[IMMUTABLE_TYPE, THIS]))  | DONT_RENAME\lUSE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{java.lang.Runnable.run():void\}]\lCROSS_EDGE: B:21:0x0044 \-\> B:7:0x0036, CROSS_EDGE: B:12:0x003d \-\> B:6:0x0031, CROSS_EDGE: B:14:0x004e \-\> B:6:0x0031, CROSS_EDGE: B:16:0x0055 \-\> B:6:0x0031, CROSS_EDGE: B:18:0x005c \-\> B:6:0x0031, CROSS_EDGE: B:19:0x005e \-\> B:6:0x0031, CROSS_EDGE: B:2:0x0001 \-\> B:20:0x0043\lTryCatch #0 \{Exception \-\> 0x0043, blocks: (B:3:0x0001, B:5:0x000c, B:6:0x0031, B:10:0x0037, B:12:0x003d, B:13:0x0049, B:15:0x0050, B:17:0x0057, B:19:0x005e), top: B:2:0x0001 \}\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_10[style=dashed];
+Node_5 -> Node_6;
+Node_11 -> Node_12;
+Node_11 -> Node_13[style=dashed];
+Node_12 -> Node_6;
+Node_14 -> Node_6[style=dashed];
+Node_14 -> Node_15;
+Node_16 -> Node_6[style=dashed];
+Node_16 -> Node_17;
+Node_18 -> Node_6[style=dashed];
+Node_18 -> Node_19;
+Node_19 -> Node_6;
+Node_6 -> Node_7;
+Node_6 -> Node_9;
+Node_20 -> Node_21;
+Node_21 -> Node_22;
+Node_20 -> Node_21;
+Node_21 -> Node_22;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_20;
+Node_7 -> Node_8;
+Node_9 -> Node_20;
+Node_10 -> Node_11;
+Node_13 -> Node_14;
+Node_15 -> Node_16;
+Node_17 -> Node_18;
+Node_22 -> Node_8;
+}
+

@@ -1,0 +1,58 @@
+digraph "CFG formain.GameRun.isNpc2ImageType(I)Z" {
+subgraph cluster_Region_1828367343 {
+label = "R(3:1|(1:(2:(1:8)|(1:6)))|11)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r0 = 0l}"];
+subgraph cluster_LoopRegion_998558080 {
+label = "LOOP:0: (1:(2:(1:8)|(1:6)))";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0004|ADDED_TO_REGION\l|lif (r0 \< r2.npc2ImageType.length) goto L21l}"];
+subgraph cluster_Region_476427366 {
+label = "R(1:(2:(1:8)|(1:6)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_990151221 {
+label = "R(2:(1:8)|(1:6))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_699567052 {
+label = "IF [B:5:0x000c] THEN: R(1:8) ELSE: null";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000c|lif (r2.npc2ImageType[r0] == r3) goto L26l}"];
+subgraph cluster_Region_1649016621 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x000e|SYNTHETIC\lRETURN\l|lreturn falsel}"];
+}
+}
+subgraph cluster_Region_1399335326 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0010|LOOP_END\lLOOP:0: B:2:0x0001\-\>B:6:0x0010\l|lbyte r0 = (byte) (r0 + 1)l}"];
+}
+}
+}
+}
+Node_11 [shape=record,label="{11\:\ 0x0006|RETURN\lORIG_RETURN\l|lreturn truel}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0001|LOOP_START\lPHI: r0l  0x0001: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v2 'i' byte) binds: [B:1:0x0000, B:6:0x0010] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0001\-\>B:6:0x0010\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0008|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x000e|SYNTHETIC\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0006|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public boolean main.GameRun.isNpc2ImageType((r2v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r3v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x000e \-\> B:13:0x0007, BACK_EDGE: B:6:0x0010 \-\> B:2:0x0001\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_10[style=dashed];
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_7;
+Node_8 -> Node_9;
+Node_6 -> Node_2;
+Node_11 -> Node_9;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_10 -> Node_11;
+}
+

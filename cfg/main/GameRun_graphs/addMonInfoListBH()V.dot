@@ -1,0 +1,19 @@
+digraph "CFG formain.GameRun.addMonInfoListBH()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte[] r0 = r4.monInfoListlr0[104(0x68, float:1.46E\-43)] = (byte) (r0[104(0x68, float:1.46E\-43)] + 1)lbyte[] r0 = r4.monInfoListlr0[103(0x67, float:1.44E\-43)] = (byte) (r0[103(0x67, float:1.44E\-43)] + 1)l}"];
+Node_2 [shape=record,label="{2\:\ 0x001c|lif (r4.monInfoList[103(0x67, float:1.44E\-43)] != 102) goto L13l}"];
+Node_3 [shape=record,label="{3\:\ 0x001e|lsay(main.Constants_H.TXT_30, 0)lmain.GameRun.mc.paint()ldm.Ms.i().sleep(600)l}"];
+Node_4 [shape=record,label="{4\:\ 0x0032|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void main.GameRun.addMonInfoListBH((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x001c \-\> B:4:0x0032\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

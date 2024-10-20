@@ -1,0 +1,33 @@
+digraph "CFG formain.MainCanvas.setMenuFrame_C()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r0 = (byte) (r6.mt + 1)lr6.mt = r0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0013|lif (r0 \<= r6.flashSP.action(r6.load_c, r6.ma, 1)) goto L23l}"];
+Node_3 [shape=record,label="{3\:\ 0x0015|lr6.mt = 0lbyte r0 = (byte) (r6.ma + 1)lr6.ma = r0l}"];
+Node_4 [shape=record,label="{4\:\ 0x0026|lif (r0 \< r6.flashSP.aLength(r6.load_c)) goto L24l}"];
+Node_5 [shape=record,label="{5\:\ 0x0028|lr6.ma = 0l}"];
+Node_6 [shape=record,label="{6\:\ 0x002c|lif (r6.load_c != 0) goto L25l}"];
+Node_7 [shape=record,label="{7\:\ 0x002e|lr6.load_c = 1l}"];
+Node_8 [shape=record,label="{8\:\ 0x0030|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_9 [shape=record,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,label="{10\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{private void main.MainCanvas.setMenuFrame_C((r6v0 'this' main.MainCanvas A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x002c \-\> B:8:0x0030, CROSS_EDGE: B:4:0x0026 \-\> B:8:0x0030, CROSS_EDGE: B:2:0x0013 \-\> B:8:0x0030\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_12;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_11;
+Node_5 -> Node_6;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_10;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_10 -> Node_9;
+Node_11 -> Node_9;
+Node_12 -> Node_9;
+}
+

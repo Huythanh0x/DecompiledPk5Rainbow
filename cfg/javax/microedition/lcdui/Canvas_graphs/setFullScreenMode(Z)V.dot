@@ -1,0 +1,10 @@
+digraph "CFG forjavax.microedition.lcdui.Canvas.setFullScreenMode(Z)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|RETURN\l|lreturnl}"];
+Node_2 [shape=record,label="{2\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.lcdui.Canvas.setFullScreenMode((r0v0 'this' javax.microedition.lcdui.Canvas A[IMMUTABLE_TYPE, THIS]), (r1v0 'mode' boolean A[D('mode' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+}
+

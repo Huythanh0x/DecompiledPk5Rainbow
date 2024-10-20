@@ -1,0 +1,16 @@
+digraph "CFG formain.Constants_H.\<clinit\>()V" {
+subgraph cluster_Region_651607356 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lmain.Constants_H.WIDTH__ = 533lmain.Constants_H.HEIGHT__ = main.Constants_H.WIDTH_H_lmain.Constants_H.WIDTH_H = main.Constants_H.WIDTH \>\> 1lmain.Constants_H.HEIGHT_H = main.Constants_H.HEIGHT \>\> 1lmain.Constants_H.SRC_BATTLE_H = main.Constants_H.HEIGHT_H + 16lmain.Constants_H.SRC_BATTLE_H__ = (main.Constants_H.HEIGHT__ \/ 2) + 16lmain.Constants_H.XCELLS = (byte) (main.Constants_H.WIDTH \/ 20)lmain.Constants_H.YCELLS = (byte) (main.Constants_H.HEIGHT \/ 20)lmain.Constants_H.HALF_XCELLS = (byte) (main.Constants_H.XCELLS \>\> 1)lmain.Constants_H.HALF_YCELLS = (byte) (main.Constants_H.YCELLS \>\> 1)lmain.Constants_H.ROW_CELLS = (byte) (main.Constants_H.XCELLS + 1)lmain.Constants_H.COL_SELLS = (byte) (main.Constants_H.YCELLS + 1)landroid.util.DisplayMetrics android.util.DisplayMetrics r0 = new android.util.DisplayMetrics()ljavax.microedition.lcdui.CwaActivity.getInstance().getWindowManager().getDefaultDisplay().getMetrics(r0)lmain.Constants_H.WIDTH__ = r0.widthPixelslmain.Constants_H.HEIGHT__ = r0.heightPixelslmain.Constants_H.WIDTH_H = main.Constants_H.WIDTH \>\> 1lmain.Constants_H.HEIGHT_H = main.Constants_H.HEIGHT \>\> 1lmain.Constants_H.XCELLS = (byte) (main.Constants_H.WIDTH \/ 20)lmain.Constants_H.YCELLS = (byte) (main.Constants_H.HEIGHT \/ 20)lmain.Constants_H.HALF_XCELLS = (byte) (main.Constants_H.XCELLS \>\> 1)lmain.Constants_H.HALF_YCELLS = (byte) (main.Constants_H.YCELLS \>\> 1)lmain.Constants_H.ROW_CELLS = (byte) (main.Constants_H.XCELLS + 1)lmain.Constants_H.COL_SELLS = (byte) (main.Constants_H.YCELLS + 1)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x00b7|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{static void main.Constants_H.\<clinit\>()  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

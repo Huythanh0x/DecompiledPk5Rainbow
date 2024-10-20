@@ -1,0 +1,47 @@
+digraph "CFG fordm.Ui.drawK(IIIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0001|lif (r9 != 0) goto L26l}"];
+Node_3 [shape=record,label="{3\:\ 0x0003|lr9 = 15400191l}"];
+Node_4 [shape=record,label="{4\:\ 0x0006|PHI: r9l  0x0006: PHI (r9v6 'c' int) = (r9v1 'c' int), (r9v2 'c' int), (r9v3 'c' int), (r9v4 'c' int), (r9v5 'c' int), (r9v7 'c' int) binds: [B:18:0x0038, B:17:0x0035, B:14:0x002e, B:11:0x0027, B:9:0x0021, B:3:0x0003] A[DONT_GENERATE, DONT_INLINE]\l|ldm.Ui.g.setColor(r9)ldm.Ui.g.fillRect(r5 + 1, r6, r7 \- 2, r8)ldm.Ui.g.fillRect(r5, r6 + 1, r7, r8 \- 2)l}"];
+Node_5 [shape=record,label="{5\:\ 0x001d|RETURN\l|lreturnl}"];
+Node_6 [shape=record,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,label="{7\:\ 0x001e|l}"];
+Node_8 [shape=record,label="{8\:\ 0x001f|lif (r9 != 1) goto L29l}"];
+Node_9 [shape=record,label="{9\:\ 0x0021|lr9 = 12352252l}"];
+Node_10 [shape=record,label="{10\:\ 0x0025|lif (r9 != 2) goto L31l}"];
+Node_11 [shape=record,label="{11\:\ 0x0027|lr9 = 12313343l}"];
+Node_12 [shape=record,label="{12\:\ 0x002b|l}"];
+Node_13 [shape=record,label="{13\:\ 0x002c|lif (r9 != 3) goto L34l}"];
+Node_14 [shape=record,label="{14\:\ 0x002e|lr9 = 5228543l}"];
+Node_15 [shape=record,label="{15\:\ 0x0032|l}"];
+Node_16 [shape=record,label="{16\:\ 0x0033|lif (r9 != 4) goto L37l}"];
+Node_17 [shape=record,label="{17\:\ 0x0035|lr9 = 30975l}"];
+Node_18 [shape=record,label="{18\:\ 0x0038|lr9 = 11121884l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawK((r4v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r5v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'h' int A[D('h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'c' int A[D('c' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x0021 \-\> B:4:0x0006, CROSS_EDGE: B:11:0x0027 \-\> B:4:0x0006, CROSS_EDGE: B:14:0x002e \-\> B:4:0x0006, CROSS_EDGE: B:17:0x0035 \-\> B:4:0x0006, CROSS_EDGE: B:18:0x0038 \-\> B:4:0x0006\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_7;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_10;
+Node_9 -> Node_4;
+Node_10 -> Node_11[style=dashed];
+Node_10 -> Node_12;
+Node_11 -> Node_4;
+Node_12 -> Node_13;
+Node_13 -> Node_14[style=dashed];
+Node_13 -> Node_15;
+Node_14 -> Node_4;
+Node_15 -> Node_16;
+Node_16 -> Node_17[style=dashed];
+Node_16 -> Node_18;
+Node_17 -> Node_4;
+Node_18 -> Node_4;
+}
+

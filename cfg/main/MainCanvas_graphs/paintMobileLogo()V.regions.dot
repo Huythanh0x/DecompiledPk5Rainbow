@@ -1,0 +1,134 @@
+digraph "CFG formain.MainCanvas.paintMobileLogo()V" {
+subgraph cluster_Region_47139606 {
+label = "R(2:1|(2:(2:3|4)|(3:6|(3:10|(1:12)|13)(1:(2:(1:22)|23)(1:(1:26)))|14)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint int r4 = main.Constants_H.WIDTH__lint int r5 = main.Constants_H.HEIGHT__lint int r7 = main.Constants_H.WIDTH__ \/ 2lint int r6 = main.Constants_H.HEIGHT__ \/ 2l}"];
+subgraph cluster_Region_763070803 {
+label = "R(2:(2:3|4)|(3:6|(3:10|(1:12)|13)(1:(2:(1:22)|23)(1:(1:26)))|14))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_82432762 {
+label = "IF [B:2:0x0015] THEN: R(2:3|4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0015|lif (r11.load_c \< 0) goto L31l}"];
+subgraph cluster_Region_1691731475 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0017|lr11.load_c = 0l}"];
+Node_4 [shape=record,label="{4\:\ 0x0019|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1874386824 {
+label = "R(3:6|(3:10|(1:12)|13)(1:(2:(1:22)|23)(1:(1:26)))|14)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x001a|lmain.MainCanvas.g.setClip(0, 0, r4, r5)l}"];
+subgraph cluster_IfRegion_1866692998 {
+label = "IF [B:7:0x0021, B:9:0x0027] THEN: R(3:10|(1:12)|13) ELSE: R(1:(2:(1:22)|23)(1:(1:26)))";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0021|lif (r11.load_c \>= 0) goto L35l}"];
+Node_9 [shape=record,label="{9\:\ 0x0027|ADDED_TO_REGION\l|lif (r11.load_c \< 18) goto L37l}"];
+subgraph cluster_Region_899545731 {
+label = "R(3:10|(1:12)|13)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0029|lmain.MainCanvas.g.setClip(0, 0, r4, r5)ldm.Ui.i().fillRect(16777215, 0, 0, r4, r5)l}"];
+subgraph cluster_IfRegion_503534636 {
+label = "IF [B:11:0x003b] THEN: R(1:12) ELSE: null";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x003b|lif (r11.load_c == 0) goto L39l}"];
+subgraph cluster_Region_1412901652 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x003d|lmain.GameRun.g = main.MainCanvas.glr11.image_logo = dm.Ms.i().createImage(\"qq\/qqlogo\")l}"];
+}
+}
+Node_13 [shape=record,label="{13\:\ 0x004d|lmain.MainCanvas.g.drawImage(r11.image_logo, r7, r6, 1 \| 2)l}"];
+}
+subgraph cluster_Region_513317599 {
+label = "R(1:(2:(1:22)|23)(1:(1:26))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1784897475 {
+label = "IF [B:17:0x005f, B:19:0x0063] THEN: R(2:(1:22)|23) ELSE: R(1:(1:26)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x005f|lif (r11.load_c \>= 19) goto L44l}"];
+Node_19 [shape=record,label="{19\:\ 0x0063|ADDED_TO_REGION\l|lif (r11.load_c \< 37) goto L46l}"];
+subgraph cluster_Region_2126239697 {
+label = "R(2:(1:22)|23)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1858454679 {
+label = "IF [B:21:0x0067] THEN: R(1:22) ELSE: null";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x0067|lif (r11.load_c == 19) goto L48l}"];
+subgraph cluster_Region_54996432 {
+label = "R(1:22)";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x0069|lr11.image_logo = nulllr11.image_logo = dm.Ms.i().createImage(\"cwa\")l}"];
+}
+}
+Node_23 [shape=record,label="{23\:\ 0x0077|lmain.MainCanvas.g.setColor(0)ldm.Ui.i().fillRect(0, 0, 0, r4, r5)lmain.MainCanvas.g.drawImage(r11.image_logo, r7, r6, 1 \| 2)l}"];
+}
+subgraph cluster_Region_1507004677 {
+label = "R(1:(1:26)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_691978427 {
+label = "IF [B:25:0x0091] THEN: R(1:26) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_25 [shape=record,label="{25\:\ 0x0091|lif (r11.load_c \> 37) goto L52l}"];
+subgraph cluster_Region_1772050551 {
+label = "R(1:26)";
+node [shape=record,color=blue];
+Node_26 [shape=record,label="{26\:\ 0x0093|lr11.image_logo = nulllr11.gr.popMenu = (byte) 0lr11.game_state = 10lr11.strTemp = main.Constants_H.TXT_69lgame_init()l}"];
+}
+}
+}
+}
+}
+}
+Node_14 [shape=record,label="{14\:\ 0x0056|lr11.load_c++l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0023|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ ?|SYNTHETIC\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x005d|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0061|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x0065|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x008f|l}"];
+MethodNode[shape=record,label="{protected void main.MainCanvas.paintMobileLogo((r11v0 'this' main.MainCanvas A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:14:0x0056 \-\> B:4:0x0019, CROSS_EDGE: B:11:0x003b \-\> B:13:0x004d, CROSS_EDGE: B:23:0x0077 \-\> B:14:0x0056, CROSS_EDGE: B:21:0x0067 \-\> B:23:0x0077, CROSS_EDGE: B:25:0x0091 \-\> B:14:0x0056, CROSS_EDGE: B:26:0x0093 \-\> B:14:0x0056, CROSS_EDGE: B:17:0x005f \-\> B:24:0x008f, CROSS_EDGE: B:7:0x0021 \-\> B:16:0x005d\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_7 -> Node_16[style=dashed];
+Node_9 -> Node_10;
+Node_9 -> Node_16[style=dashed];
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_11 -> Node_13[style=dashed];
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_17 -> Node_18;
+Node_17 -> Node_24[style=dashed];
+Node_19 -> Node_20;
+Node_19 -> Node_24[style=dashed];
+Node_21 -> Node_22;
+Node_21 -> Node_23[style=dashed];
+Node_22 -> Node_23;
+Node_23 -> Node_14;
+Node_25 -> Node_14[style=dashed];
+Node_25 -> Node_26;
+Node_26 -> Node_14;
+Node_14 -> Node_15;
+Node_0 -> Node_1;
+Node_8 -> Node_9;
+Node_15 -> Node_5;
+Node_16 -> Node_17;
+Node_18 -> Node_19;
+Node_20 -> Node_21;
+Node_24 -> Node_25;
+}
+

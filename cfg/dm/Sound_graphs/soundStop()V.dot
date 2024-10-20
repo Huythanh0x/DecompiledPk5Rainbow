@@ -1,0 +1,48 @@
+digraph "CFG fordm.Sound.soundStop()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr2 = falsel}"];
+Node_2 [shape=record,label="{2\:\ 0x0001|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0001|TRY_ENTER\lMerged into TryCatch #1 \{all \-\> 0x0015, Exception \-\> 0x000d, blocks: (B:3:0x0001, B:5:0x0005, B:12:0x000f), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x000d, all \-\> 0x0015\l|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0003|lif (r3.snd_music == null) goto L25l}"];
+Node_5 [shape=record,label="{5\:\ 0x0005|TRY_LEAVE\lMerged into TryCatch #1 \{all \-\> 0x0015, Exception \-\> 0x000d, blocks: (B:3:0x0001, B:5:0x0005, B:12:0x000f), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x000d, all \-\> 0x0015\l|lr3.snd_music.close()     \/\/ Catch: java.lang.Exception \-\> Ld java.lang.Throwable \-\> L15l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_7 [shape=record,label="{7\:\ 0x000a|DONT_GENERATE\l|lr3.sound_play = r2l}"];
+Node_8 [shape=record,label="{8\:\ 0x000c|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_9 [shape=record,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,label="{10\:\ 0x000d|ExcHandler: Exception \-\> 0x000d\l|ljava.lang.Exception r1 = move\-exceptionl}"];
+Node_11 [shape=record,label="{11\:\ 0x000e|l}"];
+Node_12 [shape=record,label="{12\:\ 0x000f|TRY_ENTER\lTRY_LEAVE\lTryCatch #1 \{all \-\> 0x0015, Exception \-\> 0x000d, blocks: (B:3:0x0001, B:5:0x0005, B:12:0x000f), top: B:2:0x0001 \}\lCatch: all \-\> 0x0015\l|lr1.printStackTrace()     \/\/ Catch: java.lang.Throwable \-\> L15l}"];
+Node_13 [shape=record,label="{13\:\ 0x0012|DONT_GENERATE\l|lr3.sound_play = r2l}"];
+Node_14 [shape=record,label="{14\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_15 [shape=record,label="{15\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_16 [shape=record,label="{16\:\ 0x0015|ExcHandler: all \-\> 0x0015\l|ljava.lang.Throwable r1 = move\-exceptionl}"];
+Node_17 [shape=record,label="{17\:\ 0x0016|FINALLY_INSNS\l|lr3.sound_play = falsel}"];
+Node_18 [shape=record,label="{18\:\ 0x0018|lthrow r1l}"];
+MethodNode[shape=record,label="{public void dm.Sound.soundStop((r3v0 'this' dm.Sound A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:13:0x0012 \-\> B:8:0x000c, CROSS_EDGE: B:18:0x0018 \-\> B:9:?, CROSS_EDGE: B:6:? \-\> B:16:0x0015, CROSS_EDGE: B:4:0x0003 \-\> B:7:0x000a, CROSS_EDGE: B:2:0x0001 \-\> B:10:0x000d, CROSS_EDGE: B:2:0x0001 \-\> B:16:0x0015\lTryCatch #1 \{all \-\> 0x0015, Exception \-\> 0x000d, blocks: (B:3:0x0001, B:5:0x0005, B:12:0x000f), top: B:2:0x0001 \}\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_10;
+Node_2 -> Node_16;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_7;
+Node_5 -> Node_7;
+Node_5 -> Node_6;
+Node_6 -> Node_10;
+Node_6 -> Node_16;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_12 -> Node_15;
+Node_13 -> Node_14;
+Node_14 -> Node_9;
+Node_15 -> Node_16;
+Node_16 -> Node_17;
+Node_17 -> Node_18;
+Node_18 -> Node_9;
+}
+

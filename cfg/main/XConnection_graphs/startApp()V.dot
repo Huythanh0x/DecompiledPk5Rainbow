@@ -1,0 +1,19 @@
+digraph "CFG formain.XConnection.startApp()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r1.gamecanvas == null) goto L6l}"];
+Node_3 [shape=record,label="{3\:\ 0x0004|lr1.gamecanvas.showNotify()l}"];
+Node_4 [shape=record,label="{4\:\ 0x0009|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void main.XConnection.startApp((r1v0 'this' main.XConnection A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [javax.microedition.midlet.MIDlet.startApp():void]\lCROSS_EDGE: B:2:0x0002 \-\> B:4:0x0009\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

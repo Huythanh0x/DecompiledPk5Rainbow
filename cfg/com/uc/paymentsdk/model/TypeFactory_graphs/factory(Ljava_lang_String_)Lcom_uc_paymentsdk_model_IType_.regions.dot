@@ -1,0 +1,105 @@
+digraph "CFG forcom.uc.paymentsdk.model.TypeFactory.factory(Ljava\/lang\/String;)Lcom\/uc\/paymentsdk\/model\/IType;" {
+subgraph cluster_Region_210701330 {
+label = "R(2:2|13) | DECL_VAR: com.uc.paymentsdk.model.IType localObject, com.uc.paymentsdk.model.IType localObject, com.uc.paymentsdk.model.IType localObject\l";
+node [shape=record,color=blue];
+subgraph cluster_SynchronizedRegion_306201112 {
+label = "Synchronized:R(2:2|(2:(1:6)|(2:(1:22)(1:19)|20)(1:11)))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|l}"];
+subgraph cluster_Region_1017556690 {
+label = "R(2:(1:6)|(2:(1:22)(1:19)|20)(1:11))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1441466445 {
+label = "IF [B:5:0x0005] THEN: R(1:6) ELSE: null";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0005|lif (com.uc.paymentsdk.model.TypeFactory.sTypes == null) goto L33l}"];
+subgraph cluster_Region_569401726 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0007|TryCatch #0 \{, blocks: (B:4:0x0003, B:6:0x0007, B:7:0x000f, B:9:0x0017, B:15:0x002a, B:17:0x0032, B:19:0x0057, B:20:0x004b, B:22:0x003a), top: B:3:0x0003 \}\lCatch: all \-\> 0x0069\l|lcom.uc.paymentsdk.model.TypeFactory.sTypes = new java.util.HashMap\<\>(4)     \/\/ Catch: java.lang.Throwable \-\> L69l}"];
+}
+}
+subgraph cluster_IfRegion_825276378 {
+label = "IF [B:8:0x0015, B:10:0x0025] THEN: R(2:(1:22)(1:19)|20) ELSE: R(1:11)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0015|lif (com.uc.paymentsdk.model.TypeFactory.sTypes.containsKey(r6) == true) goto L36l}"];
+Node_10 [shape=record,label="{10\:\ 0x0025|ADDED_TO_REGION\l|lif ((r0 = com.uc.paymentsdk.model.TypeFactory.sTypes.get(r6).get()) == null) goto L41l}"];
+subgraph cluster_Region_132009720 {
+label = "R(2:(1:22)(1:19)|20)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_954814224 {
+label = "IF [B:16:0x0030, B:18:0x0038] THEN: R(1:22) ELSE: R(1:19)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x0030|lif (com.uc.paymentsdk.model.TypeFactory.TYPE_PAY_UPOINT.equals(r6) != false) goto L45l}"];
+Node_18 [shape=record,label="{18\:\ 0x0038|ADDED_TO_REGION\l|lif (\"sms\".equals(r6) != false) goto L45l}"];
+subgraph cluster_Region_1019580096 {
+label = "R(1:22)";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x003a|TryCatch #0 \{, blocks: (B:4:0x0003, B:6:0x0007, B:7:0x000f, B:9:0x0017, B:15:0x002a, B:17:0x0032, B:19:0x0057, B:20:0x004b, B:22:0x003a), top: B:3:0x0003 \}\lCatch: all \-\> 0x0069\l|lcom.uc.paymentsdk.model.PayType r0 = new com.uc.paymentsdk.model.PayType(r6, getTypeName(r6), getTypeDesc(r6), getTypeIconFileName(r6))     \/\/ Catch: java.lang.Throwable \-\> L69l}"];
+}
+subgraph cluster_Region_2037650087 {
+label = "R(1:19)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x0057|TRY_LEAVE\lTryCatch #0 \{, blocks: (B:4:0x0003, B:6:0x0007, B:7:0x000f, B:9:0x0017, B:15:0x002a, B:17:0x0032, B:19:0x0057, B:20:0x004b, B:22:0x003a), top: B:3:0x0003 \}\lCatch: all \-\> 0x0069\l|lcom.uc.paymentsdk.model.ChargeType r0 = new com.uc.paymentsdk.model.ChargeType(r6, getTypeName(r6), getTypeDesc(r6), getTypeIconFileName(r6))     \/\/ Catch: java.lang.Throwable \-\> L69l}"];
+}
+}
+Node_20 [shape=record,label="{20\:\ 0x004b|PHI: r0l  0x004b: PHI (r0v1 'localObject' com.uc.paymentsdk.model.IType) = (r0v0 'localObject' com.uc.paymentsdk.model.IType), (r0v2 'localObject' com.uc.paymentsdk.model.IType) binds: [B:22:0x003a, B:19:0x0057] A[DONT_GENERATE, DONT_INLINE]\lTryCatch #0 \{, blocks: (B:4:0x0003, B:6:0x0007, B:7:0x000f, B:9:0x0017, B:15:0x002a, B:17:0x0032, B:19:0x0057, B:20:0x004b, B:22:0x003a), top: B:3:0x0003 \}\lCatch: all \-\> 0x0069\l|lcom.uc.paymentsdk.model.TypeFactory.sTypes.put(r6, new java.lang.ref.SoftReference\<\>(r0))     \/\/ Catch: java.lang.Throwable \-\> L69lr1 = r0l}"];
+}
+subgraph cluster_Region_912053321 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0027|lr1 = r0l}"];
+}
+}
+}
+}
+Node_13 [shape=record,label="{13\:\ 0x0029|RETURN\l|lreturn r1l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0003|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0003|TRY_ENTER\lTryCatch #0 \{, blocks: (B:4:0x0003, B:6:0x0007, B:7:0x000f, B:9:0x0017, B:15:0x002a, B:17:0x0032, B:19:0x0057, B:20:0x004b, B:22:0x003a), top: B:3:0x0003 \}\lCatch: all \-\> 0x0069\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x000f|TryCatch #0 \{, blocks: (B:4:0x0003, B:6:0x0007, B:7:0x000f, B:9:0x0017, B:15:0x002a, B:17:0x0032, B:19:0x0057, B:20:0x004b, B:22:0x003a), top: B:3:0x0003 \}\lCatch: all \-\> 0x0069\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0017|TRY_LEAVE\lTryCatch #0 \{, blocks: (B:4:0x0003, B:6:0x0007, B:7:0x000f, B:9:0x0017, B:15:0x002a, B:17:0x0032, B:19:0x0057, B:20:0x004b, B:22:0x003a), top: B:3:0x0003 \}\lCatch: all \-\> 0x0069\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0028|DONT_GENERATE\lPHI: r1l  0x0028: PHI (r1v1 'localObject' com.uc.paymentsdk.model.IType) = (r1v0 'localObject' com.uc.paymentsdk.model.IType), (r1v2 'localObject' com.uc.paymentsdk.model.IType) binds: [B:20:0x004b, B:11:0x0027] A[DONT_GENERATE, DONT_INLINE]\l|lmonitor\-exit()l}"];
+Node_14 [shape=record,color=red,label="{14\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x002a|TRY_ENTER\lTryCatch #0 \{, blocks: (B:4:0x0003, B:6:0x0007, B:7:0x000f, B:9:0x0017, B:15:0x002a, B:17:0x0032, B:19:0x0057, B:20:0x004b, B:22:0x003a), top: B:3:0x0003 \}\lCatch: all \-\> 0x0069\l|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0032|TryCatch #0 \{, blocks: (B:4:0x0003, B:6:0x0007, B:7:0x000f, B:9:0x0017, B:15:0x002a, B:17:0x0032, B:19:0x0057, B:20:0x004b, B:22:0x003a), top: B:3:0x0003 \}\lCatch: all \-\> 0x0069\l|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ 0x0069|REMOVE\lExcHandler: all \-\> 0x0069\l|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x006b|REMOVE\l|lthrow r2l}"];
+MethodNode[shape=record,label="{public static synchronized com.uc.paymentsdk.model.IType com.uc.paymentsdk.model.TypeFactory.factory((r6v0 'paramString' java.lang.String A[D('paramString' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:20:0x004b \-\> B:12:0x0028, CROSS_EDGE: B:24:0x006b \-\> B:14:?, CROSS_EDGE: B:19:0x0057 \-\> B:20:0x004b, CROSS_EDGE: B:16:0x0030 \-\> B:22:0x003a, CROSS_EDGE: B:8:0x0015 \-\> B:15:0x002a, CROSS_EDGE: B:5:0x0005 \-\> B:7:0x000f, CROSS_EDGE: B:3:0x0003 \-\> B:23:0x0069\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+Node_5 -> Node_7[style=dashed];
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_8 -> Node_15[style=dashed];
+Node_10 -> Node_11[style=dashed];
+Node_10 -> Node_15;
+Node_16 -> Node_17[style=dashed];
+Node_16 -> Node_22;
+Node_18 -> Node_22;
+Node_18 -> Node_19[style=dashed];
+Node_22 -> Node_20;
+Node_19 -> Node_20;
+Node_20 -> Node_12;
+Node_20 -> Node_21;
+Node_11 -> Node_12;
+Node_13 -> Node_14;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_23;
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_12 -> Node_13;
+Node_15 -> Node_16;
+Node_17 -> Node_18;
+Node_21 -> Node_23;
+Node_23 -> Node_24;
+Node_24 -> Node_14;
+}
+

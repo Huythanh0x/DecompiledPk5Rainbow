@@ -1,0 +1,26 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.initUPointPayView(Lcom\/uc\/paymentsdk\/payment\/upoint\/UPointInfo;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr8.mTvDiscountTextView.setText(java.lang.String.format(\"U点折扣 : %s折(%sU点)\", new java.lang.Object[]\{r9.getDiscount(), r9.getDiscounttext()\}))l}"];
+Node_2 [shape=record,label="{2\:\ 0x0022|lif (r9.getVipdiscount() == null) goto L9l}"];
+Node_3 [shape=record,label="{3\:\ 0x0024|l}"];
+Node_4 [shape=record,label="{4\:\ 0x002c|lif (r9.getVipdiscount().length() \<= 0) goto L9l}"];
+Node_5 [shape=record,label="{5\:\ 0x002e|lr8.mTvDiscountTextView.setText(java.lang.String.format(\"会员折扣 : %s折(%sU点)\", new java.lang.Object[]\{r9.getVipdiscount(), r9.getVipdiscounttext()\}))lr8.mTvVipDiscountTimeTextView.setText(java.lang.String.format(\"会员折扣到期时间 : \", new java.lang.Object[]\{r9.getVipdiscounttime()\}))lr8.mTvVipDiscountInfo.setText(new java.lang.StringBuilder(\"会员折扣到期时间 : \").append(r9.getDiscountinfo()).toString())l}"];
+Node_6 [shape=record,label="{6\:\ 0x0072|lr8.mBtnPay.setVisibility(0)l}"];
+Node_7 [shape=record,label="{7\:\ 0x0077|RETURN\l|lreturnl}"];
+Node_8 [shape=record,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0078|lr8.mTvVipDiscountTextView.setVisibility(8)lr8.mTvVipDiscountTimeTextView.setVisibility(8)lr8.mTvVipDiscountInfo.setVisibility(8)l}"];
+MethodNode[shape=record,label="{private void com.uc.paymentsdk.payment.PaymentsActivity.initUPointPayView((r8v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]), (r9v0 'info' com.uc.paymentsdk.payment.upoint.UPointInfo A[D('info' com.uc.paymentsdk.payment.upoint.UPointInfo), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lCROSS_EDGE: B:9:0x0078 \-\> B:6:0x0072, CROSS_EDGE: B:2:0x0022 \-\> B:9:0x0078\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_9;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_9;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_9 -> Node_6;
+}
+

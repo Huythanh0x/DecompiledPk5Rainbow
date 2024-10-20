@@ -1,0 +1,73 @@
+digraph "CFG formain.GameRun.getPrice(IIZ)S" {
+subgraph cluster_Region_543896337 {
+label = "R(1:(2:(2:4|(2:(1:9)|(1:11)))|(1:14)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_609637641 {
+label = "R(2:(2:4|(2:(1:9)|(1:11)))|(1:14))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1888824215 {
+label = "IF [B:2:0x0001] THEN: R(2:4|(2:(1:9)|(1:11))) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0001|lif (r7 != false) goto L19l}"];
+subgraph cluster_Region_659324974 {
+label = "R(2:4|(2:(1:9)|(1:11)))";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0004|lshort r0 = r5 == 2 ? r4.buyPrice[1][r6] : r4.buyPrice[0][r4.buyItem[r4.cur_a][r6]]l}"];
+subgraph cluster_Region_258959517 {
+label = "R(2:(1:9)|(1:11))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1986343386 {
+label = "IF [B:7:0x0011] THEN: R(1:9) ELSE: null";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0011|lif (r4.view_state == (\-1)) goto L24l}"];
+subgraph cluster_Region_1135065181 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0018|RETURN\lORIG_RETURN\l|lreturn (short) ((r0 * 12) \/ 10)l}"];
+}
+}
+subgraph cluster_Region_1748999871 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0l}"];
+}
+}
+}
+}
+subgraph cluster_Region_1611521026 {
+label = "R(1:14)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ ?|SYNTHETIC\lRETURN\l|lreturn (short) (r4.buyPrice[0][r6] \/ 5)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0003|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0006|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x000e|PHI: r0l  0x000e: PHI (r0v2 'price' short) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0013|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0019|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0029|l}"];
+MethodNode[shape=record,label="{private short main.GameRun.getPrice((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'type' int A[D('type' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'select' int A[D('select' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0011 \-\> B:9:0x0018, CROSS_EDGE: B:12:0x0019 \-\> B:6:0x000e, CROSS_EDGE: B:13:0x0029 \-\> B:9:0x0018\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_13[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_12;
+Node_7 -> Node_8;
+Node_7 -> Node_11[style=dashed];
+Node_9 -> Node_10;
+Node_11 -> Node_10;
+Node_14 -> Node_10;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_12 -> Node_6;
+Node_13 -> Node_14;
+}
+

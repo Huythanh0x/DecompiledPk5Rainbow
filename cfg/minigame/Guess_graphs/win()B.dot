@@ -1,0 +1,33 @@
+digraph "CFG forminigame.Guess.win()B" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r1 = (byte) (r9.winNum + 1)lr9.winNum = r1l}"];
+Node_2 [shape=record,label="{2\:\ 0x0013|lif (r1 \< r9.gameData[3][r9.lv]) goto L24l}"];
+Node_3 [shape=record,label="{3\:\ 0x0015|lint r0 = (r9.sell_money + ((r9.lv * r9.lv) * 150)) + ((2 \- r9.lv) * 25)lmain.GameRun r1 = r9.grlr1.money = r1.money + r0lr9.gr.say(new java.lang.StringBuilder(main.Constants_H.MONEY_TXT_9).append(r0).toString(), 0)lbyte[] r1 = r9.gr.rmsOtherlr1[10] = (byte) (r1[10] \| (1 \<\< r9.lv))l}"];
+Node_4 [shape=record,label="{4\:\ 0x0055|lif (r9.lv != 2) goto L22l}"];
+Node_5 [shape=record,label="{5\:\ 0x0057|l}"];
+Node_6 [shape=record,label="{6\:\ 0x005d|lif (r9.gr.rmsOther[11] \>= 3) goto L22l}"];
+Node_7 [shape=record,label="{7\:\ 0x005f|lbyte[] r1 = r9.gr.rmsOtherlr1[11] = (byte) (r1[11] + 1)l}"];
+Node_8 [shape=record,label="{8\:\ 0x006a|l}"];
+Node_9 [shape=record,label="{9\:\ 0x006b|RETURN\lORIG_RETURN\l|lreturn 2l}"];
+Node_10 [shape=record,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x006c|l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturn 3l}"];
+MethodNode[shape=record,label="{private byte minigame.Guess.win((r9v0 'this' minigame.Guess A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x005d \-\> B:8:0x006a, CROSS_EDGE: B:4:0x0055 \-\> B:8:0x006a, CROSS_EDGE: B:11:0x006c \-\> B:9:0x006b\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_11;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_8;
+Node_5 -> Node_6;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_8;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+Node_12 -> Node_10;
+}
+

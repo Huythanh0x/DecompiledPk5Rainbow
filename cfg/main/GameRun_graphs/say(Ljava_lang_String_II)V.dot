@@ -1,0 +1,33 @@
+digraph "CFG formain.GameRun.say(Ljava\/lang\/String;II)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr6.showS = dm.Ms.i().groupString(r7, main.Constants_H.WIDTH \- 50)lr6.say_s = main.Constants_H.WIDTHlr6.say_mode = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x001a|lif (r8 != 0) goto L19l}"];
+Node_3 [shape=record,label="{3\:\ 0x001c|lr6.say_c = 15l}"];
+Node_4 [shape=record,label="{4\:\ 0x001e|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x001f|lif (r8 != (\-1)) goto L21l}"];
+Node_7 [shape=record,label="{7\:\ 0x0021|lr6.say_c = \-1lr6.sayOverSms = (byte) r9l}"];
+Node_8 [shape=record,label="{8\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_9 [shape=record,label="{9\:\ 0x0027|lif (r8 != 1) goto L24l}"];
+Node_10 [shape=record,label="{10\:\ 0x0029|lr6.say_c = 15lr6.say_mode = 1l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void main.GameRun.say((r6v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r7v0 'string' java.lang.String A[D('string' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'flag' int A[D('flag' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'sayOverSms' int A[D('sayOverSms' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0021 \-\> B:4:0x001e, CROSS_EDGE: B:9:0x0027 \-\> B:4:0x001e, CROSS_EDGE: B:10:0x0029 \-\> B:4:0x001e\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_9;
+Node_7 -> Node_8;
+Node_8 -> Node_5;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_12;
+Node_10 -> Node_11;
+Node_11 -> Node_5;
+Node_12 -> Node_5;
+}
+

@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.util.SecurityUtil.\<clinit\>()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lcom.uc.paymentsdk.util.SecurityUtil.SECRET_KEY_HTTP = com.uc.paymentsdk.util.Constants.CODE_KEY_PAY_AND_ACCOUNT.getBytes()lcom.uc.paymentsdk.util.SecurityUtil.SECRET_KEY_HTTP_CHARGE = \"MAPPN\-ANDY\-XIAN\-\".getBytes()lcom.uc.paymentsdk.util.SecurityUtil.SECRET_KEY_HTTP_CHARGE_ALIPAY = com.uc.paymentsdk.util.SecurityUtil.KEY_HTTP_CHARGE_ALIPAY_AND_G.getBytes()l}"];
+Node_2 [shape=record,label="{2\:\ 0x0018|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{static void com.uc.paymentsdk.util.SecurityUtil.\<clinit\>()  | USE_LINES_HINTS\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

@@ -1,0 +1,12 @@
+digraph "CFG formain.Map.setNull()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr3.npc[0] = nulllr3.item = nulllr3.door = nulllr3.event = nulllr3.mapImg = nulllr3.moduleData = nulll}"];
+Node_2 [shape=record,label="{2\:\ 0x0010|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.Map.setNull((r3v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

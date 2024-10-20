@@ -1,0 +1,77 @@
+digraph "CFG formain.GameRun.say(Ljava\/lang\/String;II)V" {
+subgraph cluster_Region_1116139285 {
+label = "R(2:1|(2:(2:3|4)|(1:(1:7)(1:(1:(1:10))))))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr6.showS = dm.Ms.i().groupString(r7, main.Constants_H.WIDTH \- 50)lr6.say_s = main.Constants_H.WIDTHlr6.say_mode = (byte) 0l}"];
+subgraph cluster_Region_1103756305 {
+label = "R(2:(2:3|4)|(1:(1:7)(1:(1:(1:10)))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1379528701 {
+label = "IF [B:2:0x001a] THEN: R(2:3|4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x001a|lif (r8 == 0) goto L17l}"];
+subgraph cluster_Region_1450849064 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x001c|lr6.say_c = (byte) 15l}"];
+Node_4 [shape=record,label="{4\:\ 0x001e|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_594645173 {
+label = "R(1:(1:7)(1:(1:(1:10)))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_769051070 {
+label = "IF [B:6:0x001f] THEN: R(1:7) ELSE: R(1:(1:(1:10))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x001f|lif (r8 == (\-1)) goto L20l}"];
+subgraph cluster_Region_814587390 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0021|lr6.say_c = (byte) \-1lr6.sayOverSms = (byte) r9l}"];
+}
+subgraph cluster_Region_929635252 {
+label = "R(1:(1:(1:10))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_405979604 {
+label = "R(1:(1:10))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_62021717 {
+label = "IF [B:9:0x0027] THEN: R(1:10) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0027|lif (r8 == 1) goto L22l}"];
+subgraph cluster_Region_1594650544 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0029|lr6.say_c = (byte) 15lr6.say_mode = (byte) 1l}"];
+}
+}
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|SYNTHETIC\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.say((r6v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r7v0 'string' java.lang.String A[D('string' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'flag' int A[D('flag' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'sayOverSms' int A[D('sayOverSms' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0021 \-\> B:4:0x001e, CROSS_EDGE: B:9:0x0027 \-\> B:4:0x001e, CROSS_EDGE: B:10:0x0029 \-\> B:4:0x001e\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_6 -> Node_9[style=dashed];
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_9 -> Node_12[style=dashed];
+Node_10 -> Node_11;
+Node_0 -> Node_1;
+Node_8 -> Node_5;
+Node_11 -> Node_5;
+Node_12 -> Node_5;
+}
+

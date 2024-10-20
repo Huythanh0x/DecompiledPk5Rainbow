@@ -1,0 +1,47 @@
+digraph "CFG formain.GameRun.setSay()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0007|lif (r9.say_c != 0) goto L25l}"];
+Node_3 [shape=record,label="{3\:\ 0x0009|l}"];
+Node_4 [shape=record,label="{4\:\ 0x000f|lif (r9.sayStr.size() != 0) goto L26l}"];
+Node_5 [shape=record,label="{5\:\ 0x0012|ljava.lang.String r1 = r9.sayStr.remove(0)lint r0 = r9.sayFlag.remove(0).intValue()lr9.showS = dm.Ms.i().groupString(r1, main.Constants_H.WIDTH \- 50)lr9.say_s = main.Constants_H.WIDTHlr9.say_mode = 0l}"];
+Node_6 [shape=record,label="{6\:\ 0x003b|lif (r0 != 0) goto L29l}"];
+Node_7 [shape=record,label="{7\:\ 0x003d|lr9.say_c = 15l}"];
+Node_8 [shape=record,label="{8\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_9 [shape=record,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,label="{10\:\ 0x0040|lif (r0 != (\-1)) goto L31l}"];
+Node_11 [shape=record,label="{11\:\ 0x0042|lr9.say_c = \-1l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_13 [shape=record,label="{13\:\ 0x0045|lif (r0 != 1) goto L36l}"];
+Node_14 [shape=record,label="{14\:\ 0x0047|lr9.say_c = 15lr9.say_mode = 1l}"];
+Node_15 [shape=record,label="{15\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_16 [shape=record,label="{16\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_17 [shape=record,label="{17\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_18 [shape=record,label="{18\:\ 0x0011|RETURN\lORIG_RETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void main.GameRun.setSay((r9v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x003d \-\> B:18:0x0011, CROSS_EDGE: B:11:0x0042 \-\> B:18:0x0011, CROSS_EDGE: B:13:0x0045 \-\> B:18:0x0011, CROSS_EDGE: B:14:0x0047 \-\> B:18:0x0011, CROSS_EDGE: B:2:0x0007 \-\> B:18:0x0011\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_18;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_17[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_10;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_10 -> Node_11[style=dashed];
+Node_10 -> Node_13;
+Node_11 -> Node_12;
+Node_12 -> Node_9;
+Node_13 -> Node_14[style=dashed];
+Node_13 -> Node_16;
+Node_14 -> Node_15;
+Node_15 -> Node_9;
+Node_16 -> Node_9;
+Node_17 -> Node_9;
+Node_18 -> Node_9;
+}
+

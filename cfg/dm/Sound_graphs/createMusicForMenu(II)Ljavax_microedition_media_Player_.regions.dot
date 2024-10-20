@@ -1,0 +1,76 @@
+digraph "CFG fordm.Sound.createMusicForMenu(II)Ljavax\/microedition\/media\/Player;" {
+subgraph cluster_Region_984544726 {
+label = "R(3:1|(1:(2:(1:9)|10))|4)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.lang.String[] java.lang.String[] r1 = \{\"audio\/midi\", \"audio\/x\-wav\"\}l}"];
+subgraph cluster_IfRegion_1151188955 {
+label = "IF [B:2:0x000d] THEN: R(1:(2:(1:9)|10)) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000d|lif (r6 \>= 0) goto L26l}"];
+subgraph cluster_Region_1648436095 {
+label = "R(1:(2:(1:9)|10))";
+node [shape=record,color=blue];
+subgraph cluster_TryCatchRegion_304458217 {
+label = "Try: R(2:(1:9)|10) catches: R(2:12|13)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1117086808 {
+label = "R(2:(1:9)|10)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1707894746 {
+label = "IF [B:8:0x0011] THEN: R(1:9) ELSE: null";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0011|lif (r4.snd_music != null) goto L20l}"];
+subgraph cluster_Region_1275494367 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0013|TryCatch #0 \{Exception \-\> 0x0048, blocks: (B:7:0x000f, B:9:0x0013, B:10:0x0018), top: B:6:0x000f \}\lCatch: Exception \-\> 0x0048\l|lr4.snd_music.close()     \/\/ Catch: java.lang.Exception \-\> L48l}"];
+}
+}
+Node_10 [shape=record,label="{10\:\ 0x0018|TRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x0048, blocks: (B:7:0x000f, B:9:0x0013, B:10:0x0018), top: B:6:0x000f \}\lCatch: Exception \-\> 0x0048\l|lr4.snd_music = null     \/\/ Catch: java.lang.Exception \-\> L48lr4.snd_music = javax.microedition.media.Manager.createPlayer(\"\/music\/\" + r5 + \".mid\", r1[r6])     \/\/ Catch: java.lang.Exception \-\> L48lr4.snd_music.prefetch()     \/\/ Catch: java.lang.Exception \-\> L48lr4.vc_snd = null     \/\/ Catch: java.lang.Exception \-\> L48lcreateVolumeForMenu(r4.volume)     \/\/ Catch: java.lang.Exception \-\> L48l}"];
+}
+subgraph cluster_Region_666367995 {
+label = "R(2:12|13) | ExcHandler: Exception \-\> 0x0048\l";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0048|ExcHandler: Exception \-\> 0x0048\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x0049|lr2.printStackTrace()l}"];
+}
+}
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x0047|RETURN\l|lreturn r4.snd_musicl}"];
+}
+subgraph cluster_Region_666367995 {
+label = "R(2:12|13) | ExcHandler: Exception \-\> 0x0048\l";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0048|ExcHandler: Exception \-\> 0x0048\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x0049|lr2.printStackTrace()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0045|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x000f|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x000f|TRY_ENTER\lTryCatch #0 \{Exception \-\> 0x0048, blocks: (B:7:0x000f, B:9:0x0013, B:10:0x0018), top: B:6:0x000f \}\lCatch: Exception \-\> 0x0048\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+MethodNode[shape=record,label="{private javax.microedition.media.Player dm.Sound.createMusicForMenu((r4v0 'this' dm.Sound A[IMMUTABLE_TYPE, THIS]), (r5v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'flag' int A[D('flag' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{Exception \-\> 0x0048, blocks: (B:7:0x000f, B:9:0x0013, B:10:0x0018), top: B:6:0x000f \}\lCROSS_EDGE: B:10:0x0018 \-\> B:3:0x0045, CROSS_EDGE: B:13:0x0049 \-\> B:3:0x0045, CROSS_EDGE: B:8:0x0011 \-\> B:10:0x0018, CROSS_EDGE: B:6:0x000f \-\> B:12:0x0048\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_8 -> Node_9;
+Node_8 -> Node_10[style=dashed];
+Node_9 -> Node_10;
+Node_10 -> Node_3;
+Node_10 -> Node_11;
+Node_12 -> Node_13;
+Node_13 -> Node_3;
+Node_4 -> Node_5;
+Node_12 -> Node_13;
+Node_13 -> Node_3;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_6 -> Node_12;
+Node_7 -> Node_8;
+Node_11 -> Node_12;
+}
+

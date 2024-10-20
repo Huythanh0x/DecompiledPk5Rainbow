@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.util.SecurityUtil.encryptHttpChargeAlipayBody(Ljava\/lang\/String;)[B" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0013|RETURN\l|lreturn com.uc.paymentsdk.commons.codec.Base64.encodeBase64(new com.uc.paymentsdk.commons.codec.Crypter().encrypt(com.uc.paymentsdk.util.Utils.getUTF8Bytes(r3), com.uc.paymentsdk.util.SecurityUtil.SECRET_KEY_HTTP_CHARGE_ALIPAY))l}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static byte[] com.uc.paymentsdk.util.SecurityUtil.encryptHttpChargeAlipayBody((r3v0 'paramString' java.lang.String A[D('paramString' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

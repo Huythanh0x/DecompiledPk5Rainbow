@@ -1,0 +1,16 @@
+digraph "CFG fordm.Ui.initUiModules()V" {
+subgraph cluster_Region_615604859 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr5.ui_img = dm.Ms.i().createImage(\"data\/ui\")ldm.Ms.i()ldm.Ms.skip = 0lr5.ui_modules = dm.Ms.i().createShort2Array(dm.Ms.i().getStream(\"data\/ui_m.d\", \-1), 0)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0027|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.initUiModules((r5v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

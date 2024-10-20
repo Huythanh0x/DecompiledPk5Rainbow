@@ -1,0 +1,31 @@
+digraph "CFG forjavax.microedition.midlet.MIDletManager.getInstance()Ljavax\/microedition\/midlet\/MIDletManager;" {
+subgraph cluster_Region_1090350744 {
+label = "R(2:(1:3)|5)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1993475660 {
+label = "IF [B:2:0x0002] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (javax.microedition.midlet.MIDletManager.jam == null) goto L11l}"];
+subgraph cluster_Region_616447402 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0004|ljavax.microedition.midlet.MIDletManager.jam = new javax.microedition.midlet.MIDletManager()l}"];
+}
+}
+Node_5 [shape=record,label="{5\:\ 0x000d|RETURN\l|lreturn javax.microedition.midlet.MIDletManager.jaml}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x000b|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static final javax.microedition.midlet.MIDletManager javax.microedition.midlet.MIDletManager.getInstance()  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0002 \-\> B:4:0x000b\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+}
+

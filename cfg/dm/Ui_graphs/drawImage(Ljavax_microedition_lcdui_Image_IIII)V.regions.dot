@@ -1,0 +1,35 @@
+digraph "CFG fordm.Ui.drawImage(Ljavax\/microedition\/lcdui\/Image;IIII)V" {
+subgraph cluster_Region_849870943 {
+label = "R(1:(1:5)(1:2))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1573190024 {
+label = "IF [B:1:0x0000] THEN: R(1:5) ELSE: R(1:2)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lif (r11 != 0) goto L12l}"];
+subgraph cluster_Region_1725074103 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0008|ldm.Ui.dg.drawImage(r7, r8, r9, r10, r11)l}"];
+}
+subgraph cluster_Region_1879330652 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|ldm.Ui.g.drawImage(r7, r8, r9, r10)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0007|ORIG_RETURN\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawImage((r6v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r7v0 'image' javax.microedition.lcdui.Image A[D('image' javax.microedition.lcdui.Image), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'archor' int A[D('archor' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'trans' int A[D('trans' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x0008 \-\> B:3:0x0007\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2[style=dashed];
+Node_1 -> Node_5;
+Node_5 -> Node_6;
+Node_2 -> Node_3;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_6 -> Node_4;
+}
+

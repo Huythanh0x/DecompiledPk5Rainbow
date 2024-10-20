@@ -1,0 +1,59 @@
+digraph "CFG formain.Map.isCheckAnole(I)Z" {
+subgraph cluster_Region_1021413692 {
+label = "R(1:(2:(2:5|6)|(2:(1:10)|11)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_295151202 {
+label = "R(2:(2:5|6)|(2:(1:10)|11))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1274194356 {
+label = "IF [B:2:0x0002, B:4:0x0008] THEN: R(2:5|6) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r3.anole_type != r4) goto L17l}"];
+Node_4 [shape=record,label="{4\:\ 0x0008|ADDED_TO_REGION\l|lif (isAnoleType(r4) != false) goto L19l}"];
+subgraph cluster_Region_61652678 {
+label = "R(2:5|6)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000a|lr3.anole_type = (byte) r4lsetAnole()l}"];
+Node_6 [shape=record,label="{6\:\ 0x0011|RETURN\lORIG_RETURN\l|lreturn truel}"];
+}
+}
+subgraph cluster_Region_859074534 {
+label = "R(2:(1:10)|11)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_532441940 {
+label = "IF [B:9:0x0016] THEN: R(1:10) ELSE: null";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0016|lif (isAnoleType(r4) == false) goto L23l}"];
+subgraph cluster_Region_1096666654 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0018|lr3.gr.say(main.Constants_H.TXT_75 + ((java.lang.Object) r3.gr.monsterT[r4]) + main.Constants_H.TXT_82 + main.Constants_H.TXT_103, \-1)l}"];
+}
+}
+Node_11 [shape=record,label="{11\:\ 0x003f|SYNTHETIC\lRETURN\l|lreturn falsel}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0004|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0012|l}"];
+MethodNode[shape=record,label="{private boolean main.Map.isCheckAnole((r3v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r4v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:11:0x003f \-\> B:6:0x0011, CROSS_EDGE: B:9:0x0016 \-\> B:11:0x003f, CROSS_EDGE: B:2:0x0002 \-\> B:8:0x0012\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_8[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_8[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_9 -> Node_11[style=dashed];
+Node_10 -> Node_11;
+Node_11 -> Node_7;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_8 -> Node_9;
+}
+

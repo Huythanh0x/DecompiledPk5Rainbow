@@ -1,0 +1,25 @@
+digraph "CFG formain.GameRun.drawBattleExp(Ldm\/Monster;I)V" {
+subgraph cluster_Region_47930230 {
+label = "R(2:1|4)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.i().drawK0(javax.microedition.media.Player.REALIZED, r10, 240, 10, 0)l}"];
+Node_4 [shape=record,label="{4\:\ 0x0022|PHI: r7l  0x0022: PHI (r7v1 short) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|ldrawMonsterHp(r9, 240, r10 + 3, 195, 2, 2, r8.battle_state != \-5 ? r9.monsterPro[4] : r8.myB.cexp)ldm.Ui.i().drawString(main.Constants_H.GAME_TXT_29, javax.microedition.media.Player.REALIZED, r10 + 18, 36, 0, 2)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x001a|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x001c|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0038|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0039|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawBattleExp((r8v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r9v0 'mon' dm.Monster A[D('mon' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0039 \-\> B:4:0x0022\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_7;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_7 -> Node_4;
+}
+

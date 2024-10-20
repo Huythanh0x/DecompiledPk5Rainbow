@@ -1,0 +1,79 @@
+digraph "CFG forminigame.Cards.drawCard(IIIII)V" {
+subgraph cluster_Region_1362704730 {
+label = "R(1:(2:(2:2|3)|(1:(2:(3:7|(1:9)|11)|(1:12)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_390568290 {
+label = "R(2:(2:2|3)|(1:(2:(3:7|(1:9)|11)|(1:12))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1196555891 {
+label = "IF [B:1:0x0000] THEN: R(2:2|3) ELSE: null";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lif (r11 == 0) goto L3l}"];
+subgraph cluster_Region_280900164 {
+label = "R(2:2|3)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|ldm.Ui.i().drawK(r9, r10, r6.gw, r6.gh, 1)ldm.Ui.i().drawUi(25, (r6.gw \>\> 1) + r9, (r6.gh \>\> 1) + r10, 3, 0)l}"];
+Node_3 [shape=record,label="{3\:\ 0x0025|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_139803360 {
+label = "R(1:(2:(3:7|(1:9)|11)|(1:12))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_603074049 {
+label = "R(2:(3:7|(1:9)|11)|(1:12))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1805188714 {
+label = "IF [B:6:0x0027] THEN: R(3:7|(1:9)|11) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0027|lif (r11 == 1) goto L7l}"];
+subgraph cluster_Region_457101749 {
+label = "R(3:7|(1:9)|11)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0029|ldm.Ui.i().drawK(((r6.gw \>\> 1) + r9) \- 2, r10 \- 3, 5, r6.gh + 6, 1)lbyte[] byte[] r0 = r6.findC[r7]lbyte byte r1 = (byte) (r0[r8] + 1)lr0[r8] = r1l}"];
+subgraph cluster_IfRegion_1304352675 {
+label = "IF [B:8:0x004c] THEN: R(1:9) ELSE: null";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x004c|lif (r1 \> 3) goto L9l}"];
+subgraph cluster_Region_181783887 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x004e|lr6.findC[r7][r8] = 0l}"];
+}
+}
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_729183439 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0057|ldm.Ui.i().drawK(r9, r10, r6.gw, r6.gh, 5)lr6.gr.drawItem(r6.findN[r7][r8], (r6.gw \>\> 1) + r9, (r6.gh \>\> 1) + r10, 3)ldm.Ui.i().drawNum(new java.lang.StringBuilder().append((int) r6.findN[r7][r8]).toString(), r6.gw + r9, r6.gh + r10, 40, 0)l}"];
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0026|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0055|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void minigame.Cards.drawCard((r6v0 'this' minigame.Cards A[IMMUTABLE_TYPE, THIS]), (r7v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'j' int A[D('j' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lJadxCommentsAttr\{l DEBUG: l \-\> TODO: convert one arg to string using `String.valueOf()`, args: (wrap:int:CAST)\}\lCROSS_EDGE: B:10:0x0055 \-\> B:3:0x0025, CROSS_EDGE: B:8:0x004c \-\> B:10:0x0055, CROSS_EDGE: B:12:0x0057 \-\> B:3:0x0025\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_1 -> Node_5[style=dashed];
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_6 -> Node_12[style=dashed];
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_10[style=dashed];
+Node_9 -> Node_10;
+Node_11 -> Node_4;
+Node_12 -> Node_13;
+Node_0 -> Node_1;
+Node_5 -> Node_6;
+Node_10 -> Node_11;
+Node_13 -> Node_4;
+}
+

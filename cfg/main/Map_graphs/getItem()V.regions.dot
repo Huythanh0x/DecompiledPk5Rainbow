@@ -1,0 +1,81 @@
+digraph "CFG formain.Map.getItem()V" {
+subgraph cluster_Region_890232686 {
+label = "R(1:(2:(2:3|4)|(3:6|(1:8)(1:(1:13)(1:14))|9)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_721181522 {
+label = "R(2:(2:3|4)|(3:6|(1:8)(1:(1:13)(1:14))|9))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_690355163 {
+label = "IF [B:2:0x000b] THEN: R(2:3|4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000b|lif (r8.item[r8.get_meet][2] == 2) goto L19l}"];
+subgraph cluster_Region_1978044500 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000d|lr8.gr.say(main.Constants_H.MONEY_TXT_12, 0)l}"];
+Node_4 [shape=record,label="{4\:\ 0x0014|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1770731724 {
+label = "R(3:6|(1:8)(1:(1:13)(1:14))|9)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0015|lbyte byte r0 = (byte) (r8.item[r8.get_meet][3] \- 2)l}"];
+subgraph cluster_IfRegion_1516352857 {
+label = "IF [B:7:0x0021] THEN: R(1:8) ELSE: R(1:(1:13)(1:14))";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0021|lif (r0 == (\-2)) goto L23l}"];
+subgraph cluster_Region_1046074665 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0023|lr8.gr.money += r8.item[r8.get_meet][4] * 100lr8.gr.say(main.Constants_H.MONEY_TXT_9 + (r8.item[r8.get_meet][4] * 100) + main.Constants_H.MONEY_TXT_0, 0)l}"];
+}
+subgraph cluster_Region_1991716731 {
+label = "R(1:(1:13)(1:14)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_167570686 {
+label = "IF [B:12:0x0062] THEN: R(1:13) ELSE: R(1:14) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0062|lif (r0 == (\-1)) goto L27l}"];
+subgraph cluster_Region_1892350293 {
+label = "R(1:13)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0064|lr8.gr.coin += r8.item[r8.get_meet][4]lr8.gr.say(main.Constants_H.MONEY_TXT_11 + ((int) r8.item[r8.get_meet][4]) + \"徽章\", 0)l}"];
+}
+subgraph cluster_Region_42101031 {
+label = "R(1:14)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0096|lr8.gr.getItem(r0, r8.item[r8.get_meet][4])l}"];
+}
+}
+}
+}
+Node_9 [shape=record,label="{9\:\ 0x0058|lr8.item[r8.get_meet][2] = 2l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|SYNTHETIC\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0061|l}"];
+MethodNode[shape=record,label="{private void main.Map.getItem((r8v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x0058 \-\> B:4:0x0014, CROSS_EDGE: B:13:0x0064 \-\> B:9:0x0058, CROSS_EDGE: B:14:0x0096 \-\> B:9:0x0058\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_7 -> Node_11[style=dashed];
+Node_8 -> Node_9;
+Node_12 -> Node_13;
+Node_12 -> Node_14[style=dashed];
+Node_13 -> Node_9;
+Node_14 -> Node_9;
+Node_9 -> Node_10;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_10 -> Node_5;
+Node_11 -> Node_12;
+}
+

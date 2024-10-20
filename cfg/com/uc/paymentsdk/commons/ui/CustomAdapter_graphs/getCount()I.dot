@@ -1,0 +1,19 @@
+digraph "CFG forcom.uc.paymentsdk.commons.ui.CustomAdapter.getCount()I" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r1.mItems != null) goto L14l}"];
+Node_3 [shape=record,label="{3\:\ 0x0004|RETURN\lORIG_RETURN\l|lreturn 0l}"];
+Node_4 [shape=record,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0006|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturn r1.mItems.lengthl}"];
+MethodNode[shape=record,label="{public int com.uc.paymentsdk.commons.ui.CustomAdapter.getCount((r1v0 'this' com.uc.paymentsdk.commons.ui.CustomAdapter A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lMETHOD_OVERRIDE: [ClspMth\{android.widget.Adapter.getCount():int\}]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x0006 \-\> B:4:0x0005\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_4;
+}
+

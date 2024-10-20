@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.isNumeric(Ljava\/lang\/String;)Z" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.util.regex.Pattern r0 = java.util.regex.Pattern.compile(\"[0\-9]*\")l}"];
+Node_2 [shape=record,label="{2\:\ 0x000e|RETURN\l|lreturn r0.matcher(r2).matches()l}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static boolean com.uc.paymentsdk.util.Utils.isNumeric((r2v0 'str' java.lang.String A[D('str' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

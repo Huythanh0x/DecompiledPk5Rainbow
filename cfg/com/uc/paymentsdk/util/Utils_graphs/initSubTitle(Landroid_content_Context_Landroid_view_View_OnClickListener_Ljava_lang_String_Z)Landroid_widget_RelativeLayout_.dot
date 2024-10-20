@@ -1,0 +1,17 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.initSubTitle(Landroid\/content\/Context;Landroid\/view\/View$OnClickListener;Ljava\/lang\/String;Z)Landroid\/widget\/RelativeLayout;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|landroid.widget.RelativeLayout r2 = new android.widget.RelativeLayout(r6)lr2.setLayoutParams(new android.view.ViewGroup.LayoutParams(\-1, \-2))landroid.graphics.drawable.GradientDrawable r0 = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM, new int[]\{com.uc.paymentsdk.util.Constants.COLOR_SUBTITLE_BACKGROUND1, com.uc.paymentsdk.util.Constants.COLOR_SUBTITLE_BACKGROUND2\})lr2.setBackgroundDrawable(r0)landroid.widget.ImageView r0 = new android.widget.ImageView(r6)lr0.setImageDrawable(getDrawableFromFile(getTitleIconFileName(com.uc.paymentsdk.util.Utils.TITLE_ICON_BACK)))lr0.setId(9)landroid.widget.RelativeLayout$LayoutParams r1 = new android.widget.RelativeLayout.LayoutParams(\-2, \-2)lr1.addRule(9)lr1.addRule(15)lr0.setLayoutParams(r1)lr0.setOnClickListener(r7)lr0.setPadding(8, 0, 0, 0)landroid.widget.ImageView r1 = new android.widget.ImageView(r6)lr1.setImageDrawable(getDrawableFromFile(getTitleIconFileName(com.uc.paymentsdk.util.Utils.TITLE_ICON_CANCEL)))lr1.setId(10)landroid.widget.RelativeLayout$LayoutParams r3 = new android.widget.RelativeLayout.LayoutParams(\-2, \-2)lr3.addRule(11)lr3.addRule(15)lr1.setLayoutParams(r3)lr1.setOnClickListener(r7)lr1.setPadding(0, 0, 10, 0)landroid.widget.TextView r7 = new android.widget.TextView(r6)lr7.setGravity(17)lr7.setTextColor(com.uc.paymentsdk.util.Constants.COLOR_TITLE_BACKGROUND)lr7.setPadding(0, 10, 0, 10)lr7.setTextSize(23.0f)lr7.setText(r8)landroid.widget.RelativeLayout$LayoutParams r6 = new android.widget.RelativeLayout.LayoutParams(\-2, \-2)lr6.addRule(14)lr7.setLayoutParams(r6)lr2.addView(r0)lr2.addView(r7)l}"];
+Node_2 [shape=record,label="{2\:\ 0x00c7|lif (r9 == false) goto L11l}"];
+Node_3 [shape=record,label="{3\:\ 0x00c9|lr2.addView(r1)l}"];
+Node_4 [shape=record,label="{4\:\ 0x00cc|RETURN\l|lreturn r2l}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static android.widget.RelativeLayout com.uc.paymentsdk.util.Utils.initSubTitle((r6v0 'paramContext' android.content.Context A[D('paramContext' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'listener' android.view.View$OnClickListener A[D('listener' android.view.View$OnClickListener), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'paramString' java.lang.String A[D('paramString' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'iscancel' boolean A[D('iscancel' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x00c7 \-\> B:4:0x00cc\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_4;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+}
+

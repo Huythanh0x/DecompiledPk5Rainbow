@@ -1,0 +1,63 @@
+digraph "CFG formain.GameRun_F.showStringM_(Ljava\/lang\/String;IIII)V" {
+subgraph cluster_Region_792900497 {
+label = "R(2:1|(2:(1:4)(1:10)|6))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte byte r9 = (byte) (r11.length() \/ r14)lbyte r8 = 0l}"];
+subgraph cluster_LoopRegion_166334731 {
+label = "LOOP:0: (2:(1:4)(1:10)|6)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0009|LOOP_START\lADDED_TO_REGION\lPHI: r8l  0x0009: PHI (r8v1 'd' byte) = (r8v0 'd' byte), (r8v2 'd' byte) binds: [B:1:0x0000, B:6:0x0024] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0009\-\>B:6:0x0024\l|lif (r8 \<= r9) goto L21l}"];
+subgraph cluster_Region_1603017933 {
+label = "R(2:(1:4)(1:10)|6)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1476120971 {
+label = "IF [B:3:0x000c] THEN: R(1:4) ELSE: R(1:10)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000c|lif (r9 == 0) goto L22l}"];
+subgraph cluster_Region_1541210458 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000e|ldm.Ui.i().drawString(r11, r12, r13, 1 \| 16, r15, 1)landroid.util.Log.e(\"sk\", \"strNum == 0\")l}"];
+}
+subgraph cluster_Region_1701373386 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0036|PHI: r2l  0x0036: PHI (r2v3 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|ldm.Ui.i().drawString(r11.substring(r8 * r14, r8 + 1 \> r9 ? r11.length() : (r8 + 1) * r14), r12, r13 + (r8 * 25), 1 \| 16, r15, 0)l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0024|LOOP_END\lLOOP:0: B:2:0x0009\-\>B:6:0x0024\l|lbyte r8 = (byte) (r8 + 1)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0024|SYNTHETIC\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0028|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0030|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0032|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0024|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0048|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x000b|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x000b|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun_F.showStringM_((r10v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]), (r11v0 'str' java.lang.String A[D('str' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'num' int A[D('num' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'c' int A[D('c' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:6:0x0024 \-\> B:2:0x0009, CROSS_EDGE: B:10:0x0036 \-\> B:6:0x0024, CROSS_EDGE: B:12:0x0048 \-\> B:10:0x0036\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_13[style=dashed];
+Node_3 -> Node_4;
+Node_3 -> Node_7[style=dashed];
+Node_4 -> Node_5;
+Node_10 -> Node_11;
+Node_6 -> Node_2;
+Node_0 -> Node_1;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_12;
+Node_9 -> Node_10;
+Node_11 -> Node_6;
+Node_12 -> Node_10;
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+}
+

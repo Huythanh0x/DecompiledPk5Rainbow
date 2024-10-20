@@ -1,0 +1,23 @@
+digraph "CFG fordm.Ms.compare_min(II)I" {
+subgraph cluster_Region_1902181709 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|RETURN\l|lreturn r1 \<= r2 ? r1 : r2l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0002|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0003|ORIG_RETURN\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0004|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public static int dm.Ms.compare_min((r1v0 'c0' int A[D('c0' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r2v0 'c1' int A[D('c1' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x0004 \-\> B:3:0x0003\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_1 -> Node_5;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_4;
+}
+

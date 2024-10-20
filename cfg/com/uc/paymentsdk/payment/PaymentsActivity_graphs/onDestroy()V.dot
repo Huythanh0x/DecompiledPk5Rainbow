@@ -1,0 +1,19 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.onDestroy()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lsuper.onDestroy()l}"];
+Node_2 [shape=record,label="{2\:\ 0x0005|lif (r1.mIsValid == false) goto L6l}"];
+Node_3 [shape=record,label="{3\:\ 0x0007|lcom.uc.paymentsdk.util.PrefUtil.logout(getApplicationContext())lcom.uc.paymentsdk.util.Utils.clearSmsInfos()lcom.uc.paymentsdk.util.Utils.clearUPointInfo()lcom.uc.paymentsdk.model.TypeFactory.clear()lcom.uc.paymentsdk.util.Utils.clearUPointPayInfo()lcom.uc.paymentsdk.network.chain.SyncChargeChannelHandler.init()lcom.uc.paymentsdk.network.chain.SyncPayChannelHandler.init()lcom.uc.paymentsdk.network.chain.SyncSmsInfoHandler.init()l}"];
+Node_4 [shape=record,label="{4\:\ 0x0023|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{protected void com.uc.paymentsdk.payment.PaymentsActivity.onDestroy((r1v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]))  | DONT_RENAME\lUSE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{android.app.Activity.onDestroy():void\}]\lCROSS_EDGE: B:2:0x0005 \-\> B:4:0x0023\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

@@ -1,0 +1,12 @@
+digraph "CFG forcom.nokia.mid.ui.DirectGraphics.\<clinit\>()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lcom.nokia.mid.ui.DirectGraphics.FLIP_HORIZONTAL = 8192lcom.nokia.mid.ui.DirectGraphics.FLIP_VERTICAL = 16384lcom.nokia.mid.ui.DirectGraphics.ROTATE_180 = main.Constants_H.HEIGHT_H_lcom.nokia.mid.ui.DirectGraphics.ROTATE_270 = 270lcom.nokia.mid.ui.DirectGraphics.ROTATE_90 = 90lcom.nokia.mid.ui.DirectGraphics.TYPE_BYTE_1_GRAY = 1lcom.nokia.mid.ui.DirectGraphics.TYPE_BYTE_1_GRAY_VERTICAL = \-1lcom.nokia.mid.ui.DirectGraphics.TYPE_BYTE_2_GRAY = 2lcom.nokia.mid.ui.DirectGraphics.TYPE_BYTE_332_RGB = 332lcom.nokia.mid.ui.DirectGraphics.TYPE_BYTE_4_GRAY = 4lcom.nokia.mid.ui.DirectGraphics.TYPE_BYTE_8_GRAY = 8lcom.nokia.mid.ui.DirectGraphics.TYPE_INT_888_RGB = 888lcom.nokia.mid.ui.DirectGraphics.TYPE_INT_8888_ARGB = 8888lcom.nokia.mid.ui.DirectGraphics.TYPE_USHORT_1555_ARGB = 1555lcom.nokia.mid.ui.DirectGraphics.TYPE_USHORT_444_RGB = 444lcom.nokia.mid.ui.DirectGraphics.TYPE_USHORT_4444_ARGB = 4444lcom.nokia.mid.ui.DirectGraphics.TYPE_USHORT_555_RGB = 555lcom.nokia.mid.ui.DirectGraphics.TYPE_USHORT_565_RGB = 565lcom.nokia.mid.ui.DirectGraphics.transA = new int[]\{0, 6, 3, 5, 2, 4, 1, 7\}lcom.nokia.mid.ui.DirectGraphics.transB = new int[]\{1, 7, 2, 4\}l}"];
+Node_2 [shape=record,label="{2\:\ 0x0065|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{static void com.nokia.mid.ui.DirectGraphics.\<clinit\>()  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

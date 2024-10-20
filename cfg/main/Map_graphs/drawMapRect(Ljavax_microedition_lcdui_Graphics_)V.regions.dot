@@ -1,0 +1,71 @@
+digraph "CFG formain.Map.drawMapRect(Ljavax\/microedition\/lcdui\/Graphics;)V" {
+subgraph cluster_Region_1364823285 {
+label = "R(2:1|(2:(2:6|(1:9))(0)|11))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r9 = 0lr14.setColor(0)l}"];
+subgraph cluster_LoopRegion_77583778 {
+label = "LOOP:0: (2:(2:6|(1:9))(0)|11)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000d|ADDED_TO_REGION\l|lif (r9 \< r13.gr.mapRect.length) goto L22l}"];
+subgraph cluster_Region_454723568 {
+label = "R(2:(2:6|(1:9))(0)|11)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1928808572 {
+label = "IF [B:5:0x0061] THEN: R(2:6|(1:9)) ELSE: R(0)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0061|lif (dm.Ms.i().isRect(r13.my.x, r13.my.y, 19, 19, r13.gr.mapRect[r9][0] * 20, r13.gr.mapRect[r9][1] * 20, ((r13.gr.mapRect[r9][2] \- r13.gr.mapRect[r9][0]) + 1) * 20, ((r13.gr.mapRect[r9][3] \- r13.gr.mapRect[r9][1]) + 1) * 20) == false) goto L25l}"];
+subgraph cluster_Region_1517721146 {
+label = "R(2:6|(1:9))";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0067|lbyte r10 = 4l}"];
+subgraph cluster_LoopRegion_1867799795 {
+label = "LOOP:1: (1:9)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x006f|ADDED_TO_REGION\l|lif (r10 \< r13.gr.mapRect[r9].length) goto L28l}"];
+subgraph cluster_Region_362591870 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0071|LOOP_END\lLOOP:1: B:7:0x0068\-\>B:9:0x0071\l|lr14.fillRect(r13.map_x + (r13.gr.mapRect[r9][r10] * 20), r13.map_y + (r13.gr.mapRect[r9][r10 + 1] * 20), ((r13.gr.mapRect[r9][r10 + 2] \- r13.gr.mapRect[r9][r10]) + 1) * 20, ((r13.gr.mapRect[r9][r10 + 3] \- r13.gr.mapRect[r9][r10 + 1]) + 1) * 20)lbyte r10 = (byte) (r10 + 4)l}"];
+}
+}
+}
+subgraph cluster_Region_1471399249 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+Node_11 [shape=record,label="{11\:\ 0x0063|LOOP_END\lLOOP:0: B:2:0x0008\-\>B:11:0x0063\l|lbyte r9 = (byte) (r9 + 1)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0008|LOOP_START\lPHI: r9l  0x0008: PHI (r9v1 'i' byte) = (r9v0 'i' byte), (r9v2 'i' byte) binds: [B:1:0x0000, B:11:0x0063] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:11:0x0063\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0010|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0068|LOOP_START\lPHI: r10l  0x0068: PHI (r10v1 'j' byte) = (r10v0 'j' byte), (r10v2 'j' byte) binds: [B:6:0x0067, B:9:0x0071] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:7:0x0068\-\>B:9:0x0071\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0063|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0063|SYNTHETIC\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x000f|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x000f|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.drawMapRect((r13v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r14v0 'g' javax.microedition.lcdui.Graphics A[D('g' javax.microedition.lcdui.Graphics), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:11:0x0063 \-\> B:2:0x0008, CROSS_EDGE: B:8:0x006f \-\> B:11:0x0063, BACK_EDGE: B:9:0x0071 \-\> B:7:0x0068\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_13[style=dashed];
+Node_5 -> Node_6;
+Node_5 -> Node_12[style=dashed];
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_8 -> Node_10[style=dashed];
+Node_9 -> Node_7;
+Node_11 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_10 -> Node_11;
+Node_12 -> Node_11;
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+}
+

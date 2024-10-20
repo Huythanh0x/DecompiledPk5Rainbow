@@ -1,0 +1,58 @@
+digraph "CFG formain.Map.save()V" {
+subgraph cluster_Region_1297002302 {
+label = "R(3:1|(2:(1:6)(0)|8)|11)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lmap_saveGame()lsaveNpc()lint r0 = 0l}"];
+subgraph cluster_LoopRegion_448295157 {
+label = "LOOP:0: (2:(1:6)(0)|8)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000e|ADDED_TO_REGION\l|lif (r0 \< (r7.mapInfo.length \/ 2)) goto L21l}"];
+subgraph cluster_Region_1688762042 {
+label = "R(2:(1:6)(0)|8)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1954576940 {
+label = "IF [B:5:0x0063] THEN: R(1:6) ELSE: R(0)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0063|lif (r7.mapChange[r0] == 1) goto L23l}"];
+subgraph cluster_Region_1276054749 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0065|lr7.mapChange[r0] = 0ldm.Ms.i().rmsOptions(r0 + 14, r7.mapTemp[r0], 2)l}"];
+}
+subgraph cluster_Region_1430094592 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+Node_8 [shape=record,label="{8\:\ 0x0077|LOOP_END\lLOOP:0: B:2:0x0009\-\>B:8:0x0077\l|lr0++l}"];
+}
+}
+Node_11 [shape=record,label="{11\:\ 0x0010|ldm.Ms.i().rmsOptions(13, dm.Ms.i().shortArrayToByteArray(r7.mapInfo), 2)ldm.Ms.i().rmsOptions(12, dm.Ms.i().getEventNowData(r7.event_now_list), 2)ldm.Ms.i().rmsOptions(1, r7.mapChange, 2)ldm.Ms.i().rmsOptions(7, r7.bMission, 2)ldm.Ms.i().rmsOptions(5, r7.gr.rmsSms, 2)ldm.Ms.i().rmsOptions(1, null, 4)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0009|LOOP_START\lPHI: r0l  0x0009: PHI (r0v1 'i' int) = (r0v0 'i' int), (r0v2 'i' int) binds: [B:1:0x0000, B:8:0x0077] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0009\-\>B:8:0x0077\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x005f|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0077|SYNTHETIC\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0077|SYNTHETIC\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0010|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x005e|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.Map.save((r7v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:8:0x0077 \-\> B:2:0x0009, CROSS_EDGE: B:5:0x0063 \-\> B:8:0x0077\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_10[style=dashed];
+Node_5 -> Node_6;
+Node_5 -> Node_9[style=dashed];
+Node_6 -> Node_7;
+Node_8 -> Node_2;
+Node_11 -> Node_12;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_9 -> Node_8;
+Node_10 -> Node_11;
+Node_12 -> Node_13;
+}
+

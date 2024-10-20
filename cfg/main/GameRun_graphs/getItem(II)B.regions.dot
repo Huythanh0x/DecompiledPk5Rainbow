@@ -1,0 +1,39 @@
+digraph "CFG formain.GameRun.getItem(II)B" {
+subgraph cluster_Region_1443164083 {
+label = "R(1:(2:(1:6)|(2:3|4)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_138351027 {
+label = "R(2:(1:6)|(2:3|4))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1192717808 {
+label = "IF [B:2:0x0005] THEN: R(1:6) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0005|lif (addItem(r4, r5) != 1) goto L14l}"];
+subgraph cluster_Region_1569384328 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x002b|SYNTHETIC\lRETURN\l|lreturn (byte) \-1l}"];
+}
+}
+subgraph cluster_Region_738386685 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0007|lsay(\"获得：“\" + getNameItem((byte) r4) + \"”x\" + r5, 0)l}"];
+Node_4 [shape=record,label="{4\:\ 0x002a|RETURN\lORIG_RETURN\l|lreturn (byte) 1l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public byte main.GameRun.getItem((r3v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r4v0 'item_id' int A[D('item_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'count' int A[D('count' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x002b \-\> B:4:0x002a\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_6 -> Node_5;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+}
+

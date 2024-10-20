@@ -1,0 +1,26 @@
+digraph "CFG formain.GameRun.goRUN_IN_MAP(Z)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.selecty = 0lr4.selectx = 0lr4.select[0][1] = 0lr4.mini_state = 0lr4.view_state = 0lmain.GameRun.mc.game_state = 30ljava.lang.System.out.println(\"aaaaaaaaaaaaaaaaa\")lr4.map.my.state = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0029|lif (r4.isChangeSound.booleanValue() != false) goto L15l}"];
+Node_3 [shape=record,label="{3\:\ 0x002b|ldm.Sound.i().setMusicId(r4.musicNo[r4.map.mapNo])ldm.Sound.i().setMusic(r5)landroid.util.Log.d(\"soars\", \"tttttttttttttttttttttt\")l}"];
+Node_4 [shape=record,label="{4\:\ 0x0048|l}"];
+Node_5 [shape=record,label="{5\:\ 0x004e|lif (r4.isChangeSound.booleanValue() == false) goto L18l}"];
+Node_6 [shape=record,label="{6\:\ 0x0050|ldm.Sound.i().setMusicId(r4.musicNo[r4.map.mapNo])ldm.Sound.i().setMusicForMenu(r5)landroid.util.Log.d(\"soars\", \"ffffffffffffffffffffffffffffffff\")l}"];
+Node_7 [shape=record,label="{7\:\ 0x006d|lmain.GameRun.run_state = \-10lr4.createOver = 0lr4.buyItemID = 0l}"];
+Node_8 [shape=record,label="{8\:\ 0x0075|RETURN\l|lreturnl}"];
+Node_9 [shape=record,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.goRUN_IN_MAP((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x004e \-\> B:7:0x006d, CROSS_EDGE: B:2:0x0029 \-\> B:4:0x0048\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_4;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_7;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+}
+

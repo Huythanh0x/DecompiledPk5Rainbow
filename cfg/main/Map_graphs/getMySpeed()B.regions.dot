@@ -1,0 +1,93 @@
+digraph "CFG formain.Map.getMySpeed()B" {
+subgraph cluster_Region_938649348 {
+label = "R(2:(1:(2:(1:13)|(2:(1:21)|23)))|9)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1717698838 {
+label = "IF [B:2:0x0006, B:7:0x000d] THEN: R(1:(2:(1:13)|(2:(1:21)|23))) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0006|lif (r5.anole_type != 0) goto L30l}"];
+Node_7 [shape=record,label="{7\:\ 0x000d|ADDED_TO_REGION\l|lif (r5.anole_type != 1) goto L33l}"];
+subgraph cluster_Region_121700137 {
+label = "R(1:(2:(1:13)|(2:(1:21)|23)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_2114188701 {
+label = "R(2:(1:13)|(2:(1:21)|23))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1558951902 {
+label = "IF [B:11:0x0014] THEN: R(1:13) ELSE: null";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0014|lif (r5.anole_type == 2) goto L35l}"];
+subgraph cluster_Region_712468452 {
+label = "R(1:13)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ ?|SYNTHETIC\lRETURN\l|lreturn (byte) 10l}"];
+}
+}
+subgraph cluster_Region_718175284 {
+label = "R(2:(1:21)|23)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1258347501 {
+label = "IF [B:15:0x001b, B:19:0x0022] THEN: R(1:21) ELSE: null";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x001b|lif (r5.anole_type != 4) goto L39l}"];
+Node_19 [shape=record,label="{19\:\ 0x0022|ADDED_TO_REGION\l|lif (r5.anole_type == 3) goto L41l}"];
+subgraph cluster_Region_1247072276 {
+label = "R(1:21)";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ ?|SYNTHETIC\lRETURN\l|lreturn (byte) 10l}"];
+}
+}
+Node_23 [shape=record,label="{23\:\ ?|SYNTHETIC\lRETURN\lADDED_TO_REGION\l|lreturn (byte) 5l}"];
+}
+}
+}
+}
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\lADDED_TO_REGION\l|lreturn (byte) 6l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0008|ADDED_TO_REGION\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0009|RETURN\lORIG_RETURN\lADDED_TO_REGION\l|lreturn (byte) 6l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x000a|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x000f|ADDED_TO_REGION\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0011|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0016|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0018|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x001d|ADDED_TO_REGION\l|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ ?|SYNTHETIC\lRETURN\lADDED_TO_REGION\l|lreturn (byte) 5l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x001f|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x0024|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x0026|ADDED_TO_REGION\l|l}"];
+MethodNode[shape=record,label="{public byte main.Map.getMySpeed((r5v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x000f \-\> B:4:0x0009, CROSS_EDGE: B:12:0x0016 \-\> B:4:0x0009, CROSS_EDGE: B:16:0x001d \-\> B:4:0x0009, CROSS_EDGE: B:20:0x0024 \-\> B:4:0x0009, CROSS_EDGE: B:22:0x0026 \-\> B:4:0x0009\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_10;
+Node_11 -> Node_12;
+Node_11 -> Node_14[style=dashed];
+Node_13 -> Node_5;
+Node_15 -> Node_16[style=dashed];
+Node_15 -> Node_18;
+Node_19 -> Node_20;
+Node_19 -> Node_22[style=dashed];
+Node_21 -> Node_5;
+Node_23 -> Node_5;
+Node_9 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_12 -> Node_13;
+Node_14 -> Node_15;
+Node_16 -> Node_17;
+Node_17 -> Node_5;
+Node_18 -> Node_19;
+Node_20 -> Node_21;
+Node_22 -> Node_23;
+}
+

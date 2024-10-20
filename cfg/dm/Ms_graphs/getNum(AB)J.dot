@@ -1,0 +1,45 @@
+digraph "CFG fordm.Ms.getNum([B)J" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr2 = 0lint r1 = r7.lengthlr0 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0003|LOOP_START\lPHI: r0 r2l  0x0003: PHI (r0v1 'i' int) = (r0v0 'i' int), (r0v2 'i' int) binds: [B:1:0x0000, B:6:0x000a] A[DONT_GENERATE, DONT_INLINE]l  0x0003: PHI (r2v1 'rtn' int) = (r2v0 'rtn' int), (r2v5 'rtn' int) binds: [B:1:0x0000, B:6:0x000a] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0003\-\>B:6:0x000a\l|lif (r0 \< r1) goto L24l}"];
+Node_3 [shape=record,label="{3\:\ 0x0007|lswitch(r1) \{l    case 1: goto L26;l    case 2: goto L27;l    case 3: goto L31;l    case 4: goto L28;l    case 5: goto L31;l    case 6: goto L31;l    case 7: goto L31;l    case 8: goto L29;l    default: goto L31;l\}l}"];
+Node_4 [shape=record,label="{4\:\ 0x000d|lint r2 = r2 + ((byte) ((r7[r0] & 255) \<\< (r0 * 8)))l}"];
+Node_5 [shape=record,label="{5\:\ 0x000a|SYNTHETIC\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000a|LOOP_END\lPHI: r2l  0x000a: PHI (r2v5 'rtn' int) = (r2v1 'rtn' int), (r2v2 'rtn' int), (r2v3 'rtn' int), (r2v4 'rtn' int), (r2v6 'rtn' int) binds: [B:13:0x000a, B:12:0x000a, B:10:0x000a, B:8:0x000a, B:5:0x000a] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0003\-\>B:6:0x000a\l|lint r0 = r0 + 1l}"];
+Node_7 [shape=record,label="{7\:\ 0x0017|lint r2 = r2 + ((short) ((r7[r0] & 255) \<\< (r0 * 8)))l}"];
+Node_8 [shape=record,label="{8\:\ 0x000a|SYNTHETIC\l|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0021|lint r2 = r2 + ((r7[r0] & 255) \<\< (r0 * 8))l}"];
+Node_10 [shape=record,label="{10\:\ 0x000a|SYNTHETIC\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x002a|lint r2 = (int) (((long) r2) + ((long) ((r7[r0] & 255) \<\< (r0 * 8))))l}"];
+Node_12 [shape=record,label="{12\:\ 0x000a|SYNTHETIC\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x000a|SYNTHETIC\l|l}"];
+Node_14 [shape=record,label="{14\:\ 0x0005|SYNTHETIC\l|l}"];
+Node_15 [shape=record,label="{15\:\ 0x0005|l}"];
+Node_16 [shape=record,label="{16\:\ 0x0006|RETURN\l|lreturn (long) r2l}"];
+Node_17 [shape=record,label="{17\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static long dm.Ms.getNum((r7v0 'b' byte[] A[D('b' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lCOMPUTE_POST_DOM\lINLINE_NOT_NEEDED\lBACK_EDGE: B:6:0x000a \-\> B:2:0x0003, CROSS_EDGE: B:4:0x000d \-\> B:6:0x000a, CROSS_EDGE: B:7:0x0017 \-\> B:6:0x000a, CROSS_EDGE: B:9:0x0021 \-\> B:6:0x000a, CROSS_EDGE: B:11:0x002a \-\> B:6:0x000a\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_14[style=dashed];
+Node_3 -> Node_4;
+Node_3 -> Node_7;
+Node_3 -> Node_9;
+Node_3 -> Node_11;
+Node_3 -> Node_13;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_6 -> Node_2;
+Node_7 -> Node_8;
+Node_8 -> Node_6;
+Node_9 -> Node_10;
+Node_10 -> Node_6;
+Node_11 -> Node_12;
+Node_12 -> Node_6;
+Node_13 -> Node_6;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_16 -> Node_17;
+}
+

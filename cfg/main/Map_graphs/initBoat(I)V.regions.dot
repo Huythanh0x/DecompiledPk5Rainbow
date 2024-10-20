@@ -1,0 +1,16 @@
+digraph "CFG formain.Map.initBoat(I)V" {
+subgraph cluster_Region_1663252674 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.my.state = (byte) 9lr4.anole_type = (byte) 5lsetAnole()lr4.boatSelect = (byte) r5lr4.gr.cur_a = (byte) 0lr4.my.setIXY(r4.boatCourse[r4.boatSelect][r4.gr.cur_a], r4.boatCourse[r4.boatSelect][r4.gr.cur_a + 1])l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0033|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.initBoat((r4v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r5v0 '_select' int A[D('_select' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

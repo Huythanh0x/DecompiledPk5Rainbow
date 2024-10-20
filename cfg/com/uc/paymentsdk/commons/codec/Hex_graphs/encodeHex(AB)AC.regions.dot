@@ -1,0 +1,31 @@
+digraph "CFG forcom.uc.paymentsdk.commons.codec.Hex.encodeHex([B)[C" {
+subgraph cluster_Region_452153171 {
+label = "R(3:1|(1:3)|5)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint int r1 = r7.lengthlchar[] char[] r0 = new char[r1 \<\< 1]lint r2 = 0lint r4 = 0l}"];
+subgraph cluster_LoopRegion_445437249 {
+label = "LOOP:0: (1:3)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0008|LOOP_START\lADDED_TO_REGION\lPHI: r2 r4l  0x0008: PHI (r2v1 'j' int) = (r2v0 'j' int), (r2v2 'j' int) binds: [B:1:0x0000, B:3:0x000b] A[DONT_GENERATE, DONT_INLINE]l  0x0008: PHI (r4v1 'k' int) = (r4v0 'k' int), (r4v2 'k' int) binds: [B:1:0x0000, B:3:0x000b] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:3:0x000b\l|lif (r2 \< r1) goto L12l}"];
+subgraph cluster_Region_1161523222 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000b|LOOP_END\lLOOP:0: B:2:0x0008\-\>B:3:0x000b\l|lint int r3 = r4 + 1lr0[r4] = com.uc.paymentsdk.commons.codec.Hex.DIGITS[(r7[r2] & 240) \>\>\> 4]lint r4 = r3 + 1lr0[r3] = com.uc.paymentsdk.commons.codec.Hex.DIGITS[r7[r2] & 15]lr2++l}"];
+}
+}
+Node_5 [shape=record,label="{5\:\ 0x000a|RETURN\l|lreturn r0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x000a|SYNTHETIC\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static char[] com.uc.paymentsdk.commons.codec.Hex.encodeHex((r7v0 'paramArrayOfByte' byte[] A[D('paramArrayOfByte' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lBACK_EDGE: B:3:0x000b \-\> B:2:0x0008\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_2;
+Node_5 -> Node_6;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+}
+

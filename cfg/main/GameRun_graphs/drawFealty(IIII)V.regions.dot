@@ -1,0 +1,44 @@
+digraph "CFG formain.GameRun.drawFealty(IIII)V" {
+subgraph cluster_Region_1585550308 {
+label = "R(2:1|(1:7))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r6 = 0l}"];
+subgraph cluster_LoopRegion_704919952 {
+label = "LOOP:0: (1:7)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|LOOP_START\lADDED_TO_REGION\lPHI: r6l  0x0002: PHI (r6v1 'i' byte) = (r6v0 'i' byte), (r6v2 'i' byte) binds: [B:1:0x0000, B:7:0x000d] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0002\-\>B:7:0x000d\l|lif (r6 \< r8) goto L18l}"];
+subgraph cluster_Region_297512544 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x000d|LOOP_END\lPHI: r1l  0x000d: PHI (r1v1 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0002\-\>B:7:0x000d\l|ldm.Ui.i().drawUi(r6 \> r9 ? 22 : 21, (r6 * 14) + r10, r11, 0, 0)lbyte r6 = (byte) (r6 + 1)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0005|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0009|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000b|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x000d|SYNTHETIC\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0019|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x000d|SYNTHETIC\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0004|SYNTHETIC\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0004|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.drawFealty((r7v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r8v0 'length' int A[D('length' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'n' int A[D('n' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:7:0x000d \-\> B:2:0x0002, CROSS_EDGE: B:8:0x0019 \-\> B:7:0x000d\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_10[style=dashed];
+Node_7 -> Node_2;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_8;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_9 -> Node_7;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+}
+

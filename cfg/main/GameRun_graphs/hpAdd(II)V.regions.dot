@@ -1,0 +1,63 @@
+digraph "CFG formain.GameRun.hpAdd(II)V" {
+subgraph cluster_Region_763053729 {
+label = "R(1:(1:5)(1:(1:10)(1:12)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_121843973 {
+label = "IF [B:2:0x001e, B:4:0x002e] THEN: R(1:5) ELSE: R(1:(1:10)(1:12))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x001e|lif (r5.myMonsters[r5.select[0][0]].monsterPro[0] \< r5.myMonsters[r5.select[0][0]].monsterPro[2]) goto L18l}"];
+Node_4 [shape=record,label="{4\:\ 0x002e|ADDED_TO_REGION\l|lif (r5.myMonsters[r5.select[0][0]].monsterPro[0] \> 0) goto L20l}"];
+subgraph cluster_Region_1030180008 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0030|lAddHP(r7 + ((r5.myMonsters[r5.select[0][0]].monsterPro[2] * r6) \/ 100), r5.myMonsters[r5.select[0][0]])luseState(0, r5.select_it[0])l}"];
+}
+subgraph cluster_Region_1300375339 {
+label = "R(1:(1:10)(1:12)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_976961140 {
+label = "IF [B:9:0x0067] THEN: R(1:10) ELSE: R(1:12) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0067|lif (r5.myMonsters[r5.select[0][0]].monsterPro[0] \< 1) goto L24l}"];
+subgraph cluster_Region_611248943 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0069|lsay(java.lang.String.valueOf(getNameMon(r5.myMonsters[r5.select[0][0]].monster[0])) + main.Constants_H.TXT_0, 0)l}"];
+}
+subgraph cluster_Region_594276614 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0092|lsay(java.lang.String.valueOf(getNameMon(r5.myMonsters[r5.select[0][0]].monster[0])) + main.Constants_H.TXT_1, 0)l}"];
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0020|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0057|ORIG_RETURN\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0058|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|SYNTHETIC\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.hpAdd((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r6v0 'hp' int A[D('hp' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'offer' int A[D('offer' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0069 \-\> B:6:0x0057, CROSS_EDGE: B:12:0x0092 \-\> B:6:0x0057, CROSS_EDGE: B:2:0x001e \-\> B:8:0x0058\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_8[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_8[style=dashed];
+Node_5 -> Node_6;
+Node_9 -> Node_10;
+Node_9 -> Node_12[style=dashed];
+Node_10 -> Node_11;
+Node_12 -> Node_13;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_11 -> Node_7;
+Node_13 -> Node_7;
+}
+

@@ -1,0 +1,241 @@
+digraph "CFG formain.PointerKey.process(II)V" {
+subgraph cluster_Region_1089560699 {
+label = "R(1:(1:(2:(1:(1:(1:(1:41))(1:44))(1:(1:49)))|14)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1599826406 {
+label = "R(1:(2:(1:(1:(1:(1:41))(1:44))(1:(1:49)))|14))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1937490153 {
+label = "IF [B:2:0x0011, B:4:0x0018] THEN: R(2:(1:(1:(1:(1:41))(1:44))(1:(1:49)))|14) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0011|lif (r7.map.my.state != 20) goto L61l}"];
+Node_4 [shape=record,label="{4\:\ 0x0018|ADDED_TO_REGION\l|lif (checkButton(7, r8, r9) == (\-1)) goto L61l}"];
+subgraph cluster_Region_908841791 {
+label = "R(2:(1:(1:(1:(1:41))(1:44))(1:(1:49)))|14)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_2106756921 {
+label = "IF [B:8:0x001d, B:10:0x0025, B:12:0x002f] THEN: R(1:(1:(1:(1:41))(1:44))(1:(1:49))) ELSE: null";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x001d|lif (main.GameRun.run_state != (\-10)) goto L71l}"];
+Node_10 [shape=record,label="{10\:\ 0x0025|ADDED_TO_REGION\l|lif (r7.map.my.state != 0) goto L65l}"];
+Node_12 [shape=record,label="{12\:\ 0x002f|ADDED_TO_REGION\l|lif (r7.map.my.state != 20) goto L71l}"];
+subgraph cluster_Region_2030230836 {
+label = "R(1:(1:(1:(1:41))(1:44))(1:(1:49)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1423124085 {
+label = "IF [B:30:0x003f] THEN: R(1:(1:(1:41))(1:44)) ELSE: R(1:(1:49))";
+node [shape=record,color=blue];
+Node_30 [shape=record,label="{30\:\ 0x003f|lif (main.GameRun.run_state == (\-10)) goto L73l}"];
+subgraph cluster_Region_1015653883 {
+label = "R(1:(1:(1:41))(1:44))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1426787860 {
+label = "IF [B:32:0x0049, B:34:0x0051, B:43:0x0057] THEN: R(1:(1:41)) ELSE: R(1:44)";
+node [shape=record,color=blue];
+Node_32 [shape=record,label="{32\:\ 0x0049|lif (r7.map.my.state != 18) goto L75l}"];
+Node_34 [shape=record,label="{34\:\ 0x0051|ADDED_TO_REGION\l|lif (r7.map.my.state != 17) goto L79l}"];
+Node_43 [shape=record,label="{43\:\ 0x0057|ADDED_TO_REGION\l|lif (checkButton(8, r8, r9) == (\-1)) goto L79l}"];
+subgraph cluster_Region_982487804 {
+label = "R(1:(1:41))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1998781270 {
+label = "IF [B:36:0x0061, B:38:0x0069, B:40:0x0070] THEN: R(1:41) ELSE: null";
+node [shape=record,color=blue];
+Node_36 [shape=record,label="{36\:\ 0x0061|lif (r7.map.my.state != 18) goto L81l}"];
+Node_38 [shape=record,label="{38\:\ 0x0069|ADDED_TO_REGION\l|lif (r7.map.my.state != 17) goto L83l}"];
+Node_40 [shape=record,label="{40\:\ 0x0070|ADDED_TO_REGION\l|lif (checkButton(0, r8, r9) != (\-1)) goto L105l}"];
+subgraph cluster_Region_116731444 {
+label = "R(1:41)";
+node [shape=record,color=blue];
+Node_41 [shape=record,label="{41\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+subgraph cluster_Region_193198928 {
+label = "R(1:44)";
+node [shape=record,color=blue];
+Node_44 [shape=record,label="{44\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+subgraph cluster_Region_1306366126 {
+label = "R(1:(1:49)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_759507464 {
+label = "IF [B:46:0x0075, B:48:0x007b] THEN: R(1:49) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_46 [shape=record,label="{46\:\ 0x0075|lif (main.GameRun.run_state != (\-10)) goto L88l}"];
+Node_48 [shape=record,label="{48\:\ 0x007b|ADDED_TO_REGION\l|lif (checkButton(8, r8, r9) != (\-1)) goto L106l}"];
+subgraph cluster_Region_40772890 {
+label = "R(1:49)";
+node [shape=record,color=blue];
+Node_49 [shape=record,label="{49\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+}
+}
+subgraph cluster_SwitchRegion_371398524 {
+label = "Switch: 4
+ case 30 -> R(2:15|16)
+ case 40 -> R(1:20)
+ case 98 -> R(2:17|18)
+ case default -> R(1:28)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0035|lswitch(r7.mc.game_state) \{l    case 30: goto L70;l    case 40: goto L92;l    case 98: goto L91;l    default: goto L104;l\}l}"];
+subgraph cluster_Region_937082358 {
+label = "R(2:15|16)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0039|lrunKeySate(r8, r9)l}"];
+Node_16 [shape=record,label="{16\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_868992111 {
+label = "R(1:20)";
+node [shape=record,color=blue];
+subgraph cluster_SwitchRegion_1082028537 {
+label = "Switch: 2
+ case 0 -> R(1:(2:(2:23|24)|(2:25|26)))
+ case default -> R(1:27)";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x008d|lswitch(r7.mc.menu_state) \{l    case 0: goto L95;l    default: goto L107;l\}l}"];
+subgraph cluster_Region_1315440253 {
+label = "R(1:(2:(2:23|24)|(2:25|26)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_750729035 {
+label = "R(2:(2:23|24)|(2:25|26))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1094350351 {
+label = "IF [B:22:0x0096] THEN: R(2:23|24) ELSE: null";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x0096|lif (r7.mc.load_c == 1) goto L97l}"];
+subgraph cluster_Region_1928865384 {
+label = "R(2:23|24)";
+node [shape=record,color=blue];
+Node_23 [shape=record,label="{23\:\ 0x0098|lr7.i0 = r8lr7.i1 = r9lcheckButton(3, r8, r9)l}"];
+Node_24 [shape=record,label="{24\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_2091748772 {
+label = "R(2:25|26)";
+node [shape=record,color=blue];
+Node_25 [shape=record,label="{25\:\ 0x00a2|lcheckButton(9, r8, r9)l}"];
+Node_26 [shape=record,label="{26\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+subgraph cluster_Region_704509973 {
+label = "R(1:27)";
+node [shape=record,color=blue];
+Node_27 [shape=record,label="{27\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+subgraph cluster_Region_996501803 {
+label = "R(2:17|18)";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x007e|lcheckButton(9, r8, r9)landroid.util.Log.d(\"soars\", \"checkButton\")l}"];
+Node_18 [shape=record,label="{18\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_144560969 {
+label = "R(1:28)";
+node [shape=record,color=blue];
+Node_28 [shape=record,label="{28\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0013|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x001a|ORIG_RETURN\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x001b|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x001f|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0027|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0031|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x0089|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ 0x0091|l}"];
+Node_29 [shape=record,color=red,label="{29\:\ 0x003d|l}"];
+Node_31 [shape=record,color=red,label="{31\:\ 0x0041|l}"];
+Node_33 [shape=record,color=red,label="{33\:\ 0x004b|l}"];
+Node_35 [shape=record,color=red,label="{35\:\ 0x0059|l}"];
+Node_37 [shape=record,color=red,label="{37\:\ 0x0063|l}"];
+Node_39 [shape=record,color=red,label="{39\:\ 0x006b|l}"];
+Node_42 [shape=record,color=red,label="{42\:\ 0x0053|l}"];
+Node_45 [shape=record,color=red,label="{45\:\ 0x0073|l}"];
+Node_47 [shape=record,color=red,label="{47\:\ 0x0077|l}"];
+MethodNode[shape=record,label="{public void main.PointerKey.process((r7v0 'this' main.PointerKey A[IMMUTABLE_TYPE, THIS]), (r8v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lCOMPUTE_POST_DOM\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:15:0x0039 \-\> B:5:0x001a, CROSS_EDGE: B:17:0x007e \-\> B:5:0x001a, CROSS_EDGE: B:23:0x0098 \-\> B:5:0x001a, CROSS_EDGE: B:25:0x00a2 \-\> B:5:0x001a, CROSS_EDGE: B:20:0x008d \-\> B:5:0x001a, CROSS_EDGE: B:14:0x0035 \-\> B:5:0x001a, CROSS_EDGE: B:43:0x0057 \-\> B:5:0x001a, CROSS_EDGE: B:36:0x0061 \-\> B:13:0x0031, CROSS_EDGE: B:38:0x0069 \-\> B:13:0x0031, CROSS_EDGE: B:40:0x0070 \-\> B:13:0x0031, CROSS_EDGE: B:40:0x0070 \-\> B:5:0x001a, CROSS_EDGE: B:34:0x0051 \-\> B:35:0x0059, CROSS_EDGE: B:32:0x0049 \-\> B:42:0x0053, CROSS_EDGE: B:46:0x0075 \-\> B:13:0x0031, CROSS_EDGE: B:48:0x007b \-\> B:13:0x0031, CROSS_EDGE: B:48:0x007b \-\> B:5:0x001a, CROSS_EDGE: B:10:0x0025 \-\> B:13:0x0031, CROSS_EDGE: B:8:0x001d \-\> B:29:0x003d, CROSS_EDGE: B:2:0x0011 \-\> B:7:0x001b\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_7;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_7;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_29;
+Node_10 -> Node_11;
+Node_10 -> Node_13[style=dashed];
+Node_12 -> Node_13[style=dashed];
+Node_12 -> Node_29;
+Node_30 -> Node_31;
+Node_30 -> Node_45[style=dashed];
+Node_32 -> Node_33;
+Node_32 -> Node_42[style=dashed];
+Node_34 -> Node_42[style=dashed];
+Node_34 -> Node_35;
+Node_43 -> Node_35;
+Node_43 -> Node_44[style=dashed];
+Node_36 -> Node_13[style=dashed];
+Node_36 -> Node_37;
+Node_38 -> Node_13[style=dashed];
+Node_38 -> Node_39;
+Node_40 -> Node_13[style=dashed];
+Node_40 -> Node_41;
+Node_41 -> Node_6;
+Node_44 -> Node_6;
+Node_46 -> Node_13[style=dashed];
+Node_46 -> Node_47;
+Node_48 -> Node_13[style=dashed];
+Node_48 -> Node_49;
+Node_49 -> Node_6;
+Node_14 -> Node_15;
+Node_14 -> Node_17;
+Node_14 -> Node_19;
+Node_14 -> Node_28;
+Node_15 -> Node_16;
+Node_16 -> Node_6;
+Node_20 -> Node_21;
+Node_20 -> Node_27;
+Node_22 -> Node_23;
+Node_22 -> Node_25[style=dashed];
+Node_23 -> Node_24;
+Node_24 -> Node_6;
+Node_25 -> Node_26;
+Node_26 -> Node_6;
+Node_27 -> Node_6;
+Node_17 -> Node_18;
+Node_18 -> Node_6;
+Node_28 -> Node_6;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+Node_13 -> Node_14;
+Node_19 -> Node_20;
+Node_21 -> Node_22;
+Node_29 -> Node_30;
+Node_31 -> Node_32;
+Node_33 -> Node_34;
+Node_35 -> Node_36;
+Node_37 -> Node_38;
+Node_39 -> Node_40;
+Node_42 -> Node_43;
+Node_45 -> Node_46;
+Node_47 -> Node_48;
+}
+

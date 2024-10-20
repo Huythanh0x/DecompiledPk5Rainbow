@@ -1,0 +1,12 @@
+digraph "CFG formain.GameRun.goView()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.select[0][1] = r4.selectxlr4.select[0][0] = r4.selectylr4.cur_c = 0lr4.popMenu = \-1lsetStringB(\"生命#n能量#n档次\", main.Constants_H.WIDTH, 0)lsetStringB(\"力量#n防御#n敏捷\", main.Constants_H.WIDTH, 1)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0025|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.goView((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

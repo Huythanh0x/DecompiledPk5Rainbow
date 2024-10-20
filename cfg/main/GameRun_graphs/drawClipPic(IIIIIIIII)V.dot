@@ -1,0 +1,43 @@
+digraph "CFG formain.GameRun.drawClipPic(IIIIIIIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr10 = 1lbyte r11 = (byte) (r18 \/ r20)lint r2 = 2 \<\< r21l}"];
+Node_2 [shape=record,label="{2\:\ 0x0008|LOOP_START\lPHI: r2 r10l  0x0008: PHI (r2v3 int) = (r2v2 int), (r2v11 int) binds: [B:1:0x0000, B:11:0x0049] A[DONT_GENERATE, DONT_INLINE]l  0x0008: PHI (r10v1 'i' byte) = (r10v0 'i' byte), (r10v2 'i' byte) binds: [B:1:0x0000, B:11:0x0049] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:11:0x0049\l|lshort r12 = (short) r2l}"];
+Node_3 [shape=record,label="{3\:\ 0x000b|lif (r10 \< r20) goto L24l}"];
+Node_4 [shape=record,label="{4\:\ 0x000e|ljavax.microedition.lcdui.Graphics r2 = main.GameRun.glint r3 = r16 \- (r10 * r11)lint r4 = r17 \- r19l}"];
+Node_5 [shape=record,label="{5\:\ 0x0018|lif ((r11 \- r12) \> 0) goto L31l}"];
+Node_6 [shape=record,label="{6\:\ 0x001a|lr5 = r11l}"];
+Node_7 [shape=record,label="{7\:\ 0x001b|PHI: r5l  0x001b: PHI (r5v2 short) = (r5v1 short), (r5v11 short) binds: [B:14:0x006f, B:6:0x001a] A[DONT_GENERATE, DONT_INLINE]\l|lr2.clipRect(r3, r4, r5, r19 + 20)ldrawCartoonOne(r15, r15, r14 * 3, r16, r17, true, r22)lmain.GameRun.g.setClip(0, 0, main.Constants_H.WIDTH, main.Constants_H.HEIGHT)ljavax.microedition.lcdui.Graphics r2 = main.GameRun.glint r3 = ((r10 \- 1) * r11) + r16lint r4 = r17 \- r19l}"];
+Node_8 [shape=record,label="{8\:\ 0x0046|lif ((r11 \- r12) \> 0) goto L32l}"];
+Node_9 [shape=record,label="{9\:\ 0x0048|lr5 = r11l}"];
+Node_10 [shape=record,label="{10\:\ 0x0049|SYNTHETIC\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x0049|LOOP_END\lPHI: r5l  0x0049: PHI (r5v7 short) = (r5v6 short), (r5v10 short) binds: [B:13:0x0049, B:10:0x0049] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:11:0x0049\l|lr2.clipRect(r3, r4, r5, r19 + 20)ldrawCartoonOne(r15, r15, r14 * 3, r16, r17, true, r22)lmain.GameRun.g.setClip(0, 0, main.Constants_H.WIDTH, main.Constants_H.HEIGHT)lbyte r10 = (byte) (r10 + 1)lint r2 = r12 \/ 2l}"];
+Node_12 [shape=record,label="{12\:\ 0x0071|lr5 = r12l}"];
+Node_13 [shape=record,label="{13\:\ 0x0049|SYNTHETIC\l|l}"];
+Node_14 [shape=record,label="{14\:\ 0x006f|lr5 = r12l}"];
+Node_15 [shape=record,label="{15\:\ 0x000d|SYNTHETIC\l|l}"];
+Node_16 [shape=record,label="{16\:\ 0x000d|RETURN\l|lreturnl}"];
+Node_17 [shape=record,label="{17\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawClipPic((r13v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r14v0 'action_id' int A[D('action_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r16v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r17v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r18v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r19v0 'h' int A[D('h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r20v0 'piece' int A[D('piece' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r21v0 'cc' int A[D('cc' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r22v0 'dir' int A[D('dir' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:11:0x0049 \-\> B:2:0x0008, CROSS_EDGE: B:12:0x0071 \-\> B:11:0x0049, CROSS_EDGE: B:14:0x006f \-\> B:7:0x001b\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_15[style=dashed];
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_14;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_12;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_11 -> Node_2;
+Node_12 -> Node_13;
+Node_13 -> Node_11;
+Node_14 -> Node_7;
+Node_15 -> Node_16;
+Node_16 -> Node_17;
+}
+

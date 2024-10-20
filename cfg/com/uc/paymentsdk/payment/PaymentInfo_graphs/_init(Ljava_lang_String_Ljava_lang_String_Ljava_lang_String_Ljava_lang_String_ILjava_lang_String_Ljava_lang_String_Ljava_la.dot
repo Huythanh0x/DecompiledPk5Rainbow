@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentInfo.\<init\>(Ljava\/lang\/String;Ljava\/lang\/String;Ljava\/lang\/String;Ljava\/lang\/String;ILjava\/lang\/String;Ljava\/lang\/String;Ljava\/lang\/String;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr0.mPayName = r1lr0.mPayDesc = r4lr0.mMoney = r5lr0.mPayType = r6lr0.mOrderID = r7lr0.mUsername = r8lr0.mGameID = r2lr0.mActionID = r3l}"];
+Node_2 [shape=record,label="{2\:\ 0x0013|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void com.uc.paymentsdk.payment.PaymentInfo.\<init\>((r0v0 'this' com.uc.paymentsdk.payment.PaymentInfo A[IMMUTABLE_TYPE, THIS]), (r1v0 'payname' java.lang.String A[D('payname' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r2v0 'gameid' java.lang.String A[D('gameid' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 'actionid' java.lang.String A[D('actionid' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'paydesc' java.lang.String A[D('paydesc' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'paymoney' int A[D('paymoney' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'paytype' java.lang.String A[D('paytype' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'orderid' java.lang.String A[D('orderid' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'username' java.lang.String A[D('username' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

@@ -1,0 +1,19 @@
+digraph "CFG formain.GameRun_F.gogoWordM(Ljava\/lang\/String;IIIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lshort r9 = (short) dm.Ms.i().getStringWidth(r11)lr10.introT = r10.introT \- r16l}"];
+Node_2 [shape=record,label="{2\:\ 0x0018|lif ((r10.introT + r9) \>= (r13 \<\< 1)) goto L12l}"];
+Node_3 [shape=record,label="{3\:\ 0x001a|lr10.introT = main.Constants_H.WIDTH_ + 1l}"];
+Node_4 [shape=record,label="{4\:\ 0x001e|lmain.GameRun_F.g.clipRect(r13, r12, main.Constants_H.WIDTH_ \- (r13 \<\< 1), 30)ldm.Ui.i().drawString(r11, r10.introT, r12, 0, r14, r15)lmain.GameRun_F.g.setClip(0, 0, main.Constants_H.WIDTH_, main.Constants_H.HEIGHT_)l}"];
+Node_5 [shape=record,label="{5\:\ 0x003e|RETURN\l|lreturnl}"];
+Node_6 [shape=record,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun_F.gogoWordM((r10v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]), (r11v0 'string' java.lang.String A[D('string' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'color' int A[D('color' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'strT' int A[D('strT' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r16v0 'speed' int A[D('speed' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0018 \-\> B:4:0x001e\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_4;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+}
+

@@ -1,0 +1,12 @@
+digraph "CFG formain.GameRun.setRelive(Ldm\/Battle;Ldm\/Battle;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr7.initHit()lr7.addHit(((\-r7.getMon().monsterPro[2]) * r5.skill[38][0]) \/ 100, 1, 1)lr7.skill = 28lr7.dead = 0lr7.action = 0lr7.b_renascence = truelr7.act_num = 0lr5.battle_state = \-1lsetMagic(5)lgetHitCoefficient(r7, r7.getMon(), r6.getMon())lsetAimBattle(r5.mini_state ^ 1)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0042|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.setRelive((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r6v0 'amB' dm.Battle A[D('amB' dm.Battle), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'dmB' dm.Battle A[D('dmB' dm.Battle), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

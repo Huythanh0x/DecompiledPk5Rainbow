@@ -1,0 +1,59 @@
+digraph "CFG forcom.uc.paymentsdk.commons.codec.Hex.encode(Ljava\/lang\/Object;)Ljava\/lang\/Object;" {
+subgraph cluster_Region_69463827 {
+label = "R(1:(2:3|6))";
+node [shape=record,color=blue];
+subgraph cluster_TryCatchRegion_962652441 {
+label = "Try: R(2:3|6) catches: R(2:11|13)";
+node [shape=record,color=blue];
+subgraph cluster_Region_30934210 {
+label = "R(2:3|6)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0002|lbyte[] r0 = r5 instanceof java.lang.String ? ((java.lang.String) r5).getBytes() : (byte[]) r5l}"];
+Node_6 [shape=record,label="{6\:\ 0x000f|RETURN\l|lreturn encodeHex(r0)l}"];
+}
+subgraph cluster_Region_968417520 {
+label = "R(2:11|13) | ExcHandler: ClassCastException \-\> 0x0014\l";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0014|ExcHandler: ClassCastException \-\> 0x0014\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x001f|lthrow new com.uc.paymentsdk.commons.codec.EncoderException(r2.getMessage())l}"];
+}
+}
+}
+subgraph cluster_Region_968417520 {
+label = "R(2:11|13) | ExcHandler: ClassCastException \-\> 0x0014\l";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0014|ExcHandler: ClassCastException \-\> 0x0014\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x001f|lthrow new com.uc.paymentsdk.commons.codec.EncoderException(r2.getMessage())l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0000|TRY_ENTER\lTryCatch #0 \{ClassCastException \-\> 0x0014, blocks: (B:2:0x0000, B:4:0x0004, B:5:0x000b, B:9:0x0010), top: B:1:0x0000 \}\lCatch: ClassCastException \-\> 0x0014\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0004|TryCatch #0 \{ClassCastException \-\> 0x0014, blocks: (B:2:0x0000, B:4:0x0004, B:5:0x000b, B:9:0x0010), top: B:1:0x0000 \}\lCatch: ClassCastException \-\> 0x0014\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000b|PHI: r0l  0x000b: PHI (r0v1 'arrayOfByte' byte[]) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\lTryCatch #0 \{ClassCastException \-\> 0x0014, blocks: (B:2:0x0000, B:4:0x0004, B:5:0x000b, B:9:0x0010), top: B:1:0x0000 \}\lCatch: ClassCastException \-\> 0x0014\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0010|TRY_LEAVE\lTryCatch #0 \{ClassCastException \-\> 0x0014, blocks: (B:2:0x0000, B:4:0x0004, B:5:0x000b, B:9:0x0010), top: B:1:0x0000 \}\lCatch: ClassCastException \-\> 0x0014\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0012|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0015|l}"];
+MethodNode[shape=record,label="{public java.lang.Object com.uc.paymentsdk.commons.codec.Hex.encode((r4v0 'this' com.uc.paymentsdk.commons.codec.Hex A[IMMUTABLE_TYPE, THIS]), (r5v0 'paramObject' java.lang.Object A[D('paramObject' java.lang.Object), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Lcom\/uc\/paymentsdk\/commons\/codec\/EncoderException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:13:0x001f \-\> B:7:?, CROSS_EDGE: B:10:0x0012 \-\> B:5:0x000b, CROSS_EDGE: B:1:0x0000 \-\> B:11:0x0014\lMETHOD_OVERRIDE: [com.uc.paymentsdk.commons.codec.Encoder.encode(java.lang.Object):java.lang.Object]\lTryCatch #0 \{ClassCastException \-\> 0x0014, blocks: (B:2:0x0000, B:4:0x0004, B:5:0x000b, B:9:0x0010), top: B:1:0x0000 \}\l}"];
+MethodNode -> Node_0;
+Node_3 -> Node_4;
+Node_3 -> Node_9;
+Node_6 -> Node_7;
+Node_11 -> Node_12;
+Node_13 -> Node_7;
+Node_11 -> Node_12;
+Node_13 -> Node_7;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_1 -> Node_11;
+Node_2 -> Node_3;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_8;
+Node_8 -> Node_11;
+Node_9 -> Node_10;
+Node_10 -> Node_5;
+Node_12 -> Node_13;
+}
+

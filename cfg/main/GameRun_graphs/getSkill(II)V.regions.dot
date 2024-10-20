@@ -1,0 +1,23 @@
+digraph "CFG formain.GameRun.getSkill(II)V" {
+subgraph cluster_Region_1304573497 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0004|PHI: r0l  0x0004: PHI (r0v3 byte) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr2.getSkill = r3 == 0 ? (byte) 25 : r2.skill_up[r3 \- 1][r4]l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0002|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0006|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0007|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.getSkill((r2v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r3v0 'skill_level' int A[D('skill_level' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'pro' int A[D('pro' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0007 \-\> B:3:0x0004\l}"];
+MethodNode -> Node_0;
+Node_3 -> Node_4;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_1 -> Node_6;
+Node_2 -> Node_3;
+Node_4 -> Node_5;
+Node_6 -> Node_3;
+}
+

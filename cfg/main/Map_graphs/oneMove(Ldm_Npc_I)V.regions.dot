@@ -1,0 +1,75 @@
+digraph "CFG formain.Map.oneMove(Ldm\/Npc;I)V" {
+subgraph cluster_Region_89663038 {
+label = "R(1:(2:(3:(1:5)|6|7)|(1:(1:(1:11)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_142866064 {
+label = "R(2:(3:(1:5)|6|7)|(1:(1:(1:11))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_942804299 {
+label = "IF [B:2:0x0003] THEN: R(3:(1:5)|6|7) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif (r5.frame_c \> 0) goto L18l}"];
+subgraph cluster_Region_996636714 {
+label = "R(3:(1:5)|6|7)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_2143998126 {
+label = "IF [B:4:0x0007] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0007|lif (r4.srcNpcNo == r6) goto L20l}"];
+subgraph cluster_Region_1760206513 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0009|lmapMove(r5.x, r5.y, r5.speed_x, r5.speed_y)l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0014|lr5.x = (short) (r5.x + r5.speed_x)lr5.y = (short) (r5.y + r5.speed_y)lr5.frame_c = (byte) (r5.frame_c \- 1)l}"];
+Node_7 [shape=record,label="{7\:\ 0x002b|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1083874994 {
+label = "R(1:(1:(1:11))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_1086068899 {
+label = "R(1:(1:11))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1775955898 {
+label = "IF [B:10:0x002e] THEN: R(1:11) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x002e|lif (r5.frame_c != (\-1)) goto L25l}"];
+subgraph cluster_Region_1442446118 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0030|lr5.frame_c = (byte) \-1lr5.setActionNo(false)l}"];
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0005|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x002c|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.oneMove((r4v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r5v0 'npc_' dm.Npc A[D('npc_' dm.Npc), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x0007 \-\> B:6:0x0014, CROSS_EDGE: B:10:0x002e \-\> B:7:0x002b, CROSS_EDGE: B:11:0x0030 \-\> B:7:0x002b\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_9[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_10 -> Node_11;
+Node_10 -> Node_13[style=dashed];
+Node_11 -> Node_12;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_9 -> Node_10;
+Node_12 -> Node_8;
+Node_13 -> Node_8;
+}
+

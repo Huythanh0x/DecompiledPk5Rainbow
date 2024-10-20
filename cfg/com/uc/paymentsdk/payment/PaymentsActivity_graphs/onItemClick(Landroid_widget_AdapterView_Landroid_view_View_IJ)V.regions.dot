@@ -1,0 +1,73 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.onItemClick(Landroid\/widget\/AdapterView;Landroid\/view\/View;IJ)V" {
+subgraph cluster_Region_934216821 {
+label = "R(1:(1:(2:4|(1:6)(1:(1:(1:10))))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1900941162 {
+label = "R(1:(2:4|(1:6)(1:(1:(1:10)))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_67753540 {
+label = "IF [B:1:0x0000] THEN: R(2:4|(1:6)(1:(1:(1:10)))) ELSE: null";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lif (r7 != 0) goto L4l}"];
+subgraph cluster_Region_1940481679 {
+label = "R(2:4|(1:6)(1:(1:(1:10))))";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0003|lcom.uc.paymentsdk.model.IType com.uc.paymentsdk.model.IType r0 = ((com.uc.paymentsdk.commons.ui.CustomAdapter) ((android.widget.HeaderViewListAdapter) r5.getAdapter()).getWrappedAdapter()).getItem(r7 \- 1)ljava.lang.String java.lang.String r1 = r0.getId()l}"];
+subgraph cluster_IfRegion_1149129768 {
+label = "IF [B:5:0x0020] THEN: R(1:6) ELSE: R(1:(1:(1:10)))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0020|lif (com.uc.paymentsdk.model.TypeFactory.TYPE_PAY_UPOINT.equals(r1) != false) goto L6l}"];
+subgraph cluster_Region_601452652 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0022|lbuildUPointPaymentView()l}"];
+}
+subgraph cluster_Region_1822053582 {
+label = "R(1:(1:(1:10))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_1831740264 {
+label = "R(1:(1:10))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1290916959 {
+label = "IF [B:9:0x002c] THEN: R(1:10) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x002c|lif (\"sms\".equals(r1) != false) goto L9l}"];
+subgraph cluster_Region_660562815 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x002e|lbuildSmsPaymentView()l}"];
+}
+}
+}
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0002|ORIG_RETURN\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|SYNTHETIC\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0026|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void com.uc.paymentsdk.payment.PaymentsActivity.onItemClick((r4v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]), (r5v0 'paramAdapterView' android.widget.AdapterView\<?\> A[D('paramAdapterView' android.widget.AdapterView\<?\>), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'paramView' android.view.View A[D('paramView' android.view.View), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'paramInt' int A[D('paramInt' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'paramLong' long A[D('paramLong' long), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | DONT_RENAME\lUSE_LINES_HINTS\lTYPE_VARS: EMPTY\lSIGNATURE: (Landroid\/widget\/AdapterView\<*\>;Landroid\/view\/View;IJ)V\lMETHOD_OVERRIDE: [ClspMth\{android.widget.AdapterView.OnItemClickListener.onItemClick(android.widget.AdapterView\<?\>, android.view.View, int, long):void\}]\lCROSS_EDGE: B:6:0x0022 \-\> B:2:0x0002, CROSS_EDGE: B:9:0x002c \-\> B:2:0x0002, CROSS_EDGE: B:10:0x002e \-\> B:2:0x0002\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2[style=dashed];
+Node_1 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_8[style=dashed];
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_9 -> Node_12[style=dashed];
+Node_10 -> Node_11;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_7 -> Node_3;
+Node_8 -> Node_9;
+Node_11 -> Node_3;
+Node_12 -> Node_3;
+}
+

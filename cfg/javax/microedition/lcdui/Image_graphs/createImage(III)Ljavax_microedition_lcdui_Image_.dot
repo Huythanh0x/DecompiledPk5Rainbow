@@ -1,0 +1,12 @@
+digraph "CFG forjavax.microedition.lcdui.Image.createImage(III)Ljavax\/microedition\/lcdui\/Image;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljavax.microedition.lcdui.Image r0 = new javax.microedition.lcdui.Image()lr0.mBitmap = android.graphics.Bitmap.createBitmap(r2, r3, android.graphics.Bitmap.Config.RGB_565)l}"];
+Node_2 [shape=record,label="{2\:\ 0x000d|RETURN\l|lreturn r0l}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static javax.microedition.lcdui.Image javax.microedition.lcdui.Image.createImage((r2v0 'width' int A[D('width' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 'height' int A[D('height' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'flag' int A[D('flag' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

@@ -1,0 +1,16 @@
+digraph "CFG formain.GameRun.setShowPro(Ldm\/Monster;)V" {
+subgraph cluster_Region_1670932716 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.lang.StringBuffer java.lang.StringBuffer r0 = new java.lang.StringBuffer()lr0.append(java.lang.String.valueOf((int) r5.monsterPro[6]) + \"#n\")lr0.append(java.lang.String.valueOf((int) r5.monsterPro[7]) + \"#n\")lr0.append((int) r5.monsterPro[5])lsetStringB(r0.toString(), main.Constants_H.WIDTH, 2)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x004e|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.setShowPro((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'monster' dm.Monster A[D('monster' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

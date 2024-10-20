@@ -1,0 +1,67 @@
+digraph "CFG formain.GameRun.getMonster(IIII)B" {
+subgraph cluster_Region_824165632 {
+label = "R(2:1|(2:(2:5|6)|(2:(1:10)(1:13)|12)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Monster dm.Monster r0 = new dm.Monster(r5, r6, r7, r9)l}"];
+subgraph cluster_Region_1269729748 {
+label = "R(2:(2:5|6)|(2:(1:10)(1:13)|12))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1232998577 {
+label = "IF [B:2:0x000b, B:4:0x0011] THEN: R(2:5|6) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000b|lif (r5.cMon_count == r5.max_monsters) goto L18l}"];
+Node_4 [shape=record,label="{4\:\ 0x0011|ADDED_TO_REGION\l|lif (r5.myMon_length == r5.max_takes) goto L20l}"];
+subgraph cluster_Region_567390468 {
+label = "R(2:5|6)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0013|lsay(main.Constants_H.TXT_48, 0)l}"];
+Node_6 [shape=record,label="{6\:\ 0x0019|RETURN\lORIG_RETURN\l|lreturn (byte) \-1l}"];
+}
+}
+subgraph cluster_Region_38677718 {
+label = "R(2:(1:10)(1:13)|12)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1142465105 {
+label = "IF [B:9:0x001e] THEN: R(1:10) ELSE: R(1:13)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x001e|lif (getMonster(r0, r8, true) != 1) goto L24l}"];
+subgraph cluster_Region_1032971618 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0020|lsay(main.Constants_H.TXT_49 + getNameMon((byte) r6), 0)l}"];
+}
+subgraph cluster_Region_495246502 {
+label = "R(1:13)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x003a|lsay(main.Constants_H.TXT_50 + getNameMon(r0.monster[0]) + main.Constants_H.TXT_51, 0)l}"];
+}
+}
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturn (byte) 1l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000d|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x001a|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0037|l}"];
+MethodNode[shape=record,label="{public byte main.GameRun.getMonster((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r6v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'level' int A[D('level' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'evolve' int A[D('evolve' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'buff' int A[D('buff' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:11:0x0037 \-\> B:6:0x0019, CROSS_EDGE: B:13:0x003a \-\> B:11:0x0037, CROSS_EDGE: B:2:0x000b \-\> B:8:0x001a\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_8[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_8[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_9 -> Node_13[style=dashed];
+Node_10 -> Node_11;
+Node_13 -> Node_11;
+Node_12 -> Node_7;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_8 -> Node_9;
+Node_11 -> Node_12;
+}
+

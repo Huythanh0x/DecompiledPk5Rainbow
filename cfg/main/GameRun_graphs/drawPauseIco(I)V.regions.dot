@@ -1,0 +1,33 @@
+digraph "CFG formain.GameRun.drawPauseIco(I)V" {
+subgraph cluster_Region_2050346604 {
+label = "R(2:1|(1:4))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r0 = 0l}"];
+subgraph cluster_LoopRegion_678597336 {
+label = "LOOP:0: (1:4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0005|ADDED_TO_REGION\l|lif (r0 \< r8.b_ico) goto L14l}"];
+subgraph cluster_Region_1179626384 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0008|LOOP_END\lLOOP:0: B:2:0x0003\-\>B:4:0x0008\l|ldm.Ui.i().drawImage(r8.imgIco[r0], r8.pkey.button_pos[6][r0][0], r8.pkey.button_pos[6][r0][1], 0)lbyte r0 = (byte) (r0 + 1)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0003|LOOP_START\lPHI: r0l  0x0003: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v2 'i' byte) binds: [B:1:0x0000, B:4:0x0008] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0003\-\>B:4:0x0008\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0007|SYNTHETIC\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0007|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.drawPauseIco((r8v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r9v0 'state' int A[D('state' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:4:0x0008 \-\> B:2:0x0003\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+}
+

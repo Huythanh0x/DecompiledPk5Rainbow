@@ -1,0 +1,12 @@
+digraph "CFG forminigame.Racing.go(II)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr5.lv = (byte) r7lr5.sp = new dm.Sprite[3]lr5.sp[0] = dm.Ms.i().createSprite(\"data\/npc0\/67\", true)lr5.sp[1] = dm.Ms.i().createSprite(\"data\/brow\/m1\", true)lr5.imgCloud = dm.Ms.i().createImage(\"data\/cloud\")lgo(r6)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0035|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void minigame.Racing.go((r5v0 'this' minigame.Racing A[IMMUTABLE_TYPE, THIS]), (r6v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'lv_' int A[D('lv_' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [minigame.MiniGame_H.go(int, int):void]\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

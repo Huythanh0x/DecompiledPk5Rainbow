@@ -1,0 +1,12 @@
+digraph "CFG forminigame.Bearer.nullGame()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr1.gDate = nulllr1.money = nulllr1.sp = nulllr1.img = nulllr1.ballDate = nulll}"];
+Node_2 [shape=record,label="{2\:\ 0x000b|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void minigame.Bearer.nullGame((r1v0 'this' minigame.Bearer A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

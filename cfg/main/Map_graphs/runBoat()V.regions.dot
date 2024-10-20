@@ -1,0 +1,89 @@
+digraph "CFG formain.Map.runBoat()V" {
+subgraph cluster_Region_2129856596 {
+label = "R(1:(1:(2:7|(2:(2:9|10)|(3:12|(1:14)|15)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_739324349 {
+label = "R(1:(2:7|(2:(2:9|10)|(3:12|(1:14)|15))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1911168514 {
+label = "IF [B:2:0x0003, B:4:0x0009, B:6:0x000f] THEN: R(2:7|(2:(2:9|10)|(3:12|(1:14)|15))) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif (r4.boatSelect != (\-1)) goto L24l}"];
+Node_4 [shape=record,label="{4\:\ 0x0009|ADDED_TO_REGION\l|lif (r4.my.ix == (\-1)) goto L26l}"];
+Node_6 [shape=record,label="{6\:\ 0x000f|ADDED_TO_REGION\l|lif (r4.my.iy == (\-1)) goto L29l}"];
+subgraph cluster_Region_1690056449 {
+label = "R(2:7|(2:(2:9|10)|(3:12|(1:14)|15)))";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0012|lr4.my.state = (byte) 9lmain.GameRun main.GameRun r0 = r4.grlbyte byte r1 = (byte) (r0.cur_a + 2)lr0.cur_a = r1l}"];
+subgraph cluster_Region_408559953 {
+label = "R(2:(2:9|10)|(3:12|(1:14)|15))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1032548837 {
+label = "IF [B:8:0x0028] THEN: R(2:9|10) ELSE: null";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0028|lif (r1 \>= r4.boatCourse[r4.boatSelect].length) goto L31l}"];
+subgraph cluster_Region_2114792358 {
+label = "R(2:9|10)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x002a|lr4.boatSelect = (byte) \-1lr4.my.state = (byte) 0lr4.anole_type = (byte) \-1lsetAnole()l}"];
+Node_10 [shape=record,label="{10\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1530159363 {
+label = "R(3:12|(1:14)|15)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0037|lr4.checkType = checkIfOther(r4.door, r4.my.x, r4.my.y)l}"];
+subgraph cluster_IfRegion_2047831657 {
+label = "IF [B:13:0x0049] THEN: R(1:14) ELSE: null";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0049|lif (r4.checkType != (\-1)) goto L34l}"];
+subgraph cluster_Region_857114832 {
+label = "R(1:14)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x004b|lr4.my.state = (byte) 5lr4.get_meet = r4.checkTypel}"];
+}
+}
+Node_15 [shape=record,label="{15\:\ 0x0054|lr4.my.setIXY(r4.boatCourse[r4.boatSelect][r4.gr.cur_a], r4.boatCourse[r4.boatSelect][r4.gr.cur_a + 1])l}"];
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0005|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000b|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ ?|SYNTHETIC\l|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ ?|SYNTHETIC\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ ?|SYNTHETIC\lRETURN\lADDED_TO_REGION\l|lreturnl}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x0011|RETURN\lORIG_RETURN\lADDED_TO_REGION\l|lreturnl}"];
+MethodNode[shape=record,label="{private void main.Map.runBoat((r4v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x002a \-\> B:19:0x0011, CROSS_EDGE: B:15:0x0054 \-\> B:19:0x0011, CROSS_EDGE: B:13:0x0049 \-\> B:15:0x0054, CROSS_EDGE: B:4:0x0009 \-\> B:19:0x0011, CROSS_EDGE: B:2:0x0003 \-\> B:19:0x0011\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_19[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_18[style=dashed];
+Node_6 -> Node_7;
+Node_6 -> Node_17[style=dashed];
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_12[style=dashed];
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_13 -> Node_15[style=dashed];
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_16 -> Node_11;
+Node_17 -> Node_11;
+Node_18 -> Node_11;
+Node_19 -> Node_11;
+}
+

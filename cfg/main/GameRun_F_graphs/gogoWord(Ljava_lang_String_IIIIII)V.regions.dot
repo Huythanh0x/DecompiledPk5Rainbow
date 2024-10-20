@@ -1,0 +1,50 @@
+digraph "CFG formain.GameRun_F.gogoWord(Ljava\/lang\/String;IIIIII)V" {
+subgraph cluster_Region_1573957370 {
+label = "R(3:1|(2:3|(1:5))(1:9)|6)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lshort short r8 = (short) (dm.Ms.i().getStringWidth(r10) \- getSIndexW(r10))l}"];
+subgraph cluster_IfRegion_9425210 {
+label = "IF [B:2:0x0015] THEN: R(2:3|(1:5)) ELSE: R(1:9)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0015|lif (r8 \> ((main.Constants_H.WIDTH_ \- r11) \- r13)) goto L14l}"];
+subgraph cluster_Region_1668787542 {
+label = "R(2:3|(1:5))";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0017|lr9.introX \-= r16l}"];
+subgraph cluster_IfRegion_1920705200 {
+label = "IF [B:4:0x0020] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0020|lif ((r9.introX + r8) \< r11) goto L16l}"];
+subgraph cluster_Region_1333319198 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0022|lr9.introX = (main.Constants_H.WIDTH_ \- r13) \- 75l}"];
+}
+}
+}
+subgraph cluster_Region_995900449 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0048|lr9.introX = r11l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0029|lmain.GameRun_F.g.clipRect(r11, r12, (main.Constants_H.WIDTH_ \- r13) \- r11, 30)ldm.Ui.i().drawStringColor(r10, r9.introX, r12, r14, r15)lmain.GameRun_F.g.setClip(0, 0, main.Constants_H.WIDTH_, main.Constants_H.HEIGHT_)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0047|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun_F.gogoWord((r9v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]), (r10v0 'string' java.lang.String A[D('string' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'color' int A[D('color' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'strT' int A[D('strT' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r16v0 'speed' int A[D('speed' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x0020 \-\> B:6:0x0029, CROSS_EDGE: B:9:0x0048 \-\> B:6:0x0029\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_9[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_6;
+Node_9 -> Node_6;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_7 -> Node_8;
+}
+

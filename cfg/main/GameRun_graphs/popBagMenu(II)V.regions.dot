@@ -1,0 +1,87 @@
+digraph "CFG formain.GameRun.popBagMenu(II)V" {
+subgraph cluster_Region_1605200853 {
+label = "R(3:1|(1:19)(1:(1:8)(1:(1:16)))|9)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.lang.String java.lang.String r1 = main.Constants_H.POP_TXT_4lbyte r0 = r5.items[r6][r7][0]l}"];
+subgraph cluster_IfRegion_1278296179 {
+label = "IF [B:2:0x000c, B:4:0x0010, B:6:0x0014, B:18:0x001a] THEN: R(1:19) ELSE: R(1:(1:8)(1:(1:16)))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000c|lif (r6 == 0) goto L28l}"];
+Node_4 [shape=record,label="{4\:\ 0x0010|ADDED_TO_REGION\l|lif (r0 == 32) goto L28l}"];
+Node_6 [shape=record,label="{6\:\ 0x0014|ADDED_TO_REGION\l|lif (r0 == 33) goto L28l}"];
+Node_18 [shape=record,label="{18\:\ 0x001a|ADDED_TO_REGION\l|lif (isBagUse(r0) != false) goto L30l}"];
+subgraph cluster_Region_1218185926 {
+label = "R(1:19)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x001c|ljava.lang.String r1 = \"使用#n返回\"l}"];
+}
+subgraph cluster_Region_748976636 {
+label = "R(1:(1:8)(1:(1:16))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_550772002 {
+label = "IF [B:7:0x0026] THEN: R(1:8) ELSE: R(1:(1:16)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0026|lif (r6 == 2) goto L34l}"];
+subgraph cluster_Region_2029416315 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0028|ljava.lang.String r1 = \"学习#n返回\"l}"];
+}
+subgraph cluster_Region_973991653 {
+label = "R(1:(1:16)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_898039786 {
+label = "IF [B:13:0x002d, B:15:0x0030] THEN: R(1:16) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x002d|lif (r5.view_state == 2) goto L37l}"];
+Node_15 [shape=record,label="{15\:\ 0x0030|ADDED_TO_REGION\l|lif (r6 == 3) goto L39l}"];
+subgraph cluster_Region_1910900282 {
+label = "R(1:16)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x0032|ljava.lang.String r1 = \"孵化#n返回\"l}"];
+}
+}
+}
+}
+}
+}
+Node_9 [shape=record,label="{9\:\ 0x001e|PHI: r1l  0x001e: PHI (r1v2 'ts' java.lang.String) = l  (r1v1 'ts' java.lang.String)l  (r1v0 'ts' java.lang.String)l  (r1v0 'ts' java.lang.String)l  (r1v3 'ts' java.lang.String)l  (r1v4 'ts' java.lang.String)l binds: [B:19:0x001c, B:13:0x002d, B:15:0x0030, B:16:0x0032, B:8:0x0028] A[DONT_GENERATE, DONT_INLINE]\l|lsetStringB(r1, main.Constants_H.WIDTH, 0)lr5.popMenu = (byte) 0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000e|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0012|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0025|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x002b|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x002f|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0016|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.popBagMenu((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r6v0 'selectx' int A[D('selectx' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'select_i' int A[D('select_i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x0028 \-\> B:9:0x001e, CROSS_EDGE: B:13:0x002d \-\> B:9:0x001e, CROSS_EDGE: B:15:0x0030 \-\> B:9:0x001e, CROSS_EDGE: B:16:0x0032 \-\> B:9:0x001e, CROSS_EDGE: B:6:0x0014 \-\> B:7:0x0026, CROSS_EDGE: B:4:0x0010 \-\> B:17:0x0016, CROSS_EDGE: B:2:0x000c \-\> B:17:0x0016\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_17;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_17;
+Node_6 -> Node_17;
+Node_6 -> Node_7[style=dashed];
+Node_18 -> Node_19;
+Node_18 -> Node_7[style=dashed];
+Node_19 -> Node_9;
+Node_7 -> Node_8;
+Node_7 -> Node_12[style=dashed];
+Node_8 -> Node_9;
+Node_13 -> Node_9[style=dashed];
+Node_13 -> Node_14;
+Node_15 -> Node_9[style=dashed];
+Node_15 -> Node_16;
+Node_16 -> Node_9;
+Node_9 -> Node_10;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_10 -> Node_11;
+Node_12 -> Node_13;
+Node_14 -> Node_15;
+Node_17 -> Node_18;
+}
+

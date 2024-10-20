@@ -1,0 +1,28 @@
+digraph "CFG formain.GameRun.addItem(II)B" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r1 = findItemType(r9)lbyte r0 = findItem(r1, r9, false)l}"];
+Node_2 [shape=record,label="{2\:\ 0x000d|lif (r0 == (\-1)) goto L19l}"];
+Node_3 [shape=record,label="{3\:\ 0x000f|lbyte[] r2 = r8.items[r1][r0]lbyte r3 = (byte) (r2[1] + r10)lr2[1] = r3l}"];
+Node_4 [shape=record,label="{4\:\ 0x001b|lif (r3 \<= 99) goto L20l}"];
+Node_5 [shape=record,label="{5\:\ 0x001d|lr8.items[r1][r0][1] = 99lsay(new java.lang.StringBuilder(java.lang.String.valueOf(getNameItem(r8.items[r1][r0][0]))).append(main.Constants_H.MONEY_TXT_5).toString(), 0)l}"];
+Node_6 [shape=record,label="{6\:\ 0x0048|RETURN\lORIG_RETURN\l|lreturn \-1l}"];
+Node_7 [shape=record,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x006c|l}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturn 1l}"];
+Node_10 [shape=record,label="{10\:\ 0x0049|lr8.items[r1][r8.itemsLength[r1]][0] = (byte) r9lr8.items[r1][r8.itemsLength[r1]][1] = (byte) r10lbyte[] r2 = r8.itemsLengthlr2[r1] = (byte) (r2[r1] + 1)l}"];
+MethodNode[shape=record,label="{public byte main.GameRun.addItem((r8v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r9v0 'item_id' int A[D('item_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'count' int A[D('count' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x006c \-\> B:6:0x0048, CROSS_EDGE: B:10:0x0049 \-\> B:8:0x006c\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_10;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_8;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_9 -> Node_7;
+Node_10 -> Node_8;
+}
+

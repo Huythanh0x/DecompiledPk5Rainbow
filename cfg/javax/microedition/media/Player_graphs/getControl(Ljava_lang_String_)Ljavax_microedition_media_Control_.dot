@@ -1,0 +1,30 @@
+digraph "CFG forjavax.microedition.media.Player.getControl(Ljava\/lang\/String;)Ljavax\/microedition\/media\/Control;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0007|lif (r5.indexOf(\"VolumeControl\") == (\-1)) goto L18l}"];
+Node_3 [shape=record,label="{3\:\ 0x0009|ljavax.microedition.media.control.VolumeControl r1 = new javax.microedition.media.control.VolumeControl()l}"];
+Node_4 [shape=record,label="{4\:\ 0x000f|RETURN\lORIG_RETURN\l|lreturn r1l}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0010|l}"];
+Node_7 [shape=record,label="{7\:\ 0x0016|lif (r5.indexOf(\"ToneControl\") == (\-1)) goto L21l}"];
+Node_8 [shape=record,label="{8\:\ 0x0018|ljavax.microedition.media.control.ToneControl r0 = new javax.microedition.media.control.ToneControl()l}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0l}"];
+Node_10 [shape=record,label="{10\:\ 0x001f|landroid.util.Log.e(\"ERROR\", \"PLAYER IS ERROR\")l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturn nulll}"];
+MethodNode[shape=record,label="{public javax.microedition.media.Control javax.microedition.media.Player.getControl((r4v0 'this' javax.microedition.media.Player A[IMMUTABLE_TYPE, THIS]), (r5v0 'controlType' java.lang.String A[D('controlType' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x0018 \-\> B:4:0x000f, CROSS_EDGE: B:10:0x001f \-\> B:4:0x000f\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_10;
+Node_8 -> Node_9;
+Node_9 -> Node_5;
+Node_10 -> Node_11;
+Node_11 -> Node_5;
+}
+

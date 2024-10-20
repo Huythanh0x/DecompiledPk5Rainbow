@@ -1,0 +1,16 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.buildPaymentView()V" {
+subgraph cluster_Region_2062833038 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr15.mType = 0lr15.mTimeoutCounter = 0lr15.mLeftSmsToReceiveCount = \-1lr15.mLeftSmsToSendCount = \-1lr15.mIsSynced = falselr15.mIsShowInfo = falselr15.mSmsHander = nulllr15.mSmsContent = nulllandroid.widget.RelativeLayout android.widget.RelativeLayout r6 = com.uc.paymentsdk.util.Utils.initSubTitle(getApplicationContext(), r15, \"购买内容\", false)landroid.widget.TextView android.widget.TextView r4 = new android.widget.TextView(getApplicationContext())lr4.setTextSize(16.0f)lr4.setTextColor(android.graphics.Color.parseColor(\"#FF858D8D\"))lr4.setPadding(10, 10, 0, 10)lr4.setText(\"尊敬的用户，您需要为以下内容支付费用，请阅读以下信息，确认所购内容无误。\")landroid.widget.TextView android.widget.TextView r3 = new android.widget.TextView(getApplicationContext())lr3.setTextSize(16.0f)lr3.setPadding(20, 0, 20, 0)lr3.setText(java.lang.String.format(\"所购内容 : %s\", r15.mPaymentInfo.getPaydesc()))lr3.setTextColor(\-12303292)ljava.lang.String java.lang.String r2 = new java.text.DecimalFormat(\"##0.00\").format(r15.mPaymentInfo.getMoney() \/ 10.0f)landroid.widget.TextView android.widget.TextView r5 = new android.widget.TextView(getApplicationContext())lr5.setTextSize(16.0f)lr5.setPadding(20, 0, 0, 20)lr5.setText(java.lang.String.format(\"支付金额: %s元\", r2))lr5.setTextColor(\-12303292)landroid.widget.LinearLayout android.widget.LinearLayout r0 = new android.widget.LinearLayout(getApplicationContext())lr0.setBackgroundColor(\-1)lr0.setOrientation(1)landroid.widget.LinearLayout$LayoutParams android.widget.LinearLayout.LayoutParams r1 = new android.widget.LinearLayout.LayoutParams(\-1, \-2)lr0.addView(r6, r1)lr0.addView(r4, r1)lr0.addView(r3, r1)lr0.addView(r5, r1)lr15.mListView = new android.widget.ListView(getApplicationContext())lr15.mListView.setBackgroundColor(\-1)lr15.mListView.setCacheColorHint(\-1)lr15.mListView.addHeaderView(r0, null, true)lr15.mListView.setOnItemClickListener(r15)lr15.mListView.addFooterView(com.uc.paymentsdk.util.Utils.generateFooterView(r15), null, false)lsetContentView(r15.mListView)lfillData()lnew com.uc.paymentsdk.network.chain.HandlerProxy(getApplicationContext(), r15).handleRequest()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0106|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void com.uc.paymentsdk.payment.PaymentsActivity.buildPaymentView((r15v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

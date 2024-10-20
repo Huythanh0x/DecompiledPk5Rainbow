@@ -1,0 +1,92 @@
+digraph "CFG forcom.uc.paymentsdk.network.chain.SyncChargeChannelHandler.onError(II)V" {
+subgraph cluster_Region_914348982 {
+label = "R(3:1|5|(2:(1:(2:(2:10|11)|(1:13)))|(1:14)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lcom.uc.paymentsdk.network.chain.SyncChargeChannelHandler.sStatus = 0l}"];
+subgraph cluster_SynchronizedRegion_1144529622 {
+label = "Synchronized:R(2:2|(1:4))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0005|l}"];
+subgraph cluster_Region_16680855 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0006|TRY_ENTER\lTryCatch #0 \{, blocks: (B:4:0x0006, B:5:0x000b), top: B:3:0x0006 \}\lCatch: all \-\> 0x001c\l|lr2.LOCK.notifyAll()     \/\/ Catch: java.lang.Throwable \-\> L1cl}"];
+}
+}
+subgraph cluster_Region_1698029279 {
+label = "R(2:(1:(2:(2:10|11)|(1:13)))|(1:14))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_769592228 {
+label = "IF [B:7:0x0010] THEN: R(1:(2:(2:10|11)|(1:13))) ELSE: null";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0010|lif (getSuccessor() == null) goto L28l}"];
+subgraph cluster_Region_687120987 {
+label = "R(1:(2:(2:10|11)|(1:13)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1556237037 {
+label = "R(2:(2:10|11)|(1:13))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_390767756 {
+label = "IF [B:9:0x0014] THEN: R(2:10|11) ELSE: null";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0014|lif (r2.mOnFinishListener != null) goto L30l}"];
+subgraph cluster_Region_1117589482 {
+label = "R(2:10|11)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0016|lr2.mOnFinishListener.onFinish()l}"];
+Node_11 [shape=record,label="{11\:\ 0x001b|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1333173144 {
+label = "R(1:13)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_Region_28124601 {
+label = "R(1:14)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x001f|lgetSuccessor().handleRequest()l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0006|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000b|TRY_LEAVE\lDONT_GENERATE\lTryCatch #0 \{, blocks: (B:4:0x0006, B:5:0x000b), top: B:3:0x0006 \}\lCatch: all \-\> 0x001c\l|lmonitor\-exit()     \/\/ Catch: java.lang.Throwable \-\> L1cl}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x000c|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0012|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ ?|SYNTHETIC\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x001c|REMOVE\lExcHandler: all \-\> 0x001c\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x001d|TRY_ENTER\lTRY_LEAVE\lREMOVE\lCatch: all \-\> 0x001c\l|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x001e|REMOVE\l|lthrow r1l}"];
+MethodNode[shape=record,label="{public void com.uc.paymentsdk.network.chain.SyncChargeChannelHandler.onError((r2v0 'this' com.uc.paymentsdk.network.chain.SyncChargeChannelHandler A[IMMUTABLE_TYPE, THIS]), (r3v0 'paramInt1' int A[D('paramInt1' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'paramInt2' int A[D('paramInt2' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [com.uc.paymentsdk.network.ApiTask.TaskHandler.onError(int, int):void]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x0014 \-\> B:11:0x001b, CROSS_EDGE: B:14:0x001f \-\> B:11:0x001b, CROSS_EDGE: B:19:0x001e \-\> B:12:?, CROSS_EDGE: B:3:0x0006 \-\> B:17:0x001c\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_7 -> Node_14[style=dashed];
+Node_9 -> Node_10;
+Node_9 -> Node_13[style=dashed];
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_13 -> Node_12;
+Node_14 -> Node_15;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_3 -> Node_17;
+Node_5 -> Node_6;
+Node_5 -> Node_16;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_15 -> Node_12;
+Node_16 -> Node_17;
+Node_17 -> Node_18;
+Node_18 -> Node_19;
+Node_19 -> Node_12;
+}
+

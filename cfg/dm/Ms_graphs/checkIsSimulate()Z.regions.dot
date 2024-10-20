@@ -1,0 +1,93 @@
+digraph "CFG fordm.Ms.checkIsSimulate()Z" {
+subgraph cluster_Region_412293286 {
+label = "R(1:(2:(1:4)|(1:(2:7|9))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_263539077 {
+label = "R(2:(1:4)|(1:(2:7|9)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_386030679 {
+label = "IF [B:2:0x000f] THEN: R(1:4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000f|lif (java.lang.Runtime.getRuntime().totalMemory() \>= 8000000) goto L26l}"];
+subgraph cluster_Region_1268396706 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0012|RETURN\lORIG_RETURN\l|lreturn truel}"];
+}
+}
+subgraph cluster_Region_1263289695 {
+label = "R(1:(2:7|9))";
+node [shape=record,color=blue];
+subgraph cluster_TryCatchRegion_1854981330 {
+label = "Try: R(2:7|9) catches: R(2:12|13)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1811275187 {
+label = "R(2:7|9)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0013|TRY_ENTER\lTRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x001f, blocks: (B:7:0x0013), top: B:6:0x0013 \}\lCatch: Exception \-\> 0x001f\l|ljava.lang.Class.forName(\"emulator.Emulator\")     \/\/ Catch: java.lang.Exception \-\> L1fljava.lang.Class.forName(\"com.sprintpcs.util.System\")     \/\/ Catch: java.lang.Exception \-\> L1fl}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+subgraph cluster_Region_665113948 {
+label = "R(2:12|13) | ExcHandler: Exception \-\> 0x001f\l";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0020|ljava.lang.String java.lang.String r0 = java.lang.System.getProperty(\"microedition.platform\")l}"];
+Node_13 [shape=record,label="{13\:\ 0x0030|RETURN\l|lreturn (r0.toLowerCase().indexOf(\"wtk\") == \-1 && r0.toLowerCase().indexOf(\"javasdk\") == \-1 && r0.toLowerCase().indexOf(\"j2me\") == \-1) ? false : truel}"];
+}
+}
+}
+}
+}
+subgraph cluster_Region_665113948 {
+label = "R(2:12|13) | ExcHandler: Exception \-\> 0x001f\l";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0020|ljava.lang.String java.lang.String r0 = java.lang.System.getProperty(\"microedition.platform\")l}"];
+Node_13 [shape=record,label="{13\:\ 0x0030|RETURN\l|lreturn (r0.toLowerCase().indexOf(\"wtk\") == \-1 && r0.toLowerCase().indexOf(\"javasdk\") == \-1 && r0.toLowerCase().indexOf(\"j2me\") == \-1) ? false : truel}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0011|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0013|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x001d|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x001f|ExcHandler: Exception \-\> 0x001f\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0032|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x003c|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x003e|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0048|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x004a|SYNTHETIC\l|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x004c|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private boolean dm.Ms.checkIsSimulate((r7v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{Exception \-\> 0x001f, blocks: (B:7:0x0013), top: B:6:0x0013 \}\lCROSS_EDGE: B:8:0x001d \-\> B:4:0x0012, CROSS_EDGE: B:18:0x004a \-\> B:4:0x0012, CROSS_EDGE: B:19:0x004c \-\> B:4:0x0012, CROSS_EDGE: B:15:0x003c \-\> B:19:0x004c, CROSS_EDGE: B:13:0x0030 \-\> B:19:0x004c, CROSS_EDGE: B:6:0x0013 \-\> B:11:0x001f\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_7 -> Node_10;
+Node_9 -> Node_5;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_13 -> Node_19;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_13 -> Node_19;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_6 -> Node_11;
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_15 -> Node_19;
+Node_16 -> Node_17;
+Node_17 -> Node_18;
+Node_17 -> Node_19;
+Node_18 -> Node_5;
+Node_19 -> Node_20;
+Node_20 -> Node_5;
+}
+

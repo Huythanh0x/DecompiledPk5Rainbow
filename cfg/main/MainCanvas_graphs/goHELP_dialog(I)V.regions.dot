@@ -1,0 +1,16 @@
+digraph "CFG formain.MainCanvas.goHELP_dialog(I)V" {
+subgraph cluster_Region_198321 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr5.game_state = 40lr5.menu_state = 4lr5.gr.help_page = (byte) 0lr5.logo_c = 0lr5.help_state = (byte) r6lr5.gr.line_max = (byte) 11lr5.gr.setStringB(\"游戏帮助#n玩家扮演一名宠物训练师，为了解决国家的危机而踏上了冒险之旅。#n操作提示#n点击主线任务图标：主线任务#n点击支线任务图标：支线任务#n点击地图图标：游戏地图#n点击屏幕控制上下左右移动#n本版本只支持横屏游戏\", main.Constants_H.WIDTH \- 50, 0)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0023|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.MainCanvas.goHELP_dialog((r5v0 'this' main.MainCanvas A[IMMUTABLE_TYPE, THIS]), (r6v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

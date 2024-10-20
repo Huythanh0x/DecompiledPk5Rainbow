@@ -1,0 +1,45 @@
+digraph "CFG formain.GameRun.setEvolveStringB(Ldm\/Monster;)V" {
+subgraph cluster_Region_1059163643 {
+label = "R(4:1|(1:5)|6|9)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte byte r1 = (byte) (r14.monster[0] + 1)lbyte r2 = r14.monster[2]lboolean r0 = falsel}"];
+subgraph cluster_IfRegion_643157923 {
+label = "IF [B:2:0x001b, B:4:0x0024] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x001b|lif (r13.monsterMake[r14.monster[0]][0] \> 0) goto L17l}"];
+Node_4 [shape=record,label="{4\:\ 0x0024|ADDED_TO_REGION\l|lif (findItem(\-2, 34, true) \> 0) goto L19l}"];
+subgraph cluster_Region_107041217 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0026|lr1 = r13.monsterMake[r14.monster[0]][0]lr0 = truel}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0031|PHI: r0 r1l  0x0031: PHI (r0v1 'b_e' boolean) = (r0v0 'b_e' boolean), (r0v0 'b_e' boolean), (r0v2 'b_e' boolean) binds: [B:2:0x001b, B:4:0x0024, B:5:0x0026] A[DONT_GENERATE, DONT_INLINE]l  0x0031: PHI (r1v1 'eid' byte) = (r1v0 'eid' byte), (r1v0 'eid' byte), (r1v2 'eid' byte) binds: [B:2:0x001b, B:4:0x0024, B:5:0x0026] A[DONT_GENERATE, DONT_INLINE]\l|lr13.proReplace = nulllr13.proReplace = (short[][]) java.lang.reflect.Array.newInstance((java.lang.Class\<?\>) java.lang.Short.TYPE, 1, 6)lr13.proReplace[0][0] = (short) (getbuffRateV(r14, r13.monster_pro[r1][0] + ((r13.monster_pro[r1][7] * r2) \/ 10)) \- r14.monsterPro[2])lr13.proReplace[0][1] = (short) ((r13.monster_pro[r1][1] + ((r13.monster_pro[r1][8] * r2) \/ 10)) \- r14.monsterPro[3])l}"];
+Node_9 [shape=record,label="{9\:\ 0x008c|PHI: r4l  0x008c: PHI (r4v17 byte) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr13.proReplace[0][2] = (short) (\-(r0 ? r14.monster[5] : (byte) 1))lr13.proReplace[0][3] = (byte) ((r13.monster_pro[r1][3] + ((r13.monster_pro[r1][10] * r2) \/ 10)) \- r14.monsterPro[6])lr13.proReplace[0][4] = (byte) ((r13.monster_pro[r1][4] + ((r13.monster_pro[r1][11] * r2) \/ 10)) \- r14.monsterPro[7])lr13.proReplace[0][5] = (byte) ((r13.monster_pro[r1][2] + ((r13.monster_pro[r1][9] * r2) \/ 10)) \- r14.monsterPro[5])lsetStringB(\"生命：+\" + ((int) r13.proReplace[0][0]) + \"#n\" + main.Constants_H.PRO_TXT_1 + \"：+\" + ((int) r13.proReplace[0][1]) + \"#n进化：\" + ((int) r13.proReplace[0][2]), main.Constants_H.WIDTH, 0)lsetStringB(\"力量：+\" + ((int) r13.proReplace[0][3]) + \"#n\" + main.Constants_H.PRO_TXT_4 + \"：+\" + ((int) r13.proReplace[0][4]) + \"#n\" + main.Constants_H.PRO_TXT_5 + \"：+\" + ((int) r13.proReplace[0][5]), main.Constants_H.WIDTH, 1)lr13.proReplace = nulll}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x001d|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0086|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0088|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0196|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0197|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.setEvolveStringB((r13v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r14v0 'monster' dm.Monster A[D('monster' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:12:0x0197 \-\> B:9:0x008c, CROSS_EDGE: B:4:0x0024 \-\> B:6:0x0031, CROSS_EDGE: B:2:0x001b \-\> B:6:0x0031\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_7 -> Node_8;
+Node_7 -> Node_12;
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_12 -> Node_9;
+}
+

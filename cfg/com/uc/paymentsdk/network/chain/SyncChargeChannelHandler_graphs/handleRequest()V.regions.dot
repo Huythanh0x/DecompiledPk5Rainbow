@@ -1,0 +1,105 @@
+digraph "CFG forcom.uc.paymentsdk.network.chain.SyncChargeChannelHandler.handleRequest()V" {
+subgraph cluster_Region_60863467 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+subgraph cluster_SwitchRegion_2025901133 {
+label = "Switch: 4
+ case 0 -> R(2:16|17)
+ case 1 -> R(2:14|15)
+ case 2 -> R(1:(2:(1:(2:(2:9|10)|(1:11)))|(2:12|13)))
+ case default -> R(1:3)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lswitch(com.uc.paymentsdk.network.chain.SyncChargeChannelHandler.sStatus) \{l    case 0: goto L30;l    case 1: goto L29;l    case 2: goto L23;l    default: goto L22;l\}l}"];
+subgraph cluster_Region_225974432 {
+label = "R(2:16|17)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x002c|lcom.uc.paymentsdk.network.chain.SyncChargeChannelHandler.sStatus = 1lcom.uc.paymentsdk.network.Api.syncChargeChannel(r2.mContext, r2)l}"];
+Node_17 [shape=record,label="{17\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_550939469 {
+label = "R(2:14|15)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x001e|lnew java.lang.Thread(new com.uc.paymentsdk.network.chain.SyncChargeChannelHandler.AnonymousClass1()).start()l}"];
+Node_15 [shape=record,label="{15\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_653228887 {
+label = "R(1:(2:(1:(2:(2:9|10)|(1:11)))|(2:12|13)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1479768419 {
+label = "R(2:(1:(2:(2:9|10)|(1:11)))|(2:12|13))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_365156317 {
+label = "IF [B:6:0x000a] THEN: R(1:(2:(2:9|10)|(1:11))) ELSE: null";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x000a|lif (getSuccessor() == null) goto L25l}"];
+subgraph cluster_Region_14326507 {
+label = "R(1:(2:(2:9|10)|(1:11)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1571978340 {
+label = "R(2:(2:9|10)|(1:11))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_512360144 {
+label = "IF [B:8:0x000e] THEN: R(2:9|10) ELSE: null";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x000e|lif (r2.mOnFinishListener != null) goto L27l}"];
+subgraph cluster_Region_369082339 {
+label = "R(2:9|10)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0010|lr2.mOnFinishListener.onFinish()l}"];
+Node_10 [shape=record,label="{10\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1101427317 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_Region_263812985 {
+label = "R(2:12|13)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0016|lgetSuccessor().handleRequest()l}"];
+Node_13 [shape=record,label="{13\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+subgraph cluster_Region_1586984736 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0005|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0006|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x000c|l}"];
+MethodNode[shape=record,label="{public void com.uc.paymentsdk.network.chain.SyncChargeChannelHandler.handleRequest((r2v0 'this' com.uc.paymentsdk.network.chain.SyncChargeChannelHandler A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lCOMPUTE_POST_DOM\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [com.uc.paymentsdk.network.chain.Handler.handleRequest():void]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x000e \-\> B:3:0x0005, CROSS_EDGE: B:9:0x0010 \-\> B:3:0x0005, CROSS_EDGE: B:12:0x0016 \-\> B:3:0x0005, CROSS_EDGE: B:14:0x001e \-\> B:3:0x0005, CROSS_EDGE: B:16:0x002c \-\> B:3:0x0005\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_5;
+Node_2 -> Node_14;
+Node_2 -> Node_16;
+Node_16 -> Node_17;
+Node_17 -> Node_4;
+Node_14 -> Node_15;
+Node_15 -> Node_4;
+Node_6 -> Node_7;
+Node_6 -> Node_12[style=dashed];
+Node_8 -> Node_9;
+Node_8 -> Node_11[style=dashed];
+Node_9 -> Node_10;
+Node_10 -> Node_4;
+Node_11 -> Node_4;
+Node_12 -> Node_13;
+Node_13 -> Node_4;
+Node_3 -> Node_4;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+}
+

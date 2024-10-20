@@ -1,0 +1,31 @@
+digraph "CFG fordm.Ms.mathPercent(III)S" {
+subgraph cluster_Region_870107370 {
+label = "R(2:(1:3)|5)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1618928152 {
+label = "IF [B:2:0x0001] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0001|lif (r4 \< 1) goto L11l}"];
+subgraph cluster_Region_87710358 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0003|lr4 = 1l}"];
+}
+}
+Node_5 [shape=record,label="{5\:\ 0x0008|RETURN\l|lreturn (short) ((r2 * r3) \/ r4)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0004|PHI: r4l  0x0004: PHI (r4v1 'per' int) = (r4v0 'per' int), (r4v2 'per' int) binds: [B:2:0x0001, B:3:0x0003] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public short dm.Ms.mathPercent((r1v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r2v0 'm0' int A[D('m0' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 'm1' int A[D('m1' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'per' int A[D('per' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0001 \-\> B:4:0x0004\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+}
+

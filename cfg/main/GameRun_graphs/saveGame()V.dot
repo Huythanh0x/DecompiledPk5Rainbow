@@ -1,0 +1,12 @@
+digraph "CFG formain.GameRun.saveGame()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr5.map.save()lsaveMon(0)lsaveMon(1)lsaveItem()lsaveInfoList()lr5.rmsOther[0] = r5.map.mapNoldm.Ms.i().rmsOptions(10, r5.rmsOther, 2)ldm.Ms.i().rmsOptions(3, r5.rmsNidus, 2)ldm.Ms.i().rmsOptions(0, null, 4)l}"];
+Node_2 [shape=record,label="{2\:\ 0x003a|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.saveGame((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

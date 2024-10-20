@@ -1,0 +1,147 @@
+digraph "CFG forcom.uc.paymentsdk.commons.codec.Base64.\<clinit\>()V" {
+subgraph cluster_Region_42025456 {
+label = "R(15:1|(1:4)|6|(1:9)|11|(1:14)|16|(1:18)|20|(1:23)|25|(1:28)|30|(1:33)|35)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint r0 = 0l}"];
+subgraph cluster_LoopRegion_1526421203 {
+label = "LOOP:0: (1:4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0021|ADDED_TO_REGION\l|lif (r0 \< com.uc.paymentsdk.commons.codec.Base64.BASELENGTH) goto L62l}"];
+subgraph cluster_Region_1315960150 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0057|LOOP_END\lLOOP:0: B:2:0x001f\-\>B:4:0x0057\l|lcom.uc.paymentsdk.commons.codec.Base64.base64Alphabet[r0] = \-1lr0++l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0023|lint r0 = 90l}"];
+subgraph cluster_LoopRegion_1235129564 {
+label = "LOOP:1: (1:9)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0027|ADDED_TO_REGION\l|lif (r0 \>= 65) goto L63l}"];
+subgraph cluster_Region_1100534494 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x005f|LOOP_END\lLOOP:1: B:7:0x0025\-\>B:9:0x005f\l|lcom.uc.paymentsdk.commons.codec.Base64.base64Alphabet[r0] = (byte) (r0 \- 65)lr0\-\-l}"];
+}
+}
+Node_11 [shape=record,label="{11\:\ 0x0029|lint r0 = 122l}"];
+subgraph cluster_LoopRegion_1096108528 {
+label = "LOOP:2: (1:14)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x002d|ADDED_TO_REGION\l|lif (r0 \>= 97) goto L64l}"];
+subgraph cluster_Region_1881260489 {
+label = "R(1:14)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x006b|LOOP_END\lLOOP:2: B:12:0x002b\-\>B:14:0x006b\l|lcom.uc.paymentsdk.commons.codec.Base64.base64Alphabet[r0] = (byte) ((r0 \- 97) + 26)lr0\-\-l}"];
+}
+}
+Node_16 [shape=record,label="{16\:\ 0x002f|lint r0 = 57l}"];
+subgraph cluster_LoopRegion_1302631269 {
+label = "LOOP:3: (1:18)";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x0031|LOOP_START\lADDED_TO_REGION\lPHI: r0l  0x0031: PHI (r0v7 'i' int) = (r0v6 'i' int), (r0v11 'i' int) binds: [B:16:0x002f, B:18:0x0079] A[DONT_GENERATE, DONT_INLINE]\lLOOP:3: B:17:0x0031\-\>B:18:0x0079\l|lif (r0 \>= 48) goto L65l}"];
+subgraph cluster_Region_1252898349 {
+label = "R(1:18)";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x0079|LOOP_END\lLOOP:3: B:17:0x0031\-\>B:18:0x0079\l|lcom.uc.paymentsdk.commons.codec.Base64.base64Alphabet[r0] = (byte) ((r0 \- 48) + 52)lr0\-\-l}"];
+}
+}
+Node_20 [shape=record,label="{20\:\ 0x0033|lcom.uc.paymentsdk.commons.codec.Base64.base64Alphabet[43] = 62lcom.uc.paymentsdk.commons.codec.Base64.base64Alphabet[47] = 63lint r0 = 0l}"];
+subgraph cluster_LoopRegion_559705153 {
+label = "LOOP:4: (1:23)";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x003e|ADDED_TO_REGION\l|lif (r0 \<= 25) goto L66l}"];
+subgraph cluster_Region_1603132970 {
+label = "R(1:23)";
+node [shape=record,color=blue];
+Node_23 [shape=record,label="{23\:\ 0x0085|LOOP_END\lLOOP:4: B:21:0x003c\-\>B:23:0x0085\l|lcom.uc.paymentsdk.commons.codec.Base64.lookUpBase64Alphabet[r0] = (byte) (r0 + 65)lr0++l}"];
+}
+}
+Node_25 [shape=record,label="{25\:\ 0x0040|lint r1 = 26lint r2 = 0l}"];
+subgraph cluster_LoopRegion_299930925 {
+label = "LOOP:5: (1:28)";
+node [shape=record,color=blue];
+Node_27 [shape=record,label="{27\:\ 0x0045|ADDED_TO_REGION\l|lif (r1 \<= 51) goto L67l}"];
+subgraph cluster_Region_920342789 {
+label = "R(1:28)";
+node [shape=record,color=blue];
+Node_28 [shape=record,label="{28\:\ 0x008f|LOOP_END\lLOOP:5: B:26:0x0043\-\>B:28:0x008f\l|lcom.uc.paymentsdk.commons.codec.Base64.lookUpBase64Alphabet[r1] = (byte) (r2 + 97)lr1++lr2++l}"];
+}
+}
+Node_30 [shape=record,label="{30\:\ 0x0047|lint r1 = 52lint r2 = 0l}"];
+subgraph cluster_LoopRegion_1657877987 {
+label = "LOOP:6: (1:33)";
+node [shape=record,color=blue];
+Node_32 [shape=record,label="{32\:\ 0x004c|ADDED_TO_REGION\l|lif (r1 \<= 61) goto L68l}"];
+subgraph cluster_Region_1402785076 {
+label = "R(1:33)";
+node [shape=record,color=blue];
+Node_33 [shape=record,label="{33\:\ 0x009b|LOOP_END\lLOOP:6: B:31:0x004a\-\>B:33:0x009b\l|lcom.uc.paymentsdk.commons.codec.Base64.lookUpBase64Alphabet[r1] = (byte) (r2 + 48)lr1++lr2++l}"];
+}
+}
+Node_35 [shape=record,label="{35\:\ 0x004e|lcom.uc.paymentsdk.commons.codec.Base64.lookUpBase64Alphabet[62] = main.Constants_H.f89lcom.uc.paymentsdk.commons.codec.Base64.lookUpBase64Alphabet[63] = main.Constants_H.f20l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x001f|LOOP_START\lPHI: r0l  0x001f: PHI (r0v1 'i' int) = (r0v0 'i' int), (r0v14 'i' int) binds: [B:1:0x0000, B:4:0x0057] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x001f\-\>B:4:0x0057\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0023|SYNTHETIC\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0025|LOOP_START\lPHI: r0l  0x0025: PHI (r0v3 'i' int) = (r0v2 'i' int), (r0v13 'i' int) binds: [B:6:0x0023, B:9:0x005f] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:7:0x0025\-\>B:9:0x005f\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0029|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x002b|LOOP_START\lPHI: r0l  0x002b: PHI (r0v5 'i' int) = (r0v4 'i' int), (r0v12 'i' int) binds: [B:11:0x0029, B:14:0x006b] A[DONT_GENERATE, DONT_INLINE]\lLOOP:2: B:12:0x002b\-\>B:14:0x006b\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x002f|SYNTHETIC\l|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x0033|SYNTHETIC\l|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ 0x003c|LOOP_START\lPHI: r0l  0x003c: PHI (r0v9 'i' int) = (r0v8 'i' int), (r0v10 'i' int) binds: [B:20:0x0033, B:23:0x0085] A[DONT_GENERATE, DONT_INLINE]\lLOOP:4: B:21:0x003c\-\>B:23:0x0085\l|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x0040|SYNTHETIC\l|l}"];
+Node_26 [shape=record,color=red,label="{26\:\ 0x0043|LOOP_START\lPHI: r1 r2l  0x0043: PHI (r1v1 'icount' int) = (r1v0 'icount' int), (r1v5 'icount' int) binds: [B:25:0x0040, B:28:0x008f] A[DONT_GENERATE, DONT_INLINE]l  0x0043: PHI (r2v1 'j' int) = (r2v0 'j' int), (r2v5 'j' int) binds: [B:25:0x0040, B:28:0x008f] A[DONT_GENERATE, DONT_INLINE]\lLOOP:5: B:26:0x0043\-\>B:28:0x008f\l|l}"];
+Node_29 [shape=record,color=red,label="{29\:\ 0x0047|SYNTHETIC\l|l}"];
+Node_31 [shape=record,color=red,label="{31\:\ 0x004a|LOOP_START\lPHI: r1 r2l  0x004a: PHI (r1v3 'icount' int) = (r1v2 'icount' int), (r1v4 'icount' int) binds: [B:30:0x0047, B:33:0x009b] A[DONT_GENERATE, DONT_INLINE]l  0x004a: PHI (r2v3 'j' int) = (r2v2 'j' int), (r2v4 'j' int) binds: [B:30:0x0047, B:33:0x009b] A[DONT_GENERATE, DONT_INLINE]\lLOOP:6: B:31:0x004a\-\>B:33:0x009b\l|l}"];
+Node_34 [shape=record,color=red,label="{34\:\ 0x004e|SYNTHETIC\l|l}"];
+Node_36 [shape=record,color=red,label="{36\:\ 0x0056|l}"];
+Node_37 [shape=record,color=red,label="{37\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{static void com.uc.paymentsdk.commons.codec.Base64.\<clinit\>()  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lBACK_EDGE: B:33:0x009b \-\> B:31:0x004a, BACK_EDGE: B:28:0x008f \-\> B:26:0x0043, BACK_EDGE: B:23:0x0085 \-\> B:21:0x003c, BACK_EDGE: B:18:0x0079 \-\> B:17:0x0031, BACK_EDGE: B:14:0x006b \-\> B:12:0x002b, BACK_EDGE: B:9:0x005f \-\> B:7:0x0025, BACK_EDGE: B:4:0x0057 \-\> B:2:0x001f\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_8 -> Node_10[style=dashed];
+Node_9 -> Node_7;
+Node_11 -> Node_12;
+Node_13 -> Node_14;
+Node_13 -> Node_15[style=dashed];
+Node_14 -> Node_12;
+Node_16 -> Node_17;
+Node_17 -> Node_18;
+Node_17 -> Node_19[style=dashed];
+Node_18 -> Node_17;
+Node_20 -> Node_21;
+Node_22 -> Node_23;
+Node_22 -> Node_24[style=dashed];
+Node_23 -> Node_21;
+Node_25 -> Node_26;
+Node_27 -> Node_28;
+Node_27 -> Node_29[style=dashed];
+Node_28 -> Node_26;
+Node_30 -> Node_31;
+Node_32 -> Node_33;
+Node_32 -> Node_34[style=dashed];
+Node_33 -> Node_31;
+Node_35 -> Node_36;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_10 -> Node_11;
+Node_12 -> Node_13;
+Node_15 -> Node_16;
+Node_19 -> Node_20;
+Node_21 -> Node_22;
+Node_24 -> Node_25;
+Node_26 -> Node_27;
+Node_29 -> Node_30;
+Node_31 -> Node_32;
+Node_34 -> Node_35;
+Node_36 -> Node_37;
+}
+

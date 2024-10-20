@@ -1,0 +1,60 @@
+digraph "CFG formain.Map.checkIfOther([[BII)B" {
+subgraph cluster_Region_837900295 {
+label = "R(3:1|(1:(2:(1:8)|(1:5)))|12)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte byte r9 = (byte) (r13.length \- 1)l}"];
+subgraph cluster_LoopRegion_1865606427 {
+label = "LOOP:0: (1:(2:(1:8)|(1:5)))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0009|LOOP_START\lADDED_TO_REGION\lPHI: r9l  0x0009: PHI (r9v1 'i' byte) = (r9v0 'i' byte), (r9v2 'i' byte) binds: [B:1:0x0000, B:5:0x002a] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0009\-\>B:5:0x002a\l|lif (r9 \> (\-1)) goto L19l}"];
+subgraph cluster_Region_1603500757 {
+label = "R(1:(2:(1:8)|(1:5)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_516302016 {
+label = "R(2:(1:8)|(1:5))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_331224989 {
+label = "IF [B:4:0x0026] THEN: R(1:8) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0026|lif (dm.Ms.i().isRect(r14, r15, 19, 19, r13[r9][0] * 20, r13[r9][1] * 20, 20, 20) == true) goto L23l}"];
+subgraph cluster_Region_682902669 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ ?|SYNTHETIC\lRETURN\l|lreturn r9l}"];
+}
+}
+subgraph cluster_Region_469870989 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x002a|LOOP_END\lLOOP:0: B:2:0x0009\-\>B:5:0x002a\l|lbyte r9 = (byte) (r9 \- 1)l}"];
+}
+}
+}
+}
+Node_12 [shape=record,label="{12\:\ 0x000c|RETURN\lORIG_RETURN\l|lreturn (byte) \-1l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000d|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0028|SYNTHETIC\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0028|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x000b|SYNTHETIC\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x000b|l}"];
+MethodNode[shape=record,label="{private byte main.Map.checkIfOther((r12v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r13v0 'data' byte[][] A[D('data' byte[][]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'ix' int A[D('ix' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'iy' int A[D('iy' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0028 \-\> B:12:0x000c, BACK_EDGE: B:5:0x002a \-\> B:2:0x0009\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_10[style=dashed];
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_6;
+Node_8 -> Node_9;
+Node_5 -> Node_2;
+Node_12 -> Node_9;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+}
+

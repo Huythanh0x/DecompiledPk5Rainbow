@@ -1,0 +1,61 @@
+digraph "CFG forjavax.microedition.media.control.VolumeControl.setLevelForMenu(I)I" {
+subgraph cluster_Region_1528555128 {
+label = "R(4:(1:2)(1:(1:10))|3|(1:5)|6)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_337291025 {
+label = "IF [B:1:0x0000] THEN: R(1:2) ELSE: R(1:(1:10))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lif (r5 \< 0) goto L14l}"];
+subgraph cluster_Region_1461383672 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lr5 = 0l}"];
+}
+subgraph cluster_Region_39208886 {
+label = "R(1:(1:10)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_843091695 {
+label = "IF [B:9:0x004a] THEN: R(1:10) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x004a|lif (r5 \> 100) goto L21l}"];
+subgraph cluster_Region_1931711897 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x004c|lr5 = 100l}"];
+}
+}
+}
+}
+Node_3 [shape=record,label="{3\:\ 0x0003|PHI: r5l  0x0003: PHI (r5v2 'level' int) = (r5v0 'level' int), (r5v1 'level' int), (r5v3 'level' int) binds: [B:9:0x004a, B:10:0x004c, B:2:0x0002] A[DONT_GENERATE, DONT_INLINE]\l|lint int r0 = (int) (r5 \/ r4.percent)l}"];
+subgraph cluster_IfRegion_1932930868 {
+label = "IF [B:4:0x000a] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000a|lif (r4.mute == false) goto L17l}"];
+subgraph cluster_Region_1789427614 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000c|lr4.currentVolume = r0landroid.util.Log.e(\"\", \"这个游戏的管理器的比例值是\" + r4.percent)landroid.util.Log.e(\"\", \"这个游戏的管理器声音是\" + r0)landroid.util.Log.e(\"\", \"dddddddddddddddddddddd\")lr4.audioManager.setStreamVolume(3, r0, 16)l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0047|RETURN\l|lreturn r5l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0048|l}"];
+MethodNode[shape=record,label="{public int javax.microedition.media.control.VolumeControl.setLevelForMenu((r4v0 'this' javax.microedition.media.control.VolumeControl A[IMMUTABLE_TYPE, THIS]), (r5v0 'level' int A[D('level' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x000a \-\> B:6:0x0047, CROSS_EDGE: B:9:0x004a \-\> B:3:0x0003, CROSS_EDGE: B:10:0x004c \-\> B:3:0x0003\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_1 -> Node_8[style=dashed];
+Node_2 -> Node_3;
+Node_9 -> Node_3[style=dashed];
+Node_9 -> Node_10;
+Node_10 -> Node_3;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_8 -> Node_9;
+}
+

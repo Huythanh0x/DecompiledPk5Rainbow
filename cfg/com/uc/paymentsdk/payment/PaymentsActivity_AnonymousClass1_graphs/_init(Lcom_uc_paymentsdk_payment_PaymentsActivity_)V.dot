@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.1.\<init\>(Lcom\/uc\/paymentsdk\/payment\/PaymentsActivity;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr0.this$0 = r1l}"];
+Node_2 [shape=record,label="{2\:\ 0x0005|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{void com.uc.paymentsdk.payment.PaymentsActivity.1.\<init\>((r0v0 'this' com.uc.paymentsdk.payment.PaymentsActivity$1 A[IMMUTABLE_TYPE, THIS]), (r1v0 com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | NO_SKIP_ARGS\lANONYMOUS_CONSTRUCTOR\lUSE_LINES_HINTS\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

@@ -1,0 +1,96 @@
+digraph "CFG formain.Map.drawCloud()V" {
+subgraph cluster_Region_2029358964 {
+label = "R(1:(1:(4:5|(1:8)|10|(2:(1:18)(1:15)|17))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1160170930 {
+label = "R(1:(4:5|(1:8)|10|(2:(1:18)(1:15)|17)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_693198873 {
+label = "IF [B:2:0x0004] THEN: R(4:5|(1:8)|10|(2:(1:18)(1:15)|17)) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (r8.imgCloud != null) goto L27l}"];
+subgraph cluster_Region_229740075 {
+label = "R(4:5|(1:8)|10|(2:(1:18)(1:15)|17))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0007|lbyte r0 = 0l}"];
+subgraph cluster_LoopRegion_85762144 {
+label = "LOOP:0: (1:8)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x000b|ADDED_TO_REGION\l|lif (r0 \< r8.cloud.length) goto L37l}"];
+subgraph cluster_Region_423961623 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x002c|LOOP_END\lLOOP:0: B:6:0x0008\-\>B:8:0x002c\l|ldm.Ui.i().drawImage(r8.imgCloud, r8.map_x + r8.cloud[r0][0], r8.map_y + r8.cloud[r0][1], 0)lbyte r0 = (byte) (r0 + 1)l}"];
+}
+}
+Node_10 [shape=record,label="{10\:\ 0x000d|lbyte r0 = 0l}"];
+subgraph cluster_LoopRegion_1293228824 {
+label = "LOOP:1: (2:(1:18)(1:15)|17)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0011|ADDED_TO_REGION\l|lif (r0 \< r8.cloud.length) goto L33l}"];
+subgraph cluster_Region_1288967239 {
+label = "R(2:(1:18)(1:15)|17)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_749449757 {
+label = "IF [B:14:0x0023] THEN: R(1:18) ELSE: R(1:15)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0023|lif (isNpcSrc(r8.cloud[r0][0], r8.cloud[r0][1]) == true) goto L38l}"];
+subgraph cluster_Region_478043651 {
+label = "R(1:18)";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x004b|lshort[] short[] r1 = r8.cloud[r0]lr1[0] = (short) (r1[0] \- r8.cloud[r0][2])l}"];
+}
+subgraph cluster_Region_2044087119 {
+label = "R(1:15)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0025|laddCloud(r0)l}"];
+}
+}
+Node_17 [shape=record,label="{17\:\ 0x0028|LOOP_END\lLOOP:1: B:11:0x000e\-\>B:17:0x0028\l|lbyte r0 = (byte) (r0 + 1)l}"];
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0006|ORIG_RETURN\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0008|LOOP_START\lPHI: r0l  0x0008: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v5 'i' byte) binds: [B:5:0x0007, B:8:0x002c] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:6:0x0008\-\>B:8:0x002c\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x000d|SYNTHETIC\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x000e|LOOP_START\lPHI: r0l  0x000e: PHI (r0v3 'i' byte) = (r0v2 'i' byte), (r0v4 'i' byte) binds: [B:10:0x000d, B:17:0x0028] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:11:0x000e\-\>B:17:0x0028\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0013|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x0028|SYNTHETIC\l|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x0028|SYNTHETIC\l|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x0006|SYNTHETIC\l|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.drawCloud((r8v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:12:0x0011 \-\> B:3:0x0006, BACK_EDGE: B:17:0x0028 \-\> B:11:0x000e, CROSS_EDGE: B:18:0x004b \-\> B:17:0x0028, BACK_EDGE: B:8:0x002c \-\> B:6:0x0008\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_7 -> Node_9[style=dashed];
+Node_8 -> Node_6;
+Node_10 -> Node_11;
+Node_12 -> Node_13;
+Node_12 -> Node_20[style=dashed];
+Node_14 -> Node_15[style=dashed];
+Node_14 -> Node_18;
+Node_18 -> Node_19;
+Node_15 -> Node_16;
+Node_17 -> Node_11;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+Node_13 -> Node_14;
+Node_16 -> Node_17;
+Node_19 -> Node_17;
+Node_20 -> Node_21;
+Node_21 -> Node_4;
+}
+

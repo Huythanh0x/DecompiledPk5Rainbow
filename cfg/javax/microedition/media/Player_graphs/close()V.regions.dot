@@ -1,0 +1,50 @@
+digraph "CFG forjavax.microedition.media.Player.close()V" {
+subgraph cluster_Region_2096748335 {
+label = "R(1:(1:(2:(1:5)|6)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1170500489 {
+label = "R(1:(2:(1:5)|6))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_620313202 {
+label = "IF [B:2:0x0003] THEN: R(2:(1:5)|6) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif (r3.mp != null) goto L14l}"];
+subgraph cluster_Region_1541632911 {
+label = "R(2:(1:5)|6)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1771149171 {
+label = "IF [B:4:0x0009] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0009|lif (r3.state == 400) goto L16l}"];
+subgraph cluster_Region_258941419 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000b|lonEvent(javax.microedition.media.PlayerListener.STOPPED, null)lr3.mp.stop()l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0015|lr3.mp.release()lonEvent(javax.microedition.media.PlayerListener.CLOSED, null)lr3.state = 0l}"];
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0005|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0022|ORIG_RETURN\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.media.Player.close((r3v0 'this' javax.microedition.media.Player A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x0009 \-\> B:6:0x0015, CROSS_EDGE: B:2:0x0003 \-\> B:7:0x0022\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_9[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_7 -> Node_8;
+Node_9 -> Node_8;
+}
+

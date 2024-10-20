@@ -1,0 +1,146 @@
+digraph "CFG forjavax.microedition.lcdui.Font.getFont(III)Ljavax\/microedition\/lcdui\/Font;" {
+subgraph cluster_Region_817228590 {
+label = "R(12:1|2|3|(1:5)|(1:8)|(1:11)|12|(1:14)|15|16|17|18)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljavax.microedition.lcdui.Font javax.microedition.lcdui.Font r1 = new javax.microedition.lcdui.Font()landroid.graphics.Typeface android.graphics.Typeface r0 = android.graphics.Typeface.SANS_SERIFl}"];
+subgraph cluster_SwitchRegion_478488081 {
+label = "Switch: 3
+ case 0 -> R(2:23|1)
+ case 32 -> R(2:24|1)
+ case 64 -> R(2:25|1)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0008|lswitch(r5) \{l    case 0: goto L46;l    case 32: goto L47;l    case 64: goto L48;l    default: goto L30;l\}l}"];
+subgraph cluster_Region_731533447 {
+label = "R(2:23|1)";
+node [shape=record,color=blue];
+Node_23 [shape=record,label="{23\:\ 0x0057|landroid.graphics.Typeface r0 = android.graphics.Typeface.SANS_SERIFl}"];
+Node_InsnContainer_1415325810 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_1305695965 {
+label = "R(2:24|1)";
+node [shape=record,color=blue];
+Node_24 [shape=record,label="{24\:\ 0x005a|landroid.graphics.Typeface r0 = android.graphics.Typeface.MONOSPACEl}"];
+Node_InsnContainer_352084019 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_2051307060 {
+label = "R(2:25|1)";
+node [shape=record,color=blue];
+Node_25 [shape=record,label="{25\:\ 0x005d|landroid.graphics.Typeface r0 = android.graphics.Typeface.SANS_SERIFl}"];
+Node_InsnContainer_1417036596 [shape=record,label="{|lbreakl}"];
+}
+}
+Node_3 [shape=record,label="{3\:\ 0x000b|PHI: r0l  0x000b: PHI (r0v4 'family' android.graphics.Typeface) = l  (r0v0 'family' android.graphics.Typeface)l  (r0v1 'family' android.graphics.Typeface)l  (r0v2 'family' android.graphics.Typeface)l  (r0v3 'family' android.graphics.Typeface)l binds: [B:2:0x0008, B:25:0x005d, B:24:0x005a, B:23:0x0057] A[DONT_GENERATE, DONT_INLINE]\l|ljavax.microedition.lcdui.Font.font_style = 0l}"];
+subgraph cluster_IfRegion_1635140101 {
+label = "IF [B:4:0x000d] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000d|lif (0 != 0) goto L32l}"];
+subgraph cluster_Region_1423763937 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000f|ljavax.microedition.lcdui.Font.font_style \|= 0l}"];
+}
+}
+subgraph cluster_IfRegion_592901809 {
+label = "IF [B:7:0x0017] THEN: R(1:8) ELSE: null";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0017|lif ((r6 & 1) != 0) goto L35l}"];
+subgraph cluster_Region_1163881996 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0019|ljavax.microedition.lcdui.Font.font_style \|= 1l}"];
+}
+}
+subgraph cluster_IfRegion_384465608 {
+label = "IF [B:10:0x0021] THEN: R(1:11) ELSE: null";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0021|lif ((r6 & 2) != 0) goto L38l}"];
+subgraph cluster_Region_625609237 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0023|ljavax.microedition.lcdui.Font.font_style \|= 2l}"];
+}
+}
+Node_12 [shape=record,label="{12\:\ 0x0029|lboolean r2 = falsel}"];
+subgraph cluster_IfRegion_834507635 {
+label = "IF [B:13:0x002c] THEN: R(1:14) ELSE: null";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x002c|lif ((r6 & 4) != 0) goto L41l}"];
+subgraph cluster_Region_1981365990 {
+label = "R(1:14)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x002e|lr2 = truel}"];
+}
+}
+Node_15 [shape=record,label="{15\:\ 0x002f|PHI: r2l  0x002f: PHI (r2v1 'underLine' boolean) = (r2v0 'underLine' boolean), (r2v2 'underLine' boolean) binds: [B:13:0x002c, B:14:0x002e] A[DONT_GENERATE, DONT_INLINE]\l|lr1.tTypeface = android.graphics.Typeface.create(r0, javax.microedition.lcdui.Font.font_style)l}"];
+subgraph cluster_SwitchRegion_262976582 {
+label = "Switch: 3
+ case 8 -> R(2:20|1)
+ case 22 -> R(2:21|1)
+ case javax.microedition.lcdui.Font.SIZE_LARGE :int -> R(2:22|1)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x0037|lswitch(r7) \{l    case 8: goto L49;l    case 22: goto L50;l    case 26: goto L51;l    default: goto L44;l\}l}"];
+subgraph cluster_Region_1482551230 {
+label = "R(2:20|1)";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x0060|lr1.nowSize = javax.microedition.lcdui.Font.fontSize[0]l}"];
+Node_InsnContainer_1255519041 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_791224512 {
+label = "R(2:21|1)";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x0067|lr1.nowSize = javax.microedition.lcdui.Font.fontSize[1]l}"];
+Node_InsnContainer_1069154988 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_1698106663 {
+label = "R(2:22|1)";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x006f|lr1.nowSize = javax.microedition.lcdui.Font.fontSize[2]l}"];
+Node_InsnContainer_1648437283 [shape=record,label="{|lbreakl}"];
+}
+}
+Node_17 [shape=record,label="{17\:\ 0x003a|lr1.tmpPaint.setTypeface(r1.tTypeface)lr1.tmpPaint.setTextSize(r1.nowSize)lr1.tmpPaint.setUnderlineText(r2)lr1.metrics = r1.tmpPaint.getFontMetricsInt()l}"];
+Node_18 [shape=record,label="{18\:\ 0x0056|RETURN\l|lreturn r1l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0015|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x001f|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static javax.microedition.lcdui.Font javax.microedition.lcdui.Font.getFont((r5v0 'face' int A[D('face' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'style' int A[D('style' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'size' int A[D('size' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lCOMPUTE_POST_DOM\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:20:0x0060 \-\> B:17:0x003a, CROSS_EDGE: B:21:0x0067 \-\> B:17:0x003a, CROSS_EDGE: B:22:0x006f \-\> B:17:0x003a, CROSS_EDGE: B:13:0x002c \-\> B:15:0x002f, CROSS_EDGE: B:10:0x0021 \-\> B:12:0x0029, CROSS_EDGE: B:7:0x0017 \-\> B:9:0x001f, CROSS_EDGE: B:4:0x000d \-\> B:6:0x0015, CROSS_EDGE: B:23:0x0057 \-\> B:3:0x000b, CROSS_EDGE: B:24:0x005a \-\> B:3:0x000b, CROSS_EDGE: B:25:0x005d \-\> B:3:0x000b\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_23;
+Node_2 -> Node_24;
+Node_2 -> Node_25;
+Node_23 -> Node_3;
+Node_24 -> Node_3;
+Node_25 -> Node_3;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_7 -> Node_9[style=dashed];
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_10 -> Node_12[style=dashed];
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_13 -> Node_15[style=dashed];
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_16 -> Node_17;
+Node_16 -> Node_20;
+Node_16 -> Node_21;
+Node_16 -> Node_22;
+Node_20 -> Node_17;
+Node_21 -> Node_17;
+Node_22 -> Node_17;
+Node_17 -> Node_18;
+Node_18 -> Node_19;
+Node_0 -> Node_1;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+}
+

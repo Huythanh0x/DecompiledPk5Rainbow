@@ -1,0 +1,44 @@
+digraph "CFG fordm.Ms.createShortArray([BI)[S" {
+subgraph cluster_Region_1672826610 {
+label = "R(3:1|(1:7)|11)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lshort[] short[] r0 = new short[getStreamL(r5, r6)]lint r1 = 0l}"];
+subgraph cluster_LoopRegion_987199860 {
+label = "LOOP:0: (1:7)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0009|ADDED_TO_REGION\l|lif (r1 \< r0.length) goto L19l}"];
+subgraph cluster_Region_433044914 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x000f|LOOP_END\lPHI: r2l  0x000f: PHI (r2v3 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:7:0x000f\l|lr0[r1] = getStreamL(r5, r6 == 2 ? 2 : \-1)lr1++l}"];
+}
+}
+Node_11 [shape=record,label="{11\:\ 0x000b|RETURN\l|lreturn r0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0008|LOOP_START\lPHI: r1l  0x0008: PHI (r1v1 'j' int) = (r1v0 'j' int), (r1v2 'j' int) binds: [B:1:0x0000, B:7:0x000f] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:7:0x000f\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x000c|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000e|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x000f|SYNTHETIC\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0018|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x000f|SYNTHETIC\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x000b|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public short[] dm.Ms.createShortArray((r4v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r5v0 'data' byte[] A[D('data' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:7:0x000f \-\> B:2:0x0008, CROSS_EDGE: B:8:0x0018 \-\> B:7:0x000f\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_10[style=dashed];
+Node_7 -> Node_2;
+Node_11 -> Node_12;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_4 -> Node_5;
+Node_4 -> Node_8;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_9 -> Node_7;
+Node_10 -> Node_11;
+}
+

@@ -1,0 +1,16 @@
+digraph "CFG formain.GameRun.setAcionSkill(Ldm\/Battle;)V" {
+subgraph cluster_Region_1333466148 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.action = (byte) 1lr3.now_action[r3.mini_state] = 0lr3.now_time[r3.mini_state] = 0lr3.battle_state = (byte) \-1lsetMagic(r4.skill \/ 5)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x001a|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.setAcionSkill((r3v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r4v0 'be' dm.Battle A[D('be' dm.Battle), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

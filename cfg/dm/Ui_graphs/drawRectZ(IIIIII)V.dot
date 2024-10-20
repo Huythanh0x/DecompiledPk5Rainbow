@@ -1,0 +1,19 @@
+digraph "CFG fordm.Ui.drawRectZ(IIIIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.g.setColor(r6)ljavax.microedition.lcdui.Graphics r0 = dm.Ui.gldm.Ms.i()lint r1 = r7 \- dm.Ms.abs(r5.rz)ldm.Ms.i()lint r2 = r8 \- dm.Ms.abs(r5.rz)ldm.Ms.i()lint r3 = (dm.Ms.abs(r5.rz) \<\< 1) + r9ldm.Ms.i()lr0.drawRect(r1, r2, r3, (dm.Ms.abs(r5.rz) \<\< 1) + r10)lbyte r0 = (byte) (r5.rz + 1)lr5.rz = r0l}"];
+Node_2 [shape=record,label="{2\:\ 0x003f|lif (r0 \<= r11) goto L13l}"];
+Node_3 [shape=record,label="{3\:\ 0x0041|lr5.rz = (byte) (\-r11)l}"];
+Node_4 [shape=record,label="{4\:\ 0x0045|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawRectZ((r5v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r6v0 'color' int A[D('color' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'h' int A[D('h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 's' int A[D('s' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x003f \-\> B:4:0x0045\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

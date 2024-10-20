@@ -1,0 +1,119 @@
+digraph "CFG formain.GameRun.drawBuy(IIIIII)V" {
+subgraph cluster_Region_812713557 {
+label = "R(9:1|4|(1:6)(1:28)|7|(1:9)(1:27)|10|(1:12)|16|(1:(1:21)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.i().drawKuang(r14 \- r16, r15 \- r17, r16 \<\< 1, r17 \<\< 1)l}"];
+Node_4 [shape=record,label="{4\:\ 0x0016|PHI: r1l  0x0016: PHI (r1v3 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lint int r3 = (r15 \- r17) + ((r18 & 16) != 0 ? 2 : 12)ldm.Ui.i().drawString(main.Constants_H.MONEY_TXT_8 + ((int) r12.popMenu) + \"\/\" + ((int) r12.t_length), r14, r3, 17, 3, 0)ljava.lang.StringBuffer java.lang.StringBuffer r11 = new java.lang.StringBuffer()l}"];
+subgraph cluster_IfRegion_415828987 {
+label = "IF [B:5:0x0048] THEN: R(1:6) ELSE: R(1:28)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0048|lif ((r18 & 16) != 0) goto L37l}"];
+subgraph cluster_Region_1224240914 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x004a|lr11.append(main.Constants_H.MONEY_TXT_6)l}"];
+}
+subgraph cluster_Region_1965384479 {
+label = "R(1:28)";
+node [shape=record,color=blue];
+Node_28 [shape=record,label="{28\:\ 0x00de|lr11.append(main.Constants_H.MONEY_TXT_7)l}"];
+}
+}
+Node_7 [shape=record,label="{7\:\ 0x004f|lr11.append(r12.sell_money * r12.popMenu)l}"];
+subgraph cluster_IfRegion_1083306879 {
+label = "IF [B:8:0x0059] THEN: R(1:9) ELSE: R(1:27)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0059|lif ((r18 & 1) != 0) goto L40l}"];
+subgraph cluster_Region_1298042944 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x005b|lr11.append(main.Constants_H.MONEY_TXT_0)l}"];
+}
+subgraph cluster_Region_1988771718 {
+label = "R(1:27)";
+node [shape=record,color=blue];
+Node_27 [shape=record,label="{27\:\ 0x00e5|lr11.append(\"徽章\")l}"];
+}
+}
+Node_10 [shape=record,label="{10\:\ 0x0060|ldm.Ui.i().drawString(r11.toString(), r14, r3 + 25 + 4, 17, 6, 0)l}"];
+subgraph cluster_IfRegion_1327514902 {
+label = "IF [B:11:0x0076] THEN: R(1:12) ELSE: null";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0076|lif ((r18 & 16) != 0) goto L43l}"];
+subgraph cluster_Region_203880756 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0078|ldm.Ui.i().drawString(main.Constants_H.MONEY_TXT_17 + ((int) findItem(\-2, r13, true)), r14, r3 + 58, 17, 3, 0)l}"];
+}
+}
+Node_16 [shape=record,label="{16\:\ 0x00aa|PHI: r9l  0x00aa: PHI (r9v2 boolean) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|ldm.Ui.i().drawTriangle1(r14, r15 \- 2, r16, true, r12.cur_b != 2)l}"];
+subgraph cluster_Region_2138648160 {
+label = "R(1:(1:21))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_792687783 {
+label = "IF [B:17:0x00b4] THEN: R(1:21) ELSE: null";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x00b4|lif (r12.buyOk == 1) goto L49l}"];
+subgraph cluster_Region_1618636852 {
+label = "R(1:21)";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x00c3|PHI: r1l  0x00c3: PHI (r1v15 java.lang.String) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lshowString(main.Constants_H.MONEY_TXT_14 + ((r18 & 16) != 0 ? main.Constants_H.MONEY_TXT_15 : main.Constants_H.MONEY_TXT_16) + \"？\", main.Constants_H.HEIGHT_H + 25, 0)l}"];
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0013|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0015|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x009b|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x00a6|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x00a8|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x00b6|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x00bf|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x00c1|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x00d9|ORIG_RETURN\l|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x00ef|l}"];
+Node_25 [shape=record,color=red,label="{25\:\ ?|SYNTHETIC\l|l}"];
+Node_26 [shape=record,color=red,label="{26\:\ 0x00ec|l}"];
+Node_29 [shape=record,color=red,label="{29\:\ 0x00da|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawBuy((r12v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r13v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r16v0 'w_h' int A[D('w_h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r17v0 'h_h' int A[D('h_h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r18v0 'd' int A[D('d' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:24:0x00ef \-\> B:21:0x00c3, CROSS_EDGE: B:17:0x00b4 \-\> B:22:0x00d9, CROSS_EDGE: B:26:0x00ec \-\> B:16:0x00aa, CROSS_EDGE: B:11:0x0076 \-\> B:13:0x009b, CROSS_EDGE: B:27:0x00e5 \-\> B:10:0x0060, CROSS_EDGE: B:28:0x00de \-\> B:7:0x004f, CROSS_EDGE: B:29:0x00da \-\> B:4:0x0016\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_28[style=dashed];
+Node_6 -> Node_7;
+Node_28 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_27[style=dashed];
+Node_9 -> Node_10;
+Node_27 -> Node_10;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_11 -> Node_13[style=dashed];
+Node_12 -> Node_13;
+Node_16 -> Node_17;
+Node_17 -> Node_18;
+Node_17 -> Node_25[style=dashed];
+Node_21 -> Node_22;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_29;
+Node_3 -> Node_4;
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+Node_14 -> Node_26;
+Node_15 -> Node_16;
+Node_18 -> Node_19;
+Node_19 -> Node_20;
+Node_19 -> Node_24;
+Node_20 -> Node_21;
+Node_22 -> Node_23;
+Node_24 -> Node_21;
+Node_25 -> Node_23;
+Node_26 -> Node_16;
+Node_29 -> Node_4;
+}
+

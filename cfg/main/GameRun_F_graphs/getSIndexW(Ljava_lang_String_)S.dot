@@ -1,0 +1,30 @@
+digraph "CFG formain.GameRun_F.getSIndexW(Ljava\/lang\/String;)S" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr1 = 0lr2 = 0lbyte r0 = (byte) r6.indexOf(\"#\", 0)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0009|lif (r0 != 0) goto L23l}"];
+Node_3 [shape=record,label="{3\:\ 0x000b|lr0 = 1l}"];
+Node_4 [shape=record,label="{4\:\ 0x000c|SYNTHETIC\lPHI: r0l  0x000c: PHI (r0v1 'end' byte) = (r0v0 'end' byte), (r0v4 'end' byte) binds: [B:2:0x0009, B:3:0x000b] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x000c|LOOP_START\lPHI: r0 r1 r2l  0x000c: PHI (r0v2 'end' byte) = (r0v1 'end' byte), (r0v3 'end' byte) binds: [B:4:0x000c, B:7:0x001c] A[DONT_GENERATE, DONT_INLINE]l  0x000c: PHI (r1v1 'num' byte) = (r1v0 'num' byte), (r1v2 'num' byte) binds: [B:4:0x000c, B:7:0x001c] A[DONT_GENERATE, DONT_INLINE]l  0x000c: PHI (r2v1 'start' byte) = (r2v0 'start' byte), (r2v2 'start' byte) binds: [B:4:0x000c, B:7:0x001c] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:5:0x000c\-\>B:7:0x001c\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000d|lif (r0 != (\-1)) goto L21l}"];
+Node_7 [shape=record,label="{7\:\ 0x001c|LOOP_END\lLOOP:0: B:5:0x000c\-\>B:7:0x001c\l|lbyte r2 = (byte) (r2 + r0)lbyte r0 = (byte) r6.indexOf(\"#\", r2)lbyte r1 = (byte) (r1 + 1)l}"];
+Node_8 [shape=record,label="{8\:\ 0x000f|SYNTHETIC\l|l}"];
+Node_9 [shape=record,label="{9\:\ 0x000f|l}"];
+Node_10 [shape=record,label="{10\:\ 0x001b|RETURN\l|lreturn (short) (dm.Ms.i().getStringWidth(\"#1\") * r1)l}"];
+Node_11 [shape=record,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public short main.GameRun_F.getSIndexW((r5v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]), (r6v0 'str' java.lang.String A[D('str' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:7:0x001c \-\> B:5:0x000c, CROSS_EDGE: B:2:0x0009 \-\> B:5:0x000c\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_4;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_6 -> Node_8[style=dashed];
+Node_7 -> Node_5;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+}
+

@@ -1,0 +1,54 @@
+digraph "CFG formain.GameRun.getHitCoefficient(Ldm\/Battle;Ldm\/Monster;Ldm\/Monster;)V" {
+subgraph cluster_Region_1842495672 {
+label = "R(4:1|4|(2:8|11)|13)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr9.countS[1] = 0lbyte byte r0 = (byte) (r10.monster[6] \- 99)lbyte[] byte[] r1 = r9.countSl}"];
+Node_4 [shape=record,label="{4\:\ 0x0018|PHI: r3l  0x0018: PHI (r3v2 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr1[1] = (byte) (r1[1] + (r0 \> 1 ? 20 : (r0 \/ 20) * 20))l}"];
+subgraph cluster_IfRegion_1745522347 {
+label = "IF [B:5:0x0021, B:7:0x0029] THEN: R(2:8|11) ELSE: null";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0021|lif (r10.monster[3] != (\-1)) goto L24l}"];
+Node_7 [shape=record,label="{7\:\ 0x0029|ADDED_TO_REGION\l|lif (r9.bg_id != r10.monster[3]) goto L26l}"];
+subgraph cluster_Region_2115246496 {
+label = "R(2:8|11)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x002b|lbyte[] byte[] r1 = r9.countSl}"];
+Node_11 [shape=record,label="{11\:\ 0x0038|PHI: r3l  0x0038: PHI (r3v6 byte) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr1[1] = (byte) (r1[1] + (r9.bg_id == r10.monster[3] ? (byte) 0 : main.Constants_H.SMS_PAUSE))l}"];
+}
+}
+Node_13 [shape=record,label="{13\:\ 0x003c|lbyte[] byte[] r1 = r9.countSlr1[1] = (byte) (r1[1] + isShuXing(r10, r11))l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0014|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0016|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0023|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0035|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0037|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x004e|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0048|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x0049|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.getHitCoefficient((r8v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r9v0 'be' dm.Battle A[D('be' dm.Battle), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'am' dm.Monster A[D('am' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'dm' dm.Monster A[D('dm' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:12:0x004e \-\> B:11:0x0038, CROSS_EDGE: B:7:0x0029 \-\> B:13:0x003c, CROSS_EDGE: B:5:0x0021 \-\> B:13:0x003c, CROSS_EDGE: B:16:0x0049 \-\> B:4:0x0018\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_13[style=dashed];
+Node_7 -> Node_8;
+Node_7 -> Node_13[style=dashed];
+Node_8 -> Node_9;
+Node_11 -> Node_13;
+Node_13 -> Node_14;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_16;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_9 -> Node_12;
+Node_10 -> Node_11;
+Node_12 -> Node_11;
+Node_14 -> Node_15;
+Node_16 -> Node_4;
+}
+

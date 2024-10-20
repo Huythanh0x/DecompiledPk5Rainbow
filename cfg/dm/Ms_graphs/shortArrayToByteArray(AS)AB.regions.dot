@@ -1,0 +1,31 @@
+digraph "CFG fordm.Ms.shortArrayToByteArray([S)[B" {
+subgraph cluster_Region_1203416728 {
+label = "R(3:1|(1:3)|5)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ms.skip = 0lint int r2 = r5.lengthlbyte[] byte[] r0 = new byte[r2 \<\< 1]lint r1 = 0ll}"];
+subgraph cluster_LoopRegion_1388816776 {
+label = "LOOP:0: (1:3)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0009|LOOP_START\lADDED_TO_REGION\lPHI: r1l  0x0009: PHI (r1v1 'i' int) = (r1v0 'i' int), (r1v2 'i' int) binds: [B:1:0x0000, B:3:0x000c] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0009\-\>B:3:0x000c\l|lshort lif (r1 \< r2) goto L12l}"];
+subgraph cluster_Region_1277380997 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000c|LOOP_END\lLOOP:0: B:2:0x0009\-\>B:3:0x000c\l|lputShort(r0, r0)lr1++l}"];
+}
+}
+Node_5 [shape=record,label="{5\:\ 0x000b|RETURN\l|lreturn r0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x000b|SYNTHETIC\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public byte[] dm.Ms.shortArrayToByteArray((r4v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r5v0 'shortbuf' short[] A[D('shortbuf' short[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:3:0x000c \-\> B:2:0x0009\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_2;
+Node_5 -> Node_6;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+}
+

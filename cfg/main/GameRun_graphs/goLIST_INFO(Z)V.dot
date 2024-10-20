@@ -1,0 +1,24 @@
+digraph "CFG formain.GameRun.goLIST_INFO(Z)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lmain.GameRun.run_state = 68l}"];
+Node_2 [shape=record,label="{2\:\ 0x0007|lif (r5.monInfo_dir != null) goto L14l}"];
+Node_3 [shape=record,label="{3\:\ 0x0009|lbyte[] r0 = dm.Ms.i().getStream(\"data\/book.d\", \-1)ldm.Ms.i()ldm.Ms.skip = 0lr5.monInfo_dir = dm.Ms.i().create2Array(r0)lbyte[] r1 = (byte[]) nulll}"];
+Node_4 [shape=record,label="{4\:\ 0x0026|lif (r6 == false) goto L16l}"];
+Node_5 [shape=record,label="{5\:\ 0x0028|lr5.infoStart = 0lr5.cur_a = 0lr5.cur_b = 0lr5.move_x = 6lr5.move_y = 0lr5.t_length = (byte) r5.monInfo_dir[r5.cur_a].lengthlr5.select[0][0] = 0lr5.select[0][1] = 0l}"];
+Node_6 [shape=record,label="{6\:\ 0x004a|lr5.list_rows = 7l}"];
+Node_7 [shape=record,label="{7\:\ 0x004d|RETURN\l|lreturnl}"];
+Node_8 [shape=record,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.goLIST_INFO((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r6v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x0026 \-\> B:6:0x004a, CROSS_EDGE: B:2:0x0007 \-\> B:4:0x0026\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_4;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_6;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+}
+

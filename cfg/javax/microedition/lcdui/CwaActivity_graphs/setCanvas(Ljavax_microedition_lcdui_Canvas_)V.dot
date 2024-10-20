@@ -1,0 +1,12 @@
+digraph "CFG forjavax.microedition.lcdui.CwaActivity.setCanvas(Ljavax\/microedition\/lcdui\/Canvas;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljavax.microedition.lcdui.CwaActivity.curCanvas = r1l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.lcdui.CwaActivity.setCanvas((r0v0 'this' javax.microedition.lcdui.CwaActivity A[IMMUTABLE_TYPE, THIS]), (r1v0 'canvas' javax.microedition.lcdui.Canvas A[D('canvas' javax.microedition.lcdui.Canvas), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

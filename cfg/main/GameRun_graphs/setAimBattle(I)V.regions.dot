@@ -1,0 +1,34 @@
+digraph "CFG formain.GameRun.setAimBattle(I)V" {
+subgraph cluster_Region_541555550 {
+label = "R(3:1|4|7)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr2.mini_state = (byte) r3l}"];
+Node_4 [shape=record,label="{4\:\ 0x000a|PHI: r0l  0x000a: PHI (r0v3 dm.Battle) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr2.am = r2.mini_state == 1 ? r2.myB : r2.enBl}"];
+Node_7 [shape=record,label="{7\:\ 0x0012|PHI: r0l  0x0012: PHI (r0v6 dm.Battle) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr2.f133dm = r2.mini_state == 1 ? r2.enB : r2.myBl}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0006|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0008|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000e|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0010|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0014|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0018|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0015|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.setAimBattle((r2v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r3v0 'state' int A[D('state' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0018 \-\> B:7:0x0012, CROSS_EDGE: B:11:0x0015 \-\> B:4:0x000a\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_11;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_5 -> Node_10;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_10 -> Node_7;
+Node_11 -> Node_4;
+}
+

@@ -1,0 +1,114 @@
+digraph "CFG fordm.Ui.sliding(IIIIIZ)V" {
+subgraph cluster_Region_1072047253 {
+label = "R(5:(1:3)|6|9|12|(2:(2:17|18)|(4:21|(1:23)|24|27)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1186589202 {
+label = "IF [B:2:0x0002] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r14 == false) goto L37l}"];
+subgraph cluster_Region_118289656 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0004|ldrawK(r9 \- 2, r10 \- 2, 10 + 4, r11 + 4, 0)l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0017|PHI: r5l  0x0017: PHI (r5v1 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|ldrawK(r9, r10, 10, r11, r14 ? 0 : 3)l}"];
+Node_9 [shape=record,label="{9\:\ 0x0025|PHI: r5l  0x0025: PHI (r5v3 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|ldrawK(r9, r10, 10, 11, r14 ? 3 : 0)l}"];
+Node_12 [shape=record,label="{12\:\ 0x0038|PHI: r5l  0x0038: PHI (r5v5 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|ldrawK(r9, (r10 + r11) \- 11, 10, 11, r14 ? 3 : 0)lint int r11 = r11 \- 22lint int r13 = r13 \- 1l}"];
+subgraph cluster_Region_2127853072 {
+label = "R(2:(2:17|18)|(4:21|(1:23)|24|27))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1481189246 {
+label = "IF [B:13:0x0043] THEN: R(2:17|18) ELSE: null";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0043|lif (r13 \< 1) goto L48l}"];
+subgraph cluster_Region_1191219232 {
+label = "R(2:17|18)";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x0053|PHI: r5l  0x0053: PHI (r5v10 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|ldrawK(r9 + 1, r10 + 12, 10 \- 2, r11 \- 2, r14 ? 3 : 0)l}"];
+Node_18 [shape=record,label="{18\:\ 0x0057|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1688758642 {
+label = "R(4:21|(1:23)|24|27)";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x0064|lbyte byte r4 = (byte) (r11 \/ (r13 + 1))l}"];
+subgraph cluster_IfRegion_357005582 {
+label = "IF [B:22:0x006b] THEN: R(1:23) ELSE: null";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x006b|lif (r4 \< 15) goto L59l}"];
+subgraph cluster_Region_1451582062 {
+label = "R(1:23)";
+node [shape=record,color=blue];
+Node_23 [shape=record,label="{23\:\ 0x006d|lr4 = 15l}"];
+}
+}
+Node_24 [shape=record,label="{24\:\ 0x006f|PHI: r4l  0x006f: PHI (r4v4 'kh' byte) = (r4v3 'kh' byte), (r4v5 'kh' byte) binds: [B:22:0x006b, B:23:0x006d] A[DONT_GENERATE, DONT_INLINE]\l|lshort short r6 = (short) ((((r11 \- 2) \- r4) * r12) \/ r13)l}"];
+Node_27 [shape=record,label="{27\:\ 0x0083|PHI: r5l  0x0083: PHI (r5v7 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|ldrawK(r9 + 1, r10 + 12 + r6, 10 \- 2, r4, r14 ? 3 : 0)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0013|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0015|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0021|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0023|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0034|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0036|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0045|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x004f|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x0051|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x0061|l}"];
+Node_25 [shape=record,color=red,label="{25\:\ 0x007f|l}"];
+Node_26 [shape=record,color=red,label="{26\:\ 0x0081|l}"];
+Node_28 [shape=record,color=red,label="{28\:\ ?|SYNTHETIC\l|l}"];
+Node_29 [shape=record,color=red,label="{29\:\ 0x0088|l}"];
+Node_30 [shape=record,color=red,label="{30\:\ 0x005e|l}"];
+Node_31 [shape=record,color=red,label="{31\:\ 0x005b|l}"];
+Node_32 [shape=record,color=red,label="{32\:\ 0x0058|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.sliding((r8v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r9v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'h' int A[D('h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'now' int A[D('now' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'all' int A[D('all' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'type' boolean A[D('type' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:20:0x0061 \-\> B:17:0x0053, CROSS_EDGE: B:27:0x0083 \-\> B:18:0x0057, CROSS_EDGE: B:29:0x0088 \-\> B:27:0x0083, CROSS_EDGE: B:22:0x006b \-\> B:24:0x006f, CROSS_EDGE: B:30:0x005e \-\> B:12:0x0038, CROSS_EDGE: B:31:0x005b \-\> B:9:0x0025, CROSS_EDGE: B:32:0x0058 \-\> B:6:0x0017, CROSS_EDGE: B:2:0x0002 \-\> B:4:0x0013\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_13 -> Node_21[style=dashed];
+Node_17 -> Node_18;
+Node_18 -> Node_19;
+Node_21 -> Node_22;
+Node_22 -> Node_23;
+Node_22 -> Node_24[style=dashed];
+Node_23 -> Node_24;
+Node_24 -> Node_25;
+Node_27 -> Node_28;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_4 -> Node_32;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_7 -> Node_31;
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_10 -> Node_30;
+Node_11 -> Node_12;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_15 -> Node_20;
+Node_16 -> Node_17;
+Node_20 -> Node_17;
+Node_25 -> Node_26;
+Node_25 -> Node_29;
+Node_26 -> Node_27;
+Node_28 -> Node_19;
+Node_29 -> Node_27;
+Node_30 -> Node_12;
+Node_31 -> Node_9;
+Node_32 -> Node_6;
+}
+

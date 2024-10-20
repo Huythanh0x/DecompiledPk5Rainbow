@@ -1,0 +1,12 @@
+digraph "CFG forminigame.Cards.\<init\>(Lmain\/GameRun;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr5.gw = 30lr5.gh = 40lr5.gspace = 4lr5.wh = 320lr5.hh = 160lr5.time = 3lr5.find_count = 3lr5.num = new byte[][]\{new byte[]\{3, 4\}, new byte[]\{3, 6\}, new byte[]\{4, 6\}, new byte[]\{5, 6\}\}lr5.gr = r6l}"];
+Node_2 [shape=record,label="{2\:\ 0x0040|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void minigame.Cards.\<init\>((r5v0 'this' minigame.Cards A[IMMUTABLE_TYPE, THIS]), (r6v0 'gr_' main.GameRun A[D('gr_' main.GameRun), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

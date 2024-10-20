@@ -1,0 +1,16 @@
+digraph "CFG fordm.Npc.setLastAction(ZI)V" {
+subgraph cluster_Region_772329267 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr1.bdir = r2lr1.lastAction = (byte) r3l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0005|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Npc.setLastAction((r1v0 'this' dm.Npc A[IMMUTABLE_TYPE, THIS]), (r2v0 '_bdir' boolean A[D('_bdir' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 '_lastAction' int A[D('_lastAction' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

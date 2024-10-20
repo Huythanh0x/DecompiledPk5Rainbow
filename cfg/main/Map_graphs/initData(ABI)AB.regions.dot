@@ -1,0 +1,33 @@
+digraph "CFG formain.Map.initData([BI)[B" {
+subgraph cluster_Region_55903104 {
+label = "R(4:1|(1:3)|5|6)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint r1 = 0lint r3 = 1l}"];
+subgraph cluster_LoopRegion_634616946 {
+label = "LOOP:0: (1:3)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|LOOP_START\lADDED_TO_REGION\lPHI: r1 r3l  0x0003: PHI (r1v1 'i' int) = (r1v0 'i' int), (r1v2 'i' int) binds: [B:1:0x0000, B:3:0x001d] A[DONT_GENERATE, DONT_INLINE]l  0x0003: PHI (r3v1 'len' int) = (r3v0 'len' int), (r3v4 'len' int) binds: [B:1:0x0000, B:3:0x001d] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0003\-\>B:3:0x001d\l|lif (r1 \< r9) goto L14l}"];
+subgraph cluster_Region_3035953 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x001d|LOOP_END\lLOOP:0: B:2:0x0003\-\>B:3:0x001d\l|lint int r2 = r3 + 1lint r4 = ((r8[r3] & 255) \<\< 8) \| (r8[r2] & 255)lr1++lr3 = r2 + 1 + r4l}"];
+}
+}
+Node_5 [shape=record,label="{5\:\ 0x0005|lint int r2 = r3 + 1lint int r4 = ((r8[r3] & 255) \<\< 8) \| (r8[r2] & 255)lbyte[] byte[] r0 = new byte[r4]ljava.lang.System.arraycopy(r8, r2 + 1, r0, 0, r0.length)l}"];
+Node_6 [shape=record,label="{6\:\ 0x001c|RETURN\l|lreturn r0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0005|SYNTHETIC\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public byte[] main.Map.initData((r7v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r8v0 'tempdata' byte[] A[D('tempdata' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'n' int A[D('n' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lBACK_EDGE: B:3:0x001d \-\> B:2:0x0003\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_2;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+}
+

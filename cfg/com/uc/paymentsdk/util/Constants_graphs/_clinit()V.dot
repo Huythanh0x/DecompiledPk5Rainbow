@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.util.Constants.\<clinit\>()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lcom.uc.paymentsdk.util.Constants.API_URLS = new java.lang.String[]\{\"http:\/\/g2.uc.cn\/ucgame\/charge\/login\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/register\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/check_username\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/charge_umoney\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/charge_umoney\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/sdkConfirm\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/getPayType\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/update_sms\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/getClientMessagePay\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/sdkPayPointArrive\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/rechargeRequest\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/getCardConfigServlet\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/queryServlet\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/businessProcess.do\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/businessProcess.do\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/businessProcess.do\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/businessProcess.do\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/businessProcess\", \"http:\/\/g2.uc.cn\/ucgame\/charge\/gain_discount\"\}lcom.uc.paymentsdk.util.Constants.COLOR_TITLE_BACKGROUND = android.graphics.Color.parseColor(\"#FF8B4B3C\")lcom.uc.paymentsdk.util.Constants.COLOR_SUBTITLE_BACKGROUND1 = android.graphics.Color.parseColor(\"#FFFFB546\")lcom.uc.paymentsdk.util.Constants.COLOR_SUBTITLE_BACKGROUND2 = android.graphics.Color.parseColor(\"#FFFF6633\")lcom.uc.paymentsdk.util.Constants.CHARGE_ALIPAY_INPUT_LENGTH_MAX = (int) java.lang.Math.log10(10000.0d)lcom.uc.paymentsdk.util.Constants.CHARGE_G_INPUT_LENGTH_MAX = com.uc.paymentsdk.util.Constants.CHARGE_ALIPAY_INPUT_LENGTH_MAX + 1l}"];
+Node_2 [shape=record,label="{2\:\ 0x009a|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{static void com.uc.paymentsdk.util.Constants.\<clinit\>()  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

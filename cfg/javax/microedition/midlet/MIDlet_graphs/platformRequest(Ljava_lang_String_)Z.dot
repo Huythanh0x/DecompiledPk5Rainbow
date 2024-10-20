@@ -1,0 +1,30 @@
+digraph "CFG forjavax.microedition.midlet.MIDlet.platformRequest(Ljava\/lang\/String;)Z" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0007|lif (r5.startsWith(\"http:\/\/\") == false) goto L18l}"];
+Node_3 [shape=record,label="{3\:\ 0x0009|landroid.net.Uri r1 = android.net.Uri.parse(r5)landroid.content.Intent r0 = new android.content.Intent(\"android.intent.action.VIEW\", r1)ljavax.microedition.lcdui.CwaActivity.getInstance().startActivity(r0)l}"];
+Node_4 [shape=record,label="{4\:\ 0x001c|RETURN\lORIG_RETURN\l|lreturn truel}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x001d|l}"];
+Node_7 [shape=record,label="{7\:\ 0x0023|lif (r5.startsWith(\"tel:\") == false) goto L21l}"];
+Node_8 [shape=record,label="{8\:\ 0x0025|landroid.net.Uri r1 = android.net.Uri.parse(r5)landroid.content.Intent r0 = new android.content.Intent(\"android.intent.action.DIAL\", r1)ljavax.microedition.lcdui.CwaActivity.getInstance().startActivity(r0)l}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+Node_10 [shape=record,label="{10\:\ 0x0039|l}"];
+Node_11 [shape=record,label="{11\:\ 0x003e|lthrow new javax.microedition.io.ConnectionNotFoundException(r5)l}"];
+MethodNode[shape=record,label="{public final boolean javax.microedition.midlet.MIDlet.platformRequest((r4v0 'this' javax.microedition.midlet.MIDlet A[IMMUTABLE_TYPE, THIS]), (r5v0 'URL' java.lang.String A[D('URL' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljavax\/microedition\/io\/ConnectionNotFoundException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x0025 \-\> B:4:0x001c, CROSS_EDGE: B:11:0x003e \-\> B:5:?\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_10;
+Node_8 -> Node_9;
+Node_9 -> Node_5;
+Node_10 -> Node_11;
+Node_11 -> Node_5;
+}
+

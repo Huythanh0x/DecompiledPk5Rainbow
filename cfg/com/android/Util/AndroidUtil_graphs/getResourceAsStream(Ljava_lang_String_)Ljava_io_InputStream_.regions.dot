@@ -1,0 +1,80 @@
+digraph "CFG forcom.android.Util.AndroidUtil.getResourceAsStream(Ljava\/lang\/String;)Ljava\/io\/InputStream;" {
+subgraph cluster_Region_599727705 {
+label = "R(3:1|(2:(1:5)(1:11)|(1:7))|9)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.io.InputStream r1 = nulll}"];
+subgraph cluster_TryCatchRegion_152824715 {
+label = "Try: R(2:(1:5)(1:11)|(1:7)) catches: R(2:12|13)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1292375219 {
+label = "R(2:(1:5)(1:11)|(1:7))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1289454932 {
+label = "IF [B:4:0x0007] THEN: R(1:5) ELSE: R(1:11)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0007|lif (r5.indexOf(47) == 0) goto L20l}"];
+subgraph cluster_Region_239640449 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0009|TryCatch #0 \{IOException \-\> 0x003a, blocks: (B:3:0x0003, B:5:0x0009, B:7:0x001a, B:11:0x0033), top: B:2:0x0003 \}\lCatch: IOException \-\> 0x003a\l|ljava.io.InputStream r1 = com.android.Util.AndroidUtil.am.open(r5.substring(1, r5.length()))     \/\/ Catch: java.io.IOException \-\> L3al}"];
+}
+subgraph cluster_Region_296060751 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0033|TRY_LEAVE\lTryCatch #0 \{IOException \-\> 0x003a, blocks: (B:3:0x0003, B:5:0x0009, B:7:0x001a, B:11:0x0033), top: B:2:0x0003 \}\lCatch: IOException \-\> 0x003a\l|ljava.io.InputStream r1 = com.android.Util.AndroidUtil.am.open(r5)     \/\/ Catch: java.io.IOException \-\> L3al}"];
+}
+}
+subgraph cluster_IfRegion_1758914102 {
+label = "IF [B:6:0x0018] THEN: R(1:7) ELSE: null";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0018|PHI: r1l  0x0018: PHI (r1v4 'is' java.io.InputStream) = (r1v3 'is' java.io.InputStream), (r1v5 'is' java.io.InputStream) binds: [B:11:0x0033, B:5:0x0009] A[DONT_GENERATE, DONT_INLINE]\l|lif (r1 == null) goto L22l}"];
+subgraph cluster_Region_2084755071 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x001a|TryCatch #0 \{IOException \-\> 0x003a, blocks: (B:3:0x0003, B:5:0x0009, B:7:0x001a, B:11:0x0033), top: B:2:0x0003 \}\lCatch: IOException \-\> 0x003a\l|landroid.util.Log.e(com.android.Util.AndroidUtil.LOG, java.lang.String.valueOf(r5) + \" is not exist\")     \/\/ Catch: java.io.IOException \-\> L3al}"];
+}
+}
+}
+subgraph cluster_Region_710094287 {
+label = "R(2:12|13) | ExcHandler: IOException \-\> 0x003a\l";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x003a|PHI: r1l  0x003a: PHI (r1v1 'is' java.io.InputStream) = (r1v0 'is' java.io.InputStream), (r1v4 'is' java.io.InputStream) binds: [B:2:0x0003, B:8:?] A[DONT_GENERATE, DONT_INLINE]\lExcHandler: IOException \-\> 0x003a\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x003b|landroid.util.Log.e(com.android.Util.AndroidUtil.LOG, java.lang.String.valueOf(r5) + \" is not exist\")lr2.printStackTrace()l}"];
+}
+}
+Node_9 [shape=record,label="{9\:\ 0x0032|RETURN\lPHI: r1l  0x0032: PHI (r1v2 'is' java.io.InputStream) = (r1v1 'is' java.io.InputStream), (r1v4 'is' java.io.InputStream), (r1v4 'is' java.io.InputStream) binds: [B:13:0x003b, B:6:0x0018, B:7:0x001a] A[DONT_GENERATE, DONT_INLINE]\l|lreturn r1l}"];
+}
+subgraph cluster_Region_710094287 {
+label = "R(2:12|13) | ExcHandler: IOException \-\> 0x003a\l";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x003a|PHI: r1l  0x003a: PHI (r1v1 'is' java.io.InputStream) = (r1v0 'is' java.io.InputStream), (r1v4 'is' java.io.InputStream) binds: [B:2:0x0003, B:8:?] A[DONT_GENERATE, DONT_INLINE]\lExcHandler: IOException \-\> 0x003a\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x003b|landroid.util.Log.e(com.android.Util.AndroidUtil.LOG, java.lang.String.valueOf(r5) + \" is not exist\")lr2.printStackTrace()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0003|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0003|TRY_ENTER\lTryCatch #0 \{IOException \-\> 0x003a, blocks: (B:3:0x0003, B:5:0x0009, B:7:0x001a, B:11:0x0033), top: B:2:0x0003 \}\lCatch: IOException \-\> 0x003a\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static java.io.InputStream com.android.Util.AndroidUtil.getResourceAsStream((r5v0 'name' java.lang.String A[D('name' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{IOException \-\> 0x003a, blocks: (B:3:0x0003, B:5:0x0009, B:7:0x001a, B:11:0x0033), top: B:2:0x0003 \}\lCROSS_EDGE: B:13:0x003b \-\> B:9:0x0032, CROSS_EDGE: B:6:0x0018 \-\> B:9:0x0032, CROSS_EDGE: B:11:0x0033 \-\> B:6:0x0018, CROSS_EDGE: B:2:0x0003 \-\> B:12:0x003a\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_4 -> Node_11[style=dashed];
+Node_5 -> Node_6;
+Node_11 -> Node_6;
+Node_6 -> Node_7;
+Node_6 -> Node_9[style=dashed];
+Node_7 -> Node_9;
+Node_7 -> Node_8;
+Node_12 -> Node_13;
+Node_13 -> Node_9;
+Node_9 -> Node_10;
+Node_12 -> Node_13;
+Node_13 -> Node_9;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_12;
+Node_3 -> Node_4;
+Node_8 -> Node_12;
+}
+

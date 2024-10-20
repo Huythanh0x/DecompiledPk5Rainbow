@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.network.AndroidHttpClient.2.createHttpContext()Lorg\/apache\/http\/protocol\/HttpContext;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lorg.apache.http.protocol.BasicHttpContext r0 = new org.apache.http.protocol.BasicHttpContext()lr0.setAttribute(\"http.authscheme\-registry\", getAuthSchemes())lr0.setAttribute(\"http.cookiespec\-registry\", getCookieSpecs())lr0.setAttribute(\"http.auth.credentials\-provider\", getCredentialsProvider())lr0.setAttribute(\"http.cookie\-store\", getCookieStore())l}"];
+Node_2 [shape=record,label="{2\:\ 0x0029|RETURN\l|lreturn r0l}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{protected org.apache.http.protocol.HttpContext com.uc.paymentsdk.network.AndroidHttpClient.2.createHttpContext((r3v0 'this' com.uc.paymentsdk.network.AndroidHttpClient$2 A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{org.apache.http.impl.client.AbstractHttpClient.createHttpContext():org.apache.http.protocol.HttpContext\}]\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

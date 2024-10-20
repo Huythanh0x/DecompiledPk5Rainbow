@@ -1,0 +1,12 @@
+digraph "CFG formain.GameRun.goCatchMonster()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lmain.GameRun.run_state = \-19lr1.cThrowX = 131lr1.cThrowY = \-20lr1.cThrowS = 176lr1.b_c = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0013|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.goCatchMonster((r1v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

@@ -1,0 +1,25 @@
+digraph "CFG forcom.uc.paymentsdk.util.PrefUtil.getDefaultChargeType(Z)[Lcom\/uc\/paymentsdk\/model\/IType;" {
+subgraph cluster_Region_109326007 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|RETURN\l|lreturn r5 ? new com.uc.paymentsdk.model.IType[]\{com.uc.paymentsdk.model.TypeFactory.factory(\"alipay\"), com.uc.paymentsdk.model.TypeFactory.factory(\"phonecard\"), com.uc.paymentsdk.model.TypeFactory.factory(\"g\")\} : new com.uc.paymentsdk.model.IType[]\{com.uc.paymentsdk.model.TypeFactory.factory(\"alipay\"), com.uc.paymentsdk.model.TypeFactory.factory(\"phonecard\")\}l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0005|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0020|ORIG_RETURN\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0021|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private static com.uc.paymentsdk.model.IType[] com.uc.paymentsdk.util.PrefUtil.getDefaultChargeType((r5v0 'paramBoolean' boolean A[D('paramBoolean' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0021 \-\> B:4:0x0020\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_5;
+}
+

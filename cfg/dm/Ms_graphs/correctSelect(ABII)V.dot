@@ -1,0 +1,35 @@
+digraph "CFG fordm.Ms.correctSelect([BII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (r4[0] \>= r5) goto L26l}"];
+Node_3 [shape=record,label="{3\:\ 0x0006|lr4[1] = (byte) ((r4[0] \- r6) + 1)l}"];
+Node_4 [shape=record,label="{4\:\ 0x000e|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0010|lif (r4[0] \>= 0) goto L22l}"];
+Node_6 [shape=record,label="{6\:\ 0x0012|lr4[0] = 0l}"];
+Node_7 [shape=record,label="{7\:\ 0x0014|l}"];
+Node_8 [shape=record,label="{8\:\ 0x0016|lif (r4[1] \>= 0) goto L27l}"];
+Node_9 [shape=record,label="{9\:\ 0x0018|lr4[1] = 0l}"];
+Node_10 [shape=record,label="{10\:\ 0x001a|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_11 [shape=record,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_13 [shape=record,label="{13\:\ 0x001b|lr4[0] = (byte) (r5 \- 1)lr4[1] = (byte) (r5 \- r6)l}"];
+MethodNode[shape=record,label="{public void dm.Ms.correctSelect((r3v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r4v0 'select' byte[] A[D('select' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'max' int A[D('max' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'showLine' int A[D('showLine' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x0016 \-\> B:10:0x001a, CROSS_EDGE: B:5:0x0010 \-\> B:7:0x0014, CROSS_EDGE: B:13:0x001b \-\> B:4:0x000e\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_13;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_7;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_12;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_12 -> Node_11;
+Node_13 -> Node_4;
+}
+

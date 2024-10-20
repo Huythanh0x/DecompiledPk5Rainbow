@@ -1,0 +1,22 @@
+digraph "CFG fordm.Monster.isBuffRate(I)Z" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0006|lif (r2.monster[16] == r3) goto L18l}"];
+Node_3 [shape=record,label="{3\:\ 0x0008|l}"];
+Node_4 [shape=record,label="{4\:\ 0x000e|lif (r2.monster[17] == r3) goto L18l}"];
+Node_5 [shape=record,label="{5\:\ 0x0010|RETURN\lORIG_RETURN\l|lreturn falsel}"];
+Node_6 [shape=record,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,label="{7\:\ 0x0012|SYNTHETIC\lRETURN\l|lreturn truel}"];
+MethodNode[shape=record,label="{public boolean dm.Monster.isBuffRate((r2v0 'this' dm.Monster A[IMMUTABLE_TYPE, THIS]), (r3v0 'effect_id' int A[D('effect_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0012 \-\> B:6:0x0011, CROSS_EDGE: B:2:0x0006 \-\> B:7:0x0012\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_7;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_7;
+Node_5 -> Node_6;
+Node_7 -> Node_6;
+}
+

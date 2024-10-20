@@ -1,0 +1,37 @@
+digraph "CFG formain.GameRun.drawCityName()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint r2 = main.Constants_H.WIDTH__ \/ 2l}"];
+Node_2 [shape=record,label="{2\:\ 0x000b|lif (r9.cityName_c != (\-20)) goto L20l}"];
+Node_3 [shape=record,label="{3\:\ 0x000d|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_4 [shape=record,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x000e|lshort r8 = (short) (dm.Ms.i().getStringWidth(r9.city_name[r9.map.mapNo].toString()) + 8)ldm.Ui r0 = dm.Ui.i()lint r1 = r2 \- (r8 \>\> 1)l}"];
+Node_6 [shape=record,label="{6\:\ 0x002f|lif (r9.cityName_c \<= 0) goto L27l}"];
+Node_7 [shape=record,label="{7\:\ 0x0031|lr3 = 0l}"];
+Node_8 [shape=record,label="{8\:\ 0x0032|PHI: r3l  0x0032: PHI (r3v4 byte) = (r3v3 byte), (r3v11 byte) binds: [B:14:0x005b, B:7:0x0031] A[DONT_GENERATE, DONT_INLINE]\l|lr0.drawKuang(r1, r3, r8, 25 + 6)ldm.Ui r0 = dm.Ui.i()ljava.lang.String r1 = r9.city_name[r9.map.mapNo].toString()l}"];
+Node_9 [shape=record,label="{9\:\ 0x0049|lif (r9.cityName_c \<= 0) goto L28l}"];
+Node_10 [shape=record,label="{10\:\ 0x004b|lr3 = 0l}"];
+Node_11 [shape=record,label="{11\:\ 0x004c|PHI: r3l  0x004c: PHI (r3v9 byte) = (r3v8 byte), (r3v10 byte) binds: [B:13:0x005e, B:10:0x004b] A[DONT_GENERATE, DONT_INLINE]\l|lr0.drawString(r1, r2, r3, 17, 4, 2)lr9.cityName_c = (byte) (r9.cityName_c \- 1)l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_13 [shape=record,label="{13\:\ 0x005e|lbyte r3 = r9.cityName_cl}"];
+Node_14 [shape=record,label="{14\:\ 0x005b|lbyte r3 = r9.cityName_cl}"];
+MethodNode[shape=record,label="{public void main.GameRun.drawCityName((r9v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:11:0x004c \-\> B:3:0x000d, CROSS_EDGE: B:13:0x005e \-\> B:11:0x004c, CROSS_EDGE: B:14:0x005b \-\> B:8:0x0032\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_14;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_13;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_12 -> Node_4;
+Node_13 -> Node_11;
+Node_14 -> Node_8;
+}
+

@@ -1,0 +1,38 @@
+digraph "CFG forcom.uc.paymentsdk.payment.upoint.UPointPayInfo.createPayPwdToken()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r4.paypwd == null) goto L25l}"];
+Node_3 [shape=record,label="{3\:\ 0x0004|l}"];
+Node_4 [shape=record,label="{4\:\ 0x000a|lif (r4.paypwd.length() \<= 0) goto L25l}"];
+Node_5 [shape=record,label="{5\:\ 0x000c|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000c|TRY_ENTER\lTRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x0043, blocks: (B:6:0x000c), top: B:5:0x000c \}\lCatch: Exception \-\> 0x0043\l|lr4.paypwdtoken = com.uc.paymentsdk.commons.codec.MD5.getMD5(new java.lang.StringBuilder(java.lang.String.valueOf(com.uc.paymentsdk.commons.codec.MD5.getMD5(new java.lang.StringBuilder(java.lang.String.valueOf(r4.userid)).append(r4.paypwd).toString()).toUpperCase())).append(r4.tm).toString())     \/\/ Catch: java.lang.Exception \-\> L43l}"];
+Node_7 [shape=record,label="{7\:\ 0x0042|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_8 [shape=record,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_10 [shape=record,label="{10\:\ 0x0043|ExcHandler: Exception \-\> 0x0043\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x0044|lr4.paypwd = \"\"l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_13 [shape=record,label="{13\:\ 0x004a|lr4.paypwd = \"\"l}"];
+Node_14 [shape=record,label="{14\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void com.uc.paymentsdk.payment.upoint.UPointPayInfo.createPayPwdToken((r4v0 'this' com.uc.paymentsdk.payment.upoint.UPointPayInfo A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{Exception \-\> 0x0043, blocks: (B:6:0x000c), top: B:5:0x000c \}\lCROSS_EDGE: B:6:0x000c \-\> B:7:0x0042, CROSS_EDGE: B:11:0x0044 \-\> B:7:0x0042, CROSS_EDGE: B:5:0x000c \-\> B:10:0x0043, CROSS_EDGE: B:2:0x0002 \-\> B:13:0x004a\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_13;
+Node_3 -> Node_4;
+Node_4 -> Node_13;
+Node_4 -> Node_5[style=dashed];
+Node_5 -> Node_6;
+Node_5 -> Node_10;
+Node_6 -> Node_7;
+Node_6 -> Node_9;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_12 -> Node_8;
+Node_13 -> Node_14;
+Node_14 -> Node_8;
+}
+

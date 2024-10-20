@@ -1,0 +1,56 @@
+digraph "CFG forcom.uc.paymentsdk.commons.codec.Hex.decodeHex([C)[B" {
+subgraph cluster_Region_1279083794 {
+label = "R(2:1|(2:(1:4)|(3:6|(1:8)|10)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint int r1 = r7.lengthl}"];
+subgraph cluster_Region_1553280597 {
+label = "R(2:(1:4)|(3:6|(1:8)|10))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1484095772 {
+label = "IF [B:2:0x0003] THEN: R(1:4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif ((r1 & 1) != 0) goto L15l}"];
+subgraph cluster_Region_258676045 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000c|lthrow new com.uc.paymentsdk.commons.codec.DecoderException(\"Odd number of characters.\")l}"];
+}
+}
+subgraph cluster_Region_1570795058 {
+label = "R(3:6|(1:8)|10)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x000d|lbyte[] byte[] r0 = new byte[r1 \>\> 1]lint r2 = 0lint r3 = 0l}"];
+subgraph cluster_LoopRegion_1161033887 {
+label = "LOOP:0: (1:8)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0013|LOOP_START\lADDED_TO_REGION\lPHI: r2 r3l  0x0013: PHI (r2v1 'j' int) = (r2v0 'j' int), (r2v2 'j' int) binds: [B:6:0x000d, B:8:0x0016] A[DONT_GENERATE, DONT_INLINE]l  0x0013: PHI (r3v1 'k' int) = (r3v0 'k' int), (r3v3 'k' int) binds: [B:6:0x000d, B:8:0x0016] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:7:0x0013\-\>B:8:0x0016\l|lif (r3 \< r1) goto L20l}"];
+subgraph cluster_Region_1660952830 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0016|LOOP_END\lLOOP:0: B:7:0x0013\-\>B:8:0x0016\l|lint int r4 = toDigit(r7[r3], r3) \<\< 4lint int r3 = r3 + 1lint r4 = r4 \| toDigit(r7[r3], r3)lint r3 = r3 + 1lr0[r2] = (byte) (r4 & 255)lr2++l}"];
+}
+}
+Node_10 [shape=record,label="{10\:\ 0x0015|RETURN\l|lreturn r0l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0005|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0015|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public static byte[] com.uc.paymentsdk.commons.codec.Hex.decodeHex((r7v0 'paramArrayOfChar' char[] A[D('paramArrayOfChar' char[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lEXCEPTIONS:[Lcom\/uc\/paymentsdk\/commons\/codec\/DecoderException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0015 \-\> B:5:?, BACK_EDGE: B:8:0x0016 \-\> B:7:0x0013\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_7 -> Node_9[style=dashed];
+Node_8 -> Node_7;
+Node_10 -> Node_5;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_9 -> Node_10;
+}
+

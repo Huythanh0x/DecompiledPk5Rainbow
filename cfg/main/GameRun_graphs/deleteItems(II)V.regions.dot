@@ -1,0 +1,69 @@
+digraph "CFG formain.GameRun.deleteItems(II)V" {
+subgraph cluster_Region_1280873417 {
+label = "R(2:1|(1:(2:(1:5)|(1:(1:8)))))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte byte r1 = findItemType(r6)lbyte byte r0 = findItem(r1, r6, false)l}"];
+subgraph cluster_Region_414997870 {
+label = "R(1:(2:(1:5)|(1:(1:8))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1565171939 {
+label = "IF [B:2:0x000b] THEN: R(2:(1:5)|(1:(1:8))) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000b|lif (r0 != (\-1)) goto L17l}"];
+subgraph cluster_Region_1514272478 {
+label = "R(2:(1:5)|(1:(1:8)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_477340199 {
+label = "IF [B:4:0x0015] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0015|lif (r5.items[r1][r0][1] \>= r7) goto L19l}"];
+subgraph cluster_Region_1972863210 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0017|lbyte[] byte[] r2 = r5.items[r1][r0]lr2[1] = (byte) (r2[1] \- r7)l}"];
+}
+}
+subgraph cluster_Region_485836037 {
+label = "R(1:(1:8))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1424442453 {
+label = "IF [B:7:0x002b] THEN: R(1:8) ELSE: null";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x002b|lif (r5.items[r1][r0][1] == 0) goto L22l}"];
+subgraph cluster_Region_1546212315 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x002d|ldItemIn(r1, r0)l}"];
+}
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000d|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0023|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0030|ORIG_RETURN\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.deleteItems((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r6v0 'item_id' int A[D('item_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'count' int A[D('count' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x002b \-\> B:9:0x0030, CROSS_EDGE: B:4:0x0015 \-\> B:6:0x0023, CROSS_EDGE: B:2:0x000b \-\> B:9:0x0030\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_12[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_7 -> Node_11[style=dashed];
+Node_8 -> Node_9;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_11 -> Node_10;
+Node_12 -> Node_10;
+}
+

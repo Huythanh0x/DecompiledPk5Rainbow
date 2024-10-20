@@ -1,0 +1,33 @@
+digraph "CFG fordm.Ms.createImageArray(ILjava\/lang\/String;)[Ljavax\/microedition\/lcdui\/Image;" {
+subgraph cluster_Region_754662795 {
+label = "R(3:1|(1:4)|6)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljavax.microedition.lcdui.Image[] javax.microedition.lcdui.Image[] r1 = new javax.microedition.lcdui.Image[r5]lshort r0 = 0l}"];
+subgraph cluster_LoopRegion_1914411946 {
+label = "LOOP:0: (1:4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0004|ADDED_TO_REGION\l|lif (r0 \< r1.length) goto L14l}"];
+subgraph cluster_Region_30857328 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0007|LOOP_END\lLOOP:0: B:2:0x0003\-\>B:4:0x0007\l|lr1[r0] = createImage(java.lang.String.valueOf(r6) + ((int) r0))lshort r0 = (short) (r0 + 1)l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0006|RETURN\l|lreturn r1l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0003|LOOP_START\lPHI: r0l  0x0003: PHI (r0v1 'i' short) = (r0v0 'i' short), (r0v2 'i' short) binds: [B:1:0x0000, B:4:0x0007] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0003\-\>B:4:0x0007\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0006|SYNTHETIC\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public javax.microedition.lcdui.Image[] dm.Ms.createImageArray((r4v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r5v0 'len' int A[D('len' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'name' java.lang.String A[D('name' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:4:0x0007 \-\> B:2:0x0003\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+}
+

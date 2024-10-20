@@ -1,0 +1,68 @@
+digraph "CFG formain.GameRun.setThrow(Ldm\/Battle;Ldm\/Monster;I)V" {
+subgraph cluster_Region_1508759141 {
+label = "R(3:1|(1:(1:5))(1:(1:13))|6)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr7.throw_state = (byte) \-1linitMonStream(2, r6.mList_id[r8.monster[0]][0], r9)l}"];
+subgraph cluster_IfRegion_122338049 {
+label = "IF [B:2:0x001e] THEN: R(1:(1:5)) ELSE: R(1:(1:13))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x001e|lif (r8.isMonReel(r8.monster[3] + main.Constants_H.f89) != false) goto L18l}"];
+subgraph cluster_Region_22909220 {
+label = "R(1:(1:5))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_2143011195 {
+label = "IF [B:4:0x0026] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0026|lif (r7.bg_id != r8.monster[3]) goto L20l}"];
+subgraph cluster_Region_1221750295 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0028|lr6.src_c[r9 + 2] = 1l}"];
+}
+}
+}
+subgraph cluster_Region_437405375 {
+label = "R(1:(1:13)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_2007703656 {
+label = "IF [B:10:0x003c, B:12:0x0044] THEN: R(1:13) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x003c|lif (r6.monPro.length != 0) goto L25l}"];
+Node_12 [shape=record,label="{12\:\ 0x0044|ADDED_TO_REGION\l|lif (r7.bg_id != r6.monPro[0]) goto L27l}"];
+subgraph cluster_Region_1455065087 {
+label = "R(1:13)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0046|lr6.src_c[r9 + 2] = 1l}"];
+}
+}
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x002e|lr7.action = (byte) 0lr7.dead = (byte) 0lr7.chp = r8.monsterPro[0]l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0020|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0038|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0039|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x003e|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.setThrow((r6v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r7v0 'be' dm.Battle A[D('be' dm.Battle), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'mon' dm.Monster A[D('mon' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'mini' int A[D('mini' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x0026 \-\> B:6:0x002e, CROSS_EDGE: B:10:0x003c \-\> B:6:0x002e, CROSS_EDGE: B:12:0x0044 \-\> B:6:0x002e, CROSS_EDGE: B:13:0x0046 \-\> B:6:0x002e\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_9[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_6;
+Node_10 -> Node_6[style=dashed];
+Node_10 -> Node_11;
+Node_12 -> Node_6[style=dashed];
+Node_12 -> Node_13;
+Node_13 -> Node_6;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+}
+

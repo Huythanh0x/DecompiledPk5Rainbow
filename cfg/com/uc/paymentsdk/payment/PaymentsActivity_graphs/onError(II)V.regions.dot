@@ -1,0 +1,123 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.onError(II)V" {
+subgraph cluster_Region_1702603429 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+subgraph cluster_SwitchRegion_389698693 {
+label = "Switch: 3
+ case 3 -> R(1:5)
+ case 18 -> R(2:20|21)
+ case default -> R(1:3)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|lswitch(r6) \{l    case 3: goto L5;l    case 18: goto L14;l    default: goto L4;l\}l}"];
+subgraph cluster_Region_1426989441 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+subgraph cluster_SwitchRegion_1065603654 {
+label = "Switch: 5
+ case -1 -> R(2:14|(2:(2:16|17)|(2:18|19)))
+ case com.uc.paymentsdk.util.Constants.ERROR_CODE_INSUFFICIENT_BALANCE :int -> R(2:10|11)
+ case com.uc.paymentsdk.util.Constants.ERROR_CODE_ARG_OUT_OF_SCROPE :int -> R(2:8|9)
+ case com.uc.paymentsdk.util.Constants.ERROR_CODE_UNKNOWN :int -> R(2:12|13)
+ case default -> R(2:6|7)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0007|lswitch(r7) \{l    case \-1: goto L10;l    case 219: goto L8;l    case 425: goto L7;l    case 500: goto L9;l    default: goto L6;l\}l}"];
+subgraph cluster_Region_118843793 {
+label = "R(2:14|(2:(2:16|17)|(2:18|19)))";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0043|lr5.mTimeoutCounter++l}"];
+subgraph cluster_Region_1120832394 {
+label = "R(2:(2:16|17)|(2:18|19))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1718134907 {
+label = "IF [B:15:0x004c] THEN: R(2:16|17) ELSE: null";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x004c|lif (r5.mTimeoutCounter \< 2) goto L12l}"];
+subgraph cluster_Region_1205356306 {
+label = "R(2:16|17)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x004e|lcom.uc.paymentsdk.network.Api.pay(getApplicationContext(), r5, r5.mPaymentInfo, r5.mUPayInfo)l}"];
+Node_17 [shape=record,label="{17\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1798174617 {
+label = "R(2:18|19)";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x005a|lr5.mTimeoutCounter = 0lr5.mBtnPay.setEnabled(true)lremoveDialog(6)lshowDialog(10)l}"];
+Node_19 [shape=record,label="{19\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+subgraph cluster_Region_1569301421 {
+label = "R(2:10|11)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0025|lr5.mBtnPay.setEnabled(false)lremoveDialog(6)lshowDialog(5)lbuildPaymentView()l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_2114052887 {
+label = "R(2:8|9)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0017|lr5.mBtnPay.setEnabled(true)lremoveDialog(6)lshowDialog(8)l}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_2070207250 {
+label = "R(2:12|13)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0035|lr5.mBtnPay.setEnabled(true)lremoveDialog(6)lshowDialog(11)l}"];
+Node_13 [shape=record,label="{13\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_2138139352 {
+label = "R(2:6|7)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x000a|lr5.mBtnPay.setEnabled(true)lremoveDialog(6)lshowDialog(7)l}"];
+Node_7 [shape=record,label="{7\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+subgraph cluster_Region_1869953616 {
+label = "R(2:20|21)";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x006a|ldismissDialog(14)lshowDialog(15)lbuildPaymentView()l}"];
+Node_21 [shape=record,label="{21\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_505243122 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0006|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void com.uc.paymentsdk.payment.PaymentsActivity.onError((r5v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]), (r6v0 'paramInt1' int A[D('paramInt1' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'paramInt2' int A[D('paramInt2' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lCOMPUTE_POST_DOM\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [com.uc.paymentsdk.network.ApiTask.TaskHandler.onError(int, int):void]\lCROSS_EDGE: B:6:0x000a \-\> B:3:0x0006, CROSS_EDGE: B:8:0x0017 \-\> B:3:0x0006, CROSS_EDGE: B:10:0x0025 \-\> B:3:0x0006, CROSS_EDGE: B:12:0x0035 \-\> B:3:0x0006, CROSS_EDGE: B:16:0x004e \-\> B:3:0x0006, CROSS_EDGE: B:18:0x005a \-\> B:3:0x0006, CROSS_EDGE: B:20:0x006a \-\> B:3:0x0006\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_5;
+Node_2 -> Node_20;
+Node_5 -> Node_6;
+Node_5 -> Node_8;
+Node_5 -> Node_10;
+Node_5 -> Node_12;
+Node_5 -> Node_14;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_15 -> Node_18[style=dashed];
+Node_16 -> Node_17;
+Node_17 -> Node_4;
+Node_18 -> Node_19;
+Node_19 -> Node_4;
+Node_10 -> Node_11;
+Node_11 -> Node_4;
+Node_8 -> Node_9;
+Node_9 -> Node_4;
+Node_12 -> Node_13;
+Node_13 -> Node_4;
+Node_6 -> Node_7;
+Node_7 -> Node_4;
+Node_20 -> Node_21;
+Node_21 -> Node_4;
+Node_3 -> Node_4;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+}
+

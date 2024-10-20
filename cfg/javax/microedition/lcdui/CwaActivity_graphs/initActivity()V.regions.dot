@@ -1,0 +1,16 @@
+digraph "CFG forjavax.microedition.lcdui.CwaActivity.initActivity()V" {
+subgraph cluster_Region_96856343 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldalvik.system.VMRuntime.getRuntime().setMinimumHeapSize(12582912L)ldalvik.system.VMRuntime.getRuntime().setTargetHeapUtilization(javax.microedition.lcdui.CwaActivity.TARGET_HEAP_UTILIZATION)lgetWindow().setFlags(128, 128)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x001c|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void javax.microedition.lcdui.CwaActivity.initActivity((r4v0 'this' javax.microedition.lcdui.CwaActivity A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

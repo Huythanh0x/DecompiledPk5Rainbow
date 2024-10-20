@@ -1,0 +1,16 @@
+digraph "CFG forcom.nokia.mid.ui.DirectGraphics.fillPolygon([II[IIII)V" {
+subgraph cluster_Region_236551934 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr7.g.setColor(r13)lr7.g.fillTriangle(r8[0], r10[0], r8[1], r10[1], r8[2], r10[2])lr7.g.fillTriangle(r8[0], r10[0], r8[3], r10[3], r8[2], r10[2])l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0033|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void com.nokia.mid.ui.DirectGraphics.fillPolygon((r7v0 'this' com.nokia.mid.ui.DirectGraphics A[IMMUTABLE_TYPE, THIS]), (r8v0 'xPoints' int[] A[D('xPoints' int[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'xOffset' int A[D('xOffset' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'yPoints' int[] A[D('yPoints' int[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'yOffset' int A[D('yOffset' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'nPoints' int A[D('nPoints' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'argbColor' int A[D('argbColor' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

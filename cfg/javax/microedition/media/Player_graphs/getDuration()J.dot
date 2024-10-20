@@ -1,0 +1,19 @@
+digraph "CFG forjavax.microedition.media.Player.getDuration()J" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|llong r0 = (long) (r4.mp.getDuration() * com.uc.paymentsdk.util.Constants.PAYMENT_MAX)l}"];
+Node_2 [shape=record,label="{2\:\ 0x000d|lif ((r0 \> 0 ? 1 : (r0 == 0 ? 0 : \-1)) \> 0) goto L14l}"];
+Node_3 [shape=record,label="{3\:\ 0x000f|RETURN\lORIG_RETURN\l|lreturn \-1l}"];
+Node_4 [shape=record,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0012|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0l}"];
+MethodNode[shape=record,label="{public long javax.microedition.media.Player.getDuration((r4v0 'this' javax.microedition.media.Player A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x0012 \-\> B:4:0x0011\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_4;
+}
+

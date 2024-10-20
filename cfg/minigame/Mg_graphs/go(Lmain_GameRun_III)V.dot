@@ -1,0 +1,12 @@
+digraph "CFG forminigame.Mg.go(Lmain\/GameRun;III)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lmain.GameRun.run_state = 69lsetGame(r2, r3)lr1.mg.go(r4, r5)l}"];
+Node_2 [shape=record,label="{2\:\ 0x000c|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void minigame.Mg.go((r1v0 'this' minigame.Mg A[IMMUTABLE_TYPE, THIS]), (r2v0 'gr' main.GameRun A[D('gr' main.GameRun), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'lv' int A[D('lv' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

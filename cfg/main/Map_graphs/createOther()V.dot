@@ -1,0 +1,24 @@
+digraph "CFG formain.Map.createOther()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte[] r0 = (byte[]) nullldm.Ms.i()ldm.Ms.skip = 0ldm.Ms.i()ldm.Ms.skip2 = 0lbyte[] r1 = initData(r10.gr.createData(0), r10.mapNo)lr10.npcPos = createNpcPos(r1, r10.npcPos)l}"];
+Node_2 [shape=record,label="{2\:\ 0x002e|lif (r10.mapInfo[r10.mapNo * 2] \<= 0) goto L16l}"];
+Node_3 [shape=record,label="{3\:\ 0x0030|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0036|lif (r10.mapTemp[r10.mapNo] != null) goto L16l}"];
+Node_5 [shape=record,label="{5\:\ 0x0038|lr10.mapTemp[r10.mapNo] = dm.Ms.i().rmsOptions(r10.mapNo + 14, null, 1)l}"];
+Node_6 [shape=record,label="{6\:\ 0x004a|lr10.npc[0] = createNpc(r1, r10.npc[0])lr10.npc[1] = createNpc(r1, r10.npc[1])lr10.npc[2] = createNpc(r1, r10.npc[2])lr10.item = createItem(r1, r10.item)lr10.door = createItem(r1, r10.door)lr10.npcList = nulllr10.npcList = new byte[(r10.npc[0].length + 1) + r10.item.length]lbyte[] r0 = (byte[]) nulllinitNpcAni()l}"];
+Node_7 [shape=record,label="{7\:\ 0x0096|RETURN\l|lreturnl}"];
+Node_8 [shape=record,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.Map.createOther((r10v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x0036 \-\> B:6:0x004a, CROSS_EDGE: B:2:0x002e \-\> B:6:0x004a\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_6;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+}
+

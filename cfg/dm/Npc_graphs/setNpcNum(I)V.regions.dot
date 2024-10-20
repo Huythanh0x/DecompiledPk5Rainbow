@@ -1,0 +1,35 @@
+digraph "CFG fordm.Npc.setNpcNum(I)V" {
+subgraph cluster_Region_1333070197 {
+label = "R(2:1|(1:(1:3)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr2.npc_num = (byte) (r2.other[7] \/ 6)l}"];
+subgraph cluster_Region_202291269 {
+label = "R(1:(1:3))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1325563838 {
+label = "IF [B:2:0x0010] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0010|lif (((r2.npc_num + 1) * 6) \> r3) goto L11l}"];
+subgraph cluster_Region_664485946 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0012|lr2.npc_num = (byte) 0l}"];
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0015|ORIG_RETURN\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void dm.Npc.setNpcNum((r2v0 'this' dm.Npc A[IMMUTABLE_TYPE, THIS]), (r3v0 'length' int A[D('length' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0010 \-\> B:4:0x0015\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

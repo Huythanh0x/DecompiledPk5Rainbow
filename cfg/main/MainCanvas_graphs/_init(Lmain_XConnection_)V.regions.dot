@@ -1,0 +1,16 @@
+digraph "CFG formain.MainCanvas.\<init\>(Lmain\/XConnection;)V" {
+subgraph cluster_Region_502629853 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.game = r5lr4.gr.map.pkey = r4.pkeylr4.gr.pkey = r4.pkeylr4.sender.pkey = r4.pkeylmain.MainCanvas.mainxx = main.Constants_H.WIDTH__ \/ 640.0flmain.MainCanvas.mapxx = main.Constants_H.WIDTH__ \/ main.Constants_H.WIDTHlmain.MainCanvas.mainyy = main.Constants_H.HEIGHT__ \/ 360.0flmain.MainCanvas.mapyy = main.Constants_H.HEIGHT__ \/ main.Constants_H.HEIGHTl}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x007a|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.MainCanvas.\<init\>((r4v0 'this' main.MainCanvas A[IMMUTABLE_TYPE, THIS]), (r5v0 'game' main.XConnection A[D('game' main.XConnection), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

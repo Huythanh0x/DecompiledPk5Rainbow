@@ -1,0 +1,19 @@
+digraph "CFG formain.GameRun.initMagicStream(I)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (r4.magic[r5] == null) goto L12l}"];
+Node_3 [shape=record,label="{3\:\ 0x0006|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_4 [shape=record,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0007|ljava.lang.String r0 = new java.lang.StringBuilder(\"data\/battle\/s\").append(r5).toString()lr4.magic[r5] = dm.Ms.i().createSprite(r0, false)l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{private void main.GameRun.initMagicStream((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x0007 \-\> B:3:0x0006\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_4;
+}
+

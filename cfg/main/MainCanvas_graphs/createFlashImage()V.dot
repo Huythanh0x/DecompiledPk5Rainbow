@@ -1,0 +1,19 @@
+digraph "CFG formain.MainCanvas.createFlashImage()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif (r3.flashSP != null) goto L12l}"];
+Node_3 [shape=record,label="{3\:\ 0x0005|lr3.flashSP = dm.Ms.i().createSprite(\"data\/fm\", false)l}"];
+Node_4 [shape=record,label="{4\:\ 0x0011|lr3.mt = 0lr3.ma = 0lr3.load_c = 0l}"];
+Node_5 [shape=record,label="{5\:\ 0x0017|RETURN\l|lreturnl}"];
+Node_6 [shape=record,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.MainCanvas.createFlashImage((r3v0 'this' main.MainCanvas A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0003 \-\> B:4:0x0011\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_4;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+}
+

@@ -1,0 +1,16 @@
+digraph "CFG forjavax.microedition.lcdui.Graphics.clipRect(IIII)V" {
+subgraph cluster_Region_591744130 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr7.canvas.clipRect(r8, r9, r8 + r10, r9 + r11, android.graphics.Region.Op.INTERSECT)landroid.graphics.Rect android.graphics.Rect r6 = r7.canvas.getClipBounds()lr7.clipx = r6.leftlr7.clipy = r6.toplr7.clipw = r6.right \- r6.leftlr7.cliph = r6.bottom \- r6.topl}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x002b|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.lcdui.Graphics.clipRect((r7v0 'this' javax.microedition.lcdui.Graphics A[IMMUTABLE_TYPE, THIS]), (r8v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'width' int A[D('width' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'height' int A[D('height' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

@@ -1,0 +1,16 @@
+digraph "CFG forcom.uc.paymentsdk.network.Api.pay(Landroid\/content\/Context;Lcom\/uc\/paymentsdk\/network\/ApiTask$TaskHandler;Lcom\/uc\/paymentsdk\/payment\/PaymentInfo;Lcom\/uc\/paymentsdk\/payment\/upoint\/UPointPayInfo;)V" {
+subgraph cluster_Region_734676901 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.util.HashMap java.util.HashMap\<java.lang.String, java.lang.Object\> r4 = new java.util.HashMap\<\>(9)lr4.put(\"user_id\", r9.getUserid())lr4.put(\"&cpid\", r9.getCpid())lr4.put(\"&gameid\", r9.getGameid())lr4.put(\"&optid\", r8.getmActionID())lr4.put(\"&u_money\", java.lang.Integer.valueOf(r9.getUpoint()))lr4.put(\"&charge\", java.lang.Integer.valueOf(r9.getUmoney()))lr4.put(\"&consume_id\", r9.getConsumeid())lr4.put(\"&ucid\", r9.getUsersession())lr4.put(\"&sign\", r9.getSign())lr4.put(\"&uc_token\", r9.getUctoken())lr4.put(\"&pay_pwd\", r9.getPaypwd())lr4.put(\"&consume_time\", r9.getTm())lr4.put(\"&tm\", r9.getTm())lr4.put(\"&eid\", com.uc.paymentsdk.payment.upoint.UPointPayInfo.getEid())lr4.put(\"&ch_code\", r9.getChcode())lnew com.uc.paymentsdk.network.ApiTask(r6, 3, r7, r4, com.uc.paymentsdk.util.Constants.POST).execute(new java.lang.Void[0])l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x00a6|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static void com.uc.paymentsdk.network.Api.pay((r6v0 'paramContext' android.content.Context A[D('paramContext' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'paramTaskHandler' com.uc.paymentsdk.network.ApiTask$TaskHandler A[D('paramTaskHandler' com.uc.paymentsdk.network.ApiTask$TaskHandler), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'paramPaymentInfo' com.uc.paymentsdk.payment.PaymentInfo A[D('paramPaymentInfo' com.uc.paymentsdk.payment.PaymentInfo), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'upayinfo' com.uc.paymentsdk.payment.upoint.UPointPayInfo A[D('upayinfo' com.uc.paymentsdk.payment.upoint.UPointPayInfo), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

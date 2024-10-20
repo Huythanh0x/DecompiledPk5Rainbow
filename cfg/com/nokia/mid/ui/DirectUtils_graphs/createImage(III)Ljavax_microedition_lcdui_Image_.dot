@@ -1,0 +1,12 @@
+digraph "CFG forcom.nokia.mid.ui.DirectUtils.createImage(III)Ljavax\/microedition\/lcdui\/Image;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0005|RETURN\l|lreturn javax.microedition.lcdui.Image.createImage(r1, r2, 0)l}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static javax.microedition.lcdui.Image com.nokia.mid.ui.DirectUtils.createImage((r1v0 'width' int A[D('width' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r2v0 'height' int A[D('height' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 'ARGBcolor' int A[D('ARGBcolor' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

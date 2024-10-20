@@ -1,0 +1,39 @@
+digraph "CFG forcom.uc.paymentsdk.commons.ui.TitleSpinner.DropDownAdapter.isEnabled(I)Z" {
+subgraph cluster_Region_312161899 {
+label = "R(2:1|(2:(1:4)|(1:6)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|landroid.widget.ListAdapter android.widget.ListAdapter r0 = r2.mListAdapterl}"];
+subgraph cluster_Region_717257577 {
+label = "R(2:(1:4)|(1:6))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1864996386 {
+label = "IF [B:2:0x0002] THEN: R(1:4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r0 != null) goto L4l}"];
+subgraph cluster_Region_1749356034 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0008|RETURN\lORIG_RETURN\l|lreturn r0.isEnabled(r3)l}"];
+}
+}
+subgraph cluster_Region_924822460 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0009|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0004|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public boolean com.uc.paymentsdk.commons.ui.TitleSpinner.DropDownAdapter.isEnabled((r2v0 'this' com.uc.paymentsdk.commons.ui.TitleSpinner$DropDownAdapter A[IMMUTABLE_TYPE, THIS]), (r3v0 'paramInt' int A[D('paramInt' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | DONT_RENAME\lUSE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{android.widget.ListAdapter.isEnabled(int):boolean\}]\lCROSS_EDGE: B:6:0x0009 \-\> B:4:0x0008\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+}
+

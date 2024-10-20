@@ -1,0 +1,38 @@
+digraph "CFG formain.GameRun.setNull(Z)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (r3.map == null) goto L20l}"];
+Node_3 [shape=record,label="{3\:\ 0x0006|lr3.map.setNull()l}"];
+Node_4 [shape=record,label="{4\:\ 0x000b|l}"];
+Node_5 [shape=record,label="{5\:\ 0x000f|lif (r3.mon[0] == null) goto L23l}"];
+Node_6 [shape=record,label="{6\:\ 0x0011|lr3.mon[0].nullIMFA()l}"];
+Node_7 [shape=record,label="{7\:\ 0x0018|l}"];
+Node_8 [shape=record,label="{8\:\ 0x001c|lif (r3.mon[1] == null) goto L26l}"];
+Node_9 [shape=record,label="{9\:\ 0x001e|lr3.mon[1].nullIMFA()l}"];
+Node_10 [shape=record,label="{10\:\ 0x0025|lif (r4 == false) goto L29l}"];
+Node_11 [shape=record,label="{11\:\ 0x0027|ldata_null()l}"];
+Node_12 [shape=record,label="{12\:\ 0x002a|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_13 [shape=record,label="{13\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_14 [shape=record,label="{14\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void main.GameRun.setNull((r3v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r4v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0025 \-\> B:12:0x002a, CROSS_EDGE: B:8:0x001c \-\> B:10:0x0025, CROSS_EDGE: B:5:0x000f \-\> B:7:0x0018, CROSS_EDGE: B:2:0x0004 \-\> B:4:0x000b\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_4;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_7;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_10;
+Node_9 -> Node_10;
+Node_10 -> Node_11[style=dashed];
+Node_10 -> Node_14;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_14 -> Node_13;
+}
+

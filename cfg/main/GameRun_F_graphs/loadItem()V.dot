@@ -1,0 +1,48 @@
+digraph "CFG formain.GameRun_F.loadItem()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr9.info = dm.Ms.i().rmsOptions(4, null, 1)lr9.len = new byte[]\{16, 19, 23, 12\}lr9.itemsLength = new byte[4]l}"];
+Node_2 [shape=record,label="{2\:\ 0x0021|lif (r9.info[0] == (\-1)) goto L26l}"];
+Node_3 [shape=record,label="{3\:\ 0x0023|lr0 = 0l}"];
+Node_4 [shape=record,label="{4\:\ 0x0024|LOOP_START\lPHI: r0l  0x0024: PHI (r0v5 'i' int) = (r0v4 'i' int), (r0v6 'i' int) binds: [B:3:0x0023, B:5:0x0039] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:4:0x0024\-\>B:5:0x0039\l|lif (r0 \< 4) goto L31l}"];
+Node_5 [shape=record,label="{5\:\ 0x0039|LOOP_END\lLOOP:0: B:4:0x0024\-\>B:5:0x0039\l|lr9.itemsLength[r0] = r9.info[r0]lint r0 = r0 + 1l}"];
+Node_6 [shape=record,label="{6\:\ 0x0026|SYNTHETIC\l|l}"];
+Node_7 [shape=record,label="{7\:\ 0x0026|lr9.items = new byte[r9.itemsLength.length][]lr0 = 0lr2 = 0l}"];
+Node_8 [shape=record,label="{8\:\ 0x002f|LOOP_START\lPHI: r0 r2l  0x002f: PHI (r0v2 'i' int) = (r0v1 'i' int), (r0v3 'i' int) binds: [B:7:0x0026, B:15:0x0060] A[DONT_GENERATE, DONT_INLINE]l  0x002f: PHI (r2v2 'k' int) = (r2v1 'k' int), (r2v3 'k' int) binds: [B:7:0x0026, B:15:0x0060] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:8:0x002f\-\>B:15:0x0060\l|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0032|lif (r0 \< r9.items.length) goto L32l}"];
+Node_10 [shape=record,label="{10\:\ 0x0044|lbyte[][][] r4 = r9.itemslint[] r3 = new int[]\{r9.len[r0], 2\}lr4[r0] = (byte[][]) java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, r3)lr1 = 0l}"];
+Node_11 [shape=record,label="{11\:\ 0x005a|LOOP_START\lPHI: r1 r2l  0x005a: PHI (r1v2 'j' int) = (r1v1 'j' int), (r1v3 'j' int) binds: [B:10:0x0044, B:13:0x0063] A[DONT_GENERATE, DONT_INLINE]l  0x005a: PHI (r2v3 'k' int) = (r2v2 'k' int), (r2v4 'k' int) binds: [B:10:0x0044, B:13:0x0063] A[DONT_GENERATE, DONT_INLINE]\lLOOP:2: B:11:0x005a\-\>B:13:0x0063\l|l}"];
+Node_12 [shape=record,label="{12\:\ 0x005e|lif (r1 \< r9.itemsLength[r0]) goto L36l}"];
+Node_13 [shape=record,label="{13\:\ 0x0063|LOOP_END\lLOOP:2: B:11:0x005a\-\>B:13:0x0063\l|lr9.items[r0][r1][0] = r9.info[(r2 * 2) + 4]lr9.items[r0][r1][1] = r9.info[((r2 * 2) + 4) + 1]lint r1 = r1 + 1lint r2 = r2 + 1l}"];
+Node_14 [shape=record,label="{14\:\ 0x0060|SYNTHETIC\l|l}"];
+Node_15 [shape=record,label="{15\:\ 0x0060|LOOP_END\lLOOP:1: B:8:0x002f\-\>B:15:0x0060\l|lint r0 = r0 + 1l}"];
+Node_16 [shape=record,label="{16\:\ 0x0034|SYNTHETIC\l|l}"];
+Node_17 [shape=record,label="{17\:\ 0x0034|lr9.info = nulllr9.len = nulll}"];
+Node_18 [shape=record,label="{18\:\ 0x0038|RETURN\l|lreturnl}"];
+Node_19 [shape=record,label="{19\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun_F.loadItem((r9v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:15:0x0060 \-\> B:8:0x002f, BACK_EDGE: B:13:0x0063 \-\> B:11:0x005a, BACK_EDGE: B:5:0x0039 \-\> B:4:0x0024, CROSS_EDGE: B:2:0x0021 \-\> B:7:0x0026\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_7;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_4;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_9 -> Node_16[style=dashed];
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_12 -> Node_14[style=dashed];
+Node_13 -> Node_11;
+Node_14 -> Node_15;
+Node_15 -> Node_8;
+Node_16 -> Node_17;
+Node_17 -> Node_18;
+Node_18 -> Node_19;
+}
+

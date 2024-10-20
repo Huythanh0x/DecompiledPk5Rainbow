@@ -1,0 +1,21 @@
+digraph "CFG forminigame.Racing.drawEnd()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint r12 = ((main.Constants_H.WIDTH_ \- 70) \/ 35) + 1ldm.Ui.i().drawModuleOne(r15.sp[1], 0, 0, 40 \- r15.srcY, 0, 0)lr11 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0021|LOOP_START\lPHI: r11l  0x0021: PHI (r11v1 'i' int) = (r11v0 'i' int), (r11v2 'i' int) binds: [B:1:0x0000, B:3:0x0036] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0021\-\>B:3:0x0036\l|lif (r11 \< r12) goto L14l}"];
+Node_3 [shape=record,label="{3\:\ 0x0036|LOOP_END\lLOOP:0: B:2:0x0021\-\>B:3:0x0036\l|ldm.Ui.i().drawModuleOne(r15.sp[1], 1, (r11 * 35) + 35, 44 \- r15.srcY, 0, 0)lint r11 = r11 + 1l}"];
+Node_4 [shape=record,label="{4\:\ 0x0023|SYNTHETIC\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0023|ldm.Ui.i().drawModuleOne(r15.sp[1], 0, main.Constants_H.WIDTH_, 40 \- r15.srcY, 1, 0)l}"];
+Node_6 [shape=record,label="{6\:\ 0x0035|RETURN\l|lreturnl}"];
+Node_7 [shape=record,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void minigame.Racing.drawEnd((r15v0 'this' minigame.Racing A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:3:0x0036 \-\> B:2:0x0021\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_2;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+}
+

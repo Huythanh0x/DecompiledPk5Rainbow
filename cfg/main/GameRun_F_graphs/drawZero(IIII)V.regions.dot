@@ -1,0 +1,16 @@
+digraph "CFG formain.GameRun_F.drawZero(IIII)V" {
+subgraph cluster_Region_1107090051 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.i().drawString(main.Constants_H.GAME_TXT_28, r8, r9, r10, r11, 0)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x000e|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun_F.drawZero((r7v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]), (r8v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'anchor' int A[D('anchor' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'color' int A[D('color' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

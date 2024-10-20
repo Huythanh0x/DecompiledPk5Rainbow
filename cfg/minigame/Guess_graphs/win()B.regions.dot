@@ -1,0 +1,61 @@
+digraph "CFG forminigame.Guess.win()B" {
+subgraph cluster_Region_869978175 {
+label = "R(2:1|(2:(1:12)|(3:3|(1:7)|9)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte byte r1 = (byte) (r9.winNum + 1)lr9.winNum = r1l}"];
+subgraph cluster_Region_1959456058 {
+label = "R(2:(1:12)|(3:3|(1:7)|9))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_776456035 {
+label = "IF [B:2:0x0013] THEN: R(1:12) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0013|lif (r1 \< r9.gameData[3][r9.lv]) goto L24l}"];
+subgraph cluster_Region_1913521147 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturn (byte) 3l}"];
+}
+}
+subgraph cluster_Region_1002223907 {
+label = "R(3:3|(1:7)|9)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0015|lint int r0 = r9.sell_money + (r9.lv * r9.lv * 150) + ((2 \- r9.lv) * 25)lr9.gr.money += r0lr9.gr.say(main.Constants_H.MONEY_TXT_9 + r0, 0)lbyte[] byte[] r1 = r9.gr.rmsOtherlr1[10] = (byte) (r1[10] \| (1 \<\< r9.lv))l}"];
+subgraph cluster_IfRegion_2048246378 {
+label = "IF [B:4:0x0055, B:6:0x005d] THEN: R(1:7) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0055|lif (r9.lv == 2) goto L19l}"];
+Node_6 [shape=record,label="{6\:\ 0x005d|ADDED_TO_REGION\l|lif (r9.gr.rmsOther[11] \< 3) goto L21l}"];
+subgraph cluster_Region_840555170 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x005f|lbyte[] byte[] r1 = r9.gr.rmsOtherlr1[11] = (byte) (r1[11] + 1)l}"];
+}
+}
+Node_9 [shape=record,label="{9\:\ 0x006b|RETURN\lORIG_RETURN\l|lreturn (byte) 2l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0057|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x006a|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x006c|l}"];
+MethodNode[shape=record,label="{private byte minigame.Guess.win((r9v0 'this' minigame.Guess A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x005d \-\> B:8:0x006a, CROSS_EDGE: B:4:0x0055 \-\> B:8:0x006a, CROSS_EDGE: B:11:0x006c \-\> B:9:0x006b\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_11;
+Node_12 -> Node_10;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_8[style=dashed];
+Node_6 -> Node_7;
+Node_6 -> Node_8[style=dashed];
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_0 -> Node_1;
+Node_5 -> Node_6;
+Node_8 -> Node_9;
+Node_11 -> Node_12;
+}
+

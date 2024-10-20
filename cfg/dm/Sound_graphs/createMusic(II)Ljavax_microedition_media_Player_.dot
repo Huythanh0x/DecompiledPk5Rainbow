@@ -1,0 +1,36 @@
+digraph "CFG fordm.Sound.createMusic(II)Ljavax\/microedition\/media\/Player;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.lang.String[] r1 = new java.lang.String[]\{\"audio\/midi\", \"audio\/x\-wav\"\}l}"];
+Node_2 [shape=record,label="{2\:\ 0x000d|lif (r6 \< 0) goto L22l}"];
+Node_3 [shape=record,label="{3\:\ 0x0045|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0047|RETURN\l|lreturn r4.snd_musicl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000f|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_7 [shape=record,label="{7\:\ 0x000f|TRY_ENTER\lTryCatch #0 \{Exception \-\> 0x0048, blocks: (B:7:0x000f, B:9:0x0013, B:10:0x0018), top: B:6:0x000f \}\lCatch: Exception \-\> 0x0048\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x0011|lif (r4.snd_music == null) goto L21l}"];
+Node_9 [shape=record,label="{9\:\ 0x0013|TryCatch #0 \{Exception \-\> 0x0048, blocks: (B:7:0x000f, B:9:0x0013, B:10:0x0018), top: B:6:0x000f \}\lCatch: Exception \-\> 0x0048\l|lr4.snd_music.close()     \/\/ Catch: java.lang.Exception \-\> L48l}"];
+Node_10 [shape=record,label="{10\:\ 0x0018|TRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x0048, blocks: (B:7:0x000f, B:9:0x0013, B:10:0x0018), top: B:6:0x000f \}\lCatch: Exception \-\> 0x0048\l|lr4.snd_music = null     \/\/ Catch: java.lang.Exception \-\> L48lr4.snd_music = javax.microedition.media.Manager.createPlayer(new java.lang.StringBuilder(\"\/music\/\").append(r5).append(\".mid\").toString(), r1[r6])     \/\/ Catch: java.lang.Exception \-\> L48lr4.snd_music.prefetch()     \/\/ Catch: java.lang.Exception \-\> L48lr4.vc_snd = null     \/\/ Catch: java.lang.Exception \-\> L48lcreateVolume(r4.volume)     \/\/ Catch: java.lang.Exception \-\> L48l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_12 [shape=record,label="{12\:\ 0x0048|ExcHandler: Exception \-\> 0x0048\l|ljava.lang.Exception r2 = move\-exceptionl}"];
+Node_13 [shape=record,label="{13\:\ 0x0049|lr2.printStackTrace()l}"];
+MethodNode[shape=record,label="{private javax.microedition.media.Player dm.Sound.createMusic((r4v0 'this' dm.Sound A[IMMUTABLE_TYPE, THIS]), (r5v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'flag' int A[D('flag' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{Exception \-\> 0x0048, blocks: (B:7:0x000f, B:9:0x0013, B:10:0x0018), top: B:6:0x000f \}\lCROSS_EDGE: B:10:0x0018 \-\> B:3:0x0045, CROSS_EDGE: B:13:0x0049 \-\> B:3:0x0045, CROSS_EDGE: B:8:0x0011 \-\> B:10:0x0018, CROSS_EDGE: B:6:0x000f \-\> B:12:0x0048\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_6 -> Node_12;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_10;
+Node_9 -> Node_10;
+Node_10 -> Node_3;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_13 -> Node_3;
+}
+

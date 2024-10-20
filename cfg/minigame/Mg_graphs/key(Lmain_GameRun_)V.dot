@@ -1,0 +1,19 @@
+digraph "CFG forminigame.Mg.key(Lmain\/GameRun;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0006|lif (r1.mg.key() == false) goto L13l}"];
+Node_3 [shape=record,label="{3\:\ 0x0008|lmain.GameRun.run_state = \-10lr1.mg = nulll}"];
+Node_4 [shape=record,label="{4\:\ 0x000f|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void minigame.Mg.key((r1v0 'this' minigame.Mg A[IMMUTABLE_TYPE, THIS]), (r2v0 'gr' main.GameRun A[D('gr' main.GameRun), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0006 \-\> B:4:0x000f\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

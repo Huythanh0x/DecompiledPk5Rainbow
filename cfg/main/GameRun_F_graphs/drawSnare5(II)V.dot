@@ -1,0 +1,28 @@
+digraph "CFG formain.GameRun_F.drawSnare5(II)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui r0 = dm.Ui.i()l}"];
+Node_2 [shape=record,label="{2\:\ 0x000b|lif ((r6.brow5 % 3) != 0) goto L20l}"];
+Node_3 [shape=record,label="{3\:\ 0x000d|lr2 = 1l}"];
+Node_4 [shape=record,label="{4\:\ 0x000e|PHI: r2l  0x000e: PHI (r2v3 int) = (r2v2 int), (r2v5 int) binds: [B:10:0x0023, B:3:0x000d] A[DONT_GENERATE, DONT_INLINE]\l|lr0.drawUi(8, r7, r8 + r2, 0, 0)lbyte r0 = r6.brow5lr6.brow5 = (byte) (r0 + 1)l}"];
+Node_5 [shape=record,label="{5\:\ 0x001e|lif (r0 \<= 100) goto L21l}"];
+Node_6 [shape=record,label="{6\:\ 0x0020|lr6.brow5 = 0l}"];
+Node_7 [shape=record,label="{7\:\ 0x0022|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_8 [shape=record,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_10 [shape=record,label="{10\:\ 0x0023|lr2 = 0l}"];
+MethodNode[shape=record,label="{private void main.GameRun_F.drawSnare5((r6v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]), (r7v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x001e \-\> B:7:0x0022, CROSS_EDGE: B:10:0x0023 \-\> B:4:0x000e\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_10;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_9;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_9 -> Node_8;
+Node_10 -> Node_4;
+}
+

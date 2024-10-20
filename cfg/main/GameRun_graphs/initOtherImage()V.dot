@@ -1,0 +1,35 @@
+digraph "CFG formain.GameRun.initOtherImage()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r5.imgItem != null) goto L19l}"];
+Node_3 [shape=record,label="{3\:\ 0x0004|lr5.imgItem = new javax.microedition.lcdui.Image[2]lr5.imgItem[0] = dm.Ms.i().createImage(\"data\/ball\")lr5.imgItem[1] = dm.Ms.i().createImage(\"data\/ll\")linitItemModules()l}"];
+Node_4 [shape=record,label="{4\:\ 0x002a|l}"];
+Node_5 [shape=record,label="{5\:\ 0x002c|lif (r5.imgBG != null) goto L24l}"];
+Node_6 [shape=record,label="{6\:\ 0x002e|lr5.imgBG = new javax.microedition.lcdui.Image[5]lr0 = 0l}"];
+Node_7 [shape=record,label="{7\:\ 0x0034|LOOP_START\lPHI: r0l  0x0034: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v2 'i' byte) binds: [B:6:0x002e, B:9:0x003d] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:7:0x0034\-\>B:9:0x003d\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x0037|lif (r0 \< r5.imgBG.length) goto L26l}"];
+Node_9 [shape=record,label="{9\:\ 0x003d|LOOP_END\lLOOP:0: B:7:0x0034\-\>B:9:0x003d\l|lr5.imgBG[r0] = dm.Ms.i().createImage(new java.lang.StringBuilder(\"data\/battle\/\").append(r0).toString())lbyte r0 = (byte) (r0 + 1)l}"];
+Node_10 [shape=record,label="{10\:\ 0x0039|SYNTHETIC\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x0039|linitImgIco()l}"];
+Node_12 [shape=record,label="{12\:\ 0x003c|RETURN\l|lreturnl}"];
+Node_13 [shape=record,label="{13\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.initOtherImage((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:9:0x003d \-\> B:7:0x0034, CROSS_EDGE: B:5:0x002c \-\> B:11:0x0039, CROSS_EDGE: B:2:0x0002 \-\> B:4:0x002a\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_4;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_11;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_10[style=dashed];
+Node_9 -> Node_7;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+}
+

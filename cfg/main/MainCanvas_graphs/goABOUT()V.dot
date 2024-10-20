@@ -1,0 +1,12 @@
+digraph "CFG formain.MainCanvas.goABOUT()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|landroid.util.Log.e(\"soars\", \"goAbout\")lr5.game_state = 40lr5.menu_state = 5lr5.gr.help_page = 0lr5.logo_c = 0lr5.gr.line_max = 11lr5.help_state = 0lr5.gr.setStringB(\"宠物王国5\-彩虹#n开发商：华娱无线#n客服电话：#n010\-88901665#n客服Email:#ngeekan@imy.cn\", main.Constants_H.WIDTH \- 50, 0)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0029|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{void main.MainCanvas.goABOUT((r5v0 'this' main.MainCanvas A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

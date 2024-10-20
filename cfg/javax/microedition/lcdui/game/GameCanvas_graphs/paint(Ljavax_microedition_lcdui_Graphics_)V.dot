@@ -1,0 +1,10 @@
+digraph "CFG forjavax.microedition.lcdui.game.GameCanvas.paint(Ljavax\/microedition\/lcdui\/Graphics;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|RETURN\l|lreturnl}"];
+Node_2 [shape=record,label="{2\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.lcdui.game.GameCanvas.paint((r0v0 'this' javax.microedition.lcdui.game.GameCanvas A[IMMUTABLE_TYPE, THIS]), (r1v0 'g' javax.microedition.lcdui.Graphics A[D('g' javax.microedition.lcdui.Graphics), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lMETHOD_OVERRIDE: [javax.microedition.lcdui.Canvas.paint(javax.microedition.lcdui.Graphics):void]\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+}
+

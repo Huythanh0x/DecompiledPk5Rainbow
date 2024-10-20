@@ -1,0 +1,47 @@
+digraph "CFG formain.GameRun.findMonsterMinLv(II)B" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr1 = \-1lbyte r0 = (byte) (r7.myMon_length \- 1)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0008|LOOP_START\lPHI: r0 r1l  0x0008: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v2 'i' byte) binds: [B:1:0x0000, B:11:0x0035] A[DONT_GENERATE, DONT_INLINE]l  0x0008: PHI (r1v1 'minLv' byte) = (r1v0 'minLv' byte), (r1v2 'minLv' byte) binds: [B:1:0x0000, B:11:0x0035] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:11:0x0035\l|lif (r0 \> (\-1)) goto L24l}"];
+Node_3 [shape=record,label="{3\:\ 0x000b|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0014|lif (r7.myMonsters[r0].monster[0] != r8) goto L35l}"];
+Node_5 [shape=record,label="{5\:\ 0x0016|l}"];
+Node_6 [shape=record,label="{6\:\ 0x001e|lif (r7.myMonsters[r0].monster[2] \< r9) goto L36l}"];
+Node_7 [shape=record,label="{7\:\ 0x0020|lif (r1 == (\-1)) goto L31l}"];
+Node_8 [shape=record,label="{8\:\ 0x0022|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0032|lif (r7.myMonsters[r0].monster[2] \>= r7.myMonsters[r1].monster[2]) goto L37l}"];
+Node_10 [shape=record,label="{10\:\ 0x0035|SYNTHETIC\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x0035|LOOP_END\lPHI: r1l  0x0035: PHI (r1v2 'minLv' byte) = (r1v1 'minLv' byte), (r1v1 'minLv' byte), (r1v3 'minLv' byte), (r1v1 'minLv' byte) binds: [B:15:0x0035, B:14:0x0035, B:13:0x0035, B:10:0x0035] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:11:0x0035\l|lbyte r0 = (byte) (r0 \- 1)l}"];
+Node_12 [shape=record,label="{12\:\ 0x0034|lr1 = r0l}"];
+Node_13 [shape=record,label="{13\:\ 0x0035|SYNTHETIC\l|l}"];
+Node_14 [shape=record,label="{14\:\ 0x0035|SYNTHETIC\l|l}"];
+Node_15 [shape=record,label="{15\:\ 0x0035|SYNTHETIC\l|l}"];
+Node_16 [shape=record,label="{16\:\ 0x000a|SYNTHETIC\l|l}"];
+Node_17 [shape=record,label="{17\:\ 0x000a|RETURN\l|lreturn r1l}"];
+Node_18 [shape=record,label="{18\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public byte main.GameRun.findMonsterMinLv((r7v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r8v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'lv' int A[D('lv' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lBACK_EDGE: B:11:0x0035 \-\> B:2:0x0008, CROSS_EDGE: B:9:0x0032 \-\> B:11:0x0035, CROSS_EDGE: B:7:0x0020 \-\> B:12:0x0034, CROSS_EDGE: B:6:0x001e \-\> B:11:0x0035, CROSS_EDGE: B:4:0x0014 \-\> B:11:0x0035\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_16[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_15;
+Node_5 -> Node_6;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_14;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_12;
+Node_8 -> Node_9;
+Node_9 -> Node_12[style=dashed];
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_11 -> Node_2;
+Node_12 -> Node_13;
+Node_13 -> Node_11;
+Node_14 -> Node_11;
+Node_15 -> Node_11;
+Node_16 -> Node_17;
+Node_17 -> Node_18;
+}
+

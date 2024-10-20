@@ -1,0 +1,31 @@
+digraph "CFG formain.GameRun.getNameBuff(I)Ljava\/lang\/String;" {
+subgraph cluster_Region_1039898311 {
+label = "R(2:(1:3)|5)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1030175710 {
+label = "IF [B:2:0x0001] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0001|lif (r2 \< 1) goto L11l}"];
+subgraph cluster_Region_364389881 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0003|lr2 = 0l}"];
+}
+}
+Node_5 [shape=record,label="{5\:\ 0x000c|RETURN\l|lreturn r1.buff_name[r2].toString()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0004|PHI: r2l  0x0004: PHI (r2v1 'buff_id' int) = (r2v0 'buff_id' int), (r2v2 'buff_id' int) binds: [B:2:0x0001, B:3:0x0003] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private java.lang.String main.GameRun.getNameBuff((r1v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r2v0 'buff_id' int A[D('buff_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0001 \-\> B:4:0x0004\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+}
+

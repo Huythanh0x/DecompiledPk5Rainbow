@@ -1,0 +1,44 @@
+digraph "CFG formain.GameRun.goLIST_INFO(Z)V" {
+subgraph cluster_Region_1347546865 {
+label = "R(4:1|(1:3)|(1:5)|6)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lmain.GameRun.run_state = 68l}"];
+subgraph cluster_IfRegion_1562800084 {
+label = "IF [B:2:0x0007] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0007|lif (r5.monInfo_dir == null) goto L13l}"];
+subgraph cluster_Region_700142574 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0009|lbyte[] byte[] r0 = dm.Ms.i().getStream(\"data\/book.d\", \-1)ldm.Ms.i()ldm.Ms.skip = 0lr5.monInfo_dir = dm.Ms.i().create2Array(r0)l(byte[]) nulll}"];
+}
+}
+subgraph cluster_IfRegion_547591708 {
+label = "IF [B:4:0x0026] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0026|lif (r6 != false) goto L15l}"];
+subgraph cluster_Region_1112253882 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0028|lr5.infoStart = (byte) 0lr5.cur_a = (byte) 0lr5.cur_b = (byte) 0lr5.move_x = (short) 6lr5.move_y = (short) 0lr5.t_length = (byte) r5.monInfo_dir[r5.cur_a].lengthlr5.select[0][0] = 0lr5.select[0][1] = 0l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x004a|lr5.list_rows = (byte) 7l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x004d|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.goLIST_INFO((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r6v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x0026 \-\> B:6:0x004a, CROSS_EDGE: B:2:0x0007 \-\> B:4:0x0026\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_7 -> Node_8;
+}
+

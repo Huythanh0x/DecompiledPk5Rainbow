@@ -1,0 +1,40 @@
+digraph "CFG forminigame.Bearer.isSrc(I)Z" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0012|lif (r14.xy[r15][1] \<= (main.Constants_H.WIDTH_H_ + 10)) goto L29l}"];
+Node_3 [shape=record,label="{3\:\ 0x0014|lr9 = truel}"];
+Node_4 [shape=record,label="{4\:\ 0x0015|PHI: r9l  0x0015: PHI (r9v1 'bb' boolean) = (r9v0 'bb' boolean), (r9v3 'bb' boolean) binds: [B:15:0x0061, B:3:0x0014] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0032|lif (dm.Ms.i().isRect(240 \- 10, main.Constants_H.WIDTH_H_ \- 40, 20, 10, r14.xy[r15][0], r14.xy[r15][1], 16, 16) != false) goto L27l}"];
+Node_6 [shape=record,label="{6\:\ 0x0034|l}"];
+Node_7 [shape=record,label="{7\:\ 0x003a|lif (r14.xy[r15][0] \<= 240) goto L30l}"];
+Node_8 [shape=record,label="{8\:\ 0x003c|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0046|lif (r14.xy[r15][1] \>= r14.myxy[1]) goto L31l}"];
+Node_10 [shape=record,label="{10\:\ ?|SYNTHETIC\lRETURN\l|lreturn r9l}"];
+Node_11 [shape=record,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturn r9l}"];
+Node_13 [shape=record,label="{13\:\ 0x0048|lr14.count = (short) (r14.count + r14.gDate[0][(r14.xy[r15][6] * 2) + 1])l}"];
+Node_14 [shape=record,label="{14\:\ 0x0060|RETURN\lORIG_RETURN\l|lreturn truel}"];
+Node_15 [shape=record,label="{15\:\ 0x0061|lr9 = falsel}"];
+MethodNode[shape=record,label="{private boolean minigame.Bearer.isSrc((r14v0 'this' minigame.Bearer A[IMMUTABLE_TYPE, THIS]), (r15v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x0046 \-\> B:14:0x0060, CROSS_EDGE: B:7:0x003a \-\> B:14:0x0060, CROSS_EDGE: B:5:0x0032 \-\> B:13:0x0048, CROSS_EDGE: B:15:0x0061 \-\> B:4:0x0015\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_15;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_13;
+Node_6 -> Node_7;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_12;
+Node_8 -> Node_9;
+Node_9 -> Node_13[style=dashed];
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_12 -> Node_11;
+Node_13 -> Node_14;
+Node_14 -> Node_11;
+Node_15 -> Node_4;
+}
+

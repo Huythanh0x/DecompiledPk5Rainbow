@@ -1,0 +1,39 @@
+digraph "CFG fordm.Ms.readEventNowData()[[S" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lshort[][] r0 = (short[][]) nullljava.io.ByteArrayInputStream r1 = new java.io.ByteArrayInputStream(rmsOptions(12, null, 1))lshort[][] r2 = new short[r1.read()]lr3 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0018|LOOP_START\lPHI: r3l  0x0018: PHI (r3v1 'i' int) = (r3v0 'i' int), (r3v2 'i' int) binds: [B:1:0x0000, B:11:0x0022] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0018\-\>B:11:0x0022\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0019|lif (r3 \< r2.length) goto L22l}"];
+Node_4 [shape=record,label="{4\:\ 0x001c|lint r5 = r1.read()l}"];
+Node_5 [shape=record,label="{5\:\ 0x0020|lif (r5 != 0) goto L25l}"];
+Node_6 [shape=record,label="{6\:\ 0x0025|lr2[r3] = new short[r5]lr4 = 0l}"];
+Node_7 [shape=record,label="{7\:\ 0x002a|LOOP_START\lPHI: r4l  0x002a: PHI (r4v1 'j' int) = (r4v0 'j' int), (r4v2 'j' int) binds: [B:6:0x0025, B:9:0x002f] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:7:0x002a\-\>B:9:0x002f\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x002d|lif (r4 \>= r2[r3].length) goto L31l}"];
+Node_9 [shape=record,label="{9\:\ 0x002f|LOOP_END\lLOOP:1: B:7:0x002a\-\>B:9:0x002f\l|lr2[r3][r4] = (short) (r1.read() \| (r1.read() \<\< 8))lint r4 = r4 + 1l}"];
+Node_10 [shape=record,label="{10\:\ 0x0022|SYNTHETIC\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x0022|LOOP_END\lLOOP:0: B:2:0x0018\-\>B:11:0x0022\l|lint r3 = r3 + 1l}"];
+Node_12 [shape=record,label="{12\:\ 0x0022|SYNTHETIC\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x001b|SYNTHETIC\l|l}"];
+Node_14 [shape=record,label="{14\:\ 0x001b|RETURN\l|lreturn r2l}"];
+Node_15 [shape=record,label="{15\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public short[][] dm.Ms.readEventNowData((r9v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:11:0x0022 \-\> B:2:0x0018, CROSS_EDGE: B:8:0x002d \-\> B:11:0x0022, BACK_EDGE: B:9:0x002f \-\> B:7:0x002a\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_13[style=dashed];
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_12[style=dashed];
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_10;
+Node_9 -> Node_7;
+Node_10 -> Node_11;
+Node_11 -> Node_2;
+Node_12 -> Node_11;
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+}
+

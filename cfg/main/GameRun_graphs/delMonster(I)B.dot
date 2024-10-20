@@ -1,0 +1,21 @@
+digraph "CFG formain.GameRun.delMonster(I)B" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr0 = r4.myMonsters[r5].monster[0]l}"];
+Node_2 [shape=record,label="{2\:\ 0x000e|lif (monsterRemove(r5) == (\-1)) goto L14l}"];
+Node_3 [shape=record,label="{3\:\ 0x0010|lsay(new java.lang.StringBuilder(main.Constants_H.TXT_14).append(getNameMon(r0)).toString(), 0)l}"];
+Node_4 [shape=record,label="{4\:\ 0x0027|RETURN\lORIG_RETURN\l|lreturn 1l}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0028|lsay(main.Constants_H.TXT_13, 0)l}"];
+Node_7 [shape=record,label="{7\:\ ?|SYNTHETIC\lRETURN\l|lreturn \-1l}"];
+MethodNode[shape=record,label="{public byte main.GameRun.delMonster((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'no' int A[D('no' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0028 \-\> B:4:0x0027\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_5;
+}
+

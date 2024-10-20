@@ -1,0 +1,43 @@
+digraph "CFG forcom.uc.paymentsdk.network.XMLParser.parsePayChannel(Ljava\/lang\/String;)Ljava\/lang\/String;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0007|lif (android.text.TextUtils.isEmpty(r7) == false) goto L24l}"];
+Node_3 [shape=record,label="{3\:\ 0x0009|l}"];
+Node_4 [shape=record,label="{4\:\ 0x000a|RETURN\lORIG_RETURN\l|lreturn nulll}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000b|lorg.xmlpull.v1.XmlPullParser r0 = org.xmlpull.v1.XmlPullParserFactory.newInstance().newPullParser()lr0.setInput(new java.io.StringReader(r7))lr0.nextTag()lr0.require(2, \"\", com.uc.paymentsdk.network.XMLParser.RESPONSE)l}"];
+Node_7 [shape=record,label="{7\:\ 0x0025|LOOP_START\lLOOP:0: B:7:0x0025\-\>B:11:0x005a\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x0029|lif (r0.nextTag() == 2) goto L28l}"];
+Node_9 [shape=record,label="{9\:\ 0x0034|ljava.lang.String r1 = r0.getName()lr0.require(2, \"\", r1)l}"];
+Node_10 [shape=record,label="{10\:\ 0x0043|lif (\"channels\".equals(r1) == false) goto L31l}"];
+Node_11 [shape=record,label="{11\:\ 0x005a|LOOP_END\lLOOP:0: B:7:0x0025\-\>B:11:0x005a\l|lskipUnknownTag(r0)lr0.require(3, \"\", r1)l}"];
+Node_12 [shape=record,label="{12\:\ 0x0045|SYNTHETIC\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x0045|l}"];
+Node_14 [shape=record,label="{14\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0.nextText().replace(\"1\", com.uc.paymentsdk.model.TypeFactory.TYPE_PAY_UPOINT).replace(\"2\", \"sms\")l}"];
+Node_15 [shape=record,label="{15\:\ 0x002b|SYNTHETIC\l|l}"];
+Node_16 [shape=record,label="{16\:\ 0x002b|lr0.require(3, \"\", com.uc.paymentsdk.network.XMLParser.RESPONSE)l}"];
+Node_17 [shape=record,label="{17\:\ ?|SYNTHETIC\lRETURN\l|lreturn nulll}"];
+MethodNode[shape=record,label="{public static java.lang.String com.uc.paymentsdk.network.XMLParser.parsePayChannel((r7v0 'paramString' java.lang.String A[D('paramString' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljava\/lang\/Exception;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:16:0x002b \-\> B:4:0x000a, CROSS_EDGE: B:13:0x0045 \-\> B:4:0x000a, BACK_EDGE: B:11:0x005a \-\> B:7:0x0025\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_15[style=dashed];
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_10 -> Node_12[style=dashed];
+Node_11 -> Node_7;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_14 -> Node_5;
+Node_15 -> Node_16;
+Node_16 -> Node_17;
+Node_17 -> Node_5;
+}
+

@@ -1,0 +1,19 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.getCurrentTime(Z)Ljava\/lang\/String;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lif (r2 == false) goto L13l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|ljava.text.SimpleDateFormat r0 = new java.text.SimpleDateFormat(\"yyyy\-MM\-dd\")l}"];
+Node_3 [shape=record,label="{3\:\ 0x0009|PHI: r0l  0x0009: PHI (r0v1 'format1' java.text.DateFormat) = (r0v0 'format1' java.text.DateFormat), (r0v2 'format1' java.text.DateFormat) binds: [B:6:0x0013, B:2:0x0002] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0012|RETURN\l|lreturn r0.format(new java.util.Date())l}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0013|ljava.text.SimpleDateFormat r0 = new java.text.SimpleDateFormat(\"yyyy\-MM\-dd hh:mm:ss\")l}"];
+MethodNode[shape=record,label="{public static java.lang.String com.uc.paymentsdk.util.Utils.getCurrentTime((r2v0 'isdateonly' boolean A[D('isdateonly' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0013 \-\> B:3:0x0009\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2[style=dashed];
+Node_1 -> Node_6;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_3;
+}
+

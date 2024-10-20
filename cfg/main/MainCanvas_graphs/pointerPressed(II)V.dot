@@ -1,0 +1,19 @@
+digraph "CFG formain.MainCanvas.pointerPressed(II)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (main.SMSSender.isWorking == false) goto L12l}"];
+Node_3 [shape=record,label="{3\:\ 0x0004|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_4 [shape=record,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0005|lr1.pkey.process(r2, r3)l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void main.MainCanvas.pointerPressed((r1v0 'this' main.MainCanvas A[IMMUTABLE_TYPE, THIS]), (r2v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [javax.microedition.lcdui.Canvas.pointerPressed(int, int):void]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x0005 \-\> B:3:0x0004\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_4;
+}
+

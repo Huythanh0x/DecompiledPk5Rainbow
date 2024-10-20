@@ -1,0 +1,26 @@
+digraph "CFG formain.Map.initMoveMy()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Npc r0 = r2.mylr0.frame_c = r2.my.frame_numlr2.my.setActionNo(true)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0012|lif (r2.my.state != 0) goto L18l}"];
+Node_3 [shape=record,label="{3\:\ 0x0014|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0019|lif (r2.gr.monPro.length \<= 0) goto L19l}"];
+Node_5 [shape=record,label="{5\:\ 0x001b|lmeetGrass()l}"];
+Node_6 [shape=record,label="{6\:\ 0x001e|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_7 [shape=record,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,label="{8\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{private void main.Map.initMoveMy((r2v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x0019 \-\> B:6:0x001e, CROSS_EDGE: B:2:0x0012 \-\> B:6:0x001e\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_9;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_8;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_7;
+Node_9 -> Node_7;
+}
+

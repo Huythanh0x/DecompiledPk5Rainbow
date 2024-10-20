@@ -1,0 +1,41 @@
+digraph "CFG fordm.Ms.createSprite(Ljava\/lang\/String;Z)Ldm\/Sprite;" {
+subgraph cluster_Region_974649293 {
+label = "R(2:1|(2:(1:4)|(1:7)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte[] byte[] r0 = getStream(java.lang.String.valueOf(r6) + \".data\", \-1)ldm.Ms.skip = 0l}"];
+subgraph cluster_Region_1262291230 {
+label = "R(2:(1:4)|(1:7))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1281595235 {
+label = "IF [B:2:0x001c] THEN: R(1:4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x001c|lif (r7 != false) goto L12l}"];
+subgraph cluster_Region_367414740 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0032|RETURN\lORIG_RETURN\l|lreturn dm.Sprite.Create(createImage(r6), create2Array(r0), create3Array(r0), create3Array(r0))l}"];
+}
+}
+subgraph cluster_Region_729428201 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ ?|SYNTHETIC\lRETURN\l|lreturn dm.Sprite.Create(createImage(r6), createShort2Array(r0, 2), createShort3Array(r0, 2), createShort3Array(r0, 2))l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x001e|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0033|l}"];
+MethodNode[shape=record,label="{public dm.Sprite dm.Ms.createSprite((r5v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r6v0 'name' java.lang.String A[D('name' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'mode' boolean A[D('mode' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0033 \-\> B:4:0x0032\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_4 -> Node_5;
+Node_7 -> Node_5;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+}
+

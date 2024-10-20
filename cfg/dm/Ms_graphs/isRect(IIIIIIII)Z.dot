@@ -1,0 +1,32 @@
+digraph "CFG fordm.Ms.isRect(IIIIIIII)Z" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r2 \>= (r6 + r8)) goto L26l}"];
+Node_3 [shape=record,label="{3\:\ 0x0004|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0006|lif ((r2 + r4) \<= r6) goto L26l}"];
+Node_5 [shape=record,label="{5\:\ 0x0008|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000a|lif (r3 \>= (r7 + r9)) goto L26l}"];
+Node_7 [shape=record,label="{7\:\ 0x000c|l}"];
+Node_8 [shape=record,label="{8\:\ 0x000e|lif ((r3 + r5) \<= r7) goto L26l}"];
+Node_9 [shape=record,label="{9\:\ 0x0010|RETURN\lORIG_RETURN\l|lreturn truel}"];
+Node_10 [shape=record,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x0012|SYNTHETIC\lRETURN\l|lreturn falsel}"];
+MethodNode[shape=record,label="{public boolean dm.Ms.isRect((r1v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r2v0 'a0' int A[D('a0' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 'a1' int A[D('a1' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'aw' int A[D('aw' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'ah' int A[D('ah' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'b0' int A[D('b0' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'b1' int A[D('b1' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'bw' int A[D('bw' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'bh' int A[D('bh' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:11:0x0012 \-\> B:10:0x0011, CROSS_EDGE: B:6:0x000a \-\> B:11:0x0012, CROSS_EDGE: B:4:0x0006 \-\> B:11:0x0012, CROSS_EDGE: B:2:0x0002 \-\> B:11:0x0012\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_11;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_11;
+Node_5 -> Node_6;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_11;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_11;
+Node_9 -> Node_10;
+Node_11 -> Node_10;
+}
+

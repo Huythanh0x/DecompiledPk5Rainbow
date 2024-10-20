@@ -1,0 +1,12 @@
+digraph "CFG formain.MD5.rol(II)I" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0008|RETURN\l|lreturn (r3 \<\< r4) \| (r3 \>\>\> (32 \- r4))l}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private int main.MD5.rol((r2v0 'this' main.MD5 A[IMMUTABLE_TYPE, THIS]), (r3v0 'num' int A[D('num' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'cnt' int A[D('cnt' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

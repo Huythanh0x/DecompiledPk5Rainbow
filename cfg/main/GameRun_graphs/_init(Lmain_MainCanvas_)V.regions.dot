@@ -1,0 +1,16 @@
+digraph "CFG formain.GameRun.\<init\>(Lmain\/MainCanvas;)V" {
+subgraph cluster_Region_1490372851 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lmain.GameRun.mc = r9lr8.map = nulllr8.map = new main.Map(r8)linitOtherImage()ldm.Ui.i().initUiModules()lloadRmsOther()lloadRmsSms()lmain.SMSSender.i(r8)lcom.PetKing5_480x800.PetKing5.gr = r8l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x011c|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.\<init\>((r8v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r9v0 'maincanvas' main.MainCanvas A[D('maincanvas' main.MainCanvas), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

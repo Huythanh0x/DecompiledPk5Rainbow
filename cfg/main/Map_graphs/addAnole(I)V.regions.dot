@@ -1,0 +1,107 @@
+digraph "CFG formain.Map.addAnole(I)V" {
+subgraph cluster_Region_546640833 {
+label = "R(1:(1:(2:(1:11)(1:(1:15)(1:(1:17)(1:18)))|12))) | DECL_VAR: int i\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_768240084 {
+label = "R(1:(2:(1:11)(1:(1:15)(1:(1:17)(1:18)))|12))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1407328870 {
+label = "IF [B:2:0x0008, B:3:0x000a, B:4:0x000c, B:5:0x000e, B:7:0x0012] THEN: R(2:(1:11)(1:(1:15)(1:(1:17)(1:18)))|12) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0008|lif (r6 == 13) goto L31l}"];
+Node_3 [shape=record,label="{3\:\ 0x000a|ADDED_TO_REGION\l|lif (r6 == 34) goto L31l}"];
+Node_4 [shape=record,label="{4\:\ 0x000c|ADDED_TO_REGION\l|lif (r6 == 49) goto L31l}"];
+Node_5 [shape=record,label="{5\:\ 0x000e|ADDED_TO_REGION\l|lif (r6 == 66) goto L31l}"];
+Node_7 [shape=record,label="{7\:\ 0x0012|ADDED_TO_REGION\l|lif (r6 == 82) goto L31l}"];
+subgraph cluster_Region_1837115136 {
+label = "R(2:(1:11)(1:(1:15)(1:(1:17)(1:18)))|12)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_788363426 {
+label = "IF [B:10:0x0015] THEN: R(1:11) ELSE: R(1:(1:15)(1:(1:17)(1:18)))";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0015|lif (r6 == 13) goto L32l}"];
+subgraph cluster_Region_1722068172 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0017|lr6 = 0l}"];
+}
+subgraph cluster_Region_645819815 {
+label = "R(1:(1:15)(1:(1:17)(1:18))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1476670581 {
+label = "IF [B:14:0x0026] THEN: R(1:15) ELSE: R(1:(1:17)(1:18)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0026|lif (r6 == 34) goto L35l}"];
+subgraph cluster_Region_1069059006 {
+label = "R(1:15)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0028|lr6 = 1l}"];
+}
+subgraph cluster_Region_439868417 {
+label = "R(1:(1:17)(1:18)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1607114637 {
+label = "IF [B:16:0x002a] THEN: R(1:17) ELSE: R(1:18) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x002a|lif (r6 == 49) goto L37l}"];
+subgraph cluster_Region_1054311743 {
+label = "R(1:17)";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x002c|lr6 = 2l}"];
+}
+subgraph cluster_Region_2129569840 {
+label = "R(1:18)";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x002e|lr6 = r6 == 66 ? 3 : 4l}"];
+}
+}
+}
+}
+}
+}
+Node_12 [shape=record,label="{12\:\ 0x0018|PHI: r6l  0x0018: PHI (r6v5 'i' int) = (r6v2 'i' int), (r6v3 'i' int), (r6v4 'i' int), (r6v6 'i' int) binds: [B:19:0x0030, B:17:0x002c, B:15:0x0028, B:11:0x0017] A[DONT_GENERATE, DONT_INLINE]\l|lbyte[] byte[] r0 = r5.gr.rmsOtherlr0[2] = (byte) (r0[2] \| (1 \<\< r6))l}"];
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0010|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0014|ORIG_RETURN\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|SYNTHETIC\l|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x0030|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x0032|l}"];
+MethodNode[shape=record,label="{public void main.Map.addAnole((r5v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r6v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:12:0x0018 \-\> B:8:0x0014, CROSS_EDGE: B:15:0x0028 \-\> B:12:0x0018, CROSS_EDGE: B:17:0x002c \-\> B:12:0x0018, CROSS_EDGE: B:19:0x0030 \-\> B:12:0x0018, CROSS_EDGE: B:20:0x0032 \-\> B:12:0x0018, CROSS_EDGE: B:5:0x000e \-\> B:10:0x0015, CROSS_EDGE: B:4:0x000c \-\> B:10:0x0015, CROSS_EDGE: B:3:0x000a \-\> B:10:0x0015, CROSS_EDGE: B:2:0x0008 \-\> B:10:0x0015\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_10;
+Node_3 -> Node_4[style=dashed];
+Node_3 -> Node_10;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_10;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_10;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_10;
+Node_10 -> Node_11;
+Node_10 -> Node_14[style=dashed];
+Node_11 -> Node_12;
+Node_14 -> Node_15;
+Node_14 -> Node_16[style=dashed];
+Node_15 -> Node_12;
+Node_16 -> Node_17;
+Node_16 -> Node_18[style=dashed];
+Node_17 -> Node_12;
+Node_18 -> Node_19;
+Node_18 -> Node_20;
+Node_12 -> Node_13;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_13 -> Node_9;
+Node_19 -> Node_12;
+Node_20 -> Node_12;
+}
+

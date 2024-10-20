@@ -1,0 +1,58 @@
+digraph "CFG forcom.uc.paymentsdk.network.HttpClientFactory.close()V" {
+subgraph cluster_Region_1848255269 {
+label = "R(1:(1:(2:(1:7)|8))) | DECL_VAR: com.uc.paymentsdk.network.AndroidHttpClient localAndroidHttpClient\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_1095248032 {
+label = "R(1:(2:(1:7)|8))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1655552566 {
+label = "R(2:(1:7)|8)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_865730186 {
+label = "IF [B:4:0x0009, B:6:0x0015] THEN: R(1:7) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0009|lif (r3.mHttpClientMap.containsKey(com.uc.paymentsdk.network.HttpClientFactory.SDK_CLIENT) != false) goto L21l}"];
+Node_6 [shape=record,label="{6\:\ 0x0015|ADDED_TO_REGION\l|lif ((r0 = r3.mHttpClientMap.get(com.uc.paymentsdk.network.HttpClientFactory.SDK_CLIENT)) != null) goto L23l}"];
+subgraph cluster_Region_202756311 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0017|TryCatch #0 \{, blocks: (B:3:0x0001, B:5:0x000b, B:7:0x0017, B:8:0x001a), top: B:2:0x0001 \}\lCatch: all \-\> 0x0024\l|lr0.close()     \/\/ Catch: java.lang.Throwable \-\> L24l}"];
+}
+}
+Node_8 [shape=record,label="{8\:\ 0x001a|TRY_LEAVE\lTryCatch #0 \{, blocks: (B:3:0x0001, B:5:0x000b, B:7:0x0017, B:8:0x001a), top: B:2:0x0001 \}\lCatch: all \-\> 0x0024\l|lr3.mHttpClientMap.clear()     \/\/ Catch: java.lang.Throwable \-\> L24lcom.uc.paymentsdk.network.HttpClientFactory.mInstance = null     \/\/ Catch: java.lang.Throwable \-\> L24l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0001|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0001|TRY_ENTER\lTryCatch #0 \{, blocks: (B:3:0x0001, B:5:0x000b, B:7:0x0017, B:8:0x001a), top: B:2:0x0001 \}\lCatch: all \-\> 0x0024\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000b|TryCatch #0 \{, blocks: (B:3:0x0001, B:5:0x000b, B:7:0x0017, B:8:0x001a), top: B:2:0x0001 \}\lCatch: all \-\> 0x0024\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0022|DONT_GENERATE\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0023|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0024|REMOVE\lExcHandler: all \-\> 0x0024\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0026|REMOVE\l|lthrow r1l}"];
+MethodNode[shape=record,label="{public synchronized void com.uc.paymentsdk.network.HttpClientFactory.close((r3v0 'this' com.uc.paymentsdk.network.HttpClientFactory A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:14:0x0026 \-\> B:11:?, CROSS_EDGE: B:6:0x0015 \-\> B:8:0x001a, CROSS_EDGE: B:4:0x0009 \-\> B:8:0x001a, CROSS_EDGE: B:2:0x0001 \-\> B:13:0x0024\l}"];
+MethodNode -> Node_0;
+Node_4 -> Node_5;
+Node_4 -> Node_8[style=dashed];
+Node_6 -> Node_7;
+Node_6 -> Node_8[style=dashed];
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_12;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_13;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_14 -> Node_11;
+}
+

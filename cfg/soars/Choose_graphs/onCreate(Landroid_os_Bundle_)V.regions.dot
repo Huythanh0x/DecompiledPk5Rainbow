@@ -1,0 +1,16 @@
+digraph "CFG forsoars.Choose.onCreate(Landroid\/os\/Bundle;)V" {
+subgraph cluster_Region_1635537284 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lsuper.onCreate(r3)lsetContentView(com.PetKing5_480x800.R.layout.main)lr2.btn = (android.widget.Button) findViewById(com.PetKing5_480x800.R.id.button1)lr2.btn2 = (android.widget.Button) findViewById(com.PetKing5_480x800.R.id.button2)lr2.btn.setOnClickListener(new soars.Choose.AnonymousClass1())lr2.btn2.setOnClickListener(new soars.Choose.AnonymousClass2())l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0031|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{protected void soars.Choose.onCreate((r2v0 'this' soars.Choose A[IMMUTABLE_TYPE, THIS]), (r3v0 'savedInstanceState' android.os.Bundle A[D('savedInstanceState' android.os.Bundle), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | DONT_RENAME\lUSE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{android.app.Activity.onCreate(android.os.Bundle):void\}]\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

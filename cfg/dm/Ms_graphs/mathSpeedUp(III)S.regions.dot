@@ -1,0 +1,25 @@
+digraph "CFG fordm.Ms.mathSpeedUp(III)S" {
+subgraph cluster_Region_792204526 {
+label = "R(2:1|5)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint int r2 = r2 \- ((r3 \- r2) \/ r4)l}"];
+Node_5 [shape=record,label="{5\:\ 0x0008|RETURN\l|lreturn (short) (r2 \< 0 ? 0 : r2)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0004|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0006|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0007|PHI: r0l  0x0007: PHI (r0v3 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0009|l}"];
+MethodNode[shape=record,label="{public short dm.Ms.mathSpeedUp((r1v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r2v0 'volue' int A[D('volue' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 'max' int A[D('max' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'speed' int A[D('speed' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0009 \-\> B:4:0x0007\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_5 -> Node_6;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_7;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_7 -> Node_4;
+}
+

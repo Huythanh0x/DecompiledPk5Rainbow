@@ -1,0 +1,37 @@
+digraph "CFG formain.GameRun.AddHP(ILdm\/Monster;)V" {
+subgraph cluster_Region_523417228 {
+label = "R(2:1|(1:3)(1:6))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint int r5 = r5 + r6.monsterPro[0]l}"];
+subgraph cluster_IfRegion_2031744293 {
+label = "IF [B:2:0x000b] THEN: R(1:3) ELSE: R(1:6)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000b|lif (r5 \>= r6.monsterPro[2]) goto L12l}"];
+subgraph cluster_Region_707545746 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000d|lr6.monsterPro[0] = r6.monsterPro[2]l}"];
+}
+subgraph cluster_Region_1060100059 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0016|lr6.monsterPro[0] = (short) r5l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0015|ORIG_RETURN\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.AddHP((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'hp' int A[D('hp' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'A_Monster' dm.Monster A[D('A_Monster' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0016 \-\> B:4:0x0015\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+Node_7 -> Node_5;
+}
+

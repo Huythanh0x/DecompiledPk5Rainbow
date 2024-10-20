@@ -1,0 +1,84 @@
+digraph "CFG fordm.Ms.getStream(Ljava\/lang\/String;I)[B" {
+subgraph cluster_Region_1077651207 {
+label = "R(2:1|(4:3|(2:5|(2:7|8))|10|11))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte[] byte[] r0 = (byte[]) nulll}"];
+subgraph cluster_TryCatchRegion_1772802471 {
+label = "Try: R(4:3|(2:5|(2:7|8))|10|11) catches: R(3:14|15|16)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1211005139 {
+label = "R(4:3|(2:5|(2:7|8))|10|11)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0003|TRY_ENTER\lTryCatch #0 \{Exception \-\> 0x0046, blocks: (B:3:0x0003, B:5:0x001e, B:7:0x0036, B:10:0x0024), top: B:2:0x0003 \}\lCatch: Exception \-\> 0x0046\l|ljava.io.DataInputStream java.io.DataInputStream r1 = new java.io.DataInputStream(com.android.Util.AndroidUtil.getResourceAsStream(\"\/\" + r7))     \/\/ Catch: java.lang.Exception \-\> L46l}"];
+subgraph cluster_IfRegion_1772729896 {
+label = "IF [B:4:0x001c] THEN: R(2:5|(2:7|8)) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x001c|lif (r8 \> (\-1)) goto L22l}"];
+subgraph cluster_Region_1384933756 {
+label = "R(2:5|(2:7|8))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x001e|TryCatch #0 \{Exception \-\> 0x0046, blocks: (B:3:0x0003, B:5:0x001e, B:7:0x0036, B:10:0x0024), top: B:2:0x0003 \}\lCatch: Exception \-\> 0x0046\l|lr1.readByte()     \/\/ Catch: java.lang.Exception \-\> L46lbyte r3 = 0l}"];
+subgraph cluster_LoopRegion_1950477924 {
+label = "LOOP:0: (2:7|8)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0022|LOOP_START\lADDED_TO_REGION\lPHI: r3l  0x0022: PHI (r3v1 'n' byte) = (r3v0 'n' byte), (r3v2 'n' byte) binds: [B:5:0x001e, B:8:0x0042] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:6:0x0022\-\>B:8:0x0042\l|lif (r3 \< r8) goto L26l}"];
+subgraph cluster_Region_1326645173 {
+label = "R(2:7|8)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0036|TRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x0046, blocks: (B:3:0x0003, B:5:0x001e, B:7:0x0036, B:10:0x0024), top: B:2:0x0003 \}\lCatch: Exception \-\> 0x0046\l|lr1.skip(getLen_short(r1.readShort()))     \/\/ Catch: java.lang.Exception \-\> L46l}"];
+Node_8 [shape=record,label="{8\:\ 0x0042|LOOP_END\lLOOP:0: B:6:0x0022\-\>B:8:0x0042\l|lbyte r3 = (byte) (r3 + 1)l}"];
+}
+}
+}
+}
+Node_10 [shape=record,label="{10\:\ 0x0024|TryCatch #0 \{Exception \-\> 0x0046, blocks: (B:3:0x0003, B:5:0x001e, B:7:0x0036, B:10:0x0024), top: B:2:0x0003 \}\lCatch: Exception \-\> 0x0046\l|lbyte[] r0 = new byte[getLen_short(r1.readShort())]     \/\/ Catch: java.lang.Exception \-\> L46lr1.read(r0)     \/\/ Catch: java.lang.Exception \-\> L46lr1.close()     \/\/ Catch: java.lang.Exception \-\> L46l}"];
+Node_11 [shape=record,label="{11\:\ 0x0035|RETURN\lORIG_RETURN\l|lreturn r0l}"];
+}
+subgraph cluster_Region_1511819740 {
+label = "R(3:14|15|16) | ExcHandler: Exception \-\> 0x0046\l";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0046|PHI: r0l  0x0046: PHI (r0v2 'data' byte[]) = (r0v1 'data' byte[]), (r0v3 'data' byte[]) binds: [B:2:0x0003, B:13:?] A[DONT_GENERATE, DONT_INLINE]\lExcHandler: Exception \-\> 0x0046\l|l}"];
+Node_15 [shape=record,label="{15\:\ 0x0047|lr4.printStackTrace()l}"];
+Node_16 [shape=record,label="{16\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0l}"];
+}
+}
+}
+subgraph cluster_Region_1511819740 {
+label = "R(3:14|15|16) | ExcHandler: Exception \-\> 0x0046\l";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0046|PHI: r0l  0x0046: PHI (r0v2 'data' byte[]) = (r0v1 'data' byte[]), (r0v3 'data' byte[]) binds: [B:2:0x0003, B:13:?] A[DONT_GENERATE, DONT_INLINE]\lExcHandler: Exception \-\> 0x0046\l|l}"];
+Node_15 [shape=record,label="{15\:\ 0x0047|lr4.printStackTrace()l}"];
+Node_16 [shape=record,label="{16\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0003|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0024|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+MethodNode[shape=record,label="{public byte[] dm.Ms.getStream((r6v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r7v0 'i' java.lang.String A[D('i' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'num' int A[D('num' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{Exception \-\> 0x0046, blocks: (B:3:0x0003, B:5:0x001e, B:7:0x0036, B:10:0x0024), top: B:2:0x0003 \}\lCROSS_EDGE: B:15:0x0047 \-\> B:11:0x0035, BACK_EDGE: B:8:0x0042 \-\> B:6:0x0022, CROSS_EDGE: B:4:0x001c \-\> B:10:0x0024, CROSS_EDGE: B:2:0x0003 \-\> B:14:0x0046\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_10[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_6 -> Node_9[style=dashed];
+Node_7 -> Node_8;
+Node_8 -> Node_6;
+Node_10 -> Node_11;
+Node_10 -> Node_13;
+Node_11 -> Node_12;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_16 -> Node_12;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_16 -> Node_12;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_14;
+Node_9 -> Node_10;
+Node_13 -> Node_14;
+}
+

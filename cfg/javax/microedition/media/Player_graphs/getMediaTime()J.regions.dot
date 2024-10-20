@@ -1,0 +1,39 @@
+digraph "CFG forjavax.microedition.media.Player.getMediaTime()J" {
+subgraph cluster_Region_130446365 {
+label = "R(2:1|(2:(1:3)|(1:6)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|llong long r0 = r4.mp.getCurrentPosition() * com.uc.paymentsdk.util.Constants.PAYMENT_MAXl}"];
+subgraph cluster_Region_470047624 {
+label = "R(2:(1:3)|(1:6))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_123119321 {
+label = "IF [B:2:0x000d] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000d|lif (r0 \<= 0) goto L12l}"];
+subgraph cluster_Region_313940999 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000f|RETURN\lORIG_RETURN\l|lreturn \-1Ll}"];
+}
+}
+subgraph cluster_Region_1020259367 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0012|l}"];
+MethodNode[shape=record,label="{public long javax.microedition.media.Player.getMediaTime((r4v0 'this' javax.microedition.media.Player A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x0012 \-\> B:4:0x0011\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_5[style=dashed];
+Node_3 -> Node_4;
+Node_6 -> Node_4;
+Node_0 -> Node_1;
+Node_5 -> Node_6;
+}
+

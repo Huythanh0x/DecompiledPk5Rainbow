@@ -1,0 +1,16 @@
+digraph "CFG fordm.Monster.setProAFD([B)V" {
+subgraph cluster_Region_873905243 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr6.monsterPro[5] = (short) (r7[2] + ((r7[9] * r6.monster[2]) \/ 10))lr6.monsterPro[6] = (short) (r7[3] + ((r7[10] * r6.monster[2]) \/ 10))lr6.monsterPro[7] = (short) (r7[4] + ((r7[11] * r6.monster[2]) \/ 10))l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x003f|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Monster.setProAFD((r6v0 'this' dm.Monster A[IMMUTABLE_TYPE, THIS]), (r7v0 'data' byte[] A[D('data' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

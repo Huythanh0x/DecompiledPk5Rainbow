@@ -1,0 +1,16 @@
+digraph "CFG fordm.Monster.resetMonster(III)V" {
+subgraph cluster_Region_167226157 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.monster[16] = (byte) ((r4.monster[3] * 2) + 4)lr4.monster[17] = 2lr4.monster[14] = (byte) r5lr4.monster[15] = (byte) r6lr4.monster[6] = (byte) r7l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x002b|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Monster.resetMonster((r4v0 'this' dm.Monster A[IMMUTABLE_TYPE, THIS]), (r5v0 'skill6' int A[D('skill6' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'skill7' int A[D('skill7' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'fealty' int A[D('fealty' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

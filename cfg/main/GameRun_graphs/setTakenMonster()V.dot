@@ -1,0 +1,37 @@
+digraph "CFG formain.GameRun.setTakenMonster()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr0 = r7.select[0][0]l}"];
+Node_2 [shape=record,label="{2\:\ 0x0008|LOOP_START\lPHI: r0l  0x0008: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v2 'i' byte) binds: [B:1:0x0000, B:4:0x006b] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:4:0x006b\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x000b|lif (r0 \< (r7.cMon_count \- 1)) goto L28l}"];
+Node_4 [shape=record,label="{4\:\ 0x006b|LOOP_END\lLOOP:0: B:2:0x0008\-\>B:4:0x006b\l|lr7.cMonsters[r0] = r7.cMonsters[r0 + 1]lbyte r0 = (byte) (r0 + 1)l}"];
+Node_5 [shape=record,label="{5\:\ 0x000d|SYNTHETIC\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000d|lr7.cMon_count = (byte) (r7.cMon_count \- 1)lr7.t_length = r7.cMon_countl}"];
+Node_7 [shape=record,label="{7\:\ 0x001f|lif (r7.select[0][0] != r7.cMon_count) goto L23l}"];
+Node_8 [shape=record,label="{8\:\ 0x0021|lbyte[] r1 = r7.select[0]lr1[0] = (byte) (r1[0] \- 1)l}"];
+Node_9 [shape=record,label="{9\:\ 0x002b|l}"];
+Node_10 [shape=record,label="{10\:\ 0x002d|lif (r7.t_length \<= 0) goto L26l}"];
+Node_11 [shape=record,label="{11\:\ 0x002f|linitMonStream(2, r7.mList_id[r7.cMonsters[r7.select[0][0]].monster[0]][0], 1)lsetShowPro(r7.cMonsters[r7.select[0][0]])l}"];
+Node_12 [shape=record,label="{12\:\ 0x0054|lr7.introT = main.Constants_H.WIDTH_Hlr7.popMenu = \-1ldm.Ms.i().correctSelect(r7.select[0], r7.t_length, r7.list_rows)l}"];
+Node_13 [shape=record,label="{13\:\ 0x006a|RETURN\l|lreturnl}"];
+Node_14 [shape=record,label="{14\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.setTakenMonster((r7v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x002d \-\> B:12:0x0054, CROSS_EDGE: B:7:0x001f \-\> B:9:0x002b, BACK_EDGE: B:4:0x006b \-\> B:2:0x0008\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_9;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_10 -> Node_11[style=dashed];
+Node_10 -> Node_12;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+}
+

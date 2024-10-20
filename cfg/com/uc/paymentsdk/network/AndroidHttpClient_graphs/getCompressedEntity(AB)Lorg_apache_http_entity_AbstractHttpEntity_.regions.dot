@@ -1,0 +1,41 @@
+digraph "CFG forcom.uc.paymentsdk.network.AndroidHttpClient.getCompressedEntity([B)Lorg\/apache\/http\/entity\/AbstractHttpEntity;" {
+subgraph cluster_Region_1559090943 {
+label = "R(1:(2:(1:4)|(2:6|7)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_125347079 {
+label = "R(2:(1:4)|(2:6|7))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1619951262 {
+label = "IF [B:2:0x0008] THEN: R(1:4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0008|lif (r7.length \< getMinGzipSize()) goto L12l}"];
+subgraph cluster_Region_507984337 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000f|RETURN\lORIG_RETURN\l|lreturn new org.apache.http.entity.ByteArrayEntity(r7)l}"];
+}
+}
+subgraph cluster_Region_1830815705 {
+label = "R(2:6|7)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0010|ljava.io.ByteArrayOutputStream java.io.ByteArrayOutputStream r1 = new java.io.ByteArrayOutputStream()ljava.util.zip.GZIPOutputStream java.util.zip.GZIPOutputStream r2 = new java.util.zip.GZIPOutputStream(r1)lr2.write(r7)lr2.close()lorg.apache.http.entity.ByteArrayEntity org.apache.http.entity.ByteArrayEntity r0 = new org.apache.http.entity.ByteArrayEntity(r1.toByteArray())lr0.setContentEncoding(\"gzip\")l}"];
+Node_7 [shape=record,label="{7\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000a|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static org.apache.http.entity.AbstractHttpEntity com.uc.paymentsdk.network.AndroidHttpClient.getCompressedEntity((r7v0 'paramArrayOfByte' byte[] A[D('paramArrayOfByte' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljava\/io\/IOException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0010 \-\> B:4:0x000f\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+}
+

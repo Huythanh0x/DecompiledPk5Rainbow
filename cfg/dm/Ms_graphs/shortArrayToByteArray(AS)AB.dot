@@ -1,0 +1,19 @@
+digraph "CFG fordm.Ms.shortArrayToByteArray([S)[B" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ms.skip = 0lint r2 = r5.lengthlbyte[] r0 = new byte[r2 \<\< 1]lr1 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0009|LOOP_START\lPHI: r1l  0x0009: PHI (r1v1 'i' int) = (r1v0 'i' int), (r1v2 'i' int) binds: [B:1:0x0000, B:3:0x000c] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0009\-\>B:3:0x000c\l|lif (r1 \< r2) goto L12l}"];
+Node_3 [shape=record,label="{3\:\ 0x000c|LOOP_END\lLOOP:0: B:2:0x0009\-\>B:3:0x000c\l|lputShort(r0, r5[r1])lint r1 = r1 + 1l}"];
+Node_4 [shape=record,label="{4\:\ 0x000b|SYNTHETIC\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x000b|RETURN\l|lreturn r0l}"];
+Node_6 [shape=record,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public byte[] dm.Ms.shortArrayToByteArray((r4v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r5v0 'shortbuf' short[] A[D('shortbuf' short[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:3:0x000c \-\> B:2:0x0009\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_2;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+}
+

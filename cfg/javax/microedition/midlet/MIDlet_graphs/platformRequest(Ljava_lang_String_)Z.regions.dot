@@ -1,0 +1,66 @@
+digraph "CFG forjavax.microedition.midlet.MIDlet.platformRequest(Ljava\/lang\/String;)Z" {
+subgraph cluster_Region_1284623465 {
+label = "R(1:(2:(2:3|4)|(1:(2:(2:8|9)|(1:11)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1140938692 {
+label = "R(2:(2:3|4)|(1:(2:(2:8|9)|(1:11))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_295924494 {
+label = "IF [B:2:0x0007] THEN: R(2:3|4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0007|lif (r5.startsWith(\"http:\/\/\") != false) goto L16l}"];
+subgraph cluster_Region_646018205 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0009|landroid.net.Uri android.net.Uri r1 = android.net.Uri.parse(r5)landroid.content.Intent android.content.Intent r0 = new android.content.Intent(\"android.intent.action.VIEW\", r1)ljavax.microedition.lcdui.CwaActivity.getInstance().startActivity(r0)l}"];
+Node_4 [shape=record,label="{4\:\ 0x001c|RETURN\lORIG_RETURN\l|lreturn truel}"];
+}
+}
+subgraph cluster_Region_738618960 {
+label = "R(1:(2:(2:8|9)|(1:11))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_1857428797 {
+label = "R(2:(2:8|9)|(1:11))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_549967960 {
+label = "IF [B:7:0x0023] THEN: R(2:8|9) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0023|lif (r5.startsWith(\"tel:\") != false) goto L20l}"];
+subgraph cluster_Region_1409765876 {
+label = "R(2:8|9)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0025|landroid.net.Uri android.net.Uri r1 = android.net.Uri.parse(r5)landroid.content.Intent android.content.Intent r0 = new android.content.Intent(\"android.intent.action.DIAL\", r1)ljavax.microedition.lcdui.CwaActivity.getInstance().startActivity(r0)l}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+}
+subgraph cluster_Region_720827469 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x003e|lthrow new javax.microedition.io.ConnectionNotFoundException(r5)l}"];
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x001d|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0039|l}"];
+MethodNode[shape=record,label="{public final boolean javax.microedition.midlet.MIDlet.platformRequest((r4v0 'this' javax.microedition.midlet.MIDlet A[IMMUTABLE_TYPE, THIS]), (r5v0 'URL' java.lang.String A[D('URL' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljavax\/microedition\/io\/ConnectionNotFoundException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x0025 \-\> B:4:0x001c, CROSS_EDGE: B:11:0x003e \-\> B:5:?\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_7 -> Node_10[style=dashed];
+Node_8 -> Node_9;
+Node_9 -> Node_5;
+Node_11 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_6 -> Node_7;
+Node_10 -> Node_11;
+}
+

@@ -1,0 +1,61 @@
+digraph "CFG formain.MainCanvas.showNotifyMy()V" {
+subgraph cluster_Region_953351146 {
+label = "R(2:1|(2:(3:(1:7)|8|9)|(1:11)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.lang.System.out.println(\"showNotifyMy() run_state= \" + main.GameRun.run_state + \" game_state= \" + r4.game_state)l}"];
+subgraph cluster_Region_1395043048 {
+label = "R(2:(3:(1:7)|8|9)|(1:11))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1535345581 {
+label = "IF [B:2:0x0026] THEN: R(3:(1:7)|8|9) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0026|lif (r4.game_state == 98) goto L17l}"];
+subgraph cluster_Region_290521739 {
+label = "R(3:(1:7)|8|9)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1047766752 {
+label = "IF [B:4:0x002c, B:6:0x0032] THEN: R(1:7) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x002c|lif (main.GameRun.run_state != (\-20)) goto L19l}"];
+Node_6 [shape=record,label="{6\:\ 0x0032|ADDED_TO_REGION\l|lif (main.GameRun.run_state != (\-21)) goto L21l}"];
+subgraph cluster_Region_1482963500 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0034|lr4.game_state = 30ljava.lang.System.out.println(\"在这?\")l}"];
+}
+}
+Node_8 [shape=record,label="{8\:\ 0x003f|lrepaint()lmain.GameRun.run_state = 98lr4.game_state = 98ljava.lang.System.out.println(\"还是在这?\")ldm.Sound.i().soundStop()l}"];
+Node_9 [shape=record,label="{9\:\ 0x0054|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_524108902 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0055|lr4.fisrt_paint = (byte) 0ljava.lang.System.out.println(\"不会在这吧？\")l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0028|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x002e|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void main.MainCanvas.showNotifyMy((r4v0 'this' main.MainCanvas A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0032 \-\> B:8:0x003f, CROSS_EDGE: B:4:0x002c \-\> B:8:0x003f, CROSS_EDGE: B:11:0x0055 \-\> B:9:0x0054\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_11[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_8[style=dashed];
+Node_6 -> Node_7;
+Node_6 -> Node_8[style=dashed];
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_12 -> Node_10;
+}
+

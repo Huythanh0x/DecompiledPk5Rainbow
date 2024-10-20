@@ -1,0 +1,199 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.onWarningDialogOK(I)V" {
+subgraph cluster_Region_463163955 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+subgraph cluster_SwitchRegion_1961674613 {
+label = "Switch: 10
+ case 0, 1, 22 -> R(2:11|12)
+ case 10 -> R(2:4|5)
+ case 13 -> R(2:9|10)
+ case 15, 16, 24 -> R(2:25|26)
+ case 20 -> R(3:8|9|10)
+ case 21, com.uc.paymentsdk.payment.PaymentsActivity.DIALOG_PAY_SMS_DELETE_BACK_CONFIRM :int -> R(5:(1:17)|(1:20)|(1:22)|25|26)
+ case 23 -> R(2:27|28)
+ case 26 -> R(1:(2:31|32)(2:33|34))
+ case 36 -> R(2:6|7)
+ case default -> R(1:2)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lswitch(r4) \{l    case 0: goto L8;l    case 1: goto L8;l    case 10: goto L4;l    case 13: goto L7;l    case 15: goto L18;l    case 16: goto L18;l    case 20: goto L6;l    case 21: goto L9;l    case 22: goto L8;l    case 23: goto L19;l    case 24: goto L18;l    case 25: goto L9;l    case 26: goto L20;l    case 36: goto L5;l    default: goto L3;l\}l}"];
+subgraph cluster_Region_1038693362 {
+label = "R(2:11|12)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0020|lfinish()l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_1214299065 {
+label = "R(2:4|5)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0004|lpay()l}"];
+Node_5 [shape=record,label="{5\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_1865014144 {
+label = "R(2:9|10)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0013|landroid.content.Intent android.content.Intent r0 = new android.content.Intent()lsetResult(\-1, r0)lfinish()l}"];
+Node_10 [shape=record,label="{10\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_162226764 {
+label = "R(2:25|26)";
+node [shape=record,color=blue];
+Node_25 [shape=record,label="{25\:\ 0x0045|lbuildPaymentView()l}"];
+Node_26 [shape=record,label="{26\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_2019883288 {
+label = "R(3:8|9|10)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x000c|lcom.uc.paymentsdk.util.PrefUtil.clearPayedAmount(getApplicationContext())l}"];
+Node_9 [shape=record,label="{9\:\ 0x0013|landroid.content.Intent android.content.Intent r0 = new android.content.Intent()lsetResult(\-1, r0)lfinish()l}"];
+Node_10 [shape=record,label="{10\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_460249955 {
+label = "R(5:(1:17)|(1:20)|(1:22)|25|26)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1877740895 {
+label = "IF [B:14:0x0026, B:16:0x002a] THEN: R(1:17) ELSE: null";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0026|lif (r3.mSmsHander != null) goto L11l}"];
+Node_16 [shape=record,label="{16\:\ 0x002a|ADDED_TO_REGION\l|lif (r3.mSmsRunnable != null) goto L13l}"];
+subgraph cluster_Region_580705896 {
+label = "R(1:17)";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x002c|lr3.mSmsHander.removeCallbacks(r3.mSmsRunnable)l}"];
+}
+}
+subgraph cluster_IfRegion_1886871925 {
+label = "IF [B:19:0x0035] THEN: R(1:20) ELSE: null";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x0035|lif (r3.mSmsContent != null) goto L16l}"];
+subgraph cluster_Region_498014683 {
+label = "R(1:20)";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x0037|lgetContentResolver().unregisterContentObserver(r3.mSmsContent)l}"];
+}
+}
+subgraph cluster_TryCatchRegion_312895940 {
+label = "Try: R(1:22) catches: R(0)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1443727974 {
+label = "R(1:22)";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x0040|TRY_ENTER\lTRY_LEAVE\lTryCatch #0 \{IllegalArgumentException \-\> 0x0060, blocks: (B:22:0x0040), top: B:21:0x0040 \}\lCatch: IllegalArgumentException \-\> 0x0060\l|lunregisterReceiver(r3.mSmsReceiver)     \/\/ Catch: java.lang.IllegalArgumentException \-\> L60l}"];
+}
+subgraph cluster_Region_498742555 {
+label = "R(0) | ExcHandler: IllegalArgumentException \-\> 0x0060\l";
+node [shape=record,color=blue];
+}
+}
+Node_25 [shape=record,label="{25\:\ 0x0045|lbuildPaymentView()l}"];
+Node_26 [shape=record,label="{26\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_2025752246 {
+label = "R(2:27|28)";
+node [shape=record,color=blue];
+Node_27 [shape=record,label="{27\:\ 0x0049|lshowDialog(24)l}"];
+Node_28 [shape=record,label="{28\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_1509373996 {
+label = "R(1:(2:31|32)(2:33|34))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1670633422 {
+label = "IF [B:30:0x0052] THEN: R(2:31|32) ELSE: R(2:33|34)";
+node [shape=record,color=blue];
+Node_30 [shape=record,label="{30\:\ 0x0052|lif (4 == r3.mType) goto L22l}"];
+subgraph cluster_Region_801973322 {
+label = "R(2:31|32)";
+node [shape=record,color=blue];
+Node_31 [shape=record,label="{31\:\ 0x0054|lsendFirstSms(r3.mSmsInfo)l}"];
+Node_32 [shape=record,label="{32\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_592092211 {
+label = "R(2:33|34)";
+node [shape=record,color=blue];
+Node_33 [shape=record,label="{33\:\ 0x005a|lsendConfirmSms(r3.mConfirmSmsInfoString)l}"];
+Node_34 [shape=record,label="{34\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+subgraph cluster_Region_1134360110 {
+label = "R(2:6|7)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0008|lpay()l}"];
+Node_7 [shape=record,label="{7\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+subgraph cluster_Region_1045193780 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+}
+subgraph cluster_Region_498742555 {
+label = "R(0) | ExcHandler: IllegalArgumentException \-\> 0x0060\l";
+node [shape=record,color=blue];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0024|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0028|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0033|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ 0x0040|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x0060|ExcHandler: IllegalArgumentException \-\> 0x0060\l|l}"];
+Node_29 [shape=record,color=red,label="{29\:\ 0x004f|l}"];
+MethodNode[shape=record,label="{public void com.uc.paymentsdk.payment.PaymentsActivity.onWarningDialogOK((r3v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]), (r4v0 'paramInt' int A[D('paramInt' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lCOMPUTE_POST_DOM\lTYPE_VARS: EMPTY\lCROSS_EDGE: B:4:0x0004 \-\> B:2:0x0003, CROSS_EDGE: B:6:0x0008 \-\> B:2:0x0003, CROSS_EDGE: B:9:0x0013 \-\> B:2:0x0003, CROSS_EDGE: B:1:0x0000 \-\> B:9:0x0013, CROSS_EDGE: B:11:0x0020 \-\> B:2:0x0003, CROSS_EDGE: B:25:0x0045 \-\> B:2:0x0003, CROSS_EDGE: B:24:0x0060 \-\> B:25:0x0045, CROSS_EDGE: B:21:0x0040 \-\> B:24:0x0060, CROSS_EDGE: B:19:0x0035 \-\> B:21:0x0040, CROSS_EDGE: B:16:0x002a \-\> B:18:0x0033, CROSS_EDGE: B:14:0x0026 \-\> B:18:0x0033, CROSS_EDGE: B:1:0x0000 \-\> B:25:0x0045, CROSS_EDGE: B:27:0x0049 \-\> B:2:0x0003, CROSS_EDGE: B:31:0x0054 \-\> B:2:0x0003, CROSS_EDGE: B:33:0x005a \-\> B:2:0x0003\lINLINE_NOT_NEEDED\lMETHOD_OVERRIDE: [com.uc.paymentsdk.util.DialogUtil.WarningDialogListener.onWarningDialogOK(int):void]\lJadxCommentsAttr\{l WARN: l \-\> Failed to find 'out' block for switch in B:1:0x0000. Please report as an issue.l \-\> Can't fix incorrect switch cases order, some code will duplicate\}\lTryCatch #0 \{IllegalArgumentException \-\> 0x0060, blocks: (B:22:0x0040), top: B:21:0x0040 \}\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_1 -> Node_4;
+Node_1 -> Node_6;
+Node_1 -> Node_8;
+Node_1 -> Node_9;
+Node_1 -> Node_11;
+Node_1 -> Node_13;
+Node_1 -> Node_25;
+Node_1 -> Node_27;
+Node_1 -> Node_29;
+Node_11 -> Node_12;
+Node_12 -> Node_3;
+Node_4 -> Node_5;
+Node_5 -> Node_3;
+Node_9 -> Node_10;
+Node_10 -> Node_3;
+Node_25 -> Node_26;
+Node_26 -> Node_3;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_10 -> Node_3;
+Node_14 -> Node_15;
+Node_14 -> Node_18[style=dashed];
+Node_16 -> Node_17;
+Node_16 -> Node_18[style=dashed];
+Node_17 -> Node_18;
+Node_19 -> Node_20;
+Node_19 -> Node_21[style=dashed];
+Node_20 -> Node_21;
+Node_22 -> Node_25;
+Node_22 -> Node_23;
+Node_25 -> Node_26;
+Node_26 -> Node_3;
+Node_27 -> Node_28;
+Node_28 -> Node_3;
+Node_30 -> Node_31;
+Node_30 -> Node_33[style=dashed];
+Node_31 -> Node_32;
+Node_32 -> Node_3;
+Node_33 -> Node_34;
+Node_34 -> Node_3;
+Node_6 -> Node_7;
+Node_7 -> Node_3;
+Node_2 -> Node_3;
+Node_0 -> Node_1;
+Node_13 -> Node_14;
+Node_15 -> Node_16;
+Node_18 -> Node_19;
+Node_21 -> Node_22;
+Node_21 -> Node_24;
+Node_23 -> Node_24;
+Node_24 -> Node_25;
+Node_29 -> Node_30;
+}
+

@@ -1,0 +1,19 @@
+digraph "CFG forjavax.microedition.lcdui.Image.createImage(Ljava\/lang\/String;I)Ljavax\/microedition\/lcdui\/Image;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljavax.microedition.lcdui.Image r0 = new javax.microedition.lcdui.Image()ljava.io.InputStream r1 = com.android.Util.AndroidUtil.getResourceAsStream(r4)landroid.graphics.BitmapFactory$Options r2 = new android.graphics.BitmapFactory.Options()lr2.inInputShareable = truelr2.inSampleSize = r5lr0.mBitmap = android.graphics.BitmapFactory.decodeStream(r1, null, r2)l}"];
+Node_2 [shape=record,label="{2\:\ 0x001c|lif (r0.mBitmap != null) goto L13l}"];
+Node_3 [shape=record,label="{3\:\ 0x001e|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0023|lthrow new java.io.IOException()l}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0024|RETURN\l|lreturn r0l}"];
+MethodNode[shape=record,label="{public static javax.microedition.lcdui.Image javax.microedition.lcdui.Image.createImage((r4v0 'name' java.lang.String A[D('name' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'zoom' int A[D('zoom' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lEXCEPTIONS:[Ljava\/io\/IOException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0024 \-\> B:5:?\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

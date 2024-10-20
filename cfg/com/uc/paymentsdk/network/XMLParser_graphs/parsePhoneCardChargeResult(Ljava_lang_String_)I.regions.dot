@@ -1,0 +1,83 @@
+digraph "CFG forcom.uc.paymentsdk.network.XMLParser.parsePhoneCardChargeResult(Ljava\/lang\/String;)I" {
+subgraph cluster_Region_1662253007 {
+label = "R(1:(2:(1:3)|(4:5|(3:8|(1:10)(1:13)|12)|16|17)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_436010973 {
+label = "R(2:(1:3)|(4:5|(3:8|(1:10)(1:13)|12)|16|17))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_641903922 {
+label = "IF [B:2:0x0006] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0006|lif (android.text.TextUtils.isEmpty(r7) != false) goto L23l}"];
+subgraph cluster_Region_1872883541 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0008|RETURN\lORIG_RETURN\l|lreturn \-1l}"];
+}
+}
+subgraph cluster_Region_678171953 {
+label = "R(4:5|(3:8|(1:10)(1:13)|12)|16|17)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000a|lorg.xmlpull.v1.XmlPullParser org.xmlpull.v1.XmlPullParser r1 = org.xmlpull.v1.XmlPullParserFactory.newInstance().newPullParser()lr1.setInput(new java.io.StringReader(r7))lint r0 = \-1lr1.nextTag()lr1.require(2, \"\", \"result\")l}"];
+subgraph cluster_LoopRegion_339591346 {
+label = "LOOP:0: (3:8|(1:10)(1:13)|12)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0029|ADDED_TO_REGION\l|lif (r1.nextTag() == 2) goto L29l}"];
+subgraph cluster_Region_1875541017 {
+label = "R(3:8|(1:10)(1:13)|12)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0034|ljava.lang.String java.lang.String r2 = r1.getName()lr1.require(2, \"\", r2)l}"];
+subgraph cluster_IfRegion_1893507702 {
+label = "IF [B:9:0x0043] THEN: R(1:10) ELSE: R(1:13)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0043|lif (\"pay_result\".equals(r2) != false) goto L31l}"];
+subgraph cluster_Region_1116969769 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0045|lint r0 = com.uc.paymentsdk.util.Utils.getInt(getAttributeValue(r1, \"status\"))lr1.nextTag()l}"];
+}
+subgraph cluster_Region_169794519 {
+label = "R(1:13)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0058|lskipUnknownTag(r1)l}"];
+}
+}
+Node_12 [shape=record,label="{12\:\ 0x0052|LOOP_END\lPHI: r0l  0x0052: PHI (r0v2 'i' int) = (r0v1 'i' int), (r0v3 'i' int) binds: [B:14:0x0052, B:11:0x0052] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:6:0x0025\-\>B:12:0x0052\l|lr1.require(3, \"\", r2)l}"];
+}
+}
+Node_16 [shape=record,label="{16\:\ 0x002b|lr1.require(3, \"\", \"result\")l}"];
+Node_17 [shape=record,label="{17\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0025|LOOP_START\lPHI: r0l  0x0025: PHI (r0v1 'i' int) = (r0v0 'i' int), (r0v2 'i' int) binds: [B:5:0x000a, B:12:0x0052] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:6:0x0025\-\>B:12:0x0052\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0052|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0052|SYNTHETIC\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x002b|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public static int com.uc.paymentsdk.network.XMLParser.parsePhoneCardChargeResult((r7v0 'paramString' java.lang.String A[D('paramString' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljava\/lang\/Exception;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:16:0x002b \-\> B:4:0x0009, BACK_EDGE: B:12:0x0052 \-\> B:6:0x0025, CROSS_EDGE: B:13:0x0058 \-\> B:12:0x0052\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_5[style=dashed];
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_7 -> Node_15[style=dashed];
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_9 -> Node_13[style=dashed];
+Node_10 -> Node_11;
+Node_13 -> Node_14;
+Node_12 -> Node_6;
+Node_16 -> Node_17;
+Node_17 -> Node_4;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_6 -> Node_7;
+Node_11 -> Node_12;
+Node_14 -> Node_12;
+Node_15 -> Node_16;
+}
+

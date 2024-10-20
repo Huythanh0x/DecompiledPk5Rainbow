@@ -1,0 +1,233 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.fillData()V" {
+subgraph cluster_Region_532061325 {
+label = "R(3:1|(2:3|(1:(2:(1:14)|(2:6|(1:(2:9|1))))))(1:(2:17|(1:(2:(1:25)|(2:20|(1:(2:23|1))))))(2:26|(2:29|(1:40)(1:(1:35)(0)))))|10)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.util.ArrayList java.util.ArrayList\<com.uc.paymentsdk.model.IType\> r1 = com.uc.paymentsdk.util.PrefUtil.getAvailablePayType(getApplicationContext(), r7.mPaymentInfo.getPaytype())lcom.uc.paymentsdk.model.IType[] com.uc.paymentsdk.model.IType[] r2 = new com.uc.paymentsdk.model.IType[r1.size()]l}"];
+subgraph cluster_IfRegion_1673678412 {
+label = "IF [B:2:0x0021] THEN: R(2:3|(1:(2:(1:14)|(2:6|(1:(2:9|1)))))) ELSE: R(1:(2:17|(1:(2:(1:25)|(2:20|(1:(2:23|1))))))(2:26|(2:29|(1:40)(1:(1:35)(0)))))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0021|lif (com.uc.paymentsdk.payment.PaymentInfo.PAYTYPE_OVERAGE.equals(r7.mPaymentInfo.getPaytype()) != false) goto L4l}"];
+subgraph cluster_Region_1179756495 {
+label = "R(2:3|(1:(2:(1:14)|(2:6|(1:(2:9|1))))))";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0023|ljava.util.Iterator java.util.Iterator\<com.uc.paymentsdk.model.IType\> r3 = r1.iterator()l}"];
+subgraph cluster_LoopRegion_1413653019 {
+label = "LOOP:0: (1:(2:(1:14)|(2:6|(1:(2:9|1)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_2075079699 {
+label = "R(1:(2:(1:14)|(2:6|(1:(2:9|1)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1688477660 {
+label = "R(2:(1:14)|(2:6|(1:(2:9|1))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_416981514 {
+label = "IF [B:5:0x002b] THEN: R(1:14) ELSE: null";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x002b|lif (r3.hasNext() != true) goto L29l}"];
+subgraph cluster_Region_367365418 {
+label = "R(1:14)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x002d|SYNTHETIC\lEDGE_INSN: B:14:0x002d\-\>B:10:0x002d BREAK  A[LOOP:0: B:4:0x0027\-\>B:13:?]\l|lbreakl}"];
+}
+}
+subgraph cluster_Region_687341585 {
+label = "R(2:6|(1:(2:9|1)))";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x003c|lcom.uc.paymentsdk.model.IType com.uc.paymentsdk.model.IType r0 = r3.next()l}"];
+subgraph cluster_Region_1425455095 {
+label = "R(1:(2:9|1))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_418222489 {
+label = "IF [B:7:0x004c] THEN: R(2:9|1) ELSE: null";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x004c|lif (com.uc.paymentsdk.model.TypeFactory.TYPE_PAY_UPOINT.equals(r0.getId()) != false) goto L30l}"];
+subgraph cluster_Region_391504299 {
+label = "R(2:9|1)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x004e|EDGE_INSN: B:9:0x004e\-\>B:10:0x002d BREAK  A[LOOP:0: B:4:0x0027\-\>B:13:?]\l|lr2[0] = r0l}"];
+Node_InsnContainer_1459293910 [shape=record,label="{|lbreakl}"];
+}
+}
+}
+}
+}
+}
+}
+}
+subgraph cluster_Region_317042986 {
+label = "R(1:(2:17|(1:(2:(1:25)|(2:20|(1:(2:23|1))))))(2:26|(2:29|(1:40)(1:(1:35)(0))))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_735113857 {
+label = "IF [B:16:0x005d] THEN: R(2:17|(1:(2:(1:25)|(2:20|(1:(2:23|1)))))) ELSE: R(2:26|(2:29|(1:40)(1:(1:35)(0)))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x005d|lif (\"sms\".equals(r7.mPaymentInfo.getPaytype()) != false) goto L14l}"];
+subgraph cluster_Region_141489041 {
+label = "R(2:17|(1:(2:(1:25)|(2:20|(1:(2:23|1))))))";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x005f|ljava.util.Iterator java.util.Iterator\<com.uc.paymentsdk.model.IType\> r3 = r1.iterator()l}"];
+subgraph cluster_LoopRegion_1257812227 {
+label = "LOOP:1: (1:(2:(1:25)|(2:20|(1:(2:23|1)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1148947252 {
+label = "R(1:(2:(1:25)|(2:20|(1:(2:23|1)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_2074611312 {
+label = "R(2:(1:25)|(2:20|(1:(2:23|1))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1766538019 {
+label = "IF [B:19:0x0067] THEN: R(1:25) ELSE: null";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x0067|lif (r3.hasNext() != true) goto L32l}"];
+subgraph cluster_Region_1463857022 {
+label = "R(1:25)";
+node [shape=record,color=blue];
+Node_25 [shape=record,label="{25\:\ 0x002d|SYNTHETIC\lEDGE_INSN: B:25:0x002d\-\>B:10:0x002d BREAK  A[LOOP:1: B:18:0x0063\-\>B:24:?]\l|lbreakl}"];
+}
+}
+subgraph cluster_Region_1890058662 {
+label = "R(2:20|(1:(2:23|1)))";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x0069|lcom.uc.paymentsdk.model.IType com.uc.paymentsdk.model.IType r0 = r3.next()l}"];
+subgraph cluster_Region_1488944188 {
+label = "R(1:(2:23|1))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_743129991 {
+label = "IF [B:21:0x0079] THEN: R(2:23|1) ELSE: null";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x0079|lif (\"sms\".equals(r0.getId()) != false) goto L33l}"];
+subgraph cluster_Region_1559319377 {
+label = "R(2:23|1)";
+node [shape=record,color=blue];
+Node_23 [shape=record,label="{23\:\ 0x007b|EDGE_INSN: B:23:0x007b\-\>B:10:0x002d BREAK  A[LOOP:1: B:18:0x0063\-\>B:24:?]\l|lr2[0] = r0l}"];
+Node_InsnContainer_1074097716 [shape=record,label="{|lbreakl}"];
+}
+}
+}
+}
+}
+}
+}
+}
+subgraph cluster_Region_1009533015 {
+label = "R(2:26|(2:29|(1:40)(1:(1:35)(0))))";
+node [shape=record,color=blue];
+Node_26 [shape=record,label="{26\:\ 0x007e|ljava.util.Iterator java.util.Iterator\<com.uc.paymentsdk.model.IType\> r3 = r1.iterator()l}"];
+subgraph cluster_LoopRegion_1164770646 {
+label = "LOOP:2: (2:29|(1:40)(1:(1:35)(0)))";
+node [shape=record,color=blue];
+Node_28 [shape=record,label="{28\:\ 0x0086|ADDED_TO_REGION\l|lif (r3.hasNext() != false) goto L23l}"];
+subgraph cluster_Region_324097393 {
+label = "R(2:29|(1:40)(1:(1:35)(0)))";
+node [shape=record,color=blue];
+Node_29 [shape=record,label="{29\:\ 0x0088|lcom.uc.paymentsdk.model.IType com.uc.paymentsdk.model.IType r0 = r3.next()l}"];
+subgraph cluster_IfRegion_1449221079 {
+label = "IF [B:30:0x0098] THEN: R(1:40) ELSE: R(1:(1:35)(0))";
+node [shape=record,color=blue];
+Node_30 [shape=record,label="{30\:\ 0x0098|lif (com.uc.paymentsdk.model.TypeFactory.TYPE_PAY_UPOINT.equals(r0.getId()) != false) goto L38l}"];
+subgraph cluster_Region_603767077 {
+label = "R(1:40)";
+node [shape=record,color=blue];
+Node_40 [shape=record,label="{40\:\ 0x009a|lr2[0] = r0l}"];
+}
+subgraph cluster_Region_2070229962 {
+label = "R(1:(1:35)(0)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1265629525 {
+label = "IF [B:33:0x00a7] THEN: R(1:35) ELSE: R(0) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_33 [shape=record,label="{33\:\ 0x00a7|lif (\"sms\".equals(r0.getId()) != false) goto L37l}"];
+subgraph cluster_Region_2106332149 {
+label = "R(1:35)";
+node [shape=record,color=blue];
+Node_35 [shape=record,label="{35\:\ 0x00a9|lr2[r2.length \- 1] = r0l}"];
+}
+subgraph cluster_Region_688670855 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+Node_10 [shape=record,label="{10\:\ 0x002d|EDGE_INSN: B:14:0x002d\-\>B:10:0x002d BREAK  A[LOOP:0: B:4:0x0027\-\>B:13:?], EDGE_INSN: B:9:0x004e\-\>B:10:0x002d BREAK  A[LOOP:0: B:4:0x0027\-\>B:13:?], EDGE_INSN: B:25:0x002d\-\>B:10:0x002d BREAK  A[LOOP:1: B:18:0x0063\-\>B:24:?], EDGE_INSN: B:23:0x007b\-\>B:10:0x002d BREAK  A[LOOP:1: B:18:0x0063\-\>B:24:?]\l|lr7.mListView.setAdapter((android.widget.ListAdapter) new com.uc.paymentsdk.commons.ui.CustomAdapter(getApplicationContext(), r2))l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0027|LOOP_START\lLOOP:0: B:4:0x0027\-\>B:13:?\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x004e|SYNTHETIC\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x003b|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|LOOP_END\lSYNTHETIC\lLOOP:0: B:4:0x0027\-\>B:13:?\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0051|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0063|LOOP_START\lLOOP:1: B:18:0x0063\-\>B:24:?\l|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x007b|SYNTHETIC\l|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ ?|LOOP_END\lSYNTHETIC\lLOOP:1: B:18:0x0063\-\>B:24:?\l|l}"];
+Node_27 [shape=record,color=red,label="{27\:\ 0x0082|LOOP_START\lLOOP:2: B:27:0x0082\-\>B:37:0x0082\l|l}"];
+Node_31 [shape=record,color=red,label="{31\:\ 0x009d|SYNTHETIC\l|l}"];
+Node_32 [shape=record,color=red,label="{32\:\ 0x009d|l}"];
+Node_34 [shape=record,color=red,label="{34\:\ 0x00a9|SYNTHETIC\l|l}"];
+Node_36 [shape=record,color=red,label="{36\:\ 0x0082|SYNTHETIC\l|l}"];
+Node_37 [shape=record,color=red,label="{37\:\ 0x0082|LOOP_END\lSYNTHETIC\lLOOP:2: B:27:0x0082\-\>B:37:0x0082\l|l}"];
+Node_38 [shape=record,color=red,label="{38\:\ 0x0082|SYNTHETIC\l|l}"];
+Node_39 [shape=record,color=red,label="{39\:\ 0x009a|SYNTHETIC\l|l}"];
+Node_41 [shape=record,color=red,label="{41\:\ 0x0082|SYNTHETIC\l|l}"];
+Node_42 [shape=record,color=red,label="{42\:\ 0x002d|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void com.uc.paymentsdk.payment.PaymentsActivity.fillData((r7v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lBACK_EDGE: B:7:0x004c \-\> B:4:0x0027, CROSS_EDGE: B:9:0x004e \-\> B:10:0x002d, CROSS_EDGE: B:19:0x0067 \-\> B:10:0x002d, BACK_EDGE: B:21:0x0079 \-\> B:18:0x0063, CROSS_EDGE: B:23:0x007b \-\> B:10:0x002d, CROSS_EDGE: B:28:0x0086 \-\> B:10:0x002d, BACK_EDGE: B:40:0x009a \-\> B:27:0x0082, BACK_EDGE: B:33:0x00a7 \-\> B:27:0x0082, BACK_EDGE: B:35:0x00a9 \-\> B:27:0x0082\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_15[style=dashed];
+Node_3 -> Node_4;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_14;
+Node_14 -> Node_10;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_7 -> Node_13[style=dashed];
+Node_9 -> Node_10;
+Node_16 -> Node_17;
+Node_16 -> Node_26[style=dashed];
+Node_17 -> Node_18;
+Node_19 -> Node_20[style=dashed];
+Node_19 -> Node_25;
+Node_25 -> Node_10;
+Node_20 -> Node_21;
+Node_21 -> Node_22;
+Node_21 -> Node_24[style=dashed];
+Node_23 -> Node_10;
+Node_26 -> Node_27;
+Node_28 -> Node_29;
+Node_28 -> Node_42[style=dashed];
+Node_29 -> Node_30;
+Node_30 -> Node_31[style=dashed];
+Node_30 -> Node_39;
+Node_40 -> Node_41;
+Node_33 -> Node_34;
+Node_33 -> Node_38[style=dashed];
+Node_35 -> Node_36;
+Node_10 -> Node_11;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+Node_8 -> Node_9;
+Node_11 -> Node_12;
+Node_13 -> Node_4;
+Node_15 -> Node_16;
+Node_18 -> Node_19;
+Node_22 -> Node_23;
+Node_24 -> Node_18;
+Node_27 -> Node_28;
+Node_31 -> Node_32;
+Node_32 -> Node_33;
+Node_34 -> Node_35;
+Node_36 -> Node_37;
+Node_37 -> Node_27;
+Node_38 -> Node_37;
+Node_39 -> Node_40;
+Node_41 -> Node_37;
+Node_42 -> Node_10;
+}
+

@@ -1,0 +1,12 @@
+digraph "CFG formain.GameRun.changeMonster(Ldm\/Monster;Ldm\/Monster;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Monster r0 = new dm.Monster()lr0.monster = r3.monsterlr0.effect = r3.effectlr0.monsterPro = r3.monsterProlr3.monster = r4.monsterlr3.effect = r4.effectlr3.monsterPro = r4.monsterProlr4.monster = r0.monsterlr4.effect = r0.effectlr4.monsterPro = r0.monsterProl}"];
+Node_2 [shape=record,label="{2\:\ 0x002a|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.changeMonster((r2v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r3v0 'a' dm.Monster A[D('a' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'b' dm.Monster A[D('b' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

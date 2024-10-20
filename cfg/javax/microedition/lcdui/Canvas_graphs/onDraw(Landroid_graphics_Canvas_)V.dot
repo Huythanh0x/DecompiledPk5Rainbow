@@ -1,0 +1,40 @@
+digraph "CFG forjavax.microedition.lcdui.Canvas.onDraw(Landroid\/graphics\/Canvas;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (r2.g != null) goto L31l}"];
+Node_3 [shape=record,label="{3\:\ 0x0006|lr2.g = new javax.microedition.lcdui.Graphics(r3)l}"];
+Node_4 [shape=record,label="{4\:\ 0x000d|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0011|lif ((r2.scale_x \> 1.0f ? 1 : (r2.scale_x == 1.0f ? 0 : \-1)) == 0) goto L26l}"];
+Node_6 [shape=record,label="{6\:\ 0x0013|l}"];
+Node_7 [shape=record,label="{7\:\ 0x0017|lif ((r2.scale_y \> 1.0f ? 1 : (r2.scale_y == 1.0f ? 0 : \-1)) == 0) goto L26l}"];
+Node_8 [shape=record,label="{8\:\ 0x0019|lr3.scale(r2.scale_x, r2.scale_y)l}"];
+Node_9 [shape=record,label="{9\:\ 0x0020|l}"];
+Node_10 [shape=record,label="{10\:\ 0x0026|lif (r2.g.isAutoResetPainter() == false) goto L29l}"];
+Node_11 [shape=record,label="{11\:\ 0x0028|lr2.g.painterReset()l}"];
+Node_12 [shape=record,label="{12\:\ 0x002d|lpaint(r2.g)lcom.android.Util.AndroidUtil.cv.open()l}"];
+Node_13 [shape=record,label="{13\:\ 0x0037|RETURN\l|lreturnl}"];
+Node_14 [shape=record,label="{14\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_15 [shape=record,label="{15\:\ 0x0038|lr2.g.setCanvas(r3)l}"];
+MethodNode[shape=record,label="{protected void javax.microedition.lcdui.Canvas.onDraw((r2v0 'this' javax.microedition.lcdui.Canvas A[IMMUTABLE_TYPE, THIS]), (r3v0 'canvas' android.graphics.Canvas A[D('canvas' android.graphics.Canvas), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{android.view.View.onDraw(android.graphics.Canvas):void\}]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0026 \-\> B:12:0x002d, CROSS_EDGE: B:7:0x0017 \-\> B:9:0x0020, CROSS_EDGE: B:5:0x0011 \-\> B:9:0x0020, CROSS_EDGE: B:15:0x0038 \-\> B:4:0x000d\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_15;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_9;
+Node_6 -> Node_7;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_9;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_10 -> Node_11[style=dashed];
+Node_10 -> Node_12;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_15 -> Node_4;
+}
+

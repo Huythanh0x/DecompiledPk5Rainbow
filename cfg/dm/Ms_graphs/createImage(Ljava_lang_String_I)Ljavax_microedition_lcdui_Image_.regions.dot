@@ -1,0 +1,16 @@
+digraph "CFG fordm.Ms.createImage(Ljava\/lang\/String;I)Ljavax\/microedition\/lcdui\/Image;" {
+subgraph cluster_Region_1039310647 {
+label = "R(2:1|2)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte[] byte[] r0 = getStream(r4, r5)l}"];
+Node_2 [shape=record,label="{2\:\ 0x000a|RETURN\l|lreturn javax.microedition.lcdui.Image.createImage(r0, 0, r0.length)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public javax.microedition.lcdui.Image dm.Ms.createImage((r3v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r4v0 'name' java.lang.String A[D('name' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'no' int A[D('no' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_0 -> Node_1;
+}
+

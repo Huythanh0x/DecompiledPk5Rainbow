@@ -1,0 +1,37 @@
+digraph "CFG fordm.Ui.drawK2(IIIII)V" {
+subgraph cluster_Region_244527365 {
+label = "R(2:(0)(0)|4)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_329527195 {
+label = "IF [B:2:0x0001] THEN: R(0) ELSE: R(0)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0001|lif (r10 == 0) goto L12l}"];
+subgraph cluster_Region_342893574 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+subgraph cluster_Region_1974292744 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x0004|ldm.Ui.g.setColor(0)ldm.Ui.g.fillRect(r6, r7, r8, r9)ldm.Ui.g.setColor(30975)ldm.Ui.g.fillRect(r6 + 2, r7 + 2, r8 \- 4, r9 \- 4)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0003|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0023|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0024|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawK2((r5v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r6v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'h' int A[D('h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'arc' int A[D('arc' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0024 \-\> B:4:0x0004\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_7[style=dashed];
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_7 -> Node_4;
+}
+

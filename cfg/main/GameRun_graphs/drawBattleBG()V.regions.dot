@@ -1,0 +1,16 @@
+digraph "CFG formain.GameRun.drawBattleBG()V" {
+subgraph cluster_Region_1937773689 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.i().fillRectB()ldm.Ui.i().drawImage(r11.imgBG[r11.enB.bg_id], javax.microedition.media.Player.REALIZED, 20, 0)ldm.Ui dm.Ui r0 = dm.Ui.i()ljavax.microedition.lcdui.Image r1 = r11.imgBG[r11.myB.bg_id]lcom.nokia.mid.ui.DirectGraphics com.nokia.mid.ui.DirectGraphics r5 = main.GameRun.dglr0.drawImage(r1, javax.microedition.media.Player.REALIZED, 144, 0, com.nokia.mid.ui.DirectGraphics.FLIP_HORIZONTAL)ldm.Ui.i().drawK2(2, 19, 195, 250, 0)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x003f|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawBattleBG((r11v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

@@ -1,0 +1,42 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.initUPointPayView(Lcom\/uc\/paymentsdk\/payment\/upoint\/UPointInfo;)V" {
+subgraph cluster_Region_132023444 {
+label = "R(3:1|(1:5)(1:9)|6)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr8.mTvDiscountTextView.setText(java.lang.String.format(\"U点折扣 : %s折(%sU点)\", r9.getDiscount(), r9.getDiscounttext()))l}"];
+subgraph cluster_IfRegion_1994980540 {
+label = "IF [B:2:0x0022, B:4:0x002c] THEN: R(1:5) ELSE: R(1:9)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0022|lif (r9.getVipdiscount() != null) goto L4l}"];
+Node_4 [shape=record,label="{4\:\ 0x002c|ADDED_TO_REGION\l|lif (r9.getVipdiscount().length() \> 0) goto L6l}"];
+subgraph cluster_Region_1081449291 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x002e|lr8.mTvDiscountTextView.setText(java.lang.String.format(\"会员折扣 : %s折(%sU点)\", r9.getVipdiscount(), r9.getVipdiscounttext()))lr8.mTvVipDiscountTimeTextView.setText(java.lang.String.format(\"会员折扣到期时间 : \", r9.getVipdiscounttime()))lr8.mTvVipDiscountInfo.setText(\"会员折扣到期时间 : \" + r9.getDiscountinfo())l}"];
+}
+subgraph cluster_Region_2106242808 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0078|lr8.mTvVipDiscountTextView.setVisibility(8)lr8.mTvVipDiscountTimeTextView.setVisibility(8)lr8.mTvVipDiscountInfo.setVisibility(8)l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0072|lr8.mBtnPay.setVisibility(0)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0024|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0077|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void com.uc.paymentsdk.payment.PaymentsActivity.initUPointPayView((r8v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]), (r9v0 'info' com.uc.paymentsdk.payment.upoint.UPointInfo A[D('info' com.uc.paymentsdk.payment.upoint.UPointInfo), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lCROSS_EDGE: B:9:0x0078 \-\> B:6:0x0072, CROSS_EDGE: B:2:0x0022 \-\> B:9:0x0078\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_9[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_9[style=dashed];
+Node_5 -> Node_6;
+Node_9 -> Node_6;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_7 -> Node_8;
+}
+

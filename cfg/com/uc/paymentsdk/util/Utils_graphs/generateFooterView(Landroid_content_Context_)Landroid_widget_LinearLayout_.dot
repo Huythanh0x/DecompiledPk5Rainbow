@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.generateFooterView(Landroid\/content\/Context;)Landroid\/widget\/LinearLayout;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|landroid.widget.LinearLayout r4 = new android.widget.LinearLayout(r9)lr4.setOrientation(1)landroid.widget.TextView r3 = generateBorderView(r9)landroid.widget.LinearLayout$LayoutParams r2 = new android.widget.LinearLayout.LayoutParams(\-1, 1)lr3.setLayoutParams(r2)landroid.widget.LinearLayout$LayoutParams r0 = new android.widget.LinearLayout.LayoutParams(\-1, \-2)landroid.widget.TextView r1 = new android.widget.TextView(r9)lr1.setTextSize(16.0f)lr1.setGravity(17)lr1.setPadding(0, 20, 0, 20)lr1.setText(\"UC游戏\-UC优视\")lr1.setTextColor(\-12303292)lr4.addView(r3)lr4.addView(r1, r0)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0042|RETURN\l|lreturn r4l}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static android.widget.LinearLayout com.uc.paymentsdk.util.Utils.generateFooterView((r9v0 'paramContext' android.content.Context A[D('paramContext' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

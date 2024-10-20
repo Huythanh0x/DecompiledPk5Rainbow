@@ -1,0 +1,143 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.onKeyDown(ILandroid\/view\/KeyEvent;)Z" {
+subgraph cluster_Region_1340947944 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+subgraph cluster_SwitchRegion_1911500031 {
+label = "Switch: 2
+ case 4 -> R(1:7)
+ case default -> R(1:4)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0001|lswitch(r6) \{l    case 4: goto L6;l    default: goto L4;l\}l}"];
+subgraph cluster_Region_1841722569 {
+label = "R(1:7) | FALL_THROUGH\l";
+node [shape=record,color=blue];
+subgraph cluster_SwitchRegion_836675221 {
+label = "Switch: 5
+ case 1 -> R(2:8|9)
+ case 2 -> R(2:10|11)
+ case 3 -> R(2:12|13)
+ case 4 -> R(2:(2:21|(1:25)(1:26))(1:18)|20)
+ case 5 -> R(2:27|28)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x000b|lswitch(r5.mType) \{l    case 1: goto L9;l    case 2: goto L10;l    case 3: goto L11;l    case 4: goto L12;l    case 5: goto L24;l    default: goto L4;l\}l}"];
+subgraph cluster_Region_402317115 {
+label = "R(2:8|9)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x000f|lbuildPaymentView()l}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+subgraph cluster_Region_528122351 {
+label = "R(2:10|11)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0014|lbuildUPointPaymentView()l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+subgraph cluster_Region_1095032565 {
+label = "R(2:12|13)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0019|lbuildUPointPayLoginView()l}"];
+Node_13 [shape=record,label="{13\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+subgraph cluster_Region_90845766 {
+label = "R(2:(2:21|(1:25)(1:26))(1:18)|20)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1151870679 {
+label = "IF [B:15:0x0024, B:17:0x0028] THEN: R(2:21|(1:25)(1:26)) ELSE: R(1:18)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0024|lif (r5.mSmsInfo.isNeedconfirm() != false) goto L16l}"];
+Node_17 [shape=record,label="{17\:\ 0x0028|ADDED_TO_REGION\l|lif (r5.mIsShowInfo != false) goto L16l}"];
+subgraph cluster_Region_1871149950 {
+label = "R(2:21|(1:25)(1:26))";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x002a|lint int r0 = com.uc.paymentsdk.util.Utils.getSmsPayment()lint int r1 = r0 \/ r5.mSmsInfo.moneyl}"];
+subgraph cluster_IfRegion_383440437 {
+label = "IF [B:22:0x0037, B:24:0x003b] THEN: R(1:25) ELSE: R(1:26)";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x0037|lif (r5.mLeftSmsToSendCount != (\-1)) goto L18l}"];
+Node_24 [shape=record,label="{24\:\ 0x003b|ADDED_TO_REGION\l|lif (r5.mLeftSmsToSendCount != r1) goto L20l}"];
+subgraph cluster_Region_253141588 {
+label = "R(1:25)";
+node [shape=record,color=blue];
+Node_25 [shape=record,label="{25\:\ 0x003d|lshowDialog(com.uc.paymentsdk.payment.PaymentsActivity.DIALOG_PAY_SMS_RETRY_MULTIPLE)l}"];
+}
+subgraph cluster_Region_1757574709 {
+label = "R(1:26)";
+node [shape=record,color=blue];
+Node_26 [shape=record,label="{26\:\ 0x0044|lbuildPaymentView()l}"];
+}
+}
+}
+subgraph cluster_Region_1022267753 {
+label = "R(1:18)";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x0048|lbuildPaymentView()l}"];
+}
+}
+Node_20 [shape=record,label="{20\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+subgraph cluster_Region_964007613 {
+label = "R(2:27|28)";
+node [shape=record,color=blue];
+Node_27 [shape=record,label="{27\:\ 0x004c|lshowDialog(23)l}"];
+Node_28 [shape=record,label="{28\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+}
+}
+subgraph cluster_Region_55285701 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0008|RETURN\lORIG_RETURN\l|lreturn super.onKeyDown(r6, r7)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0004|FALL_THROUGH\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0009|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x001e|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x0026|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x0042|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ 0x0039|l}"];
+MethodNode[shape=record,label="{public boolean com.uc.paymentsdk.payment.PaymentsActivity.onKeyDown((r5v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]), (r6v0 'paramInt' int A[D('paramInt' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'paramKeyEvent' android.view.KeyEvent A[D('paramKeyEvent' android.view.KeyEvent), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | DONT_RENAME\lUSE_LINES_HINTS\lCOMPUTE_POST_DOM\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{android.app.Activity.onKeyDown(int, android.view.KeyEvent):boolean\}, ClspMth\{android.view.KeyEvent.Callback.onKeyDown(int, android.view.KeyEvent):boolean\}]\lJadxCommentsAttr\{l WARN: l \-\> Failed to find 'out' block for switch in B:2:0x0001. Please report as an issue.\}\lCROSS_EDGE: B:8:0x000f \-\> B:4:0x0008, CROSS_EDGE: B:10:0x0014 \-\> B:4:0x0008, CROSS_EDGE: B:12:0x0019 \-\> B:4:0x0008, CROSS_EDGE: B:19:0x0042 \-\> B:4:0x0008, CROSS_EDGE: B:26:0x0044 \-\> B:19:0x0042, CROSS_EDGE: B:22:0x0037 \-\> B:26:0x0044, CROSS_EDGE: B:18:0x0048 \-\> B:19:0x0042, CROSS_EDGE: B:15:0x0024 \-\> B:21:0x002a, CROSS_EDGE: B:27:0x004c \-\> B:4:0x0008, CROSS_EDGE: B:7:0x000b \-\> B:3:0x0004\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6;
+Node_7 -> Node_8;
+Node_7 -> Node_10;
+Node_7 -> Node_12;
+Node_7 -> Node_14;
+Node_7 -> Node_27;
+Node_7 -> Node_3;
+Node_8 -> Node_9;
+Node_9 -> Node_5;
+Node_10 -> Node_11;
+Node_11 -> Node_5;
+Node_12 -> Node_13;
+Node_13 -> Node_5;
+Node_15 -> Node_16[style=dashed];
+Node_15 -> Node_21;
+Node_17 -> Node_21;
+Node_17 -> Node_18[style=dashed];
+Node_21 -> Node_22;
+Node_22 -> Node_23;
+Node_22 -> Node_26[style=dashed];
+Node_24 -> Node_25;
+Node_24 -> Node_26[style=dashed];
+Node_25 -> Node_19;
+Node_26 -> Node_19;
+Node_18 -> Node_19;
+Node_20 -> Node_5;
+Node_27 -> Node_28;
+Node_28 -> Node_5;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_14 -> Node_15;
+Node_16 -> Node_17;
+Node_19 -> Node_20;
+Node_23 -> Node_24;
+}
+

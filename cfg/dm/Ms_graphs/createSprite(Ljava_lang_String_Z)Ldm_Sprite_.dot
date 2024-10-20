@@ -1,0 +1,21 @@
+digraph "CFG fordm.Ms.createSprite(Ljava\/lang\/String;Z)Ldm\/Sprite;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte[] r0 = getStream(new java.lang.StringBuilder(java.lang.String.valueOf(r6)).append(\".data\").toString(), \-1)ldm.Ms.skip = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x001c|lif (r7 == false) goto L14l}"];
+Node_3 [shape=record,label="{3\:\ 0x001e|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0032|RETURN\lORIG_RETURN\l|lreturn dm.Sprite.Create(createImage(r6), create2Array(r0), create3Array(r0), create3Array(r0))l}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0033|l}"];
+Node_7 [shape=record,label="{7\:\ ?|SYNTHETIC\lRETURN\l|lreturn dm.Sprite.Create(createImage(r6), createShort2Array(r0, 2), createShort3Array(r0, 2), createShort3Array(r0, 2))l}"];
+MethodNode[shape=record,label="{public dm.Sprite dm.Ms.createSprite((r5v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r6v0 'name' java.lang.String A[D('name' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'mode' boolean A[D('mode' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0033 \-\> B:4:0x0032\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_5;
+}
+

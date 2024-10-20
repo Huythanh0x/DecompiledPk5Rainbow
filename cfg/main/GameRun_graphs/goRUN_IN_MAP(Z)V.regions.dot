@@ -1,0 +1,46 @@
+digraph "CFG formain.GameRun.goRUN_IN_MAP(Z)V" {
+subgraph cluster_Region_813137638 {
+label = "R(4:1|(1:3)|(1:6)|7)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.selecty = (byte) 0lr4.selectx = (byte) 0lr4.select[0][1] = 0lr4.mini_state = (byte) 0lr4.view_state = (byte) 0lmain.GameRun.mc.game_state = 30ljava.lang.System.out.println(\"aaaaaaaaaaaaaaaaa\")lr4.map.my.state = (byte) 0l}"];
+subgraph cluster_IfRegion_875855855 {
+label = "IF [B:2:0x0029] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0029|lif (r4.isChangeSound.booleanValue() == false) goto L14l}"];
+subgraph cluster_Region_734671841 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x002b|ldm.Sound.i().setMusicId(r4.musicNo[r4.map.mapNo])ldm.Sound.i().setMusic(r5)landroid.util.Log.d(\"soars\", \"tttttttttttttttttttttt\")l}"];
+}
+}
+subgraph cluster_IfRegion_709235110 {
+label = "IF [B:5:0x004e] THEN: R(1:6) ELSE: null";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x004e|lif (r4.isChangeSound.booleanValue() != false) goto L17l}"];
+subgraph cluster_Region_558746182 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0050|ldm.Sound.i().setMusicId(r4.musicNo[r4.map.mapNo])ldm.Sound.i().setMusicForMenu(r5)landroid.util.Log.d(\"soars\", \"ffffffffffffffffffffffffffffffff\")l}"];
+}
+}
+Node_7 [shape=record,label="{7\:\ 0x006d|lmain.GameRun.run_state = \-10lr4.createOver = (byte) 0lr4.buyItemID = (byte) 0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0048|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0075|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.goRUN_IN_MAP((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x004e \-\> B:7:0x006d, CROSS_EDGE: B:2:0x0029 \-\> B:4:0x0048\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_5 -> Node_7[style=dashed];
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+Node_8 -> Node_9;
+}
+

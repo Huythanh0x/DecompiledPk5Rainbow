@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.getPayedAmount()I" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint r0 = com.uc.paymentsdk.util.Utils.getSmsPayment() \- com.uc.paymentsdk.util.PrefUtil.getPayedAmount(getApplicationContext())lint r1 = r0 \/ r4.mSmsInfo.moneyl}"];
+Node_2 [shape=record,label="{2\:\ 0x001d|RETURN\l|lreturn r4.mSmsInfo.money * (r1 \- r4.mLeftSmsToSendCount)l}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public int com.uc.paymentsdk.payment.PaymentsActivity.getPayedAmount((r4v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lJadxCommentsAttr\{l INFO: l \-\> Access modifiers changed from: private\}\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

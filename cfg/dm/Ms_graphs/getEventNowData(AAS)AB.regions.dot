@@ -1,0 +1,75 @@
+digraph "CFG fordm.Ms.getEventNowData([[S)[B" {
+subgraph cluster_Region_964150034 {
+label = "R(3:1|(2:(1:6)(2:9|(1:12))|8)|16)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.io.ByteArrayOutputStream java.io.ByteArrayOutputStream r0 = new java.io.ByteArrayOutputStream()lr0.write(r5.length)lint r1 = 0l}"];
+subgraph cluster_LoopRegion_1872867212 {
+label = "LOOP:0: (2:(1:6)(2:9|(1:12))|8)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000b|ADDED_TO_REGION\l|lif (r1 \< r5.length) goto L25l}"];
+subgraph cluster_Region_370296300 {
+label = "R(2:(1:6)(2:9|(1:12))|8)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1626336781 {
+label = "IF [B:5:0x0014] THEN: R(1:6) ELSE: R(2:9|(1:12))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0014|lif (r5[r1] == null) goto L27l}"];
+subgraph cluster_Region_1726215465 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0016|lr0.write(0)l}"];
+}
+subgraph cluster_Region_190818945 {
+label = "R(2:9|(1:12))";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x001d|lr0.write(r5[r1].length)lint r2 = 0l}"];
+subgraph cluster_LoopRegion_1148515178 {
+label = "LOOP:1: (1:12)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0027|ADDED_TO_REGION\l|lif (r2 \< r5[r1].length) goto L32l}"];
+subgraph cluster_Region_1749655236 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0029|LOOP_END\lLOOP:1: B:10:0x0024\-\>B:12:0x0029\l|lr0.write(r5[r1][r2] & 255)lr0.write((r5[r1][r2] \>\> 8) & 255)lr2++l}"];
+}
+}
+}
+}
+Node_8 [shape=record,label="{8\:\ 0x001a|LOOP_END\lLOOP:0: B:2:0x000a\-\>B:8:0x001a\l|lr1++l}"];
+}
+}
+Node_16 [shape=record,label="{16\:\ 0x0011|RETURN\l|lreturn r0.toByteArray()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x000a|LOOP_START\lPHI: r1l  0x000a: PHI (r1v1 'i' int) = (r1v0 'i' int), (r1v2 'i' int) binds: [B:1:0x0000, B:8:0x001a] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x000a\-\>B:8:0x001a\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0012|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x001a|SYNTHETIC\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0024|LOOP_START\lPHI: r2l  0x0024: PHI (r2v1 'j' int) = (r2v0 'j' int), (r2v2 'j' int) binds: [B:9:0x001d, B:12:0x0029] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:10:0x0024\-\>B:12:0x0029\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x001a|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x000d|SYNTHETIC\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x000d|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public byte[] dm.Ms.getEventNowData((r4v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r5v0 'event_now' short[][] A[D('event_now' short[][]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:8:0x001a \-\> B:2:0x000a, CROSS_EDGE: B:11:0x0027 \-\> B:8:0x001a, BACK_EDGE: B:12:0x0029 \-\> B:10:0x0024\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_14[style=dashed];
+Node_5 -> Node_6;
+Node_5 -> Node_9[style=dashed];
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+Node_11 -> Node_13[style=dashed];
+Node_12 -> Node_10;
+Node_8 -> Node_2;
+Node_16 -> Node_17;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_10 -> Node_11;
+Node_13 -> Node_8;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+}
+

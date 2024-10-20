@@ -1,0 +1,75 @@
+digraph "CFG formain.GameRun.getItemCount(I)B" {
+subgraph cluster_Region_1547750471 {
+label = "R(2:(2:3|(1:(2:(1:11)|(1:8))))|15)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_549737170 {
+label = "IF [B:2:0x0004] THEN: R(2:3|(1:(2:(1:11)|(1:8)))) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (r4.buyItemID != 2) goto L20l}"];
+subgraph cluster_Region_1275453591 {
+label = "R(2:3|(1:(2:(1:11)|(1:8))))";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0006|lfindItemType(r5)lint r0 = 0l}"];
+subgraph cluster_LoopRegion_1033119133 {
+label = "LOOP:0: (1:(2:(1:11)|(1:8)))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0011|ADDED_TO_REGION\l|lif (r0 \< r4.items[r4.item_type].length) goto L25l}"];
+subgraph cluster_Region_712529893 {
+label = "R(1:(2:(1:11)|(1:8)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_299261277 {
+label = "R(2:(1:11)|(1:8))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1006837649 {
+label = "IF [B:7:0x001f] THEN: R(1:11) ELSE: null";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x001f|lif (r4.items[r4.item_type][r0][0] == r5) goto L30l}"];
+subgraph cluster_Region_1608602078 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturn r4.items[r4.item_type][r0][1]l}"];
+}
+}
+subgraph cluster_Region_1278368636 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x002d|LOOP_END\lLOOP:0: B:4:0x000a\-\>B:8:0x002d\l|lr0++l}"];
+}
+}
+}
+}
+}
+}
+Node_15 [shape=record,label="{15\:\ 0x0014|RETURN\lORIG_RETURN\l|lreturn (byte) 0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x000a|LOOP_START\lPHI: r0l  0x000a: PHI (r0v1 'i' int) = (r0v0 'i' int), (r0v2 'i' int) binds: [B:3:0x0006, B:8:0x002d] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:4:0x000a\-\>B:8:0x002d\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0015|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0021|SYNTHETIC\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0021|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0013|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0013|l}"];
+MethodNode[shape=record,label="{public byte main.GameRun.getItemCount((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0021 \-\> B:15:0x0014, BACK_EDGE: B:8:0x002d \-\> B:4:0x000a, CROSS_EDGE: B:2:0x0004 \-\> B:14:0x0013\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_14[style=dashed];
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_5 -> Node_13[style=dashed];
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_9;
+Node_11 -> Node_12;
+Node_8 -> Node_4;
+Node_15 -> Node_12;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+}
+

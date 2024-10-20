@@ -1,0 +1,23 @@
+digraph "CFG forjavax.microedition.rms.RecordStore.addRecord([BII)I" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte[] r0 = new byte[r11]lr1 = r10lr2 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0005|LOOP_START\lPHI: r1 r2l  0x0005: PHI (r1v1 'i' int) = (r1v0 'i' int), (r1v2 'i' int) binds: [B:1:0x0000, B:4:0x001e] A[DONT_GENERATE, DONT_INLINE]l  0x0005: PHI (r2v1 'j' int) = (r2v0 'j' int), (r2v2 'j' int) binds: [B:1:0x0000, B:4:0x001e] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0005\-\>B:4:0x001e\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0007|lif (r1 \< (r11 + r10)) goto L16l}"];
+Node_4 [shape=record,label="{4\:\ 0x001e|LOOP_END\lLOOP:0: B:2:0x0005\-\>B:4:0x001e\l|lr0[r2] = r9[r1]lint r1 = r1 + 1lint r2 = r2 + 1l}"];
+Node_5 [shape=record,label="{5\:\ 0x0009|SYNTHETIC\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0009|landroid.content.ContentValues r4 = new android.content.ContentValues()lr4.put(\"content\", r0)lint r3 = (int) r8.db.insert(r8.table_name, null, r4)l}"];
+Node_7 [shape=record,label="{7\:\ 0x001d|RETURN\l|lreturn r3l}"];
+Node_8 [shape=record,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public int javax.microedition.rms.RecordStore.addRecord((r8v0 'this' javax.microedition.rms.RecordStore A[IMMUTABLE_TYPE, THIS]), (r9v0 'data' byte[] A[D('data' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'offset' int A[D('offset' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'numBytes' int A[D('numBytes' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljavax\/microedition\/rms\/RecordStoreNotOpenException;, Ljavax\/microedition\/rms\/RecordStoreException;, Ljavax\/microedition\/rms\/RecordStoreFullException;]\lINLINE_NOT_NEEDED\lBACK_EDGE: B:4:0x001e \-\> B:2:0x0005\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+}
+

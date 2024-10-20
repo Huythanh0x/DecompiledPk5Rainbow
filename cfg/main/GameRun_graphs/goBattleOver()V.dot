@@ -1,0 +1,12 @@
+digraph "CFG formain.GameRun.goBattleOver()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lmain.GameRun.run_state = \-15lr2.b_c = 0lr2.myB.now_id = 0lr2.mini_state = 3lr2.view_state = 1lr2.bg_c = r2.myB.bg_idlr2.mon[0].nullIMFA()l}"];
+Node_2 [shape=record,label="{2\:\ 0x001e|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.goBattleOver((r2v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

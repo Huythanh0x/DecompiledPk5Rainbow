@@ -1,0 +1,131 @@
+digraph "CFG forminigame.Guess.draw()V" {
+subgraph cluster_Region_458530362 {
+label = "R(5:(1:3)|4|(2:6|(3:12|(1:(1:16)(1:19))(0)|18))|(1:26)|27)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1778462304 {
+label = "IF [B:2:0x000d] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000d|lif (r30.state == 0) goto L34l}"];
+subgraph cluster_Region_1621853430 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000f|ldm.Ui.i().drawString(main.Constants_H.GAME_TXT_7, main.Constants_H.WIDTH_H_, 4, 17, 3, 1)ldm.Ui.i().drawUi(7, main.Constants_H.WIDTH_H_ \- 75, 27, 40, 0)ldm.Ui.i().drawUi(7, main.Constants_H.WIDTH_H_ + 75, 27, 36, 4)l}"];
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x003d|lint int r12 = 29 * 10ldm.Ui.i().drawK(10, 25 + 10, javax.microedition.media.Player.REALIZED, r12, 4)ldm.Ui.i().drawK(10 + javax.microedition.media.Player.REALIZED + 10, 25 + 10, javax.microedition.media.Player.REALIZED, r12, 4)ldm.Ui dm.Ui r13 = dm.Ui.i()lint int r5 = (javax.microedition.media.Player.REALIZED + 10) * 2lr13.drawK(10 + 420, 25 + 10, javax.microedition.media.Player.REALIZED, r12, 4)ldm.Ui.i().drawStringY(r30.gr.about_a, 10 + 6, 25 + 10, 29, 0, 0)l}"];
+subgraph cluster_IfRegion_1468078014 {
+label = "IF [B:5:0x0096] THEN: R(2:6|(3:12|(1:(1:16)(1:19))(0)|18)) ELSE: null";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0096|lif (r30.state == 0) goto L37l}"];
+subgraph cluster_Region_1047655975 {
+label = "R(2:6|(3:12|(1:(1:16)(1:19))(0)|18))";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0098|lr30.gr.showStringM(main.Constants_H.GAME_TXT_12 + r30.sell_money + main.Constants_H.MONEY_TXT_0, main.Constants_H.WIDTH_H_, (25 + 290) \- 50, 7, 0)lint int r16 = 25 + 75 + 5ldm.Ui.i().drawListKY(2, 10 + javax.microedition.media.Player.REALIZED + 12 + 25, r16, javax.microedition.media.Player.REALIZED \- 50, 3, 30, 10, r30.sel, 4, 2)lint r28 = 0l}"];
+subgraph cluster_LoopRegion_687820020 {
+label = "LOOP:0: (3:12|(1:(1:16)(1:19))(0)|18)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x00fb|ADDED_TO_REGION\l|lif (r28 \< r30.gr.about_b.length) goto L45l}"];
+subgraph cluster_Region_1641257343 {
+label = "R(3:12|(1:(1:16)(1:19))(0)|18)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x014d|PHI: r22l  0x014d: PHI (r22v2 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|ldm.Ui.i().drawString(r30.gr.about_b[r28].toString(), 10 + javax.microedition.media.Player.REALIZED + 15 + 25 + 26, ((r28 * 40) + 105) \- 2, 0, r30.sel == r28 ? 0 : 3, 1)l}"];
+subgraph cluster_IfRegion_392540831 {
+label = "IF [B:13:0x016f] THEN: R(1:(1:16)(1:19)) ELSE: R(0)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x016f|lif (r30.gr.pkey.isSelect(10 + javax.microedition.media.Player.REALIZED + 12 + 25, ((r28 * 40) + 105) \- 2, javax.microedition.media.Player.REALIZED \- 50, 40) != false) goto L50l}"];
+subgraph cluster_Region_2117885107 {
+label = "R(1:(1:16)(1:19))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_647278234 {
+label = "IF [B:15:0x0179] THEN: R(1:16) ELSE: R(1:19)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0179|lif (r30.sel == r28) goto L52l}"];
+subgraph cluster_Region_497884986 {
+label = "R(1:16)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x017b|lr30.gr.pkey.setKey5()l}"];
+}
+subgraph cluster_Region_1534182230 {
+label = "R(1:19)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x018d|lr30.sel = (byte) r28l}"];
+}
+}
+}
+subgraph cluster_Region_563979341 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+Node_18 [shape=record,label="{18\:\ 0x0185|LOOP_END\lLOOP:0: B:7:0x00f0\-\>B:18:0x0185\l|lr28++l}"];
+}
+}
+}
+}
+subgraph cluster_IfRegion_2130602791 {
+label = "IF [B:25:0x0102] THEN: R(1:26) ELSE: null";
+node [shape=record,color=blue];
+Node_25 [shape=record,label="{25\:\ 0x0102|lif (r30.state == 0) goto L42l}"];
+subgraph cluster_Region_1648060815 {
+label = "R(1:26)";
+node [shape=record,color=blue];
+Node_26 [shape=record,label="{26\:\ 0x0104|ldm.Ui.i().drawYesNo(true, true)l}"];
+}
+}
+Node_27 [shape=record,label="{27\:\ 0x010d|lr30.gr.drawMoney(main.Constants_H.WIDTH_H_, main.Constants_H.HEIGHT_, 3, false)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x00f0|LOOP_START\lPHI: r28l  0x00f0: PHI (r28v1 'i' int) = (r28v0 'i' int), (r28v2 'i' int) binds: [B:6:0x0098, B:18:0x0185] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:7:0x00f0\-\>B:18:0x0185\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x011e|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0148|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x014a|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0171|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0185|SYNTHETIC\l|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x0185|SYNTHETIC\l|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ 0x0185|SYNTHETIC\l|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x0189|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ 0x00fd|SYNTHETIC\l|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x00fd|l}"];
+Node_28 [shape=record,color=red,label="{28\:\ 0x011d|l}"];
+Node_29 [shape=record,color=red,label="{29\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void minigame.Guess.draw((r30v0 'this' minigame.Guess A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:25:0x0102 \-\> B:27:0x010d, BACK_EDGE: B:18:0x0185 \-\> B:7:0x00f0, CROSS_EDGE: B:19:0x018d \-\> B:18:0x0185, CROSS_EDGE: B:13:0x016f \-\> B:18:0x0185, CROSS_EDGE: B:22:0x0189 \-\> B:12:0x014d, CROSS_EDGE: B:5:0x0096 \-\> B:24:0x00fd, CROSS_EDGE: B:2:0x000d \-\> B:4:0x003d\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_24[style=dashed];
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_8 -> Node_23[style=dashed];
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_13 -> Node_21[style=dashed];
+Node_15 -> Node_16;
+Node_15 -> Node_19[style=dashed];
+Node_16 -> Node_17;
+Node_19 -> Node_20;
+Node_18 -> Node_7;
+Node_25 -> Node_26;
+Node_25 -> Node_27[style=dashed];
+Node_26 -> Node_27;
+Node_27 -> Node_28;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_10 -> Node_22;
+Node_11 -> Node_12;
+Node_14 -> Node_15;
+Node_17 -> Node_18;
+Node_20 -> Node_18;
+Node_21 -> Node_18;
+Node_22 -> Node_12;
+Node_23 -> Node_24;
+Node_24 -> Node_25;
+Node_28 -> Node_29;
+}
+

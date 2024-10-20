@@ -1,0 +1,101 @@
+digraph "CFG forminigame.Bearer.getAY(I)V" {
+subgraph cluster_Region_841630200 {
+label = "R(1:(2:(1:(2:(1:(2:(1:18)|(2:16|17)))|(2:10|11)))|(1:5)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_258162853 {
+label = "R(2:(1:(2:(1:(2:(1:18)|(2:16|17)))|(2:10|11)))|(1:5))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_580092897 {
+label = "IF [B:2:0x0009, B:4:0x0011] THEN: R(1:(2:(1:(2:(1:18)|(2:16|17)))|(2:10|11))) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0009|lif (r6.xy[r7][4] \<= 0) goto L28l}"];
+Node_4 [shape=record,label="{4\:\ 0x0011|ADDED_TO_REGION\l|lif (r6.xy[r7][3] \<= 1) goto L28l}"];
+subgraph cluster_Region_2126994751 {
+label = "R(1:(2:(1:(2:(1:18)|(2:16|17)))|(2:10|11)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_511895198 {
+label = "R(2:(1:(2:(1:18)|(2:16|17)))|(2:10|11))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_192019331 {
+label = "IF [B:9:0x0024] THEN: R(1:(2:(1:18)|(2:16|17))) ELSE: null";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0024|lif (r6.xy[r7][4] != 0) goto L31l}"];
+subgraph cluster_Region_893648263 {
+label = "R(1:(2:(1:18)|(2:16|17)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1906925749 {
+label = "R(2:(1:18)|(2:16|17))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_2023149064 {
+label = "IF [B:13:0x0034, B:15:0x004a] THEN: R(1:18) ELSE: null";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0034|lif (r6.xy[r7][4] \>= 0) goto L37l}"];
+Node_15 [shape=record,label="{15\:\ 0x004a|ADDED_TO_REGION\l|lif (r6.xy[r7][3] \<= (\-r6.ballDate[r6.xy[r7][5]][3])) goto L38l}"];
+subgraph cluster_Region_2092932986 {
+label = "R(1:18)";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1947937201 {
+label = "R(2:16|17)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x004c|lshort[] short[] r0 = r6.xy[r7]lr0[3] = (short) (r0[3] \- 1)l}"];
+Node_17 [shape=record,label="{17\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_Region_1455094447 {
+label = "R(2:10|11)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0026|lr6.xy[r7][3] = 0l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_Region_179105325 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0013|lshort[] short[] r0 = r6.xy[r7]lr0[3] = (short) (r0[3] \- 1)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000b|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x001d|ORIG_RETURN\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x001e|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x002e|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0036|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ ?|SYNTHETIC\lRETURN\lADDED_TO_REGION\l|lreturnl}"];
+MethodNode[shape=record,label="{private void minigame.Bearer.getAY((r6v0 'this' minigame.Bearer A[IMMUTABLE_TYPE, THIS]), (r7v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0026 \-\> B:6:0x001d, CROSS_EDGE: B:13:0x0034 \-\> B:6:0x001d, CROSS_EDGE: B:15:0x004a \-\> B:6:0x001d, CROSS_EDGE: B:16:0x004c \-\> B:6:0x001d, CROSS_EDGE: B:2:0x0009 \-\> B:8:0x001e\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_8;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_8;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_12;
+Node_13 -> Node_14[style=dashed];
+Node_13 -> Node_19;
+Node_15 -> Node_16[style=dashed];
+Node_15 -> Node_18;
+Node_18 -> Node_7;
+Node_16 -> Node_17;
+Node_17 -> Node_7;
+Node_10 -> Node_11;
+Node_11 -> Node_7;
+Node_5 -> Node_6;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_12 -> Node_13;
+Node_14 -> Node_15;
+Node_19 -> Node_7;
+}
+

@@ -1,0 +1,198 @@
+digraph "CFG forminigame.Cards.go(I)V" {
+subgraph cluster_Region_995920415 {
+label = "R(2:1|(2:(2:3|4)|(7:6|(3:9|(1:12)|14)|16|(3:19|(1:23)|(1:27)(0))|33|(3:36|(2:(1:38)|41)|44)|46))) | DECL_VAR: byte k\l";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr12.gr.line_max = (byte) 9lr12.count = (short) 100lr12.time = (byte) ((r12.lv * 2) + 4)lr12.find_count = (byte) ((r12.num[r12.lv][0] * r12.num[r12.lv][1]) \/ 2)l}"];
+subgraph cluster_Region_1459778682 {
+label = "R(2:(2:3|4)|(7:6|(3:9|(1:12)|14)|16|(3:19|(1:23)|(1:27)(0))|33|(3:36|(2:(1:38)|41)|44)|46))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1953686198 {
+label = "IF [B:2:0x002d] THEN: R(2:3|4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x002d|lif (r13 \< 1) goto L4l}"];
+subgraph cluster_Region_858518101 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x002f|lr12.ty = (byte) 0lr12.state = (byte) 0lr12.sell_money = (r12.lv * 200) + javax.microedition.media.Player.REALIZEDl}"];
+Node_4 [shape=record,label="{4\:\ 0x003b|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_921857796 {
+label = "R(7:6|(3:9|(1:12)|14)|16|(3:19|(1:23)|(1:27)(0))|33|(3:36|(2:(1:38)|41)|44)|46)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x003c|lr12.gx = (short) ((\-((r12.gw + r12.gspace) * r12.num[r12.lv][1])) \>\> 1)lr12.gy = (short) ((\-((r12.gh + r12.gspace) * r12.num[r12.lv][0])) \>\> 1)lr12.ty = (byte) 0lr12.tx = (byte) 0lr12.state = (byte) 1lbyte r0 = 0lbyte[] byte[] r3 = new byte[r12.find_count]l}"];
+subgraph cluster_LoopRegion_1410622126 {
+label = "LOOP:0: (3:9|(1:12)|14)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0072|ADDED_TO_REGION\l|lif (r0 \< r12.findC.length) goto L16l}"];
+subgraph cluster_Region_2146805135 {
+label = "R(3:9|(1:12)|14)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0080|lbyte r1 = 0l}"];
+subgraph cluster_LoopRegion_1809938694 {
+label = "LOOP:1: (1:12)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0086|ADDED_TO_REGION\l|lif (r1 \< r12.findC[r0].length) goto L20l}"];
+subgraph cluster_Region_1313775921 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x008c|LOOP_END\lLOOP:1: B:10:0x0081\-\>B:12:0x008c\l|lr12.findC[r0][r1] = 2lr12.findN[r0][r1] = 0lbyte r1 = (byte) (r1 + 1)l}"];
+}
+}
+Node_14 [shape=record,label="{14\:\ 0x0088|LOOP_END\lLOOP:0: B:7:0x006f\-\>B:14:0x0088\l|lbyte r0 = (byte) (r0 + 1)l}"];
+}
+}
+Node_16 [shape=record,label="{16\:\ 0x0074|lbyte r0 = 0l}"];
+subgraph cluster_LoopRegion_960015172 {
+label = "LOOP:2: (3:19|(1:23)|(1:27)(0))";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x0076|ADDED_TO_REGION\l|lif (r0 \< r3.length) goto L21l}"];
+subgraph cluster_Region_1798551601 {
+label = "R(3:19|(1:23)|(1:27)(0))";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x009c|ldm.Ms.i()lbyte byte r4 = (byte) (dm.Ms.getRandom(35) + 1)lbyte byte r1 = (byte) (r3.length \- 1)l}"];
+subgraph cluster_LoopRegion_200987928 {
+label = "LOOP:3: (1:23)";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x00ab|LOOP_START\lADDED_TO_REGION\lPHI: r1l  0x00ab: PHI (r1v4 'j' byte) = (r1v3 'j' byte), (r1v5 'j' byte) binds: [B:19:0x009c, B:23:0x00b9] A[DONT_GENERATE, DONT_INLINE]\lLOOP:3: B:20:0x00ab\-\>B:23:0x00b9\l|lif (r1 \> (\-1)) goto L25l}"];
+Node_22 [shape=record,label="{22\:\ 0x00b7|ADDED_TO_REGION\l|lif (r3[r1] != r4) goto L27l}"];
+subgraph cluster_Region_1263701798 {
+label = "R(1:23)";
+node [shape=record,color=blue];
+Node_23 [shape=record,label="{23\:\ 0x00b9|LOOP_END\lLOOP:3: B:20:0x00ab\-\>B:23:0x00b9\l|lbyte r1 = (byte) (r1 \- 1)l}"];
+}
+}
+subgraph cluster_IfRegion_935376290 {
+label = "IF [B:25:0x00ad] THEN: R(1:27) ELSE: R(0)";
+node [shape=record,color=blue];
+Node_25 [shape=record,label="{25\:\ 0x00ad|lif (r1 == (\-1)) goto L37l}"];
+subgraph cluster_Region_805743231 {
+label = "R(1:27)";
+node [shape=record,color=blue];
+Node_27 [shape=record,label="{27\:\ 0x00af|lr3[r0] = r4lbyte r0 = (byte) (r0 + 1)l}"];
+}
+subgraph cluster_Region_1828227677 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+}
+}
+Node_33 [shape=record,label="{33\:\ 0x0078|lbyte r0 = 0l}"];
+subgraph cluster_LoopRegion_1276659120 {
+label = "LOOP:4: (3:36|(2:(1:38)|41)|44)";
+node [shape=record,color=blue];
+Node_35 [shape=record,label="{35\:\ 0x007a|ADDED_TO_REGION\l|lif (r0 \< r3.length) goto L28l}"];
+subgraph cluster_Region_1729355388 {
+label = "R(3:36|(2:(1:38)|41)|44)";
+node [shape=record,color=blue];
+Node_36 [shape=record,label="{36\:\ 0x00bd|lbyte r1 = 0l}"];
+subgraph cluster_LoopRegion_1648608691 {
+label = "LOOP:5: (2:(1:38)|41)";
+node [shape=record,color=blue];
+Node_37 [shape=record,label="{37\:\ 0x00be|LOOP_START\lADDED_TO_REGION\lPHI: r1l  0x00be: PHI (r1v1 'j' byte) = (r1v0 'j' byte), (r1v2 'j' byte) binds: [B:36:0x00bd, B:41:0x00f9] A[DONT_GENERATE, DONT_INLINE]\lLOOP:5: B:37:0x00be\-\>B:41:0x00f9\l|lif (r1 \< 2) goto L31l}"];
+subgraph cluster_Region_974949938 {
+label = "R(2:(1:38)|41)";
+node [shape=record,color=blue];
+subgraph cluster_LoopRegion_852186941 {
+label = "LOOP:6: (1:38)";
+node [shape=record,color=blue];
+Node_39 [shape=record,label="{39\:\ 0x00f7|ADDED_TO_REGION\l|lif (r12.findN[r2 \/ r12.num[r12.lv][1]][r2 % r12.num[r12.lv][1]] != 0) goto L46l}"];
+subgraph cluster_Region_1828202894 {
+label = "R(1:38)";
+node [shape=record,color=blue];
+Node_38 [shape=record,label="{38\:\ 0x00c4|LOOP_START\lLOOP:6: B:38:0x00c4\-\>B:42:?\l|ldm.Ms.i()lbyte r2 = (byte) dm.Ms.getRandom(r12.num[r12.lv][0] * r12.num[r12.lv][1])l}"];
+}
+}
+Node_41 [shape=record,label="{41\:\ 0x00f9|LOOP_END\lLOOP:5: B:37:0x00be\-\>B:41:0x00f9\l|lr12.findN[r2 \/ r12.num[r12.lv][1]][r2 % r12.num[r12.lv][1]] = r3[r0]lbyte r1 = (byte) (r1 + 1)l}"];
+}
+}
+Node_44 [shape=record,label="{44\:\ 0x00c0|LOOP_END\lLOOP:4: B:34:0x0079\-\>B:44:0x00c0\l|lbyte r0 = (byte) (r0 + 1)l}"];
+}
+}
+Node_46 [shape=record,label="{46\:\ 0x007c|l(byte[]) nulll}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x006f|LOOP_START\lPHI: r0l  0x006f: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v9 'i' byte) binds: [B:6:0x003c, B:14:0x0088] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:7:0x006f\-\>B:14:0x0088\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0081|LOOP_START\lPHI: r1l  0x0081: PHI (r1v7 'j' byte) = (r1v6 'j' byte), (r1v8 'j' byte) binds: [B:9:0x0080, B:12:0x008c] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:10:0x0081\-\>B:12:0x008c\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0088|SYNTHETIC\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0074|SYNTHETIC\l|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0075|LOOP_START\lPHI: r0l  0x0075: PHI (r0v3 'i' byte) = (r0v2 'i' byte), (r0v7 'i' byte) binds: [B:16:0x0074, B:29:0x0075] A[DONT_GENERATE, DONT_INLINE]\lLOOP:2: B:17:0x0075\-\>B:29:0x0075\l|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ 0x00b5|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x00ad|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_26 [shape=record,color=red,label="{26\:\ 0x00af|SYNTHETIC\l|l}"];
+Node_28 [shape=record,color=red,label="{28\:\ 0x0075|SYNTHETIC\l|l}"];
+Node_29 [shape=record,color=red,label="{29\:\ 0x0075|LOOP_END\lSYNTHETIC\lPHI: r0l  0x0075: PHI (r0v7 'i' byte) = (r0v3 'i' byte), (r0v8 'i' byte) binds: [B:30:0x0075, B:28:0x0075] A[DONT_GENERATE, DONT_INLINE]\lLOOP:2: B:17:0x0075\-\>B:29:0x0075\l|l}"];
+Node_30 [shape=record,color=red,label="{30\:\ 0x0075|SYNTHETIC\l|l}"];
+Node_31 [shape=record,color=red,label="{31\:\ 0x00ad|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_32 [shape=record,color=red,label="{32\:\ 0x0078|SYNTHETIC\l|l}"];
+Node_34 [shape=record,color=red,label="{34\:\ 0x0079|LOOP_START\lPHI: r0l  0x0079: PHI (r0v5 'i' byte) = (r0v4 'i' byte), (r0v6 'i' byte) binds: [B:33:0x0078, B:44:0x00c0] A[DONT_GENERATE, DONT_INLINE]\lLOOP:4: B:34:0x0079\-\>B:44:0x00c0\l|l}"];
+Node_40 [shape=record,color=red,label="{40\:\ 0x00f9|SYNTHETIC\l|l}"];
+Node_42 [shape=record,color=red,label="{42\:\ ?|LOOP_END\lSYNTHETIC\lLOOP:6: B:38:0x00c4\-\>B:42:?\l|l}"];
+Node_43 [shape=record,color=red,label="{43\:\ 0x00c0|SYNTHETIC\l|l}"];
+Node_45 [shape=record,color=red,label="{45\:\ 0x007c|SYNTHETIC\l|l}"];
+Node_47 [shape=record,color=red,label="{47\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void minigame.Cards.go((r12v0 'this' minigame.Cards A[IMMUTABLE_TYPE, THIS]), (r13v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lMETHOD_OVERRIDE: [minigame.MiniGame_H.go(int):void]\lCROSS_EDGE: B:46:0x007c \-\> B:4:0x003b, BACK_EDGE: B:44:0x00c0 \-\> B:34:0x0079, BACK_EDGE: B:39:0x00f7 \-\> B:38:0x00c4, BACK_EDGE: B:41:0x00f9 \-\> B:37:0x00be, BACK_EDGE: B:25:0x00ad \-\> B:17:0x0075, BACK_EDGE: B:27:0x00af \-\> B:17:0x0075, CROSS_EDGE: B:22:0x00b7 \-\> B:25:0x00ad, BACK_EDGE: B:23:0x00b9 \-\> B:20:0x00ab, BACK_EDGE: B:14:0x0088 \-\> B:7:0x006f, BACK_EDGE: B:12:0x008c \-\> B:10:0x0081\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_8 -> Node_15[style=dashed];
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+Node_11 -> Node_13[style=dashed];
+Node_12 -> Node_10;
+Node_14 -> Node_7;
+Node_16 -> Node_17;
+Node_18 -> Node_19;
+Node_18 -> Node_32[style=dashed];
+Node_19 -> Node_20;
+Node_20 -> Node_21;
+Node_20 -> Node_31[style=dashed];
+Node_22 -> Node_23;
+Node_22 -> Node_24[style=dashed];
+Node_23 -> Node_20;
+Node_25 -> Node_26;
+Node_25 -> Node_30[style=dashed];
+Node_27 -> Node_28;
+Node_33 -> Node_34;
+Node_35 -> Node_36;
+Node_35 -> Node_45[style=dashed];
+Node_36 -> Node_37;
+Node_37 -> Node_38;
+Node_37 -> Node_43[style=dashed];
+Node_39 -> Node_40[style=dashed];
+Node_39 -> Node_42;
+Node_38 -> Node_39;
+Node_41 -> Node_37;
+Node_44 -> Node_34;
+Node_46 -> Node_47;
+Node_0 -> Node_1;
+Node_7 -> Node_8;
+Node_10 -> Node_11;
+Node_13 -> Node_14;
+Node_15 -> Node_16;
+Node_17 -> Node_18;
+Node_21 -> Node_22;
+Node_24 -> Node_25;
+Node_26 -> Node_27;
+Node_28 -> Node_29;
+Node_29 -> Node_17;
+Node_30 -> Node_29;
+Node_31 -> Node_25;
+Node_32 -> Node_33;
+Node_34 -> Node_35;
+Node_40 -> Node_41;
+Node_42 -> Node_38;
+Node_43 -> Node_44;
+Node_45 -> Node_46;
+Node_47 -> Node_5;
+}
+

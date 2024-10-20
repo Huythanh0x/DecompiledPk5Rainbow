@@ -1,0 +1,35 @@
+digraph "CFG forjavax.microedition.lcdui.CwaActivity.\<init\>()V" {
+subgraph cluster_Region_235890906 {
+label = "R(2:1|(1:(1:3)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+subgraph cluster_Region_714226039 {
+label = "R(1:(1:3))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1798057958 {
+label = "IF [B:2:0x000e] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000e|lif (javax.microedition.lcdui.CwaActivity.cwaActivity == null) goto L11l}"];
+subgraph cluster_Region_1154320994 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0010|ljavax.microedition.lcdui.CwaActivity.cwaActivity = r1l}"];
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0012|ORIG_RETURN\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.lcdui.CwaActivity.\<init\>((r1v0 'this' javax.microedition.lcdui.CwaActivity A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x000e \-\> B:4:0x0012\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

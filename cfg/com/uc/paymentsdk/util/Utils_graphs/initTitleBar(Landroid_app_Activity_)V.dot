@@ -1,0 +1,36 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.initTitleBar(Landroid\/app\/Activity;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|landroid.view.View r1 = r6.getWindow().findViewById(android.R.id.title)l}"];
+Node_2 [shape=record,label="{2\:\ 0x000b|lif (r1 == null) goto L26l}"];
+Node_3 [shape=record,label="{3\:\ 0x000d|l}"];
+Node_4 [shape=record,label="{4\:\ 0x000f|lif ((r1 instanceof android.widget.TextView) == false) goto L21l}"];
+Node_5 [shape=record,label="{5\:\ 0x0011|l((android.widget.TextView) r1).setTextSize(13.0f)l}"];
+Node_6 [shape=record,label="{6\:\ 0x001a|landroid.view.ViewParent r3 = r1.getParent()l}"];
+Node_7 [shape=record,label="{7\:\ 0x001e|lif (r3 == null) goto L26l}"];
+Node_8 [shape=record,label="{8\:\ 0x0020|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0022|lif ((r3 instanceof android.view.View) == false) goto L26l}"];
+Node_10 [shape=record,label="{10\:\ 0x0024|landroid.view.View r0 = (android.view.View) r3lr0.setBackgroundColor(134875644)l}"];
+Node_11 [shape=record,label="{11\:\ 0x002e|lr6.setTitle(\"UC支付\")l}"];
+Node_12 [shape=record,label="{12\:\ 0x0033|RETURN\l|lreturnl}"];
+Node_13 [shape=record,label="{13\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static void com.uc.paymentsdk.util.Utils.initTitleBar((r6v0 'paramActivity' android.app.Activity A[D('paramActivity' android.app.Activity), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x0022 \-\> B:11:0x002e, CROSS_EDGE: B:7:0x001e \-\> B:11:0x002e, CROSS_EDGE: B:4:0x000f \-\> B:6:0x001a, CROSS_EDGE: B:2:0x000b \-\> B:11:0x002e\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_11;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_6;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_11;
+Node_8 -> Node_9;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_11;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+}
+

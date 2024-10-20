@@ -1,0 +1,26 @@
+digraph "CFG fordm.Ms.key_Left_Right()Z" {
+subgraph cluster_Region_1238365082 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|RETURN\l|lreturn dm.Ms.key == \-3 \|\| dm.Ms.key == \-4l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0005|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0008|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000a|ORIG_RETURN\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x000c|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public boolean dm.Ms.key_Left_Right((r2v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x000c \-\> B:6:0x000b, CROSS_EDGE: B:2:0x0003 \-\> B:7:0x000c\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_7;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_7;
+Node_5 -> Node_6;
+Node_7 -> Node_6;
+}
+

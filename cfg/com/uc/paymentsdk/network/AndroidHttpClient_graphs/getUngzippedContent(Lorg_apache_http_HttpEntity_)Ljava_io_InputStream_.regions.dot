@@ -1,0 +1,66 @@
+digraph "CFG forcom.uc.paymentsdk.network.AndroidHttpClient.getUngzippedContent(Lorg\/apache\/http\/HttpEntity;)Ljava\/io\/InputStream;" {
+subgraph cluster_Region_2063930956 {
+label = "R(3:1|(2:(1:16)|18)|13) | DECL_VAR: org.apache.http.Header localHeader, java.lang.String str\l";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.io.InputStream java.io.InputStream r1 = r5.getContent()l}"];
+subgraph cluster_IfRegion_846772817 {
+label = "IF [B:2:0x0004, B:7:0x000c, B:11:0x0014] THEN: R(2:(1:16)|18) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (r1 != null) goto L25l}"];
+Node_7 [shape=record,label="{7\:\ 0x000c|ADDED_TO_REGION\l|lif ((r0 = r5.getContentEncoding()) != null) goto L28l}"];
+Node_11 [shape=record,label="{11\:\ 0x0014|ADDED_TO_REGION\l|lif ((r3 = r0.getValue()) != null) goto L31l}"];
+subgraph cluster_Region_1915006260 {
+label = "R(2:(1:16)|18)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1857918663 {
+label = "IF [B:15:0x001e] THEN: R(1:16) ELSE: null";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x001e|lif (r3.contains(\"gzip\") != false) goto L33l}"];
+subgraph cluster_Region_17355121 {
+label = "R(1:16)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x0020|lr1 = new java.util.zip.GZIPInputStream(r1)l}"];
+}
+}
+Node_18 [shape=record,label="{18\:\ ?|SYNTHETIC\lRETURN\l|lreturn r1l}"];
+}
+}
+Node_13 [shape=record,label="{13\:\ ?|SYNTHETIC\lRETURN\lADDED_TO_REGION\l|lreturn r1l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0006|ADDED_TO_REGION\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0007|RETURN\lORIG_RETURN\lADDED_TO_REGION\l|lreturn r1l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0008|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x000e|ADDED_TO_REGION\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|SYNTHETIC\lRETURN\lADDED_TO_REGION\l|lreturn r1l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0010|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0016|ADDED_TO_REGION\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0018|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0026|PHI: r1l  0x0026: PHI (r1v1 'localObject' java.io.InputStream) = (r1v0 'localObject' java.io.InputStream), (r1v2 'localObject' java.io.InputStream) binds: [B:15:0x001e, B:16:0x0020] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+MethodNode[shape=record,label="{public static java.io.InputStream com.uc.paymentsdk.network.AndroidHttpClient.getUngzippedContent((r5v0 'paramHttpEntity' org.apache.http.HttpEntity A[D('paramHttpEntity' org.apache.http.HttpEntity), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljava\/io\/IOException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x000e \-\> B:4:0x0007, CROSS_EDGE: B:12:0x0016 \-\> B:4:0x0007, CROSS_EDGE: B:17:0x0026 \-\> B:4:0x0007, CROSS_EDGE: B:15:0x001e \-\> B:17:0x0026\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_10;
+Node_11 -> Node_12[style=dashed];
+Node_11 -> Node_14;
+Node_15 -> Node_16;
+Node_15 -> Node_17[style=dashed];
+Node_16 -> Node_17;
+Node_18 -> Node_5;
+Node_13 -> Node_5;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_9 -> Node_5;
+Node_10 -> Node_11;
+Node_12 -> Node_13;
+Node_14 -> Node_15;
+Node_17 -> Node_18;
+}
+

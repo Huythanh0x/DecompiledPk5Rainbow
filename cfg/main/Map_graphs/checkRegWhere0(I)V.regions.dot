@@ -1,0 +1,89 @@
+digraph "CFG formain.Map.checkRegWhere0(I)V" {
+subgraph cluster_Region_832242668 {
+label = "R(1:(1:(2:4|(2:(1:10)|11))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1207569720 {
+label = "R(1:(2:4|(2:(1:10)|11)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1834567374 {
+label = "R(2:4|(2:(1:10)|11))";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0002|TRY_ENTER\lTRY_LEAVE\lTryCatch #1 \{, blocks: (B:4:0x0002, B:10:0x001c, B:11:0x0026, B:16:0x0031), top: B:3:0x0002, inners: #0 \}\lCatch: all \-\> 0x0035\l|lr4.isNeedWait = true     \/\/ Catch: java.lang.Throwable \-\> L35lmain.SMSSender.i(r4.gr).go(2, true)     \/\/ Catch: java.lang.Throwable \-\> L35lmain.SMSSender.i(r4.gr).run()     \/\/ Catch: java.lang.Throwable \-\> L35l}"];
+subgraph cluster_IfRegion_873138305 {
+label = "IF [B:5:0x001a] THEN: R(2:(1:10)|11) ELSE: null";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x001a|lif (r4.isNeedWait != false) goto L38l}"];
+subgraph cluster_Region_1567029647 {
+label = "R(2:(1:10)|11)";
+node [shape=record,color=blue];
+subgraph cluster_TryCatchRegion_1247980758 {
+label = "Try: R(1:10) catches: R(2:14|16)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1839918178 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x001c|TRY_ENTER\lTRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x002f, blocks: (B:10:0x001c), top: B:9:0x001c, outer: #1 \}\lCatch: Exception \-\> 0x002f, all \-\> 0x0035\l|ljava.lang.System.out.println(\"wait() start\")     \/\/ Catch: java.lang.Exception \-\> L2f java.lang.Throwable \-\> L35lwait()     \/\/ Catch: java.lang.Exception \-\> L2f java.lang.Throwable \-\> L35l}"];
+}
+subgraph cluster_Region_17411670 {
+label = "R(2:14|16) | ExcHandler: Exception \-\> 0x002f\l";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x002f|ExcHandler: Exception \-\> 0x002f\l|l}"];
+Node_16 [shape=record,label="{16\:\ 0x0031|TRY_ENTER\lTRY_LEAVE\lTryCatch #1 \{, blocks: (B:4:0x0002, B:10:0x001c, B:11:0x0026, B:16:0x0031), top: B:3:0x0002, inners: #0 \}\lCatch: all \-\> 0x0035\l|lr1.printStackTrace()     \/\/ Catch: java.lang.Throwable \-\> L35l}"];
+}
+}
+Node_11 [shape=record,label="{11\:\ 0x0026|TRY_ENTER\lTRY_LEAVE\lTryCatch #1 \{, blocks: (B:4:0x0002, B:10:0x001c, B:11:0x0026, B:16:0x0031), top: B:3:0x0002, inners: #0 \}\lCatch: all \-\> 0x0035\l|ljava.lang.System.out.println(\"wait() over\")     \/\/ Catch: java.lang.Throwable \-\> L35l}"];
+}
+}
+}
+}
+}
+subgraph cluster_Region_17411670 {
+label = "R(2:14|16) | ExcHandler: Exception \-\> 0x002f\l";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x002f|ExcHandler: Exception \-\> 0x002f\l|l}"];
+Node_16 [shape=record,label="{16\:\ 0x0031|TRY_ENTER\lTRY_LEAVE\lTryCatch #1 \{, blocks: (B:4:0x0002, B:10:0x001c, B:11:0x0026, B:16:0x0031), top: B:3:0x0002, inners: #0 \}\lCatch: all \-\> 0x0035\l|lr1.printStackTrace()     \/\/ Catch: java.lang.Throwable \-\> L35l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0001|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0002|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x002d|DONT_GENERATE\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x002e|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x001c|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0030|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0035|REMOVE\lExcHandler: all \-\> 0x0035\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0037|REMOVE\l|lthrow r1l}"];
+MethodNode[shape=record,label="{public synchronized void main.Map.checkRegWhere0((r4v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r5v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:11:0x0026 \-\> B:6:0x002d, CROSS_EDGE: B:18:0x0037 \-\> B:8:?, CROSS_EDGE: B:16:0x0031 \-\> B:11:0x0026, CROSS_EDGE: B:13:? \-\> B:17:0x0035, CROSS_EDGE: B:9:0x001c \-\> B:14:0x002f, CROSS_EDGE: B:9:0x001c \-\> B:17:0x0035, CROSS_EDGE: B:3:0x0002 \-\> B:17:0x0035\lTryCatch #0 \{Exception \-\> 0x002f, blocks: (B:10:0x001c), top: B:9:0x001c, outer: #1 \}\l}"];
+MethodNode -> Node_0;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_9;
+Node_10 -> Node_11;
+Node_10 -> Node_13;
+Node_14 -> Node_15;
+Node_16 -> Node_11;
+Node_11 -> Node_6;
+Node_11 -> Node_12;
+Node_14 -> Node_15;
+Node_16 -> Node_11;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_17;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_9 -> Node_14;
+Node_9 -> Node_17;
+Node_12 -> Node_17;
+Node_13 -> Node_14;
+Node_13 -> Node_17;
+Node_15 -> Node_16;
+Node_17 -> Node_18;
+Node_18 -> Node_8;
+}
+

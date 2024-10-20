@@ -1,0 +1,76 @@
+digraph "CFG formain.Map.meetGrass()V" {
+subgraph cluster_Region_1378303177 {
+label = "R(1:(1:(1:(1:5)))(2:(1:13)|14))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1144065784 {
+label = "IF [B:2:0x0005] THEN: R(1:(1:(1:5))) ELSE: R(2:(1:13)|14)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0005|lif (r3.meet_step \< r3.step_MEET) goto L20l}"];
+subgraph cluster_Region_149335011 {
+label = "R(1:(1:(1:5)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_2069547699 {
+label = "R(1:(1:5))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_275804261 {
+label = "IF [B:4:0x001a] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x001a|lif (r3.worldData[r3.my.getIx()][r3.my.getIy()] != 7) goto L22l}"];
+subgraph cluster_Region_1551559261 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x001c|lr3.meet_step = (short) (r3.meet_step + 1)l}"];
+}
+}
+}
+}
+subgraph cluster_Region_1635711874 {
+label = "R(2:(1:13)|14)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1289529932 {
+label = "IF [B:10:0x002a, B:12:0x0030] THEN: R(1:13) ELSE: null";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x002a|lif (r3.gr.monPro.length \> 1) goto L26l}"];
+Node_12 [shape=record,label="{12\:\ 0x0030|ADDED_TO_REGION\l|lif (r3.gr.immueEnemy == 0) goto L28l}"];
+subgraph cluster_Region_1597774058 {
+label = "R(1:13)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0032|lr3.my.frame_c = (byte) 0lr3.my.state = (byte) 8l}"];
+}
+}
+Node_14 [shape=record,label="{14\:\ 0x003c|lnotMeet(0, 0)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0007|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0023|ORIG_RETURN\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|SYNTHETIC\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0024|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x002c|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.meetGrass((r3v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x001a \-\> B:6:0x0023, CROSS_EDGE: B:14:0x003c \-\> B:6:0x0023, CROSS_EDGE: B:12:0x0030 \-\> B:14:0x003c, CROSS_EDGE: B:10:0x002a \-\> B:14:0x003c\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_9[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_8[style=dashed];
+Node_5 -> Node_6;
+Node_10 -> Node_11;
+Node_10 -> Node_14[style=dashed];
+Node_12 -> Node_13;
+Node_12 -> Node_14[style=dashed];
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_8 -> Node_7;
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+Node_15 -> Node_7;
+}
+

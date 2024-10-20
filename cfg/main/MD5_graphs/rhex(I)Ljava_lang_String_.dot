@@ -1,0 +1,21 @@
+digraph "CFG formain.MD5.rhex(I)Ljava\/lang\/String;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.lang.String r1 = \"\"lr0 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0003|LOOP_START\lPHI: r0 r1l  0x0003: PHI (r0v1 'j' int) = (r0v0 'j' int), (r0v2 'j' int) binds: [B:1:0x0000, B:4:0x0007] A[DONT_GENERATE, DONT_INLINE]l  0x0003: PHI (r1v1 'str' java.lang.String) = (r1v0 'str' java.lang.String), (r1v2 'str' java.lang.String) binds: [B:1:0x0000, B:4:0x0007] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0003\-\>B:4:0x0007\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0004|lif (r0 \<= 3) goto L6l}"];
+Node_4 [shape=record,label="{4\:\ 0x0007|LOOP_END\lLOOP:0: B:2:0x0003\-\>B:4:0x0007\l|ljava.lang.String r1 = new java.lang.StringBuilder(java.lang.String.valueOf(r1)).append(r5.hex_chr.charAt((r6 \>\> ((r0 * 8) + 4)) & 15)).append(r5.hex_chr.charAt((r6 \>\> (r0 * 8)) & 15)).toString()lint r0 = r0 + 1l}"];
+Node_5 [shape=record,label="{5\:\ 0x0006|SYNTHETIC\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0006|RETURN\l|lreturn r1l}"];
+Node_7 [shape=record,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private java.lang.String main.MD5.rhex((r5v0 'this' main.MD5 A[IMMUTABLE_TYPE, THIS]), (r6v0 'num' int A[D('num' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lBACK_EDGE: B:4:0x0007 \-\> B:2:0x0003\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+}
+

@@ -1,0 +1,12 @@
+digraph "CFG fordm.Ms.\<init\>()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr7.RMSSIZE = 15360lr7.transA = new byte[]\{0, 6, 3, 5, 2, 7, 1, 4\}ldm.Ms.msListener = r7l}"];
+Node_2 [shape=record,label="{2\:\ 0x0026|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ms.\<init\>((r7v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

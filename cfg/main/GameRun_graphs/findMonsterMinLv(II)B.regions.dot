@@ -1,0 +1,67 @@
+digraph "CFG formain.GameRun.findMonsterMinLv(II)B" {
+subgraph cluster_Region_1065432662 {
+label = "R(3:1|(2:(1:12)|11)|17)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r1 = \-1lbyte byte r0 = (byte) (r7.myMon_length \- 1)l}"];
+subgraph cluster_LoopRegion_1827737164 {
+label = "LOOP:0: (2:(1:12)|11)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0008|LOOP_START\lADDED_TO_REGION\lPHI: r0 r1l  0x0008: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v2 'i' byte) binds: [B:1:0x0000, B:11:0x0035] A[DONT_GENERATE, DONT_INLINE]l  0x0008: PHI (r1v1 'minLv' byte) = (r1v0 'minLv' byte), (r1v2 'minLv' byte) binds: [B:1:0x0000, B:11:0x0035] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:11:0x0035\l|lif (r0 \> (\-1)) goto L24l}"];
+subgraph cluster_Region_1517598210 {
+label = "R(2:(1:12)|11)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_2097911082 {
+label = "IF [B:4:0x0014, B:6:0x001e, B:7:0x0020, B:9:0x0032] THEN: R(1:12) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0014|lif (r7.myMonsters[r0].monster[0] == r8) goto L26l}"];
+Node_6 [shape=record,label="{6\:\ 0x001e|ADDED_TO_REGION\l|lif (r7.myMonsters[r0].monster[2] \>= r9) goto L28l}"];
+Node_7 [shape=record,label="{7\:\ 0x0020|ADDED_TO_REGION\l|lif (r1 == (\-1)) goto L31l}"];
+Node_9 [shape=record,label="{9\:\ 0x0032|ADDED_TO_REGION\l|lif (r7.myMonsters[r0].monster[2] \< r7.myMonsters[r1].monster[2]) goto L31l}"];
+subgraph cluster_Region_248769281 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0034|lr1 = r0l}"];
+}
+}
+Node_11 [shape=record,label="{11\:\ 0x0035|LOOP_END\lADDED_TO_REGION\lPHI: r1l  0x0035: PHI (r1v2 'minLv' byte) = (r1v1 'minLv' byte), (r1v1 'minLv' byte), (r1v3 'minLv' byte), (r1v1 'minLv' byte) binds: [B:15:0x0035, B:14:0x0035, B:13:0x0035, B:10:0x0035] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:11:0x0035\l|lbyte r0 = (byte) (r0 \- 1)l}"];
+}
+}
+Node_17 [shape=record,label="{17\:\ 0x000a|RETURN\l|lreturn r1l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000b|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0016|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0022|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0035|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0035|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0035|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0035|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x000a|SYNTHETIC\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public byte main.GameRun.findMonsterMinLv((r7v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r8v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'lv' int A[D('lv' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lBACK_EDGE: B:11:0x0035 \-\> B:2:0x0008, CROSS_EDGE: B:9:0x0032 \-\> B:11:0x0035, CROSS_EDGE: B:7:0x0020 \-\> B:12:0x0034, CROSS_EDGE: B:6:0x001e \-\> B:11:0x0035, CROSS_EDGE: B:4:0x0014 \-\> B:11:0x0035\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_16[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_15[style=dashed];
+Node_6 -> Node_7;
+Node_6 -> Node_14[style=dashed];
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_12;
+Node_9 -> Node_12;
+Node_9 -> Node_10[style=dashed];
+Node_12 -> Node_13;
+Node_11 -> Node_2;
+Node_17 -> Node_18;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_13 -> Node_11;
+Node_14 -> Node_11;
+Node_15 -> Node_11;
+Node_16 -> Node_17;
+}
+

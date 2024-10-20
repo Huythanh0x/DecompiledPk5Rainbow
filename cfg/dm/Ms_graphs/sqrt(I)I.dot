@@ -1,0 +1,28 @@
+digraph "CFG fordm.Ms.sqrt(I)I" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lif (r4 \<= 0) goto L20l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|lint r4 = r4 * com.uc.paymentsdk.util.Constants.PAYMENT_JIFENGQUAN_MAXlr0 = com.uc.paymentsdk.util.Constants.PAYMENT_JIFENGQUAN_MAXl}"];
+Node_3 [shape=record,label="{3\:\ 0x0006|LOOP_START\lPHI: r0l  0x0006: PHI (r0v1 'b' int) = (r0v0 'b' int), (r0v2 'b' int) binds: [B:2:0x0002, B:9:?] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:3:0x0006\-\>B:9:?\l|lr1 = r0lint r0 = ((r4 \/ r0) + r0) \>\> 1l}"];
+Node_4 [shape=record,label="{4\:\ 0x000c|lif (r0 \< r1) goto L22l}"];
+Node_5 [shape=record,label="{5\:\ 0x000e|SYNTHETIC\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000e|l}"];
+Node_7 [shape=record,label="{7\:\ 0x0011|RETURN\lORIG_RETURN\l|lreturn r1 \/ 100l}"];
+Node_8 [shape=record,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,label="{9\:\ ?|LOOP_END\lSYNTHETIC\lLOOP:0: B:3:0x0006\-\>B:9:?\l|l}"];
+Node_10 [shape=record,label="{10\:\ 0x0012|SYNTHETIC\lRETURN\l|lreturn 0l}"];
+MethodNode[shape=record,label="{public int dm.Ms.sqrt((r3v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r4v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lBACK_EDGE: B:4:0x000c \-\> B:3:0x0006, CROSS_EDGE: B:10:0x0012 \-\> B:7:0x0011\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2[style=dashed];
+Node_1 -> Node_10;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_9;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_9 -> Node_3;
+Node_10 -> Node_8;
+}
+

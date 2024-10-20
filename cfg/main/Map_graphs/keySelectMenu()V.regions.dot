@@ -1,0 +1,75 @@
+digraph "CFG formain.Map.keySelectMenu()V" {
+subgraph cluster_Region_1115207200 {
+label = "R(1:(1:(1:(1:7)(1:(1:(1:11))))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1303795882 {
+label = "R(1:(1:(1:7)(1:(1:(1:11)))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1781914801 {
+label = "IF [B:2:0x0008] THEN: R(1:(1:7)(1:(1:(1:11)))) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0008|lif (dm.Ms.i().key_delay() == false) goto L19l}"];
+subgraph cluster_Region_1692544396 {
+label = "R(1:(1:7)(1:(1:(1:11))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1672240774 {
+label = "IF [B:6:0x0013] THEN: R(1:7) ELSE: R(1:(1:(1:11)))";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0013|lif (dm.Ms.i().key_S1_Num5() != false) goto L21l}"];
+subgraph cluster_Region_480262481 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0015|lr6.my.state = (byte) 13l}"];
+}
+subgraph cluster_Region_1479847456 {
+label = "R(1:(1:(1:11))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_768571111 {
+label = "R(1:(1:11))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_739661238 {
+label = "IF [B:10:0x0024] THEN: R(1:11) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0024|lif (dm.Ms.i().key_Up_Down() != false) goto L24l}"];
+subgraph cluster_Region_836864980 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0026|lr6.gr.cur_a = dm.Ms.i().select(r6.gr.cur_a, 0, r6.gr.action_str.length \- 1)l}"];
+}
+}
+}
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000a|ORIG_RETURN\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000b|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|SYNTHETIC\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x001c|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.keySelectMenu((r6v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0015 \-\> B:3:0x000a, CROSS_EDGE: B:10:0x0024 \-\> B:3:0x000a, CROSS_EDGE: B:11:0x0026 \-\> B:3:0x000a\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_6 -> Node_7;
+Node_6 -> Node_9[style=dashed];
+Node_7 -> Node_8;
+Node_10 -> Node_11;
+Node_10 -> Node_13[style=dashed];
+Node_11 -> Node_12;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_8 -> Node_4;
+Node_9 -> Node_10;
+Node_12 -> Node_4;
+Node_13 -> Node_4;
+}
+

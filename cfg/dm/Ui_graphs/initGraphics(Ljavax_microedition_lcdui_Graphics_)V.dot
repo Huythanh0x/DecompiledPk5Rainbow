@@ -1,0 +1,12 @@
+digraph "CFG fordm.Ui.initGraphics(Ljavax\/microedition\/lcdui\/Graphics;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.g = r2ldm.Ui.dg = com.nokia.mid.ui.DirectUtils.getDirectGraphics(r2)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0008|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.initGraphics((r1v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r2v0 '_g' javax.microedition.lcdui.Graphics A[D('_g' javax.microedition.lcdui.Graphics), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

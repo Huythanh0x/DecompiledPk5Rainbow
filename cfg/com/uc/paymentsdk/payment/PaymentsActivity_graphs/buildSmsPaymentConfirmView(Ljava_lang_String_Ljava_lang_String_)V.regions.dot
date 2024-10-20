@@ -1,0 +1,52 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.buildSmsPaymentConfirmView(Ljava\/lang\/String;Ljava\/lang\/String;)V" {
+subgraph cluster_Region_199515435 {
+label = "R(2:1|(2:3|4))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr13.mType = 5l}"];
+subgraph cluster_TryCatchRegion_1621120170 {
+label = "Try: R(2:3|4) catches: R(2:8|9)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1631391962 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0003|TRY_ENTER\lTRY_LEAVE\lTryCatch #0 \{SimCardNotSupportException \-\> 0x0130, blocks: (B:3:0x0003), top: B:2:0x0003 \}\lCatch: SimCardNotSupportException \-\> 0x0130\l|lcom.uc.paymentsdk.util.Utils.CheckSimCardSupprotInfo(getApplicationContext())     \/\/ Catch: com.uc.paymentsdk.payment.sms.SimCardNotSupportException \-\> L130l}"];
+Node_4 [shape=record,label="{4\:\ 0x000a|landroid.widget.RelativeLayout android.widget.RelativeLayout r5 = new android.widget.RelativeLayout(getApplicationContext())lr5.setBackgroundColor(\-1)lr5.setLayoutParams(new android.view.ViewGroup.LayoutParams(\-1, \-1))landroid.widget.RelativeLayout android.widget.RelativeLayout r8 = com.uc.paymentsdk.util.Utils.initSubTitle(getApplicationContext(), r13, \"购买内容\", true)lr8.setId(1)lr8.setLayoutParams(new android.widget.RelativeLayout.LayoutParams(\-1, \-2))lr5.addView(r8)landroid.widget.TextView android.widget.TextView r7 = new android.widget.TextView(r13)lr7.setId(2)lr7.setTextSize(16.0f)lr7.setTextColor(\-13487566)lr7.setPadding(10, 10, 0, 0)lr7.setFocusable(true)lr7.setClickable(true)lr7.setLinkTextColor(com.uc.paymentsdk.util.Constants.COLOR_LINK_TEXT)lr7.setText(java.lang.String.format(\"再次点击下一步即同意向n%s发送短信以完成本次短信发送过程。\", r14, r13.mPaymentInfo.getPayname(), java.lang.Integer.valueOf(com.uc.paymentsdk.util.Utils.getSmsPayment())))landroid.text.util.Linkify.addLinks(r7, 4)landroid.widget.RelativeLayout$LayoutParams android.widget.RelativeLayout.LayoutParams r2 = new android.widget.RelativeLayout.LayoutParams(\-1, \-2)lr2.addRule(3, 1)lr7.setLayoutParams(r2)lr5.addView(r7)landroid.widget.Button android.widget.Button r0 = new android.widget.Button(getApplicationContext())lr0.setText(\"下一步\")lr0.setId(5)lr13.mConfirmSmsInfoString = java.lang.String.valueOf(r14) + com.uc.paymentsdk.payment.PaymentsActivity.TERM + r15lr0.setTag(r13.mConfirmSmsInfoString)lr0.setOnClickListener(r13)landroid.widget.RelativeLayout$LayoutParams android.widget.RelativeLayout.LayoutParams r3 = new android.widget.RelativeLayout.LayoutParams(150, \-2)lr3.addRule(12, \-1)lr3.setMargins(10, 20, 10, 10)lr0.setLayoutParams(r3)lr5.addView(r0)landroid.widget.Button android.widget.Button r1 = new android.widget.Button(getApplicationContext())lr1.setText(\"取消\")lr1.setId(6)lr1.setOnClickListener(r13)landroid.widget.RelativeLayout$LayoutParams android.widget.RelativeLayout.LayoutParams r4 = new android.widget.RelativeLayout.LayoutParams(150, \-2)lr4.addRule(11, \-1)lr4.addRule(12, \-1)lr4.setMargins(10, 20, 10, 10)lr1.setLayoutParams(r4)lr5.addView(r1)lsetContentView(r5)l}"];
+}
+subgraph cluster_Region_889909076 {
+label = "R(2:8|9) | ExcHandler: SimCardNotSupportException \-\> 0x0130\l";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0130|ExcHandler: SimCardNotSupportException \-\> 0x0130\l|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0131|lr13.mSmsResultInfo = r9.getMessage()lshowDialog(16)l}"];
+}
+}
+}
+subgraph cluster_Region_889909076 {
+label = "R(2:8|9) | ExcHandler: SimCardNotSupportException \-\> 0x0130\l";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0130|ExcHandler: SimCardNotSupportException \-\> 0x0130\l|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0131|lr13.mSmsResultInfo = r9.getMessage()lshowDialog(16)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0003|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x012f|ORIG_RETURN\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void com.uc.paymentsdk.payment.PaymentsActivity.buildSmsPaymentConfirmView((r13v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]), (r14v0 'smsaddress' java.lang.String A[D('smsaddress' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'smsconfirmnumber' java.lang.String A[D('smsconfirmnumber' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lJadxCommentsAttr\{l INFO: l \-\> Access modifiers changed from: private\}\lCROSS_EDGE: B:9:0x0131 \-\> B:5:0x012f, CROSS_EDGE: B:2:0x0003 \-\> B:8:0x0130\lTryCatch #0 \{SimCardNotSupportException \-\> 0x0130, blocks: (B:3:0x0003), top: B:2:0x0003 \}\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_7;
+Node_4 -> Node_5;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_8;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_10 -> Node_6;
+}
+

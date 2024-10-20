@@ -1,0 +1,125 @@
+digraph "CFG fordm.Sound.soundPlay()V" {
+subgraph cluster_Region_1399984267 {
+label = "R(1:(1:(1:(1:11)(1:(1:20)(1:(1:(1:24)))))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_592596573 {
+label = "R(1:(1:(1:11)(1:(1:20)(1:(1:(1:24))))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_291345020 {
+label = "IF [B:2:0x0004, B:4:0x0008, B:6:0x000d] THEN: R(1:(1:11)(1:(1:20)(1:(1:(1:24))))) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (r4.sound_on != false) goto L34l}"];
+Node_4 [shape=record,label="{4\:\ 0x0008|ADDED_TO_REGION\l|lif (r4.play_music \>= 0) goto L37l}"];
+Node_6 [shape=record,label="{6\:\ 0x000d|ADDED_TO_REGION\l|lif (r4.sound_play != false) goto L39l}"];
+subgraph cluster_Region_891090119 {
+label = "R(1:(1:11)(1:(1:20)(1:(1:(1:24)))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1982418087 {
+label = "IF [B:8:0x0011, B:10:0x0015] THEN: R(1:11) ELSE: R(1:(1:20)(1:(1:(1:24))))";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0011|lif (r4.loop_s == (\-1)) goto L41l}"];
+Node_10 [shape=record,label="{10\:\ 0x0015|ADDED_TO_REGION\l|lif (r4.snd_music != null) goto L43l}"];
+subgraph cluster_Region_1194906777 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0017|lr4.snd_music.setLoopCount(\-1)lsoundStart()lr4.play_music = (byte) \-1l}"];
+}
+subgraph cluster_Region_982216816 {
+label = "R(1:(1:20)(1:(1:(1:24)))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1759711530 {
+label = "IF [B:15:0x0024, B:17:0x0028, B:19:0x0032] THEN: R(1:20) ELSE: R(1:(1:(1:24))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0024|lif (r4.loop_s \> 0) goto L46l}"];
+Node_17 [shape=record,label="{17\:\ 0x0028|ADDED_TO_REGION\l|lif (r4.snd_music != null) goto L48l}"];
+Node_19 [shape=record,label="{19\:\ 0x0032|ADDED_TO_REGION\l|lif (r4.snd_music.getState() != 400) goto L50l}"];
+subgraph cluster_Region_1410540773 {
+label = "R(1:20)";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x0034|lr4.snd_music.setLoopCount(1)lsoundStart()lr4.loop_s = (byte) (r4.loop_s \- 1)l}"];
+}
+subgraph cluster_Region_1435418338 {
+label = "R(1:(1:(1:24))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_879189203 {
+label = "R(1:(1:24))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1149071668 {
+label = "IF [B:23:0x0045] THEN: R(1:24) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_23 [shape=record,label="{23\:\ 0x0045|lif (r4.loop_s == 0) goto L53l}"];
+subgraph cluster_Region_151273810 {
+label = "R(1:24)";
+node [shape=record,color=blue];
+Node_24 [shape=record,label="{24\:\ 0x0047|lr4.play_music = (byte) \-1l}"];
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0006|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000b|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x000f|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0013|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0022|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x0026|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x002a|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ ?|SYNTHETIC\l|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x0043|l}"];
+Node_25 [shape=record,color=red,label="{25\:\ ?|SYNTHETIC\l|l}"];
+Node_26 [shape=record,color=red,label="{26\:\ ?|SYNTHETIC\l|l}"];
+Node_27 [shape=record,color=red,label="{27\:\ ?|SYNTHETIC\l|l}"];
+Node_28 [shape=record,color=red,label="{28\:\ ?|SYNTHETIC\lRETURN\lADDED_TO_REGION\l|lreturnl}"];
+Node_29 [shape=record,color=red,label="{29\:\ 0x000a|RETURN\lORIG_RETURN\lADDED_TO_REGION\l|lreturnl}"];
+MethodNode[shape=record,label="{public void dm.Sound.soundPlay((r4v0 'this' dm.Sound A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x000d \-\> B:29:0x000a, CROSS_EDGE: B:11:0x0017 \-\> B:29:0x000a, CROSS_EDGE: B:20:0x0034 \-\> B:29:0x000a, CROSS_EDGE: B:23:0x0045 \-\> B:29:0x000a, CROSS_EDGE: B:24:0x0047 \-\> B:29:0x000a, CROSS_EDGE: B:17:0x0028 \-\> B:22:0x0043, CROSS_EDGE: B:15:0x0024 \-\> B:22:0x0043, CROSS_EDGE: B:8:0x0011 \-\> B:14:0x0022, CROSS_EDGE: B:2:0x0004 \-\> B:29:0x000a\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_29[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_28[style=dashed];
+Node_6 -> Node_7;
+Node_6 -> Node_27[style=dashed];
+Node_8 -> Node_9;
+Node_8 -> Node_14[style=dashed];
+Node_10 -> Node_11;
+Node_10 -> Node_14[style=dashed];
+Node_11 -> Node_12;
+Node_15 -> Node_16;
+Node_15 -> Node_22[style=dashed];
+Node_17 -> Node_18;
+Node_17 -> Node_22[style=dashed];
+Node_19 -> Node_20;
+Node_19 -> Node_22[style=dashed];
+Node_20 -> Node_21;
+Node_23 -> Node_24;
+Node_23 -> Node_26[style=dashed];
+Node_24 -> Node_25;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_12 -> Node_13;
+Node_14 -> Node_15;
+Node_16 -> Node_17;
+Node_18 -> Node_19;
+Node_21 -> Node_13;
+Node_22 -> Node_23;
+Node_25 -> Node_13;
+Node_26 -> Node_13;
+Node_27 -> Node_13;
+Node_28 -> Node_13;
+Node_29 -> Node_13;
+}
+

@@ -1,0 +1,69 @@
+digraph "CFG formain.PointerKey.selectListSY(IIIIIIII)V" {
+subgraph cluster_Region_1423414347 {
+label = "R(2:1|(2:(3:5|(1:7)|8)(0)|10))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint r11 = 0l}"];
+subgraph cluster_LoopRegion_2084571764 {
+label = "LOOP:0: (2:(3:5|(1:7)|8)(0)|10)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0001|LOOP_START\lADDED_TO_REGION\lPHI: r11l  0x0001: PHI (r11v1 'i' int) = (r11v0 'i' int), (r11v2 'i' int) binds: [B:1:0x0000, B:10:0x002e] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0001\-\>B:10:0x002e\l|lif (r11 \< r13) goto L20l}"];
+subgraph cluster_Region_759740082 {
+label = "R(2:(3:5|(1:7)|8)(0)|10)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_35318062 {
+label = "IF [B:4:0x001c] THEN: R(3:5|(1:7)|8) ELSE: R(0)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x001c|lif (dm.Ms.i().isRect(r12.i0, r12.i1, 1, 1, r14, r15 + ((r18 + r19) * r11), r16, r18) != false) goto L22l}"];
+subgraph cluster_Region_1778860266 {
+label = "R(3:5|(1:7)|8)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x001e|lr12.gr.selecty = (byte) r11l}"];
+subgraph cluster_IfRegion_384361588 {
+label = "IF [B:6:0x0026] THEN: R(1:7) ELSE: null";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0026|lif (r11 == r20) goto L24l}"];
+subgraph cluster_Region_1338806762 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0028|lsetKey5()l}"];
+}
+}
+Node_8 [shape=record,label="{8\:\ 0x002b|linitPointer()l}"];
+}
+subgraph cluster_Region_1029262601 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+Node_10 [shape=record,label="{10\:\ 0x002e|LOOP_END\lLOOP:0: B:2:0x0001\-\>B:10:0x002e\l|lr11++l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0004|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x002e|SYNTHETIC\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x002e|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0003|SYNTHETIC\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0003|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.PointerKey.selectListSY((r12v0 'this' main.PointerKey A[IMMUTABLE_TYPE, THIS]), (r13v0 'len' int A[D('len' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r16v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r17v0 'kw' int A[D('kw' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r18v0 'kh' int A[D('kh' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r19v0 'dis' int A[D('dis' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r20v0 'sel' int A[D('sel' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:10:0x002e \-\> B:2:0x0001, CROSS_EDGE: B:6:0x0026 \-\> B:8:0x002b, CROSS_EDGE: B:4:0x001c \-\> B:10:0x002e\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_12[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_11[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_6 -> Node_8[style=dashed];
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_10 -> Node_2;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_9 -> Node_10;
+Node_11 -> Node_10;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+}
+

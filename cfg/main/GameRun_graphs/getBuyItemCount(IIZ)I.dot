@@ -1,0 +1,44 @@
+digraph "CFG formain.GameRun.getBuyItemCount(IIZ)I" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0001|lif (r10 == false) goto L33l}"];
+Node_3 [shape=record,label="{3\:\ 0x0003|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0004|lif (r8 != 2) goto L31l}"];
+Node_5 [shape=record,label="{5\:\ 0x0006|lr0 = r7.coin \/ r7.sell_moneyl}"];
+Node_6 [shape=record,label="{6\:\ 0x000c|PHI: r0l  0x000c: PHI (r0v1 'c0' int) = (r0v0 'c0' int), (r0v2 'c0' int) binds: [B:15:0x0024, B:5:0x0006] A[DONT_GENERATE, DONT_INLINE]\l|lint r1 = 99 \- findItem(\-2, r7.buyItem[r7.cur_a][r9], true)l}"];
+Node_7 [shape=record,label="{7\:\ 0x001d|lif (r1 \>= 0) goto L28l}"];
+Node_8 [shape=record,label="{8\:\ 0x001f|lr1 = 0l}"];
+Node_9 [shape=record,label="{9\:\ 0x0020|PHI: r1l  0x0020: PHI (r1v1 'c1' int) = (r1v0 'c1' int), (r1v2 'c1' int) binds: [B:7:0x001d, B:8:0x001f] A[DONT_GENERATE, DONT_INLINE]\l|lif (r0 \<= r1) goto L32l}"];
+Node_10 [shape=record,label="{10\:\ 0x0022|l}"];
+Node_11 [shape=record,label="{11\:\ 0x0023|RETURN\lORIG_RETURN\l|lreturn r1l}"];
+Node_12 [shape=record,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x002b|l}"];
+Node_14 [shape=record,label="{14\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0l}"];
+Node_15 [shape=record,label="{15\:\ 0x0024|lr0 = r7.money \/ r7.sell_moneyl}"];
+Node_16 [shape=record,label="{16\:\ 0x002d|l}"];
+Node_17 [shape=record,label="{17\:\ ?|SYNTHETIC\lRETURN\l|lreturn r7.items[r7.cur_a][r9][1]l}"];
+MethodNode[shape=record,label="{private int main.GameRun.getBuyItemCount((r7v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r8v0 'type' int A[D('type' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'select' int A[D('select' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:13:0x002b \-\> B:11:0x0023, CROSS_EDGE: B:7:0x001d \-\> B:9:0x0020, CROSS_EDGE: B:15:0x0024 \-\> B:6:0x000c, CROSS_EDGE: B:16:0x002d \-\> B:11:0x0023\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_16;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_15;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_9;
+Node_8 -> Node_9;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_13;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_13 -> Node_14;
+Node_14 -> Node_12;
+Node_15 -> Node_6;
+Node_16 -> Node_17;
+Node_17 -> Node_12;
+}
+

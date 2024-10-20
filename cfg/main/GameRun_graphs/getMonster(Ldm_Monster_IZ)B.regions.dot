@@ -1,0 +1,109 @@
+digraph "CFG formain.GameRun.getMonster(Ldm\/Monster;IZ)B" {
+subgraph cluster_Region_73506825 {
+label = "R(2:(1:3)|(2:(4:6|(1:8)|9|10)|(1:(2:(4:14|(1:16)|17|18)|(1:19)))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_950143480 {
+label = "IF [B:2:0x000a] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000a|lif (r4.monInfoList[r5.monster[0]] != 2) goto L25l}"];
+subgraph cluster_Region_662138034 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000c|lr4.monInfoList[r5.monster[0]] = 2laddMonInfoListBH()lr4.map.addAnole(r5.monster[0])l}"];
+}
+}
+subgraph cluster_Region_702559372 {
+label = "R(2:(4:6|(1:8)|9|10)|(1:(2:(4:14|(1:16)|17|18)|(1:19))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_545830993 {
+label = "IF [B:5:0x0024] THEN: R(4:6|(1:8)|9|10) ELSE: null";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0024|lif (r4.myMon_length \< r4.max_takes) goto L28l}"];
+subgraph cluster_Region_147691633 {
+label = "R(4:6|(1:8)|9|10)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0026|lr4.myMonsters[r4.myMon_length] = r5l}"];
+subgraph cluster_IfRegion_339961638 {
+label = "IF [B:7:0x002c] THEN: R(1:8) ELSE: null";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x002c|lif (r7 != false) goto L30l}"];
+subgraph cluster_Region_1009743222 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x002e|lr4.myMonsters[r4.myMon_length].resetMonster(r4, r6)l}"];
+}
+}
+Node_9 [shape=record,label="{9\:\ 0x0037|lr4.myMon_length = (byte) (r4.myMon_length + 1)l}"];
+Node_10 [shape=record,label="{10\:\ 0x003f|RETURN\lORIG_RETURN\l|lreturn (byte) 0l}"];
+}
+}
+subgraph cluster_Region_1493174418 {
+label = "R(1:(2:(4:14|(1:16)|17|18)|(1:19))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_1038753235 {
+label = "R(2:(4:14|(1:16)|17|18)|(1:19))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_849291039 {
+label = "IF [B:13:0x0044] THEN: R(4:14|(1:16)|17|18) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0044|lif (r4.cMon_count \< r4.max_monsters) goto L35l}"];
+subgraph cluster_Region_1968992511 {
+label = "R(4:14|(1:16)|17|18)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0046|lsay(main.Constants_H.TXT_50 + getNameMon(r5.monster[0]) + main.Constants_H.TXT_51, 0)lr4.cMonsters[r4.cMon_count] = r5l}"];
+subgraph cluster_IfRegion_742503006 {
+label = "IF [B:15:0x006c] THEN: R(1:16) ELSE: null";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x006c|lif (r7 != false) goto L37l}"];
+subgraph cluster_Region_1101538944 {
+label = "R(1:16)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x006e|lr4.cMonsters[r4.cMon_count].resetMonster(r4, r6)l}"];
+}
+}
+Node_17 [shape=record,label="{17\:\ 0x0077|lr4.cMon_count = (byte) (r4.cMon_count + 1)l}"];
+Node_18 [shape=record,label="{18\:\ ?|SYNTHETIC\lRETURN\l|lreturn (byte) 1l}"];
+}
+}
+subgraph cluster_Region_172250741 {
+label = "R(1:19)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x0080|SYNTHETIC\lRETURN\l|lreturn (byte) \-1l}"];
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0020|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0040|l}"];
+MethodNode[shape=record,label="{private byte main.GameRun.getMonster((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'monster' dm.Monster A[D('monster' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'evolve' int A[D('evolve' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x002c \-\> B:9:0x0037, CROSS_EDGE: B:17:0x0077 \-\> B:10:0x003f, CROSS_EDGE: B:15:0x006c \-\> B:17:0x0077, CROSS_EDGE: B:19:0x0080 \-\> B:10:0x003f, CROSS_EDGE: B:2:0x000a \-\> B:4:0x0020\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_5 -> Node_12[style=dashed];
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_7 -> Node_9[style=dashed];
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_13 -> Node_14;
+Node_13 -> Node_19[style=dashed];
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_15 -> Node_17[style=dashed];
+Node_16 -> Node_17;
+Node_17 -> Node_18;
+Node_18 -> Node_11;
+Node_19 -> Node_11;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_12 -> Node_13;
+}
+

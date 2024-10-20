@@ -1,0 +1,36 @@
+digraph "CFG formain.Map.isNpcSrc(II)Z" {
+subgraph cluster_Region_634496508 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0005|RETURN\l|lreturn r3.map_x + r4 \>= \-80 && r3.map_x + r4 \<= main.Constants_H.WIDTH + 60 && r3.map_y + r5 \>= \-80 && r3.map_y + r5 \<= main.Constants_H.HEIGHT + 60l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0007|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x000e|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0010|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0013|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0015|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x001c|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x001e|ORIG_RETURN\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0020|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private boolean main.Map.isNpcSrc((r3v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r4v0 'ax' int A[D('ax' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'ay' int A[D('ay' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:11:0x0020 \-\> B:10:0x001f, CROSS_EDGE: B:6:0x0013 \-\> B:11:0x0020, CROSS_EDGE: B:4:0x000e \-\> B:11:0x0020, CROSS_EDGE: B:2:0x0005 \-\> B:11:0x0020\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_11;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_11;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_6 -> Node_11;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_11;
+Node_9 -> Node_10;
+Node_11 -> Node_10;
+}
+

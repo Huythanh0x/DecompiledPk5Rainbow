@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.payment.upoint.UPointPayInfo.setUserid(Ljava\/lang\/String;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr0.userid = r1l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void com.uc.paymentsdk.payment.upoint.UPointPayInfo.setUserid((r0v0 'this' com.uc.paymentsdk.payment.upoint.UPointPayInfo A[IMMUTABLE_TYPE, THIS]), (r1v0 'userid' java.lang.String A[D('userid' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

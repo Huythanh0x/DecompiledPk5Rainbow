@@ -1,0 +1,12 @@
+digraph "CFG forjavax.microedition.lcdui.Graphics.fillTriangle(IIIIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|landroid.graphics.Path r0 = new android.graphics.Path()lr0.moveTo((float) r4, (float) r5)lr0.lineTo((float) r6, (float) r7)lr0.lineTo((float) r8, (float) r9)lr0.lineTo((float) r4, (float) r5)lr3.canvas.drawPath(r0, r3.font.tmpPaint)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0022|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.lcdui.Graphics.fillTriangle((r3v0 'this' javax.microedition.lcdui.Graphics A[IMMUTABLE_TYPE, THIS]), (r4v0 'x1' int A[D('x1' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'y1' int A[D('y1' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'x2' int A[D('x2' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'y2' int A[D('y2' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'x3' int A[D('x3' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'y3' int A[D('y3' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

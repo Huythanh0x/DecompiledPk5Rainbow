@@ -1,0 +1,12 @@
+digraph "CFG fordm.Sound.\<init\>()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr2.sound_play = falselr2.sound_on = falselr2.musicId = \-1lr2.musicId_temp = \-1lr2.volume = 30lr2.loop = new byte[]\{\-1, \-1, \-1, \-1, \-1, \-1, \-1, \-1, \-1, \-1\}ldm.Sound.soundListener = r2l}"];
+Node_2 [shape=record,label="{2\:\ 0x001c|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Sound.\<init\>((r2v0 'this' dm.Sound A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

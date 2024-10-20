@@ -1,0 +1,30 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.getXmlRequestBody(Ljava\/util\/HashMap;Landroid\/content\/Context;)Ljava\/lang\/String;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.lang.StringBuilder r1 = new java.lang.StringBuilder()lr1.append(\"\<request\")l}"];
+Node_2 [shape=record,label="{2\:\ 0x0010|lif (r5.containsKey(\"local_version\") == false) goto L17l}"];
+Node_3 [shape=record,label="{3\:\ 0x0012|lr1.append(new java.lang.StringBuilder(\" local_version=\"\").append(r5.get(\"local_version\")).append(\"\" \").toString())lr5.remove(\"local_version\")l}"];
+Node_4 [shape=record,label="{4\:\ 0x0035|lr1.append(\"\>\")ljava.util.Iterator r0 = r5.keySet().iterator()l}"];
+Node_5 [shape=record,label="{5\:\ 0x0042|LOOP_START\lLOOP:0: B:5:0x0042\-\>B:7:0x0052\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0046|lif (r0.hasNext() != false) goto L22l}"];
+Node_7 [shape=record,label="{7\:\ 0x0052|LOOP_END\lLOOP:0: B:5:0x0042\-\>B:7:0x0052\l|ljava.lang.String r2 = r0.next()lr1.append(\"\<\").append(r2).append(\"\>\")lr1.append(r5.get(r2))lr1.append(\"\<\/\").append(r2).append(\"\>\")l}"];
+Node_8 [shape=record,label="{8\:\ 0x0048|SYNTHETIC\l|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0048|lr1.append(\"\<\/request\>\")l}"];
+Node_10 [shape=record,label="{10\:\ 0x0051|RETURN\l|lreturn r1.toString()l}"];
+Node_11 [shape=record,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static java.lang.String com.uc.paymentsdk.util.Utils.getXmlRequestBody((r5v0 'paramHashMap' java.util.HashMap\<java.lang.String, java.lang.Object\> A[D('paramHashMap' java.util.HashMap\<java.lang.String, java.lang.Object\>), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'paramContext' android.content.Context A[D('paramContext' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lSIGNATURE: (Ljava\/util\/HashMap\<Ljava\/lang\/String;Ljava\/lang\/Object;\>;Landroid\/content\/Context;)Ljava\/lang\/String;\lINLINE_NOT_NEEDED\lBACK_EDGE: B:7:0x0052 \-\> B:5:0x0042, CROSS_EDGE: B:2:0x0010 \-\> B:4:0x0035\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_4;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_6 -> Node_8[style=dashed];
+Node_7 -> Node_5;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+}
+

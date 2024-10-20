@@ -1,0 +1,16 @@
+digraph "CFG forjavax.microedition.lcdui.CwaActivity.access$0(Ljavax\/microedition\/lcdui\/CwaActivity;)Ljavax\/microedition\/midlet\/MIDletManager;" {
+subgraph cluster_Region_837903257 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|RETURN\l|lreturn r1.jaml}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{static \/* synthetic *\/ javax.microedition.midlet.MIDletManager javax.microedition.lcdui.CwaActivity.access$0((r1v0 javax.microedition.lcdui.CwaActivity A[IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE: 0x0000: IGET (r1 I:javax.microedition.lcdui.CwaActivity) (LINE:23) javax.microedition.lcdui.CwaActivity.jam javax.microedition.midlet.MIDletManager\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+}
+

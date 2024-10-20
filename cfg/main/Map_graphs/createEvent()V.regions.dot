@@ -1,0 +1,119 @@
+digraph "CFG formain.Map.createEvent()V" {
+subgraph cluster_Region_318222015 {
+label = "R(2:1|(2:(2:3|4)|(4:6|(1:8)(2:15|(2:(1:20)(0)|22))|9|(1:12))))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte[] byte[] r0 = dm.Ms.i().getStream(\"event\", r10.mapNo)l}"];
+subgraph cluster_Region_375761203 {
+label = "R(2:(2:3|4)|(4:6|(1:8)(2:15|(2:(1:20)(0)|22))|9|(1:12)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_127985426 {
+label = "IF [B:2:0x0010] THEN: R(2:3|4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0010|lif (r0.length == 1) goto L29l}"];
+subgraph cluster_Region_573570048 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0012|lr10.eventCount = 0l}"];
+Node_4 [shape=record,label="{4\:\ 0x0014|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1944041381 {
+label = "R(4:6|(1:8)(2:15|(2:(1:20)(0)|22))|9|(1:12))";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0015|lint int r4 = 0 + 1lr10.eventCount = r0[0]l}"];
+subgraph cluster_IfRegion_137301467 {
+label = "IF [B:7:0x0023] THEN: R(1:8) ELSE: R(2:15|(2:(1:20)(0)|22))";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0023|lif (r10.mapInfo[r10.mapNo * 2] \< 1) goto L33l}"];
+subgraph cluster_Region_392783538 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0025|lr10.event_now_list[r10.mapNo] = nulllr10.event_now_list[r10.mapNo] = new short[r10.eventCount]l}"];
+}
+subgraph cluster_Region_2117440454 {
+label = "R(2:15|(2:(1:20)(0)|22))";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0070|lbyte r1 = 0l}"];
+subgraph cluster_LoopRegion_2125292389 {
+label = "LOOP:1: (2:(1:20)(0)|22)";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x0073|ADDED_TO_REGION\l|lif (r1 \< r10.eventCount) goto L41l}"];
+subgraph cluster_Region_1891729802 {
+label = "R(2:(1:20)(0)|22)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1663222451 {
+label = "IF [B:19:0x007b] THEN: R(1:20) ELSE: R(0)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x007b|lif (isMapEvent(r10.mapNo, r1) != false) goto L43l}"];
+subgraph cluster_Region_836486834 {
+label = "R(1:20)";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x007d|lr10.event_now_list[r10.mapNo][r1] = 24224l}"];
+}
+subgraph cluster_Region_746486109 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+Node_22 [shape=record,label="{22\:\ 0x0087|LOOP_END\lLOOP:1: B:16:0x0071\-\>B:22:0x0087\l|lbyte r1 = (byte) (r1 + 1)l}"];
+}
+}
+}
+}
+Node_9 [shape=record,label="{9\:\ 0x0036|lr10.event_now = r10.event_now_list[r10.mapNo]lr10.event = new byte[r10.eventCount]lbyte r1 = 0lint r3 = r4l}"];
+subgraph cluster_LoopRegion_620248487 {
+label = "LOOP:0: (1:12)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0049|ADDED_TO_REGION\l|lif (r1 \< r10.eventCount) goto L37l}"];
+subgraph cluster_Region_1360547084 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x004b|LOOP_END\lLOOP:0: B:10:0x0047\-\>B:12:0x004b\l|lint int r4 = r3 + 1lint int r5 = r0[r3] \<\< 8lint int r3 = r4 + 1lint int r2 = (short) (r5 \| (r0[r4] & 255))lr10.event[r1] = new byte[r2]ljava.lang.System.arraycopy(r0, r3, r10.event[r1], 0, r10.event[r1].length)lint r3 = r3 + r2lbyte r1 = (byte) (r1 + 1)l}"];
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0047|LOOP_START\lPHI: r1 r3l  0x0047: PHI (r1v4 'i' byte) = (r1v3 'i' byte), (r1v5 'i' byte) binds: [B:9:0x0036, B:12:0x004b] A[DONT_GENERATE, DONT_INLINE]l  0x0047: PHI (r3v2 'start_pos' int) = (r3v1 'start_pos' int), (r3v4 'start_pos' int) binds: [B:9:0x0036, B:12:0x004b] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:10:0x0047\-\>B:12:0x004b\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0014|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ ?|SYNTHETIC\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x0071|LOOP_START\lPHI: r1l  0x0071: PHI (r1v1 'i' byte) = (r1v0 'i' byte), (r1v2 'i' byte) binds: [B:15:0x0070, B:22:0x0087] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:16:0x0071\-\>B:22:0x0087\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0075|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ 0x0087|SYNTHETIC\l|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ 0x0087|SYNTHETIC\l|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x0036|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void main.Map.createEvent((r10v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:11:0x0049 \-\> B:4:0x0014, BACK_EDGE: B:12:0x004b \-\> B:10:0x0047, CROSS_EDGE: B:17:0x0073 \-\> B:9:0x0036, BACK_EDGE: B:22:0x0087 \-\> B:16:0x0071, CROSS_EDGE: B:19:0x007b \-\> B:22:0x0087\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_7 -> Node_15[style=dashed];
+Node_8 -> Node_9;
+Node_15 -> Node_16;
+Node_17 -> Node_18;
+Node_17 -> Node_24[style=dashed];
+Node_19 -> Node_20;
+Node_19 -> Node_23[style=dashed];
+Node_20 -> Node_21;
+Node_22 -> Node_16;
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+Node_11 -> Node_13[style=dashed];
+Node_12 -> Node_10;
+Node_0 -> Node_1;
+Node_10 -> Node_11;
+Node_13 -> Node_14;
+Node_14 -> Node_5;
+Node_16 -> Node_17;
+Node_18 -> Node_19;
+Node_21 -> Node_22;
+Node_23 -> Node_22;
+Node_24 -> Node_9;
+}
+

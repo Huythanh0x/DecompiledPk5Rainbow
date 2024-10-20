@@ -1,0 +1,33 @@
+digraph "CFG formain.GameRun.drawThrowBall(Ldm\/Battle;Ldm\/Monster;III)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0005|lif (r11.throw_state != 0) goto L20l}"];
+Node_3 [shape=record,label="{3\:\ 0x0007|ldm.Ui r0 = dm.Ui.i()lr1 = r10.imgItem[0]lint r2 = r11.cThrow[0] + r14lint r3 = r15 \- r11.cThrow[1]ljavax.microedition.lcdui.Graphics r4 = main.GameRun.gljavax.microedition.lcdui.Graphics r4 = main.GameRun.glr0.drawImage(r1, r2, r3, 1 \| 32)l}"];
+Node_4 [shape=record,label="{4\:\ 0x0023|lrunThrowBall(r11, r12, r13)l}"];
+Node_5 [shape=record,label="{5\:\ 0x0026|RETURN\l|lreturnl}"];
+Node_6 [shape=record,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,label="{7\:\ 0x0027|l}"];
+Node_8 [shape=record,label="{8\:\ 0x0029|lif (r11.throw_state != 1) goto L23l}"];
+Node_9 [shape=record,label="{9\:\ 0x002b|ldrawClipPic(r10.mList_id[r12.monster[0]][1], r13, r14, r15, 80, 77, 15, r11.cThrow[2], r13)l}"];
+Node_10 [shape=record,label="{10\:\ 0x0048|l}"];
+Node_11 [shape=record,label="{11\:\ 0x004a|lif (r11.throw_state != 2) goto L18l}"];
+Node_12 [shape=record,label="{12\:\ 0x004c|ldrawCartoonOne(r13, r13, r10.mList_id[r12.monster[0]][1] * 3, r14, r15, true, r13)l}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawThrowBall((r10v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r11v0 'be' dm.Battle A[D('be' dm.Battle), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'mon' dm.Monster A[D('mon' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'mini' int A[D('mini' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x002b \-\> B:4:0x0023, CROSS_EDGE: B:11:0x004a \-\> B:4:0x0023, CROSS_EDGE: B:12:0x004c \-\> B:4:0x0023\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_7;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_10;
+Node_9 -> Node_4;
+Node_10 -> Node_11;
+Node_11 -> Node_4;
+Node_11 -> Node_12[style=dashed];
+Node_12 -> Node_4;
+}
+

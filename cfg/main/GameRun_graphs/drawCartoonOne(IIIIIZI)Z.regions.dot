@@ -1,0 +1,31 @@
+digraph "CFG formain.GameRun.drawCartoonOne(IIIIIZI)Z" {
+subgraph cluster_Region_1464160013 {
+label = "R(3:(1:3)|4|5)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_406060772 {
+label = "IF [B:2:0x000d] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000d|lif (r6.now_action[r7] \>= r6.mon[r8].aLength(r9)) goto L11l}"];
+subgraph cluster_Region_408181928 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000f|lr6.now_action[r7] = 0l}"];
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x0013|ldm.Ui.i().drawFrameOne(r6.mon[r8], r6.mon[r8].action(r9, r6.now_action[r7], 0), r10, r11, r13)l}"];
+Node_5 [shape=record,label="{5\:\ 0x0031|RETURN\l|lreturn setCartoonFrame_C(r7, r8, r9, r12)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public boolean main.GameRun.drawCartoonOne((r6v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r7v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'skill_mode' int A[D('skill_mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'select' int A[D('select' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'mode' boolean A[D('mode' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'dir' int A[D('dir' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x000d \-\> B:4:0x0013\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+}
+

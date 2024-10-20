@@ -1,0 +1,26 @@
+digraph "CFG fordm.Ms.key_delay()Z" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif (dm.Ms.key_delay != 0) goto L20l}"];
+Node_3 [shape=record,label="{3\:\ 0x0005|ldm.Ms.key_delay = dm.Ms.key_timel}"];
+Node_4 [shape=record,label="{4\:\ 0x000b|lif (dm.Ms.key_time \<= 1) goto L18l}"];
+Node_5 [shape=record,label="{5\:\ 0x000d|ldm.Ms.key_time = (byte) (dm.Ms.key_time \- 1)l}"];
+Node_6 [shape=record,label="{6\:\ 0x0013|RETURN\lORIG_RETURN\l|lreturn falsel}"];
+Node_7 [shape=record,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x0015|l}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+MethodNode[shape=record,label="{public boolean dm.Ms.key_delay((r2v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x000b \-\> B:6:0x0013, CROSS_EDGE: B:8:0x0015 \-\> B:7:0x0014\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_8;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_6;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_9 -> Node_7;
+}
+

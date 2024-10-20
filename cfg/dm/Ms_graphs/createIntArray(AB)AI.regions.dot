@@ -1,0 +1,33 @@
+digraph "CFG fordm.Ms.createIntArray([B)[I" {
+subgraph cluster_Region_1691949070 {
+label = "R(3:1|(1:4)|6)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint[] int[] r0 = new int[getStreamL(r6, 0)]lint r1 = 0l}"];
+subgraph cluster_LoopRegion_31536626 {
+label = "LOOP:0: (1:4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0009|ADDED_TO_REGION\l|lif (r1 \< r0.length) goto L14l}"];
+subgraph cluster_Region_566360013 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000c|LOOP_END\lLOOP:0: B:2:0x0008\-\>B:4:0x000c\l|lint int r2 = dm.Ms.skipldm.Ms.skip = r2 + 1lint r2 = r6[r2] & 255lint int r3 = dm.Ms.skipldm.Ms.skip = r3 + 1lint r2 = r2 \| ((r6[r3] & 255) \<\< 8)lint int r3 = dm.Ms.skipldm.Ms.skip = r3 + 1lint r2 = r2 \| ((r6[r3] & 255) \<\< 16)lint int r3 = dm.Ms.skipldm.Ms.skip = r3 + 1lr0[r1] = r2 \| ((r6[r3] & 255) \<\< 24)lr1++l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x000b|RETURN\l|lreturn r0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0008|LOOP_START\lPHI: r1l  0x0008: PHI (r1v1 'i' int) = (r1v0 'i' int), (r1v2 'i' int) binds: [B:1:0x0000, B:4:0x000c] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:4:0x000c\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000b|SYNTHETIC\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public int[] dm.Ms.createIntArray((r5v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r6v0 'data' byte[] A[D('data' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:4:0x000c \-\> B:2:0x0008\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+}
+

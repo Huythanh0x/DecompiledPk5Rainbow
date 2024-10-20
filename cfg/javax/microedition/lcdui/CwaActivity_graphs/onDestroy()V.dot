@@ -1,0 +1,12 @@
+digraph "CFG forjavax.microedition.lcdui.CwaActivity.onDestroy()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lsuper.onDestroy()ljava.lang.System.exit(0)landroid.os.Process.killProcess(android.os.Process.myPid())l}"];
+Node_2 [shape=record,label="{2\:\ 0x000e|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.lcdui.CwaActivity.onDestroy((r1v0 'this' javax.microedition.lcdui.CwaActivity A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{android.app.Activity.onDestroy():void\}]\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

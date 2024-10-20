@@ -1,0 +1,170 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.init(Landroid\/content\/Context;)V" {
+subgraph cluster_Region_164451315 {
+label = "R(1:(2:3|(1:(2:5|(1:7)(2:13|16)))))";
+node [shape=record,color=blue];
+subgraph cluster_TryCatchRegion_765071486 {
+label = "Try: R(2:3|(1:(2:5|(1:7)(2:13|16)))) catches: R(1:29)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1495002114 {
+label = "R(2:3|(1:(2:5|(1:7)(2:13|16))))";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0002|TRY_ENTER\lTRY_LEAVE\lTryCatch #4 \{NameNotFoundException \-\> 0x002b, blocks: (B:3:0x0002, B:5:0x0010, B:7:0x0021, B:22:0x0028, B:27:0x0033, B:24:0x0037, B:19:0x003d), top: B:2:0x0002, inners: #5, #4 \}\lCatch: NameNotFoundException \-\> 0x002b\l|landroid.content.pm.ApplicationInfo android.content.pm.ApplicationInfo r3 = r17.getPackageManager().getApplicationInfo(r17.getPackageName(), 128)     \/\/ Catch: android.content.pm.PackageManager.NameNotFoundException \-\> L2bl}"];
+subgraph cluster_TryCatchRegion_1192394367 {
+label = "Try: R(1:(2:5|(1:7)(2:13|16))) catches: R(1:24), R(1:27)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1504950390 {
+label = "R(1:(2:5|(1:7)(2:13|16)))";
+node [shape=record,color=blue];
+subgraph cluster_TryCatchRegion_973224568 {
+label = "Try: R(2:5|(1:7)(2:13|16)) catches: R(1:19), R(1:22)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1048804405 {
+label = "R(2:5|(1:7)(2:13|16))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0010|TRY_ENTER\lTryCatch #5 \{IllegalAccessException \-\> 0x003c, SecurityException \-\> 0x0025, blocks: (B:5:0x0010, B:7:0x0021), top: B:4:0x0010, outer: #4 \}\lCatch: SecurityException \-\> 0x0025, NameNotFoundException \-\> 0x002b, NoSuchFieldException \-\> 0x0030, IllegalArgumentException \-\> 0x0036, IllegalAccessException \-\> 0x003c\l|ljava.lang.reflect.Field java.lang.reflect.Field r4 = r3.getClass().getField(\"targetSdkVersion\")     \/\/ Catch: java.lang.SecurityException \-\> L25 android.content.pm.PackageManager.NameNotFoundException \-\> L2b java.lang.NoSuchFieldException \-\> L30 java.lang.IllegalArgumentException \-\> L36 java.lang.IllegalAccessException \-\> L3clint int r2 = r4.getInt(r3)     \/\/ Catch: java.lang.SecurityException \-\> L25 android.content.pm.PackageManager.NameNotFoundException \-\> L2b java.lang.NoSuchFieldException \-\> L30 java.lang.IllegalArgumentException \-\> L36 java.lang.IllegalAccessException \-\> L3cl}"];
+subgraph cluster_IfRegion_1144881981 {
+label = "IF [B:6:0x001f] THEN: R(1:7) ELSE: R(2:13|16)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x001f|lif (r2 \< 4) goto L39l}"];
+subgraph cluster_Region_1206305958 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0021|TRY_LEAVE\lTryCatch #5 \{IllegalAccessException \-\> 0x003c, SecurityException \-\> 0x0025, blocks: (B:5:0x0010, B:7:0x0021), top: B:4:0x0010, outer: #4 \}\lCatch: SecurityException \-\> 0x0025, NameNotFoundException \-\> 0x002b, NoSuchFieldException \-\> 0x0030, IllegalArgumentException \-\> 0x0036, IllegalAccessException \-\> 0x003c\l|lcom.uc.paymentsdk.util.Utils.sIsHdpi = false     \/\/ Catch: java.lang.SecurityException \-\> L25 android.content.pm.PackageManager.NameNotFoundException \-\> L2b java.lang.NoSuchFieldException \-\> L30 java.lang.IllegalArgumentException \-\> L36 java.lang.IllegalAccessException \-\> L3cl}"];
+}
+subgraph cluster_Region_1112562302 {
+label = "R(2:13|16)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0042|landroid.view.WindowManager android.view.WindowManager r11 = (android.view.WindowManager) r17.getSystemService(\"window\")landroid.util.DisplayMetrics android.util.DisplayMetrics r9 = new android.util.DisplayMetrics()lr11.getDefaultDisplay().getMetrics(r9)l}"];
+Node_16 [shape=record,label="{16\:\ 0x0069|PHI: r12l  0x0069: PHI (r12v18 boolean) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lcom.uc.paymentsdk.util.Utils.sIsHdpi = ((double) r9.density) \> 1.0dl}"];
+}
+}
+}
+subgraph cluster_Region_324254627 {
+label = "R(1:19) | ExcHandler: IllegalAccessException \-\> 0x003c\l";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x003d|TRY_LEAVE\lTryCatch #4 \{NameNotFoundException \-\> 0x002b, blocks: (B:3:0x0002, B:5:0x0010, B:7:0x0021, B:22:0x0028, B:27:0x0033, B:24:0x0037, B:19:0x003d), top: B:2:0x0002, inners: #5, #4 \}\lCatch: NameNotFoundException \-\> 0x002b\l|lcom.uc.paymentsdk.util.Utils.sIsHdpi = false     \/\/ Catch: android.content.pm.PackageManager.NameNotFoundException \-\> L2bl}"];
+}
+subgraph cluster_Region_1466421687 {
+label = "R(1:22) | ExcHandler: SecurityException \-\> 0x0025\l";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x0028|TRY_ENTER\lTRY_LEAVE\lTryCatch #4 \{NameNotFoundException \-\> 0x002b, blocks: (B:3:0x0002, B:5:0x0010, B:7:0x0021, B:22:0x0028, B:27:0x0033, B:24:0x0037, B:19:0x003d), top: B:2:0x0002, inners: #5, #4 \}\lCatch: NameNotFoundException \-\> 0x002b\l|lcom.uc.paymentsdk.util.Utils.sIsHdpi = false     \/\/ Catch: android.content.pm.PackageManager.NameNotFoundException \-\> L2bl}"];
+}
+}
+}
+subgraph cluster_Region_2090721497 {
+label = "R(1:24) | ExcHandler: IllegalArgumentException \-\> 0x0036\l";
+node [shape=record,color=blue];
+Node_24 [shape=record,label="{24\:\ 0x0037|TryCatch #4 \{NameNotFoundException \-\> 0x002b, blocks: (B:3:0x0002, B:5:0x0010, B:7:0x0021, B:22:0x0028, B:27:0x0033, B:24:0x0037, B:19:0x003d), top: B:2:0x0002, inners: #5, #4 \}\lCatch: NameNotFoundException \-\> 0x002b\l|lcom.uc.paymentsdk.util.Utils.sIsHdpi = false     \/\/ Catch: android.content.pm.PackageManager.NameNotFoundException \-\> L2bl}"];
+}
+subgraph cluster_Region_229623832 {
+label = "R(1:27) | ExcHandler: NoSuchFieldException \-\> 0x0030\l";
+node [shape=record,color=blue];
+Node_27 [shape=record,label="{27\:\ 0x0033|TRY_ENTER\lTryCatch #4 \{NameNotFoundException \-\> 0x002b, blocks: (B:3:0x0002, B:5:0x0010, B:7:0x0021, B:22:0x0028, B:27:0x0033, B:24:0x0037, B:19:0x003d), top: B:2:0x0002, inners: #5, #4 \}\lCatch: NameNotFoundException \-\> 0x002b\l|lcom.uc.paymentsdk.util.Utils.sIsHdpi = false     \/\/ Catch: android.content.pm.PackageManager.NameNotFoundException \-\> L2bl}"];
+}
+}
+}
+subgraph cluster_Region_53470381 {
+label = "R(1:29) | ExcHandler: NameNotFoundException \-\> 0x002b\l";
+node [shape=record,color=blue];
+Node_29 [shape=record,label="{29\:\ 0x002c|lcom.uc.paymentsdk.util.Utils.sIsHdpi = falsel}"];
+}
+}
+}
+subgraph cluster_Region_53470381 {
+label = "R(1:29) | ExcHandler: NameNotFoundException \-\> 0x002b\l";
+node [shape=record,color=blue];
+Node_29 [shape=record,label="{29\:\ 0x002c|lcom.uc.paymentsdk.util.Utils.sIsHdpi = falsel}"];
+}
+subgraph cluster_Region_1466421687 {
+label = "R(1:22) | ExcHandler: SecurityException \-\> 0x0025\l";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x0028|TRY_ENTER\lTRY_LEAVE\lTryCatch #4 \{NameNotFoundException \-\> 0x002b, blocks: (B:3:0x0002, B:5:0x0010, B:7:0x0021, B:22:0x0028, B:27:0x0033, B:24:0x0037, B:19:0x003d), top: B:2:0x0002, inners: #5, #4 \}\lCatch: NameNotFoundException \-\> 0x002b\l|lcom.uc.paymentsdk.util.Utils.sIsHdpi = false     \/\/ Catch: android.content.pm.PackageManager.NameNotFoundException \-\> L2bl}"];
+}
+subgraph cluster_Region_229623832 {
+label = "R(1:27) | ExcHandler: NoSuchFieldException \-\> 0x0030\l";
+node [shape=record,color=blue];
+Node_27 [shape=record,label="{27\:\ 0x0033|TRY_ENTER\lTryCatch #4 \{NameNotFoundException \-\> 0x002b, blocks: (B:3:0x0002, B:5:0x0010, B:7:0x0021, B:22:0x0028, B:27:0x0033, B:24:0x0037, B:19:0x003d), top: B:2:0x0002, inners: #5, #4 \}\lCatch: NameNotFoundException \-\> 0x002b\l|lcom.uc.paymentsdk.util.Utils.sIsHdpi = false     \/\/ Catch: android.content.pm.PackageManager.NameNotFoundException \-\> L2bl}"];
+}
+subgraph cluster_Region_2090721497 {
+label = "R(1:24) | ExcHandler: IllegalArgumentException \-\> 0x0036\l";
+node [shape=record,color=blue];
+Node_24 [shape=record,label="{24\:\ 0x0037|TryCatch #4 \{NameNotFoundException \-\> 0x002b, blocks: (B:3:0x0002, B:5:0x0010, B:7:0x0021, B:22:0x0028, B:27:0x0033, B:24:0x0037, B:19:0x003d), top: B:2:0x0002, inners: #5, #4 \}\lCatch: NameNotFoundException \-\> 0x002b\l|lcom.uc.paymentsdk.util.Utils.sIsHdpi = false     \/\/ Catch: android.content.pm.PackageManager.NameNotFoundException \-\> L2bl}"];
+}
+subgraph cluster_Region_324254627 {
+label = "R(1:19) | ExcHandler: IllegalAccessException \-\> 0x003c\l";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x003d|TRY_LEAVE\lTryCatch #4 \{NameNotFoundException \-\> 0x002b, blocks: (B:3:0x0002, B:5:0x0010, B:7:0x0021, B:22:0x0028, B:27:0x0033, B:24:0x0037, B:19:0x003d), top: B:2:0x0002, inners: #5, #4 \}\lCatch: NameNotFoundException \-\> 0x002b\l|lcom.uc.paymentsdk.util.Utils.sIsHdpi = false     \/\/ Catch: android.content.pm.PackageManager.NameNotFoundException \-\> L2bl}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0002|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0010|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0024|SYNTHETIC\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0024|ORIG_RETURN\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0066|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0068|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x006c|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x003c|ExcHandler: IllegalAccessException \-\> 0x003c\l|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x0025|ExcHandler: SecurityException \-\> 0x0025\l|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ 0x0026|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ 0x0036|ExcHandler: IllegalArgumentException \-\> 0x0036\l|l}"];
+Node_25 [shape=record,color=red,label="{25\:\ 0x0030|ExcHandler: NoSuchFieldException \-\> 0x0030\l|l}"];
+Node_26 [shape=record,color=red,label="{26\:\ 0x0031|l}"];
+Node_28 [shape=record,color=red,label="{28\:\ 0x002b|ExcHandler: NameNotFoundException \-\> 0x002b\l|l}"];
+Node_30 [shape=record,color=red,label="{30\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public static void com.uc.paymentsdk.util.Utils.init((r17v0 'context' android.content.Context A[D('context' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #4 \{NameNotFoundException \-\> 0x002b, blocks: (B:3:0x0002, B:5:0x0010, B:7:0x0021, B:22:0x0028, B:27:0x0033, B:24:0x0037, B:19:0x003d), top: B:2:0x0002, inners: #5, #4 \}, TryCatch #5 \{IllegalAccessException \-\> 0x003c, SecurityException \-\> 0x0025, blocks: (B:5:0x0010, B:7:0x0021), top: B:4:0x0010, outer: #4 \}, TryCatch #4 \{IllegalArgumentException \-\> 0x0036, NoSuchFieldException \-\> 0x0030, blocks: (B:5:0x0010, B:7:0x0021), top: B:4:0x0010, outer: #4 \}\lCROSS_EDGE: B:29:0x002c \-\> B:9:0x0024, CROSS_EDGE: B:19:0x003d \-\> B:8:0x0024, CROSS_EDGE: B:22:0x0028 \-\> B:8:0x0024, CROSS_EDGE: B:12:? \-\> B:28:0x002b, CROSS_EDGE: B:24:0x0037 \-\> B:8:0x0024, CROSS_EDGE: B:27:0x0033 \-\> B:8:0x0024, CROSS_EDGE: B:16:0x0069 \-\> B:8:0x0024, CROSS_EDGE: B:17:0x006c \-\> B:16:0x0069, CROSS_EDGE: B:4:0x0010 \-\> B:18:0x003c, CROSS_EDGE: B:4:0x0010 \-\> B:20:0x0025, CROSS_EDGE: B:4:0x0010 \-\> B:28:0x002b, CROSS_EDGE: B:4:0x0010 \-\> B:23:0x0036, CROSS_EDGE: B:4:0x0010 \-\> B:25:0x0030, CROSS_EDGE: B:2:0x0002 \-\> B:28:0x002b\l}"];
+MethodNode -> Node_0;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_6 -> Node_13[style=dashed];
+Node_7 -> Node_8;
+Node_7 -> Node_12;
+Node_13 -> Node_14;
+Node_16 -> Node_8;
+Node_19 -> Node_8;
+Node_22 -> Node_8;
+Node_24 -> Node_8;
+Node_27 -> Node_8;
+Node_29 -> Node_30;
+Node_29 -> Node_30;
+Node_22 -> Node_8;
+Node_27 -> Node_8;
+Node_24 -> Node_8;
+Node_19 -> Node_8;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_28;
+Node_4 -> Node_5;
+Node_4 -> Node_18;
+Node_4 -> Node_20;
+Node_4 -> Node_28;
+Node_4 -> Node_23;
+Node_4 -> Node_25;
+Node_8 -> Node_9;
+Node_8 -> Node_11;
+Node_9 -> Node_10;
+Node_11 -> Node_28;
+Node_12 -> Node_18;
+Node_12 -> Node_20;
+Node_12 -> Node_28;
+Node_12 -> Node_23;
+Node_12 -> Node_25;
+Node_14 -> Node_15;
+Node_14 -> Node_17;
+Node_15 -> Node_16;
+Node_17 -> Node_16;
+Node_18 -> Node_19;
+Node_20 -> Node_21;
+Node_21 -> Node_22;
+Node_23 -> Node_24;
+Node_25 -> Node_26;
+Node_26 -> Node_27;
+Node_28 -> Node_29;
+Node_30 -> Node_10;
+}
+

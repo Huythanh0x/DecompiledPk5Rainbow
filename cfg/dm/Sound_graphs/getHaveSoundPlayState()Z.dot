@@ -1,0 +1,42 @@
+digraph "CFG fordm.Sound.getHaveSoundPlayState()Z" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0001|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0001|TRY_ENTER\lTryCatch #0 \{Exception \-\> 0x0021, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x000f, B:12:0x0018), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0021\l|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0003|lif (r4.snd_music == null) goto L26l}"];
+Node_5 [shape=record,label="{5\:\ 0x0005|TryCatch #0 \{Exception \-\> 0x0021, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x000f, B:12:0x0018), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0021\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000d|lif (r4.snd_music.getState() != 400) goto L26l}"];
+Node_7 [shape=record,label="{7\:\ 0x000f|TryCatch #0 \{Exception \-\> 0x0021, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x000f, B:12:0x0018), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0021\l|ljava.lang.System.out.println(\"getHaveSoundPlayState() true\")     \/\/ Catch: java.lang.Exception \-\> L21lr1 = truel}"];
+Node_8 [shape=record,label="{8\:\ 0x0017|SYNTHETIC\lPHI: r1l  0x0017: PHI (r1v6 boolean) = (r1v5 boolean), (r1v10 boolean) binds: [B:13:0x001f, B:7:0x000f] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0017|RETURN\lORIG_RETURN\l|lreturn r1l}"];
+Node_10 [shape=record,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_12 [shape=record,label="{12\:\ 0x0018|TRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x0021, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x000f, B:12:0x0018), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0021\l|ljava.lang.System.out.println(\"getHaveSoundPlayState() false\")     \/\/ Catch: java.lang.Exception \-\> L21l}"];
+Node_13 [shape=record,label="{13\:\ 0x001f|lr1 = falsel}"];
+Node_14 [shape=record,label="{14\:\ 0x0021|ExcHandler: Exception \-\> 0x0021\l|ljava.lang.Exception r1 = move\-exceptionl}"];
+Node_15 [shape=record,label="{15\:\ 0x0022|lr1.printStackTrace()ljava.lang.System.out.println(\"getHaveSoundPlayState() false\")l}"];
+Node_16 [shape=record,label="{16\:\ ?|SYNTHETIC\lRETURN\l|lreturn falsel}"];
+MethodNode[shape=record,label="{public boolean dm.Sound.getHaveSoundPlayState((r4v0 'this' dm.Sound A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{Exception \-\> 0x0021, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x000f, B:12:0x0018), top: B:2:0x0001 \}\lCROSS_EDGE: B:15:0x0022 \-\> B:9:0x0017, CROSS_EDGE: B:13:0x001f \-\> B:8:0x0017, CROSS_EDGE: B:4:0x0003 \-\> B:12:0x0018, CROSS_EDGE: B:2:0x0001 \-\> B:14:0x0021\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_14;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_12;
+Node_5 -> Node_6;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_12;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_11;
+Node_9 -> Node_10;
+Node_11 -> Node_14;
+Node_12 -> Node_13;
+Node_13 -> Node_8;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_16 -> Node_10;
+}
+

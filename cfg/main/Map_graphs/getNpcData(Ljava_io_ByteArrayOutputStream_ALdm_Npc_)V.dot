@@ -1,0 +1,44 @@
+digraph "CFG formain.Map.getNpcData(Ljava\/io\/ByteArrayOutputStream;[Ldm\/Npc;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr1 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0001|LOOP_START\lSYNTHETIC\lEXC_TOP_SPLITTER\lPHI: r1l  0x0001: PHI (r1v1 'i' int) = (r1v0 'i' int), (r1v2 'i' int) binds: [B:1:0x0000, B:9:0x0017] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0001\-\>B:9:0x0017\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0001|TRY_ENTER\lTryCatch #0 \{Exception \-\> 0x001a, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x0010), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x001a\l|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0002|lif (r1 \< r6.length) goto L24l}"];
+Node_5 [shape=record,label="{5\:\ 0x0005|TryCatch #0 \{Exception \-\> 0x001a, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x0010), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x001a\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000e|lif (r6[r1].other[9] != 1) goto L34l}"];
+Node_7 [shape=record,label="{7\:\ 0x0010|TRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x001a, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x0010), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x001a\l|lr5.write(r6[r1].other)     \/\/ Catch: java.lang.Exception \-\> L1al}"];
+Node_8 [shape=record,label="{8\:\ 0x0017|SYNTHETIC\l|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0017|LOOP_END\lLOOP:0: B:2:0x0001\-\>B:9:0x0017\l|lint r1 = r1 + 1l}"];
+Node_10 [shape=record,label="{10\:\ 0x0017|SYNTHETIC\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x0004|SYNTHETIC\l|l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_13 [shape=record,label="{13\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_14 [shape=record,label="{14\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_15 [shape=record,label="{15\:\ 0x001a|ExcHandler: Exception \-\> 0x001a\l|ljava.lang.Exception r2 = move\-exceptionl}"];
+Node_16 [shape=record,label="{16\:\ 0x001b|lr2.printStackTrace()l}"];
+Node_17 [shape=record,label="{17\:\ 0x0004|RETURN\lORIG_RETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{private void main.Map.getNpcData((r4v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r5v0 'byteArray' java.io.ByteArrayOutputStream A[D('byteArray' java.io.ByteArrayOutputStream), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'npc' dm.Npc[] A[D('npc' dm.Npc[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{Exception \-\> 0x001a, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x0010), top: B:2:0x0001 \}\lBACK_EDGE: B:9:0x0017 \-\> B:2:0x0001, CROSS_EDGE: B:6:0x000e \-\> B:9:0x0017, CROSS_EDGE: B:16:0x001b \-\> B:17:0x0004, CROSS_EDGE: B:2:0x0001 \-\> B:15:0x001a\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_15;
+Node_3 -> Node_4;
+Node_3 -> Node_14;
+Node_4 -> Node_5;
+Node_4 -> Node_11[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_10;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_9 -> Node_2;
+Node_10 -> Node_9;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_16 -> Node_17;
+Node_17 -> Node_13;
+}
+

@@ -1,0 +1,37 @@
+digraph "CFG formain.GameRun.drawEnemyState()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.i().drawK(10, 25, 179, 110, 2)ldm.Ui.i().drawKuang(10 + 2, 25 + 2, 147, 33)l}"];
+Node_2 [shape=record,label="{2\:\ 0x002b|lif (r11.enB.getMon().monster[3] == (\-1)) goto L20l}"];
+Node_3 [shape=record,label="{3\:\ 0x002d|ldm.Ui.i().drawUi(r11.enB.getMon().monster[3] + 5, 10 + 16, 25 + 16, 3, 0)l}"];
+Node_4 [shape=record,label="{4\:\ 0x0047|ldm.Ui.i().drawString(getNameMon(r11.enB.getMon().monster[0]).toString(), (10 + 75) + 14, 25 + 1, 17, 4, 2)ldm.Ui.i().drawNum(new java.lang.StringBuilder(java.lang.String.valueOf(r11.enB.getMon().monster[2])).append(main.Constants_H.TXT_9).toString(), (10 + 125) + 27, 25 + 20, 0, 0)ldm.Ui.i().drawK0(10 + 2, (25 + 25) + 11, 62, 14, 4)ldm.Ui.i().drawUi(34, 10 + 4, (25 + 25) + 12, 0, 0)ldm.Ui.i().drawNum(new java.lang.StringBuilder(java.lang.String.valueOf(r11.enB.countS[0] + 100)).append(\"%\").toString(), 10 + 60, (25 + 25) + 24, 1, 1)ldm.Ui.i().drawString(main.Constants_H.GAME_TXT_30, 10 + 2, (25 + 25) + 30, 20, 4, 2)ldrawMonKind(r11.enB.getMon().monster[4], (10 + 100) + 8, (25 + 25) + 38, 0)ldm.Ui r3 = dm.Ui.i()l}"];
+Node_5 [shape=record,label="{5\:\ 0x0124|lif (r11.monInfoList[r11.enB.getMon().monster[0]] != 2) goto L28l}"];
+Node_6 [shape=record,label="{6\:\ 0x0126|lr4 = main.Constants_H.TXT_26l}"];
+Node_7 [shape=record,label="{7\:\ 0x0129|PHI: r4l  0x0129: PHI (r4v29 java.lang.String) = (r4v28 java.lang.String), (r4v38 java.lang.String) binds: [B:14:0x015d, B:6:0x0126] A[DONT_GENERATE, DONT_INLINE]\l|lr3.drawString(r4, 10 + 2, (25 + 50) + 32, 20, 4, 2)ldm.Ui r3 = dm.Ui.i()l}"];
+Node_8 [shape=record,label="{8\:\ 0x014a|lif (r11.monInfoList[r11.enB.getMon().monster[0]] != 2) goto L29l}"];
+Node_9 [shape=record,label="{9\:\ 0x014c|lr4 = 25l}"];
+Node_10 [shape=record,label="{10\:\ 0x014f|PHI: r4l  0x014f: PHI (r4v36 int) = (r4v35 int), (r4v37 int) binds: [B:13:0x0161, B:9:0x014c] A[DONT_GENERATE, DONT_INLINE]\l|lr3.drawUi(r4, (10 + 100) + 4, (25 + 50) + 40, 0, 0)l}"];
+Node_11 [shape=record,label="{11\:\ 0x015c|RETURN\l|lreturnl}"];
+Node_12 [shape=record,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x0161|lr4 = 26l}"];
+Node_14 [shape=record,label="{14\:\ 0x015d|lr4 = main.Constants_H.TXT_27l}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawEnemyState((r11v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:13:0x0161 \-\> B:10:0x014f, CROSS_EDGE: B:14:0x015d \-\> B:7:0x0129, CROSS_EDGE: B:2:0x002b \-\> B:4:0x0047\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_4;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_14;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_13;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_13 -> Node_10;
+Node_14 -> Node_7;
+}
+

@@ -1,0 +1,97 @@
+digraph "CFG formain.GameRun.drawAnimationBattle(Ldm\/Battle;I)V" {
+subgraph cluster_Region_616428562 {
+label = "R(1:(1:(5:5|(1:7)|(1:9)|10|(1:(2:(1:14)|15)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1231542021 {
+label = "R(1:(5:5|(1:7)|(1:9)|10|(1:(2:(1:14)|15))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1303621699 {
+label = "IF [B:2:0x0004] THEN: R(5:5|(1:7)|(1:9)|10|(1:(2:(1:14)|15))) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (r9.action == 0) goto L23l}"];
+subgraph cluster_Region_267162263 {
+label = "R(5:5|(1:7)|(1:9)|10|(1:(2:(1:14)|15)))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0007|lbyte byte r1 = (byte) (r9.skill \/ 5)lbyte byte r3 = (byte) (r9.skill % 5)l}"];
+subgraph cluster_IfRegion_1672478258 {
+label = "IF [B:6:0x0011] THEN: R(1:7) ELSE: null";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0011|lif (r1 \> 5) goto L25l}"];
+subgraph cluster_Region_96411348 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0013|lr1 = 5l}"];
+}
+}
+subgraph cluster_IfRegion_1865818303 {
+label = "IF [B:8:0x0014] THEN: R(1:9) ELSE: null";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0014|PHI: r1l  0x0014: PHI (r1v1 'skill_type' byte) = (r1v0 'skill_type' byte), (r1v2 'skill_type' byte) binds: [B:6:0x0011, B:7:0x0013] A[DONT_GENERATE, DONT_INLINE]\l|lif (r1 == 5) goto L27l}"];
+subgraph cluster_Region_2031192074 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0016|lbyte r3 = (byte) (r9.skill \- 25)l}"];
+}
+}
+Node_10 [shape=record,label="{10\:\ 0x001c|PHI: r3l  0x001c: PHI (r3v1 'skill_id' byte) = (r3v0 'skill_id' byte), (r3v2 'skill_id' byte) binds: [B:8:0x0014, B:9:0x0016] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+subgraph cluster_Region_610617769 {
+label = "R(1:(2:(1:14)|15))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_69562340 {
+label = "IF [B:11:0x0037] THEN: R(2:(1:14)|15) ELSE: null";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0037|lif (drawMagicC(r1, r1, r3, getBXY(r8.mini_state, r9.skill, true), getBXY(r8.mini_state, r9.skill, false), r8.mini_state ^ 1) != false) goto L30l}"];
+subgraph cluster_Region_1865622611 {
+label = "R(2:(1:14)|15)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_404429135 {
+label = "IF [B:13:0x003b] THEN: R(1:14) ELSE: null";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x003b|lif (r8.mini_state == 1) goto L32l}"];
+subgraph cluster_Region_1699981172 {
+label = "R(1:14)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x003d|lshort[] short[] r0 = r9.getMon().monsterProlr0[1] = (short) (r0[1] \- getSkillMana(r9.getMon(), r9.skill))lvalueMend(r9.getMon())l}"];
+}
+}
+Node_15 [shape=record,label="{15\:\ 0x005a|lrunHit()l}"];
+}
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0006|ORIG_RETURN\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0039|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ ?|SYNTHETIC\l|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawAnimationBattle((r8v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r9v0 'amB' dm.Battle A[D('amB' dm.Battle), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'mini_am' int A[D('mini_am' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:11:0x0037 \-\> B:3:0x0006, CROSS_EDGE: B:15:0x005a \-\> B:3:0x0006, CROSS_EDGE: B:13:0x003b \-\> B:15:0x005a, CROSS_EDGE: B:8:0x0014 \-\> B:10:0x001c, CROSS_EDGE: B:6:0x0011 \-\> B:8:0x0014\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_6 -> Node_8[style=dashed];
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_10[style=dashed];
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_11 -> Node_17[style=dashed];
+Node_13 -> Node_14;
+Node_13 -> Node_15[style=dashed];
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_12 -> Node_13;
+Node_16 -> Node_4;
+Node_17 -> Node_4;
+}
+

@@ -1,0 +1,35 @@
+digraph "CFG formain.GameRun.doPaint(I)V" {
+subgraph cluster_Region_191421620 {
+label = "R(2:(1:2)(1:6)|3)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1908778906 {
+label = "IF [B:1:0x0000] THEN: R(1:2) ELSE: R(1:6)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lif (r2 != 0) goto L10l}"];
+subgraph cluster_Region_619137146 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lr1.b_c = (byte) r2l}"];
+}
+subgraph cluster_Region_302840974 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x000b|lmain.GameRun.run_state = \-10l}"];
+}
+}
+Node_3 [shape=record,label="{3\:\ 0x0005|lmain.GameRun.mc.paint()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x000a|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.doPaint((r1v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r2v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x000b \-\> B:3:0x0005\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_1 -> Node_6[style=dashed];
+Node_2 -> Node_3;
+Node_6 -> Node_3;
+Node_3 -> Node_4;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+}
+

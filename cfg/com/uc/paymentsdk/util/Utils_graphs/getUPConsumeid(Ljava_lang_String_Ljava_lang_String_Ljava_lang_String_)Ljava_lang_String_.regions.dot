@@ -1,0 +1,36 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.getUPConsumeid(Ljava\/lang\/String;Ljava\/lang\/String;Ljava\/lang\/String;)Ljava\/lang\/String;" {
+subgraph cluster_Region_1786164042 {
+label = "R(2:(1:8)|6)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_731066061 {
+label = "IF [B:2:0x0002, B:4:0x000c] THEN: R(1:8) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (com.uc.paymentsdk.util.Utils.upconsumeid == null) goto L15l}"];
+Node_4 [shape=record,label="{4\:\ 0x000c|ADDED_TO_REGION\l|lif (com.uc.paymentsdk.util.Utils.upconsumeid.equals(\"\") != false) goto L15l}"];
+subgraph cluster_Region_1721380711 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x000e|lcom.uc.paymentsdk.util.Utils.upconsumeid = java.lang.String.valueOf(r3) + r4 + r2 + createARanConsumeID(10)l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0031|RETURN\l|lreturn com.uc.paymentsdk.util.Utils.upconsumeidl}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0004|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x002f|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static java.lang.String com.uc.paymentsdk.util.Utils.getUPConsumeid((r2v0 'uid' java.lang.String A[D('uid' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 'cpid' java.lang.String A[D('cpid' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'gameid' java.lang.String A[D('gameid' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x000c \-\> B:5:0x002f, CROSS_EDGE: B:2:0x0002 \-\> B:8:0x000e\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_8;
+Node_4 -> Node_8;
+Node_4 -> Node_5[style=dashed];
+Node_8 -> Node_5;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+}
+

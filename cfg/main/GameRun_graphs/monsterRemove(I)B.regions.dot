@@ -1,0 +1,77 @@
+digraph "CFG formain.GameRun.monsterRemove(I)B" {
+subgraph cluster_Region_964866242 {
+label = "R(1:(2:(6:3|(1:6)|8|(1:11)|13|14)|(1:16)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1041812821 {
+label = "R(2:(6:3|(1:6)|8|(1:11)|13|14)|(1:16))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1736046129 {
+label = "IF [B:2:0x0003] THEN: R(6:3|(1:6)|8|(1:11)|13|14) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif (r5.myMon_length \> 1) goto L22l}"];
+subgraph cluster_Region_771481068 {
+label = "R(6:3|(1:6)|8|(1:11)|13|14)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0005|lr5.myMonsters[r6] = nulllbyte byte r0 = (byte) r6l}"];
+subgraph cluster_LoopRegion_2025116082 {
+label = "LOOP:0: (1:6)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000e|ADDED_TO_REGION\l|lif (r0 \< (r5.myMon_length \- 1)) goto L30l}"];
+subgraph cluster_Region_996959568 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x001f|LOOP_END\lLOOP:0: B:4:0x000b\-\>B:6:0x001f\l|lr5.myMonsters[r0] = r5.myMonsters[r0 + 1]lr5.evolve[r0] = r5.evolve[r0 + 1]lbyte r0 = (byte) (r0 + 1)l}"];
+}
+}
+Node_8 [shape=record,label="{8\:\ 0x0010|lbyte byte r0 = r5.myMon_lengthl}"];
+subgraph cluster_LoopRegion_1035553735 {
+label = "LOOP:1: (1:11)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0015|ADDED_TO_REGION\l|lif (r0 \< r5.myMonsters.length) goto L31l}"];
+subgraph cluster_Region_1314841889 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0037|LOOP_END\lLOOP:1: B:9:0x0012\-\>B:11:0x0037\l|lr5.evolve[r0] = truelbyte r0 = (byte) (r0 + 1)l}"];
+}
+}
+Node_13 [shape=record,label="{13\:\ 0x0017|lr5.myMon_length = (byte) (r5.myMon_length \- 1)l}"];
+Node_14 [shape=record,label="{14\:\ 0x001e|RETURN\lORIG_RETURN\l|lreturn (byte) 1l}"];
+}
+}
+subgraph cluster_Region_2109333694 {
+label = "R(1:16)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x003f|SYNTHETIC\lRETURN\l|lreturn (byte) \-1l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x000b|LOOP_START\lPHI: r0l  0x000b: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v5 'i' byte) binds: [B:3:0x0005, B:6:0x001f] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:4:0x000b\-\>B:6:0x001f\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0010|SYNTHETIC\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0012|LOOP_START\lPHI: r0l  0x0012: PHI (r0v3 'i' byte) = (r0v2 'i' byte), (r0v4 'i' byte) binds: [B:8:0x0010, B:11:0x0037] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:9:0x0012\-\>B:11:0x0037\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0017|SYNTHETIC\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private byte main.GameRun.monsterRemove((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r6v0 'no' int A[D('no' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lBACK_EDGE: B:11:0x0037 \-\> B:9:0x0012, BACK_EDGE: B:6:0x001f \-\> B:4:0x000b, CROSS_EDGE: B:16:0x003f \-\> B:14:0x001e\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_16[style=dashed];
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_5 -> Node_7[style=dashed];
+Node_6 -> Node_4;
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_10 -> Node_12[style=dashed];
+Node_11 -> Node_9;
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+Node_16 -> Node_15;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_12 -> Node_13;
+}
+

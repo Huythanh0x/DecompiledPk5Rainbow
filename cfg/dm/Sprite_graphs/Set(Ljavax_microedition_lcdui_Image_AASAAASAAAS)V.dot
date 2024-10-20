@@ -1,0 +1,12 @@
+digraph "CFG fordm.Sprite.Set(Ljavax\/microedition\/lcdui\/Image;[[S[[[S[[[S)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lnullIMFA()lr1.type = falselr1.img = r2lr1.module_short = r3lr1.frame_short = r4lr1.action_short = r5l}"];
+Node_2 [shape=record,label="{2\:\ 0x000e|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Sprite.Set((r1v0 'this' dm.Sprite A[IMMUTABLE_TYPE, THIS]), (r2v0 '_img' javax.microedition.lcdui.Image A[D('_img' javax.microedition.lcdui.Image), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 '_module' short[][] A[D('_module' short[][]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 '_frame' short[][][] A[D('_frame' short[][][]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 '_action' short[][][] A[D('_action' short[][][]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

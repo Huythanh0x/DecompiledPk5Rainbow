@@ -1,0 +1,24 @@
+digraph "CFG fordm.Sound.soundStart()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0000|TRY_ENTER\lTRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x0006, blocks: (B:2:0x0000), top: B:1:0x0000 \}\lCatch: Exception \-\> 0x0006\l|lr2.snd_music.start()     \/\/ Catch: java.lang.Exception \-\> L6l}"];
+Node_3 [shape=record,label="{3\:\ 0x0005|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_4 [shape=record,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,label="{5\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0006|ExcHandler: Exception \-\> 0x0006\l|ljava.lang.Exception r1 = move\-exceptionl}"];
+Node_7 [shape=record,label="{7\:\ 0x0007|lr1.printStackTrace()l}"];
+Node_8 [shape=record,label="{8\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void dm.Sound.soundStart((r2v0 'this' dm.Sound A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{Exception \-\> 0x0006, blocks: (B:2:0x0000), top: B:1:0x0000 \}\lCROSS_EDGE: B:7:0x0007 \-\> B:3:0x0005, CROSS_EDGE: B:1:0x0000 \-\> B:6:0x0006\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_1 -> Node_6;
+Node_2 -> Node_3;
+Node_2 -> Node_5;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_4;
+}
+

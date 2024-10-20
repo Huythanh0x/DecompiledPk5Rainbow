@@ -1,0 +1,45 @@
+digraph "CFG formain.GameRun.drawAnimationBattle(Ldm\/Battle;I)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (r9.action == 0) goto L23l}"];
+Node_3 [shape=record,label="{3\:\ 0x0006|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_4 [shape=record,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0007|lbyte r1 = (byte) (r9.skill \/ 5)lbyte r3 = (byte) (r9.skill % 5)l}"];
+Node_6 [shape=record,label="{6\:\ 0x0011|lif (r1 \<= 5) goto L26l}"];
+Node_7 [shape=record,label="{7\:\ 0x0013|lr1 = 5l}"];
+Node_8 [shape=record,label="{8\:\ 0x0014|PHI: r1l  0x0014: PHI (r1v1 'skill_type' byte) = (r1v0 'skill_type' byte), (r1v2 'skill_type' byte) binds: [B:6:0x0011, B:7:0x0013] A[DONT_GENERATE, DONT_INLINE]\l|lif (r1 != 5) goto L28l}"];
+Node_9 [shape=record,label="{9\:\ 0x0016|lbyte r3 = (byte) (r9.skill \- 25)l}"];
+Node_10 [shape=record,label="{10\:\ 0x001c|PHI: r3l  0x001c: PHI (r3v1 'skill_id' byte) = (r3v0 'skill_id' byte), (r3v2 'skill_id' byte) binds: [B:8:0x0014, B:9:0x0016] A[DONT_GENERATE, DONT_INLINE]\l|lr2 = r1l}"];
+Node_11 [shape=record,label="{11\:\ 0x0037|lif (drawMagicC(r1, r2, r3, getBXY(r8.mini_state, r9.skill, true), getBXY(r8.mini_state, r9.skill, false), r8.mini_state ^ 1) == false) goto L34l}"];
+Node_12 [shape=record,label="{12\:\ 0x0039|l}"];
+Node_13 [shape=record,label="{13\:\ 0x003b|lif (r8.mini_state != 1) goto L33l}"];
+Node_14 [shape=record,label="{14\:\ 0x003d|lshort[] r0 = r9.getMon().monsterProlr0[1] = (short) (r0[1] \- getSkillMana(r9.getMon(), r9.skill))lvalueMend(r9.getMon())l}"];
+Node_15 [shape=record,label="{15\:\ 0x005a|lrunHit()l}"];
+Node_16 [shape=record,label="{16\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_17 [shape=record,label="{17\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawAnimationBattle((r8v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r9v0 'amB' dm.Battle A[D('amB' dm.Battle), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'mini_am' int A[D('mini_am' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:11:0x0037 \-\> B:3:0x0006, CROSS_EDGE: B:15:0x005a \-\> B:3:0x0006, CROSS_EDGE: B:13:0x003b \-\> B:15:0x005a, CROSS_EDGE: B:8:0x0014 \-\> B:10:0x001c, CROSS_EDGE: B:6:0x0011 \-\> B:8:0x0014\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_8;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_10;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_11 -> Node_12[style=dashed];
+Node_11 -> Node_17;
+Node_12 -> Node_13;
+Node_13 -> Node_14[style=dashed];
+Node_13 -> Node_15;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_16 -> Node_4;
+Node_17 -> Node_4;
+}
+

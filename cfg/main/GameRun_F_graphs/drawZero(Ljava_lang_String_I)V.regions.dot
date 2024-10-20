@@ -1,0 +1,16 @@
+digraph "CFG formain.GameRun_F.drawZero(Ljava\/lang\/String;I)V" {
+subgraph cluster_Region_539250707 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.i().drawString(\"点击屏幕\" + r8, main.Constants_H.WIDTH_H, r9, 1 \| 32, 0, 0)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x001e|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun_F.drawZero((r7v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]), (r8v0 'str' java.lang.String A[D('str' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

@@ -1,0 +1,67 @@
+digraph "CFG formain.GameRun.drawClipPic(IIIIIIIII)V" {
+subgraph cluster_Region_1890260397 {
+label = "R(2:1|(2:2|(2:7|11)(1:16)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r10 = 1lbyte byte r11 = (byte) (r18 \/ r20)lint int r2 = 2 \<\< r21l}"];
+subgraph cluster_LoopRegion_767525336 {
+label = "LOOP:0: (2:2|(2:7|11)(1:16))";
+node [shape=record,color=blue];
+subgraph cluster_Region_949985687 {
+label = "R(2:2|(2:7|11)(1:16))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0008|LOOP_START\lPHI: r2 r10l  0x0008: PHI (r2v3 int) = (r2v2 int), (r2v11 int) binds: [B:1:0x0000, B:11:0x0049] A[DONT_GENERATE, DONT_INLINE]l  0x0008: PHI (r10v1 'i' byte) = (r10v0 'i' byte), (r10v2 'i' byte) binds: [B:1:0x0000, B:11:0x0049] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:11:0x0049\l|lshort short r12 = (short) r2l}"];
+subgraph cluster_IfRegion_1231392105 {
+label = "IF [B:3:0x000b] THEN: R(2:7|11) ELSE: R(1:16)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000b|lif (r10 \< r20) goto L24l}"];
+subgraph cluster_Region_331923446 {
+label = "R(2:7|11)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x001b|PHI: r5l  0x001b: PHI (r5v2 short) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lmain.GameRun.g.clipRect(r16 \- (r10 * r11), r17 \- r19, r11 \- r12 \<= 0 ? r11 : r12, r19 + 20)ldrawCartoonOne(r15, r15, r14 * 3, r16, r17, true, r22)lmain.GameRun.g.setClip(0, 0, main.Constants_H.WIDTH, main.Constants_H.HEIGHT)l}"];
+Node_11 [shape=record,label="{11\:\ 0x0049|LOOP_END\lPHI: r5l  0x0049: PHI (r5v7 short) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:11:0x0049\l|lmain.GameRun.g.clipRect(((r10 \- 1) * r11) + r16, r17 \- r19, r11 \- r12 \<= 0 ? r11 : r12, r19 + 20)ldrawCartoonOne(r15, r15, r14 * 3, r16, r17, true, r22)lmain.GameRun.g.setClip(0, 0, main.Constants_H.WIDTH, main.Constants_H.HEIGHT)lbyte r10 = (byte) (r10 + 1)lint r2 = r12 \/ 2l}"];
+}
+subgraph cluster_Region_461615137 {
+label = "R(1:16)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x000d|RETURN\l|lreturnl}"];
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x000e|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0018|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x001a|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0046|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0048|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0049|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0071|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0049|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x006f|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x000d|SYNTHETIC\l|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawClipPic((r13v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r14v0 'action_id' int A[D('action_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r16v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r17v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r18v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r19v0 'h' int A[D('h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r20v0 'piece' int A[D('piece' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r21v0 'cc' int A[D('cc' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r22v0 'dir' int A[D('dir' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:11:0x0049 \-\> B:2:0x0008, CROSS_EDGE: B:12:0x0071 \-\> B:11:0x0049, CROSS_EDGE: B:14:0x006f \-\> B:7:0x001b\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_15[style=dashed];
+Node_7 -> Node_8;
+Node_11 -> Node_2;
+Node_16 -> Node_17;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_14;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_8 -> Node_12;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_12 -> Node_13;
+Node_13 -> Node_11;
+Node_14 -> Node_7;
+Node_15 -> Node_16;
+}
+

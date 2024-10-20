@@ -1,0 +1,52 @@
+digraph "CFG formain.GameRun.addItem(II)B" {
+subgraph cluster_Region_355167064 {
+label = "R(3:1|(2:3|(2:5|6))(1:10)|9)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte byte r1 = findItemType(r9)lbyte byte r0 = findItem(r1, r9, false)l}"];
+subgraph cluster_IfRegion_1669221074 {
+label = "IF [B:2:0x000d] THEN: R(2:3|(2:5|6)) ELSE: R(1:10)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000d|lif (r0 != (\-1)) goto L15l}"];
+subgraph cluster_Region_1974725051 {
+label = "R(2:3|(2:5|6))";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000f|lbyte[] byte[] r2 = r8.items[r1][r0]lbyte byte r3 = (byte) (r2[1] + r10)lr2[1] = r3l}"];
+subgraph cluster_IfRegion_166365495 {
+label = "IF [B:4:0x001b] THEN: R(2:5|6) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x001b|lif (r3 \> 99) goto L17l}"];
+subgraph cluster_Region_865146029 {
+label = "R(2:5|6)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x001d|lr8.items[r1][r0][1] = 99lsay(java.lang.String.valueOf(getNameItem(r8.items[r1][r0][0])) + main.Constants_H.MONEY_TXT_5, 0)l}"];
+Node_6 [shape=record,label="{6\:\ 0x0048|RETURN\lORIG_RETURN\l|lreturn (byte) \-1l}"];
+}
+}
+}
+subgraph cluster_Region_759272841 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0049|lr8.items[r1][r8.itemsLength[r1]][0] = (byte) r9lr8.items[r1][r8.itemsLength[r1]][1] = (byte) r10lbyte[] byte[] r2 = r8.itemsLengthlr2[r1] = (byte) (r2[r1] + 1)l}"];
+}
+}
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturn (byte) 1l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x006c|l}"];
+MethodNode[shape=record,label="{public byte main.GameRun.addItem((r8v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r9v0 'item_id' int A[D('item_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'count' int A[D('count' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x006c \-\> B:6:0x0048, CROSS_EDGE: B:10:0x0049 \-\> B:8:0x006c\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_10[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_8[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_10 -> Node_8;
+Node_9 -> Node_7;
+Node_0 -> Node_1;
+Node_8 -> Node_9;
+}
+

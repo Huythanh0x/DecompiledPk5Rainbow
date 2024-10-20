@@ -1,0 +1,17 @@
+digraph "CFG forcom.uc.paymentsdk.commons.ui.TitleSpinner.DropDownAdapter.isEmpty()Z" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (getCount() != 0) goto L6l}"];
+Node_3 [shape=record,label="{3\:\ 0x0006|RETURN\lORIG_RETURN\l|lreturn truel}"];
+Node_4 [shape=record,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0008|SYNTHETIC\lRETURN\l|lreturn falsel}"];
+MethodNode[shape=record,label="{public boolean com.uc.paymentsdk.commons.ui.TitleSpinner.DropDownAdapter.isEmpty((r1v0 'this' com.uc.paymentsdk.commons.ui.TitleSpinner$DropDownAdapter A[IMMUTABLE_TYPE, THIS]))  | DONT_RENAME\lUSE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{android.widget.Adapter.isEmpty():boolean\}]\lCROSS_EDGE: B:5:0x0008 \-\> B:4:0x0007\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_3 -> Node_4;
+Node_5 -> Node_4;
+}
+

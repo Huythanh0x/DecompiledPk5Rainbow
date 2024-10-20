@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.network.Api.syncChargeChannel(Landroid\/content\/Context;Lcom\/uc\/paymentsdk\/network\/ApiTask$TaskHandler;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.util.HashMap r4 = new java.util.HashMap\<\>(1)lr4.put(\"action\", \"getRechargeChannels\")lnew com.uc.paymentsdk.network.ApiTask(r6, 17, r7, r4, com.uc.paymentsdk.util.Constants.POST).execute(new java.lang.Void[0])l}"];
+Node_2 [shape=record,label="{2\:\ 0x001e|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static void com.uc.paymentsdk.network.Api.syncChargeChannel((r6v0 'paramContext' android.content.Context A[D('paramContext' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'paramTaskHandler' com.uc.paymentsdk.network.ApiTask$TaskHandler A[D('paramTaskHandler' com.uc.paymentsdk.network.ApiTask$TaskHandler), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

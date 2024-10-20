@@ -1,0 +1,19 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.onCreate(Landroid\/os\/Bundle;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lsuper.onCreate(r3)lr2.mIsValid = initPayment()l}"];
+Node_2 [shape=record,label="{2\:\ 0x000b|lif (r2.mIsValid == false) goto L6l}"];
+Node_3 [shape=record,label="{3\:\ 0x000d|lcom.uc.paymentsdk.util.Utils.init(getApplicationContext())lcom.uc.paymentsdk.util.Utils.initTitleBar(r2)lbuildPaymentView()lconfirmEnterPaymentPoint()lnew com.uc.paymentsdk.network.chain.HandlerProxy(getApplicationContext()).handleRequest()l}"];
+Node_4 [shape=record,label="{4\:\ 0x0029|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{protected void com.uc.paymentsdk.payment.PaymentsActivity.onCreate((r2v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]), (r3v0 'paramBundle' android.os.Bundle A[D('paramBundle' android.os.Bundle), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | DONT_RENAME\lUSE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{android.app.Activity.onCreate(android.os.Bundle):void\}]\lCROSS_EDGE: B:2:0x000b \-\> B:4:0x0029\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

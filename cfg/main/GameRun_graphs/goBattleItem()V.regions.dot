@@ -1,0 +1,36 @@
+digraph "CFG formain.GameRun.goBattleItem()V" {
+subgraph cluster_Region_877624921 {
+label = "R(3:1|(1:5)|6)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr5.battle_state = (byte) \-4lr5.cur_b = (byte) \-1ljava.lang.StringBuffer java.lang.StringBuffer r0 = new java.lang.StringBuffer()ldm.Ms.i()l}"];
+subgraph cluster_IfRegion_239850078 {
+label = "IF [B:2:0x0019, B:4:0x0022] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0019|lif (dm.Ms.getRandom(100) \< 50) goto L13l}"];
+Node_4 [shape=record,label="{4\:\ 0x0022|ADDED_TO_REGION\l|lif (findItem(\-2, 32, true) \< 99) goto L15l}"];
+subgraph cluster_Region_546422662 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0024|laddItem(32, 1)lr0.append(main.Constants_H.MONEY_TXT_7 + getNameItem(32) + \"x1\")l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0043|lsetStringB(r0.toString(), com.uc.paymentsdk.util.Constants.PAYMENT_JIFENGQUAN_MAX, 0)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x001b|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x004e|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.goBattleItem((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x0022 \-\> B:6:0x0043, CROSS_EDGE: B:2:0x0019 \-\> B:6:0x0043\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_7 -> Node_8;
+}
+

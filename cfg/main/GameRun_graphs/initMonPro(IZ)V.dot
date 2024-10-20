@@ -1,0 +1,21 @@
+digraph "CFG formain.GameRun.initMonPro(IZ)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ms.i()ldm.Ms.skip = 0ldm.Ms r1 = dm.Ms.i()ljava.lang.StringBuilder r2 = new java.lang.StringBuilder(\"data\/map\/\")l}"];
+Node_2 [shape=record,label="{2\:\ 0x0011|lif (r6 == false) goto L15l}"];
+Node_3 [shape=record,label="{3\:\ 0x0013|ljava.lang.String r3 = \"m\"l}"];
+Node_4 [shape=record,label="{4\:\ 0x0015|PHI: r3l  0x0015: PHI (r3v2 java.lang.String) = (r3v1 java.lang.String), (r3v5 java.lang.String) binds: [B:7:0x004b, B:3:0x0013] A[DONT_GENERATE, DONT_INLINE]\l|lbyte[] r0 = r1.getStream(r2.append(r3).append(r5).append(\".d\").toString(), \-1)lr4.monPro = dm.Ms.i().createArray(r0)lr4.mapMove = dm.Ms.i().createArray(r0)lr4.mapRect = dm.Ms.i().create2Array(r0)l}"];
+Node_5 [shape=record,label="{5\:\ 0x004a|RETURN\l|lreturnl}"];
+Node_6 [shape=record,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,label="{7\:\ 0x004b|ljava.lang.String r3 = \"boss\"l}"];
+MethodNode[shape=record,label="{public void main.GameRun.initMonPro((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'no' int A[D('no' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'mode' boolean A[D('mode' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x004b \-\> B:4:0x0015\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_7;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_7 -> Node_4;
+}
+

@@ -1,0 +1,36 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.getQueryString(Ljava\/util\/HashMap;)Ljava\/lang\/String;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.lang.StringBuilder r1 = new java.lang.StringBuilder()ljava.util.Iterator r0 = r5.keySet().iterator()l}"];
+Node_2 [shape=record,label="{2\:\ 0x000d|LOOP_START\lLOOP:0: B:2:0x000d\-\>B:8:0x003b\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0011|lif (r0.hasNext() != false) goto L22l}"];
+Node_4 [shape=record,label="{4\:\ 0x0018|ljava.lang.String r2 = r0.next()l}"];
+Node_5 [shape=record,label="{5\:\ 0x0023|lif (r1.length() \>= 1) goto L26l}"];
+Node_6 [shape=record,label="{6\:\ 0x0025|lr1.append(new java.lang.StringBuilder(java.lang.String.valueOf(r2)).append(\"=\").toString())l}"];
+Node_7 [shape=record,label="{7\:\ 0x003b|SYNTHETIC\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x003b|LOOP_END\lLOOP:0: B:2:0x000d\-\>B:8:0x003b\l|lr1.append(r5.get(r2))l}"];
+Node_9 [shape=record,label="{9\:\ 0x0043|lr1.append(new java.lang.StringBuilder(\"&\").append(r2).append(\"=\").toString())l}"];
+Node_10 [shape=record,label="{10\:\ 0x003b|SYNTHETIC\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x0013|SYNTHETIC\l|l}"];
+Node_12 [shape=record,label="{12\:\ 0x0013|l}"];
+Node_13 [shape=record,label="{13\:\ 0x0017|RETURN\l|lreturn r1.toString()l}"];
+Node_14 [shape=record,label="{14\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static java.lang.String com.uc.paymentsdk.util.Utils.getQueryString((r5v0 'paramHashMap' java.util.HashMap\<java.lang.String, java.lang.Object\> A[D('paramHashMap' java.util.HashMap\<java.lang.String, java.lang.Object\>), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lSIGNATURE: (Ljava\/util\/HashMap\<Ljava\/lang\/String;Ljava\/lang\/Object;\>;)Ljava\/lang\/String;\lINLINE_NOT_NEEDED\lBACK_EDGE: B:8:0x003b \-\> B:2:0x000d, CROSS_EDGE: B:9:0x0043 \-\> B:8:0x003b\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_11[style=dashed];
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_9;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_2;
+Node_9 -> Node_10;
+Node_10 -> Node_8;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+}
+

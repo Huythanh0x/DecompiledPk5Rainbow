@@ -1,0 +1,21 @@
+digraph "CFG forjavax.microedition.rms.RecordEnumeration.reset()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljavax.microedition.lcdui.CwaActivity.getInstance().startManagingCursor(r2.cursor)ljavax.microedition.lcdui.CwaActivity.getInstance().startManagingCursor(r2.old_cursor)lcheckDestroy()l}"];
+Node_2 [shape=record,label="{2\:\ 0x0017|lif (r2.old_cursor == null) goto L14l}"];
+Node_3 [shape=record,label="{3\:\ 0x0019|lr2.cursor = r2.old_cursorl}"];
+Node_4 [shape=record,label="{4\:\ 0x001d|RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x001e|l}"];
+Node_7 [shape=record,label="{7\:\ 0x0023|lthrow new java.lang.IllegalStateException()l}"];
+MethodNode[shape=record,label="{public void javax.microedition.rms.RecordEnumeration.reset((r2v0 'this' javax.microedition.rms.RecordEnumeration A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0023 \-\> B:5:?\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_5;
+}
+

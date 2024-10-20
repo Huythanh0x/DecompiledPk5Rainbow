@@ -1,0 +1,65 @@
+digraph "CFG formain.GameRun.drawEvolveMake(IIII)V" {
+subgraph cluster_Region_1719474007 {
+label = "R(3:1|(1:2)|(2:(1:12)|(1:9))) | DECL_VAR: byte i\l";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r7 = 2lbyte r8 = 0l}"];
+subgraph cluster_LoopRegion_1800458189 {
+label = "LOOP:0: (1:2)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0063|ADDED_TO_REGION\l|lif (r7 \< (r9.monsterMake[r10].length \- 1)) goto L27l}"];
+subgraph cluster_Region_2117148463 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|LOOP_START\lPHI: r7 r8l  0x0002: PHI (r7v1 'i' byte) = (r7v0 'i' byte), (r7v2 'i' byte) binds: [B:1:0x0000, B:14:?] A[DONT_GENERATE, DONT_INLINE]l  0x0002: PHI (r8v1 'j' byte) = (r8v0 'j' byte), (r8v2 'j' byte) binds: [B:1:0x0000, B:14:?] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0002\-\>B:14:?\l|ldm.Ui.i().drawString(java.lang.String.valueOf(getNameItem(r9.monsterMake[r10][r7])) + \"（\" + ((int) findItem(\-2, r9.monsterMake[r10][r7], true)) + \"\/\" + ((int) r9.monsterMake[r10][r7 + 1]) + \"）\", r11, r12 + (r8 * r13), 0, 3, 0)lbyte r7 = (byte) (r7 + 2)lbyte r8 = (byte) (r8 + 1)l}"];
+}
+}
+subgraph cluster_Region_1342250200 {
+label = "R(2:(1:12)|(1:9))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1959438918 {
+label = "IF [B:6:0x006c, B:8:0x0076] THEN: R(1:12) ELSE: null";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x006c|lif (r9.monsterMake[r10][0] \<= 0) goto L28l}"];
+Node_8 [shape=record,label="{8\:\ 0x0076|ADDED_TO_REGION\l|lif ((r7 = findItem(\-2, 34, true)) \<= 0) goto L29l}"];
+subgraph cluster_Region_27118626 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1469919214 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0078|ldm.Ui.i().drawString(java.lang.String.valueOf(getNameItem(34)) + \"（\" + ((int) r7) + \"\/1）\", r11, r12 + (r8 * r13), 0, \-1, 0)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0065|SYNTHETIC\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0065|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x006e|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x00b5|ORIG_RETURN\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|SYNTHETIC\lRETURN\lADDED_TO_REGION\l|lreturnl}"];
+Node_14 [shape=record,color=red,label="{14\:\ ?|LOOP_END\lSYNTHETIC\lLOOP:0: B:2:0x0002\-\>B:14:?\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawEvolveMake((r9v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r10v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'fontH' int A[D('fontH' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:3:0x0063 \-\> B:2:0x0002, CROSS_EDGE: B:8:0x0076 \-\> B:10:0x00b5, CROSS_EDGE: B:6:0x006c \-\> B:10:0x00b5\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4[style=dashed];
+Node_3 -> Node_14;
+Node_2 -> Node_3;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_13;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_12;
+Node_12 -> Node_11;
+Node_9 -> Node_10;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_10 -> Node_11;
+Node_13 -> Node_11;
+Node_14 -> Node_2;
+}
+

@@ -1,0 +1,16 @@
+digraph "CFG forminigame.Cards.\<init\>(Lmain\/GameRun;)V" {
+subgraph cluster_Region_412742689 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr5.gr = r6l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0040|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void minigame.Cards.\<init\>((r5v0 'this' minigame.Cards A[IMMUTABLE_TYPE, THIS]), (r6v0 'gr_' main.GameRun A[D('gr_' main.GameRun), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

@@ -1,0 +1,42 @@
+digraph "CFG forjavax.microedition.rms.RecordStore.closeRecordStore()V" {
+subgraph cluster_Region_1343659310 {
+label = "R(1:(1:5)(1:8))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1171622403 {
+label = "IF [B:2:0x0002, B:4:0x000a] THEN: R(1:5) ELSE: R(1:8)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r2.db != null) goto L14l}"];
+Node_4 [shape=record,label="{4\:\ 0x000a|ADDED_TO_REGION\l|lif (r2.db.isOpen() != false) goto L16l}"];
+subgraph cluster_Region_2051570659 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000c|lr2.db.close()l}"];
+}
+subgraph cluster_Region_1388542477 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0012|lnew javax.microedition.rms.RecordStoreNotOpenException(\"RecordStore is not open\")l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0004|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0011|ORIG_RETURN\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.rms.RecordStore.closeRecordStore((r2v0 'this' javax.microedition.rms.RecordStore A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljavax\/microedition\/rms\/RecordStoreNotOpenException;, Ljavax\/microedition\/rms\/RecordStoreException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x0012 \-\> B:6:0x0011, CROSS_EDGE: B:2:0x0002 \-\> B:8:0x0012\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_8[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_8[style=dashed];
+Node_5 -> Node_6;
+Node_8 -> Node_9;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_9 -> Node_7;
+}
+

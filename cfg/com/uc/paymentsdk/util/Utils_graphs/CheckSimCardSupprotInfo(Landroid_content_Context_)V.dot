@@ -1,0 +1,28 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.CheckSimCardSupprotInfo(Landroid\/content\/Context;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (isAirMode(r2) == false) goto L17l}"];
+Node_3 [shape=record,label="{3\:\ 0x0006|l}"];
+Node_4 [shape=record,label="{4\:\ 0x000d|lthrow new com.uc.paymentsdk.payment.sms.SimCardNotSupportException(\"当前手机设置为飞行模式，不能发送短信。\")l}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000e|l}"];
+Node_7 [shape=record,label="{7\:\ 0x001b|lif (5 == ((android.telephony.TelephonyManager) r2.getSystemService(\"phone\")).getSimState()) goto L21l}"];
+Node_8 [shape=record,label="{8\:\ 0x001d|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0024|lthrow new com.uc.paymentsdk.payment.sms.SimCardNotSupportException(\"对不起，短信发送不成功、无法激活此功能，请插入SIM卡后再试。\")l}"];
+Node_10 [shape=record,label="{10\:\ 0x0025|RETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public static void com.uc.paymentsdk.util.Utils.CheckSimCardSupprotInfo((r2v0 'paramContext' android.content.Context A[D('paramContext' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Lcom\/uc\/paymentsdk\/payment\/sms\/SimCardNotSupportException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x0024 \-\> B:5:?, CROSS_EDGE: B:10:0x0025 \-\> B:5:?\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_10;
+Node_8 -> Node_9;
+Node_9 -> Node_5;
+Node_10 -> Node_5;
+}
+

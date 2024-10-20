@@ -1,0 +1,44 @@
+digraph "CFG formain.PointerKey.checkButton(III)I" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr9 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0004|LOOP_START\lPHI: r9l  0x0004: PHI (r9v1 'i' int) = (r9v0 'i' int), (r9v2 'i' int) binds: [B:1:0x0000, B:6:0x006f] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0004\-\>B:6:0x006f\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0009|lif (r9 \< r12.button_pos[r13].length) goto L26l}"];
+Node_4 [shape=record,label="{4\:\ 0x000d|l}"];
+Node_5 [shape=record,label="{5\:\ 0x003b|lif (dm.Ms.i().isRect(r14 \- 1, r15 \- 1, 2, 2, r12.button_pos[r13][r9][0], r12.button_pos[r13][r9][1], r12.button_pos[r13][r9][2], r12.button_pos[r13][r9][3]) == false) goto L34l}"];
+Node_6 [shape=record,label="{6\:\ 0x006f|LOOP_END\lLOOP:0: B:2:0x0004\-\>B:6:0x006f\l|lint r9 = r9 + 1l}"];
+Node_7 [shape=record,label="{7\:\ 0x003d|SYNTHETIC\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x003d|ldm.Ms.key = r12.button_pos[r13][r9][4]l}"];
+Node_9 [shape=record,label="{9\:\ 0x0048|lif (r13 != 3) goto L33l}"];
+Node_10 [shape=record,label="{10\:\ 0x004a|l}"];
+Node_11 [shape=record,label="{11\:\ 0x004e|lif (dm.Ms.key != 53) goto L33l}"];
+Node_12 [shape=record,label="{12\:\ 0x0050|landroid.util.Log.e(\"touch\", new java.lang.StringBuilder(\"按下确定键。。。menu_state: \").append(r12.mc.menu_state).toString())l}"];
+Node_13 [shape=record,label="{13\:\ 0x0068|ldm.Ms.keyRepeat = truelinitPointer()l}"];
+Node_14 [shape=record,label="{14\:\ ?|SYNTHETIC\lRETURN\l|lreturn r9l}"];
+Node_15 [shape=record,label="{15\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_16 [shape=record,label="{16\:\ 0x000b|SYNTHETIC\l|l}"];
+Node_17 [shape=record,label="{17\:\ 0x000b|RETURN\lORIG_RETURN\l|lreturn \-1l}"];
+MethodNode[shape=record,label="{public int main.PointerKey.checkButton((r12v0 'this' main.PointerKey A[IMMUTABLE_TYPE, THIS]), (r13v0 'check_no' int A[D('check_no' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:13:0x0068 \-\> B:18:0x000c, CROSS_EDGE: B:11:0x004e \-\> B:13:0x0068, CROSS_EDGE: B:9:0x0048 \-\> B:13:0x0068, BACK_EDGE: B:6:0x006f \-\> B:2:0x0004\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_16[style=dashed];
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_7[style=dashed];
+Node_6 -> Node_2;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_13;
+Node_10 -> Node_11;
+Node_11 -> Node_12[style=dashed];
+Node_11 -> Node_13;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+Node_16 -> Node_17;
+Node_17 -> Node_15;
+}
+

@@ -1,0 +1,54 @@
+digraph "CFG formain.MD5.str2blks_MD5(Ljava\/lang\/String;)[I" {
+subgraph cluster_Region_1054036861 {
+label = "R(6:1|(1:4)|6|(1:9)|11|12)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint int r2 = ((r8.length() + 8) \>\> 6) + 1lint[] int[] r0 = new int[r2 * 16]lint r1 = 0l}"];
+subgraph cluster_LoopRegion_1310032718 {
+label = "LOOP:0: (1:4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0012|ADDED_TO_REGION\l|lif (r1 \< (r2 * 16)) goto L10l}"];
+subgraph cluster_Region_724007869 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0036|LOOP_END\lLOOP:0: B:2:0x0010\-\>B:4:0x0036\l|lr0[r1] = 0lr1++l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0014|lint r1 = 0l}"];
+subgraph cluster_LoopRegion_306255882 {
+label = "LOOP:1: (1:9)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0019|ADDED_TO_REGION\l|lif (r1 \< r8.length()) goto L11l}"];
+subgraph cluster_Region_917368089 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x003c|LOOP_END\lLOOP:1: B:7:0x0015\-\>B:9:0x003c\l|lint int r3 = r1 \>\> 2lr0[r3] = r0[r3] \| (r8.charAt(r1) \<\< ((r1 % 4) * 8))lr1++l}"];
+}
+}
+Node_11 [shape=record,label="{11\:\ 0x001b|lint int r3 = r1 \>\> 2lr0[r3] = r0[r3] \| (128 \<\< ((r1 % 4) * 8))lr0[(r2 * 16) \- 2] = r8.length() * 8l}"];
+Node_12 [shape=record,label="{12\:\ 0x0035|RETURN\l|lreturn r0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0010|LOOP_START\lPHI: r1l  0x0010: PHI (r1v2 'i' int) = (r1v1 'i' int), (r1v6 'i' int) binds: [B:1:0x0000, B:4:0x0036] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0010\-\>B:4:0x0036\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0014|SYNTHETIC\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0015|LOOP_START\lPHI: r1l  0x0015: PHI (r1v4 'i' int) = (r1v3 'i' int), (r1v5 'i' int) binds: [B:6:0x0014, B:9:0x003c] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:7:0x0015\-\>B:9:0x003c\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x001b|SYNTHETIC\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private int[] main.MD5.str2blks_MD5((r7v0 'this' main.MD5 A[IMMUTABLE_TYPE, THIS]), (r8v0 'str' java.lang.String A[D('str' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lBACK_EDGE: B:9:0x003c \-\> B:7:0x0015, BACK_EDGE: B:4:0x0036 \-\> B:2:0x0010\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_8 -> Node_10[style=dashed];
+Node_9 -> Node_7;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_10 -> Node_11;
+}
+

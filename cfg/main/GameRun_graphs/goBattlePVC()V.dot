@@ -1,0 +1,12 @@
+digraph "CFG formain.GameRun.goBattlePVC()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.enemyList = nullljava.lang.Class r1 = java.lang.Byte.TYPElr4.enemyList = (byte[][]) java.lang.reflect.Array.newInstance(r1, new int[]\{1, 2\})lgetEnemy(r4.enemyList[0], \-1, 0)ldm.Sound.i().setMusicId(6)ldm.Sound.i().setMusic(true)lgoBattle()l}"];
+Node_2 [shape=record,label="{2\:\ 0x002e|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.goBattlePVC((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

@@ -1,0 +1,68 @@
+digraph "CFG forjavax.microedition.midlet.MIDletManager.notifyDestroyed()V" {
+subgraph cluster_Region_188706757 {
+label = "R(2:(2:5|(1:7))|11)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_2007728153 {
+label = "IF [B:2:0x0003, B:4:0x0007] THEN: R(2:5|(1:7)) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif (r3.currentMidlet != null) goto L18l}"];
+Node_4 [shape=record,label="{4\:\ 0x0007|ADDED_TO_REGION\l|lif (r3.destroyed == false) goto L20l}"];
+subgraph cluster_Region_822998287 {
+label = "R(2:5|(1:7))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0009|lr3.destroyed = truel}"];
+subgraph cluster_TryCatchRegion_628522649 {
+label = "Try: R(1:7) catches: R(2:9|10)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1439136949 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x000b|TRY_ENTER\lTRY_LEAVE\lTryCatch #0 \{MIDletStateChangeException \-\> 0x001c, blocks: (B:7:0x000b), top: B:6:0x000b \}\lCatch: MIDletStateChangeException \-\> 0x001c\l|lr3.currentMidlet.destroyApp(true)     \/\/ Catch: javax.microedition.midlet.MIDletStateChangeException \-\> L1cl}"];
+}
+subgraph cluster_Region_2118616412 {
+label = "R(2:9|10) | ExcHandler: MIDletStateChangeException \-\> 0x001c\l";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x001c|ExcHandler: MIDletStateChangeException \-\> 0x001c\l|l}"];
+Node_10 [shape=record,label="{10\:\ 0x001d|lr1.printStackTrace()l}"];
+}
+}
+}
+}
+Node_11 [shape=record,label="{11\:\ 0x0011|lr3.jad.clear()lr3.midlets.clear()l}"];
+}
+subgraph cluster_Region_2118616412 {
+label = "R(2:9|10) | ExcHandler: MIDletStateChangeException \-\> 0x001c\l";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x001c|ExcHandler: MIDletStateChangeException \-\> 0x001c\l|l}"];
+Node_10 [shape=record,label="{10\:\ 0x001d|lr1.printStackTrace()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0005|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x000b|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x001b|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public final void javax.microedition.midlet.MIDletManager.notifyDestroyed((r3v0 'this' javax.microedition.midlet.MIDletManager A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{MIDletStateChangeException \-\> 0x001c, blocks: (B:7:0x000b), top: B:6:0x000b \}\lCROSS_EDGE: B:10:0x001d \-\> B:11:0x0011, CROSS_EDGE: B:6:0x000b \-\> B:9:0x001c, CROSS_EDGE: B:4:0x0007 \-\> B:11:0x0011, CROSS_EDGE: B:2:0x0003 \-\> B:11:0x0011\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_11[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_11[style=dashed];
+Node_5 -> Node_6;
+Node_7 -> Node_11;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_6 -> Node_9;
+Node_8 -> Node_9;
+Node_12 -> Node_13;
+}
+

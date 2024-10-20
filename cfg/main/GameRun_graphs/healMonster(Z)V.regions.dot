@@ -1,0 +1,52 @@
+digraph "CFG formain.GameRun.healMonster(Z)V" {
+subgraph cluster_Region_859347812 {
+label = "R(3:1|(1:4)|(1:(1:7)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r0 = 0l}"];
+subgraph cluster_LoopRegion_2074232006 {
+label = "LOOP:0: (1:4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0003|ADDED_TO_REGION\l|lif (r0 \< r3.myMon_length) goto L19l}"];
+subgraph cluster_Region_525976318 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000e|LOOP_END\lLOOP:0: B:2:0x0001\-\>B:4:0x000e\l|lhealMonster(r3.myMonsters[r0])lbyte r0 = (byte) (r0 + 1)l}"];
+}
+}
+subgraph cluster_Region_85061472 {
+label = "R(1:(1:7))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1680250503 {
+label = "IF [B:6:0x0005] THEN: R(1:7) ELSE: null";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0005|lif (r4 != false) goto L17l}"];
+subgraph cluster_Region_1421786735 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0007|lsay(main.Constants_H.TXT_52, 0)l}"];
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0001|LOOP_START\lPHI: r0l  0x0001: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v2 'i' byte) binds: [B:1:0x0000, B:4:0x000e] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0001\-\>B:4:0x000e\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0005|SYNTHETIC\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x000d|ORIG_RETURN\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.healMonster((r3v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r4v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0005 \-\> B:8:0x000d, BACK_EDGE: B:4:0x000e \-\> B:2:0x0001\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_6 -> Node_7;
+Node_6 -> Node_10[style=dashed];
+Node_7 -> Node_8;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+Node_8 -> Node_9;
+Node_10 -> Node_9;
+}
+

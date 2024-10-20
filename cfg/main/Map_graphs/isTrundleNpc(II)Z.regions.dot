@@ -1,0 +1,64 @@
+digraph "CFG formain.Map.isTrundleNpc(II)Z" {
+subgraph cluster_Region_1019033909 {
+label = "R(2:1|2)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte byte r0 = checkIfNpc(r5.npc[0], r6, r7)l}"];
+Node_2 [shape=record,label="{2\:\ 0x000c|RETURN\l|lreturn r0 != \-1 ? r5.npc[0][r0].other[4] == 1 \|\| r5.npc[0][r0].other[4] == 3 : r6 \< 0 \|\| r6 \>= r5.cols \|\| r7 \< 0 \|\| r7 \>= r5.rows \|\| r5.worldData[r6][r7] == 1l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000e|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0018|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x001a|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0025|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0029|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|SYNTHETIC\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0027|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0028|ORIG_RETURN\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x002b|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x002d|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x002f|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0031|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x0033|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0035|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0037|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x003d|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x003f|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ ?|SYNTHETIC\l|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x0041|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private boolean main.Map.isTrundleNpc((r5v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r6v0 'ix' int A[D('ix' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'iy' int A[D('iy' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0029 \-\> B:11:0x0028, CROSS_EDGE: B:4:0x0018 \-\> B:10:0x0027, CROSS_EDGE: B:20:0x003f \-\> B:11:0x0028, CROSS_EDGE: B:22:0x0041 \-\> B:11:0x0028, CROSS_EDGE: B:17:0x0035 \-\> B:22:0x0041, CROSS_EDGE: B:15:0x0031 \-\> B:22:0x0041, CROSS_EDGE: B:14:0x002f \-\> B:22:0x0041, CROSS_EDGE: B:12:0x002b \-\> B:22:0x0041\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_12;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_10;
+Node_5 -> Node_6;
+Node_6 -> Node_10;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_11 -> Node_9;
+Node_12 -> Node_13;
+Node_12 -> Node_22;
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+Node_14 -> Node_22;
+Node_15 -> Node_16;
+Node_15 -> Node_22;
+Node_16 -> Node_17;
+Node_17 -> Node_18;
+Node_17 -> Node_22;
+Node_18 -> Node_19;
+Node_19 -> Node_20;
+Node_19 -> Node_22;
+Node_20 -> Node_21;
+Node_21 -> Node_9;
+Node_22 -> Node_23;
+Node_23 -> Node_9;
+}
+

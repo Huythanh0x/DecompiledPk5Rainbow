@@ -1,0 +1,37 @@
+digraph "CFG formain.GameRun_F.loadRmsOther()V" {
+subgraph cluster_Region_1899888174 {
+label = "R(3:1|(1:3)(1:7)|4)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr5.info = dm.Ms.i().rmsOptions(10, null, 1)l}"];
+subgraph cluster_IfRegion_315007670 {
+label = "IF [B:2:0x0014] THEN: R(1:3) ELSE: R(1:7)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0014|lif (r5.info[0] == (\-1)) goto L12l}"];
+subgraph cluster_Region_852096014 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0016|lsetMaxTakes(true)linitRmsOther()l}"];
+}
+subgraph cluster_Region_1914841511 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x001f|lr5.rmsOther = r5.infolsetMaxTakes(false)l}"];
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x001c|lr5.info = nulll}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x001e|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun_F.loadRmsOther((r5v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x001f \-\> B:4:0x001c\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_7[style=dashed];
+Node_3 -> Node_4;
+Node_7 -> Node_4;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_5 -> Node_6;
+}
+

@@ -1,0 +1,12 @@
+digraph "CFG formain.GameRun.drawInfoBG(II)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.i().fillRect(0, 0, 0, main.Constants_H.WIDTH_, r15)lmain.GameRun.g.fillRect(0, main.Constants_H.HEIGHT_ \- r15, main.Constants_H.WIDTH_, r15)lmain.GameRun.g.fillRect(0, r15 \- 2, main.Constants_H.WIDTH_, r15)ldm.Ui.i().fillRect(15400191, 0, 2, main.Constants_H.WIDTH_, r15 \- 4)lmain.GameRun.g.fillRect(0, (main.Constants_H.HEIGHT_ \- r15) + 2, main.Constants_H.WIDTH_, r15 \- 4)lmain.GameRun.g.fillRect(0, r15, main.Constants_H.WIDTH_, r15 \- 4)l}"];
+Node_2 [shape=record,label="{2\:\ 0x003f|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawInfoBG((r13v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r14v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'fh' int A[D('fh' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

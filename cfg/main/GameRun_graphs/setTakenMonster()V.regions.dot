@@ -1,0 +1,65 @@
+digraph "CFG formain.GameRun.setTakenMonster()V" {
+subgraph cluster_Region_1660786843 {
+label = "R(6:1|(1:4)|6|(1:8)|(1:11)|12)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r0 = r7.select[0][0]l}"];
+subgraph cluster_LoopRegion_1107448608 {
+label = "LOOP:0: (1:4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000b|ADDED_TO_REGION\l|lif (r0 \< (r7.cMon_count \- 1)) goto L28l}"];
+subgraph cluster_Region_1341080287 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x006b|LOOP_END\lLOOP:0: B:2:0x0008\-\>B:4:0x006b\l|lr7.cMonsters[r0] = r7.cMonsters[r0 + 1]lbyte r0 = (byte) (r0 + 1)l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x000d|lr7.cMon_count = (byte) (r7.cMon_count \- 1)lr7.t_length = r7.cMon_countl}"];
+subgraph cluster_IfRegion_1669836742 {
+label = "IF [B:7:0x001f] THEN: R(1:8) ELSE: null";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x001f|lif (r7.select[0][0] == r7.cMon_count) goto L22l}"];
+subgraph cluster_Region_1767236593 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0021|lbyte[] byte[] r1 = r7.select[0]lr1[0] = (byte) (r1[0] \- 1)l}"];
+}
+}
+subgraph cluster_IfRegion_1451885431 {
+label = "IF [B:10:0x002d] THEN: R(1:11) ELSE: null";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x002d|lif (r7.t_length \> 0) goto L25l}"];
+subgraph cluster_Region_936982572 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x002f|linitMonStream(2, r7.mList_id[r7.cMonsters[r7.select[0][0]].monster[0]][0], 1)lsetShowPro(r7.cMonsters[r7.select[0][0]])l}"];
+}
+}
+Node_12 [shape=record,label="{12\:\ 0x0054|lr7.introT = main.Constants_H.WIDTH_Hlr7.popMenu = (byte) \-1ldm.Ms.i().correctSelect(r7.select[0], r7.t_length, r7.list_rows)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0008|LOOP_START\lPHI: r0l  0x0008: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v2 'i' byte) binds: [B:1:0x0000, B:4:0x006b] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0008\-\>B:4:0x006b\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000d|SYNTHETIC\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x002b|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x006a|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.setTakenMonster((r7v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x002d \-\> B:12:0x0054, CROSS_EDGE: B:7:0x001f \-\> B:9:0x002b, BACK_EDGE: B:4:0x006b \-\> B:2:0x0008\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_7 -> Node_9[style=dashed];
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_10 -> Node_12[style=dashed];
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+Node_9 -> Node_10;
+Node_13 -> Node_14;
+}
+

@@ -1,0 +1,120 @@
+digraph "CFG forjavax.microedition.rms.RecordStore.openRecordStore(Ljava\/lang\/String;Z)Ljavax\/microedition\/rms\/RecordStore;" {
+subgraph cluster_Region_1791355643 {
+label = "R(3:1|(1:3)|4)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljavax.microedition.rms.RecordStore javax.microedition.rms.RecordStore r9 = new javax.microedition.rms.RecordStore()lr9.table_name = r11lr9.db = javax.microedition.lcdui.CwaActivity.getContextInstance().openOrCreateDatabase(r11, 0, null)l}"];
+subgraph cluster_TryCatchRegion_1410160852 {
+label = "Try: R(1:3) catches: R(1:(2:(2:(1:12)|14)|(1:15)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1465834949 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0013|TRY_ENTER\lTRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x0020, blocks: (B:3:0x0013), top: B:2:0x0013 \}\lCatch: Exception \-\> 0x0020\l|lr9.db.query(r11, null, null, null, null, null, null)     \/\/ Catch: java.lang.Exception \-\> L20l}"];
+}
+subgraph cluster_Region_1839057149 {
+label = "R(1:(2:(2:(1:12)|14)|(1:15))) | ExcHandler: Exception \-\> 0x0020\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_2056125300 {
+label = "R(2:(2:(1:12)|14)|(1:15))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1832538881 {
+label = "IF [B:9:0x0022] THEN: R(2:(1:12)|14) ELSE: null";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0022|lif (r12 == false) goto L24l}"];
+subgraph cluster_Region_1406107018 {
+label = "R(2:(1:12)|14)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1131600566 {
+label = "IF [B:11:0x002a] THEN: R(1:12) ELSE: null";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x002a|lif (r9.db.isOpen() != false) goto L26l}"];
+subgraph cluster_Region_366141518 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x002c|lr9.db.close()l}"];
+}
+}
+Node_14 [shape=record,label="{14\:\ 0x0036|lthrow new javax.microedition.rms.RecordStoreException()l}"];
+}
+}
+subgraph cluster_Region_1342521917 {
+label = "R(1:15)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0037|landroid.util.Log.d(\"RMS\", \"no table and create table\")ljava.lang.String java.lang.String r10 = \"create table \" + r11 + \"(_id integer primary key autoincrement,content text not null);\"lr9.db.execSQL(r10)l}"];
+}
+}
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x001f|RETURN\l|lreturn r9l}"];
+}
+subgraph cluster_Region_1839057149 {
+label = "R(1:(2:(2:(1:12)|14)|(1:15))) | ExcHandler: Exception \-\> 0x0020\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_2056125300 {
+label = "R(2:(2:(1:12)|14)|(1:15))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1832538881 {
+label = "IF [B:9:0x0022] THEN: R(2:(1:12)|14) ELSE: null";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0022|lif (r12 == false) goto L24l}"];
+subgraph cluster_Region_1406107018 {
+label = "R(2:(1:12)|14)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1131600566 {
+label = "IF [B:11:0x002a] THEN: R(1:12) ELSE: null";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x002a|lif (r9.db.isOpen() != false) goto L26l}"];
+subgraph cluster_Region_366141518 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x002c|lr9.db.close()l}"];
+}
+}
+Node_14 [shape=record,label="{14\:\ 0x0036|lthrow new javax.microedition.rms.RecordStoreException()l}"];
+}
+}
+subgraph cluster_Region_1342521917 {
+label = "R(1:15)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0037|landroid.util.Log.d(\"RMS\", \"no table and create table\")ljava.lang.String java.lang.String r10 = \"create table \" + r11 + \"(_id integer primary key autoincrement,content text not null);\"lr9.db.execSQL(r10)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0013|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0020|ExcHandler: Exception \-\> 0x0020\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0021|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0024|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0031|l}"];
+MethodNode[shape=record,label="{public static javax.microedition.rms.RecordStore javax.microedition.rms.RecordStore.openRecordStore((r11v0 'recordStoreName' java.lang.String A[D('recordStoreName' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'createIfNecessary' boolean A[D('createIfNecessary' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljavax\/microedition\/rms\/RecordStoreException;, Ljavax\/microedition\/rms\/RecordStoreFullException;, Ljavax\/microedition\/rms\/RecordStoreNotFoundException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:14:0x0036 \-\> B:5:?, CROSS_EDGE: B:11:0x002a \-\> B:13:0x0031, CROSS_EDGE: B:15:0x0037 \-\> B:4:0x001f, CROSS_EDGE: B:2:0x0013 \-\> B:7:0x0020\lTryCatch #0 \{Exception \-\> 0x0020, blocks: (B:3:0x0013), top: B:2:0x0013 \}\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_6;
+Node_9 -> Node_10;
+Node_9 -> Node_15[style=dashed];
+Node_11 -> Node_12;
+Node_11 -> Node_13[style=dashed];
+Node_12 -> Node_13;
+Node_14 -> Node_5;
+Node_15 -> Node_4;
+Node_4 -> Node_5;
+Node_9 -> Node_10;
+Node_9 -> Node_15[style=dashed];
+Node_11 -> Node_12;
+Node_11 -> Node_13[style=dashed];
+Node_12 -> Node_13;
+Node_14 -> Node_5;
+Node_15 -> Node_4;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_7;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_13 -> Node_14;
+}
+

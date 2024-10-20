@@ -1,0 +1,71 @@
+digraph "CFG fordm.Ui.drawK1(IIIII)V" {
+subgraph cluster_Region_192808604 {
+label = "R(3:4|(1:15)(1:(1:8)(1:12))|9) | DECL_VAR: int c\l";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000a|PHI: r1l  0x000a: PHI (r1v1 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|ldm.Ui.g.setColor(r13 == 0 ? 5461075 : 1908277)ldm.Ui.g.drawRect(r9, r10 + 2, r11, r12 \- 3)ldm.Ui.g.drawLine(r9 + 1, r10 + r12, (r9 + r11) \- 1, r10 + r12)l}"];
+subgraph cluster_IfRegion_910523897 {
+label = "IF [B:5:0x0028, B:6:0x002a] THEN: R(1:15) ELSE: R(1:(1:8)(1:12))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0028|lif (r13 == 0) goto L25l}"];
+Node_6 [shape=record,label="{6\:\ 0x002a|ADDED_TO_REGION\l|lif (r13 == 1) goto L25l}"];
+subgraph cluster_Region_1069190387 {
+label = "R(1:15)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x002c|lr13 = 15400191l}"];
+}
+subgraph cluster_Region_289591843 {
+label = "R(1:(1:8)(1:12)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1965196251 {
+label = "IF [B:7:0x004b] THEN: R(1:8) ELSE: R(1:12) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x004b|lif (r13 == 2) goto L30l}"];
+subgraph cluster_Region_735777423 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x004d|lr13 = 13892607l}"];
+}
+subgraph cluster_Region_588430284 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0051|lr13 = r13 == 3 ? 7727871 : 12352252l}"];
+}
+}
+}
+}
+Node_9 [shape=record,label="{9\:\ 0x002f|PHI: r13l  0x002f: PHI (r13v2 'c' int) = (r13v1 'c' int), (r13v4 'c' int), (r13v5 'c' int) binds: [B:15:0x002c, B:13:0x0053, B:8:0x004d] A[DONT_GENERATE, DONT_INLINE]\l|ldm.Ui.g.setColor(r13)ldm.Ui.g.fillRect(r9 + 1, r10, r11 \- 2, r12)ldm.Ui.g.fillRect(r9, r10 + 1, r11, r12 \- 2)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0005|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0007|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0046|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0053|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0057|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x0047|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawK1((r8v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r9v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'h' int A[D('h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'c' int A[D('c' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x004d \-\> B:9:0x002f, CROSS_EDGE: B:13:0x0053 \-\> B:9:0x002f, CROSS_EDGE: B:14:0x0057 \-\> B:9:0x002f, CROSS_EDGE: B:5:0x0028 \-\> B:15:0x002c, CROSS_EDGE: B:16:0x0047 \-\> B:4:0x000a\l}"];
+MethodNode -> Node_0;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_15;
+Node_6 -> Node_15;
+Node_6 -> Node_7[style=dashed];
+Node_15 -> Node_9;
+Node_7 -> Node_8;
+Node_7 -> Node_12[style=dashed];
+Node_8 -> Node_9;
+Node_12 -> Node_13;
+Node_12 -> Node_14;
+Node_9 -> Node_10;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_16;
+Node_3 -> Node_4;
+Node_10 -> Node_11;
+Node_13 -> Node_9;
+Node_14 -> Node_9;
+Node_16 -> Node_4;
+}
+

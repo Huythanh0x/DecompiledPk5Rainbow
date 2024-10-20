@@ -1,0 +1,12 @@
+digraph "CFG fordm.Ui.drawUi(IIIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldrawRegion(r11.ui_img, r11.ui_modules[r12][0], r11.ui_modules[r12][1], r11.ui_modules[r12][2], r11.ui_modules[r12][3], r13, r14, r15, r16, dm.Ui.g)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0029|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawUi((r11v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r12v0 'action' int A[D('action' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'anchor' int A[D('anchor' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r16v0 'manipulation' int A[D('manipulation' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

@@ -1,0 +1,50 @@
+digraph "CFG formain.GameRun.getbuffRateV(Ldm\/Monster;I)S" {
+subgraph cluster_Region_46802471 {
+label = "R(2:(1:3)(1:(1:9))|5)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_548764145 {
+label = "IF [B:2:0x0006] THEN: R(1:3) ELSE: R(1:(1:9))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0006|lif (r4.isBuffRate(2) != false) goto L14l}"];
+subgraph cluster_Region_576888362 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0008|lr5 += (r3.inhesion[2] * r5) \/ 100l}"];
+}
+subgraph cluster_Region_1179390500 {
+label = "R(1:(1:9)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_358936532 {
+label = "IF [B:8:0x0016] THEN: R(1:9) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0016|lif (r4.isBuffRate(1) != false) goto L19l}"];
+subgraph cluster_Region_513107576 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0018|lr5 += (r3.inhesion[1] * r5) \/ 100l}"];
+}
+}
+}
+}
+Node_5 [shape=record,label="{5\:\ 0x0011|RETURN\l|lreturn (short) r5l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0010|PHI: r5l  0x0010: PHI (r5v2 'temp' int) = (r5v0 'temp' int), (r5v1 'temp' int), (r5v3 'temp' int) binds: [B:8:0x0016, B:9:0x0018, B:3:0x0008] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0012|l}"];
+MethodNode[shape=record,label="{private short main.GameRun.getbuffRateV((r3v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r4v0 'mon' dm.Monster A[D('mon' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'temp' int A[D('temp' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x0016 \-\> B:4:0x0010, CROSS_EDGE: B:9:0x0018 \-\> B:4:0x0010\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_7[style=dashed];
+Node_3 -> Node_4;
+Node_8 -> Node_4[style=dashed];
+Node_8 -> Node_9;
+Node_9 -> Node_4;
+Node_5 -> Node_6;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+}
+

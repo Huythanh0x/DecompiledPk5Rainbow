@@ -1,0 +1,19 @@
+digraph "CFG forcom.uc.paymentsdk.network.Api.syncSmsInfo(Landroid\/content\/Context;Lcom\/uc\/paymentsdk\/network\/ApiTask$TaskHandler;Ljava\/lang\/String;Ljava\/lang\/String;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.util.HashMap r4 = new java.util.HashMap\<\>(1)ljava.lang.String r6 = com.uc.paymentsdk.util.Utils.getSessionID(r7)l}"];
+Node_2 [shape=record,label="{2\:\ 0x000a|lif (r6 != null) goto L12l}"];
+Node_3 [shape=record,label="{3\:\ 0x000c|ljava.lang.String r6 = com.uc.paymentsdk.util.Utils.createARanSessionid(8)lcom.uc.paymentsdk.util.PrefUtil.setUserSession(r7, r6)l}"];
+Node_4 [shape=record,label="{4\:\ 0x0015|PHI: r6l  0x0015: PHI (r6v1 'usersession' java.lang.String) = (r6v0 'usersession' java.lang.String), (r6v2 'usersession' java.lang.String) binds: [B:2:0x000a, B:3:0x000c] A[DONT_GENERATE, DONT_INLINE]\l|lr4.put(\"user_id\", r6)lr4.put(\"cpid\", r9)lr4.put(\"gameid\", r10)lr4.put(\"area\", \"\")lr4.put(\"imsi\", com.uc.paymentsdk.util.Utils.getSimNumber(r7))lnew com.uc.paymentsdk.network.ApiTask(r7, 7, r8, r4, com.uc.paymentsdk.util.Constants.POST).execute(new java.lang.Void[0])l}"];
+Node_5 [shape=record,label="{5\:\ 0x0044|RETURN\l|lreturnl}"];
+Node_6 [shape=record,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static void com.uc.paymentsdk.network.Api.syncSmsInfo((r7v0 'paramContext' android.content.Context A[D('paramContext' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'paramTaskHandler' com.uc.paymentsdk.network.ApiTask$TaskHandler A[D('paramTaskHandler' com.uc.paymentsdk.network.ApiTask$TaskHandler), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'cpid' java.lang.String A[D('cpid' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'gameid' java.lang.String A[D('gameid' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x000a \-\> B:4:0x0015\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_4;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+}
+

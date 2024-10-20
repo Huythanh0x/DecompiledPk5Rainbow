@@ -1,0 +1,122 @@
+digraph "CFG formain.GameRun.keyGetSkill(Ldm\/Monster;)V" {
+subgraph cluster_Region_2124517382 {
+label = "R(1:(2:(2:5|6)|(1:(2:(2:10|11)|(1:(2:(2:16|17)|(2:(1:20)(1:23)|21)))))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1451425253 {
+label = "R(2:(2:5|6)|(1:(2:(2:10|11)|(1:(2:(2:16|17)|(2:(1:20)(1:23)|21))))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_234079393 {
+label = "IF [B:2:0x000b, B:4:0x001a] THEN: R(2:5|6) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000b|lif ((r7.getSkill + 9) \>= 35) goto L28l}"];
+Node_4 [shape=record,label="{4\:\ 0x001a|ADDED_TO_REGION\l|lif (r7.makeLevel[(r7.getSkill + 9) \- 35] \> r7.rmsOther[3]) goto L30l}"];
+subgraph cluster_Region_1501962620 {
+label = "R(2:5|6)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x001c|lsay(main.Constants_H.TXT_70 + ((int) r7.makeLevel[(r7.getSkill + 9) \- 35]) + main.Constants_H.TXT_71, 0)l}"];
+Node_6 [shape=record,label="{6\:\ 0x003d|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_727034858 {
+label = "R(1:(2:(2:10|11)|(1:(2:(2:16|17)|(2:(1:20)(1:23)|21))))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_1786316464 {
+label = "R(2:(2:10|11)|(1:(2:(2:16|17)|(2:(1:20)(1:23)|21))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_2042364306 {
+label = "IF [B:9:0x0044] THEN: R(2:10|11) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0044|lif (r8.isMonReel(r7.getSkill) != false) goto L34l}"];
+subgraph cluster_Region_291066392 {
+label = "R(2:10|11)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0046|lsay(java.lang.String.valueOf(getNameMon(r8.monster[0])) + main.Constants_H.TXT_45, 0)l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_391491874 {
+label = "R(1:(2:(2:16|17)|(2:(1:20)(1:23)|21))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_893086206 {
+label = "R(2:(2:16|17)|(2:(1:20)(1:23)|21))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_747789914 {
+label = "IF [B:13:0x0069, B:15:0x0071] THEN: R(2:16|17) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0069|lif (r8.monster[14] != (\-1)) goto L37l}"];
+Node_15 [shape=record,label="{15\:\ 0x0071|ADDED_TO_REGION\l|lif (r8.monster[15] != (\-1)) goto L39l}"];
+subgraph cluster_Region_1996492866 {
+label = "R(2:16|17)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x0073|linitSkillList(r8)lr7.bg_c = r8.monster[3]lrestMove(1, 0)lsay(\"请选择要替换的技能！\", 0)l}"];
+Node_17 [shape=record,label="{17\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1306948385 {
+label = "R(2:(1:20)(1:23)|21)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_603752442 {
+label = "IF [B:19:0x008a] THEN: R(1:20) ELSE: R(1:23)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x008a|lif (r8.monster[14] == (\-1)) goto L42l}"];
+subgraph cluster_Region_497188177 {
+label = "R(1:20)";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x008c|lr8.monster[14] = r7.getSkilll}"];
+}
+subgraph cluster_Region_1792535719 {
+label = "R(1:23)";
+node [shape=record,color=blue];
+Node_23 [shape=record,label="{23\:\ 0x0096|lr8.monster[15] = r7.getSkilll}"];
+}
+}
+Node_21 [shape=record,label="{21\:\ 0x0092|ldelItemSkill(r8)l}"];
+}
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000d|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x003e|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0065|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x006b|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0086|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.keyGetSkill((r7v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r8v0 'mon' dm.Monster A[D('mon' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0046 \-\> B:6:0x003d, CROSS_EDGE: B:16:0x0073 \-\> B:6:0x003d, CROSS_EDGE: B:21:0x0092 \-\> B:6:0x003d, CROSS_EDGE: B:23:0x0096 \-\> B:21:0x0092, CROSS_EDGE: B:13:0x0069 \-\> B:18:0x0086, CROSS_EDGE: B:2:0x000b \-\> B:8:0x003e\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_8[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_8[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_9 -> Node_12[style=dashed];
+Node_10 -> Node_11;
+Node_11 -> Node_7;
+Node_13 -> Node_14;
+Node_13 -> Node_18[style=dashed];
+Node_15 -> Node_16;
+Node_15 -> Node_18[style=dashed];
+Node_16 -> Node_17;
+Node_17 -> Node_7;
+Node_19 -> Node_20;
+Node_19 -> Node_23[style=dashed];
+Node_20 -> Node_21;
+Node_23 -> Node_21;
+Node_21 -> Node_22;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_8 -> Node_9;
+Node_12 -> Node_13;
+Node_14 -> Node_15;
+Node_18 -> Node_19;
+Node_22 -> Node_7;
+}
+

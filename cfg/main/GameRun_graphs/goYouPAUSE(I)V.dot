@@ -1,0 +1,12 @@
+digraph "CFG formain.GameRun.goYouPAUSE(I)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lmain.GameRun.run_state = 97lr2.selectx = 0lr2.selecty = (byte) r3lsetPauseS(0)ldm.Sound.i().soundStop()lr2.say_c = 0lr2.view_state = 1lr2.mini_state = 3lr2.buyItemID = 0lr2.buyOk = 0lr2.gogoString = main.Constants_H.TXT_73l}"];
+Node_2 [shape=record,label="{2\:\ 0x0024|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.goYouPAUSE((r2v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r3v0 'sy' int A[D('sy' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

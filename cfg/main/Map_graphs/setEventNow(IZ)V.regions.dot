@@ -1,0 +1,31 @@
+digraph "CFG formain.Map.setEventNow(IZ)V" {
+subgraph cluster_Region_1117903394 {
+label = "R(2:(1:3)|4)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_99589715 {
+label = "IF [B:2:0x0001] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0001|lif (r4 != false) goto L11l}"];
+subgraph cluster_Region_774081353 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0003|lr2.my.state = (byte) 0l}"];
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x0007|lr2.now_eV1 = (byte) 0lr2.now_eV2 = (byte) 0lr2.eventGoing = (byte) 0lr2.event_now[r3] = 0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0011|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.setEventNow((r2v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r3v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0001 \-\> B:4:0x0007\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_5 -> Node_6;
+}
+

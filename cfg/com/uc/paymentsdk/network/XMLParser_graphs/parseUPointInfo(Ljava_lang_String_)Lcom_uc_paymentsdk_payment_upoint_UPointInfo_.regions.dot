@@ -1,0 +1,140 @@
+digraph "CFG forcom.uc.paymentsdk.network.XMLParser.parseUPointInfo(Ljava\/lang\/String;)Lcom\/uc\/paymentsdk\/payment\/upoint\/UPointInfo;" {
+subgraph cluster_Region_2104959447 {
+label = "R(1:(2:(1:3)|(8:5|(1:7)(1:30)|8|(1:12)|(1:17)|(1:22)|(1:27)|29)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_2137903864 {
+label = "R(2:(1:3)|(8:5|(1:7)(1:30)|8|(1:12)|(1:17)|(1:22)|(1:27)|29))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_711405669 {
+label = "IF [B:2:0x0009] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0009|lif (android.text.TextUtils.isEmpty(r9) != false) goto L36l}"];
+subgraph cluster_Region_595469423 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000b|RETURN\lORIG_RETURN\l|lreturn nulll}"];
+}
+}
+subgraph cluster_Region_1366931244 {
+label = "R(8:5|(1:7)(1:30)|8|(1:12)|(1:17)|(1:22)|(1:27)|29)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000d|lcom.uc.paymentsdk.payment.upoint.UPointInfo com.uc.paymentsdk.payment.upoint.UPointInfo r1 = new com.uc.paymentsdk.payment.upoint.UPointInfo()ljava.lang.String[] java.lang.String[] r0 = r9.split(\"#\")l}"];
+subgraph cluster_IfRegion_854174453 {
+label = "IF [B:6:0x0020] THEN: R(1:7) ELSE: R(1:30)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0020|lif (r0[1].equals(\"none\") != false) goto L40l}"];
+subgraph cluster_Region_1687750822 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0022|lr1.setDiscount(\"无\")lr1.setDiscounttext(new java.lang.StringBuilder(java.lang.String.valueOf(com.uc.paymentsdk.util.Utils.getPaymentInfo().getMoney())).toString())l}"];
+}
+subgraph cluster_Region_645629117 {
+label = "R(1:30)";
+node [shape=record,color=blue];
+Node_30 [shape=record,label="{30\:\ 0x0092|lr1.setDiscount(r0[1])lr1.setDiscounttext(r0[3])l}"];
+}
+}
+Node_8 [shape=record,label="{8\:\ 0x003f|lr1.setDiscountinfo(r0[2])l}"];
+subgraph cluster_IfRegion_535922167 {
+label = "IF [B:9:0x0047, B:11:0x004f] THEN: R(1:12) ELSE: null";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0047|lif (r0[4] != null) goto L43l}"];
+Node_11 [shape=record,label="{11\:\ 0x004f|ADDED_TO_REGION\l|lif (r0[4].length() \> 0) goto L45l}"];
+subgraph cluster_Region_701433361 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0051|lr1.setUserphone(r0[4])l}"];
+}
+}
+subgraph cluster_IfRegion_430136424 {
+label = "IF [B:14:0x0058, B:16:0x0062] THEN: R(1:17) ELSE: null";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0058|lif (r0[5] != null) goto L48l}"];
+Node_16 [shape=record,label="{16\:\ 0x0062|ADDED_TO_REGION\l|lif (r0[5].equals(\"none\") == false) goto L50l}"];
+subgraph cluster_Region_890442963 {
+label = "R(1:17)";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x0064|lr1.setVipdiscount(r0[5])l}"];
+}
+}
+subgraph cluster_IfRegion_1140979593 {
+label = "IF [B:19:0x006b, B:21:0x0075] THEN: R(1:22) ELSE: null";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x006b|lif (r0[6] != null) goto L53l}"];
+Node_21 [shape=record,label="{21\:\ 0x0075|ADDED_TO_REGION\l|lif (r0[6].equals(\"none\") == false) goto L55l}"];
+subgraph cluster_Region_434370287 {
+label = "R(1:22)";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x0077|lr1.setDiscounttext(r0[6])l}"];
+}
+}
+subgraph cluster_IfRegion_994071550 {
+label = "IF [B:24:0x007e, B:26:0x0088] THEN: R(1:27) ELSE: null";
+node [shape=record,color=blue];
+Node_24 [shape=record,label="{24\:\ 0x007e|lif (r0[7] != null) goto L58l}"];
+Node_26 [shape=record,label="{26\:\ 0x0088|ADDED_TO_REGION\l|lif (r0[7].equals(\"none\") == false) goto L60l}"];
+subgraph cluster_Region_1665648386 {
+label = "R(1:27)";
+node [shape=record,color=blue];
+Node_27 [shape=record,label="{27\:\ 0x008a|lr1.setVipdiscounttime(r0[7])l}"];
+}
+}
+Node_29 [shape=record,label="{29\:\ ?|SYNTHETIC\lRETURN\l|lreturn r1l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0049|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0056|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x005a|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0069|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x006d|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ 0x007c|l}"];
+Node_25 [shape=record,color=red,label="{25\:\ 0x0080|l}"];
+Node_28 [shape=record,color=red,label="{28\:\ 0x008f|l}"];
+MethodNode[shape=record,label="{public static com.uc.paymentsdk.payment.upoint.UPointInfo com.uc.paymentsdk.network.XMLParser.parseUPointInfo((r9v0 'upointinfostr' java.lang.String A[D('upointinfostr' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljava\/lang\/Exception;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:28:0x008f \-\> B:4:0x000c, CROSS_EDGE: B:26:0x0088 \-\> B:28:0x008f, CROSS_EDGE: B:24:0x007e \-\> B:28:0x008f, CROSS_EDGE: B:21:0x0075 \-\> B:23:0x007c, CROSS_EDGE: B:19:0x006b \-\> B:23:0x007c, CROSS_EDGE: B:16:0x0062 \-\> B:18:0x0069, CROSS_EDGE: B:14:0x0058 \-\> B:18:0x0069, CROSS_EDGE: B:11:0x004f \-\> B:13:0x0056, CROSS_EDGE: B:9:0x0047 \-\> B:13:0x0056, CROSS_EDGE: B:30:0x0092 \-\> B:8:0x003f\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_5[style=dashed];
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_6 -> Node_30[style=dashed];
+Node_7 -> Node_8;
+Node_30 -> Node_8;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_9 -> Node_13[style=dashed];
+Node_11 -> Node_12;
+Node_11 -> Node_13[style=dashed];
+Node_12 -> Node_13;
+Node_14 -> Node_15;
+Node_14 -> Node_18[style=dashed];
+Node_16 -> Node_17;
+Node_16 -> Node_18[style=dashed];
+Node_17 -> Node_18;
+Node_19 -> Node_20;
+Node_19 -> Node_23[style=dashed];
+Node_21 -> Node_22;
+Node_21 -> Node_23[style=dashed];
+Node_22 -> Node_23;
+Node_24 -> Node_25;
+Node_24 -> Node_28[style=dashed];
+Node_26 -> Node_27;
+Node_26 -> Node_28[style=dashed];
+Node_27 -> Node_28;
+Node_29 -> Node_4;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_10 -> Node_11;
+Node_13 -> Node_14;
+Node_15 -> Node_16;
+Node_18 -> Node_19;
+Node_20 -> Node_21;
+Node_23 -> Node_24;
+Node_25 -> Node_26;
+Node_28 -> Node_29;
+}
+

@@ -1,0 +1,12 @@
+digraph "CFG formain.Map.\<init\>(Lmain\/GameRun;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr8.npc = new dm.Npc[3]lr8.srcNpcNo = \-1lr8.sleep_count = 0lr8.step_MEET = 4lr8.event_state = 0lr8.mapTemp = new byte[70]lr8.anole_temp = \-1lr8.anole_type = \-1lr8.mapNo = 0lr8.inShop = 0lr8.notMeet = 0lr8.dialog_no = \-1lr8.bStep = \-1lr8.go = \-2lr8.bExitBoss = falselr8.mapNotemp = 0lr8.fmap = \-1lr8.sIfElse = \-1lr8.gmErr = falselr8.xxx = 0lr8.i = 0lr8.ii = 0lr8.dir_select = new byte[][]\{new byte[2], new byte[]\{0, \-1\}, new byte[]\{0, 1\}, new byte[]\{\-1\}, new byte[]\{1\}\}lr8.anoleSel = 0lr8.npcDirTalk = \-1lr8.bDirTalk = falselr8.checkNpcT = \-1lr8.roadType = 0lr8.miniMapMode = falselr8.showArea = \-1lr8.littleMapClipY = 300lr8.bPause = falselr8.moduleData = nulllr8.mapImg = nulllr8.bgColor = 0lr8.bottomData = nulllr8.frontData = nulllr8.worldData = nulllr8.firstDrawMap = 0lr8.map_left = 0lr8.map_top = 0lr8.map_right = 0lr8.map_bottom = 0lr8.rightCol = 0lr8.bottomRow = 0lr8.imgFace = nulllr8.faceDir = falselr8.faceLast = \-1lr8.face_c = 0lr8.bSrc_c = 0lr8.bSrc = falselr8.srcFlash_c = 0lr8.boatSelect = \-1lr8.isNeedWait = truelr8.gr = r9ljava.lang.System.gc()linit()l}"];
+Node_2 [shape=record,label="{2\:\ 0x00a8|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.Map.\<init\>((r8v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r9v0 'gameRun' main.GameRun A[D('gameRun' main.GameRun), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

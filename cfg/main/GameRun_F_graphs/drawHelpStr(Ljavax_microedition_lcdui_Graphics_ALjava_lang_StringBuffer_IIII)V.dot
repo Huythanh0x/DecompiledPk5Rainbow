@@ -1,0 +1,48 @@
+digraph "CFG formain.GameRun_F.drawHelpStr(Ljavax\/microedition\/lcdui\/Graphics;[Ljava\/lang\/StringBuffer;IIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r8 = (byte) (r9.help_page * r12)lr7 = r8l}"];
+Node_2 [shape=record,label="{2\:\ 0x0005|LOOP_START\lPHI: r7l  0x0005: PHI (r7v1 'i' byte) = (r7v0 'i' byte), (r7v2 'i' byte) binds: [B:1:0x0000, B:6:0x005c] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0005\-\>B:6:0x005c\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0007|lif (r7 \>= (r8 + r12)) goto L37l}"];
+Node_4 [shape=record,label="{4\:\ 0x0009|l}"];
+Node_5 [shape=record,label="{5\:\ 0x000a|lif (r7 \< r11.length) goto L34l}"];
+Node_6 [shape=record,label="{6\:\ 0x005c|LOOP_END\lLOOP:0: B:2:0x0005\-\>B:6:0x005c\l|ldm.Ui.i().drawString(r11[r7].toString(), r13, r14 + ((r7 \- r8) * 27), r15, 3, 0)lbyte r7 = (byte) (r7 + 1)l}"];
+Node_7 [shape=record,label="{7\:\ 0x000c|SYNTHETIC\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x000c|l}"];
+Node_9 [shape=record,label="{9\:\ 0x000d|lif (r11.length \<= r12) goto L36l}"];
+Node_10 [shape=record,label="{10\:\ 0x000f|lint r0 = r11.length \/ r12l}"];
+Node_11 [shape=record,label="{11\:\ 0x0013|lif ((r11.length % r12) == 0) goto L35l}"];
+Node_12 [shape=record,label="{12\:\ 0x0015|lr1 = 1l}"];
+Node_13 [shape=record,label="{13\:\ 0x0016|PHI: r1l  0x0016: PHI (r1v3 int) = (r1v2 int), (r1v9 int) binds: [B:16:0x0077, B:12:0x0015] A[DONT_GENERATE, DONT_INLINE]\l|lr9.page_max = (byte) (r0 + r1)ldm.Ui.i().drawString(new java.lang.StringBuilder(java.lang.String.valueOf(r9.help_page + 1)).append(\"\/\").append(r9.page_max).toString(), main.Constants_H.WIDTH_H, main.Constants_H.HEIGHT \- 2, 1 \| 32, 3, 0)ldm.Ui.i().drawTriangle(main.Constants_H.WIDTH_H, main.Constants_H.HEIGHT \- 12, 75, true, true)l}"];
+Node_14 [shape=record,label="{14\:\ 0x005b|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_15 [shape=record,label="{15\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_16 [shape=record,label="{16\:\ 0x0077|lr1 = 0l}"];
+Node_17 [shape=record,label="{17\:\ 0x0079|lr9.page_max = 1l}"];
+Node_18 [shape=record,label="{18\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_19 [shape=record,label="{19\:\ 0x000c|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun_F.drawHelpStr((r9v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]), (r10v0 'g' javax.microedition.lcdui.Graphics A[D('g' javax.microedition.lcdui.Graphics), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'help_strbuff' java.lang.StringBuffer[] A[D('help_strbuff' java.lang.StringBuffer[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'line_num' int A[D('line_num' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'anchor' int A[D('anchor' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:16:0x0077 \-\> B:13:0x0016, CROSS_EDGE: B:17:0x0079 \-\> B:14:0x005b, BACK_EDGE: B:6:0x005c \-\> B:2:0x0005, CROSS_EDGE: B:3:0x0007 \-\> B:8:0x000c\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4[style=dashed];
+Node_3 -> Node_19;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_7[style=dashed];
+Node_6 -> Node_2;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_17;
+Node_10 -> Node_11;
+Node_11 -> Node_12[style=dashed];
+Node_11 -> Node_16;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+Node_16 -> Node_13;
+Node_17 -> Node_18;
+Node_18 -> Node_15;
+Node_19 -> Node_8;
+}
+

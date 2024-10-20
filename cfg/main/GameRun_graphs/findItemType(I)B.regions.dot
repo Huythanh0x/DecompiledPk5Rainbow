@@ -1,0 +1,67 @@
+digraph "CFG formain.GameRun.findItemType(I)B" {
+subgraph cluster_Region_2013425680 {
+label = "R(1:(2:(1:3)|(1:(2:(1:7)|(1:9)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1514594396 {
+label = "R(2:(1:3)|(1:(2:(1:7)|(1:9))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1551453551 {
+label = "IF [B:2:0x0002] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r2 \< 16) goto L20l}"];
+subgraph cluster_Region_1416790027 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0004|RETURN\lORIG_RETURN\l|lreturn (byte) 0l}"];
+}
+}
+subgraph cluster_Region_1067186277 {
+label = "R(1:(2:(1:7)|(1:9)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1387445194 {
+label = "R(2:(1:7)|(1:9))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1144428230 {
+label = "IF [B:6:0x0008] THEN: R(1:7) ELSE: null";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0008|lif (r2 \< 35) goto L24l}"];
+subgraph cluster_Region_75768979 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x000a|SYNTHETIC\lRETURN\l|lreturn (byte) 1l}"];
+}
+}
+subgraph cluster_Region_1681697974 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x000e|RETURN\l|lreturn r2 \< 58 ? (byte) 2 : (byte) 3l}"];
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0006|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x000c|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0010|SYNTHETIC\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0012|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public byte main.GameRun.findItemType((r1v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r2v0 'item_id' int A[D('item_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x000a \-\> B:4:0x0005, CROSS_EDGE: B:10:0x0010 \-\> B:4:0x0005, CROSS_EDGE: B:11:0x0012 \-\> B:4:0x0005\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_5[style=dashed];
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_6 -> Node_8[style=dashed];
+Node_7 -> Node_4;
+Node_9 -> Node_10;
+Node_9 -> Node_11;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_5 -> Node_6;
+Node_8 -> Node_9;
+Node_10 -> Node_4;
+Node_11 -> Node_4;
+}
+

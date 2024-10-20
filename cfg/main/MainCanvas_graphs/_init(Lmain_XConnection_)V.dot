@@ -1,0 +1,12 @@
+digraph "CFG formain.MainCanvas.\<init\>(Lmain\/XConnection;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.errorString = \"\"lr4.quitGame = falselr4.logo_c = 0lr4.temp_loop = 0lr4.starttime = 0lr4.timetaken = 0lr4.battle_c = 9lr4.strTemp = \"\"lr4.imageData = nulllr4.bblack = falselr4.temp_state = 0lr4.temp_gamestate = 0lr4.haveSoundBeforeHideNotify = falselr4.smsIsSetRun_state = falselr4.load_c = \-1lr4.game = r5lr4.gr = new main.GameRun(r4)lr4.sender = main.SMSSender.i(r4.gr)lr4.pkey = new main.PointerKey(r4)lmain.Map r0 = r4.gr.maplr0.pkey = r4.pkeylmain.GameRun r0 = r4.grlr0.pkey = r4.pkeylmain.SMSSender r0 = r4.senderlr0.pkey = r4.pkeylmain.MainCanvas.mainxx = ((float) main.Constants_H.WIDTH__) \/ 640.0flmain.MainCanvas.mapxx = ((float) main.Constants_H.WIDTH__) \/ ((float) main.Constants_H.WIDTH)lmain.MainCanvas.mainyy = ((float) main.Constants_H.HEIGHT__) \/ 360.0flmain.MainCanvas.mapyy = ((float) main.Constants_H.HEIGHT__) \/ ((float) main.Constants_H.HEIGHT)l}"];
+Node_2 [shape=record,label="{2\:\ 0x007a|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.MainCanvas.\<init\>((r4v0 'this' main.MainCanvas A[IMMUTABLE_TYPE, THIS]), (r5v0 'game' main.XConnection A[D('game' main.XConnection), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

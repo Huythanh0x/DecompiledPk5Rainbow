@@ -1,0 +1,34 @@
+digraph "CFG formain.GameRun.drawMonKind(BIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr6 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0001|LOOP_START\lPHI: r6l  0x0001: PHI (r6v1 'i' byte) = (r6v0 'i' byte), (r6v2 'i' byte) binds: [B:1:0x0000, B:8:0x000d] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0001\-\>B:8:0x000d\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0002|lif (r6 \< 5) goto L20l}"];
+Node_4 [shape=record,label="{4\:\ 0x0005|ldm.Ui r0 = dm.Ui.i()l}"];
+Node_5 [shape=record,label="{5\:\ 0x0009|lif (r8 \<= r6) goto L24l}"];
+Node_6 [shape=record,label="{6\:\ 0x000b|lr1 = 23l}"];
+Node_7 [shape=record,label="{7\:\ 0x000d|SYNTHETIC\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x000d|LOOP_END\lPHI: r1l  0x000d: PHI (r1v1 int) = (r1v0 int), (r1v2 int) binds: [B:10:0x000d, B:7:0x000d] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0001\-\>B:8:0x000d\l|lr0.drawUi(r1, (r6 * 14) + r9, r10, r11, 0)lbyte r6 = (byte) (r6 + 1)l}"];
+Node_9 [shape=record,label="{9\:\ 0x001a|lr1 = 24l}"];
+Node_10 [shape=record,label="{10\:\ 0x000d|SYNTHETIC\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x0004|SYNTHETIC\l|l}"];
+Node_12 [shape=record,label="{12\:\ 0x0004|RETURN\l|lreturnl}"];
+Node_13 [shape=record,label="{13\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawMonKind((r7v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r8v0 'monKind' byte A[D('monKind' byte), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'arh' int A[D('arh' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:8:0x000d \-\> B:2:0x0001, CROSS_EDGE: B:9:0x001a \-\> B:8:0x000d\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_11[style=dashed];
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_9;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_2;
+Node_9 -> Node_10;
+Node_10 -> Node_8;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+}
+

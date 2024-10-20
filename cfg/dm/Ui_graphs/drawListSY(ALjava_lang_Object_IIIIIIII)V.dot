@@ -1,0 +1,36 @@
+digraph "CFG fordm.Ui.drawListSY([Ljava\/lang\/Object;IIIIIIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr7 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0001|LOOP_START\lPHI: r7l  0x0001: PHI (r7v1 'd' byte) = (r7v0 'd' byte), (r7v2 'd' byte) binds: [B:1:0x0000, B:8:0x0020] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0001\-\>B:8:0x0020\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0002|lif (r7 \< r9.length) goto L22l}"];
+Node_4 [shape=record,label="{4\:\ 0x000c|ljava.lang.String r1 = r9[r7].toString()lint r2 = r10 + (r12 \>\> 1)lint r3 = r7 * r13lint r3 = r3 + (r11 + 2)l}"];
+Node_5 [shape=record,label="{5\:\ 0x001d|lif (r7 != r14) goto L26l}"];
+Node_6 [shape=record,label="{6\:\ 0x001f|lr5 = r15l}"];
+Node_7 [shape=record,label="{7\:\ 0x0020|SYNTHETIC\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x0020|LOOP_END\lPHI: r5l  0x0020: PHI (r5v1 int) = (r5v0 int), (r5v2 int) binds: [B:10:0x0020, B:7:0x0020] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0001\-\>B:8:0x0020\l|ldrawString(r1, r2, r3, 17, r5, r17)lbyte r7 = (byte) (r7 + 1)l}"];
+Node_9 [shape=record,label="{9\:\ 0x002a|lr5 = r16l}"];
+Node_10 [shape=record,label="{10\:\ 0x0020|SYNTHETIC\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x0004|SYNTHETIC\l|l}"];
+Node_12 [shape=record,label="{12\:\ 0x0004|landroid.util.Log.e(\"sk\", \"drawListSY\")l}"];
+Node_13 [shape=record,label="{13\:\ 0x000b|RETURN\l|lreturnl}"];
+Node_14 [shape=record,label="{14\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawListSY((r8v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r9v0 'menu' java.lang.Object[] A[D('menu' java.lang.Object[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'sh' int A[D('sh' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'sel' int A[D('sel' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'c0' int A[D('c0' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r16v0 'c1' int A[D('c1' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r17v0 'strT' int A[D('strT' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:8:0x0020 \-\> B:2:0x0001, CROSS_EDGE: B:9:0x002a \-\> B:8:0x0020\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_11[style=dashed];
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_9;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_2;
+Node_9 -> Node_10;
+Node_10 -> Node_8;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+}
+

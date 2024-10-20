@@ -1,0 +1,30 @@
+digraph "CFG fordm.Ui.drawKuangMap(IIIIZ)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0001|lif (r12 == false) goto L22l}"];
+Node_3 [shape=record,label="{3\:\ 0x0003|lr1 = 14961l}"];
+Node_4 [shape=record,label="{4\:\ 0x0006|PHI: r1l  0x0006: PHI (r1v1 int) = (r1v0 int), (r1v5 int) binds: [B:11:0x0021, B:3:0x0003] A[DONT_GENERATE, DONT_INLINE]\l|lfillRect(r1, r8, r9, r10, r11)l}"];
+Node_5 [shape=record,label="{5\:\ 0x000e|lif (r12 == false) goto L23l}"];
+Node_6 [shape=record,label="{6\:\ 0x0010|lr1 = 6724095l}"];
+Node_7 [shape=record,label="{7\:\ 0x0014|PHI: r1l  0x0014: PHI (r1v3 int) = (r1v2 int), (r1v4 int) binds: [B:10:0x0026, B:6:0x0010] A[DONT_GENERATE, DONT_INLINE]\l|lfillRect(r1, r8 + 1, r9 + 1, r10 \- 2, r11 \- 2)l}"];
+Node_8 [shape=record,label="{8\:\ 0x0020|RETURN\l|lreturnl}"];
+Node_9 [shape=record,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,label="{10\:\ 0x0026|lr1 = 11370036l}"];
+Node_11 [shape=record,label="{11\:\ 0x0021|lr1 = 16762112l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawKuangMap((r7v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r8v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'h' int A[D('h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'mode' boolean A[D('mode' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0026 \-\> B:7:0x0014, CROSS_EDGE: B:11:0x0021 \-\> B:4:0x0006\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_11;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_10;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_10 -> Node_7;
+Node_11 -> Node_4;
+}
+

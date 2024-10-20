@@ -1,0 +1,16 @@
+digraph "CFG fordm.Battle.addHit(III)V" {
+subgraph cluster_Region_756458898 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.hit[r7][0] = (short) r6lshort[] short[] r0 = r4.hit[r7]lr0[1] = (short) (r0[1] + r5)lr4.hit[r7][2] = 0lr4.hit[r7][3] = 0lr4.hit[r7][4] = 0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0028|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Battle.addHit((r4v0 'this' dm.Battle A[IMMUTABLE_TYPE, THIS]), (r5v0 'h' int A[D('h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'type' int A[D('type' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

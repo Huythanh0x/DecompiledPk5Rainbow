@@ -1,0 +1,43 @@
+digraph "CFG fordm.Ms.select(III)B" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lif (r5 != 0) goto L22l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0003|RETURN\lORIG_RETURN\l|lreturn (byte) r3l}"];
+Node_4 [shape=record,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0004|l}"];
+Node_6 [shape=record,label="{6\:\ 0x000d|lif ((abs(dm.Ms.key) % 2) != 1) goto L28l}"];
+Node_7 [shape=record,label="{7\:\ 0x000f|lint r3 = r3 + (\-1)l}"];
+Node_8 [shape=record,label="{8\:\ 0x0011|lif (r3 \>= r4) goto L28l}"];
+Node_9 [shape=record,label="{9\:\ 0x0013|lr3 = r5l}"];
+Node_10 [shape=record,label="{10\:\ 0x0014|PHI: r3l  0x0014: PHI (r3v4 'select' int) = (r3v1 'select' int), (r3v2 'select' int), (r3v3 'select' int), (r3v6 'select' int) binds: [B:13:0x001e, B:15:0x0022, B:16:0x0024, B:9:0x0013] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturn (byte) r3l}"];
+Node_12 [shape=record,label="{12\:\ 0x0016|PHI: r3l  0x0016: PHI (r3v1 'select' int) = (r3v0 'select' int), (r3v5 'select' int) binds: [B:6:0x000d, B:8:0x0011] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x001e|lif ((abs(dm.Ms.key) % 2) != 0) goto L27l}"];
+Node_14 [shape=record,label="{14\:\ 0x0020|lint r3 = r3 + 1l}"];
+Node_15 [shape=record,label="{15\:\ 0x0022|lif (r3 \<= r5) goto L27l}"];
+Node_16 [shape=record,label="{16\:\ 0x0024|lr3 = r4l}"];
+MethodNode[shape=record,label="{public byte dm.Ms.select((r2v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r3v0 'select' int A[D('select' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'min' int A[D('min' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'max' int A[D('max' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0014 \-\> B:3:0x0003, CROSS_EDGE: B:13:0x001e \-\> B:10:0x0014, CROSS_EDGE: B:15:0x0022 \-\> B:10:0x0014, CROSS_EDGE: B:16:0x0024 \-\> B:10:0x0014, CROSS_EDGE: B:6:0x000d \-\> B:12:0x0016\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2[style=dashed];
+Node_1 -> Node_5;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_12;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_12;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_11 -> Node_4;
+Node_12 -> Node_13;
+Node_13 -> Node_10;
+Node_13 -> Node_14[style=dashed];
+Node_14 -> Node_15;
+Node_15 -> Node_10;
+Node_15 -> Node_16[style=dashed];
+Node_16 -> Node_10;
+}
+

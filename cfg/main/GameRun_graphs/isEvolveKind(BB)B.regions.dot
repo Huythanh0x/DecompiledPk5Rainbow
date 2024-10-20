@@ -1,0 +1,84 @@
+digraph "CFG formain.GameRun.isEvolveKind(BB)B" {
+subgraph cluster_Region_467892003 {
+label = "R(1:(2:(1:5)|(1:(2:(1:13)|(1:11)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_560994416 {
+label = "R(2:(1:5)|(1:(2:(1:13)|(1:11))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_447199247 {
+label = "IF [B:2:0x0002, B:4:0x0006] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r3 == 1) goto L26l}"];
+Node_4 [shape=record,label="{4\:\ 0x0006|ADDED_TO_REGION\l|lif (r4 \< 15) goto L28l}"];
+subgraph cluster_Region_965770674 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0008|RETURN\lORIG_RETURN\l|lreturn (byte) \-2l}"];
+}
+}
+subgraph cluster_Region_961175500 {
+label = "R(1:(2:(1:13)|(1:11)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_416838413 {
+label = "R(2:(1:13)|(1:11))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1058592729 {
+label = "IF [B:8:0x000b, B:10:0x000f] THEN: R(1:13) ELSE: null";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x000b|lif (r3 != 2) goto L35l}"];
+Node_10 [shape=record,label="{10\:\ 0x000f|ADDED_TO_REGION\l|lif (r4 \>= 25) goto L35l}"];
+subgraph cluster_Region_90132581 {
+label = "R(1:13)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0014|RETURN\l|lreturn (r3 != 3 \|\| r4 \>= 30) ? (byte) \-1 : (byte) \-4l}"];
+}
+}
+subgraph cluster_Region_1853934397 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0011|SYNTHETIC\lRETURN\l|lreturn (byte) \-3l}"];
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0004|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x000a|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x000d|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0013|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0016|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0018|REMOVE\lADDED_TO_REGION\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x001a|SYNTHETIC\l|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ ?|SYNTHETIC\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ ?|SYNTHETIC\lRETURN\lADDED_TO_REGION\l|lreturn (byte) \-1l}"];
+MethodNode[shape=record,label="{private byte main.GameRun.isEvolveKind((r2v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r3v0 'kind' byte A[D('kind' byte), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'level' byte A[D('level' byte), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:11:0x0011 \-\> B:6:0x0009, CROSS_EDGE: B:13:0x0014 \-\> B:6:0x0009, CROSS_EDGE: B:15:0x0018 \-\> B:6:0x0009, CROSS_EDGE: B:16:0x001a \-\> B:6:0x0009, CROSS_EDGE: B:8:0x000b \-\> B:12:0x0013, CROSS_EDGE: B:2:0x0002 \-\> B:7:0x000a\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_7[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_7[style=dashed];
+Node_5 -> Node_6;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_12;
+Node_10 -> Node_11[style=dashed];
+Node_10 -> Node_12;
+Node_13 -> Node_14;
+Node_13 -> Node_18;
+Node_11 -> Node_6;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_12 -> Node_13;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_15 -> Node_17;
+Node_16 -> Node_6;
+Node_17 -> Node_6;
+Node_18 -> Node_6;
+}
+

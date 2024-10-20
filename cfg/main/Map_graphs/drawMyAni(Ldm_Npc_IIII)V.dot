@@ -1,0 +1,47 @@
+digraph "CFG formain.Map.drawMyAni(Ldm\/Npc;IIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r6 = (byte) r11l}"];
+Node_2 [shape=record,label="{2\:\ 0x0010|lif (r10.now_action \< main.Map.npcSp[1][r6].aLength(r14)) goto L24l}"];
+Node_3 [shape=record,label="{3\:\ 0x0012|lr10.now_action = 0l}"];
+Node_4 [shape=record,label="{4\:\ 0x0014|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0017|lif (r9.anole_type == 2) goto L29l}"];
+Node_6 [shape=record,label="{6\:\ 0x0019|l}"];
+Node_7 [shape=record,label="{7\:\ 0x001b|lif (r9.anole_type == 4) goto L29l}"];
+Node_8 [shape=record,label="{8\:\ 0x001d|ldm.Ui.i().drawImage(r9.imgShadow, r12, r13, 33)l}"];
+Node_9 [shape=record,label="{9\:\ 0x0028|ldm.Ui r0 = dm.Ui.i()lr1 = main.Map.npcSp[1][r6]lint r2 = main.Map.npcSp[1][r6].action(r14, r10.now_action, 0)l}"];
+Node_10 [shape=record,label="{10\:\ 0x0040|lif (r10.dir != 4) goto L36l}"];
+Node_11 [shape=record,label="{11\:\ 0x0042|lr5 = 1l}"];
+Node_12 [shape=record,label="{12\:\ 0x0043|PHI: r5l  0x0043: PHI (r5v1 int) = (r5v0 int), (r5v2 int) binds: [B:18:0x0067, B:11:0x0042] A[DONT_GENERATE, DONT_INLINE]\l|lr0.drawFrameOne(r1, r2, r12, r13, r5)lbyte r0 = (byte) (r10.now_time + 1)lr10.now_time = r0l}"];
+Node_13 [shape=record,label="{13\:\ 0x005b|lif (r0 \<= main.Map.npcSp[1][r6].action(r14, r10.now_action, 1)) goto L37l}"];
+Node_14 [shape=record,label="{14\:\ 0x005d|lr10.now_action = (byte) (r10.now_action + 1)lr10.now_time = 0l}"];
+Node_15 [shape=record,label="{15\:\ 0x0066|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_16 [shape=record,label="{16\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_17 [shape=record,label="{17\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_18 [shape=record,label="{18\:\ 0x0067|lr5 = 0l}"];
+MethodNode[shape=record,label="{public void main.Map.drawMyAni((r9v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r10v0 'my' dm.Npc A[D('my' dm.Npc), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'my_id' int A[D('my_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'action_id' int A[D('action_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:13:0x005b \-\> B:15:0x0066, CROSS_EDGE: B:18:0x0067 \-\> B:12:0x0043, CROSS_EDGE: B:7:0x001b \-\> B:9:0x0028, CROSS_EDGE: B:5:0x0017 \-\> B:9:0x0028, CROSS_EDGE: B:2:0x0010 \-\> B:4:0x0014\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_4;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_9;
+Node_6 -> Node_7;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_9;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_10 -> Node_11[style=dashed];
+Node_10 -> Node_18;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_13 -> Node_14[style=dashed];
+Node_13 -> Node_17;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_17 -> Node_16;
+Node_18 -> Node_12;
+}
+

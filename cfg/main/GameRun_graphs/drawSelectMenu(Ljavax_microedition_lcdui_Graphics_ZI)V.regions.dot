@@ -1,0 +1,52 @@
+digraph "CFG formain.GameRun.drawSelectMenu(Ljavax\/microedition\/lcdui\/Graphics;ZI)V" {
+subgraph cluster_Region_445137049 {
+label = "R(2:1|(1:(2:5|(1:8))))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.i().drawK2(javax.microedition.media.Player.REALIZED, r14 + 15, 240, (main.Constants_H.HEIGHT_ \- r14) \- 20, 0)ldrawBattleExp(r11.myB.getMon(), r14 + 3)l}"];
+subgraph cluster_Region_593947318 {
+label = "R(1:(2:5|(1:8)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1113582364 {
+label = "IF [B:2:0x0021] THEN: R(2:5|(1:8)) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0021|lif (r13 == false) goto L16l}"];
+subgraph cluster_Region_1238478079 {
+label = "R(2:5|(1:8))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0024|ldm.Ui.i().drawString(main.Constants_H.BATTLE_TXT_16, 450, 10, 0, 0, 2)lbyte r9 = 0l}"];
+subgraph cluster_LoopRegion_658608040 {
+label = "LOOP:0: (1:8)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0037|ADDED_TO_REGION\l|lif (r9 \< r11.imgBattle.length) goto L19l}"];
+subgraph cluster_Region_704035428 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0039|LOOP_END\lLOOP:0: B:6:0x0034\-\>B:8:0x0039\l|ldm.Ui.i().drawImage(r11.imgBattle[r9], r11.pkey.button_pos[5][r9][0], r11.pkey.button_pos[5][r9][1], 0)lbyte r9 = (byte) (r9 + 1)l}"];
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0023|ORIG_RETURN\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0034|LOOP_START\lPHI: r9l  0x0034: PHI (r9v1 'i' byte) = (r9v0 'i' byte), (r9v2 'i' byte) binds: [B:5:0x0024, B:8:0x0039] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:6:0x0034\-\>B:8:0x0039\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0023|SYNTHETIC\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawSelectMenu((r11v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r12v0 'g' javax.microedition.lcdui.Graphics A[D('g' javax.microedition.lcdui.Graphics), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0037 \-\> B:3:0x0023, BACK_EDGE: B:8:0x0039 \-\> B:6:0x0034\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_7 -> Node_9[style=dashed];
+Node_8 -> Node_6;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_10 -> Node_4;
+}
+

@@ -1,0 +1,327 @@
+digraph "CFG formain.Map.runSeek(Ldm\/Npc;Z)V" {
+subgraph cluster_Region_1770312012 {
+label = "R(2:1|(2:(1:(2:(3:7|(1:9)(1:20)|(2:(3:12|15|16)|(1:19)))|(1:21)))|(1:(1:(3:(1:26)(1:75)|(2:(1:33)(1:50)|(1:39))(2:(1:56)(1:71)|(1:62))|41))))) | DECL_VAR: boolean bb\l";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lboolean boolean r0 = r10.b_checklshort short r1 = (short) (r10.ix * 20)lshort short r2 = (short) (r10.iy * 20)l}"];
+subgraph cluster_Region_563761754 {
+label = "R(2:(1:(2:(3:7|(1:9)(1:20)|(2:(3:12|15|16)|(1:19)))|(1:21)))|(1:(1:(3:(1:26)(1:75)|(2:(1:33)(1:50)|(1:39))(2:(1:56)(1:71)|(1:62))|41))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_693975284 {
+label = "IF [B:2:0x0013, B:4:0x0017] THEN: R(1:(2:(3:7|(1:9)(1:20)|(2:(3:12|15|16)|(1:19)))|(1:21))) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0013|lif (r10.x == r1) goto L84l}"];
+Node_4 [shape=record,label="{4\:\ 0x0017|ADDED_TO_REGION\l|lif (r10.y == r2) goto L86l}"];
+subgraph cluster_Region_1587783858 {
+label = "R(1:(2:(3:7|(1:9)(1:20)|(2:(3:12|15|16)|(1:19)))|(1:21)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_2041013033 {
+label = "R(2:(3:7|(1:9)(1:20)|(2:(3:12|15|16)|(1:19)))|(1:21))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1485301796 {
+label = "IF [B:6:0x001b] THEN: R(3:7|(1:9)(1:20)|(2:(3:12|15|16)|(1:19))) ELSE: null";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x001b|lif (r10.frame_c == (\-1)) goto L88l}"];
+subgraph cluster_Region_737966572 {
+label = "R(3:7|(1:9)(1:20)|(2:(3:12|15|16)|(1:19)))";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x001d|lr10.iy = (byte) \-1lr10.ix = (byte) \-1l}"];
+subgraph cluster_IfRegion_1759097369 {
+label = "IF [B:8:0x0021] THEN: R(1:9) ELSE: R(1:20)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0021|lif (r11 == true) goto L90l}"];
+subgraph cluster_Region_715467264 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0023|lr10.setIxIy_npc()l}"];
+}
+subgraph cluster_Region_1300509112 {
+label = "R(1:20)";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x003e|lr10.speed = getMySpeed()l}"];
+}
+}
+subgraph cluster_Region_100602621 {
+label = "R(2:(3:12|15|16)|(1:19))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_538124577 {
+label = "IF [B:11:0x0028] THEN: R(3:12|15|16) ELSE: null";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0028|lif (r10.bdir != false) goto L93l}"];
+subgraph cluster_Region_593881609 {
+label = "R(3:12|15|16)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x002a|lr10.other[7] = r10.lastActionl}"];
+Node_15 [shape=record,label="{15\:\ 0x0036|PHI: r3l  0x0036: PHI (r3v52 byte) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr10.dir = r10.lastAction \< 0 ? (byte) 4 : (byte) 3lr10.setLastAction(false, 127)l}"];
+Node_16 [shape=record,label="{16\:\ 0x003d|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1325405740 {
+label = "R(1:19)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_Region_848661963 {
+label = "R(1:21)";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+}
+}
+}
+}
+subgraph cluster_Region_196520081 {
+label = "R(1:(1:(3:(1:26)(1:75)|(2:(1:33)(1:50)|(1:39))(2:(1:56)(1:71)|(1:62))|41))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_Region_126824012 {
+label = "R(1:(3:(1:26)(1:75)|(2:(1:33)(1:50)|(1:39))(2:(1:56)(1:71)|(1:62))|41))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1215429095 {
+label = "IF [B:23:0x0049] THEN: R(3:(1:26)(1:75)|(2:(1:33)(1:50)|(1:39))(2:(1:56)(1:71)|(1:62))|41) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_23 [shape=record,label="{23\:\ 0x0049|lif (r10.frame_c \< 1) goto L102l}"];
+subgraph cluster_Region_1452592887 {
+label = "R(3:(1:26)(1:75)|(2:(1:33)(1:50)|(1:39))(2:(1:56)(1:71)|(1:62))|41)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_925759529 {
+label = "IF [B:24:0x004b] THEN: R(1:26) ELSE: R(1:75)";
+node [shape=record,color=blue];
+Node_24 [shape=record,label="{24\:\ 0x004b|lif (r0 == true) goto L103l}"];
+subgraph cluster_Region_1977065155 {
+label = "R(1:26)";
+node [shape=record,color=blue];
+Node_26 [shape=record,label="{26\:\ 0x004f|lr0 = r10.x != r1l}"];
+}
+subgraph cluster_Region_1626452372 {
+label = "R(1:75)";
+node [shape=record,color=blue];
+Node_75 [shape=record,label="{75\:\ 0x0088|lr0 = r10.y == r2l}"];
+}
+}
+subgraph cluster_IfRegion_1750599316 {
+label = "IF [B:28:0x0052] THEN: R(2:(1:33)(1:50)|(1:39)) ELSE: R(2:(1:56)(1:71)|(1:62))";
+node [shape=record,color=blue];
+Node_28 [shape=record,label="{28\:\ 0x0052|PHI: r0l  0x0052: PHI (r0v3 'bb' boolean) = (r0v2 'bb' boolean), (r0v5 'bb' boolean) binds: [B:76:0x008a, B:27:0x0051] A[DONT_GENERATE, DONT_INLINE]\l|lif (r0 != false) goto L107l}"];
+subgraph cluster_Region_375105693 {
+label = "R(2:(1:33)(1:50)|(1:39))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_982925188 {
+label = "IF [B:30:0x0056, B:32:0x005d, B:44:0x0061, B:46:0x0068] THEN: R(1:33) ELSE: R(1:50)";
+node [shape=record,color=blue];
+Node_30 [shape=record,label="{30\:\ 0x0056|lif (r10.x \> r1) goto L109l}"];
+Node_32 [shape=record,label="{32\:\ 0x005d|ADDED_TO_REGION\l|lif ((r10.x \- r10.speed) \< r1) goto L115l}"];
+Node_44 [shape=record,label="{44\:\ 0x0061|ADDED_TO_REGION\l|lif (r10.x \< r1) goto L113l}"];
+Node_46 [shape=record,label="{46\:\ 0x0068|ADDED_TO_REGION\l|lif ((r10.x + r10.speed) \> r1) goto L115l}"];
+subgraph cluster_Region_1646425167 {
+label = "R(1:33)";
+node [shape=record,color=blue];
+Node_33 [shape=record,label="{33\:\ 0x006a|lr10.setSpeedXY(r1 \- r10.x, 0)l}"];
+}
+subgraph cluster_Region_586705511 {
+label = "R(1:50)";
+node [shape=record,color=blue];
+Node_50 [shape=record,label="{50\:\ 0x0095|PHI: r3l  0x0095: PHI (r3v30 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr10.setSpeedXY(r10.x \> r1 ? \-r10.speed : r10.speed, 0)l}"];
+}
+}
+subgraph cluster_IfRegion_1369625968 {
+label = "IF [B:35:0x0073] THEN: R(1:39) ELSE: null";
+node [shape=record,color=blue];
+Node_35 [shape=record,label="{35\:\ 0x0073|lif (r10.bdir == false) goto L118l}"];
+subgraph cluster_Region_1804654973 {
+label = "R(1:39)";
+node [shape=record,color=blue];
+Node_39 [shape=record,label="{39\:\ 0x007a|PHI: r3l  0x007a: PHI (r3v38 byte) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr10.dir = r10.x \> r1 ? (byte) 3 : (byte) 4l}"];
+}
+}
+}
+subgraph cluster_Region_556878533 {
+label = "R(2:(1:56)(1:71)|(1:62))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_293609929 {
+label = "IF [B:53:0x00a0, B:55:0x00a7, B:65:0x00ab, B:67:0x00b2] THEN: R(1:56) ELSE: R(1:71)";
+node [shape=record,color=blue];
+Node_53 [shape=record,label="{53\:\ 0x00a0|lif (r10.y \> r2) goto L137l}"];
+Node_55 [shape=record,label="{55\:\ 0x00a7|ADDED_TO_REGION\l|lif ((r10.y \- r10.speed) \< r2) goto L143l}"];
+Node_65 [shape=record,label="{65\:\ 0x00ab|ADDED_TO_REGION\l|lif (r10.y \< r2) goto L141l}"];
+Node_67 [shape=record,label="{67\:\ 0x00b2|ADDED_TO_REGION\l|lif ((r10.y + r10.speed) \> r2) goto L143l}"];
+subgraph cluster_Region_1883953868 {
+label = "R(1:56)";
+node [shape=record,color=blue];
+Node_56 [shape=record,label="{56\:\ 0x00b4|lr10.setSpeedXY(0, r2 \- r10.y)l}"];
+}
+subgraph cluster_Region_494714505 {
+label = "R(1:71)";
+node [shape=record,color=blue];
+Node_71 [shape=record,label="{71\:\ 0x00ce|PHI: r3l  0x00ce: PHI (r3v11 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr10.setSpeedXY(0, r10.y \> r2 ? \-r10.speed : r10.speed)l}"];
+}
+}
+subgraph cluster_IfRegion_158696657 {
+label = "IF [B:58:0x00bd] THEN: R(1:62) ELSE: null";
+node [shape=record,color=blue];
+Node_58 [shape=record,label="{58\:\ 0x00bd|lif (r10.bdir == false) goto L146l}"];
+subgraph cluster_Region_1886179747 {
+label = "R(1:62)";
+node [shape=record,color=blue];
+Node_62 [shape=record,label="{62\:\ 0x00c4|PHI: r3l  0x00c4: PHI (r3v19 byte) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr10.dir = r10.y \> r2 ? (byte) 1 : (byte) 2l}"];
+}
+}
+}
+}
+Node_41 [shape=record,label="{41\:\ 0x007c|lr10.frame_c = r10.frame_numlr10.setActionNo(true)l}"];
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0015|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0019|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0026|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0033|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0035|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0045|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x0047|l}"];
+Node_25 [shape=record,color=red,label="{25\:\ 0x004d|l}"];
+Node_27 [shape=record,color=red,label="{27\:\ 0x0051|l}"];
+Node_29 [shape=record,color=red,label="{29\:\ 0x0054|l}"];
+Node_31 [shape=record,color=red,label="{31\:\ 0x0058|l}"];
+Node_34 [shape=record,color=red,label="{34\:\ 0x0071|l}"];
+Node_36 [shape=record,color=red,label="{36\:\ 0x0075|l}"];
+Node_37 [shape=record,color=red,label="{37\:\ 0x0077|l}"];
+Node_38 [shape=record,color=red,label="{38\:\ 0x0079|l}"];
+Node_40 [shape=record,color=red,label="{40\:\ 0x009c|l}"];
+Node_42 [shape=record,color=red,label="{42\:\ ?|SYNTHETIC\l|l}"];
+Node_43 [shape=record,color=red,label="{43\:\ 0x005f|l}"];
+Node_45 [shape=record,color=red,label="{45\:\ 0x0063|l}"];
+Node_47 [shape=record,color=red,label="{47\:\ 0x008e|l}"];
+Node_48 [shape=record,color=red,label="{48\:\ 0x0090|l}"];
+Node_49 [shape=record,color=red,label="{49\:\ 0x0092|l}"];
+Node_51 [shape=record,color=red,label="{51\:\ 0x0099|l}"];
+Node_52 [shape=record,color=red,label="{52\:\ 0x009e|l}"];
+Node_54 [shape=record,color=red,label="{54\:\ 0x00a2|l}"];
+Node_57 [shape=record,color=red,label="{57\:\ 0x00bb|l}"];
+Node_59 [shape=record,color=red,label="{59\:\ 0x00bf|l}"];
+Node_60 [shape=record,color=red,label="{60\:\ 0x00c1|l}"];
+Node_61 [shape=record,color=red,label="{61\:\ 0x00c3|l}"];
+Node_63 [shape=record,color=red,label="{63\:\ 0x00d5|l}"];
+Node_64 [shape=record,color=red,label="{64\:\ 0x00a9|l}"];
+Node_66 [shape=record,color=red,label="{66\:\ 0x00ad|l}"];
+Node_68 [shape=record,color=red,label="{68\:\ 0x00c7|l}"];
+Node_69 [shape=record,color=red,label="{69\:\ 0x00c9|l}"];
+Node_70 [shape=record,color=red,label="{70\:\ 0x00cb|l}"];
+Node_72 [shape=record,color=red,label="{72\:\ 0x00d2|l}"];
+Node_73 [shape=record,color=red,label="{73\:\ 0x0084|l}"];
+Node_74 [shape=record,color=red,label="{74\:\ 0x0086|l}"];
+Node_76 [shape=record,color=red,label="{76\:\ 0x008a|l}"];
+Node_77 [shape=record,color=red,label="{77\:\ 0x008c|l}"];
+Node_78 [shape=record,color=red,label="{78\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.runSeek((r9v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r10v0 'npc_' dm.Npc A[D('npc_' dm.Npc), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'b_who' boolean A[D('b_who' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:18:0x0045 \-\> B:15:0x0036, CROSS_EDGE: B:11:0x0028 \-\> B:16:0x003d, CROSS_EDGE: B:20:0x003e \-\> B:10:0x0026, CROSS_EDGE: B:6:0x001b \-\> B:16:0x003d, CROSS_EDGE: B:23:0x0049 \-\> B:16:0x003d, CROSS_EDGE: B:41:0x007c \-\> B:16:0x003d, CROSS_EDGE: B:40:0x009c \-\> B:39:0x007a, CROSS_EDGE: B:35:0x0073 \-\> B:41:0x007c, CROSS_EDGE: B:50:0x0095 \-\> B:34:0x0071, CROSS_EDGE: B:51:0x0099 \-\> B:50:0x0095, CROSS_EDGE: B:44:0x0061 \-\> B:47:0x008e, CROSS_EDGE: B:32:0x005d \-\> B:33:0x006a, CROSS_EDGE: B:30:0x0056 \-\> B:43:0x005f, CROSS_EDGE: B:58:0x00bd \-\> B:41:0x007c, CROSS_EDGE: B:62:0x00c4 \-\> B:41:0x007c, CROSS_EDGE: B:63:0x00d5 \-\> B:62:0x00c4, CROSS_EDGE: B:71:0x00ce \-\> B:57:0x00bb, CROSS_EDGE: B:72:0x00d2 \-\> B:71:0x00ce, CROSS_EDGE: B:65:0x00ab \-\> B:68:0x00c7, CROSS_EDGE: B:55:0x00a7 \-\> B:56:0x00b4, CROSS_EDGE: B:53:0x00a0 \-\> B:64:0x00a9, CROSS_EDGE: B:73:0x0084 \-\> B:28:0x0052, CROSS_EDGE: B:76:0x008a \-\> B:28:0x0052, CROSS_EDGE: B:77:0x008c \-\> B:28:0x0052, CROSS_EDGE: B:2:0x0013 \-\> B:22:0x0047\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_22[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_22[style=dashed];
+Node_6 -> Node_7;
+Node_6 -> Node_21[style=dashed];
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_20[style=dashed];
+Node_9 -> Node_10;
+Node_20 -> Node_10;
+Node_11 -> Node_12;
+Node_11 -> Node_19[style=dashed];
+Node_12 -> Node_13;
+Node_15 -> Node_16;
+Node_16 -> Node_17;
+Node_19 -> Node_17;
+Node_21 -> Node_17;
+Node_23 -> Node_24;
+Node_23 -> Node_78[style=dashed];
+Node_24 -> Node_25;
+Node_24 -> Node_74[style=dashed];
+Node_26 -> Node_27;
+Node_26 -> Node_73;
+Node_75 -> Node_76;
+Node_75 -> Node_77;
+Node_28 -> Node_29;
+Node_28 -> Node_52[style=dashed];
+Node_30 -> Node_31;
+Node_30 -> Node_43[style=dashed];
+Node_32 -> Node_43[style=dashed];
+Node_32 -> Node_33;
+Node_44 -> Node_45;
+Node_44 -> Node_47[style=dashed];
+Node_46 -> Node_33;
+Node_46 -> Node_47[style=dashed];
+Node_33 -> Node_34;
+Node_50 -> Node_34;
+Node_35 -> Node_36;
+Node_35 -> Node_41[style=dashed];
+Node_39 -> Node_41;
+Node_53 -> Node_54;
+Node_53 -> Node_64[style=dashed];
+Node_55 -> Node_64[style=dashed];
+Node_55 -> Node_56;
+Node_65 -> Node_66;
+Node_65 -> Node_68[style=dashed];
+Node_67 -> Node_56;
+Node_67 -> Node_68[style=dashed];
+Node_56 -> Node_57;
+Node_71 -> Node_57;
+Node_58 -> Node_41[style=dashed];
+Node_58 -> Node_59;
+Node_62 -> Node_41;
+Node_41 -> Node_42;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_10 -> Node_11;
+Node_13 -> Node_14;
+Node_13 -> Node_18;
+Node_14 -> Node_15;
+Node_18 -> Node_15;
+Node_22 -> Node_23;
+Node_25 -> Node_26;
+Node_27 -> Node_28;
+Node_29 -> Node_30;
+Node_31 -> Node_32;
+Node_34 -> Node_35;
+Node_36 -> Node_37;
+Node_37 -> Node_38;
+Node_37 -> Node_40;
+Node_38 -> Node_39;
+Node_40 -> Node_39;
+Node_42 -> Node_17;
+Node_43 -> Node_44;
+Node_45 -> Node_46;
+Node_47 -> Node_48;
+Node_48 -> Node_49;
+Node_48 -> Node_51;
+Node_49 -> Node_50;
+Node_51 -> Node_50;
+Node_52 -> Node_53;
+Node_54 -> Node_55;
+Node_57 -> Node_58;
+Node_59 -> Node_60;
+Node_60 -> Node_61;
+Node_60 -> Node_63;
+Node_61 -> Node_62;
+Node_63 -> Node_62;
+Node_64 -> Node_65;
+Node_66 -> Node_67;
+Node_68 -> Node_69;
+Node_69 -> Node_70;
+Node_69 -> Node_72;
+Node_70 -> Node_71;
+Node_72 -> Node_71;
+Node_73 -> Node_28;
+Node_74 -> Node_75;
+Node_76 -> Node_28;
+Node_77 -> Node_28;
+Node_78 -> Node_17;
+}
+

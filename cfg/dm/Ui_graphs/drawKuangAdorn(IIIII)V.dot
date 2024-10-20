@@ -1,0 +1,35 @@
+digraph "CFG fordm.Ui.drawKuangAdorn(IIIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0008|lif (r15 != 0) goto L20l}"];
+Node_3 [shape=record,label="{3\:\ 0x000a|ldm.Ui.g.setColor(1842484)ldm.Ui.g.drawRect(r11 + 20, r12 \- 22, r13 \- 21, 20)ldm.Ui.g.drawRect(r11 + 20, r12 \- 22, r13 \- 22, 21)lfillRect(15129744, r11 + 20, r12 \- 22, r13 \- 22, 20)ldrawUi(33, r11, r12, 36, 0)ldrawUi(31, (r11 + r13) \- 4, r12, 36, 0)l}"];
+Node_4 [shape=record,label="{4\:\ 0x0057|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0058|lif (r15 != 1) goto L22l}"];
+Node_7 [shape=record,label="{7\:\ 0x005a|ldrawUi(32, r11, r12 \- 7, 0, 0)ldrawUi(32, (r11 + r13) + 5, r12 \- 7, 8 \| 16, 0)lfillRect(13550445, r11 + 15, r12 \- 5, r13 \- 25, 13)lfillRect(16116383, r11 + 15, r12 \- 3, r13 \- 25, 10)lfillRect(13078326, r11 + 15, r12 + 10, r13 \- 25, 5)ldrawLine(1842484, r11 + 15, r12 \- 7, (r11 + r13) \- 11, r12 \- 7)ldrawLine(16446403, r11 + 15, r12 \- 6, (r11 + r13) \- 11, r12 \- 6)ldrawLine(6168835, r11 + 15, r12 + 12, (r11 + r13) \- 11, r12 + 12)ldm.Ui.g.setColor(13281366)ldm.Ui.g.drawRect(r11 + 15, r12 + 8, r13 \- 26, 1)l}"];
+Node_8 [shape=record,label="{8\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_9 [shape=record,label="{9\:\ 0x00f4|l}"];
+Node_10 [shape=record,label="{10\:\ 0x00f5|lif (r15 != 2) goto L26l}"];
+Node_11 [shape=record,label="{11\:\ 0x00f7|ldrawUi(32, r11, (r12 + r14) \- 1, 36, 6)ldrawUi(32, (r11 + r13) + 5, (r12 + r14) \- 1, 40, 6)lfillRect(13550445, r11 + 15, (r12 + r14) \- 16, r13 \- 25, 13)lfillRect(16116383, r11 + 15, (r12 + r14) \- 15, r13 \- 25, 10)lfillRect(13078326, r11 + 15, (r12 + r14) \- 23, r13 \- 25, 5)ldrawLine(1842484, r11 + 15, (r12 + r14) \- 2, (r11 + r13) \- 11, (r12 + r14) \- 2)ldrawLine(16446403, r11 + 15, (r12 + r14) \- 3, (r11 + r13) \- 11, (r12 + r14) \- 3)ldrawLine(6168835, r11 + 15, (r12 + r14) \- 21, (r11 + r13) \- 11, (r12 + r14) \- 21)ldm.Ui.g.setColor(13281366)ldm.Ui.g.drawRect(r11 + 15, (r12 + r14) \- 18, r13 \- 26, 1)l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_13 [shape=record,label="{13\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawKuangAdorn((r10v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r11v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'h' int A[D('h' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x005a \-\> B:4:0x0057, CROSS_EDGE: B:10:0x00f5 \-\> B:4:0x0057, CROSS_EDGE: B:11:0x00f7 \-\> B:4:0x0057\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7[style=dashed];
+Node_6 -> Node_9;
+Node_7 -> Node_8;
+Node_8 -> Node_5;
+Node_9 -> Node_10;
+Node_10 -> Node_11[style=dashed];
+Node_10 -> Node_13;
+Node_11 -> Node_12;
+Node_12 -> Node_5;
+Node_13 -> Node_5;
+}
+

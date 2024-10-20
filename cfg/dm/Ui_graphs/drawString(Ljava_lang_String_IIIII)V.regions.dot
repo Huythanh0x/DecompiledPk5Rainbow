@@ -1,0 +1,153 @@
+digraph "CFG fordm.Ui.drawString(Ljava\/lang\/String;IIIII)V" {
+subgraph cluster_Region_1070240401 {
+label = "R(6:1|2|(1:5)|6|(1:8)|9)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint r0 = 13281366lint r1 = 3676168lint int r9 = r9 + 1l}"];
+subgraph cluster_SwitchRegion_306696614 {
+label = "Switch: 11
+ case 0 -> R(2:12|1)
+ case 1 -> R(2:13|1)
+ case 2 -> R(2:14|1)
+ case 3 -> R(2:15|1)
+ case 4 -> R(2:16|1)
+ case 5 -> R(2:17|1)
+ case 6 -> R(2:18|1)
+ case 7 -> R(2:19|1)
+ case 8 -> R(2:20|1)
+ case 9 -> R(2:21|1)
+ case 10 -> R(2:22|1)";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0009|lswitch(r11) \{l    case 0: goto L35;l    case 1: goto L36;l    case 2: goto L37;l    case 3: goto L38;l    case 4: goto L39;l    case 5: goto L40;l    case 6: goto L41;l    case 7: goto L42;l    case 8: goto L43;l    case 9: goto L44;l    case 10: goto L45;l    default: goto L27;l\}l}"];
+subgraph cluster_Region_763744394 {
+label = "R(2:12|1)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0068|lr0 = 0lr1 = 16777215l}"];
+Node_InsnContainer_1077645392 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_1495683890 {
+label = "R(2:13|1)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x006d|lr0 = 5461075lr1 = 7727871l}"];
+Node_InsnContainer_1170913934 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_1182829864 {
+label = "R(2:14|1)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0074|lr0 = 2707928lr1 = 43016l}"];
+Node_InsnContainer_1750333205 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_2095234753 {
+label = "R(2:15|1)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x007b|lr0 = 1908277lr1 = 24295l}"];
+Node_InsnContainer_1152762200 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_443402051 {
+label = "R(2:16|1)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x0081|lr0 = 1314307lr1 = 5228543l}"];
+Node_InsnContainer_1477472398 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_1032079269 {
+label = "R(2:17|1)";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x0088|lr0 = 2233603lr1 = 16739328l}"];
+Node_InsnContainer_1218363336 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_2100882449 {
+label = "R(2:18|1)";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x0090|lr0 = 8075577lr1 = 16189448l}"];
+Node_InsnContainer_1057096337 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_1568105420 {
+label = "R(2:19|1)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x0098|lr0 = 4467457lr1 = 16757760l}"];
+Node_InsnContainer_1440201512 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_918696351 {
+label = "R(2:20|1)";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x00a0|lr0 = 10122756lr1 = 12583167l}"];
+Node_InsnContainer_236463388 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_284823771 {
+label = "R(2:21|1)";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x00a8|lr0 = 11563064lr1 = 3676168l}"];
+Node_InsnContainer_868596712 [shape=record,label="{|lbreakl}"];
+}
+subgraph cluster_Region_498576152 {
+label = "R(2:22|1)";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x00b0|lr0 = 1311269lr1 = 8816262l}"];
+Node_InsnContainer_486289803 [shape=record,label="{|lbreakl}"];
+}
+}
+subgraph cluster_IfRegion_1947916231 {
+label = "IF [B:4:0x000d] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000d|lif (r12 == 2) goto L29l}"];
+subgraph cluster_Region_1157130061 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000f|ldm.Ui.g.setColor(r0)ldm.Ui.g.drawString(r7, r8 \- 1, r9, r10)ldm.Ui.g.drawString(r7, r8 + 1, r9, r10)ldm.Ui.g.drawString(r7, r8, r9 \- 1, r10)ldm.Ui.g.drawString(r7, r8, r9 + 1, r10)ldm.Ui.g.drawString(r7, r8 + 1, r9 + 1, r10)ldm.Ui.g.drawString(r7, r8 \- 1, r9 + 1, r10)ldm.Ui.g.drawString(r7, r8 \- 1, r9 \- 1, r10)ldm.Ui.g.drawString(r7, r8 + 1, r9 \- 1, r10)l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0054|ldm.Ui.g.setColor(r1)l}"];
+subgraph cluster_IfRegion_1004874909 {
+label = "IF [B:7:0x0059] THEN: R(1:8) ELSE: null";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0059|lif (r12 == 1) goto L32l}"];
+subgraph cluster_Region_106126135 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x005b|ldm.Ui.g.drawString(r7, r8 + 1, r9, r10)l}"];
+}
+}
+Node_9 [shape=record,label="{9\:\ 0x0062|ldm.Ui.g.drawString(r7, r8, r9, r10)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000c|PHI: r0 r1l  0x000c: PHI (r0v12 'c0' int) = l  (r0v0 'c0' int)l  (r0v1 'c0' int)l  (r0v2 'c0' int)l  (r0v3 'c0' int)l  (r0v4 'c0' int)l  (r0v5 'c0' int)l  (r0v6 'c0' int)l  (r0v7 'c0' int)l  (r0v8 'c0' int)l  (r0v9 'c0' int)l  (r0v10 'c0' int)l  (r0v11 'c0' int)l binds: [B:2:0x0009, B:22:0x00b0, B:21:0x00a8, B:20:0x00a0, B:19:0x0098, B:18:0x0090, B:17:0x0088, B:16:0x0081, B:15:0x007b, B:14:0x0074, B:13:0x006d, B:12:0x0068] A[DONT_GENERATE, DONT_INLINE]l  0x000c: PHI (r1v12 'c1' int) = l  (r1v0 'c1' int)l  (r1v1 'c1' int)l  (r1v2 'c1' int)l  (r1v3 'c1' int)l  (r1v4 'c1' int)l  (r1v5 'c1' int)l  (r1v6 'c1' int)l  (r1v7 'c1' int)l  (r1v8 'c1' int)l  (r1v9 'c1' int)l  (r1v10 'c1' int)l  (r1v11 'c1' int)l binds: [B:2:0x0009, B:22:0x00b0, B:21:0x00a8, B:20:0x00a0, B:19:0x0098, B:18:0x0090, B:17:0x0088, B:16:0x0081, B:15:0x007b, B:14:0x0074, B:13:0x006d, B:12:0x0068] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0067|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawString((r6v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r7v0 'str_hit' java.lang.String A[D('str_hit' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'anchor' int A[D('anchor' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'color' int A[D('color' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lCOMPUTE_POST_DOM\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0059 \-\> B:9:0x0062, CROSS_EDGE: B:4:0x000d \-\> B:6:0x0054, CROSS_EDGE: B:12:0x0068 \-\> B:3:0x000c, CROSS_EDGE: B:13:0x006d \-\> B:3:0x000c, CROSS_EDGE: B:14:0x0074 \-\> B:3:0x000c, CROSS_EDGE: B:15:0x007b \-\> B:3:0x000c, CROSS_EDGE: B:16:0x0081 \-\> B:3:0x000c, CROSS_EDGE: B:17:0x0088 \-\> B:3:0x000c, CROSS_EDGE: B:18:0x0090 \-\> B:3:0x000c, CROSS_EDGE: B:19:0x0098 \-\> B:3:0x000c, CROSS_EDGE: B:20:0x00a0 \-\> B:3:0x000c, CROSS_EDGE: B:21:0x00a8 \-\> B:3:0x000c, CROSS_EDGE: B:22:0x00b0 \-\> B:3:0x000c\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_12;
+Node_2 -> Node_13;
+Node_2 -> Node_14;
+Node_2 -> Node_15;
+Node_2 -> Node_16;
+Node_2 -> Node_17;
+Node_2 -> Node_18;
+Node_2 -> Node_19;
+Node_2 -> Node_20;
+Node_2 -> Node_21;
+Node_2 -> Node_22;
+Node_12 -> Node_3;
+Node_13 -> Node_3;
+Node_14 -> Node_3;
+Node_15 -> Node_3;
+Node_16 -> Node_3;
+Node_17 -> Node_3;
+Node_18 -> Node_3;
+Node_19 -> Node_3;
+Node_20 -> Node_3;
+Node_21 -> Node_3;
+Node_22 -> Node_3;
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_7 -> Node_9[style=dashed];
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_10 -> Node_11;
+}
+

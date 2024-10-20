@@ -1,0 +1,41 @@
+digraph "CFG forjavax.microedition.lcdui.Graphics.getCanvas()Landroid\/graphics\/Canvas;" {
+subgraph cluster_Region_1841731525 {
+label = "R(1:(2:(1:4)|(1:7)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_83009369 {
+label = "R(2:(1:4)|(1:7))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_2128505559 {
+label = "IF [B:2:0x0002] THEN: R(1:4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r1.canvas == null) goto L12l}"];
+subgraph cluster_Region_729664137 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0009|lthrow new java.lang.NullPointerException()l}"];
+}
+}
+subgraph cluster_Region_1927022748 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x000c|RETURN\l|lreturn r1.canvasl}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0004|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x000a|l}"];
+MethodNode[shape=record,label="{public android.graphics.Canvas javax.microedition.lcdui.Graphics.getCanvas((r1v0 'this' javax.microedition.lcdui.Graphics A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lEXCEPTIONS:[Ljava\/lang\/NullPointerException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x000c \-\> B:5:?\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_4 -> Node_5;
+Node_7 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+}
+

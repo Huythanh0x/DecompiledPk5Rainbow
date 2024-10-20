@@ -1,0 +1,67 @@
+digraph "CFG fordm.Ui.drawActionOne(Ldm\/Sprite;III[BIZ)Z" {
+subgraph cluster_Region_409682895 {
+label = "R(3:1|(2:3|(1:(2:(2:6|7)|(1:9))))|11)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldrawFrameOne(r9, r9.action(r10, r13[0], 0), r11, r12, r14)lbyte byte r0 = (byte) (r13[1] + 1)lr13[1] = r0l}"];
+subgraph cluster_IfRegion_798011569 {
+label = "IF [B:2:0x001d] THEN: R(2:3|(1:(2:(2:6|7)|(1:9)))) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x001d|lif (r0 \> r9.action(r10, r13[0], 1)) goto L16l}"];
+subgraph cluster_Region_1048919480 {
+label = "R(2:3|(1:(2:(2:6|7)|(1:9))))";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x001f|lr13[1] = 0lbyte byte r0 = (byte) (r13[0] + 1)lr13[0] = r0l}"];
+subgraph cluster_IfRegion_1388144788 {
+label = "IF [B:4:0x002c] THEN: R(1:(2:(2:6|7)|(1:9))) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x002c|lif (r0 \>= r9.aLength(r10)) goto L18l}"];
+subgraph cluster_Region_2094718388 {
+label = "R(1:(2:(2:6|7)|(1:9)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_2026056985 {
+label = "R(2:(2:6|7)|(1:9))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1580707660 {
+label = "IF [B:5:0x002e] THEN: R(2:6|7) ELSE: null";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x002e|lif (r15 == false) goto L19l}"];
+subgraph cluster_Region_1295836915 {
+label = "R(2:6|7)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0030|lr13[0] = (byte) (r9.aLength(r10) \- 1)l}"];
+Node_7 [shape=record,label="{7\:\ 0x0039|RETURN\lORIG_RETURN\l|lreturn truel}"];
+}
+}
+subgraph cluster_Region_1738646941 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x003a|lr13[0] = 0l}"];
+}
+}
+}
+}
+}
+}
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturn falsel}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x003c|l}"];
+MethodNode[shape=record,label="{public boolean dm.Ui.drawActionOne((r8v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r9v0 'sp' dm.Sprite A[D('sp' dm.Sprite), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'a_id' int A[D('a_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'now_a' byte[] A[D('now_a' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'dir' int A[D('dir' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'mode' boolean A[D('mode' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x003c \-\> B:7:0x0039, CROSS_EDGE: B:4:0x002c \-\> B:10:0x003c, CROSS_EDGE: B:2:0x001d \-\> B:10:0x003c\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_10[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_10[style=dashed];
+Node_5 -> Node_6;
+Node_5 -> Node_9[style=dashed];
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_11 -> Node_8;
+Node_0 -> Node_1;
+Node_10 -> Node_11;
+}
+

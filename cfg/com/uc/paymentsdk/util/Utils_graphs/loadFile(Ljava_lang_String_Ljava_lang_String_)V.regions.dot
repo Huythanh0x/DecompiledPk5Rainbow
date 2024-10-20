@@ -1,0 +1,47 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.loadFile(Ljava\/lang\/String;Ljava\/lang\/String;)V" {
+subgraph cluster_Region_501634320 {
+label = "R(2:1|(2:2|(1:4)(2:6|7)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.io.InputStream java.io.InputStream r4 = getFileStream(r6)ljava.io.File java.io.File r2 = new java.io.File(r7)lr2.createNewFile()ljava.io.FileOutputStream java.io.FileOutputStream r3 = new java.io.FileOutputStream(r2)lbyte[] byte[] r0 = new byte[javax.microedition.lcdui.game.GameCanvas.GAME_B_PRESSED]l}"];
+subgraph cluster_LoopRegion_201858328 {
+label = "LOOP:0: (2:2|(1:4)(2:6|7))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1051971775 {
+label = "R(2:2|(1:4)(2:6|7))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0016|LOOP_START\lLOOP:0: B:2:0x0016\-\>B:4:0x0023\l|lint int r1 = r4.read(r0)l}"];
+subgraph cluster_IfRegion_632413478 {
+label = "IF [B:3:0x001a] THEN: R(1:4) ELSE: R(2:6|7)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x001a|lif (r1 \> 0) goto L16l}"];
+subgraph cluster_Region_181426105 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0023|LOOP_END\lLOOP:0: B:2:0x0016\-\>B:4:0x0023\l|lr3.write(r0, 0, r1)l}"];
+}
+subgraph cluster_Region_1801168342 {
+label = "R(2:6|7)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x001c|lr3.close()lr4.close()l}"];
+Node_7 [shape=record,label="{7\:\ 0x0022|RETURN\l|lreturnl}"];
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x001c|SYNTHETIC\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static void com.uc.paymentsdk.util.Utils.loadFile((r6v0 'paramString1' java.lang.String A[D('paramString1' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'paramString2' java.lang.String A[D('paramString2' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljava\/io\/IOException;, Ljava\/io\/FileNotFoundException;]\lINLINE_NOT_NEEDED\lBACK_EDGE: B:4:0x0023 \-\> B:2:0x0016\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_0 -> Node_1;
+Node_5 -> Node_6;
+}
+

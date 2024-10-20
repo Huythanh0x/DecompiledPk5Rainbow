@@ -1,0 +1,26 @@
+digraph "CFG forjavax.microedition.rms.RecordStore.closeRecordStore()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r2.db == null) goto L18l}"];
+Node_3 [shape=record,label="{3\:\ 0x0004|l}"];
+Node_4 [shape=record,label="{4\:\ 0x000a|lif (r2.db.isOpen() == false) goto L18l}"];
+Node_5 [shape=record,label="{5\:\ 0x000c|lr2.db.close()l}"];
+Node_6 [shape=record,label="{6\:\ 0x0011|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_7 [shape=record,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x0012|ljavax.microedition.rms.RecordStoreNotOpenException new javax.microedition.rms.RecordStoreNotOpenException(\"RecordStore is not open\")l}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public void javax.microedition.rms.RecordStore.closeRecordStore((r2v0 'this' javax.microedition.rms.RecordStore A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljavax\/microedition\/rms\/RecordStoreNotOpenException;, Ljavax\/microedition\/rms\/RecordStoreException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x0012 \-\> B:6:0x0011, CROSS_EDGE: B:2:0x0002 \-\> B:8:0x0012\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_8;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_8;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_9 -> Node_7;
+}
+

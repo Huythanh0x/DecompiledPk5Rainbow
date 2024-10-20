@@ -1,0 +1,61 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.buildUPointPayLoginView()V" {
+subgraph cluster_Region_1336291498 {
+label = "R(5:1|4|(1:6)(1:13)|(1:9)|10)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr28.mType = 2landroid.widget.RelativeLayout android.widget.RelativeLayout r20 = com.uc.paymentsdk.util.Utils.initSubTitle(getApplicationContext(), r28, \"请您输入UC帐号\", true)lr20.setId(10)landroid.widget.RelativeLayout$LayoutParams android.widget.RelativeLayout.LayoutParams r21 = new android.widget.RelativeLayout.LayoutParams(\-1, \-2)lr21.addRule(10, \-1)lr20.setLayoutParams(r21)landroid.widget.TextView android.widget.TextView r16 = new android.widget.TextView(getApplicationContext())landroid.widget.RelativeLayout$LayoutParams android.widget.RelativeLayout.LayoutParams r15 = new android.widget.RelativeLayout.LayoutParams(\-1, \-2)lr15.addRule(3, 10)lr15.setMargins(10, 5, 10, 10)lr16.setLayoutParams(r15)lr16.setId(1)lr16.setCompoundDrawablePadding(10)lr16.setTextColor(\-13487566)l}"];
+Node_4 [shape=record,label="{4\:\ 0x00a9|PHI: r24l  0x00a9: PHI (r24v14 java.lang.String) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr16.setCompoundDrawablesWithIntrinsicBounds(com.uc.paymentsdk.util.Utils.getDrawableFromFile(com.uc.paymentsdk.util.Utils.isHdpi() ? com.uc.paymentsdk.util.Constants.RES_LOCK_HDPI : com.uc.paymentsdk.util.Constants.RES_LOCK), (android.graphics.drawable.Drawable) null, (android.graphics.drawable.Drawable) null, (android.graphics.drawable.Drawable) null)lr16.setText(\"您好，购买此内容，请先登录UC账号。您可以输入UC帐号或者手机号码进行登录\")landroid.widget.TextView android.widget.TextView r9 = com.uc.paymentsdk.util.Utils.generateBorderView(getApplication())lr9.setId(11)landroid.widget.RelativeLayout$LayoutParams android.widget.RelativeLayout.LayoutParams r8 = new android.widget.RelativeLayout.LayoutParams(\-1, 1)lr8.addRule(3, 1)lr9.setLayoutParams(r8)landroid.widget.RelativeLayout$LayoutParams android.widget.RelativeLayout.LayoutParams r6 = new android.widget.RelativeLayout.LayoutParams(\-1, \-2)lr6.setMargins(10, 10, 10, 5)landroid.widget.TextView android.widget.TextView r5 = new android.widget.TextView(getApplicationContext())lr5.setLayoutParams(r6)lr5.setId(2)lr5.setText(\"UC账号:\")lr5.setTextColor(\-13487566)landroid.widget.RelativeLayout$LayoutParams android.widget.RelativeLayout.LayoutParams r22 = new android.widget.RelativeLayout.LayoutParams(\-1, \-2)lr22.addRule(3, 2)lr22.setMargins(10, 5, 10, 5)lr28.mEtUsername = new android.widget.EditText(getApplicationContext())lr28.mEtUsername.setLayoutParams(r22)lr28.mEtUsername.setSingleLine()lr28.mEtUsername.setId(3)lr28.mEtUsername.setHint(\"用户名\")lr28.mEtPassword = new android.widget.EditText(getApplicationContext())lr28.mEtPassword.setId(4)lr28.mEtPassword.setHint(\"密码\")lr28.mEtPassword.setSingleLine()lr28.mEtPassword.setTransformationMethod(android.text.method.PasswordTransformationMethod.getInstance())landroid.widget.RelativeLayout$LayoutParams android.widget.RelativeLayout.LayoutParams r23 = new android.widget.RelativeLayout.LayoutParams(\-1, \-2)lr23.addRule(3, 3)lr23.setMargins(10, 5, 10, 5)lr28.mEtPassword.setLayoutParams(r23)lr28.mEtSavePass = new android.widget.CheckBox(getApplicationContext())landroid.widget.RelativeLayout$LayoutParams android.widget.RelativeLayout.LayoutParams r17 = new android.widget.RelativeLayout.LayoutParams(\-1, \-2)lr17.addRule(3, 4)lr17.setMargins(10, 5, 10, 5)lr28.mEtSavePass.setId(5)lr28.mEtSavePass.setTextColor(\-12303292)lr28.mEtSavePass.setText(\"保存密码\")lr28.mEtSavePass.setLayoutParams(r17)l}"];
+subgraph cluster_IfRegion_208573580 {
+label = "IF [B:5:0x0286] THEN: R(1:6) ELSE: R(1:13)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0286|lif (com.uc.paymentsdk.util.PrefUtil.getUCUserName(getApplicationContext()) != null) goto L7l}"];
+subgraph cluster_Region_148612540 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0288|lr28.mEtUsername.setText(com.uc.paymentsdk.util.PrefUtil.getUCUserName(getApplicationContext()))lr28.mEtSavePass.setChecked(true)l}"];
+}
+subgraph cluster_Region_2131810981 {
+label = "R(1:13)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x03fb|lr28.mEtSavePass.setChecked(false)l}"];
+}
+}
+subgraph cluster_IfRegion_1578702191 {
+label = "IF [B:8:0x02ac] THEN: R(1:9) ELSE: null";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x02ac|lif (com.uc.paymentsdk.util.PrefUtil.getUCUserPass(getApplicationContext()) != null) goto L10l}"];
+subgraph cluster_Region_640364756 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x02ae|lr28.mEtPassword.setText(com.uc.paymentsdk.util.PrefUtil.getUCUserPass(getApplicationContext()))l}"];
+}
+}
+Node_10 [shape=record,label="{10\:\ 0x02bf|landroid.widget.Button android.widget.Button r18 = new android.widget.Button(getApplicationContext())lr18.setId(7)lr18.setText(\"确定购买\")lr18.setOnClickListener(r28)landroid.widget.RelativeLayout$LayoutParams android.widget.RelativeLayout.LayoutParams r19 = new android.widget.RelativeLayout.LayoutParams(\-1, \-2)lr19.topMargin = 10lr19.addRule(3, 5)lr19.addRule(14)lr18.setLayoutParams(r19)landroid.widget.RelativeLayout android.widget.RelativeLayout r7 = new android.widget.RelativeLayout(getApplicationContext())lr7.setId(7)lr7.setBackgroundColor(com.uc.paymentsdk.util.Constants.COLOR_LISTVIEW_ITEM_BACKGROUND)landroid.widget.RelativeLayout$LayoutParams android.widget.RelativeLayout.LayoutParams r11 = new android.widget.RelativeLayout.LayoutParams(\-1, \-2)lr11.addRule(3, 11)lr7.setLayoutParams(r11)lr7.addView(r5)lr7.addView(r28.mEtUsername)lr7.addView(r28.mEtPassword)lr7.addView(r28.mEtSavePass)lr7.addView(r18)landroid.widget.RelativeLayout android.widget.RelativeLayout r14 = new android.widget.RelativeLayout(getApplicationContext())lr14.setBackgroundColor(\-1)lr14.setLayoutParams(new android.widget.RelativeLayout.LayoutParams(\-1, \-1))lr14.addView(r20)lr14.addView(r16)lr14.addView(r9)lr14.addView(r7)landroid.widget.TextView android.widget.TextView r10 = com.uc.paymentsdk.util.Utils.generateBorderView(getApplication())landroid.widget.RelativeLayout$LayoutParams android.widget.RelativeLayout.LayoutParams r12 = new android.widget.RelativeLayout.LayoutParams(\-1, 1)lr12.addRule(3, 7)lr10.setLayoutParams(r12)lr14.addView(r10)landroid.widget.ScrollView android.widget.ScrollView r13 = new android.widget.ScrollView(getApplication())lr13.setBackgroundColor(\-1)lr13.addView(r14)lsetContentView(r13)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x00a5|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x00a7|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x02a4|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x03f6|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x03f7|l}"];
+MethodNode[shape=record,label="{private void com.uc.paymentsdk.payment.PaymentsActivity.buildUPointPayLoginView((r28v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lCROSS_EDGE: B:8:0x02ac \-\> B:10:0x02bf, CROSS_EDGE: B:13:0x03fb \-\> B:7:0x02a4, CROSS_EDGE: B:14:0x03f7 \-\> B:4:0x00a9\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_13[style=dashed];
+Node_6 -> Node_7;
+Node_13 -> Node_7;
+Node_8 -> Node_9;
+Node_8 -> Node_10[style=dashed];
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_14;
+Node_3 -> Node_4;
+Node_7 -> Node_8;
+Node_11 -> Node_12;
+Node_14 -> Node_4;
+}
+

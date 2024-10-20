@@ -1,0 +1,12 @@
+digraph "CFG formain.CreateThread.\<init\>(Lmain\/GameRun;I)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr2.gr = r3lbyte r1 = (byte) r4lr2.gr.threadType = r1lnew java.lang.Thread(r2).start()l}"];
+Node_2 [shape=record,label="{2\:\ 0x0012|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.CreateThread.\<init\>((r2v0 'this' main.CreateThread A[IMMUTABLE_TYPE, THIS]), (r3v0 'gr_' main.GameRun A[D('gr_' main.GameRun), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'type' int A[D('type' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

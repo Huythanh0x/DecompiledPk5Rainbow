@@ -1,0 +1,149 @@
+digraph "CFG forcom.uc.paymentsdk.payment.sms.SmsInfos.filterSmsInfo(Landroid\/content\/Context;I)Lcom\/uc\/paymentsdk\/payment\/sms\/SmsInfo;" {
+subgraph cluster_Region_1071933830 {
+label = "R(2:1|(2:(1:4)|(3:6|(5:9|(1:11)|12|(2:15|(1:21))|27)|(2:(1:32)|(1:34)))))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.util.ArrayList\<java.lang.Integer\> r5 = nulllint r3 = 0lint r4 = \-1l}"];
+subgraph cluster_Region_1977265948 {
+label = "R(2:(1:4)|(3:6|(5:9|(1:11)|12|(2:15|(1:21))|27)|(2:(1:32)|(1:34))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_67417585 {
+label = "IF [B:2:0x000a] THEN: R(1:4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x000a|lif (r9.smsInfos.size() == 1) goto L39l}"];
+subgraph cluster_Region_271610399 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0016|RETURN\lORIG_RETURN\l|lreturn r9.smsInfos.get(0)l}"];
+}
+}
+subgraph cluster_Region_1412094106 {
+label = "R(3:6|(5:9|(1:11)|12|(2:15|(1:21))|27)|(2:(1:32)|(1:34)))";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0017|lint r1 = 0l}"];
+subgraph cluster_LoopRegion_1538031873 {
+label = "LOOP:0: (5:9|(1:11)|12|(2:15|(1:21))|27)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x001e|ADDED_TO_REGION\l|lif (r1 \< r9.smsInfos.size()) goto L47l}"];
+subgraph cluster_Region_1041647438 {
+label = "R(5:9|(1:11)|12|(2:15|(1:21))|27)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x002d|lcom.uc.paymentsdk.payment.sms.SmsInfo com.uc.paymentsdk.payment.sms.SmsInfo r2 = r9.smsInfos.get(r1)l}"];
+subgraph cluster_IfRegion_952427040 {
+label = "IF [B:10:0x0035] THEN: R(1:11) ELSE: null";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0035|lif (r5 == null) goto L49l}"];
+subgraph cluster_Region_636413987 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0037|ljava.util.ArrayList r5 = parsePayment(r11)l}"];
+}
+}
+Node_12 [shape=record,label="{12\:\ 0x003b|PHI: r5l  0x003b: PHI (r5v2 'smsSuitPriceArr' java.util.ArrayList\<java.lang.Integer\>) = l  (r5v1 'smsSuitPriceArr' java.util.ArrayList\<java.lang.Integer\>)l  (r5v3 'smsSuitPriceArr' java.util.ArrayList\<java.lang.Integer\>)l binds: [B:10:0x0035, B:11:0x0037] A[DONT_GENERATE, DONT_INLINE]\l|ljava.util.Iterator java.util.Iterator\<java.lang.Integer\> r6 = r5.iterator()l}"];
+subgraph cluster_LoopRegion_450936002 {
+label = "LOOP:1: (2:15|(1:21))";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0043|ADDED_TO_REGION\l|lif (r6.hasNext() != false) goto L54l}"];
+subgraph cluster_Region_1463075709 {
+label = "R(2:15|(1:21))";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0048|ljava.lang.Integer java.lang.Integer r0 = r6.next()l}"];
+subgraph cluster_IfRegion_1885338308 {
+label = "IF [B:16:0x0054, B:19:0x0058] THEN: R(1:21) ELSE: null";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x0054|lif (r2.money == r0.intValue()) goto L63l}"];
+Node_19 [shape=record,label="{19\:\ 0x0058|ADDED_TO_REGION\l|lif (r2.money \> r3) goto L64l}"];
+subgraph cluster_Region_572694867 {
+label = "R(1:21)";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x005a|lint r3 = r2.moneylr4 = r1l}"];
+}
+}
+}
+}
+Node_27 [shape=record,label="{27\:\ 0x0045|LOOP_END\lLOOP:0: B:7:0x0018\-\>B:27:0x0045\l|lr1++l}"];
+}
+}
+subgraph cluster_Region_1648409339 {
+label = "R(2:(1:32)|(1:34))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1863701261 {
+label = "IF [B:30:0x0021] THEN: R(1:32) ELSE: null";
+node [shape=record,color=blue];
+Node_30 [shape=record,label="{30\:\ 0x0021|lif (r4 != (\-1)) goto L46l}"];
+subgraph cluster_Region_1664468374 {
+label = "R(1:32)";
+node [shape=record,color=blue];
+Node_32 [shape=record,label="{32\:\ ?|SYNTHETIC\lRETURN\l|lreturn r9.smsInfos.get(r4)l}"];
+}
+}
+subgraph cluster_Region_1120029664 {
+label = "R(1:34)";
+node [shape=record,color=blue];
+Node_34 [shape=record,label="{34\:\ 0x0065|lthrow new com.uc.paymentsdk.payment.sms.SimCardNotSupportException(\"对不起，您所使用的手机运营商不支持此短信激活功能。\")l}"];
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000c|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0018|LOOP_START\lPHI: r1 r3 r4 r5l  0x0018: PHI (r1v1 'i' int) = (r1v0 'i' int), (r1v2 'i' int) binds: [B:6:0x0017, B:27:0x0045] A[DONT_GENERATE, DONT_INLINE]l  0x0018: PHI (r3v1 'maxMoney' int) = (r3v0 'maxMoney' int), (r3v2 'maxMoney' int) binds: [B:6:0x0017, B:27:0x0045] A[DONT_GENERATE, DONT_INLINE]l  0x0018: PHI (r4v1 'selectIndex' int) = (r4v0 'selectIndex' int), (r4v2 'selectIndex' int) binds: [B:6:0x0017, B:27:0x0045] A[DONT_GENERATE, DONT_INLINE]l  0x0018: PHI (r5v1 'smsSuitPriceArr' java.util.ArrayList\<java.lang.Integer\>) = l  (r5v0 'smsSuitPriceArr' java.util.ArrayList\<java.lang.Integer\>)l  (r5v2 'smsSuitPriceArr' java.util.ArrayList\<java.lang.Integer\>)l binds: [B:6:0x0017, B:27:0x0045] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:7:0x0018\-\>B:27:0x0045\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x003f|LOOP_START\lPHI: r3 r4l  0x003f: PHI (r3v2 'maxMoney' int) = (r3v1 'maxMoney' int), (r3v3 'maxMoney' int) binds: [B:12:0x003b, B:23:0x003f] A[DONT_GENERATE, DONT_INLINE]l  0x003f: PHI (r4v2 'selectIndex' int) = (r4v1 'selectIndex' int), (r4v3 'selectIndex' int) binds: [B:12:0x003b, B:23:0x003f] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:13:0x003f\-\>B:23:0x003f\l|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0056|SYNTHETIC\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0056|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x005a|SYNTHETIC\l|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x003f|SYNTHETIC\l|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ 0x003f|LOOP_END\lSYNTHETIC\lPHI: r3 r4l  0x003f: PHI (r3v3 'maxMoney' int) = (r3v2 'maxMoney' int), (r3v2 'maxMoney' int), (r3v4 'maxMoney' int) binds: [B:25:0x003f, B:24:0x003f, B:22:0x003f] A[DONT_GENERATE, DONT_INLINE]l  0x003f: PHI (r4v3 'selectIndex' int) = (r4v2 'selectIndex' int), (r4v2 'selectIndex' int), (r4v4 'selectIndex' int) binds: [B:25:0x003f, B:24:0x003f, B:22:0x003f] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:13:0x003f\-\>B:23:0x003f\l|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x003f|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_25 [shape=record,color=red,label="{25\:\ 0x003f|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_26 [shape=record,color=red,label="{26\:\ 0x0045|SYNTHETIC\l|l}"];
+Node_28 [shape=record,color=red,label="{28\:\ 0x0020|SYNTHETIC\l|l}"];
+Node_29 [shape=record,color=red,label="{29\:\ 0x0020|l}"];
+Node_31 [shape=record,color=red,label="{31\:\ 0x0023|l}"];
+Node_33 [shape=record,color=red,label="{33\:\ 0x005e|l}"];
+MethodNode[shape=record,label="{public com.uc.paymentsdk.payment.sms.SmsInfo com.uc.paymentsdk.payment.sms.SmsInfos.filterSmsInfo((r9v0 'this' com.uc.paymentsdk.payment.sms.SmsInfos A[IMMUTABLE_TYPE, THIS]), (r10v0 'paramContext' android.content.Context A[D('paramContext' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'paymoney' int A[D('paymoney' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Lcom\/uc\/paymentsdk\/payment\/sms\/SimCardNotSupportException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:31:0x0023 \-\> B:4:0x0016, CROSS_EDGE: B:34:0x0065 \-\> B:5:?, BACK_EDGE: B:27:0x0045 \-\> B:7:0x0018, BACK_EDGE: B:16:0x0054 \-\> B:13:0x003f, BACK_EDGE: B:19:0x0058 \-\> B:13:0x003f, BACK_EDGE: B:21:0x005a \-\> B:13:0x003f, CROSS_EDGE: B:10:0x0035 \-\> B:12:0x003b\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_8 -> Node_28[style=dashed];
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_10 -> Node_12[style=dashed];
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_14 -> Node_15;
+Node_14 -> Node_26[style=dashed];
+Node_15 -> Node_16;
+Node_16 -> Node_17;
+Node_16 -> Node_25[style=dashed];
+Node_19 -> Node_20;
+Node_19 -> Node_24[style=dashed];
+Node_21 -> Node_22;
+Node_27 -> Node_7;
+Node_30 -> Node_31;
+Node_30 -> Node_33[style=dashed];
+Node_32 -> Node_5;
+Node_34 -> Node_5;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_7 -> Node_8;
+Node_13 -> Node_14;
+Node_17 -> Node_18;
+Node_18 -> Node_19;
+Node_20 -> Node_21;
+Node_22 -> Node_23;
+Node_23 -> Node_13;
+Node_24 -> Node_23;
+Node_25 -> Node_23;
+Node_26 -> Node_27;
+Node_28 -> Node_29;
+Node_29 -> Node_30;
+Node_31 -> Node_32;
+Node_33 -> Node_34;
+}
+

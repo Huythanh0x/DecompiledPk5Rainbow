@@ -1,0 +1,25 @@
+digraph "CFG forminigame.Bearer.initABall(Z)V" {
+subgraph cluster_Region_1814856709 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0005|PHI: r0l  0x0005: PHI (r0v3 short) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|lr3.time0 = r4 ? (short) 10 : r3.gDate[2][r3.lv]lr3.time1 = r3.ball_time[r3.lv]ldm.Ms.i()lr3.ballC1 = (short) (dm.Ms.getRandom(r3.gDate[3][r3.lv \<\< 1]) + r3.gDate[3][(r3.lv \<\< 1) + 1])l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0001|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0003|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0030|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0031|l}"];
+MethodNode[shape=record,label="{private void minigame.Bearer.initABall((r3v0 'this' minigame.Bearer A[IMMUTABLE_TYPE, THIS]), (r4v0 'mode' boolean A[D('mode' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0031 \-\> B:4:0x0005\l}"];
+MethodNode -> Node_0;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_7;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_7 -> Node_4;
+}
+

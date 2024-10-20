@@ -1,0 +1,139 @@
+digraph "CFG formain.GameRun.falselly(I)V" {
+subgraph cluster_Region_1344568725 {
+label = "R(2:1|(1:(1:4)(1:(1:11)(1:(1:15)(1:(1:(1:19))(0))))))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lmain.SMSSender.i(r4).setSendSms(\-1)l}"];
+subgraph cluster_TryCatchRegion_1843174378 {
+label = "Try: R(1:(1:4)(1:(1:11)(1:(1:15)(1:(1:(1:19))(0))))) catches: R(2:21|22)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1990391994 {
+label = "R(1:(1:4)(1:(1:11)(1:(1:15)(1:(1:(1:19))(0)))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_748267953 {
+label = "IF [B:3:0x000a] THEN: R(1:4) ELSE: R(1:(1:11)(1:(1:15)(1:(1:(1:19))(0))))";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x000a|lif (r5 == 7) goto L30l}"];
+subgraph cluster_Region_1596109154 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000c|TRY_ENTER\lTryCatch #0 \{Exception \-\> 0x003e, blocks: (B:4:0x000c, B:11:0x0027, B:15:0x0049, B:17:0x0067, B:19:0x0071), top: B:2:0x000a \}\lCatch: Exception \-\> 0x003e\l|lmain.SMSSender.i(r4).sms_a = true     \/\/ Catch: java.lang.Exception \-\> L3elgoGameOver()     \/\/ Catch: java.lang.Exception \-\> L3eljava.lang.System.out.println(\"ccccccccc\")     \/\/ Catch: java.lang.Exception \-\> L3elmain.GameRun.mc.setSmsIsSetRun_state(true)     \/\/ Catch: java.lang.Exception \-\> L3el}"];
+}
+subgraph cluster_Region_1445491367 {
+label = "R(1:(1:11)(1:(1:15)(1:(1:(1:19))(0)))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_934164464 {
+label = "IF [B:10:0x0025] THEN: R(1:11) ELSE: R(1:(1:15)(1:(1:(1:19))(0))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0025|lif (r5 == 5) goto L34l}"];
+subgraph cluster_Region_1453053077 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0027|TRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x003e, blocks: (B:4:0x000c, B:11:0x0027, B:15:0x0049, B:17:0x0067, B:19:0x0071), top: B:2:0x000a \}\lCatch: Exception \-\> 0x003e\l|lmain.GameRun.run_state = main.SMSSender.i(r4).getTstate()     \/\/ Catch: java.lang.Exception \-\> L3elmain.GameRun.mc.temp_state = main.GameRun.run_state     \/\/ Catch: java.lang.Exception \-\> L3elmain.GameRun.mc.setSmsIsSetRun_state(true)     \/\/ Catch: java.lang.Exception \-\> L3el}"];
+}
+subgraph cluster_Region_477681285 {
+label = "R(1:(1:15)(1:(1:(1:19))(0))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_164635367 {
+label = "IF [B:13:0x0045] THEN: R(1:15) ELSE: R(1:(1:(1:19))(0)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0045|lif (r5 == 6) goto L40l}"];
+subgraph cluster_Region_1325893018 {
+label = "R(1:15)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0049|TRY_ENTER\lTryCatch #0 \{Exception \-\> 0x003e, blocks: (B:4:0x000c, B:11:0x0027, B:15:0x0049, B:17:0x0067, B:19:0x0071), top: B:2:0x000a \}\lCatch: Exception \-\> 0x003e\l|lmain.GameRun.run_state = \-10     \/\/ Catch: java.lang.Exception \-\> L3elmain.GameRun.mc.temp_state = main.GameRun.run_state     \/\/ Catch: java.lang.Exception \-\> L3elmain.GameRun.mc.setSmsIsSetRun_state(true)     \/\/ Catch: java.lang.Exception \-\> L3eljava.lang.System.out.println(\"  我的mc.setSmsIsSetRun_state(true);\")     \/\/ Catch: java.lang.Exception \-\> L3elr4.map.setRegState(false)     \/\/ Catch: java.lang.Exception \-\> L3el}"];
+}
+subgraph cluster_Region_1202773907 {
+label = "R(1:(1:(1:19))(0)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_497476894 {
+label = "IF [B:16:0x0065] THEN: R(1:(1:19)) ELSE: R(0) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x0065|lif (r5 == 1) goto L43l}"];
+subgraph cluster_Region_367602519 {
+label = "R(1:(1:19))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1714509605 {
+label = "IF [B:18:0x006f] THEN: R(1:19) ELSE: null";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x006f|lif (main.SMSSender.i(r4).getSmsSenderMenuState() != 0) goto L45l}"];
+subgraph cluster_Region_666648631 {
+label = "R(1:19)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x0071|TRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x003e, blocks: (B:4:0x000c, B:11:0x0027, B:15:0x0049, B:17:0x0067, B:19:0x0071), top: B:2:0x000a \}\lCatch: Exception \-\> 0x003e\l|landroid.util.Log.d(\"soars\", \"soooooooooooooooooooooooooooooooooooooooo\")     \/\/ Catch: java.lang.Exception \-\> L3elmain.GameRun.mc.setSmsIsSetRun_state(true)     \/\/ Catch: java.lang.Exception \-\> L3elmain.GameRun.run_state = main.SMSSender.i(r4).getTstate()     \/\/ Catch: java.lang.Exception \-\> L3el}"];
+}
+}
+}
+subgraph cluster_Region_228122571 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+}
+}
+}
+}
+}
+}
+}
+subgraph cluster_Region_1366814396 {
+label = "R(2:21|22) | ExcHandler: Exception \-\> 0x003e\l";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x003e|ExcHandler: Exception \-\> 0x003e\l|l}"];
+Node_22 [shape=record,label="{22\:\ 0x003f|lr1.printStackTrace()l}"];
+}
+}
+}
+subgraph cluster_Region_1366814396 {
+label = "R(2:21|22) | ExcHandler: Exception \-\> 0x003e\l";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x003e|ExcHandler: Exception \-\> 0x003e\l|l}"];
+Node_22 [shape=record,label="{22\:\ 0x003f|lr1.printStackTrace()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x000a|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0023|SYNTHETIC\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0023|ORIG_RETURN\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0024|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0044|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0047|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0067|TryCatch #0 \{Exception \-\> 0x003e, blocks: (B:4:0x000c, B:11:0x0027, B:15:0x0049, B:17:0x0067, B:19:0x0071), top: B:2:0x000a \}\lCatch: Exception \-\> 0x003e\l|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ ?|SYNTHETIC\l|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.falselly((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{Exception \-\> 0x003e, blocks: (B:4:0x000c, B:11:0x0027, B:15:0x0049, B:17:0x0067, B:19:0x0071), top: B:2:0x000a \}\lCROSS_EDGE: B:22:0x003f \-\> B:6:0x0023, CROSS_EDGE: B:11:0x0027 \-\> B:5:0x0023, CROSS_EDGE: B:15:0x0049 \-\> B:5:0x0023, CROSS_EDGE: B:19:0x0071 \-\> B:5:0x0023, CROSS_EDGE: B:18:0x006f \-\> B:5:0x0023, CROSS_EDGE: B:16:0x0065 \-\> B:6:0x0023, CROSS_EDGE: B:2:0x000a \-\> B:21:0x003e\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_9[style=dashed];
+Node_4 -> Node_5;
+Node_10 -> Node_11;
+Node_10 -> Node_12[style=dashed];
+Node_11 -> Node_5;
+Node_13 -> Node_14;
+Node_13 -> Node_16[style=dashed];
+Node_15 -> Node_5;
+Node_16 -> Node_17;
+Node_16 -> Node_20[style=dashed];
+Node_18 -> Node_19;
+Node_18 -> Node_5[style=dashed];
+Node_19 -> Node_5;
+Node_21 -> Node_22;
+Node_22 -> Node_23;
+Node_21 -> Node_22;
+Node_22 -> Node_23;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_21;
+Node_5 -> Node_6;
+Node_5 -> Node_8;
+Node_6 -> Node_7;
+Node_8 -> Node_21;
+Node_9 -> Node_10;
+Node_12 -> Node_13;
+Node_14 -> Node_15;
+Node_17 -> Node_18;
+Node_20 -> Node_7;
+Node_23 -> Node_7;
+}
+

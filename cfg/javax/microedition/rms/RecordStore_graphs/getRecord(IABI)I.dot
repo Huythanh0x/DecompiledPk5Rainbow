@@ -1,0 +1,35 @@
+digraph "CFG forjavax.microedition.rms.RecordStore.getRecord(I[BI)I" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|landroid.database.Cursor r8 = r13.db.query(r13.table_name, null, new java.lang.StringBuilder(\"_id=\").append(r14).toString(), null, null, null, null)ljavax.microedition.lcdui.CwaActivity.getInstance().startManagingCursor(r8)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0028|lif (r8.moveToNext() == false) goto L26l}"];
+Node_3 [shape=record,label="{3\:\ 0x002a|lbyte[] r9 = r8.getBlob(1)lr10 = r16lr11 = 0l}"];
+Node_4 [shape=record,label="{4\:\ 0x0032|LOOP_START\lPHI: r10 r11l  0x0032: PHI (r10v1 'i' int) = (r10v0 'i' int), (r10v2 'i' int) binds: [B:3:0x002a, B:6:0x0039] A[DONT_GENERATE, DONT_INLINE]l  0x0032: PHI (r11v1 'j' int) = (r11v0 'j' int), (r11v2 'j' int) binds: [B:3:0x002a, B:6:0x0039] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:4:0x0032\-\>B:6:0x0039\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0033|lif (r10 \< r9.length) goto L24l}"];
+Node_6 [shape=record,label="{6\:\ 0x0039|LOOP_END\lLOOP:0: B:4:0x0032\-\>B:6:0x0039\l|lr15[r11] = r9[r10]lint r10 = r10 + 1lint r11 = r11 + 1l}"];
+Node_7 [shape=record,label="{7\:\ 0x0035|SYNTHETIC\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x0035|lif (r9 == null) goto L27l}"];
+Node_9 [shape=record,label="{9\:\ 0x0037|l}"];
+Node_10 [shape=record,label="{10\:\ 0x0038|RETURN\lORIG_RETURN\l|lreturn r14l}"];
+Node_11 [shape=record,label="{11\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturn \-1l}"];
+Node_13 [shape=record,label="{13\:\ ?|SYNTHETIC\lRETURN\l|lreturn \-1l}"];
+MethodNode[shape=record,label="{public int javax.microedition.rms.RecordStore.getRecord((r13v0 'this' javax.microedition.rms.RecordStore A[IMMUTABLE_TYPE, THIS]), (r14v0 'recordId' int A[D('recordId' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'buffer' byte[] A[D('buffer' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r16v0 'offset' int A[D('offset' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljavax\/microedition\/rms\/RecordStoreNotOpenException;, Ljavax\/microedition\/rms\/InvalidRecordIDException;, Ljavax\/microedition\/rms\/RecordStoreException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x0035 \-\> B:10:0x0038, BACK_EDGE: B:6:0x0039 \-\> B:4:0x0032, CROSS_EDGE: B:2:0x0028 \-\> B:10:0x0038\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_13;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_7[style=dashed];
+Node_6 -> Node_4;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_12;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_12 -> Node_11;
+Node_13 -> Node_11;
+}
+

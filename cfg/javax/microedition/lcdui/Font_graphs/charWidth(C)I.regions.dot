@@ -1,0 +1,16 @@
+digraph "CFG forjavax.microedition.lcdui.Font.charWidth(C)I" {
+subgraph cluster_Region_136691369 {
+label = "R(2:1|2)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.cHarr[0] = r5l}"];
+Node_2 [shape=record,label="{2\:\ 0x000f|RETURN\l|lreturn (int) r4.tmpPaint.measureText(r4.cHarr, 0, 1)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public int javax.microedition.lcdui.Font.charWidth((r4v0 'this' javax.microedition.lcdui.Font A[IMMUTABLE_TYPE, THIS]), (r5v0 'ch' char A[D('ch' char), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_0 -> Node_1;
+}
+

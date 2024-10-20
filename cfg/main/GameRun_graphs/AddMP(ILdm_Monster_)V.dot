@@ -1,0 +1,21 @@
+digraph "CFG formain.GameRun.AddMP(ILdm\/Monster;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint r5 = r5 + r6.monsterPro[1]l}"];
+Node_2 [shape=record,label="{2\:\ 0x000b|lif (r5 \<= r6.monsterPro[3]) goto L14l}"];
+Node_3 [shape=record,label="{3\:\ 0x000d|lr6.monsterPro[1] = r6.monsterPro[3]l}"];
+Node_4 [shape=record,label="{4\:\ 0x0015|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0016|lr6.monsterPro[1] = (short) r5l}"];
+Node_7 [shape=record,label="{7\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{private void main.GameRun.AddMP((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'hp' int A[D('hp' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'A_Monster' dm.Monster A[D('A_Monster' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0016 \-\> B:4:0x0015\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_7 -> Node_5;
+}
+

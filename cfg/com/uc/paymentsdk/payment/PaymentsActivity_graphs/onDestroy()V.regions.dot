@@ -1,0 +1,35 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.onDestroy()V" {
+subgraph cluster_Region_1622785888 {
+label = "R(2:1|(1:(1:3)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lsuper.onDestroy()l}"];
+subgraph cluster_Region_456995278 {
+label = "R(1:(1:3))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_242844146 {
+label = "IF [B:2:0x0005] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0005|lif (r1.mIsValid != false) goto L4l}"];
+subgraph cluster_Region_1217678952 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0007|lcom.uc.paymentsdk.util.PrefUtil.logout(getApplicationContext())lcom.uc.paymentsdk.util.Utils.clearSmsInfos()lcom.uc.paymentsdk.util.Utils.clearUPointInfo()lcom.uc.paymentsdk.model.TypeFactory.clear()lcom.uc.paymentsdk.util.Utils.clearUPointPayInfo()lcom.uc.paymentsdk.network.chain.SyncChargeChannelHandler.init()lcom.uc.paymentsdk.network.chain.SyncPayChannelHandler.init()lcom.uc.paymentsdk.network.chain.SyncSmsInfoHandler.init()l}"];
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0023|ORIG_RETURN\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{protected void com.uc.paymentsdk.payment.PaymentsActivity.onDestroy((r1v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]))  | DONT_RENAME\lUSE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{android.app.Activity.onDestroy():void\}]\lCROSS_EDGE: B:2:0x0005 \-\> B:4:0x0023\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_0 -> Node_1;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

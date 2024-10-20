@@ -1,0 +1,12 @@
+digraph "CFG formain.GameRun.drawBG0(IIIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.i().fillRect(5422575, r12 \- 1, 0, r15 + 13, main.Constants_H.HEIGHT_ \- 2)ldm.Ui.i().drawImage(r10.imgBG[r11], main.Constants_H.WIDTH_H_, 0, 17)ldm.Ui.i().drawK2(r12, r13, main.Constants_H.WIDTH_ \- (r12 \<\< 1), main.Constants_H.HEIGHT_ \- r13, 0)ldm.Ui.i().drawK1(r12 + 5, ((r13 + 25) + 7) + r14, r15, ((main.Constants_H.HEIGHT_ \- r13) \- 36) \- r14, 1)ldm.Ui.i().drawK(r12 + 7, (main.Constants_H.HEIGHT_ \- 50) \- 22, r15 \- 4, 58, 3)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0066|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.drawBG0((r10v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r11v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'lx' int A[D('lx' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'ly' int A[D('ly' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'sh' int A[D('sh' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'w' int A[D('w' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

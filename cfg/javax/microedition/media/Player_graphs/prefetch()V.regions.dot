@@ -1,0 +1,100 @@
+digraph "CFG forjavax.microedition.media.Player.prefetch()V" {
+subgraph cluster_Region_1541632013 {
+label = "R(1:(1:(3:(1:7)|(1:9)|10)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1306320846 {
+label = "R(1:(3:(1:7)|(1:9)|10))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1987591284 {
+label = "IF [B:2:0x0004] THEN: R(3:(1:7)|(1:9)|10) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (r4.state \< 300) goto L22l}"];
+subgraph cluster_Region_1599097670 {
+label = "R(3:(1:7)|(1:9)|10)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_536034233 {
+label = "IF [B:6:0x000b] THEN: R(1:7) ELSE: null";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x000b|lif (r4.state \< 200) goto L24l}"];
+subgraph cluster_Region_888841510 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x000d|lrealize()l}"];
+}
+}
+subgraph cluster_TryCatchRegion_64402513 {
+label = "Try: R(1:9) catches: R(2:13|14), R(2:15|16)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1577174294 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0010|TRY_ENTER\lTRY_LEAVE\lTryCatch #2 \{IOException \-\> 0x001e, IllegalStateException \-\> 0x0018, blocks: (B:9:0x0010), top: B:8:0x0010 \}\lCatch: IllegalStateException \-\> 0x0018, IOException \-\> 0x001e\l|lr4.mp.prepare()     \/\/ Catch: java.lang.IllegalStateException \-\> L18 java.io.IOException \-\> L1el}"];
+}
+subgraph cluster_Region_1479082908 {
+label = "R(2:13|14) | ExcHandler: IOException \-\> 0x001e\l";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x001e|ExcHandler: IOException \-\> 0x001e\l|l}"];
+Node_14 [shape=record,label="{14\:\ 0x001f|lr1.printStackTrace()l}"];
+}
+subgraph cluster_Region_966483498 {
+label = "R(2:15|16) | ExcHandler: IllegalStateException \-\> 0x0018\l";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0018|ExcHandler: IllegalStateException \-\> 0x0018\l|l}"];
+Node_16 [shape=record,label="{16\:\ 0x0019|lr1.printStackTrace()l}"];
+}
+}
+Node_10 [shape=record,label="{10\:\ 0x0015|lr4.state = javax.microedition.media.Player.PREFETCHEDl}"];
+}
+}
+}
+}
+subgraph cluster_Region_966483498 {
+label = "R(2:15|16) | ExcHandler: IllegalStateException \-\> 0x0018\l";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0018|ExcHandler: IllegalStateException \-\> 0x0018\l|l}"];
+Node_16 [shape=record,label="{16\:\ 0x0019|lr1.printStackTrace()l}"];
+}
+subgraph cluster_Region_1479082908 {
+label = "R(2:13|14) | ExcHandler: IOException \-\> 0x001e\l";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x001e|ExcHandler: IOException \-\> 0x001e\l|l}"];
+Node_14 [shape=record,label="{14\:\ 0x001f|lr1.printStackTrace()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0006|ORIG_RETURN\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0007|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0010|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|SYNTHETIC\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.media.Player.prefetch((r4v0 'this' javax.microedition.media.Player A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljavax\/microedition\/media\/MediaException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0015 \-\> B:3:0x0006, CROSS_EDGE: B:14:0x001f \-\> B:10:0x0015, CROSS_EDGE: B:16:0x0019 \-\> B:10:0x0015, CROSS_EDGE: B:8:0x0010 \-\> B:13:0x001e, CROSS_EDGE: B:8:0x0010 \-\> B:15:0x0018, CROSS_EDGE: B:6:0x000b \-\> B:8:0x0010\lTryCatch #2 \{IOException \-\> 0x001e, IllegalStateException \-\> 0x0018, blocks: (B:9:0x0010), top: B:8:0x0010 \}\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_6 -> Node_7;
+Node_6 -> Node_8[style=dashed];
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_9 -> Node_12;
+Node_13 -> Node_14;
+Node_14 -> Node_10;
+Node_15 -> Node_16;
+Node_16 -> Node_10;
+Node_10 -> Node_11;
+Node_15 -> Node_16;
+Node_16 -> Node_10;
+Node_13 -> Node_14;
+Node_14 -> Node_10;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_8 -> Node_9;
+Node_8 -> Node_13;
+Node_8 -> Node_15;
+Node_11 -> Node_4;
+Node_12 -> Node_13;
+Node_12 -> Node_15;
+}
+

@@ -1,0 +1,52 @@
+digraph "CFG forcom.uc.paymentsdk.payment.sms.receiver.SmsReceiver.onReceive(Landroid\/content\/Context;Landroid\/content\/Intent;)V" {
+subgraph cluster_Region_1398159390 {
+label = "R(2:1|(1:(2:5|(1:8))))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|landroid.os.Bundle android.os.Bundle r2 = r10.getExtras()l}"];
+subgraph cluster_Region_1475140758 {
+label = "R(1:(2:5|(1:8)))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_91299701 {
+label = "IF [B:2:0x0004] THEN: R(2:5|(1:8)) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (r2 != null) goto L5l}"];
+subgraph cluster_Region_1792730566 {
+label = "R(2:5|(1:8))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0007|ljava.lang.Object[] java.lang.Object[] r0 = (java.lang.Object[]) r2.get(\"pdus\")lint r1 = 0ll}"];
+subgraph cluster_LoopRegion_97947547 {
+label = "LOOP:0: (1:8)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0011|ADDED_TO_REGION\l|ljava.lang.Object lif (r1 \< r0.length) goto L8l}"];
+subgraph cluster_Region_1738719735 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0013|LOOP_END\lLOOP:0: B:6:0x0010\-\>B:8:0x0013\l|landroid.telephony.gsm.SmsMessage android.telephony.gsm.SmsMessage r3 = android.telephony.gsm.SmsMessage.createFromPdu((byte[]) r0)ljava.lang.String java.lang.String r4 = r3.getOriginatingAddress()landroid.util.Log.i(\"pay\", \"receiver number:\" + r4)labortBroadcast()lr1++l}"];
+}
+}
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0006|ORIG_RETURN\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0010|LOOP_START\lPHI: r1l  0x0010: PHI (r1v1 'i' int) = (r1v0 'i' int), (r1v2 'i' int) binds: [B:5:0x0007, B:8:0x0013] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:6:0x0010\-\>B:8:0x0013\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0006|SYNTHETIC\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void com.uc.paymentsdk.payment.sms.receiver.SmsReceiver.onReceive((r8v0 'this' com.uc.paymentsdk.payment.sms.receiver.SmsReceiver A[IMMUTABLE_TYPE, THIS]), (r9v0 'paramContext' android.content.Context A[D('paramContext' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'paramIntent' android.content.Intent A[D('paramIntent' android.content.Intent), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | DONT_RENAME\lUSE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{android.content.BroadcastReceiver.onReceive(android.content.Context, android.content.Intent):void\}]\lCROSS_EDGE: B:7:0x0011 \-\> B:3:0x0006, BACK_EDGE: B:8:0x0013 \-\> B:6:0x0010\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_7 -> Node_9[style=dashed];
+Node_8 -> Node_6;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_10 -> Node_4;
+}
+

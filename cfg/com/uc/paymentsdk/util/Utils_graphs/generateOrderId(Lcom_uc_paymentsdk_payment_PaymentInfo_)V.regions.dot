@@ -1,0 +1,48 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.generateOrderId(Lcom\/uc\/paymentsdk\/payment\/PaymentInfo;)V" {
+subgraph cluster_Region_812708776 {
+label = "R(3:1|(1:3)|4) | DECL_VAR: java.lang.String str2\l";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.lang.String java.lang.String r1 = getIpAddress()l}"];
+subgraph cluster_TryCatchRegion_1128013131 {
+label = "Try: R(1:3) catches: R(1:9)";
+node [shape=record,color=blue];
+subgraph cluster_Region_162217956 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0004|TRY_ENTER\lTRY_LEAVE\lTryCatch #0 \{UnsupportedEncodingException \-\> 0x0045, blocks: (B:3:0x0004), top: B:2:0x0004 \}\lCatch: UnsupportedEncodingException \-\> 0x0045\l|ljava.lang.String r2 = java.lang.String.valueOf(java.net.URLEncoder.encode(r6.getUsername(), \"UTF\-8\")) + r6.getAppkey() + java.net.URLEncoder.encode(r6.getPayname(), \"UTF\-8\") + java.lang.System.currentTimeMillis() + r1     \/\/ Catch: java.io.UnsupportedEncodingException \-\> L45l}"];
+}
+subgraph cluster_Region_1496411284 {
+label = "R(1:9) | ExcHandler: UnsupportedEncodingException \-\> 0x0045\l";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0046|ljava.lang.String r2 = \"\"l}"];
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x003d|PHI: r2l  0x003d: PHI (r2v1 'str2' java.lang.String) = (r2v0 'str2' java.lang.String), (r2v2 'str2' java.lang.String) binds: [B:9:0x0046, B:3:0x0004] A[DONT_GENERATE, DONT_INLINE]\l|lr6.setOrderID(com.uc.paymentsdk.commons.codec.DigestUtils.md5Hex(r2))l}"];
+}
+subgraph cluster_Region_1496411284 {
+label = "R(1:9) | ExcHandler: UnsupportedEncodingException \-\> 0x0045\l";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0046|ljava.lang.String r2 = \"\"l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0004|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0044|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0045|ExcHandler: UnsupportedEncodingException \-\> 0x0045\l|l}"];
+MethodNode[shape=record,label="{public static void com.uc.paymentsdk.util.Utils.generateOrderId((r6v0 'paramPaymentInfo' com.uc.paymentsdk.payment.PaymentInfo A[D('paramPaymentInfo' com.uc.paymentsdk.payment.PaymentInfo), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{UnsupportedEncodingException \-\> 0x0045, blocks: (B:3:0x0004), top: B:2:0x0004 \}\lCROSS_EDGE: B:9:0x0046 \-\> B:4:0x003d, CROSS_EDGE: B:2:0x0004 \-\> B:8:0x0045\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_7;
+Node_9 -> Node_4;
+Node_4 -> Node_5;
+Node_9 -> Node_4;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_2 -> Node_8;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+}
+

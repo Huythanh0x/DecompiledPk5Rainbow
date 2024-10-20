@@ -1,0 +1,16 @@
+digraph "CFG forminigame.Racing.\<init\>(Lmain\/GameRun;)V" {
+subgraph cluster_Region_1811057925 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte[] byte[] r0 = new byte[4]lr0[3] = \-1lr4.myDate = r0lr4.cloud = (short[][]) java.lang.reflect.Array.newInstance((java.lang.Class\<?\>) java.lang.Short.TYPE, 10, 3)lr4.monY = new short[4]lr4.money = new short[]\{100, 120, 300, 350, 1000, 1200\}lr4.gDate = new short[][]\{new short[]\{450, 3, 8\}, new short[]\{390, 4, 9\}, new short[]\{270, 7, 6\}, new short[]\{210, 6, 10\}\}lr4.gr = r5l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0065|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void minigame.Racing.\<init\>((r4v0 'this' minigame.Racing A[IMMUTABLE_TYPE, THIS]), (r5v0 'gr_' main.GameRun A[D('gr_' main.GameRun), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

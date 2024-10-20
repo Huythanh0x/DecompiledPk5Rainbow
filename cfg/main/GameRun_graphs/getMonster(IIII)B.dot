@@ -1,0 +1,35 @@
+digraph "CFG formain.GameRun.getMonster(IIII)B" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Monster r0 = new dm.Monster(r5, r6, r7, r9)l}"];
+Node_2 [shape=record,label="{2\:\ 0x000b|lif (r5.cMon_count != r5.max_monsters) goto L22l}"];
+Node_3 [shape=record,label="{3\:\ 0x000d|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0011|lif (r5.myMon_length != r5.max_takes) goto L22l}"];
+Node_5 [shape=record,label="{5\:\ 0x0013|lsay(main.Constants_H.TXT_48, 0)l}"];
+Node_6 [shape=record,label="{6\:\ 0x0019|RETURN\lORIG_RETURN\l|lreturn \-1l}"];
+Node_7 [shape=record,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x001a|l}"];
+Node_9 [shape=record,label="{9\:\ 0x001e|lif (getMonster(r0, r8, true) == 1) goto L26l}"];
+Node_10 [shape=record,label="{10\:\ 0x0020|lsay(new java.lang.StringBuilder(main.Constants_H.TXT_49).append(getNameMon((byte) r6)).toString(), 0)l}"];
+Node_11 [shape=record,label="{11\:\ 0x0037|l}"];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturn 1l}"];
+Node_13 [shape=record,label="{13\:\ 0x003a|lsay(new java.lang.StringBuilder(main.Constants_H.TXT_50).append(getNameMon(r0.monster[0])).append(main.Constants_H.TXT_51).toString(), 0)l}"];
+MethodNode[shape=record,label="{public byte main.GameRun.getMonster((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r6v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'level' int A[D('level' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'evolve' int A[D('evolve' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'buff' int A[D('buff' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:11:0x0037 \-\> B:6:0x0019, CROSS_EDGE: B:13:0x003a \-\> B:11:0x0037, CROSS_EDGE: B:2:0x000b \-\> B:8:0x001a\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_8;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_8;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_9 -> Node_10[style=dashed];
+Node_9 -> Node_13;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_12 -> Node_7;
+Node_13 -> Node_11;
+}
+

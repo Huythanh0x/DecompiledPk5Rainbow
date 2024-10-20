@@ -1,0 +1,97 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.getIpAddress()Ljava\/lang\/String;" {
+subgraph cluster_Region_1649575756 {
+label = "R(2:(2:2|(2:5|(2:8|(1:(1:13)))))|18)";
+node [shape=record,color=blue];
+subgraph cluster_TryCatchRegion_89054296 {
+label = "Try: R(2:2|(2:5|(2:8|(1:(1:13))))) catches: R(0)";
+node [shape=record,color=blue];
+subgraph cluster_Region_1326684503 {
+label = "R(2:2|(2:5|(2:8|(1:(1:13)))))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0000|TRY_ENTER\lTryCatch #0 \{SocketException \-\> 0x002e, blocks: (B:2:0x0000, B:3:0x0004, B:5:0x000d, B:6:0x0017, B:8:0x001d, B:11:0x0029), top: B:1:0x0000 \}\lCatch: SocketException \-\> 0x002e\l|ljava.util.Enumeration java.util.Enumeration r0 = java.net.NetworkInterface.getNetworkInterfaces()     \/\/ Catch: java.net.SocketException \-\> L2el}"];
+subgraph cluster_LoopRegion_1273466627 {
+label = "LOOP:0: (2:5|(2:8|(1:(1:13))))";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0008|ADDED_TO_REGION\l|lif (r0.hasMoreElements() != false) goto L30l}"];
+subgraph cluster_Region_1838905801 {
+label = "R(2:5|(2:8|(1:(1:13))))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000d|TRY_ENTER\lTryCatch #0 \{SocketException \-\> 0x002e, blocks: (B:2:0x0000, B:3:0x0004, B:5:0x000d, B:6:0x0017, B:8:0x001d, B:11:0x0029), top: B:1:0x0000 \}\lCatch: SocketException \-\> 0x002e\l|ljava.net.NetworkInterface java.net.NetworkInterface r3 = r0.nextElement()     \/\/ Catch: java.net.SocketException \-\> L2eljava.util.Enumeration java.util.Enumeration r1 = r3.getInetAddresses()     \/\/ Catch: java.net.SocketException \-\> L2el}"];
+subgraph cluster_LoopRegion_1340119755 {
+label = "LOOP:1: (2:8|(1:(1:13)))";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x001b|ADDED_TO_REGION\l|lif (r1.hasMoreElements() != false) goto L33l}"];
+subgraph cluster_Region_485129025 {
+label = "R(2:8|(1:(1:13)))";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x001d|TryCatch #0 \{SocketException \-\> 0x002e, blocks: (B:2:0x0000, B:3:0x0004, B:5:0x000d, B:6:0x0017, B:8:0x001d, B:11:0x0029), top: B:1:0x0000 \}\lCatch: SocketException \-\> 0x002e\l|ljava.net.InetAddress java.net.InetAddress r2 = r1.nextElement()     \/\/ Catch: java.net.SocketException \-\> L2el}"];
+subgraph cluster_Region_981839584 {
+label = "R(1:(1:13))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1803710536 {
+label = "IF [B:9:0x0027] THEN: R(1:13) ELSE: null";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0027|lif (r2.isLoopbackAddress() == false) goto L41l}"];
+subgraph cluster_Region_1575029184 {
+label = "R(1:13)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ ?|SYNTHETIC\lRETURN\l|lreturn r2.getHostAddress()l}"];
+}
+}
+}
+}
+}
+}
+}
+}
+subgraph cluster_Region_390859540 {
+label = "R(0) | ExcHandler: SocketException \-\> 0x002e\l";
+node [shape=record,color=blue];
+}
+}
+Node_18 [shape=record,label="{18\:\ 0x000a|RETURN\lORIG_RETURN\l|lreturn \"\"l}"];
+}
+subgraph cluster_Region_390859540 {
+label = "R(0) | ExcHandler: SocketException \-\> 0x002e\l";
+node [shape=record,color=blue];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0004|TRY_LEAVE\lLOOP_START\lTryCatch #0 \{SocketException \-\> 0x002e, blocks: (B:2:0x0000, B:3:0x0004, B:5:0x000d, B:6:0x0017, B:8:0x001d, B:11:0x0029), top: B:1:0x0000 \}\lCatch: SocketException \-\> 0x002e\lLOOP:0: B:3:0x0004\-\>B:16:?\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0017|LOOP_START\lTryCatch #0 \{SocketException \-\> 0x002e, blocks: (B:2:0x0000, B:3:0x0004, B:5:0x000d, B:6:0x0017, B:8:0x001d, B:11:0x0029), top: B:1:0x0000 \}\lCatch: SocketException \-\> 0x002e\lLOOP:1: B:6:0x0017\-\>B:15:?\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0029|SYNTHETIC\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0029|TRY_LEAVE\lTryCatch #0 \{SocketException \-\> 0x002e, blocks: (B:2:0x0000, B:3:0x0004, B:5:0x000d, B:6:0x0017, B:8:0x001d, B:11:0x0029), top: B:1:0x0000 \}\lCatch: SocketException \-\> 0x002e\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ ?|LOOP_END\lSYNTHETIC\lLOOP:1: B:6:0x0017\-\>B:15:?\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ ?|LOOP_END\lSYNTHETIC\lLOOP:0: B:3:0x0004\-\>B:16:?\l|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x000a|SYNTHETIC\l|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x002e|ExcHandler: SocketException \-\> 0x002e\l|l}"];
+MethodNode[shape=record,label="{private static java.lang.String com.uc.paymentsdk.util.Utils.getIpAddress()  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{SocketException \-\> 0x002e, blocks: (B:2:0x0000, B:3:0x0004, B:5:0x000d, B:6:0x0017, B:8:0x001d, B:11:0x0029), top: B:1:0x0000 \}\lBACK_EDGE: B:7:0x001b \-\> B:3:0x0004, BACK_EDGE: B:9:0x0027 \-\> B:6:0x0017, CROSS_EDGE: B:11:0x0029 \-\> B:19:0x000c, CROSS_EDGE: B:19:0x002e \-\> B:18:0x000a, CROSS_EDGE: B:1:0x0000 \-\> B:19:0x002e\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_4 -> Node_5;
+Node_4 -> Node_17[style=dashed];
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_7 -> Node_16[style=dashed];
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_9 -> Node_15[style=dashed];
+Node_13 -> Node_14;
+Node_18 -> Node_14;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_1 -> Node_19;
+Node_3 -> Node_4;
+Node_6 -> Node_7;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_11 -> Node_13;
+Node_12 -> Node_19;
+Node_15 -> Node_6;
+Node_16 -> Node_3;
+Node_17 -> Node_18;
+Node_19 -> Node_18;
+}
+

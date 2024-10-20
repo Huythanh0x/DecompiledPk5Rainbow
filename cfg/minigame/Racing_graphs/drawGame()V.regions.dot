@@ -1,0 +1,61 @@
+digraph "CFG forminigame.Racing.drawGame()V" {
+subgraph cluster_Region_473504623 {
+label = "R(3:1|(1:4)|(1:(1:10)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ui.i().fillRect(5423359, 0, 0, main.Constants_H.WIDTH_, main.Constants_H.HEIGHT_)ldrawCloud()ldrawEnd()lbyte r18 = 0l}"];
+subgraph cluster_LoopRegion_278357916 {
+label = "LOOP:0: (1:4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0024|ADDED_TO_REGION\l|lif (r18 \< r19.length) goto L26l}"];
+subgraph cluster_Region_1590388760 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0058|LOOP_END\lLOOP:0: B:2:0x001c\-\>B:4:0x0058\l|ldm.Ui.i().drawNum(new java.lang.StringBuilder().append(r18 + 1).toString(), (r18 * 100) + 125 + 22, 20 \- r19.srcY, 1, 2)ldm.Ui.i().drawActionOne(r19.sp[0], 1, (r18 * 100) + 125 + 22, r19.monY[r18] \- r19.srcY, r19.now_a[r18], 0, true)lr18 = (byte) (r18 + 1)l}"];
+}
+}
+subgraph cluster_Region_2094983225 {
+label = "R(1:(1:10))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_892927626 {
+label = "IF [B:7:0x002c, B:9:0x0033] THEN: R(1:10) ELSE: null";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x002c|lif (r19.state == 3) goto L22l}"];
+Node_9 [shape=record,label="{9\:\ 0x0033|ADDED_TO_REGION\l|lif (r19.time != 0) goto L24l}"];
+subgraph cluster_Region_451049804 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0035|ldm.Ui.i().drawNum(new java.lang.StringBuilder().append(r19.time \/ 20).toString(), main.Constants_H.WIDTH_H_ \- 5, main.Constants_H.HEIGHT_H_, 0, 2)l}"];
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x001c|LOOP_START\lPHI: r18l  0x001c: PHI (r18v1 'i' byte) = (r18v0 'i' byte), (r18v2 'i' byte) binds: [B:1:0x0000, B:4:0x0058] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x001c\-\>B:4:0x0058\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0026|SYNTHETIC\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0026|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x002e|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0057|ORIG_RETURN\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ ?|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ ?|SYNTHETIC\lRETURN\lADDED_TO_REGION\l|lreturnl}"];
+MethodNode[shape=record,label="{private void minigame.Racing.drawGame((r19v0 'this' minigame.Racing A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lJadxCommentsAttr\{l DEBUG: l \-\> TODO: convert one arg to string using `String.valueOf()`, args: (wrap:int:ARITH)l \-\> TODO: convert one arg to string using `String.valueOf()`, args: (wrap:int:ARITH)\}\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x0033 \-\> B:11:0x0057, CROSS_EDGE: B:7:0x002c \-\> B:11:0x0057, BACK_EDGE: B:4:0x0058 \-\> B:2:0x001c\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_7 -> Node_8;
+Node_7 -> Node_14[style=dashed];
+Node_9 -> Node_10;
+Node_9 -> Node_13[style=dashed];
+Node_10 -> Node_11;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_11 -> Node_12;
+Node_13 -> Node_12;
+Node_14 -> Node_12;
+}
+

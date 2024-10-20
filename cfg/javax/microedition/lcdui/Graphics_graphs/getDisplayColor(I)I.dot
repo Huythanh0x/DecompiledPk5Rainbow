@@ -1,0 +1,10 @@
+digraph "CFG forjavax.microedition.lcdui.Graphics.getDisplayColor(I)I" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|RETURN\l|lreturn r1l}"];
+Node_2 [shape=record,label="{2\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public int javax.microedition.lcdui.Graphics.getDisplayColor((r0v0 'this' javax.microedition.lcdui.Graphics A[IMMUTABLE_TYPE, THIS]), (r1v0 'color' int A[D('color' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+}
+

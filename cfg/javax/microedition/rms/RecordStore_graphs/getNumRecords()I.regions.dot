@@ -1,0 +1,16 @@
+digraph "CFG forjavax.microedition.rms.RecordStore.getNumRecords()I" {
+subgraph cluster_Region_1538309455 {
+label = "R(2:1|2)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|landroid.database.Cursor android.database.Cursor r8 = r10.db.query(r10.table_name, null, null, null, null, null, null)ljavax.microedition.lcdui.CwaActivity.getInstance().startManagingCursor(r8)lint int r9 = r8.getCount()l}"];
+Node_2 [shape=record,label="{2\:\ 0x001a|RETURN\l|lreturn r9l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public int javax.microedition.rms.RecordStore.getNumRecords((r10v0 'this' javax.microedition.rms.RecordStore A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljavax\/microedition\/rms\/RecordStoreNotOpenException;]\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_0 -> Node_1;
+}
+

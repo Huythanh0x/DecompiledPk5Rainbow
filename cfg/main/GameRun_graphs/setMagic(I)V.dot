@@ -1,0 +1,19 @@
+digraph "CFG formain.GameRun.setMagic(I)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r3 \<= 5) goto L12l}"];
+Node_3 [shape=record,label="{3\:\ 0x0004|lr3 = 5l}"];
+Node_4 [shape=record,label="{4\:\ 0x0005|PHI: r3l  0x0005: PHI (r3v1 'pro' int) = (r3v0 'pro' int), (r3v2 'pro' int) binds: [B:2:0x0002, B:3:0x0004] A[DONT_GENERATE, DONT_INLINE]\l|linitMagicStream(r3)lr2.now_action_Magic[r3] = 0lr2.now_time_Magic[r3] = 0l}"];
+Node_5 [shape=record,label="{5\:\ 0x0010|RETURN\l|lreturnl}"];
+Node_6 [shape=record,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.setMagic((r2v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r3v0 'pro' int A[D('pro' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0002 \-\> B:4:0x0005\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_4;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+}
+

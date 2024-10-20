@@ -1,0 +1,41 @@
+digraph "CFG formain.GameRun.takenMonster()V" {
+subgraph cluster_Region_230943209 {
+label = "R(1:(2:(2:3|4)|(1:6)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_90992976 {
+label = "R(2:(2:3|4)|(1:6))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_736799221 {
+label = "IF [B:2:0x0006] THEN: R(2:3|4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0006|lif (r6.myMon_length \< r6.max_takes) goto L12l}"];
+subgraph cluster_Region_695027208 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0008|lr6.myMonsters[r6.myMon_length] = r6.cMonsters[r6.select[0][0]]lr6.evolve[r6.myMon_length] = truelr6.myMon_length = (byte) (r6.myMon_length + 1)lsetTakenMonster()l}"];
+Node_4 [shape=record,label="{4\:\ 0x0028|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1005813357 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0029|lsay(main.Constants_H.TXT_43, 1)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.takenMonster((r6v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0029 \-\> B:4:0x0028\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_7 -> Node_5;
+}
+

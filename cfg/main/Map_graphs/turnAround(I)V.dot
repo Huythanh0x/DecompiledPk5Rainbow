@@ -1,0 +1,12 @@
+digraph "CFG formain.Map.turnAround(I)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r1 = (byte) r3lr2.my.dir = r1lr2.my.setActionNo(true)l}"];
+Node_2 [shape=record,label="{2\:\ 0x000b|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.turnAround((r2v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r3v0 'dir' int A[D('dir' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

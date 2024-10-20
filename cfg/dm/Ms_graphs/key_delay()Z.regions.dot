@@ -1,0 +1,54 @@
+digraph "CFG fordm.Ms.key_delay()Z" {
+subgraph cluster_Region_1586267610 {
+label = "R(1:(2:(1:9)|(3:3|(1:5)|6)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1863752179 {
+label = "R(2:(1:9)|(3:3|(1:5)|6))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1557406333 {
+label = "IF [B:2:0x0003] THEN: R(1:9) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif (dm.Ms.key_delay != 0) goto L20l}"];
+subgraph cluster_Region_1684777611 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+}
+subgraph cluster_Region_1584615817 {
+label = "R(3:3|(1:5)|6)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0005|ldm.Ms.key_delay = dm.Ms.key_timel}"];
+subgraph cluster_IfRegion_99717813 {
+label = "IF [B:4:0x000b] THEN: R(1:5) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000b|lif (dm.Ms.key_time \> 1) goto L17l}"];
+subgraph cluster_Region_2018217916 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000d|ldm.Ms.key_time = (byte) (dm.Ms.key_time \- 1)l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0013|RETURN\lORIG_RETURN\l|lreturn falsel}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0015|l}"];
+MethodNode[shape=record,label="{public boolean dm.Ms.key_delay((r2v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x000b \-\> B:6:0x0013, CROSS_EDGE: B:8:0x0015 \-\> B:7:0x0014\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_8;
+Node_9 -> Node_7;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_6[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_8 -> Node_9;
+}
+

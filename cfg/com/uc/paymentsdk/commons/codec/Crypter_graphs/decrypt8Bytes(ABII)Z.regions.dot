@@ -1,0 +1,87 @@
+digraph "CFG forcom.uc.paymentsdk.commons.codec.Crypter.decrypt8Bytes([BII)Z" {
+subgraph cluster_Region_1998859213 {
+label = "R(4:1|(1:(2:(1:9)|(1:6)))|12|(2:(1:15)|(2:16|17)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr7.pos = 0l}"];
+subgraph cluster_LoopRegion_1469209493 {
+label = "LOOP:0: (1:(2:(1:9)|(1:6)))";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0008|ADDED_TO_REGION\l|lif (r7.pos \< 8) goto L27l}"];
+subgraph cluster_Region_1770374888 {
+label = "R(1:(2:(1:9)|(1:6)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1041092792 {
+label = "R(2:(1:9)|(1:6))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1747058423 {
+label = "IF [B:5:0x001d] THEN: R(1:9) ELSE: null";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x001d|lif ((r7.contextStart + r7.pos) \>= r10) goto L33l}"];
+subgraph cluster_Region_757751445 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+}
+subgraph cluster_Region_4266654 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0021|LOOP_END\lLOOP:0: B:2:0x0004\-\>B:6:0x0021\l|lint int r1 = r7.poslbyte[] byte[] r0 = r7.prePlainlr0[r1] = (byte) (r0[r1] ^ r8[(r7.crypt + r9) + r7.pos])lr7.pos++l}"];
+}
+}
+}
+}
+Node_12 [shape=record,label="{12\:\ 0x000a|lr7.prePlain = decipher(r7.prePlain)l}"];
+subgraph cluster_Region_1784643422 {
+label = "R(2:(1:15)|(2:16|17))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_973597373 {
+label = "IF [B:13:0x0014] THEN: R(1:15) ELSE: null";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x0014|lif (r7.prePlain == null) goto L25l}"];
+subgraph cluster_Region_1563848012 {
+label = "R(1:15)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0017|RETURN\lORIG_RETURN\l|lreturn falsel}"];
+}
+}
+subgraph cluster_Region_571952777 {
+label = "R(2:16|17)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x003a|lr7.contextStart += 8lr7.crypt += 8lr7.pos = 0l}"];
+Node_17 [shape=record,label="{17\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0004|LOOP_START\lLOOP:0: B:2:0x0004\-\>B:6:0x0021\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0018|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x001f|SYNTHETIC\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x001f|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x000a|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0016|l}"];
+MethodNode[shape=record,label="{private boolean com.uc.paymentsdk.commons.codec.Crypter.decrypt8Bytes((r7v0 'this' com.uc.paymentsdk.commons.codec.Crypter A[IMMUTABLE_TYPE, THIS]), (r8v0 'paramArrayOfByte' byte[] A[D('paramArrayOfByte' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'paramInt1' int A[D('paramInt1' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'paramInt2' int A[D('paramInt2' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:16:0x003a \-\> B:15:0x0017, CROSS_EDGE: B:8:0x001f \-\> B:15:0x0017, BACK_EDGE: B:6:0x0021 \-\> B:2:0x0004\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_11[style=dashed];
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_7;
+Node_9 -> Node_10;
+Node_6 -> Node_2;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_13 -> Node_16[style=dashed];
+Node_15 -> Node_10;
+Node_16 -> Node_17;
+Node_17 -> Node_10;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_4 -> Node_5;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_11 -> Node_12;
+Node_14 -> Node_15;
+}
+

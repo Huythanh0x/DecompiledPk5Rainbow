@@ -1,0 +1,19 @@
+digraph "CFG forjavax.microedition.rms.RecordStore.getNextRecordID()I" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|landroid.database.Cursor r8 = r10.db.query(r10.table_name, null, null, null, null, null, null)ljavax.microedition.lcdui.CwaActivity.getInstance().startManagingCursor(r8)l}"];
+Node_2 [shape=record,label="{2\:\ 0x001a|lif (r8.moveToLast() == false) goto L13l}"];
+Node_3 [shape=record,label="{3\:\ 0x001c|lint r9 = r8.getInt(0) + 1l}"];
+Node_4 [shape=record,label="{4\:\ 0x0023|RETURN\lORIG_RETURN\l|lreturn r9l}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturn \-1l}"];
+MethodNode[shape=record,label="{public int javax.microedition.rms.RecordStore.getNextRecordID((r10v0 'this' javax.microedition.rms.RecordStore A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljavax\/microedition\/rms\/RecordStoreNotOpenException;, Ljavax\/microedition\/rms\/RecordStoreException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x001a \-\> B:4:0x0023\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

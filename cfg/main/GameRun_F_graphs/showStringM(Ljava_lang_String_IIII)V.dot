@@ -1,0 +1,39 @@
+digraph "CFG formain.GameRun_F.showStringM(Ljava\/lang\/String;IIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte r8 = (byte) (r10.length() \/ r13)lr7 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0007|LOOP_START\lPHI: r7l  0x0007: PHI (r7v1 'd' byte) = (r7v0 'd' byte), (r7v2 'd' byte) binds: [B:1:0x0000, B:6:0x0022] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0007\-\>B:6:0x0022\l|lif (r7 \<= r8) goto L21l}"];
+Node_3 [shape=record,label="{3\:\ 0x000a|lif (r8 != 0) goto L24l}"];
+Node_4 [shape=record,label="{4\:\ 0x000c|ldm.Ui.i().drawString(r10, r11, r12, 1 \| 16, r14, 1)landroid.util.Log.e(\"sk\", \"strNum == 0\")l}"];
+Node_5 [shape=record,label="{5\:\ 0x0022|SYNTHETIC\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0022|LOOP_END\lLOOP:0: B:2:0x0007\-\>B:6:0x0022\l|lbyte r7 = (byte) (r7 + 1)l}"];
+Node_7 [shape=record,label="{7\:\ 0x0026|ldm.Ui r0 = dm.Ui.i()lint r1 = r7 * r13l}"];
+Node_8 [shape=record,label="{8\:\ 0x002e|lif ((r7 + 1) \<= r8) goto L28l}"];
+Node_9 [shape=record,label="{9\:\ 0x0030|lint r2 = r10.length()l}"];
+Node_10 [shape=record,label="{10\:\ 0x0034|PHI: r2l  0x0034: PHI (r2v3 int) = (r2v2 int), (r2v7 int) binds: [B:12:0x004d, B:9:0x0030] A[DONT_GENERATE, DONT_INLINE]\l|lr0.drawString(r10.substring(r1, r2), r11, r12 + (r7 * 25), 1 \| 16, r14, 0)landroid.util.Log.e(\"sk\", \"else\")l}"];
+Node_11 [shape=record,label="{11\:\ 0x0022|SYNTHETIC\l|l}"];
+Node_12 [shape=record,label="{12\:\ 0x004d|lint r2 = (r7 + 1) * r13l}"];
+Node_13 [shape=record,label="{13\:\ 0x0009|SYNTHETIC\l|l}"];
+Node_14 [shape=record,label="{14\:\ 0x0009|RETURN\l|lreturnl}"];
+Node_15 [shape=record,label="{15\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun_F.showStringM((r9v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]), (r10v0 'str' java.lang.String A[D('str' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'num' int A[D('num' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'c' int A[D('c' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:6:0x0022 \-\> B:2:0x0007, CROSS_EDGE: B:10:0x0034 \-\> B:6:0x0022, CROSS_EDGE: B:12:0x004d \-\> B:10:0x0034\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_13[style=dashed];
+Node_3 -> Node_4[style=dashed];
+Node_3 -> Node_7;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_6 -> Node_2;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_12;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_11 -> Node_6;
+Node_12 -> Node_10;
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+}
+

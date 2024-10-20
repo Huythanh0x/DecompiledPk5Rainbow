@@ -1,0 +1,33 @@
+digraph "CFG formain.GameRun.goMY_BAG(I)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr6.mini_state = 15lr6.list_rows = 6lmain.GameRun.run_state = 25lr6.popMenu = \-1l}"];
+Node_2 [shape=record,label="{2\:\ 0x0013|lif (r6.view_state != 1) goto L20l}"];
+Node_3 [shape=record,label="{3\:\ 0x0015|lsetAction_str(new java.lang.String[]\{\"道具\", main.Constants_H.ITEM_TXT_1, main.Constants_H.ITEM_TXT_2, \"孵化\"\})l}"];
+Node_4 [shape=record,label="{4\:\ 0x002c|lr6.selectx = (byte) r7lr6.selecty = 0lr6.select[0][1] = r6.select_st[r6.selectx]lr6.select[0][0] = r6.select_it[r6.selectx]ldm.Ms.i().correctSelect(r6.select[0], r6.itemsLength[r6.selectx], r6.list_rows)lr6.itemMine = nullldm.Ms.i()ldm.Ms.skip = 0lr6.itemMine = dm.Ms.i().create2Array(dm.Ms.i().getStream(\"data\/box.d\", \-1))l}"];
+Node_5 [shape=record,label="{5\:\ 0x0078|RETURN\l|lreturnl}"];
+Node_6 [shape=record,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,label="{7\:\ 0x0079|l}"];
+Node_8 [shape=record,label="{8\:\ 0x007b|lif (r6.view_state != (\-1)) goto L23l}"];
+Node_9 [shape=record,label="{9\:\ 0x007d|lsetAction_str(new java.lang.String[]\{\"道具\"\})l}"];
+Node_10 [shape=record,label="{10\:\ 0x0087|l}"];
+Node_11 [shape=record,label="{11\:\ 0x0089|lif (r6.view_state != 2) goto L18l}"];
+Node_12 [shape=record,label="{12\:\ 0x008b|lsetAction_str(new java.lang.String[]\{\"孵化\"\})l}"];
+MethodNode[shape=record,label="{private void main.GameRun.goMY_BAG((r6v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r7v0 'type' int A[D('type' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:9:0x007d \-\> B:4:0x002c, CROSS_EDGE: B:11:0x0089 \-\> B:4:0x002c, CROSS_EDGE: B:12:0x008b \-\> B:4:0x002c\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_7;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_10;
+Node_9 -> Node_4;
+Node_10 -> Node_11;
+Node_11 -> Node_4;
+Node_11 -> Node_12[style=dashed];
+Node_12 -> Node_4;
+}
+

@@ -1,0 +1,84 @@
+digraph "CFG formain.GameRun.keyGameOver1(Z)V" {
+subgraph cluster_Region_1751467059 {
+label = "R(2:(2:(1:5)(1:(1:12))|6)(1:(1:15))|7)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1494359005 {
+label = "IF [B:2:0x0008] THEN: R(2:(1:5)(1:(1:12))|6) ELSE: R(1:(1:15))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0008|lif (dm.Ms.i().key_S1_Num5() != false) goto L20l}"];
+subgraph cluster_Region_1175990240 {
+label = "R(2:(1:5)(1:(1:12))|6)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1803878553 {
+label = "IF [B:4:0x000d] THEN: R(1:5) ELSE: R(1:(1:12))";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000d|lif (r2.popMenu == 1) goto L22l}"];
+subgraph cluster_Region_688100614 {
+label = "R(1:5)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000f|lgoMAIN_MENU()l}"];
+}
+subgraph cluster_Region_1611054856 {
+label = "R(1:(1:12)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1743190983 {
+label = "IF [B:11:0x001f] THEN: R(1:12) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x001f|lif (r2.popMenu == 0) goto L28l}"];
+subgraph cluster_Region_606383722 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0021|ljava.lang.System.out.println(\"loadGame soars\")lloadGame()l}"];
+}
+}
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x0012|lr2.popMenu = (byte) \-1l}"];
+}
+subgraph cluster_Region_289059917 {
+label = "R(1:(1:15)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1150400413 {
+label = "IF [B:14:0x0034] THEN: R(1:15) ELSE: null | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0034|lif (dm.Ms.i().key_Up_Down() != false) goto L31l}"];
+subgraph cluster_Region_343491595 {
+label = "R(1:15)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x0036|lr2.popMenu = (byte) (r2.popMenu ^ 1)l}"];
+}
+}
+}
+}
+Node_7 [shape=record,label="{7\:\ 0x0015|ldm.Ms.i().keyRelease()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x000a|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x001c|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x001d|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x002c|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.keyGameOver1((r2v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r3v0 'over' boolean A[D('over' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:11:0x001f \-\> B:6:0x0012, CROSS_EDGE: B:12:0x0021 \-\> B:6:0x0012, CROSS_EDGE: B:14:0x0034 \-\> B:7:0x0015, CROSS_EDGE: B:15:0x0036 \-\> B:7:0x0015\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_13[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_10[style=dashed];
+Node_5 -> Node_6;
+Node_11 -> Node_6[style=dashed];
+Node_11 -> Node_12;
+Node_12 -> Node_6;
+Node_6 -> Node_7;
+Node_14 -> Node_7[style=dashed];
+Node_14 -> Node_15;
+Node_15 -> Node_7;
+Node_7 -> Node_8;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_13 -> Node_14;
+}
+

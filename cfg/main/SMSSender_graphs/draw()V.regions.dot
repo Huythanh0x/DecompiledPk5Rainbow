@@ -1,0 +1,108 @@
+digraph "CFG formain.SMSSender.draw()V" {
+subgraph cluster_Region_313009584 {
+label = "R(1:(1:(3:3|(3:5|(4:10|13|(1:15)(0)|17)|21)|23)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1409591815 {
+label = "R(1:(3:3|(3:5|(4:10|13|(1:15)(0)|17)|21)|23))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1129482362 {
+label = "IF [B:2:0x0005] THEN: R(3:3|(3:5|(4:10|13|(1:15)(0)|17)|21)|23) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0005|lif (r26.menu_state == 0) goto L31l}"];
+subgraph cluster_Region_913865067 {
+label = "R(3:3|(3:5|(4:10|13|(1:15)(0)|17)|21)|23)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0007|lint int r8 = main.Constants_H.WIDTH_ \- 2lint int r9 = main.Constants_H.HEIGHT_ \- 1ldm.Ui.i().fillRectB()ldm.Ui.i().drawK2(1, 1, r8, r9, 0)ldm.Ui.i().drawK1(main.Constants_H.WIDTH_H_ \- 75, 1 + 3, 150, 28 \- 4, 4)ldm.Ui.i().drawString(r26.menuTxt[r26.menu[r26.menu_state][0]][0], main.Constants_H.WIDTH_H_, 1 + 1, 17, 0, 1)landroid.util.Log.e(\"sk\", \"draw\")lint int r6 = 1 + 5lint int r5 = 28 + 1lint int r7 = 1 + 29lint int r8 = r8 \- 10l}"];
+subgraph cluster_IfRegion_792057810 {
+label = "IF [B:4:0x007f] THEN: R(3:5|(4:10|13|(1:15)(0)|17)|21) ELSE: null";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x007f|lif (r26.menu[r26.menu_state].length \> 1) goto L33l}"];
+subgraph cluster_Region_798285219 {
+label = "R(3:5|(4:10|13|(1:15)(0)|17)|21)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0081|ldm.Ui.i().drawK1(r6, r7, r8 \- 15, 28 * r26.showLine, 1)ldm.Ui.i().sliding((r6 + 628) \- 13, r7, 28 * r26.showLine, r26.sel[0] \- 1, r26.menu[r26.menu_state].length \- 1, true)ldm.Ui.i().drawListKY(r26.showLine, r6, r7 + 2, r8 \- 15, 2, 28, \-1, r26.sel[0] \- r26.sel[1], 4, 2)lint r25 = r26.sel[1]l}"];
+subgraph cluster_LoopRegion_1016780893 {
+label = "LOOP:0: (4:10|13|(1:15)(0)|17)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0110|ADDED_TO_REGION\l|lif (r25 \< (r26.sel[1] + r26.showLine)) goto L36l}"];
+Node_9 [shape=record,label="{9\:\ 0x0122|ADDED_TO_REGION\l|lif (r25 \< r26.menu[r26.menu_state].length) goto L41l}"];
+subgraph cluster_Region_152078222 {
+label = "R(4:10|13|(1:15)(0)|17)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0140|lint int r5 = r8 \>\> 1lint int r5 = r7 + 2l}"];
+Node_13 [shape=record,label="{13\:\ 0x0181|PHI: r15l  0x0181: PHI (r15v7 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|ldm.Ui.i().drawString(r26.menuTxt[r26.menu[r26.menu_state][r25]][0], r6 + 314, ((r25 \- r26.sel[1]) * 28) + 32, 17, r26.sel[0] == r25 ? 0 : 3, 0)lint int r10 = r7 + 2l}"];
+subgraph cluster_IfRegion_1239171884 {
+label = "IF [B:14:0x01a6] THEN: R(1:15) ELSE: R(0)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x01a6|lif (r26.pkey.isSelect(r6, ((r25 \- r26.sel[1]) * 28) + 32, main.Constants_H.WIDTH_, 28) != false) goto L46l}"];
+subgraph cluster_Region_896168872 {
+label = "R(1:15)";
+node [shape=record,color=blue];
+Node_15 [shape=record,label="{15\:\ 0x01a8|lr26.sel[0] = (byte) r25lsetSmsType()l}"];
+}
+subgraph cluster_Region_2095309345 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+Node_17 [shape=record,label="{17\:\ 0x01b7|LOOP_END\lLOOP:0: B:6:0x00ff\-\>B:17:0x01b7\l|lr25++l}"];
+}
+}
+Node_21 [shape=record,label="{21\:\ 0x0124|lint r7 = (r26.showLine * 28) + 5 + 30l}"];
+}
+}
+Node_23 [shape=record,label="{23\:\ 0x012f|PHI: r7l  0x012f: PHI (r7v2 int) = (r7v1 int), (r7v3 int) binds: [B:4:0x007f, B:21:0x0124] A[DONT_GENERATE, DONT_INLINE]\l|ldm.Ui.i().drawK1(r6, r7, r8, r9 \- (r7 + 10), 2)ldraw0()l}"];
+}
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x00ff|LOOP_START\lPHI: r25l  0x00ff: PHI (r25v2 int) = (r25v4 int), (r25v5 int) binds: [B:5:0x0081, B:17:0x01b7] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:6:0x00ff\-\>B:17:0x01b7\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0112|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x017d|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x017f|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x01b7|SYNTHETIC\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x01b7|SYNTHETIC\l|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x01bb|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x0124|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x0124|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x013f|ORIG_RETURN\l|l}"];
+Node_25 [shape=record,color=red,label="{25\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_26 [shape=record,color=red,label="{26\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{public void main.SMSSender.draw((r26v0 'this' main.SMSSender A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:17:0x01b7 \-\> B:6:0x00ff, CROSS_EDGE: B:14:0x01a6 \-\> B:17:0x01b7, CROSS_EDGE: B:19:0x01bb \-\> B:13:0x0181, CROSS_EDGE: B:7:0x0110 \-\> B:21:0x0124, CROSS_EDGE: B:4:0x007f \-\> B:23:0x012f, CROSS_EDGE: B:2:0x0005 \-\> B:24:0x013f\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_26[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_23[style=dashed];
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_7 -> Node_22[style=dashed];
+Node_9 -> Node_10;
+Node_9 -> Node_20[style=dashed];
+Node_10 -> Node_11;
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+Node_14 -> Node_18[style=dashed];
+Node_15 -> Node_16;
+Node_17 -> Node_6;
+Node_21 -> Node_23;
+Node_23 -> Node_24;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_11 -> Node_12;
+Node_11 -> Node_19;
+Node_12 -> Node_13;
+Node_16 -> Node_17;
+Node_18 -> Node_17;
+Node_19 -> Node_13;
+Node_20 -> Node_21;
+Node_22 -> Node_21;
+Node_24 -> Node_25;
+Node_26 -> Node_25;
+}
+

@@ -1,0 +1,38 @@
+digraph "CFG formain.GameRun.doEffectValue(Ldm\/Battle;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr0 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x000c|lif (r6.getMon().isMonEffect(2) == false) goto L26l}"];
+Node_3 [shape=record,label="{3\:\ 0x000e|lshort r0 = (short) (r6.getMon().monsterPro[0] \/ 10)l}"];
+Node_4 [shape=record,label="{4\:\ 0x0019|PHI: r0l  0x0019: PHI (r0v2 'hit' short) = (r0v0 'hit' short), (r0v1 'hit' short), (r0v5 'hit' short) binds: [B:13:0x003c, B:14:0x003e, B:3:0x000e] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0021|lif (r6.getMon().isMonReel(3) == false) goto L23l}"];
+Node_6 [shape=record,label="{6\:\ 0x0023|lshort r0 = (short) (((r5.inhesion[3] * r0) \/ 100) + r0)l}"];
+Node_7 [shape=record,label="{7\:\ 0x002c|PHI: r0l  0x002c: PHI (r0v3 'hit' short) = (r0v2 'hit' short), (r0v4 'hit' short) binds: [B:5:0x0021, B:6:0x0023] A[DONT_GENERATE, DONT_INLINE]\l|lif (r0 == 0) goto L29l}"];
+Node_8 [shape=record,label="{8\:\ 0x002e|lr6.addHit(r0, 1, 0)l}"];
+Node_9 [shape=record,label="{9\:\ 0x0032|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_10 [shape=record,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_12 [shape=record,label="{12\:\ 0x0033|l}"];
+Node_13 [shape=record,label="{13\:\ 0x003c|lif (r6.getMon().isMonEffect(5) == false) goto L20l}"];
+Node_14 [shape=record,label="{14\:\ 0x003e|lshort r0 = (short) ((r6.fs_level * r6.fs_level) + 4)l}"];
+MethodNode[shape=record,label="{private void main.GameRun.doEffectValue((r5v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r6v0 'be' dm.Battle A[D('be' dm.Battle), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x002c \-\> B:9:0x0032, CROSS_EDGE: B:5:0x0021 \-\> B:7:0x002c, CROSS_EDGE: B:13:0x003c \-\> B:4:0x0019, CROSS_EDGE: B:14:0x003e \-\> B:4:0x0019\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_12;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_7;
+Node_6 -> Node_7;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_11;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_11 -> Node_10;
+Node_12 -> Node_13;
+Node_13 -> Node_4;
+Node_13 -> Node_14[style=dashed];
+Node_14 -> Node_4;
+}
+

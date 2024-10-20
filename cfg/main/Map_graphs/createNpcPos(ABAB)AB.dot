@@ -1,0 +1,21 @@
+digraph "CFG formain.Map.createNpcPos([B[B)[B" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte[] r5 = (byte[]) nullldm.Ms.i()lint r1 = dm.Ms.skipldm.Ms.skip = r1 + 1lbyte[] r5 = new byte[r4[r1]]lr0 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0011|LOOP_START\lPHI: r0l  0x0011: PHI (r0v1 'i' int) = (r0v0 'i' int), (r0v2 'i' int) binds: [B:1:0x0000, B:4:0x0015] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0011\-\>B:4:0x0015\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0012|lif (r0 \< r5.length) goto L14l}"];
+Node_4 [shape=record,label="{4\:\ 0x0015|LOOP_END\lLOOP:0: B:2:0x0011\-\>B:4:0x0015\l|ldm.Ms.i()lint r1 = dm.Ms.skipldm.Ms.skip = r1 + 1lr5[r0] = r4[r1]lint r0 = r0 + 1l}"];
+Node_5 [shape=record,label="{5\:\ 0x0014|SYNTHETIC\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0014|RETURN\l|lreturn r5l}"];
+Node_7 [shape=record,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public byte[] main.Map.createNpcPos((r3v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r4v0 byte[] A[D('data' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'npc' byte[] A[D('npc' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lBACK_EDGE: B:4:0x0015 \-\> B:2:0x0011\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+}
+

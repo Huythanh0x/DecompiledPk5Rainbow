@@ -1,0 +1,75 @@
+digraph "CFG formain.Map.dialog(Ljava\/lang\/String;)V" {
+subgraph cluster_Region_1427146230 {
+label = "R(3:1|(1:9)|(1:17))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint int r9 = main.Constants_H.WIDTH__lint int r8 = main.Constants_H.HEIGHT__lint int r13 = (r8 \- 8) \- (25 * 2)lint int r10 = (25 * 2) + 11lint r11 = 0ldm.Ui.i().drawKuang(4, (r8 \- r10) \- 4, r9 \- 4, r10 + 4)l}"];
+subgraph cluster_IfRegion_338424171 {
+label = "IF [B:2:0x0026] THEN: R(1:9) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0026|lif (r15 != null) goto L27l}"];
+subgraph cluster_Region_1982535923 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0038|PHI: r1l  0x0038: PHI (r1v11 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|ldrawNpcFace(r14.faceDir ? r9 \- 50 : 50, r14.faceDir ? (r8 \- r10) \- 4 : ((r8 \- r10) \- 4) \- 25, 1 \| 32)ldm.Ui.i().drawKuang(0, (r13 \- r10) + 25, dm.Ms.i().getStringWidth(r15) + 16, 25 + 8)ldm.Ui.i().drawString(r15, 8, (r13 \- r10) + 2 + 25, 0, 9, 1)landroid.util.Log.e(\"sk\", \"dialog\")l}"];
+}
+}
+subgraph cluster_LoopRegion_628629041 {
+label = "LOOP:0: (1:17)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0071|ADDED_TO_REGION\l|lif (r11 \< 2) goto L36l}"];
+Node_16 [shape=record,label="{16\:\ 0x0079|ADDED_TO_REGION\l|lif ((r14.dialog_no + r11) \< r14.dialog.length) goto L41l}"];
+subgraph cluster_Region_245809407 {
+label = "R(1:17)";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x0085|LOOP_END\lLOOP:0: B:13:0x0070\-\>B:17:0x0085\l|ldm.Ui.i().drawStringColor(r14.dialog[r14.dialog_no + r11].toString(), 10, (r11 * 25) + (r13 \- 2), \-1, 1)lr11++l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0028|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x002a|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x002c|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0030|PHI: r0l  0x0030: PHI (r0v10 int) =  binds: [] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0032|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0034|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x007f|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x007c|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0070|SYNTHETIC\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0070|LOOP_START\lPHI: r11l  0x0070: PHI (r11v1 'line_c' int) = (r11v0 'line_c' int), (r11v2 'line_c' int) binds: [B:12:0x0070, B:17:0x0085] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:13:0x0070\-\>B:17:0x0085\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0073|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x007b|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ ?|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ 0x007b|SYNTHETIC\lADDED_TO_REGION\l|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x007b|RETURN\lORIG_RETURN\lADDED_TO_REGION\l|lreturnl}"];
+MethodNode[shape=record,label="{private void main.Map.dialog((r14v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r15v0 'npcName' java.lang.String A[D('npcName' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:17:0x0085 \-\> B:13:0x0070, CROSS_EDGE: B:14:0x0071 \-\> B:22:0x007b, CROSS_EDGE: B:10:0x007f \-\> B:9:0x0038, CROSS_EDGE: B:11:0x007c \-\> B:6:0x0030, CROSS_EDGE: B:2:0x0026 \-\> B:13:0x0070\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_12[style=dashed];
+Node_9 -> Node_12;
+Node_14 -> Node_15;
+Node_14 -> Node_21[style=dashed];
+Node_16 -> Node_17;
+Node_16 -> Node_18[style=dashed];
+Node_17 -> Node_13;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_4 -> Node_11;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_7 -> Node_10;
+Node_8 -> Node_9;
+Node_10 -> Node_9;
+Node_11 -> Node_6;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_15 -> Node_16;
+Node_18 -> Node_19;
+Node_19 -> Node_20;
+Node_21 -> Node_22;
+Node_22 -> Node_20;
+}
+

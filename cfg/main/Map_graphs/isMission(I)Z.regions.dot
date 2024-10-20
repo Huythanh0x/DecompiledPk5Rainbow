@@ -1,0 +1,23 @@
+digraph "CFG formain.Map.isMission(I)Z" {
+subgraph cluster_Region_548980239 {
+label = "R(2:1|2)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte byte r0 = (byte) (r5 \/ 8)l}"];
+Node_2 [shape=record,label="{2\:\ 0x000e|RETURN\l|lreturn (r4.bMission[r0] & (1 \<\< ((byte) (r5 % 8)))) != 0l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0010|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0011|ORIG_RETURN\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0012|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private boolean main.Map.isMission((r4v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r5v0 'id' int A[D('id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0012 \-\> B:4:0x0011\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

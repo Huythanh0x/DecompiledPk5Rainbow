@@ -1,0 +1,26 @@
+digraph "CFG forjavax.microedition.media.Player.setMediaTime(J)J" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint r0 = ((int) r3) \/ com.uc.paymentsdk.util.Constants.PAYMENT_MAXl}"];
+Node_2 [shape=record,label="{2\:\ 0x0003|lif (r0 \>= 0) goto L17l}"];
+Node_3 [shape=record,label="{3\:\ 0x0005|lr0 = 0lr3 = 0l}"];
+Node_4 [shape=record,label="{4\:\ 0x0008|PHI: r0 r3l  0x0008: PHI (r0v2 'mill_now' int) = (r0v0 'mill_now' int), (r0v1 'mill_now' int), (r0v3 'mill_now' int) binds: [B:8:0x0014, B:9:0x0016, B:3:0x0005] A[DONT_GENERATE, DONT_INLINE]l  0x0008: PHI (r3v2 'now' long) = (r3v0 'now' long), (r3v1 'now' long), (r3v3 'now' long) binds: [B:8:0x0014, B:9:0x0016, B:3:0x0005] A[DONT_GENERATE, DONT_INLINE]\l|lr2.mp.seekTo(r0)l}"];
+Node_5 [shape=record,label="{5\:\ 0x000d|RETURN\l|lreturn r3l}"];
+Node_6 [shape=record,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,label="{7\:\ 0x000e|l}"];
+Node_8 [shape=record,label="{8\:\ 0x0014|lif (r0 \<= r2.mp.getDuration()) goto L15l}"];
+Node_9 [shape=record,label="{9\:\ 0x0016|lint r0 = r2.mp.getDuration()llong r3 = (long) (r2.mp.getDuration() * com.uc.paymentsdk.util.Constants.PAYMENT_MAX)l}"];
+MethodNode[shape=record,label="{public long javax.microedition.media.Player.setMediaTime((r2v0 'this' javax.microedition.media.Player A[IMMUTABLE_TYPE, THIS]), (r3v0 'now' long A[D('now' long), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljavax\/microedition\/media\/MediaException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:8:0x0014 \-\> B:4:0x0008, CROSS_EDGE: B:9:0x0016 \-\> B:4:0x0008\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_7;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_8 -> Node_4;
+Node_8 -> Node_9[style=dashed];
+Node_9 -> Node_4;
+}
+

@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.network.chain.SyncChargeChannelHandler.access$0(Lcom\/uc\/paymentsdk\/network\/chain\/SyncChargeChannelHandler;)Ljava\/lang\/Integer;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|RETURN\l|lreturn r1.LOCKl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{static \/* synthetic *\/ java.lang.Integer com.uc.paymentsdk.network.chain.SyncChargeChannelHandler.access$0((r1v0 com.uc.paymentsdk.network.chain.SyncChargeChannelHandler A[IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE: 0x0000: IGET (r1 I:com.uc.paymentsdk.network.chain.SyncChargeChannelHandler) (LINE:19) com.uc.paymentsdk.network.chain.SyncChargeChannelHandler.LOCK java.lang.Integer\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

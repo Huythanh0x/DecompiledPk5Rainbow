@@ -1,0 +1,39 @@
+digraph "CFG formain.Map.setAnole()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lmain.GameRun r0 = r8.grl}"];
+Node_2 [shape=record,label="{2\:\ 0x0008|lif (r8.anole_type != 3) goto L29l}"];
+Node_3 [shape=record,label="{3\:\ 0x000a|lr1 = 1l}"];
+Node_4 [shape=record,label="{4\:\ 0x000b|PHI: r1l  0x000b: PHI (r1v2 int) = (r1v1 int), (r1v8 int) binds: [B:15:0x0043, B:3:0x000a] A[DONT_GENERATE, DONT_INLINE]\l|lr0.immueEnemy = (byte) r1ldm.Npc r0 = r8.mylr0.speed = getMySpeed()ldm.Ms r0 = dm.Ms.i()lr1 = main.Map.npcSp[1][0]ljava.lang.StringBuilder r2 = new java.lang.StringBuilder(\"data\/npc1\/\")l}"];
+Node_5 [shape=record,label="{5\:\ 0x0029|lif (r8.anole_type != (\-1)) goto L30l}"];
+Node_6 [shape=record,label="{6\:\ 0x002b|ljava.lang.String r3 = \"0\"l}"];
+Node_7 [shape=record,label="{7\:\ 0x002d|PHI: r3l  0x002d: PHI (r3v5 java.lang.String) = (r3v4 java.lang.String), (r3v10 java.lang.String) binds: [B:14:0x0045, B:6:0x002b] A[DONT_GENERATE, DONT_INLINE]\l|ljava.lang.String r2 = r2.append(r3).toString()l}"];
+Node_8 [shape=record,label="{8\:\ 0x0037|lif (r8.anole_type != (\-1)) goto L31l}"];
+Node_9 [shape=record,label="{9\:\ 0x0039|lr3 = truel}"];
+Node_10 [shape=record,label="{10\:\ 0x003a|PHI: r3l  0x003a: PHI (r3v8 boolean) = (r3v7 boolean), (r3v9 boolean) binds: [B:13:0x0057, B:9:0x0039] A[DONT_GENERATE, DONT_INLINE]\l|lr0.setSprite(r1, r2, r3)lr8.my.setActionNo(false)l}"];
+Node_11 [shape=record,label="{11\:\ 0x0042|RETURN\l|lreturnl}"];
+Node_12 [shape=record,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x0057|lr3 = falsel}"];
+Node_14 [shape=record,label="{14\:\ 0x0045|ljava.lang.String r3 = new java.lang.StringBuilder(\"r\").append(r8.anole_type).toString()l}"];
+Node_15 [shape=record,label="{15\:\ 0x0043|lr1 = 0l}"];
+MethodNode[shape=record,label="{public void main.Map.setAnole((r8v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:13:0x0057 \-\> B:10:0x003a, CROSS_EDGE: B:14:0x0045 \-\> B:7:0x002d, CROSS_EDGE: B:15:0x0043 \-\> B:4:0x000b\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_15;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_14;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_13;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_13 -> Node_10;
+Node_14 -> Node_7;
+Node_15 -> Node_4;
+}
+

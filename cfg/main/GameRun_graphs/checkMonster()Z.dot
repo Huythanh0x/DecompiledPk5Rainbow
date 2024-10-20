@@ -1,0 +1,41 @@
+digraph "CFG formain.GameRun.checkMonster()Z" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr0 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x0003|LOOP_START\lPHI: r0l  0x0003: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v2 'i' byte) binds: [B:1:0x0000, B:8:0x0036] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0003\-\>B:8:0x0036\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0005|lif (r0 \< r6.myMon_length) goto L24l}"];
+Node_4 [shape=record,label="{4\:\ 0x000e|l}"];
+Node_5 [shape=record,label="{5\:\ 0x001f|lif (r6.myMonsters[r0].monsterPro[1] \< r6.myMonsters[r0].monsterPro[3]) goto L32l}"];
+Node_6 [shape=record,label="{6\:\ 0x0021|l}"];
+Node_7 [shape=record,label="{7\:\ 0x0032|lif (r6.myMonsters[r0].monsterPro[0] \>= r6.myMonsters[r0].monsterPro[2]) goto L29l}"];
+Node_8 [shape=record,label="{8\:\ 0x0036|LOOP_END\lLOOP:0: B:2:0x0003\-\>B:8:0x0036\l|lbyte r0 = (byte) (r0 + 1)l}"];
+Node_9 [shape=record,label="{9\:\ 0x0034|SYNTHETIC\l|l}"];
+Node_10 [shape=record,label="{10\:\ 0x0034|l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturn falsel}"];
+Node_12 [shape=record,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x0034|SYNTHETIC\l|l}"];
+Node_14 [shape=record,label="{14\:\ 0x0007|SYNTHETIC\l|l}"];
+Node_15 [shape=record,label="{15\:\ 0x0007|lsay(\"您的宠物不需要回复！\", 0)l}"];
+Node_16 [shape=record,label="{16\:\ 0x000d|RETURN\lORIG_RETURN\l|lreturn truel}"];
+MethodNode[shape=record,label="{public boolean main.GameRun.checkMonster((r6v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:10:0x0034 \-\> B:16:0x000d, BACK_EDGE: B:8:0x0036 \-\> B:2:0x0003, CROSS_EDGE: B:5:0x001f \-\> B:10:0x0034\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_14[style=dashed];
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_13;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_7 -> Node_9[style=dashed];
+Node_8 -> Node_2;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+Node_13 -> Node_10;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_16 -> Node_12;
+}
+

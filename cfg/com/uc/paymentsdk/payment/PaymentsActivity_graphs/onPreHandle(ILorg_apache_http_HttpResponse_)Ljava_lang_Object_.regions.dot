@@ -1,0 +1,162 @@
+digraph "CFG forcom.uc.paymentsdk.payment.PaymentsActivity.onPreHandle(ILorg\/apache\/http\/HttpResponse;)Ljava\/lang\/Object;" {
+subgraph cluster_Region_2026060359 {
+label = "R(1:(2:(1:26)|(2:5|(2:(1:8)|(1:10)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_820943343 {
+label = "R(2:(1:26)|(2:5|(2:(1:8)|(1:10))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_633024817 {
+label = "IF [B:2:0x0002, B:4:0x0006] THEN: R(1:26) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (5 == r5) goto L6l}"];
+Node_4 [shape=record,label="{4\:\ 0x0006|ADDED_TO_REGION\l|lif (8 == r5) goto L6l}"];
+subgraph cluster_Region_2047967228 {
+label = "R(1:26)";
+node [shape=record,color=blue];
+Node_26 [shape=record,label="{26\:\ 0x000d|RETURN\lORIG_RETURN\l|lreturn truel}"];
+}
+}
+subgraph cluster_Region_78807900 {
+label = "R(2:5|(2:(1:8)|(1:10)))";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000e|ljava.lang.String java.lang.String r1 = com.uc.paymentsdk.util.Utils.getBodyString(r5, r6)l}"];
+subgraph cluster_Region_467756027 {
+label = "R(2:(1:8)|(1:10))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_70925383 {
+label = "IF [B:6:0x0016] THEN: R(1:8) ELSE: null";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0016|lif (android.text.TextUtils.isEmpty(r1) == true) goto L10l}"];
+subgraph cluster_Region_1594142857 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ ?|SYNTHETIC\lRETURN\l|lreturn nulll}"];
+}
+}
+subgraph cluster_Region_600453345 {
+label = "R(1:10)";
+node [shape=record,color=blue];
+subgraph cluster_SwitchRegion_1389712891 {
+label = "Switch: 3
+ case 3 -> R(1:(1:22))
+ case 18 -> R(1:(1:16))
+ case default -> R(1:12)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x001a|lswitch(r5) \{l    case 3: goto L23;l    case 18: goto L21;l    default: goto L12;l\}l}"];
+subgraph cluster_Region_1119558369 {
+label = "R(1:(1:22)) | FALL_THROUGH\l";
+node [shape=record,color=blue];
+subgraph cluster_TryCatchRegion_943815367 {
+label = "Try: R(1:22) catches: R(2:23|24)";
+node [shape=record,color=blue];
+subgraph cluster_Region_471885084 {
+label = "R(1:22)";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ ?|SYNTHETIC\lRETURN\l|lreturn com.uc.paymentsdk.network.XMLParser.parsePayOrder(r1)l}"];
+}
+subgraph cluster_Region_1258166294 {
+label = "R(2:23|24) | ExcHandler: Exception \-\> 0x0024\l";
+node [shape=record,color=blue];
+Node_23 [shape=record,label="{23\:\ 0x0024|ExcHandler: Exception \-\> 0x0024\l|l}"];
+Node_24 [shape=record,label="{24\:\ 0x0025|lr0.printStackTrace()l}"];
+}
+}
+}
+subgraph cluster_Region_847046207 {
+label = "R(1:(1:16)) | FALL_THROUGH\l";
+node [shape=record,color=blue];
+subgraph cluster_TryCatchRegion_671780483 {
+label = "Try: R(1:16) catches: R(2:17|18)";
+node [shape=record,color=blue];
+subgraph cluster_Region_237029117 {
+label = "R(1:16)";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ ?|SYNTHETIC\lRETURN\l|lreturn com.uc.paymentsdk.network.XMLParser.parseUPointInfo(r1)l}"];
+}
+subgraph cluster_Region_456019463 {
+label = "R(2:17|18) | ExcHandler: Exception \-\> 0x002d\l";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x002d|ExcHandler: Exception \-\> 0x002d\l|l}"];
+Node_18 [shape=record,label="{18\:\ 0x002e|lr0.printStackTrace()l}"];
+}
+}
+}
+subgraph cluster_Region_564845532 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ ?|SYNTHETIC\lRETURN\l|lreturn nulll}"];
+}
+}
+}
+}
+}
+}
+}
+subgraph cluster_Region_1258166294 {
+label = "R(2:23|24) | ExcHandler: Exception \-\> 0x0024\l";
+node [shape=record,color=blue];
+Node_23 [shape=record,label="{23\:\ 0x0024|ExcHandler: Exception \-\> 0x0024\l|l}"];
+Node_24 [shape=record,label="{24\:\ 0x0025|lr0.printStackTrace()l}"];
+}
+subgraph cluster_Region_456019463 {
+label = "R(2:17|18) | ExcHandler: Exception \-\> 0x002d\l";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x002d|ExcHandler: Exception \-\> 0x002d\l|l}"];
+Node_18 [shape=record,label="{18\:\ 0x002e|lr0.printStackTrace()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0004|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0018|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x001d|FALL_THROUGH\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0028|SYNTHETIC\lEXC_TOP_SPLITTER\lFALL_THROUGH\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0028|TRY_ENTER\lTRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x002d, blocks: (B:14:0x0028), top: B:13:0x0028 \}\lCatch: Exception \-\> 0x002d\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_19 [shape=record,color=red,label="{19\:\ 0x001f|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x001f|TRY_ENTER\lTRY_LEAVE\lTryCatch #1 \{Exception \-\> 0x0024, blocks: (B:20:0x001f), top: B:19:0x001f \}\lCatch: Exception \-\> 0x0024\l|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_25 [shape=record,color=red,label="{25\:\ 0x0008|l}"];
+MethodNode[shape=record,label="{public java.lang.Object com.uc.paymentsdk.payment.PaymentsActivity.onPreHandle((r4v0 'this' com.uc.paymentsdk.payment.PaymentsActivity A[IMMUTABLE_TYPE, THIS]), (r5v0 'paramInt' int A[D('paramInt' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'paramHttpResponse' org.apache.http.HttpResponse A[D('paramHttpResponse' org.apache.http.HttpResponse), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lCOMPUTE_POST_DOM\lTYPE_VARS: EMPTY\lCROSS_EDGE: B:7:0x0018 \-\> B:26:0x000d, CROSS_EDGE: B:11:0x001d \-\> B:26:0x000d, CROSS_EDGE: B:14:0x0028 \-\> B:26:0x000d, CROSS_EDGE: B:18:0x002e \-\> B:11:0x001d, CROSS_EDGE: B:13:0x0028 \-\> B:17:0x002d, CROSS_EDGE: B:20:0x001f \-\> B:26:0x000d, CROSS_EDGE: B:24:0x0025 \-\> B:13:0x0028, CROSS_EDGE: B:19:0x001f \-\> B:23:0x0024, CROSS_EDGE: B:2:0x0002 \-\> B:25:0x0008\lINLINE_NOT_NEEDED\lMETHOD_OVERRIDE: [com.uc.paymentsdk.network.ApiTask.TaskHandler.onPreHandle(int, org.apache.http.HttpResponse):java.lang.Object]\lJadxCommentsAttr\{l WARN: l \-\> Failed to find 'out' block for switch in B:10:0x001a. Please report as an issue.\}\lTryCatch #0 \{Exception \-\> 0x002d, blocks: (B:14:0x0028), top: B:13:0x0028 \}, TryCatch #1 \{Exception \-\> 0x0024, blocks: (B:20:0x001f), top: B:19:0x001f \}\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_25;
+Node_4 -> Node_25;
+Node_4 -> Node_5[style=dashed];
+Node_26 -> Node_9;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_6 -> Node_10[style=dashed];
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_10 -> Node_13;
+Node_10 -> Node_19;
+Node_22 -> Node_9;
+Node_23 -> Node_24;
+Node_24 -> Node_13;
+Node_16 -> Node_9;
+Node_17 -> Node_18;
+Node_18 -> Node_11;
+Node_12 -> Node_9;
+Node_23 -> Node_24;
+Node_24 -> Node_13;
+Node_17 -> Node_18;
+Node_18 -> Node_11;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_7 -> Node_8;
+Node_11 -> Node_12;
+Node_13 -> Node_14;
+Node_13 -> Node_17;
+Node_14 -> Node_15;
+Node_14 -> Node_16;
+Node_15 -> Node_17;
+Node_19 -> Node_20;
+Node_19 -> Node_23;
+Node_20 -> Node_21;
+Node_20 -> Node_22;
+Node_21 -> Node_23;
+Node_25 -> Node_26;
+}
+

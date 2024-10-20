@@ -1,0 +1,124 @@
+digraph "CFG forcom.uc.paymentsdk.util.PrefUtil.setAvailableChargeType(Landroid\/content\/Context;[Ljava\/lang\/String;)V" {
+subgraph cluster_Region_1331844125 {
+label = "R(7:(1:3)|4|(2:(1:8)(1:(1:13)(0))|10)|17|(1:19)|(1:23)|24)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1815026796 {
+label = "IF [B:2:0x0004] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0004|lif (com.uc.paymentsdk.util.PrefUtil.sPref == null) goto L31l}"];
+subgraph cluster_Region_271467843 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0006|linit(r8)l}"];
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x0009|lint r0 = 0lint int r1 = r9.lengthl}"];
+subgraph cluster_LoopRegion_126818808 {
+label = "LOOP:0: (2:(1:8)(1:(1:13)(0))|10)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x000b|LOOP_START\lADDED_TO_REGION\lPHI: r0l  0x000b: PHI (r0v1 'i' int) = (r0v0 'i' int), (r0v2 'i' int) binds: [B:4:0x0009, B:10:0x0051] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:5:0x000b\-\>B:10:0x0051\l|lif (r0 \< r1) goto L41l}"];
+subgraph cluster_Region_1856703043 {
+label = "R(2:(1:8)(1:(1:13)(0))|10)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_303002533 {
+label = "IF [B:7:0x0043] THEN: R(1:8) ELSE: R(1:(1:13)(0))";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x0043|lif (\"g\".equals(r9[r0]) != false) goto L43l}"];
+subgraph cluster_Region_1326452549 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0045|lr9[r0] = r9[r1 \- 1]lr9[r1 \- 1] = \"g\"l}"];
+}
+subgraph cluster_Region_1431905417 {
+label = "R(1:(1:13)(0)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_808423302 {
+label = "IF [B:12:0x005c] THEN: R(1:13) ELSE: R(0) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x005c|lif (\"alipay\".equals(r9[r0]) != false) goto L47l}"];
+subgraph cluster_Region_115372754 {
+label = "R(1:13)";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x005e|lr9[r0] = r9[0]lr9[0] = \"alipay\"l}"];
+}
+subgraph cluster_Region_1832104 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+}
+}
+Node_10 [shape=record,label="{10\:\ 0x0051|LOOP_END\lLOOP:0: B:5:0x000b\-\>B:10:0x0051\l|lr0++l}"];
+}
+}
+Node_17 [shape=record,label="{17\:\ 0x000d|ljava.lang.StringBuilder java.lang.StringBuilder r3 = new java.lang.StringBuilder()lint r1 = 0ll}"];
+subgraph cluster_LoopRegion_348341435 {
+label = "LOOP:1: (1:19)";
+node [shape=record,color=blue];
+Node_18 [shape=record,label="{18\:\ 0x0014|LOOP_START\lADDED_TO_REGION\lPHI: r1l  0x0014: PHI (r1v2 'j' int) = (r1v1 'j' int), (r1v3 'j' int) binds: [B:17:0x000d, B:19:0x0067] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:18:0x0014\-\>B:19:0x0067\l|ljava.lang.String lif (r1 \< r2) goto L48l}"];
+subgraph cluster_Region_1864084464 {
+label = "R(1:19)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x0067|LOOP_END\lLOOP:1: B:18:0x0014\-\>B:19:0x0067\l|lr3.append(r0).append(com.uc.paymentsdk.util.Constants.TERM)lr1++l}"];
+}
+}
+subgraph cluster_IfRegion_540998513 {
+label = "IF [B:22:0x001d] THEN: R(1:23) ELSE: null";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x001d|lif (r3.indexOf(com.uc.paymentsdk.util.Constants.TERM) != (\-1)) goto L38l}"];
+subgraph cluster_Region_1822491471 {
+label = "R(1:23)";
+node [shape=record,color=blue];
+Node_23 [shape=record,label="{23\:\ 0x001f|lr3.deleteCharAt(r3.length() \- 1)l}"];
+}
+}
+Node_24 [shape=record,label="{24\:\ 0x0027|lcom.uc.paymentsdk.util.PrefUtil.sPref.edit().putString(com.uc.paymentsdk.util.PrefUtil.P_AVAILABLE_CHARGE_TYPE, r3.toString()).commit()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x003b|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0051|SYNTHETIC\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ 0x0054|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ 0x0051|SYNTHETIC\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0051|SYNTHETIC\l|l}"];
+Node_16 [shape=record,color=red,label="{16\:\ 0x000d|SYNTHETIC\l|l}"];
+Node_20 [shape=record,color=red,label="{20\:\ 0x0016|SYNTHETIC\l|l}"];
+Node_21 [shape=record,color=red,label="{21\:\ 0x0016|l}"];
+Node_25 [shape=record,color=red,label="{25\:\ 0x003a|l}"];
+Node_26 [shape=record,color=red,label="{26\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private static void com.uc.paymentsdk.util.PrefUtil.setAvailableChargeType((r8v0 'paramContext' android.content.Context A[D('paramContext' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r9v0 'paramArrayOfString' java.lang.String[] A[D('paramArrayOfString' java.lang.String[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:22:0x001d \-\> B:24:0x0027, BACK_EDGE: B:19:0x0067 \-\> B:18:0x0014, BACK_EDGE: B:10:0x0051 \-\> B:5:0x000b, CROSS_EDGE: B:12:0x005c \-\> B:10:0x0051, CROSS_EDGE: B:13:0x005e \-\> B:10:0x0051, CROSS_EDGE: B:2:0x0004 \-\> B:4:0x0009\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_16[style=dashed];
+Node_7 -> Node_8;
+Node_7 -> Node_11[style=dashed];
+Node_8 -> Node_9;
+Node_12 -> Node_13;
+Node_12 -> Node_15[style=dashed];
+Node_13 -> Node_14;
+Node_10 -> Node_5;
+Node_17 -> Node_18;
+Node_18 -> Node_19;
+Node_18 -> Node_20[style=dashed];
+Node_19 -> Node_18;
+Node_22 -> Node_23;
+Node_22 -> Node_24[style=dashed];
+Node_23 -> Node_24;
+Node_24 -> Node_25;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_6 -> Node_7;
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+Node_14 -> Node_10;
+Node_15 -> Node_10;
+Node_16 -> Node_17;
+Node_20 -> Node_21;
+Node_21 -> Node_22;
+Node_25 -> Node_26;
+}
+

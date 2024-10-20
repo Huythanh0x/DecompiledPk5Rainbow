@@ -1,0 +1,12 @@
+digraph "CFG forcom.uc.paymentsdk.network.AndroidHttpClient.newInstance(Ljava\/lang\/String;Landroid\/content\/Context;)Lcom\/uc\/paymentsdk\/network\/AndroidHttpClient;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lorg.apache.http.params.BasicHttpParams r0 = new org.apache.http.params.BasicHttpParams()lorg.apache.http.params.HttpConnectionParams.setStaleCheckingEnabled(r0, false)lorg.apache.http.params.HttpConnectionParams.setConnectionTimeout(r0, 60000)lorg.apache.http.params.HttpConnectionParams.setSoTimeout(r0, 60000)lorg.apache.http.params.HttpConnectionParams.setSocketBufferSize(r0, 8192)lorg.apache.http.conn.params.ConnManagerParams.setMaxTotalConnections(r0, 60)lorg.apache.http.conn.params.ConnPerRouteBean r1 = new org.apache.http.conn.params.ConnPerRouteBean(20)lorg.apache.http.HttpHost r2 = new org.apache.http.HttpHost(\"locahost\", 80)lr1.setMaxForRoute(new org.apache.http.conn.routing.HttpRoute(r2), 20)lorg.apache.http.conn.params.ConnManagerParams.setMaxConnectionsPerRoute(r0, r1)lorg.apache.http.client.params.HttpClientParams.setRedirecting(r0, false)lorg.apache.http.params.HttpProtocolParams.setUserAgent(r0, r9)lorg.apache.http.conn.scheme.SchemeRegistry r3 = new org.apache.http.conn.scheme.SchemeRegistry()lr3.register(new org.apache.http.conn.scheme.Scheme(\"http\", org.apache.http.conn.scheme.PlainSocketFactory.getSocketFactory(), 80))lr3.register(new org.apache.http.conn.scheme.Scheme(\"https\", org.apache.http.conn.ssl.SSLSocketFactory.getSocketFactory(), 443))lorg.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager r4 = new org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager(r0, r3)l}"];
+Node_2 [shape=record,label="{2\:\ 0x006a|RETURN\l|lreturn new com.uc.paymentsdk.network.AndroidHttpClient(r4, r0)l}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static com.uc.paymentsdk.network.AndroidHttpClient com.uc.paymentsdk.network.AndroidHttpClient.newInstance((r9v0 'paramString' java.lang.String A[D('paramString' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'paramContext' android.content.Context A[D('paramContext' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

@@ -1,0 +1,19 @@
+digraph "CFG formain.GameRun.isMonHp(Ldm\/Monster;I)Z" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x000d|lif (r5.monsterPro[0] \>= ((r5.monster[2] * r6) \/ 100)) goto L14l}"];
+Node_3 [shape=record,label="{3\:\ 0x000f|RETURN\lORIG_RETURN\l|lreturn truel}"];
+Node_4 [shape=record,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0011|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturn falsel}"];
+MethodNode[shape=record,label="{private boolean main.GameRun.isMonHp((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'mon' dm.Monster A[D('mon' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'percent' int A[D('percent' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x0011 \-\> B:4:0x0010\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_6 -> Node_4;
+}
+

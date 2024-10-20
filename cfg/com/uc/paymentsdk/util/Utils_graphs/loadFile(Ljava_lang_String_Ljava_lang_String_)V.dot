@@ -1,0 +1,23 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.loadFile(Ljava\/lang\/String;Ljava\/lang\/String;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.io.InputStream r4 = getFileStream(r6)ljava.io.File r2 = new java.io.File(r7)lr2.createNewFile()ljava.io.FileOutputStream r3 = new java.io.FileOutputStream(r2)lbyte[] r0 = new byte[javax.microedition.lcdui.game.GameCanvas.GAME_B_PRESSED]l}"];
+Node_2 [shape=record,label="{2\:\ 0x0016|LOOP_START\lLOOP:0: B:2:0x0016\-\>B:4:0x0023\l|lint r1 = r4.read(r0)l}"];
+Node_3 [shape=record,label="{3\:\ 0x001a|lif (r1 \> 0) goto L16l}"];
+Node_4 [shape=record,label="{4\:\ 0x0023|LOOP_END\lLOOP:0: B:2:0x0016\-\>B:4:0x0023\l|lr3.write(r0, 0, r1)l}"];
+Node_5 [shape=record,label="{5\:\ 0x001c|SYNTHETIC\l|l}"];
+Node_6 [shape=record,label="{6\:\ 0x001c|lr3.close()lr4.close()l}"];
+Node_7 [shape=record,label="{7\:\ 0x0022|RETURN\l|lreturnl}"];
+Node_8 [shape=record,label="{8\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public static void com.uc.paymentsdk.util.Utils.loadFile((r6v0 'paramString1' java.lang.String A[D('paramString1' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'paramString2' java.lang.String A[D('paramString2' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljava\/io\/IOException;, Ljava\/io\/FileNotFoundException;]\lINLINE_NOT_NEEDED\lBACK_EDGE: B:4:0x0023 \-\> B:2:0x0016\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+}
+

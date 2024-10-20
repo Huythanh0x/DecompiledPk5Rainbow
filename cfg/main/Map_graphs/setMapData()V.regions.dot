@@ -1,0 +1,16 @@
+digraph "CFG formain.Map.setMapData()V" {
+subgraph cluster_Region_198562128 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr8.map_x = map_set(r8.my.getIx(), r8.cols, main.Constants_H.XCELLS, main.Constants_H.HALF_XCELLS, main.Constants_H.WIDTH, 20)lr8.map_y = map_set(r8.my.getIy(), r8.rows, main.Constants_H.YCELLS, main.Constants_H.HALF_YCELLS, main.Constants_H.HEIGHT, 20)lr8.mapLeft_NOmove = (short) (main.Constants_H.WIDTH_H \- 10)lr8.mapRight_NOmove = (short) (((r8.cols * 20) \- main.Constants_H.WIDTH_H) \- 10)lr8.mapUp_NOmove = (short) (main.Constants_H.HEIGHT_H \- 10)lr8.mapDown_NOmove = (short) (((r8.rows * 20) \- main.Constants_H.HEIGHT_H) \- 10)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0050|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.setMapData((r8v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

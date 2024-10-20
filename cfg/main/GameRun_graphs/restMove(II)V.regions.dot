@@ -1,0 +1,16 @@
+digraph "CFG formain.GameRun.restMove(II)V" {
+subgraph cluster_Region_729123262 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.selectx = r4.select[0][1]lr4.selecty = r4.select[0][0]lr4.cur_c = (byte) r5lbyte[] byte[] r0 = r4.select[0]lr4.select[0][0] = 0lr0[1] = 0lr4.popMenu = (byte) r6lr4.move_x = (short) 129lr4.move_y = (short) \-14l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x002c|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.restMove((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'type' int A[D('type' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

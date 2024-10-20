@@ -1,0 +1,65 @@
+digraph "CFG formain.Map.loadMapModuleAndImage()V" {
+subgraph cluster_Region_336016267 {
+label = "R(2:1|(2:(2:5|6)|(3:8|(1:11)|13)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ms.i()ldm.Ms.skip = 0lbyte[] byte[] r3 = dm.Ms.i().getStream(\"data\/map\/area.dat\", \-1)lbyte[] byte[] r1 = dm.Ms.i().createArray(r3)lbyte[][] byte[][] r2 = dm.Ms.i().create2Array(r3)l(byte[]) nulll}"];
+subgraph cluster_Region_933816201 {
+label = "R(2:(2:5|6)|(3:8|(1:11)|13))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1694851396 {
+label = "IF [B:2:0x0028, B:4:0x0032] THEN: R(2:5|6) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0028|lif (r11.mapImg != null) goto L19l}"];
+Node_4 [shape=record,label="{4\:\ 0x0032|ADDED_TO_REGION\l|lif (r1[r11.lastMap] == r1[r11.mapNo]) goto L21l}"];
+subgraph cluster_Region_1679793745 {
+label = "R(2:5|6)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0034|l(byte[]) nulll(byte[][]) nulll}"];
+Node_6 [shape=record,label="{6\:\ 0x003c|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1150888072 {
+label = "R(3:8|(1:11)|13)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x003d|ldm.Ms.i()ldm.Ms.skip = 0lr11.moduleData = dm.Ms.i().createShort2Array(dm.Ms.i().getStream(\"data\/map\/\" + ((int) r1[r11.mapNo]) + \".data\", \-1), 1)lr11.mapImg = nulllr11.mapImg = new javax.microedition.lcdui.Image[r2[r1[r11.mapNo]].length]lbyte r4 = 0l}"];
+subgraph cluster_LoopRegion_208097862 {
+label = "LOOP:0: (1:11)";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x0083|ADDED_TO_REGION\l|lif (r4 \< r2[r1[r11.mapNo]].length) goto L27l}"];
+subgraph cluster_Region_567391018 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x008e|LOOP_END\lLOOP:0: B:9:0x007c\-\>B:11:0x008e\l|lr11.mapImg[r4] = dm.Ms.i().createImage(\"data\/map\/\" + ((int) r2[r1[r11.mapNo]][r4]))lbyte r4 = (byte) (r4 + 1)l}"];
+}
+}
+Node_13 [shape=record,label="{13\:\ 0x0085|l(byte[]) nulll(byte[][]) nulll}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x002a|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x007c|LOOP_START\lPHI: r4l  0x007c: PHI (r4v1 'i' byte) = (r4v0 'i' byte), (r4v2 'i' byte) binds: [B:8:0x003d, B:11:0x008e] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:9:0x007c\-\>B:11:0x008e\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0085|SYNTHETIC\l|l}"];
+Node_14 [shape=record,color=red,label="{14\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.loadMapModuleAndImage((r11v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:13:0x0085 \-\> B:6:0x003c, BACK_EDGE: B:11:0x008e \-\> B:9:0x007c, CROSS_EDGE: B:2:0x0028 \-\> B:8:0x003d\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_8[style=dashed];
+Node_4 -> Node_5;
+Node_4 -> Node_8[style=dashed];
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_10 -> Node_11;
+Node_10 -> Node_12[style=dashed];
+Node_11 -> Node_9;
+Node_13 -> Node_14;
+Node_0 -> Node_1;
+Node_3 -> Node_4;
+Node_9 -> Node_10;
+Node_12 -> Node_13;
+Node_14 -> Node_7;
+}
+

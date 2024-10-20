@@ -1,0 +1,16 @@
+digraph "CFG formain.GameRun.setEnemyThrow()V" {
+subgraph cluster_Region_832055168 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.enemyOff = 63lr4.enB.cThrow[0] = (byte) ((main.Constants_H.WIDTH \- 377) + 20)lr4.enB.cThrow[1] = 60lr4.enB.cThrow[2] = 0lsetThrow(r4.enB, r4.enB.getMon(), 0)lgetHitCoefficient(r4.myB, r4.myB.getMon(), r4.enB.getMon())lgetHitCoefficient(r4.enB, r4.enB.getMon(), r4.myB.getMon())l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0050|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.setEnemyThrow((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

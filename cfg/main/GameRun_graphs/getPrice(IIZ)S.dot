@@ -1,0 +1,37 @@
+digraph "CFG formain.GameRun.getPrice(IIZ)S" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0001|lif (r7 == false) goto L27l}"];
+Node_3 [shape=record,label="{3\:\ 0x0003|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0004|lif (r5 != 2) goto L26l}"];
+Node_5 [shape=record,label="{5\:\ 0x0006|lr0 = r4.buyPrice[1][r6]l}"];
+Node_6 [shape=record,label="{6\:\ 0x000e|PHI: r0l  0x000e: PHI (r0v2 'price' short) = (r0v1 'price' short), (r0v4 'price' short) binds: [B:12:0x0019, B:5:0x0006] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_7 [shape=record,label="{7\:\ 0x0011|lif (r4.view_state != (\-1)) goto L28l}"];
+Node_8 [shape=record,label="{8\:\ 0x0013|l}"];
+Node_9 [shape=record,label="{9\:\ 0x0018|RETURN\lORIG_RETURN\l|lreturn (short) ((r0 * 12) \/ 10)l}"];
+Node_10 [shape=record,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,label="{11\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0l}"];
+Node_12 [shape=record,label="{12\:\ 0x0019|lr0 = r4.buyPrice[0][r4.buyItem[r4.cur_a][r6]]l}"];
+Node_13 [shape=record,label="{13\:\ 0x0029|lshort r0 = (short) (r4.buyPrice[0][r6] \/ 5)l}"];
+Node_14 [shape=record,label="{14\:\ ?|SYNTHETIC\lRETURN\l|lreturn r0l}"];
+MethodNode[shape=record,label="{private short main.GameRun.getPrice((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'type' int A[D('type' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'select' int A[D('select' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r7v0 'bb' boolean A[D('bb' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:7:0x0011 \-\> B:9:0x0018, CROSS_EDGE: B:12:0x0019 \-\> B:6:0x000e, CROSS_EDGE: B:13:0x0029 \-\> B:9:0x0018\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_13;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_12;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8[style=dashed];
+Node_7 -> Node_11;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_11 -> Node_10;
+Node_12 -> Node_6;
+Node_13 -> Node_14;
+Node_14 -> Node_10;
+}
+

@@ -1,0 +1,33 @@
+digraph "CFG formain.GameRun_F.showString([Ljava\/lang\/StringBuffer;III)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint r15 = main.Constants_H.WIDTH__lint r16 = main.Constants_H.WIDTH__ \/ 2lint r20 = r20 + 5l}"];
+Node_2 [shape=record,label="{2\:\ 0x0010|lif (r22 == 0) goto L20l}"];
+Node_3 [shape=record,label="{3\:\ 0x0012|ldm.Ui.i().drawKuang(r21 + (\-5), r20, r15 + 10, (r19.length * 25) + 12)l}"];
+Node_4 [shape=record,label="{4\:\ 0x002e|lif (r22 != 2) goto L20l}"];
+Node_5 [shape=record,label="{5\:\ 0x0030|ldrawSnare5(r16 + r21, ((r19.length * 25) + r20) + 4)l}"];
+Node_6 [shape=record,label="{6\:\ 0x0042|lr17 = 0l}"];
+Node_7 [shape=record,label="{7\:\ 0x0044|LOOP_START\lPHI: r17l  0x0044: PHI (r17v1 'd' byte) = (r17v0 'd' byte), (r17v2 'd' byte) binds: [B:6:0x0042, B:9:0x004e] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:7:0x0044\-\>B:9:0x004e\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x004b|lif (r17 \< r19.length) goto L24l}"];
+Node_9 [shape=record,label="{9\:\ 0x004e|LOOP_END\lLOOP:0: B:7:0x0044\-\>B:9:0x004e\l|ldm.Ui.i().drawStringColor(r19[r17].toString(), 25 + r21, (r20 + 4) + (r17 * 25), \-1, 1)lr17 = (byte) (r17 + 1)l}"];
+Node_10 [shape=record,label="{10\:\ 0x004d|SYNTHETIC\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x004d|RETURN\l|lreturnl}"];
+Node_12 [shape=record,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun_F.showString((r18v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]), (r19v0 'showS' java.lang.StringBuffer[] A[D('showS' java.lang.StringBuffer[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r20v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r21v0 'offx' int A[D('offx' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r22v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:9:0x004e \-\> B:7:0x0044, CROSS_EDGE: B:4:0x002e \-\> B:6:0x0042, CROSS_EDGE: B:2:0x0010 \-\> B:6:0x0042\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_6;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_10[style=dashed];
+Node_9 -> Node_7;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+}
+

@@ -1,0 +1,122 @@
+digraph "CFG formain.Map.goNextMap()V" {
+subgraph cluster_Region_899264297 {
+label = "R(12:1|(1:3)|4|(1:6)|7|(1:9)|(1:12)|13|(1:19)(1:26)|20|(1:22)|23)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lsetfmap()lr8.firstDrawMap = (byte) 0lr8.gr.doPaint(2)lsaveMapBak()lbyte byte r0 = r8.lastExitl}"];
+subgraph cluster_IfRegion_1015871742 {
+label = "IF [B:2:0x0017] THEN: R(1:3) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0017|lif (r8.go != (\-2)) goto L31l}"];
+subgraph cluster_Region_534636471 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0019|lr8.lastMap = r8.mapNolr8.mapNo = r8.mapNotemplr8.mapNotemp = (byte) 0lr8.lastExit = r8.gol}"];
+}
+}
+Node_4 [shape=record,label="{4\:\ 0x0027|lr8.gr.doPaint(5)l}"];
+subgraph cluster_IfRegion_345405674 {
+label = "IF [B:5:0x002e] THEN: R(1:6) ELSE: null";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x002e|lif (r8.go == (\-2)) goto L34l}"];
+subgraph cluster_Region_105797146 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0030|lr8.go = exitMap(r8.door)l}"];
+}
+}
+Node_7 [shape=record,label="{7\:\ 0x0038|lr8.gr.setNull(false)lr8.gr.doPaint(8)lcreateOther()lr8.gr.doPaint(10)l}"];
+subgraph cluster_IfRegion_1574831397 {
+label = "IF [B:8:0x0050] THEN: R(1:9) ELSE: null";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0050|lif (r8.go == (\-1)) goto L37l}"];
+subgraph cluster_Region_982764790 {
+label = "R(1:9)";
+node [shape=record,color=blue];
+Node_9 [shape=record,label="{9\:\ 0x0052|lr8.go = r0l}"];
+}
+}
+subgraph cluster_IfRegion_760131958 {
+label = "IF [B:11:0x0056] THEN: R(1:12) ELSE: null";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x0056|lif (r8.bExitBoss == false) goto L40l}"];
+subgraph cluster_Region_171494685 {
+label = "R(1:12)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0058|lgetInMap(r8.go, r8.door)l}"];
+}
+}
+Node_13 [shape=record,label="{13\:\ 0x005f|lcreateEvent()lr8.gr.doPaint(15)lcreateNpcString()lcreateLayer()lr8.gr.doPaint(20)l}"];
+subgraph cluster_IfRegion_2117252294 {
+label = "IF [B:14:0x0078, B:16:0x0082, B:18:0x008d] THEN: R(1:19) ELSE: R(1:26)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0078|lif (r8.bExitBoss == false) goto L43l}"];
+Node_16 [shape=record,label="{16\:\ 0x0082|ADDED_TO_REGION\l|lif (r8.door[r8.go][5] == 1) goto L47l}"];
+Node_18 [shape=record,label="{18\:\ 0x008d|ADDED_TO_REGION\l|lif (r8.door[r8.go][5] == 2) goto L47l}"];
+subgraph cluster_Region_1399353608 {
+label = "R(1:19)";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x008f|lr8.my.frame_c = (byte) (20 \/ r8.my.speed)lr8.my.speed_x = (byte) (r8.dir_select[r8.my.dir][0] * r8.my.speed)lr8.my.speed_y = (byte) (r8.dir_select[r8.my.dir][1] * r8.my.speed)lr8.my.setActionNo(true)l}"];
+}
+subgraph cluster_Region_200654610 {
+label = "R(1:26)";
+node [shape=record,color=blue];
+Node_26 [shape=record,label="{26\:\ 0x0111|lr8.my.setActionNo(false)l}"];
+}
+}
+Node_20 [shape=record,label="{20\:\ 0x00c8|lr8.gr.b_c = (byte) 0lsetMapMusic(false)lr8.go = (byte) \-2lr8.gr.initMonPro(r8.mapNo, true)lr8.gr.cityName_c = (byte) 25lr8.srcNpcNo = (byte) \-1ldm.Ms.i().rmsOptions(1, null, 4)linitCloud()lr8.bExitBoss = falselr8.my.state = (byte) 9l}"];
+subgraph cluster_IfRegion_1198115668 {
+label = "IF [B:21:0x00f6] THEN: R(1:22) ELSE: null";
+node [shape=record,color=blue];
+Node_21 [shape=record,label="{21\:\ 0x00f6|lif (r8.boatSelect == (\-1)) goto L50l}"];
+subgraph cluster_Region_748078075 {
+label = "R(1:22)";
+node [shape=record,color=blue];
+Node_22 [shape=record,label="{22\:\ 0x00f8|lr8.my.state = (byte) 0lr8.my.setIXY(\-1, \-1)lr8.my.speed = getMySpeed()l}"];
+}
+}
+Node_23 [shape=record,label="{23\:\ 0x0109|lr8.checkNpcT = (byte) \-1lr8.pkey.stopMove()l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ 0x0054|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x007a|l}"];
+Node_17 [shape=record,color=red,label="{17\:\ 0x0084|l}"];
+Node_24 [shape=record,color=red,label="{24\:\ 0x0110|l}"];
+Node_25 [shape=record,color=red,label="{25\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.Map.goNextMap((r8v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:21:0x00f6 \-\> B:23:0x0109, CROSS_EDGE: B:26:0x0111 \-\> B:20:0x00c8, CROSS_EDGE: B:16:0x0082 \-\> B:19:0x008f, CROSS_EDGE: B:14:0x0078 \-\> B:26:0x0111, CROSS_EDGE: B:11:0x0056 \-\> B:13:0x005f, CROSS_EDGE: B:8:0x0050 \-\> B:10:0x0054, CROSS_EDGE: B:5:0x002e \-\> B:7:0x0038, CROSS_EDGE: B:2:0x0017 \-\> B:4:0x0027\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_4[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_5 -> Node_7[style=dashed];
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_9;
+Node_8 -> Node_10[style=dashed];
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+Node_11 -> Node_13[style=dashed];
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_14 -> Node_15;
+Node_14 -> Node_26[style=dashed];
+Node_16 -> Node_17[style=dashed];
+Node_16 -> Node_19;
+Node_18 -> Node_19;
+Node_18 -> Node_26[style=dashed];
+Node_19 -> Node_20;
+Node_26 -> Node_20;
+Node_20 -> Node_21;
+Node_21 -> Node_22;
+Node_21 -> Node_23[style=dashed];
+Node_22 -> Node_23;
+Node_23 -> Node_24;
+Node_0 -> Node_1;
+Node_10 -> Node_11;
+Node_15 -> Node_16;
+Node_17 -> Node_18;
+Node_24 -> Node_25;
+}
+

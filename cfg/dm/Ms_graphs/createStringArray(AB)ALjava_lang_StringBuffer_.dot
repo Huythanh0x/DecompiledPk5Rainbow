@@ -1,0 +1,32 @@
+digraph "CFG fordm.Ms.createStringArray([B)[Ljava\/lang\/StringBuffer;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lint r3 = dm.Ms.skipldm.Ms.skip = r3 + 1ljava.lang.StringBuffer[] r2 = new java.lang.StringBuffer[getLen_byte(r6[r3])]lr0 = 0l}"];
+Node_2 [shape=record,label="{2\:\ 0x000f|LOOP_START\lPHI: r0l  0x000f: PHI (r0v1 'i' byte) = (r0v0 'i' byte), (r0v2 'i' byte) binds: [B:1:0x0000, B:8:0x001c] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x000f\-\>B:8:0x001c\l|l}"];
+Node_3 [shape=record,label="{3\:\ 0x0010|lif (r0 \< r2.length) goto L19l}"];
+Node_4 [shape=record,label="{4\:\ 0x0013|lr1 = r6[dm.Ms.skip]l}"];
+Node_5 [shape=record,label="{5\:\ 0x0017|lif (r1 \>= 0) goto L25l}"];
+Node_6 [shape=record,label="{6\:\ 0x0019|lshort r1 = (short) (r1 + 256)l}"];
+Node_7 [shape=record,label="{7\:\ 0x001c|SYNTHETIC\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x001c|LOOP_END\lPHI: r1l  0x001c: PHI (r1v1 short) = (r1v0 short), (r1v2 short) binds: [B:9:0x001c, B:7:0x001c] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x000f\-\>B:8:0x001c\l|lr2[r0] = new java.lang.StringBuffer(getDialogs(r6, dm.Ms.skip + 1, r1))ldm.Ms.skip = dm.Ms.skip + ((r1 * 2) + 1)lbyte r0 = (byte) (r0 + 1)l}"];
+Node_9 [shape=record,label="{9\:\ 0x001c|SYNTHETIC\l|l}"];
+Node_10 [shape=record,label="{10\:\ 0x0012|SYNTHETIC\l|l}"];
+Node_11 [shape=record,label="{11\:\ 0x0012|RETURN\l|lreturn r2l}"];
+Node_12 [shape=record,label="{12\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public java.lang.StringBuffer[] dm.Ms.createStringArray((r5v0 'this' dm.Ms A[IMMUTABLE_TYPE, THIS]), (r6v0 byte[] A[D('data' byte[]), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:8:0x001c \-\> B:2:0x000f, CROSS_EDGE: B:5:0x0017 \-\> B:8:0x001c\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_3 -> Node_4;
+Node_3 -> Node_10[style=dashed];
+Node_4 -> Node_5;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_9;
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_8 -> Node_2;
+Node_9 -> Node_8;
+Node_10 -> Node_11;
+Node_11 -> Node_12;
+}
+

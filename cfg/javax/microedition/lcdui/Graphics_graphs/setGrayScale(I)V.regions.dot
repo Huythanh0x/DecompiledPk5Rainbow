@@ -1,0 +1,44 @@
+digraph "CFG forjavax.microedition.lcdui.Graphics.setGrayScale(I)V" {
+subgraph cluster_Region_1219549438 {
+label = "R(1:(2:(1:8)|(1:4)))";
+node [shape=record,color=blue];
+subgraph cluster_Region_217876850 {
+label = "R(2:(1:8)|(1:4))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1720288391 {
+label = "IF [B:1:0x0000, B:3:0x0004] THEN: R(1:8) ELSE: null";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lif (r2 \< 0) goto L14l}"];
+Node_3 [shape=record,label="{3\:\ 0x0004|ADDED_TO_REGION\l|lif (r2 \> 255) goto L14l}"];
+subgraph cluster_Region_226471351 {
+label = "R(1:8)";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x000b|lthrow new java.lang.IllegalArgumentException()l}"];
+}
+}
+subgraph cluster_Region_1128719310 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000c|lsetColor(r2, r2, r2)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0002|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000f|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x0006|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.lcdui.Graphics.setGrayScale((r1v0 'this' javax.microedition.lcdui.Graphics A[IMMUTABLE_TYPE, THIS]), (r2v0 'grey' int A[D('grey' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:5:0x000f \-\> B:6:?, CROSS_EDGE: B:1:0x0000 \-\> B:7:0x0006\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2[style=dashed];
+Node_1 -> Node_7;
+Node_3 -> Node_7;
+Node_3 -> Node_4[style=dashed];
+Node_8 -> Node_6;
+Node_4 -> Node_5;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+}
+

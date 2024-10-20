@@ -1,0 +1,33 @@
+digraph "CFG fordm.Ui.drawFrameOne(Ldm\/Sprite;IIII)V" {
+subgraph cluster_Region_1241854212 {
+label = "R(2:1|(1:4))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lshort r7 = 0l}"];
+subgraph cluster_LoopRegion_700271963 {
+label = "LOOP:0: (1:4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0005|ADDED_TO_REGION\l|lif (r7 \< r9.fLength(r10)) goto L14l}"];
+subgraph cluster_Region_1417119605 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0008|LOOP_END\lLOOP:0: B:2:0x0001\-\>B:4:0x0008\l|ldrawModuleOne(r9, r9.frame(r10, r7, 0), r11 + (r9.frame(r10, r7, 1) * r8.MIRROR3[r13]), r12 + r9.frame(r10, r7, 2), r13, r9.frame(r10, r7, 3))lshort r7 = (short) (r7 + 1)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0001|LOOP_START\lPHI: r7l  0x0001: PHI (r7v1 'now_frame' short) = (r7v0 'now_frame' short), (r7v2 'now_frame' short) binds: [B:1:0x0000, B:4:0x0008] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0001\-\>B:4:0x0008\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0007|SYNTHETIC\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x0007|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawFrameOne((r8v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r9v0 'sp' dm.Sprite A[D('sp' dm.Sprite), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r10v0 'f_id' int A[D('f_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r11v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'dir' int A[D('dir' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lBACK_EDGE: B:4:0x0008 \-\> B:2:0x0001\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+}
+

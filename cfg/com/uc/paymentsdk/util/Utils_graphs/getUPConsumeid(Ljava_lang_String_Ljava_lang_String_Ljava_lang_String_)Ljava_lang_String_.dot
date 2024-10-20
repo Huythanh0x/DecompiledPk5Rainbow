@@ -1,0 +1,24 @@
+digraph "CFG forcom.uc.paymentsdk.util.Utils.getUPConsumeid(Ljava\/lang\/String;Ljava\/lang\/String;Ljava\/lang\/String;)Ljava\/lang\/String;" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (com.uc.paymentsdk.util.Utils.upconsumeid == null) goto L15l}"];
+Node_3 [shape=record,label="{3\:\ 0x0004|l}"];
+Node_4 [shape=record,label="{4\:\ 0x000c|lif (com.uc.paymentsdk.util.Utils.upconsumeid.equals(\"\") == false) goto L16l}"];
+Node_5 [shape=record,label="{5\:\ 0x002f|l}"];
+Node_6 [shape=record,label="{6\:\ 0x0031|RETURN\l|lreturn com.uc.paymentsdk.util.Utils.upconsumeidl}"];
+Node_7 [shape=record,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x000e|lcom.uc.paymentsdk.util.Utils.upconsumeid = new java.lang.StringBuilder(java.lang.String.valueOf(r3)).append(r4).append(r2).append(createARanConsumeID(10)).toString()l}"];
+MethodNode[shape=record,label="{public static java.lang.String com.uc.paymentsdk.util.Utils.getUPConsumeid((r2v0 'uid' java.lang.String A[D('uid' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r3v0 'cpid' java.lang.String A[D('cpid' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'gameid' java.lang.String A[D('gameid' java.lang.String), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x000c \-\> B:5:0x002f, CROSS_EDGE: B:2:0x0002 \-\> B:8:0x000e\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_8;
+Node_3 -> Node_4;
+Node_4 -> Node_8[style=dashed];
+Node_4 -> Node_5;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_5;
+}
+

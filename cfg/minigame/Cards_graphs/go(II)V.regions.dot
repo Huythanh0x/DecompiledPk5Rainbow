@@ -1,0 +1,16 @@
+digraph "CFG forminigame.Cards.go(II)V" {
+subgraph cluster_Region_673026588 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr6.gr.setStringB(r6.gr.createString(\"data\/gamec.d\"), 160, 0)lr6.gr.setStringB(main.Constants_H.GAME_TXT_27, main.Constants_H.WIDTH, 1)lr6.lv = (byte) r8lr6.findN = nulllr6.findN = (byte[][]) java.lang.reflect.Array.newInstance((java.lang.Class\<?\>) java.lang.Byte.TYPE, r6.num[r6.lv][0], r6.num[r6.lv][1])lr6.findC = nulllr6.findC = (byte[][]) java.lang.reflect.Array.newInstance((java.lang.Class\<?\>) java.lang.Byte.TYPE, r6.num[r6.lv][0], r6.num[r6.lv][1])lr6.length = (byte) 9lgo(r7)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0065|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void minigame.Cards.go((r6v0 'this' minigame.Cards A[IMMUTABLE_TYPE, THIS]), (r7v0 'mode' int A[D('mode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r8v0 'lv_' int A[D('lv_' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [minigame.MiniGame_H.go(int, int):void]\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

@@ -1,0 +1,16 @@
+digraph "CFG fordm.Ui.drawRegion(Ljavax\/microedition\/lcdui\/Image;IIIIIIIILjavax\/microedition\/lcdui\/Graphics;)V" {
+subgraph cluster_Region_2054879683 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr20.drawRegion(r11, r12, r13, r14, r15, dm.Ui.transforms[r19], r16, r17, r18)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0014|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawRegion((r10v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r11v0 'image' javax.microedition.lcdui.Image A[D('image' javax.microedition.lcdui.Image), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r12v0 'mx' int A[D('mx' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'my' int A[D('my' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'mw' int A[D('mw' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'mh' int A[D('mh' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r16v0 'realX' int A[D('realX' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r17v0 'realY' int A[D('realY' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r18v0 'anchor' int A[D('anchor' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r19v0 'manipulation' int A[D('manipulation' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r20v0 'g' javax.microedition.lcdui.Graphics A[D('g' javax.microedition.lcdui.Graphics), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

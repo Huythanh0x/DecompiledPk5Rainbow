@@ -1,0 +1,80 @@
+digraph "CFG fordm.Sound.getHaveSoundPlayState()Z" {
+subgraph cluster_Region_1009501239 {
+label = "R(1:(2:(1:7)(2:12|13)|9)) | DECL_VAR: boolean null\l";
+node [shape=record,color=blue];
+subgraph cluster_TryCatchRegion_1948087246 {
+label = "Try: R(2:(1:7)(2:12|13)|9) catches: R(3:14|15|16)";
+node [shape=record,color=blue];
+subgraph cluster_Region_353249191 {
+label = "R(2:(1:7)(2:12|13)|9)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_755105068 {
+label = "IF [B:4:0x0003, B:6:0x000d] THEN: R(1:7) ELSE: R(2:12|13)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0003|lif (r4.snd_music != null) goto L22l}"];
+Node_6 [shape=record,label="{6\:\ 0x000d|ADDED_TO_REGION\l|lif (r4.snd_music.getState() == 400) goto L24l}"];
+subgraph cluster_Region_1214220584 {
+label = "R(1:7)";
+node [shape=record,color=blue];
+Node_7 [shape=record,label="{7\:\ 0x000f|TryCatch #0 \{Exception \-\> 0x0021, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x000f, B:12:0x0018), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0021\l|ljava.lang.System.out.println(\"getHaveSoundPlayState() true\")     \/\/ Catch: java.lang.Exception \-\> L21lr1 = truel}"];
+}
+subgraph cluster_Region_1656814036 {
+label = "R(2:12|13)";
+node [shape=record,color=blue];
+Node_12 [shape=record,label="{12\:\ 0x0018|TRY_LEAVE\lTryCatch #0 \{Exception \-\> 0x0021, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x000f, B:12:0x0018), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0021\l|ljava.lang.System.out.println(\"getHaveSoundPlayState() false\")     \/\/ Catch: java.lang.Exception \-\> L21l}"];
+Node_13 [shape=record,label="{13\:\ 0x001f|lr1 = falsel}"];
+}
+}
+Node_9 [shape=record,label="{9\:\ 0x0017|RETURN\lORIG_RETURN\l|lreturn r1l}"];
+}
+subgraph cluster_Region_1332321991 {
+label = "R(3:14|15|16) | ExcHandler: Exception \-\> 0x0021\l";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0021|ExcHandler: Exception \-\> 0x0021\l|l}"];
+Node_15 [shape=record,label="{15\:\ 0x0022|lr1.printStackTrace()ljava.lang.System.out.println(\"getHaveSoundPlayState() false\")l}"];
+Node_16 [shape=record,label="{16\:\ ?|SYNTHETIC\lRETURN\l|lreturn falsel}"];
+}
+}
+}
+subgraph cluster_Region_1332321991 {
+label = "R(3:14|15|16) | ExcHandler: Exception \-\> 0x0021\l";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x0021|ExcHandler: Exception \-\> 0x0021\l|l}"];
+Node_15 [shape=record,label="{15\:\ 0x0022|lr1.printStackTrace()ljava.lang.System.out.println(\"getHaveSoundPlayState() false\")l}"];
+Node_16 [shape=record,label="{16\:\ ?|SYNTHETIC\lRETURN\l|lreturn falsel}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0001|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0001|TRY_ENTER\lTryCatch #0 \{Exception \-\> 0x0021, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x000f, B:12:0x0018), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0021\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x0005|TryCatch #0 \{Exception \-\> 0x0021, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x000f, B:12:0x0018), top: B:2:0x0001 \}\lCatch: Exception \-\> 0x0021\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0017|SYNTHETIC\lPHI: r1l  0x0017: PHI (r1v6 boolean) = (r1v5 boolean), (r1v10 boolean) binds: [B:13:0x001f, B:7:0x000f] A[DONT_GENERATE, DONT_INLINE]\l|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+MethodNode[shape=record,label="{public boolean dm.Sound.getHaveSoundPlayState((r4v0 'this' dm.Sound A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lTryCatch #0 \{Exception \-\> 0x0021, blocks: (B:3:0x0001, B:5:0x0005, B:7:0x000f, B:12:0x0018), top: B:2:0x0001 \}\lCROSS_EDGE: B:15:0x0022 \-\> B:9:0x0017, CROSS_EDGE: B:13:0x001f \-\> B:8:0x0017, CROSS_EDGE: B:4:0x0003 \-\> B:12:0x0018, CROSS_EDGE: B:2:0x0001 \-\> B:14:0x0021\l}"];
+MethodNode -> Node_0;
+Node_4 -> Node_5;
+Node_4 -> Node_12[style=dashed];
+Node_6 -> Node_7;
+Node_6 -> Node_12[style=dashed];
+Node_7 -> Node_8;
+Node_12 -> Node_13;
+Node_13 -> Node_8;
+Node_9 -> Node_10;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_16 -> Node_10;
+Node_14 -> Node_15;
+Node_15 -> Node_16;
+Node_16 -> Node_10;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_14;
+Node_3 -> Node_4;
+Node_5 -> Node_6;
+Node_8 -> Node_9;
+Node_8 -> Node_11;
+Node_11 -> Node_14;
+}
+

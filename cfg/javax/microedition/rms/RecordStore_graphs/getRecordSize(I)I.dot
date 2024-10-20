@@ -1,0 +1,19 @@
+digraph "CFG forjavax.microedition.rms.RecordStore.getRecordSize(I)I" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|landroid.database.Cursor r8 = r11.db.query(r11.table_name, null, new java.lang.StringBuilder(\"_id=\").append(r12).toString(), null, null, null, null)ljavax.microedition.lcdui.CwaActivity.getInstance().startManagingCursor(r8)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0028|lif (r8.moveToNext() == false) goto L13l}"];
+Node_3 [shape=record,label="{3\:\ 0x002a|lbyte[] r9 = r8.getBlob(1)lint r10 = r9.lengthl}"];
+Node_4 [shape=record,label="{4\:\ 0x0030|RETURN\lORIG_RETURN\l|lreturn r10l}"];
+Node_5 [shape=record,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturn \-1l}"];
+MethodNode[shape=record,label="{public int javax.microedition.rms.RecordStore.getRecordSize((r11v0 'this' javax.microedition.rms.RecordStore A[IMMUTABLE_TYPE, THIS]), (r12v0 'recordId' int A[D('recordId' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljavax\/microedition\/rms\/RecordStoreNotOpenException;, Ljavax\/microedition\/rms\/InvalidRecordIDException;, Ljavax\/microedition\/rms\/RecordStoreException;]\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:2:0x0028 \-\> B:4:0x0030\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_6;
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_5;
+}
+

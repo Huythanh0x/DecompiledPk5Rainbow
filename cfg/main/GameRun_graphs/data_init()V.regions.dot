@@ -1,0 +1,16 @@
+digraph "CFG formain.GameRun.data_init()V" {
+subgraph cluster_Region_1181894127 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lbyte[] byte[] r0 = dm.Ms.i().getStream(\"data\/data.d\", \-1)ldm.Ms.i()ldm.Ms.skip = 0lr4.skill_up = dm.Ms.i().create2Array(r0)lr4.monster_pro = dm.Ms.i().create2Array(r0)lr4.skill = dm.Ms.i().create2Array(r0)lr4.skill_help = dm.Ms.i().createStringArray(r0)lr4.skill_name = dm.Ms.i().createStringArray(r0)lr4.monsterT = dm.Ms.i().createStringArray(r0)lr4.NAME = dm.Ms.i().createStringArray(r0)lr4.item_help = dm.Ms.i().createStringArray(r0)lr4.item_name = dm.Ms.i().createStringArray(r0)lr4.city_name = dm.Ms.i().createStringArray(r0)lr4.buff_name = dm.Ms.i().createStringArray(r0)lr4.buff_help = dm.Ms.i().createStringArray(r0)lr4.monAppearMap = dm.Ms.i().create2Array(r0)lr4.mList_id = dm.Ms.i().create2Array(r0)lr4.monsterMake = dm.Ms.i().create2Array(r0)lr4.monsterInfo = dm.Ms.i().createStringArray(r0)lr4.inhesion = dm.Ms.i().createArray(r0)lr4.makeLevel = dm.Ms.i().createArray(r0)lr4.musicNo = dm.Ms.i().createArray(r0)lr4.npc2ImageType = dm.Ms.i().createArray(r0)lr4.map.boatCourse = dm.Ms.i().create2Array(r0)lr4.nidusList = dm.Ms.i().create2Array(r0)l(byte[]) nulll}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x00f2|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.data_init((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

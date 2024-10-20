@@ -1,0 +1,12 @@
+digraph "CFG formain.MainCanvas.setSmsIsSetRun_state(Z)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ljava.lang.System.out.println(new java.lang.StringBuilder(\"setSmsIsSetRun_state state= \").append(r4).toString())lr3.smsIsSetRun_state = r4l}"];
+Node_2 [shape=record,label="{2\:\ 0x0016|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.MainCanvas.setSmsIsSetRun_state((r3v0 'this' main.MainCanvas A[IMMUTABLE_TYPE, THIS]), (r4v0 'state' boolean A[D('state' boolean), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

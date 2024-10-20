@@ -1,0 +1,16 @@
+digraph "CFG formain.GameRun.delItemSkill(Ldm\/Monster;)V" {
+subgraph cluster_Region_144411672 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lsay(java.lang.String.valueOf(getNameMon(r5.monster[0])) + main.Constants_H.TXT_10 + getNameSkill(r4.getSkill), 0)lgoMY_BAG(2)ldeleteItems(((r4.getSkill + 35) \- 25) \- 1, 1)ldm.Ms.i().correctSelect(r4.select[0], r4.itemsLength[r4.selectx], r4.list_rows)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x004c|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{private void main.GameRun.delItemSkill((r4v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r5v0 'mon' dm.Monster A[D('mon' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

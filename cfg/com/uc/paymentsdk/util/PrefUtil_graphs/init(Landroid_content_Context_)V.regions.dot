@@ -1,0 +1,55 @@
+digraph "CFG forcom.uc.paymentsdk.util.PrefUtil.init(Landroid\/content\/Context;)V" {
+subgraph cluster_Region_1343665841 {
+label = "R(1:2)";
+node [shape=record,color=blue];
+subgraph cluster_SynchronizedRegion_942632097 {
+label = "Synchronized:R(2:2|(2:(1:6)|7))";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x0002|l}"];
+subgraph cluster_Region_402228936 {
+label = "R(2:(1:6)|7)";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1756301444 {
+label = "IF [B:5:0x0005] THEN: R(1:6) ELSE: null";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0005|lif (com.uc.paymentsdk.util.PrefUtil.sPref == null) goto L21l}"];
+subgraph cluster_Region_225024030 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0007|TryCatch #0 \{, blocks: (B:4:0x0003, B:6:0x0007, B:7:0x000d), top: B:3:0x0003 \}\lCatch: all \-\> 0x0012\l|lcom.uc.paymentsdk.util.PrefUtil.sPref = android.preference.PreferenceManager.getDefaultSharedPreferences(r2)     \/\/ Catch: java.lang.Throwable \-\> L12l}"];
+}
+}
+Node_7 [shape=record,label="{7\:\ 0x000d|TRY_LEAVE\lTryCatch #0 \{, blocks: (B:4:0x0003, B:6:0x0007, B:7:0x000d), top: B:3:0x0003 \}\lCatch: all \-\> 0x0012\l|lcom.uc.paymentsdk.util.PrefUtil.sIsLogin = false     \/\/ Catch: java.lang.Throwable \-\> L12l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,color=red,label="{1\:\ 0x0000|l}"];
+Node_3 [shape=record,color=red,label="{3\:\ 0x0003|SYNTHETIC\lEXC_TOP_SPLITTER\l|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ 0x0003|TRY_ENTER\lTryCatch #0 \{, blocks: (B:4:0x0003, B:6:0x0007, B:7:0x000d), top: B:3:0x0003 \}\lCatch: all \-\> 0x0012\l|l}"];
+Node_8 [shape=record,color=red,label="{8\:\ 0x0010|DONT_GENERATE\l|lmonitor\-exit()l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x0011|l}"];
+Node_10 [shape=record,color=red,label="{10\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_11 [shape=record,color=red,label="{11\:\ ?|SYNTHETIC\lEXC_BOTTOM_SPLITTER\l|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x0012|REMOVE\lExcHandler: all \-\> 0x0012\l|l}"];
+Node_13 [shape=record,color=red,label="{13\:\ 0x0014|REMOVE\l|lthrow r1l}"];
+MethodNode[shape=record,label="{private static synchronized void com.uc.paymentsdk.util.PrefUtil.init((r2v0 'paramContext' android.content.Context A[D('paramContext' android.content.Context), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:13:0x0014 \-\> B:10:?, CROSS_EDGE: B:5:0x0005 \-\> B:7:0x000d, CROSS_EDGE: B:3:0x0003 \-\> B:12:0x0012\l}"];
+MethodNode -> Node_0;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+Node_5 -> Node_7[style=dashed];
+Node_6 -> Node_7;
+Node_7 -> Node_8;
+Node_7 -> Node_11;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_12;
+Node_4 -> Node_5;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_11 -> Node_12;
+Node_12 -> Node_13;
+Node_13 -> Node_10;
+}
+

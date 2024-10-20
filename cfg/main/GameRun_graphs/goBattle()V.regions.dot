@@ -1,0 +1,138 @@
+digraph "CFG formain.GameRun.goBattle()V" {
+subgraph cluster_Region_891380763 {
+label = "R(7:1|(1:4)|6|(1:(2:(1:25)|(1:(1:11)(2:13|(1:24)(0)))))|(1:17)|(1:20)|21)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr8.first_battle = (byte) 0lr8.lastSkill = (byte) 0lr8.b_c = (byte) 0lr8.cur_a = (byte) 0lr8.mon_in_battle = nulllr8.mon_in_battle = new byte[r8.max_takes + 1]lr8.levelUp_in_battle = nulllr8.levelUp_in_battle = (byte[][]) java.lang.reflect.Array.newInstance((java.lang.Class\<?\>) java.lang.Byte.TYPE, r8.max_takes, 2)lr8.proReplace = nulllr8.proReplace = (short[][]) java.lang.reflect.Array.newInstance((java.lang.Class\<?\>) java.lang.Short.TYPE, r8.myMonsters.length, 7)lr8.myB = new dm.Battle(r8.myMonsters)lenemy_init()lbyte r0 = 0l}"];
+subgraph cluster_LoopRegion_2052033393 {
+label = "LOOP:0: (1:4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x004b|ADDED_TO_REGION\l|lif (r0 \< r8.myMon_length) goto L42l}"];
+subgraph cluster_Region_1816400147 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x0088|LOOP_END\lLOOP:0: B:2:0x0049\-\>B:4:0x0088\l|lr8.myMonsters[r0].effect = (byte) 7lr8.myMonsters[r0].effect_time = (byte) 0lr8.myMonsters[r0].monster[1] = r0lr8.proReplace[r0][6] = r8.myMonsters[r0].monster[2]lbyte r0 = (byte) (r0 + 1)l}"];
+}
+}
+Node_6 [shape=record,label="{6\:\ 0x004d|lbyte r0 = 0l}"];
+subgraph cluster_LoopRegion_454891418 {
+label = "LOOP:1: (1:(2:(1:25)|(1:(1:11)(2:13|(1:24)(0)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_1744230387 {
+label = "R(1:(2:(1:25)|(1:(1:11)(2:13|(1:24)(0)))))";
+node [shape=record,color=blue];
+subgraph cluster_Region_421124344 {
+label = "R(2:(1:25)|(1:(1:11)(2:13|(1:24)(0))))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1615548241 {
+label = "IF [B:8:0x0050] THEN: R(1:25) ELSE: null";
+node [shape=record,color=blue];
+Node_8 [shape=record,label="{8\:\ 0x0050|lif (r0 \>= r8.myMon_length) goto L50l}"];
+subgraph cluster_Region_860221963 {
+label = "R(1:25)";
+node [shape=record,color=blue];
+Node_25 [shape=record,label="{25\:\ 0x0052|SYNTHETIC\lEDGE_INSN: B:25:0x0052\-\>B:15:0x0052 BREAK  A[LOOP:1: B:7:0x004e\-\>B:11:0x00dd]\l|lbreakl}"];
+}
+}
+subgraph cluster_Region_1083671102 {
+label = "R(1:(1:11)(2:13|(1:24)(0))) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1717126186 {
+label = "IF [B:10:0x00b7] THEN: R(1:11) ELSE: R(2:13|(1:24)(0)) | ELSE_IF_CHAIN\l";
+node [shape=record,color=blue];
+Node_10 [shape=record,label="{10\:\ 0x00b7|lif (r8.myMonsters[r0].monsterPro[0] \<= 0) goto L48l}"];
+subgraph cluster_Region_1593112872 {
+label = "R(1:11)";
+node [shape=record,color=blue];
+Node_11 [shape=record,label="{11\:\ 0x00dd|LOOP_END\lLOOP:1: B:7:0x004e\-\>B:11:0x00dd\l|lbyte r0 = (byte) (r0 + 1)l}"];
+}
+subgraph cluster_Region_710483323 {
+label = "R(2:13|(1:24)(0))";
+node [shape=record,color=blue];
+Node_13 [shape=record,label="{13\:\ 0x00b9|lbyte[] byte[] r1 = r8.mon_in_battlelbyte[] byte[] r2 = r8.mon_in_battlelbyte byte r3 = (byte) (r2[0] + 1)lr2[0] = r3lr1[r3] = r8.myMonsters[r0].monster[1]l}"];
+subgraph cluster_IfRegion_1402838177 {
+label = "IF [B:14:0x00ce] THEN: R(1:24) ELSE: R(0)";
+node [shape=record,color=blue];
+Node_14 [shape=record,label="{14\:\ 0x00ce|lif (r0 != 0) goto L47l}"];
+subgraph cluster_Region_1763078212 {
+label = "R(1:24)";
+node [shape=record,color=blue];
+Node_24 [shape=record,label="{24\:\ 0x00d0|lchangeMonster(r8.myMonsters[r0], r8.myMonsters[0])l}"];
+}
+subgraph cluster_Region_286235792 {
+label = "R(0)";
+node [shape=record,color=blue];
+}
+}
+}
+}
+}
+}
+}
+}
+subgraph cluster_IfRegion_1174820945 {
+label = "IF [B:16:0x0054] THEN: R(1:17) ELSE: null";
+node [shape=record,color=blue];
+Node_16 [shape=record,label="{16\:\ 0x0054|lif (r8.effectImage == null) goto L36l}"];
+subgraph cluster_Region_1515142960 {
+label = "R(1:17)";
+node [shape=record,color=blue];
+Node_17 [shape=record,label="{17\:\ 0x0056|lr8.effectImage = dm.Ms.i().createImageArray(7, \"data\/brow\/e\")l}"];
+}
+}
+subgraph cluster_IfRegion_649445429 {
+label = "IF [B:19:0x0064] THEN: R(1:20) ELSE: null";
+node [shape=record,color=blue];
+Node_19 [shape=record,label="{19\:\ 0x0064|lif (r8.imgBattle == null) goto L39l}"];
+subgraph cluster_Region_1261646703 {
+label = "R(1:20)";
+node [shape=record,color=blue];
+Node_20 [shape=record,label="{20\:\ 0x0066|lr8.imgBattle = dm.Ms.i().createImageArray(5, \"data\/battle\/b\")l}"];
+}
+}
+Node_21 [shape=record,label="{21\:\ 0x0073|lr8.map.my.state = (byte) 15lmain.GameRun.run_state = \-30lr8.view_state = (byte) \-1lnew main.CreateThread(r8, 1)l}"];
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0049|LOOP_START\lPHI: r0l  0x0049: PHI (r0v1 'i' byte A[IMMUTABLE_TYPE]) = (r0v0 'i' byte), (r0v5 'i' byte) binds: [B:1:0x0000, B:4:0x0088] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0049\-\>B:4:0x0088\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x004d|SYNTHETIC\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ 0x004e|LOOP_START\lPHI: r0l  0x004e: PHI (r0v3 'i' byte) = (r0v2 'i' byte), (r0v4 'i' byte) binds: [B:6:0x004d, B:11:0x00dd] A[DONT_GENERATE, DONT_INLINE]\lLOOP:1: B:7:0x004e\-\>B:11:0x00dd\l|l}"];
+Node_9 [shape=record,color=red,label="{9\:\ 0x00af|l}"];
+Node_12 [shape=record,color=red,label="{12\:\ 0x00b9|SYNTHETIC\l|l}"];
+Node_15 [shape=record,color=red,label="{15\:\ 0x0052|EDGE_INSN: B:25:0x0052\-\>B:15:0x0052 BREAK  A[LOOP:1: B:7:0x004e\-\>B:11:0x00dd]\l|l}"];
+Node_18 [shape=record,color=red,label="{18\:\ 0x0062|l}"];
+Node_22 [shape=record,color=red,label="{22\:\ 0x0087|l}"];
+Node_23 [shape=record,color=red,label="{23\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun.goBattle((r8v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:19:0x0064 \-\> B:21:0x0073, CROSS_EDGE: B:16:0x0054 \-\> B:18:0x0062, CROSS_EDGE: B:14:0x00ce \-\> B:15:0x0052, CROSS_EDGE: B:24:0x00d0 \-\> B:15:0x0052, BACK_EDGE: B:11:0x00dd \-\> B:7:0x004e, BACK_EDGE: B:4:0x0088 \-\> B:2:0x0049\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_6 -> Node_7;
+Node_8 -> Node_9[style=dashed];
+Node_8 -> Node_25;
+Node_25 -> Node_15;
+Node_10 -> Node_11;
+Node_10 -> Node_12[style=dashed];
+Node_11 -> Node_7;
+Node_13 -> Node_14;
+Node_14 -> Node_15[style=dashed];
+Node_14 -> Node_24;
+Node_24 -> Node_15;
+Node_16 -> Node_17;
+Node_16 -> Node_18[style=dashed];
+Node_17 -> Node_18;
+Node_19 -> Node_20;
+Node_19 -> Node_21[style=dashed];
+Node_20 -> Node_21;
+Node_21 -> Node_22;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+Node_7 -> Node_8;
+Node_9 -> Node_10;
+Node_12 -> Node_13;
+Node_15 -> Node_16;
+Node_18 -> Node_19;
+Node_22 -> Node_23;
+}
+

@@ -1,0 +1,37 @@
+digraph "CFG formain.Map.loadMapModuleAndImage()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldm.Ms.i()ldm.Ms.skip = 0lbyte[] r3 = dm.Ms.i().getStream(\"data\/map\/area.dat\", \-1)lbyte[] r1 = dm.Ms.i().createArray(r3)lbyte[][] r2 = dm.Ms.i().create2Array(r3)lbyte[] r0 = (byte[]) nulll}"];
+Node_2 [shape=record,label="{2\:\ 0x0028|lif (r11.mapImg == null) goto L23l}"];
+Node_3 [shape=record,label="{3\:\ 0x002a|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0032|lif (r1[r11.lastMap] != r1[r11.mapNo]) goto L23l}"];
+Node_5 [shape=record,label="{5\:\ 0x0034|lbyte[] r0 = (byte[]) nulllbyte[][] r0 = (byte[][]) nulll}"];
+Node_6 [shape=record,label="{6\:\ 0x003c|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_7 [shape=record,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,label="{8\:\ 0x003d|ldm.Ms.i()ldm.Ms.skip = 0lr11.moduleData = dm.Ms.i().createShort2Array(dm.Ms.i().getStream(new java.lang.StringBuilder(\"data\/map\/\").append(r1[r11.mapNo]).append(\".data\").toString(), \-1), 1)lr11.mapImg = nulllr11.mapImg = new javax.microedition.lcdui.Image[r2[r1[r11.mapNo]].length]lr4 = 0l}"];
+Node_9 [shape=record,label="{9\:\ 0x007c|LOOP_START\lPHI: r4l  0x007c: PHI (r4v1 'i' byte) = (r4v0 'i' byte), (r4v2 'i' byte) binds: [B:8:0x003d, B:11:0x008e] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:9:0x007c\-\>B:11:0x008e\l|l}"];
+Node_10 [shape=record,label="{10\:\ 0x0083|lif (r4 \< r2[r1[r11.mapNo]].length) goto L27l}"];
+Node_11 [shape=record,label="{11\:\ 0x008e|LOOP_END\lLOOP:0: B:9:0x007c\-\>B:11:0x008e\l|lr11.mapImg[r4] = dm.Ms.i().createImage(new java.lang.StringBuilder(\"data\/map\/\").append(r2[r1[r11.mapNo]][r4]).toString())lbyte r4 = (byte) (r4 + 1)l}"];
+Node_12 [shape=record,label="{12\:\ 0x0085|SYNTHETIC\l|l}"];
+Node_13 [shape=record,label="{13\:\ 0x0085|lbyte[] r0 = (byte[]) nulllbyte[][] r0 = (byte[][]) nulll}"];
+Node_14 [shape=record,label="{14\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{private void main.Map.loadMapModuleAndImage((r11v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:13:0x0085 \-\> B:6:0x003c, BACK_EDGE: B:11:0x008e \-\> B:9:0x007c, CROSS_EDGE: B:2:0x0028 \-\> B:8:0x003d\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_8;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_8;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_9;
+Node_9 -> Node_10;
+Node_10 -> Node_11;
+Node_10 -> Node_12[style=dashed];
+Node_11 -> Node_9;
+Node_12 -> Node_13;
+Node_13 -> Node_14;
+Node_14 -> Node_7;
+}
+

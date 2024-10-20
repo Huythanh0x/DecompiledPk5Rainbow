@@ -1,0 +1,41 @@
+digraph "CFG formain.Map.runEvent_getMon(I)V" {
+subgraph cluster_Region_1004671252 {
+label = "R(2:1|(2:(2:3|4)|(1:6)))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr7.gmErr = falsel}"];
+subgraph cluster_Region_241529586 {
+label = "R(2:(2:3|4)|(1:6))";
+node [shape=record,color=blue];
+subgraph cluster_IfRegion_1909170329 {
+label = "IF [B:2:0x002f] THEN: R(2:3|4) ELSE: null";
+node [shape=record,color=blue];
+Node_2 [shape=record,label="{2\:\ 0x002f|lif (r7.gr.getMonster(r7.event[r8][r7.event_now[r8] + 2], r7.event[r8][r7.event_now[r8] + 3], r7.event[r8][r7.event_now[r8] + 4], \-1) == (\-1)) goto L12l}"];
+subgraph cluster_Region_769311560 {
+label = "R(2:3|4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0031|lr7.gr.say(main.Constants_H.TXT_105, \-1)lr7.gmErr = truelr7.gr.mini_state = (byte) 6lr7.gr.view_state = (byte) 1lr7.gr.goVIEW_MONSTER()l}"];
+Node_4 [shape=record,label="{4\:\ 0x0048|RETURN\lORIG_RETURN\l|lreturnl}"];
+}
+}
+subgraph cluster_Region_1590129847 {
+label = "R(1:6)";
+node [shape=record,color=blue];
+Node_6 [shape=record,label="{6\:\ 0x0049|lshort[] short[] r0 = r7.event_nowlr0[r8] = (short) (r0[r8] + r7.event[r8][r7.event_now[r8] + 1] + 2)lnextEvent(4368)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|SYNTHETIC\l|l}"];
+MethodNode[shape=record,label="{private void main.Map.runEvent_getMon((r7v0 'this' main.Map A[IMMUTABLE_TYPE, THIS]), (r8v0 'i' int A[D('i' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0049 \-\> B:4:0x0048\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+Node_2 -> Node_6[style=dashed];
+Node_3 -> Node_4;
+Node_4 -> Node_5;
+Node_6 -> Node_7;
+Node_0 -> Node_1;
+Node_7 -> Node_5;
+}
+

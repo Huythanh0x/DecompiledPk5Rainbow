@@ -1,0 +1,12 @@
+digraph "CFG forjavax.microedition.lcdui.Graphics.\<init\>(Landroid\/graphics\/Canvas;Landroid\/graphics\/Paint;Landroid\/graphics\/Bitmap;)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr3.font = javax.microedition.lcdui.Font.getDefaultFont()lr3.strokeStyle = 0lr3.translateX = 0lr3.translateY = 0lr3.isResetPainter = falselr3.scale_x = 1.0flr3.scale_y = 1.0flr3.canvas = r4lr3.graphicbitmap = r6lr3.font.tmpPaint = r5linitPaint()l}"];
+Node_2 [shape=record,label="{2\:\ 0x0023|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void javax.microedition.lcdui.Graphics.\<init\>((r3v0 'this' javax.microedition.lcdui.Graphics A[IMMUTABLE_TYPE, THIS]), (r4v0 'canvas' android.graphics.Canvas A[D('canvas' android.graphics.Canvas), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'painter' android.graphics.Paint A[D('painter' android.graphics.Paint), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r6v0 'bitmap' android.graphics.Bitmap A[D('bitmap' android.graphics.Bitmap), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

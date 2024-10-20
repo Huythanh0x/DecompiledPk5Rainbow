@@ -1,0 +1,26 @@
+digraph "CFG formain.GameRun.getSkillLevel(I)I" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r4 != 25) goto L17l}"];
+Node_3 [shape=record,label="{3\:\ 0x0004|RETURN\lORIG_RETURN\l|lreturn 0l}"];
+Node_4 [shape=record,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_5 [shape=record,label="{5\:\ 0x0006|lif (r4 \>= 25) goto L19l}"];
+Node_6 [shape=record,label="{6\:\ 0x0008|l}"];
+Node_7 [shape=record,label="{7\:\ ?|SYNTHETIC\lRETURN\l|lreturn (r4 % 5) + 1l}"];
+Node_8 [shape=record,label="{8\:\ 0x000d|l}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturn r3.makeLevel[(r4 \- 25) \- 1]l}"];
+MethodNode[shape=record,label="{private int main.GameRun.getSkillLevel((r3v0 'this' main.GameRun A[IMMUTABLE_TYPE, THIS]), (r4v0 'skill' int A[D('skill' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:6:0x0008 \-\> B:4:0x0005, CROSS_EDGE: B:8:0x000d \-\> B:4:0x0005\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_5;
+Node_3 -> Node_4;
+Node_5 -> Node_6[style=dashed];
+Node_5 -> Node_8;
+Node_6 -> Node_7;
+Node_7 -> Node_4;
+Node_8 -> Node_9;
+Node_9 -> Node_4;
+}
+

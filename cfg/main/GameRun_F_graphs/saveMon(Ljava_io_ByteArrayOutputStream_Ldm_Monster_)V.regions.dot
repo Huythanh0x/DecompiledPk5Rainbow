@@ -1,0 +1,33 @@
+digraph "CFG formain.GameRun_F.saveMon(Ljava\/io\/ByteArrayOutputStream;Ldm\/Monster;)V" {
+subgraph cluster_Region_1948026763 {
+label = "R(2:1|(1:4))";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr4.write(r5.monster)lint r0 = 0l}"];
+subgraph cluster_LoopRegion_914899162 {
+label = "LOOP:0: (1:4)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0008|ADDED_TO_REGION\l|lif (r0 \< 5) goto L14l}"];
+subgraph cluster_Region_1481363452 {
+label = "R(1:4)";
+node [shape=record,color=blue];
+Node_4 [shape=record,label="{4\:\ 0x000b|LOOP_END\lLOOP:0: B:2:0x0007\-\>B:4:0x000b\l|lshort short r1 = r5.monsterPro[r0]lr4.write((byte) (r1 & 255))lr4.write((byte) ((r1 \>\> 8) & 255))lr0++l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0007|LOOP_START\lPHI: r0l  0x0007: PHI (r0v1 'i' int) = (r0v0 'i' int), (r0v2 'i' int) binds: [B:1:0x0000, B:4:0x000b] A[DONT_GENERATE, DONT_INLINE]\lLOOP:0: B:2:0x0007\-\>B:4:0x000b\l|l}"];
+Node_5 [shape=record,color=red,label="{5\:\ 0x000a|SYNTHETIC\l|l}"];
+Node_6 [shape=record,color=red,label="{6\:\ 0x000a|l}"];
+Node_7 [shape=record,color=red,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun_F.saveMon((r3v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]), (r4v0 'byteArray' java.io.ByteArrayOutputStream A[D('byteArray' java.io.ByteArrayOutputStream), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r5v0 'mon' dm.Monster A[D('mon' dm.Monster), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lEXCEPTIONS:[Ljava\/io\/IOException;]\lINLINE_NOT_NEEDED\lBACK_EDGE: B:4:0x000b \-\> B:2:0x0007\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_3 -> Node_4;
+Node_3 -> Node_5[style=dashed];
+Node_4 -> Node_2;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+}
+

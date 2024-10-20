@@ -1,0 +1,26 @@
+digraph "CFG forjavax.microedition.midlet.MIDletManager.notifyResumed()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|l}"];
+Node_2 [shape=record,label="{2\:\ 0x0002|lif (r1.currentMidlet == null) goto L18l}"];
+Node_3 [shape=record,label="{3\:\ 0x0004|l}"];
+Node_4 [shape=record,label="{4\:\ 0x0006|lif (r1.paused == false) goto L19l}"];
+Node_5 [shape=record,label="{5\:\ 0x0008|lr1.paused = falseljavax.microedition.lcdui.Display.getCanvas().showNotify()l}"];
+Node_6 [shape=record,label="{6\:\ 0x0012|RETURN\lORIG_RETURN\l|lreturnl}"];
+Node_7 [shape=record,label="{7\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+Node_8 [shape=record,label="{8\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+Node_9 [shape=record,label="{9\:\ ?|SYNTHETIC\lRETURN\l|lreturnl}"];
+MethodNode[shape=record,label="{public final void javax.microedition.midlet.MIDletManager.notifyResumed((r1v0 'this' javax.microedition.midlet.MIDletManager A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\lCROSS_EDGE: B:4:0x0006 \-\> B:6:0x0012, CROSS_EDGE: B:2:0x0002 \-\> B:6:0x0012\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3[style=dashed];
+Node_2 -> Node_9;
+Node_3 -> Node_4;
+Node_4 -> Node_5[style=dashed];
+Node_4 -> Node_8;
+Node_5 -> Node_6;
+Node_6 -> Node_7;
+Node_8 -> Node_7;
+Node_9 -> Node_7;
+}
+

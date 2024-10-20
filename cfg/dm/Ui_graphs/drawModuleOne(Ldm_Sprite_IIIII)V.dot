@@ -1,0 +1,12 @@
+digraph "CFG fordm.Ui.drawModuleOne(Ldm\/Sprite;IIIII)V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|ldrawRegion(r12.img, r12.module(r13, 0), r12.module(r13, 1), r12.module(r13, 2), r12.module(r13, 3), r14, r15, r11.MIRROR[r16], r11.MIRROR2[r16][r17], dm.Ui.g)l}"];
+Node_2 [shape=record,label="{2\:\ 0x0028|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void dm.Ui.drawModuleOne((r11v0 'this' dm.Ui A[IMMUTABLE_TYPE, THIS]), (r12v0 'sp' dm.Sprite A[D('sp' dm.Sprite), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r13v0 'm_id' int A[D('m_id' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r14v0 'x' int A[D('x' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r15v0 'y' int A[D('y' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r16v0 'dir' int A[D('dir' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r17v0 'manipulation' int A[D('manipulation' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | USE_LINES_HINTS\lTYPE_VARS: EMPTY\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

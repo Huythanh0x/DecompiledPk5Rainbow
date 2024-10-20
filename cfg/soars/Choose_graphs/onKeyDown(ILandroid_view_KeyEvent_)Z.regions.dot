@@ -1,0 +1,37 @@
+digraph "CFG forsoars.Choose.onKeyDown(ILandroid\/view\/KeyEvent;)Z" {
+subgraph cluster_Region_1877474019 {
+label = "R(1:1)";
+node [shape=record,color=blue];
+subgraph cluster_SwitchRegion_506562649 {
+label = "Switch: 2
+ case 4 -> R(2:5|6)
+ case default -> R(1:3)";
+node [shape=record,color=blue];
+Node_1 [shape=record,label="{1\:\ 0x0000|lswitch(r3) \{l    case 4: goto L5;l    default: goto L3;l\}l}"];
+subgraph cluster_Region_490279229 {
+label = "R(2:5|6)";
+node [shape=record,color=blue];
+Node_5 [shape=record,label="{5\:\ 0x0008|lmain.GameRun main.GameRun r0 = com.PetKing5_480x800.PetKing5.grlmain.SMSSender.i(com.PetKing5_480x800.PetKing5.gr)lr0.falselly(main.SMSSender.smsType)ljava.lang.System.out.println(\"我的\")lfinishFromChild(getParent())l}"];
+Node_6 [shape=record,label="{6\:\ ?|SYNTHETIC\lRETURN\l|lreturn truel}"];
+}
+subgraph cluster_Region_603994709 {
+label = "R(1:3)";
+node [shape=record,color=blue];
+Node_3 [shape=record,label="{3\:\ 0x0007|RETURN\lORIG_RETURN\l|lreturn super.onKeyDown(r3, r4)l}"];
+}
+}
+}
+Node_0 [shape=record,color=red,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_2 [shape=record,color=red,label="{2\:\ 0x0003|l}"];
+Node_4 [shape=record,color=red,label="{4\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public boolean soars.Choose.onKeyDown((r2v0 'this' soars.Choose A[IMMUTABLE_TYPE, THIS]), (r3v0 'keyCode' int A[D('keyCode' int), IMMUTABLE_TYPE, METHOD_ARGUMENT]), (r4v0 'event' android.view.KeyEvent A[D('event' android.view.KeyEvent), IMMUTABLE_TYPE, METHOD_ARGUMENT]))  | DONT_RENAME\lUSE_LINES_HINTS\lCOMPUTE_POST_DOM\lTYPE_VARS: EMPTY\lMETHOD_OVERRIDE: [ClspMth\{android.app.Activity.onKeyDown(int, android.view.KeyEvent):boolean\}, ClspMth\{android.view.KeyEvent.Callback.onKeyDown(int, android.view.KeyEvent):boolean\}]\lCROSS_EDGE: B:5:0x0008 \-\> B:3:0x0007\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_1 -> Node_2;
+Node_1 -> Node_5;
+Node_5 -> Node_6;
+Node_6 -> Node_4;
+Node_3 -> Node_4;
+Node_0 -> Node_1;
+Node_2 -> Node_3;
+}
+

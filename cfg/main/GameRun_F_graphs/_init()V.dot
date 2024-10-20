@@ -1,0 +1,12 @@
+digraph "CFG formain.GameRun_F.\<init\>()V" {
+Node_0 [shape=record,label="{0\:\ ?|MTH_ENTER_BLOCK\l|l}"];
+Node_1 [shape=record,label="{1\:\ 0x0000|lr7.anchor = new byte[]\{20, main.Constants_H.f79, 40, 24, 24, 40, main.Constants_H.f79, 20\}lr7.transB = new short[]\{0, 90, 180, 270, 8192, 8282, 8372, 8462\}lr7.introX = main.Constants_H.WIDTH_Hlr7.gogoString = \"\"lr7.introT = main.Constants_H.WIDTH_lr7.gogoST = \"\"lr7.brow5 = 0lr7.page_max = 0lr7.help_page = 0lr7.src_c = new byte[4]lr7.popMenu = \-1lr7.select_it = new byte[4]lr7.select_st = new byte[4]lr7.selectBag = (byte[][]) java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, new int[]\{4, 2\})lr7.select = (byte[][]) java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, new int[]\{2, 2\})lr7.max_takes = 3lr7.max_monsters = 10l}"];
+Node_2 [shape=record,label="{2\:\ 0x007b|RETURN\l|lreturnl}"];
+Node_3 [shape=record,label="{3\:\ ?|MTH_EXIT_BLOCK\l|l}"];
+MethodNode[shape=record,label="{public void main.GameRun_F.\<init\>((r7v0 'this' main.GameRun_F A[IMMUTABLE_TYPE, THIS]))  | USE_LINES_HINTS\lINLINE_NOT_NEEDED\l}"];
+MethodNode -> Node_0;
+Node_0 -> Node_1;
+Node_1 -> Node_2;
+Node_2 -> Node_3;
+}
+

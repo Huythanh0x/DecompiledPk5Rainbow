@@ -1,7 +1,7 @@
 package com.PetKing5_480x800;
 
 /* loaded from: classes.dex */
-public final class R {
+public final class fakeR {
 
     /* loaded from: classes.dex */
     public static final class array {

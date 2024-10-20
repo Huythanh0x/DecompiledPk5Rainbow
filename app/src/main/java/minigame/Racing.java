@@ -1,18 +1,16 @@
 package minigame;
 
-import com.uc.paymentsdk.util.Constants;
 import dm.Ms;
 import dm.Sprite;
 import dm.Ui;
-import java.lang.reflect.Array;
 import javax.microedition.lcdui.Image;
-import javax.microedition.media.Player;
 import main.Constants_H;
 import main.GameRun;
-import main.Key_H;
 
-/* loaded from: classes.dex */
 public class Racing implements MiniGame_H {
+    private final short MAP_HEIGHT = 450;
+    private final byte NUM = 4;
+    private final short WIN_HEIGHT = 70;
     private short[][] cloud;
     private short[][] gDate;
     GameRun gr;
@@ -22,26 +20,198 @@ public class Racing implements MiniGame_H {
     private short[] monY;
     private short[] money;
     private byte[] myDate;
+    private byte[][] now_a = new byte[4][3];
     private byte sel;
     private Sprite[] sp;
     private byte speedLv;
     private short srcY;
     private byte state;
     private byte time;
-    private final byte NUM = 4;
-    private final short MAP_HEIGHT = 450;
-    private final short WIN_HEIGHT = 70;
-    private byte[][] now_a = (byte[][]) Array.newInstance((Class<?>) Byte.TYPE, 4, 3);
 
-    public Racing(GameRun gr_) {
-        byte[] bArr = new byte[4];
-        bArr[3] = -1;
-        this.myDate = bArr;
-        this.cloud = (short[][]) Array.newInstance((Class<?>) Short.TYPE, 10, 3);
+    public Racing(GameRun var1) {
+        super();
+        byte[] var2 = new byte[4];
+        var2[3] = -1;
+        this.myDate = var2;
+        this.cloud = new short[10][3];
         this.monY = new short[4];
         this.money = new short[]{100, 120, 300, 350, 1000, 1200};
-        this.gDate = new short[][]{new short[]{450, 3, 8}, new short[]{390, 4, 9}, new short[]{270, 7, 6}, new short[]{210, 6, 10}};
-        this.gr = gr_;
+        this.gDate = new short[][]{{450, 3, 8}, {390, 4, 9}, {270, 7, 6}, {210, 6, 10}};
+        this.gr = var1;
+    }
+
+    private void addCloud(int var1) {
+        short[] var3 = this.cloud[var1];
+        Ms.i();
+        var3[0] = (short)(Ms.getRandom(Constants_H.WIDTH_H) + 640);
+        var3 = this.cloud[var1];
+        short var2 = this.srcY;
+        Ms.i();
+        var3[1] = (short)(var2 - 80 + (Ms.getRandom(25) + 55) * var1);
+        var3 = this.cloud[var1];
+        Ms.i();
+        var3[2] = (short)(Ms.getRandom(5) + 2);
+    }
+
+    private void draw0(int var1, int var2, int var3, int var4) {
+        Ui.i().fillRectB();
+        Ui.i().drawString("游戏规则", 320, var2 + var4 + 3, 33, 3, 1);
+        Ui.i().drawUi(7, 320 - 50, var2 + var4 - 13, 40, 0);
+        Ui.i().drawUi(7, 320 + 50, var2 + var4 - 13, 36, 4);
+        Ui.i().drawK(var1, var2 + var4 + 3, 200, var3, 4);
+        Ui.i().drawK(var1 + 200 + 10, var2 + var4 + 3, 200, var3, 4);
+        this.gr.showStringM("选择你认为会得第一的一只宠物和押注的大小，注数越大获胜后的奖励越丰厚！", var1 + 100, var2 + var4 + 15, 7, 0);
+        Ui.i().drawK(var1 + 420, var2 + var4 + 3, 200, var3, 4);
+        Ui.i().drawStringY(this.gr.about_a, var1 + 420 + 25, var2 + var4 + 15, var4, 0, 0);
+        if (this.state == 0) {
+            Ui.i().drawString("请选择押注大小：", var1 + 200 + 10, var2 + var4 + 15, 0, 0, 0);
+
+            for(var3 = 0; var3 < this.length; ++var3) {
+                Ui.i().drawK(var1 + 200 + 10 + 25 + 14, var2 + var4 + 50 + (var4 + 16) * var3, 150, var4 + 4, 1);
+                Ui.i().drawString(this.gr.about_b[var3].toString(), var1 + 200 + 10 + 25 + 14, var2 + var4 + 50 + (var4 + 16) * var3, 0, 3, 0);
+                if (this.gr.pkey.isSelect(var1 + 200 + 10 + 25 + 14, var2 + var4 + 50 + (var4 + 16) * var3, 150, var4 + 4)) {
+                    if (this.sel == var3) {
+                        this.gr.pkey.setKey5();
+                    } else {
+                        this.sel = (byte)var3;
+                    }
+                }
+            }
+
+            Ui.i().drawK4(var1 + 200 + 10 + 25 + 14, var2 + var4 + 50 + this.sel * (var4 + 16), 150, var4 + 4);
+        }
+
+        this.gr.drawMoney(320, 360, 3, false);
+        Ui.i().drawYesNo(true, true);
+    }
+
+    private void draw1(int var1, int var2, int var3) {
+        Ui.i().drawK(215, 33, 210, 325, 4);
+
+        int var5;
+        boolean var6;
+        for(var5 = 0; var5 < this.length; var5 = (byte)(var5 + 1)) {
+            Ui.i().drawK(var1 + 25 + var5 * 52, var2 + 25 + 10, 44, var3, 1);
+            Ui var9 = Ui.i();
+            Sprite var8 = this.sp[0];
+            byte[] var7 = this.now_a[var5];
+            if (this.state == 1) {
+                if (this.sel == var5) {
+                    var6 = true;
+                } else {
+                    var6 = false;
+                }
+            } else {
+                var6 = false;
+            }
+
+            var9.drawActionOne(var8, 0, var1 + 25 + var5 * 52 + 22, var2 + 25 + 8 + var3, var7, 0, var6);
+            Ui.i().drawNum("" + (var5 + 1), var1 + 25 + var5 * 52 + 27, var2 + 50 + 12, 20, 2);
+        }
+
+        byte var4;
+        if (this.state == 1) {
+            Ui.i().drawK4(var1 + 25 + this.sel * 52, var2 + 25 + 10, 44, 76);
+            Ui.i().drawTriangle(320, var2 + 25 + 49, 116, true, true);
+            var4 = this.gr.pkey.selectMenuX(4, 320 - 116, var2 + 25 + 10, 52, var3);
+            if (var4 != -1) {
+                if (this.sel == var4) {
+                    this.gr.pkey.setKey5();
+                } else {
+                    this.sel = var4;
+                }
+            }
+        }
+
+        Ui.i().drawString("兴奋度：", var1 + 25, var2 + 25 + 13 + var3, 0, 0, 0);
+        this.gr.drawFealty(6, 2, var1 + 125, var2 + 25 + 19 + var3);
+        this.gr.showStringM("每喂一个兴奋菇花费10金，可增加一格兴奋度。", 320, var2 + 50 + 19 + var3, 8, 0);
+        var3 = var3 + 69 + 25 + 75;
+        Ui.i().drawString("请选择道具：", var1 + 25, var2 + var3, 0, 0, 0);
+        var5 = var3 + 25 + 3;
+
+        for(byte var10 = 0; var10 < this.length; ++var10) {
+            Ui.i().drawK(var1 + 25 + var10 * 52, var2 + var5, 44, 34, 1);
+            this.gr.drawItem(12, var1 + 25 + var10 * 52, var2 + var5 + 10, 0);
+            Ui.i().drawString("x" + var10, var1 + 25 + var10 * 52 + 16, var2 + var5 + 8, 0, 3, 1);
+        }
+
+        if (this.state == 2) {
+            Ui.i().drawK4(var1 + 25 + this.sel * 52, var2 + var5, 44, 34);
+            Ui.i().drawTriangle(320, var2 + var5 + 14, 116, true, true);
+            var4 = this.gr.pkey.selectMenuX(4, 320 - 116, var2 + var5 + 8, 52, 34);
+            if (var4 != -1) {
+                if (this.sel == var4) {
+                    this.gr.pkey.setKey5();
+                } else {
+                    this.sel = var4;
+                }
+            }
+        }
+
+        Ui var11 = Ui.i();
+        if (this.state != 1) {
+            var6 = true;
+        } else {
+            var6 = false;
+        }
+
+        var11.drawYesNo(true, var6);
+    }
+
+    private void drawCloud() {
+        byte var1;
+        for(var1 = 0; var1 < this.cloud.length; ++var1) {
+            Ui.i().drawImage(this.imgCloud, this.cloud[var1][0], this.cloud[var1][1] - this.srcY, 0);
+        }
+
+        for(var1 = 0; var1 < this.cloud.length; ++var1) {
+            if (this.isNpcSrc(this.cloud[var1][0], this.cloud[var1][1])) {
+                this.addCloud(var1);
+            } else {
+                short[] var2 = this.cloud[var1];
+                var2[0] -= this.cloud[var1][2];
+            }
+        }
+
+    }
+
+    private void drawEnd() {
+        int var2 = (640 - 70) / 35;
+        Ui.i().drawModuleOne(this.sp[1], 0, 0, 40 - this.srcY, 0, 0);
+
+        for(int var1 = 0; var1 < var2 + 1; ++var1) {
+            Ui.i().drawModuleOne(this.sp[1], 1, var1 * 35 + 35, 44 - this.srcY, 0, 0);
+        }
+
+        Ui.i().drawModuleOne(this.sp[1], 0, 640, 40 - this.srcY, 1, 0);
+    }
+
+    private void drawGame() {
+        Ui.i().fillRect(5423359, 0, 0, 640, 360);
+        this.drawCloud();
+        this.drawEnd();
+
+        for(byte var1 = 0; var1 < this.length; ++var1) {
+            Ui.i().drawNum("" + (var1 + 1), var1 * 100 + 125 + 22, 20 - this.srcY, 1, 2);
+            Ui.i().drawActionOne(this.sp[0], 1, var1 * 100 + 125 + 22, this.monY[var1] - this.srcY, this.now_a[var1], 0, true);
+        }
+
+        if (this.state == 3 && this.time != 0) {
+            Ui.i().drawNum("" + this.time / 20, 320 - 5, 180, 0, 2);
+        }
+
+    }
+
+    private boolean isNpcSrc(int var1, int var2) {
+        boolean var3;
+        if (var1 >= -40 && var2 - this.srcY <= Constants_H.HEIGHT + 20) {
+            var3 = false;
+        } else {
+            var3 = true;
+        }
+
+        return var3;
     }
 
     private void nullGame() {
@@ -55,318 +225,173 @@ public class Racing implements MiniGame_H {
         this.gDate = null;
     }
 
-    private void draw0(int x, int y, int h, int fh) {
-        Ui.i().fillRectB();
-        Ui.i().drawString(Constants_H.GAME_TXT_7, Constants_H.WIDTH_H_, y + fh + 3, 33, 3, 1);
-        Ui.i().drawUi(7, Constants_H.WIDTH_H_ - 50, (y + fh) - 13, 40, 0);
-        Ui.i().drawUi(7, Constants_H.WIDTH_H_ + 50, (y + fh) - 13, 36, 4);
-        Ui.i().drawK(x, y + fh + 3, Player.REALIZED, h, 4);
-        Ui.i().drawK(x + Player.REALIZED + 10, y + fh + 3, Player.REALIZED, h, 4);
-        GameRun gameRun = this.gr;
-        int i = Player.REALIZED >> 1;
-        gameRun.showStringM(Constants_H.GAME_TXT_26, x + 100, y + fh + 15, 7, 0);
-        Ui i2 = Ui.i();
-        int i3 = (Player.REALIZED + 10) * 2;
-        i2.drawK(x + 420, y + fh + 3, Player.REALIZED, h, 4);
-        Ui i4 = Ui.i();
-        StringBuffer[] stringBufferArr = this.gr.about_a;
-        int i5 = (Player.REALIZED + 10) * 2;
-        i4.drawStringY(stringBufferArr, x + 420 + 25, y + fh + 15, fh, 0, 0);
-        if (this.state == 0) {
-            Ui.i().drawString(Constants_H.GAME_TXT_4, x + Player.REALIZED + 10, y + fh + 15, 0, 0, 0);
-            for (int i6 = 0; i6 < this.length; i6++) {
-                Ui.i().drawK(x + Player.REALIZED + 10 + 25 + 14, y + fh + 50 + ((fh + 16) * i6), 150, fh + 4, 1);
-                Ui.i().drawString(this.gr.about_b[i6].toString(), x + Player.REALIZED + 10 + 25 + 14, y + fh + 50 + ((fh + 16) * i6), 0, 3, 0);
-                if (this.gr.pkey.isSelect(x + Player.REALIZED + 10 + 25 + 14, y + fh + 50 + ((fh + 16) * i6), 150, fh + 4)) {
-                    if (this.sel == i6) {
-                        this.gr.pkey.setKey5();
-                    } else {
-                        this.sel = (byte) i6;
-                    }
-                }
-            }
-            Ui.i().drawK4(x + Player.REALIZED + 10 + 25 + 14, y + fh + 50 + (this.sel * (fh + 16)), 150, fh + 4);
-        }
-        this.gr.drawMoney(Constants_H.WIDTH_H_, Constants_H.HEIGHT_, 3, false);
-        Ui.i().drawYesNo(true, true);
-    }
-
-    private void draw1(int x, int y, int h) {
-        boolean z;
-        Ui.i().drawK(Constants.ERROR_CODE_EMAIL_WRONG_FORMAT, 33, 210, 325, 4);
-        byte i = 0;
-        while (i < this.length) {
-            Ui.i().drawK(x + 25 + (i * Key_H.KEY_NUM4), y + 25 + 10, 44, h, 1);
-            Ui i2 = Ui.i();
-            Sprite sprite = this.sp[0];
-            int i3 = x + 25 + (i * Key_H.KEY_NUM4) + 22;
-            int i4 = y + 25 + 8 + h;
-            byte[] bArr = this.now_a[i];
-            if (this.state == 1) {
-                z = this.sel == i;
-            } else {
-                z = false;
-            }
-            i2.drawActionOne(sprite, 0, i3, i4, bArr, 0, z);
-            Ui.i().drawNum(new StringBuilder().append(i + 1).toString(), x + 25 + (i * Key_H.KEY_NUM4) + 27, y + 50 + 12, 20, 2);
-            i = (byte) (i + 1);
-        }
-        if (this.state == 1) {
-            Ui.i().drawK4(x + 25 + (this.sel * Key_H.KEY_NUM4), y + 25 + 10, 44, 76);
-            Ui.i().drawTriangle(Constants_H.WIDTH_H_, y + 25 + 49, 116, true, true);
-            byte t = this.gr.pkey.selectMenuX(4, Constants_H.WIDTH_H_ - 116, y + 25 + 10, 52, h);
-            if (t != -1) {
-                if (this.sel == t) {
-                    this.gr.pkey.setKey5();
-                } else {
-                    this.sel = t;
-                }
-            }
-        }
-        Ui.i().drawString(Constants_H.GAME_TXT_9, x + 25, y + 25 + 13 + h, 0, 0, 0);
-        this.gr.drawFealty(6, 2, x + 125, y + 25 + 19 + h);
-        this.gr.showStringM(Constants_H.GAME_TXT_6, Constants_H.WIDTH_H_, y + 50 + 19 + h, 8, 0);
-        int h2 = h + 69 + 25 + 75;
-        Ui.i().drawString(Constants_H.GAME_TXT_10, x + 25, y + h2, 0, 0, 0);
-        int h3 = h2 + 25 + 3;
-        for (byte i5 = 0; i5 < this.length; i5 = (byte) (i5 + 1)) {
-            Ui.i().drawK(x + 25 + (i5 * Key_H.KEY_NUM4), y + h3, 44, 34, 1);
-            this.gr.drawItem(12, x + 25 + (i5 * Key_H.KEY_NUM4), y + h3 + 10, 0);
-            Ui.i().drawString("x" + ((int) i5), x + 25 + (i5 * Key_H.KEY_NUM4) + 16, y + h3 + 8, 0, 3, 1);
-        }
-        if (this.state == 2) {
-            Ui.i().drawK4(x + 25 + (this.sel * Key_H.KEY_NUM4), y + h3, 44, 34);
-            Ui.i().drawTriangle(Constants_H.WIDTH_H_, y + h3 + 14, 116, true, true);
-            byte t2 = this.gr.pkey.selectMenuX(4, Constants_H.WIDTH_H_ - 116, y + h3 + 8, 52, 34);
-            if (t2 != -1) {
-                if (this.sel == t2) {
-                    this.gr.pkey.setKey5();
-                } else {
-                    this.sel = t2;
-                }
-            }
-        }
-        Ui.i().drawYesNo(true, this.state != 1);
-    }
-
-    private void drawGame() {
-        Ui.i().fillRect(5423359, 0, 0, Constants_H.WIDTH_, Constants_H.HEIGHT_);
-        drawCloud();
-        drawEnd();
-        for (byte i = 0; i < this.length; i = (byte) (i + 1)) {
-            Ui.i().drawNum(new StringBuilder().append(i + 1).toString(), (i * 100) + 125 + 22, 20 - this.srcY, 1, 2);
-            Ui.i().drawActionOne(this.sp[0], 1, (i * 100) + 125 + 22, this.monY[i] - this.srcY, this.now_a[i], 0, true);
-        }
-        if (this.state == 3 && this.time != 0) {
-            Ui.i().drawNum(new StringBuilder().append(this.time / 20).toString(), Constants_H.WIDTH_H_ - 5, Constants_H.HEIGHT_H_, 0, 2);
-        }
-    }
-
     private void setSpeed() {
         if (this.speedLv < this.gDate.length) {
-            byte i = 0;
-            while (i < 4 && this.monY[i] > this.gDate[this.speedLv][0]) {
-                i = (byte) (i + 1);
+            byte var1;
+            for(var1 = 0; var1 < 4 && this.monY[var1] > this.gDate[this.speedLv][0]; ++var1) {
             }
-            if (i < 4) {
-                for (byte i2 = 0; i2 < 4; i2 = (byte) (i2 + 1)) {
-                    byte[] bArr = this.now_a[i2];
+
+            if (var1 < 4) {
+                for(var1 = 0; var1 < 4; ++var1) {
+                    byte[] var2 = this.now_a[var1];
                     Ms.i();
-                    bArr[2] = (byte) (Ms.getRandom(this.gDate[this.speedLv][1]) + this.gDate[this.speedLv][1]);
+                    var2[2] = (byte)(Ms.getRandom(this.gDate[this.speedLv][1]) + this.gDate[this.speedLv][1]);
                 }
-                this.speedLv = (byte) (this.speedLv + 1);
+
+                ++this.speedLv;
             }
         }
+
     }
 
-    @Override // minigame.MiniGame_H
-    public void go(int mode, int lv_) {
-        this.lv = (byte) lv_;
+    public void go(int var1) {
+        if (var1 < 1) {
+            this.sel = 0;
+            this.state = 0;
+            this.length = 3;
+            this.gr.setStringB("一注：#n投入100金，#n获胜得120金。#n二注：#n投入300金，#n获胜得350金。#n三注：#n投入1000金，#n获胜得1200金。", Constants_H.WIDTH - 50, 0);
+            this.gr.setStringB("一注100金#n二注300金#n三注1000金", Constants_H.WIDTH - 50, 1);
+        } else if (var1 == 1) {
+            this.myDate[0] = this.sel;
+            this.sel = 0;
+            this.state = 1;
+            this.length = 4;
+        } else if (var1 == 2) {
+            this.myDate[1] = this.sel;
+            this.sel = 0;
+            this.state = 2;
+        } else if (var1 == 3) {
+            this.myDate[2] = this.sel;
+            this.sel = 0;
+            this.state = 3;
+            this.srcY = 90;
+            this.speedLv = 0;
+            this.myDate[3] = -1;
+            this.time = 70;
+
+            byte var2;
+            for(var2 = 0; var2 < this.length; ++var2) {
+                this.monY[var2] = 450;
+            }
+
+            for(var2 = 0; var2 < this.cloud.length; ++var2) {
+                this.addCloud(var2);
+            }
+        }
+
+    }
+
+    public void go(int var1, int var2) {
+        this.lv = (byte)var2;
         this.sp = new Sprite[3];
         this.sp[0] = Ms.i().createSprite("data/npc0/67", true);
         this.sp[1] = Ms.i().createSprite("data/brow/m1", true);
         this.imgCloud = Ms.i().createImage("data/cloud");
-        go(mode);
+        this.go(var1);
     }
 
-    @Override // minigame.MiniGame_H
-    public void go(int mode) {
-        if (mode < 1) {
-            this.sel = (byte) 0;
-            this.state = (byte) 0;
-            this.length = (byte) 3;
-            this.gr.setStringB(Constants_H.GAME_TXT_3, Constants_H.WIDTH - 50, 0);
-            this.gr.setStringB(Constants_H.GAME_TXT_8, Constants_H.WIDTH - 50, 1);
-            return;
-        }
-        if (mode == 1) {
-            this.myDate[0] = this.sel;
-            this.sel = (byte) 0;
-            this.state = (byte) 1;
-            this.length = (byte) 4;
-            return;
-        }
-        if (mode == 2) {
-            this.myDate[1] = this.sel;
-            this.sel = (byte) 0;
-            this.state = (byte) 2;
-            return;
-        }
-        if (mode == 3) {
-            this.myDate[2] = this.sel;
-            this.sel = (byte) 0;
-            this.state = (byte) 3;
-            this.srcY = (short) 90;
-            this.speedLv = (byte) 0;
-            this.myDate[3] = -1;
-            this.time = (byte) 70;
-            for (byte i = 0; i < this.length; i = (byte) (i + 1)) {
-                this.monY[i] = 450;
-            }
-            for (byte i2 = 0; i2 < this.cloud.length; i2 = (byte) (i2 + 1)) {
-                addCloud(i2);
-            }
-        }
-    }
-
-    @Override // minigame.MiniGame_H
     public boolean key() {
+        boolean var1;
         if (Ms.i().key_delay()) {
-            return false;
+            var1 = false;
+        } else {
+            if (this.state == 0) {
+                if (Ms.i().key_Up_Down()) {
+                    this.sel = Ms.i().select(this.sel, 0, this.length - 1);
+                } else if (Ms.i().key_S1_Num5() && this.gr.isMoney(this.money[this.sel << 1], true)) {
+                    this.go(1);
+                } else if (Ms.i().key_S2()) {
+                    this.nullGame();
+                    var1 = true;
+                    return var1;
+                }
+            } else if (this.state == 1) {
+                if (Ms.i().key_Left_Right()) {
+                    this.sel = Ms.i().select(this.sel, 0, this.length - 1);
+                } else if (Ms.i().key_S1_Num5()) {
+                    this.go(2);
+                }
+            } else if (this.state == 2) {
+                if (Ms.i().key_Left_Right()) {
+                    this.sel = Ms.i().select(this.sel, 0, this.length - 1);
+                } else if (Ms.i().key_S1_Num5() && this.gr.isMoney(this.sel * 10, true)) {
+                    this.go(3);
+                } else if (Ms.i().key_S2()) {
+                    this.sel = this.myDate[1];
+                    this.state = 1;
+                }
+            }
+
+            var1 = false;
         }
-        if (this.state == 0) {
-            if (Ms.i().key_Up_Down()) {
-                this.sel = Ms.i().select(this.sel, 0, this.length - 1);
-            } else if (Ms.i().key_S1_Num5() && this.gr.isMoney(this.money[this.sel << 1], true)) {
-                go(1);
-            } else if (Ms.i().key_S2()) {
-                nullGame();
-                return true;
-            }
-        } else if (this.state == 1) {
-            if (Ms.i().key_Left_Right()) {
-                this.sel = Ms.i().select(this.sel, 0, this.length - 1);
-            } else if (Ms.i().key_S1_Num5()) {
-                go(2);
-            }
-        } else if (this.state == 2) {
-            if (Ms.i().key_Left_Right()) {
-                this.sel = Ms.i().select(this.sel, 0, this.length - 1);
-            } else if (Ms.i().key_S1_Num5() && this.gr.isMoney(this.sel * 10, true)) {
-                go(3);
-            } else if (Ms.i().key_S2()) {
-                this.sel = this.myDate[1];
-                this.state = (byte) 1;
-            }
-        }
-        return false;
+
+        return var1;
     }
 
-    @Override // minigame.MiniGame_H
     public void patin() {
-        if (this.state == 0 || this.state == 1 || this.state == 2) {
-            draw0(10, 5, 325, 25);
+        if (this.state != 0 && this.state != 1 && this.state != 2) {
+            this.drawGame();
+        } else {
+            this.draw0(10, 5, 325, 25);
             if (this.state == 1 || this.state == 2) {
-                draw1(198, 15, 76);
-                return;
+                this.draw1(198, 15, 76);
             }
-            return;
         }
-        drawGame();
+
     }
 
-    @Override // minigame.MiniGame_H
     public void run() {
         if (this.state == 3) {
             if (this.time == 0) {
-                setSpeed();
+                this.setSpeed();
                 if (this.myDate[3] != -1) {
-                    this.time = (byte) 5;
-                    this.state = (byte) 4;
-                    return;
-                }
-                byte j = -1;
-                for (byte i = 0; i < 4; i = (byte) (i + 1)) {
-                    short[] sArr = this.monY;
-                    sArr[i] = (short) (sArr[i] - this.now_a[i][2]);
-                    if (this.monY[i] - this.srcY < Constants_H.HEIGHT_H) {
-                        j = i;
+                    this.time = 5;
+                    this.state = 4;
+                } else {
+                    byte var2 = -1;
+
+                    for(byte var1 = 0; var1 < 4; ++var1) {
+                        short[] var3 = this.monY;
+                        var3[var1] = (short)(var3[var1] - this.now_a[var1][2]);
+                        if (this.monY[var1] - this.srcY < Constants_H.HEIGHT_H) {
+                            var2 = var1;
+                        }
+
+                        if (this.monY[var1] < 70 && this.myDate[3] == -1) {
+                            this.myDate[3] = var1;
+                        }
                     }
-                    if (this.monY[i] < 70 && this.myDate[3] == -1) {
-                        this.myDate[3] = i;
+
+                    if (var2 != -1) {
+                        this.srcY = (short)(this.srcY - this.now_a[var2][2]);
+                    }
+
+                    if (this.srcY < 0) {
+                        this.srcY = 0;
                     }
                 }
-                if (j != -1) {
-                    this.srcY = (short) (this.srcY - this.now_a[j][2]);
-                }
-                if (this.srcY < 0) {
-                    this.srcY = (short) 0;
-                    return;
-                }
-                return;
+            } else {
+                --this.time;
             }
-            this.time = (byte) (this.time - 1);
-            return;
-        }
-        if (this.state == 4) {
+        } else if (this.state == 4) {
             if (this.time == 3) {
                 if (this.myDate[3] == this.myDate[1]) {
-                    this.gr.money += this.money[(this.myDate[0] * 2) + 1];
-                    this.gr.say(Constants_H.MONEY_TXT_7 + ((int) this.money[(this.myDate[0] * 2) + 1]) + Constants_H.MONEY_TXT_0, 0);
-                    byte[] bArr = this.gr.rmsOther;
-                    bArr[4] = (byte) (bArr[4] | (1 << this.lv));
+                    GameRun var4 = this.gr;
+                    var4.money += this.money[this.myDate[0] * 2 + 1];
+                    this.gr.say("获得：" + this.money[this.myDate[0] * 2 + 1] + "金", 0);
+                    byte[] var5 = this.gr.rmsOther;
+                    var5[4] = (byte)(var5[4] | 1 << this.lv);
                 } else {
-                    this.gr.say(Constants_H.GAME_TXT_11, 0);
+                    this.gr.say("不好意思，没有猜对。", 0);
                 }
             }
-            if (this.time <= 0) {
-                if (this.time == 0 && this.gr.say_c == 0) {
-                    go(0);
-                    return;
-                }
-                return;
-            }
-            this.time = (byte) (this.time - 1);
-        }
-    }
 
-    private void addCloud(int i) {
-        short[] sArr = this.cloud[i];
-        Ms.i();
-        sArr[0] = (short) (Ms.getRandom(Constants_H.WIDTH_H) + Constants_H.WIDTH_);
-        short[] sArr2 = this.cloud[i];
-        int i2 = this.srcY - 80;
-        Ms.i();
-        sArr2[1] = (short) (i2 + ((Ms.getRandom(25) + 55) * i));
-        short[] sArr3 = this.cloud[i];
-        Ms.i();
-        sArr3[2] = (short) (Ms.getRandom(5) + 2);
-    }
-
-    private void drawCloud() {
-        for (byte i = 0; i < this.cloud.length; i = (byte) (i + 1)) {
-            Ui.i().drawImage(this.imgCloud, this.cloud[i][0], this.cloud[i][1] - this.srcY, 0);
-        }
-        for (byte i2 = 0; i2 < this.cloud.length; i2 = (byte) (i2 + 1)) {
-            if (isNpcSrc(this.cloud[i2][0], this.cloud[i2][1])) {
-                addCloud(i2);
-            } else {
-                short[] sArr = this.cloud[i2];
-                sArr[0] = (short) (sArr[0] - this.cloud[i2][2]);
+            if (this.time > 0) {
+                --this.time;
+            } else if (this.time == 0 && this.gr.say_c == 0) {
+                this.go(0);
             }
         }
-    }
 
-    private boolean isNpcSrc(int ax, int ay) {
-        return ax < -40 || ay - this.srcY > Constants_H.HEIGHT + 20;
-    }
-
-    private void drawEnd() {
-        int n = ((Constants_H.WIDTH_ - 70) / 35) + 1;
-        Ui.i().drawModuleOne(this.sp[1], 0, 0, 40 - this.srcY, 0, 0);
-        for (int i = 0; i < n; i++) {
-            Ui.i().drawModuleOne(this.sp[1], 1, (i * 35) + 35, 44 - this.srcY, 0, 0);
-        }
-        Ui.i().drawModuleOne(this.sp[1], 0, Constants_H.WIDTH_, 40 - this.srcY, 1, 0);
     }
 }

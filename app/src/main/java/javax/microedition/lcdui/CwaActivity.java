@@ -38,7 +38,7 @@ public class CwaActivity extends Activity {
     }
 
     private void killBackgroundProcess() {
-        ActivityManager activityManager = (ActivityManager) getSystemService("activity");
+        ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> apps = activityManager.getRunningAppProcesses();
         int mypid = Process.myPid();
         for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : apps) {
@@ -98,7 +98,7 @@ public class CwaActivity extends Activity {
         super.onCreate(savedInstanceState);
         killBackgroundProcess();
         initActivity();
-        this.audioManager = (AudioManager) getSystemService("audio");
+        this.audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         if (this.isFullWindow) {
             setFullScreen();
         }
@@ -147,30 +147,10 @@ public class CwaActivity extends Activity {
     }
 
     public void showExitDialog() {
-        new AlertDialog.Builder(this).setMessage("确认退出？").setPositiveButton(Constants_H.PAUSE_TXT_22, new DialogInterface.OnClickListener() { // from class: javax.microedition.lcdui.CwaActivity.1
-            AnonymousClass1() {
-            }
-
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface dialog, int which) {
-                if (which == -1) {
-                    CwaActivity.this.jam.notifyDestroyed();
-                    CwaActivity.this.jam.notifyExit();
-                }
-            }
-        }).setNegativeButton(Constants_H.PAUSE_TXT_23, new DialogInterface.OnClickListener() { // from class: javax.microedition.lcdui.CwaActivity.2
-            AnonymousClass2() {
-            }
-
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                CwaActivity.this.jam.notifyResumed();
-            }
-        }).show();
+        new AlertDialog.Builder((Context)this).setMessage("确认退出？").setPositiveButton("是", (DialogInterface.OnClickListener)new CwaActivity()).setNegativeButton("否", (DialogInterface.OnClickListener)new CwaActivity()).show();
     }
 
-    /* renamed from: javax.microedition.lcdui.CwaActivity$1 */
+    /* renamed from: javax.microedition.lcdui.CwaActivity.1 */
     /* loaded from: classes.dex */
     public class AnonymousClass1 implements DialogInterface.OnClickListener {
         AnonymousClass1() {
@@ -185,7 +165,7 @@ public class CwaActivity extends Activity {
         }
     }
 
-    /* renamed from: javax.microedition.lcdui.CwaActivity$2 */
+    /* renamed from: javax.microedition.lcdui.CwaActivity.2 */
     /* loaded from: classes.dex */
     public class AnonymousClass2 implements DialogInterface.OnClickListener {
         AnonymousClass2() {

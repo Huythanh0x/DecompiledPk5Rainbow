@@ -1,5 +1,6 @@
 package com.android.Util;
 
+import android.content.Context;
 import android.content.res.AssetManager;
 import android.media.AudioManager;
 import android.os.ConditionVariable;
@@ -39,13 +40,13 @@ public class AndroidUtil {
         if (CwaActivity.getContextInstance() == null) {
             return -1;
         }
-        aManager = (AudioManager) CwaActivity.getContextInstance().getSystemService("audio");
+        aManager = (AudioManager) CwaActivity.getContextInstance().getSystemService(Context.AUDIO_SERVICE);
         return aManager.getStreamVolume(3);
     }
 
     public static void setMusic(int volume) {
         if (CwaActivity.getContextInstance() != null) {
-            aManager = (AudioManager) CwaActivity.getContextInstance().getSystemService("audio");
+            aManager = (AudioManager) CwaActivity.getContextInstance().getSystemService(Context.AUDIO_SERVICE);
             aManager.setStreamVolume(3, volume, 16);
         }
     }

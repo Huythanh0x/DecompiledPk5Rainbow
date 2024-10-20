@@ -68,8 +68,8 @@ public class GameRun_F implements Key_H {
     public byte popMenu = -1;
     public byte[] select_it = new byte[4];
     public byte[] select_st = new byte[4];
-    public byte[][] selectBag = (byte[][]) Array.newInstance((Class<?>) Byte.TYPE, 4, 2);
-    public byte[][] select = (byte[][]) Array.newInstance((Class<?>) Byte.TYPE, 2, 2);
+    public byte[][] selectBag = new byte[4][2];
+    public byte[][] select = new byte[2][2];
     public byte max_takes = 3;
     public byte max_monsters = 10;
 
@@ -589,26 +589,31 @@ public class GameRun_F implements Key_H {
     }
 
     public void loadItem() {
-        this.info = Ms.i().rmsOptions(4, null, 1);
+        this.info = Ms.i().rmsOptions(4, (byte[])null, 1);
         this.len = new byte[]{16, 19, 23, 12};
         this.itemsLength = new byte[4];
+        int var1;
         if (this.info[0] != -1) {
-            for (int i = 0; i < 4; i++) {
-                this.itemsLength[i] = this.info[i];
+            for(var1 = 0; var1 < 4; ++var1) {
+                this.itemsLength[var1] = this.info[var1];
             }
         }
-        this.items = new byte[this.itemsLength.length][];
-        int k = 0;
-        for (int i2 = 0; i2 < this.items.length; i2++) {
-            this.items[i2] = (byte[][]) Array.newInstance((Class<?>) Byte.TYPE, this.len[i2], 2);
-            int j = 0;
-            while (j < this.itemsLength[i2]) {
-                this.items[i2][j][0] = this.info[(k * 2) + 4];
-                this.items[i2][j][1] = this.info[(k * 2) + 4 + 1];
-                j++;
-                k++;
+
+        this.items = new byte[this.itemsLength.length][][];
+        var1 = 0;
+
+        for(int var2 = 0; var1 < this.items.length; ++var1) {
+            byte[][][] var4 = this.items;
+            int var3 = this.len[var1];
+            var4[var1] = new byte[var3][2];
+
+            for(var3 = 0; var3 < this.itemsLength[var1]; ++var2) {
+                this.items[var1][var3][0] = this.info[var2 * 2 + 4];
+                this.items[var1][var3][1] = this.info[var2 * 2 + 4 + 1];
+                ++var3;
             }
         }
+
         this.info = null;
         this.len = null;
     }

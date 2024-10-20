@@ -20,6 +20,66 @@ import javax.microedition.media.Player;
 import minigame.Mg;
 
 /* loaded from: classes.dex */
+/**
+ * The GameRun class is responsible for managing the main game loop, handling game states, and rendering the game.
+ * It extends the GameRun_F class and contains various fields and methods to manage game logic, rendering, and state transitions.
+ * 
+ * <h2>Dependencies:</h2>
+ * <ul>
+ *   <li>GameRun_F</li>
+ *   <li>Battle</li>
+ *   <li>Image</li>
+ *   <li>Sprite</li>
+ *   <li>Constants</li>
+ *   <li>Constants_H</li>
+ *   <li>Ui</li>
+ *   <li>Ms</li>
+ *   <li>SMSSender</li>
+ *   <li>MainCanvas</li>
+ *   <li>Map</li>
+ * </ul>
+ * 
+ * <h2>Fields:</h2>
+ * <ul>
+ *   <li>Various fields to manage game state, rendering, and game logic.</li>
+ *   <li>Fields to store images, sprites, and other game assets.</li>
+ *   <li>Fields to manage player and enemy states, items, skills, and other game elements.</li>
+ * </ul>
+ * 
+ * <h2>Usage:</h2>
+ * <p>
+ * The GameRun class is instantiated with a MainCanvas object and initializes various game components.
+ * It contains methods to handle different game states, render the game, and manage game logic.
+ * The main methods include:
+ * </p>
+ * <ul>
+ *   <li><code>goMAIN_MENU()</code>: Transitions to the main menu.</li>
+ *   <li><code>doPaint(int mode)</code>: Handles painting the game based on the current mode.</li>
+ *   <li><code>setNull(boolean bb)</code>: Resets various game components.</li>
+ *   <li><code>start()</code>: Starts the game and initializes the map and NPCs.</li>
+ *   <li><code>saveGame()</code>: Saves the current game state.</li>
+ *   <li><code>run_gameRun()</code>: Main game loop handling different game states.</li>
+ *   <li><code>paint_gameRun(Graphics g)</code>: Renders the game based on the current state.</li>
+ * </ul>
+ * 
+ * <h2>Logic:</h2>
+ * <p>
+ * The GameRun class manages the main game loop, handling transitions between different game states such as:
+ * </p>
+ * <ul>
+ *   <li>Main menu</li>
+ *   <li>In-game map</li>
+ *   <li>Battle state</li>
+ *   <li>Item management</li>
+ *   <li>Skill management</li>
+ *   <li>Monster management</li>
+ *   <li>Saving and loading game state</li>
+ * </ul>
+ * <p>
+ * The class also handles rendering the game, including drawing the map, battle scenes, items, skills, and other game elements.
+ * It manages player and enemy states, items, skills, and other game elements, ensuring smooth transitions and gameplay.
+ * </p>
+ */
 public class GameRun extends GameRun_F {
     public static boolean isSay = false;
     private StringBuffer[] NAME;

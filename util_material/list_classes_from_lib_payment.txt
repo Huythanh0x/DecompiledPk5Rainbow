@@ -1,0 +1,55 @@
+```
+#!/bin/bash
+# Check if a JAR file is provided as an argument
+if [ -z "$1" ]; then
+  echo "Usage: $0 <path-to-jar-file>"
+  exit 1
+fi
+
+# List all Java classes inside the JAR file
+jar tf "$1" | grep '\.class$' | sed 's/\//./g' | sed 's/\.class$//'
+```
+com.uc.paymentsdk.commons.codec.DecoderException
+com.uc.paymentsdk.commons.codec.Base64
+com.uc.paymentsdk.commons.codec.Decoder
+com.uc.paymentsdk.commons.codec.MD5
+com.uc.paymentsdk.commons.codec.EncoderException
+com.uc.paymentsdk.commons.codec.DigestUtils
+com.uc.paymentsdk.commons.codec.Encoder
+com.uc.paymentsdk.commons.codec.Hex
+com.uc.paymentsdk.commons.codec.BinaryEncoder
+com.uc.paymentsdk.commons.codec.Crypter
+com.uc.paymentsdk.commons.codec.BinaryDecoder
+com.uc.paymentsdk.commons.ui.CustomTextView
+com.uc.paymentsdk.commons.ui.CustomAdapter
+com.uc.paymentsdk.commons.ui.TitleSpinner
+com.uc.paymentsdk.model.TypeFactory
+com.uc.paymentsdk.model.PayType
+com.uc.paymentsdk.model.IType
+com.uc.paymentsdk.model.ChargeType
+com.uc.paymentsdk.model.AbstractType
+com.uc.paymentsdk.network.Api
+com.uc.paymentsdk.network.XMLParser
+com.uc.paymentsdk.network.ApiTask
+com.uc.paymentsdk.network.HttpClientFactory
+com.uc.paymentsdk.network.JSONParser
+com.uc.paymentsdk.network.AndroidHttpClient
+com.uc.paymentsdk.network.chain.Handler
+com.uc.paymentsdk.network.chain.SyncSmsInfoHandler
+com.uc.paymentsdk.network.chain.SyncPayChannelHandler
+com.uc.paymentsdk.network.chain.HandlerProxy
+com.uc.paymentsdk.network.chain.SyncChargeChannelHandler
+com.uc.paymentsdk.payment.PaymentsActivity
+com.uc.paymentsdk.payment.PaymentInfo
+com.uc.paymentsdk.payment.sms.SimCardNotSupportException
+com.uc.paymentsdk.payment.sms.SmsInfos
+com.uc.paymentsdk.payment.sms.SmsInfo
+com.uc.paymentsdk.payment.sms.receiver.SmsReceiver
+com.uc.paymentsdk.payment.upoint.UPointInfo
+com.uc.paymentsdk.payment.upoint.UPointPayInfo
+com.uc.paymentsdk.util.SecurityUtil
+com.uc.paymentsdk.util.DialogUtil
+com.uc.paymentsdk.util.Constants
+com.uc.paymentsdk.util.Utils
+com.uc.paymentsdk.util.PrefUtil
+res.FileLoader

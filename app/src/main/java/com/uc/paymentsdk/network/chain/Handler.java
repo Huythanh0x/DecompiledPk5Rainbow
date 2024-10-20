@@ -2,32 +2,28 @@ package com.uc.paymentsdk.network.chain;
 
 import android.content.Context;
 
-/* loaded from: classes.dex */
 public abstract class Handler {
-    protected static final int STATUS_SYNCED = 2;
-    protected static final int STATUS_SYNCING = 1;
-    protected static final int STATUS_UNSYNC = 0;
-    protected Context mContext;
-    protected android.os.Handler mHandler = new android.os.Handler();
-    private Handler mSuccessor;
+   protected static final int STATUS_SYNCED = 2;
+   protected static final int STATUS_SYNCING = 1;
+   protected static final int STATUS_UNSYNC = 0;
+   protected Context mContext;
+   protected android.os.Handler mHandler;
+   private Handler mSuccessor;
 
-    /* loaded from: classes.dex */
-    public interface OnFinishListener {
-        void onFinish();
-    }
+   public Handler(Context var1) {
+      super();
+      this.mContext = var1;
+      this.mHandler = new android.os.Handler();
+   }
 
-    public abstract void handleRequest();
+   public Handler getSuccessor() {
+      return this.mSuccessor;
+   }
 
-    public Handler(Context paramContext) {
-        this.mContext = paramContext;
-    }
+   public abstract void handleRequest();
 
-    public Handler setSuccessor(Handler paramHandler) {
-        this.mSuccessor = paramHandler;
-        return this;
-    }
-
-    public Handler getSuccessor() {
-        return this.mSuccessor;
-    }
+   public Handler setSuccessor(Handler var1) {
+      this.mSuccessor = var1;
+      return this;
+   }
 }

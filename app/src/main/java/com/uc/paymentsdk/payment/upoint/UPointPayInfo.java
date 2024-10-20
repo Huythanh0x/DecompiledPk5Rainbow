@@ -2,212 +2,242 @@ package com.uc.paymentsdk.payment.upoint;
 
 import android.content.Context;
 import com.uc.paymentsdk.commons.codec.MD5;
-import com.uc.paymentsdk.payment.PaymentInfo;
 import com.uc.paymentsdk.util.Utils;
 
-/* loaded from: classes.dex */
 public class UPointPayInfo {
-    private static final String EID = "4";
-    private Context paramcontext;
-    private int umoney;
-    private int upoint;
-    private String userid = "";
-    private String userpass = "";
-    private String usersession = "";
-    private String paypwd = "";
-    private String paypwdtoken = "";
-    private String cpid = "";
-    private String gameid = "";
-    private String sign = "";
-    private String consumeid = "";
-    private String uctoken = "";
-    private String tm = "";
-    private String chcode = PaymentInfo.CHANNELID;
+   private static final String EID = "4";
+   private String chcode = "70";
+   private String consumeid = "";
+   private String cpid = "";
+   private String gameid = "";
+   private Context paramcontext;
+   private String paypwd = "";
+   private String paypwdtoken = "";
+   private String sign = "";
+   private String tm = "";
+   private String uctoken = "";
+   private int umoney;
+   private int upoint;
+   private String userid = "";
+   private String userpass = "";
+   private String usersession = "";
 
-    public UPointPayInfo(String userid, String userpass, String paypwd, String cpid, String gameid, int upoint, String timpstamp) {
-        setUserid(userid);
-        setUserpass(userpass);
-        setPaypwd(paypwd);
-        setCpid(cpid);
-        setGameid(gameid);
-        setTm(timpstamp);
-        setUpoint(upoint);
-        if (this.tm == null || this.tm.length() < 1) {
-            createTimeStamp();
-        }
-        createCharge(this.upoint);
-        CreateUsersession();
-        createConsumeId();
-        createSign();
-        createUCToken();
-    }
+   public UPointPayInfo(String var1, String var2, String var3, String var4, String var5, int var6, String var7) {
+      super();
+      this.setUserid(var1);
+      this.setUserpass(var2);
+      this.setPaypwd(var3);
+      this.setCpid(var4);
+      this.setGameid(var5);
+      this.setTm(var7);
+      this.setUpoint(var6);
+      if (this.tm == null || this.tm.length() < 1) {
+         this.createTimeStamp();
+      }
 
-    public Context getParamcontext() {
-        return this.paramcontext;
-    }
+      this.createCharge(this.upoint);
+      this.CreateUsersession();
+      this.createConsumeId();
+      this.createSign();
+      this.createUCToken();
+   }
 
-    public void setParamcontext(Context paramcontext) {
-        this.paramcontext = paramcontext;
-    }
+   public static String getEid() {
+      return "4";
+   }
 
-    public String getUserid() {
-        return this.userid;
-    }
+   public void CreateUsersession() {
+      this.usersession = Utils.getSessionID(this.paramcontext);
+   }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
+   public void createCharge(int var1) {
+      this.umoney = this.upoint * 10 / 100;
+   }
 
-    public String getUserpass() {
-        return this.userpass;
-    }
+   public void createConsumeId() {
+      this.consumeid = Utils.getUPConsumeid(this.userid, this.cpid, this.gameid);
+   }
 
-    public void setUserpass(String userpass) {
-        this.userpass = userpass;
-    }
+   public void createPayPwdToken() {
+      if (this.paypwd != null && this.paypwd.length() > 0) {
+         try {
+            StringBuilder var1 = new StringBuilder(String.valueOf(this.userid));
+            StringBuilder var2 = new StringBuilder(String.valueOf(MD5.getMD5(var1.append(this.paypwd).toString()).toUpperCase()));
+            this.paypwdtoken = MD5.getMD5(var2.append(this.tm).toString());
+         } catch (Exception var3) {
+            this.paypwd = "";
+         }
+      } else {
+         this.paypwd = "";
+      }
 
-    public String getUsersession() {
-        return this.usersession;
-    }
+   }
 
-    public void setUsersession(String usersession) {
-        this.usersession = usersession;
-    }
+   public void createSign() {
+      String var1;
+      if (this.usersession.length() <= 5) {
+         var1 = this.usersession;
+      } else {
+         var1 = this.usersession.substring(0, 5);
+      }
 
-    public String getPaypwd() {
-        return this.paypwd;
-    }
+      StringBuilder var2 = new StringBuilder(String.valueOf(var1));
+      if (this.cpid.length() <= 5) {
+         var1 = this.cpid;
+      } else {
+         var1 = this.cpid.substring(0, 5);
+      }
 
-    public void setPaypwd(String paypwd) {
-        this.paypwd = paypwd;
-        createPayPwdToken();
-    }
+      var2 = var2.append(var1);
+      if (this.gameid.length() <= 5) {
+         var1 = this.gameid;
+      } else {
+         var1 = this.gameid.substring(0, 5);
+      }
 
-    public String getPaypwdtoken() {
-        return this.paypwdtoken;
-    }
+      this.sign = var2.append(var1).append(this.upoint).toString();
+   }
 
-    public void setPaypwdtoken(String paypwdtoken) {
-        this.paypwdtoken = paypwdtoken;
-    }
+   public void createTimeStamp() {
+      String var1;
+      if (this.tm.equals("")) {
+         var1 = Utils.getCurrentTime(false);
+      } else {
+         var1 = this.tm;
+      }
 
-    public String getCpid() {
-        return this.cpid;
-    }
+      this.tm = var1;
+   }
 
-    public void setCpid(String cpid) {
-        this.cpid = cpid;
-    }
+   public void createUCToken() {
+      this.uctoken = this.tm + "`" + this.userid + "`" + this.userpass;
+   }
 
-    public String getGameid() {
-        return this.gameid;
-    }
+   public String getChcode() {
+      return this.chcode;
+   }
 
-    public void setGameid(String gameid) {
-        this.gameid = gameid;
-    }
+   public String getConsumeid() {
+      return this.consumeid;
+   }
 
-    public int getUpoint() {
-        return this.upoint;
-    }
+   public String getCpid() {
+      return this.cpid;
+   }
 
-    public void setUpoint(int upoint) {
-        this.upoint = upoint;
-    }
+   public String getGameid() {
+      return this.gameid;
+   }
 
-    public int getUmoney() {
-        return this.umoney;
-    }
+   public Context getParamcontext() {
+      return this.paramcontext;
+   }
 
-    public void setUmoney(int umoney) {
-        this.umoney = umoney;
-    }
+   public String getPaypwd() {
+      return this.paypwd;
+   }
 
-    public String getSign() {
-        return this.sign;
-    }
+   public String getPaypwdtoken() {
+      return this.paypwdtoken;
+   }
 
-    public void setSign(String sign) {
-        this.sign = sign;
-    }
+   public String getSign() {
+      return this.sign;
+   }
 
-    public String getConsumeid() {
-        return this.consumeid;
-    }
+   public String getTm() {
+      return this.tm;
+   }
 
-    public void setConsumeid(String consumeid) {
-        this.consumeid = consumeid;
-    }
+   public String getUctoken() {
+      return this.uctoken;
+   }
 
-    public String getUctoken() {
-        return this.uctoken;
-    }
+   public int getUmoney() {
+      return this.umoney;
+   }
 
-    public void setUctoken(String uctoken) {
-        this.uctoken = uctoken;
-    }
+   public int getUpoint() {
+      return this.upoint;
+   }
 
-    public String getTm() {
-        return this.tm;
-    }
+   public String getUserid() {
+      return this.userid;
+   }
 
-    public void setTm(String tm) {
-        this.tm = tm;
-        createUCToken();
-        createPayPwdToken();
-    }
+   public String getUserpass() {
+      return this.userpass;
+   }
 
-    public String getChcode() {
-        return this.chcode;
-    }
+   public String getUsersession() {
+      return this.usersession;
+   }
 
-    public void setChcode(String chcode) {
-        this.chcode = chcode;
-    }
+   public void setChcode(String var1) {
+      this.chcode = var1;
+   }
 
-    public static String getEid() {
-        return EID;
-    }
+   public void setConsumeid(String var1) {
+      this.consumeid = var1;
+   }
 
-    public void createTimeStamp() {
-        this.tm = this.tm.equals("") ? Utils.getCurrentTime(false) : this.tm;
-    }
+   public void setCpid(String var1) {
+      this.cpid = var1;
+   }
 
-    public void CreateUsersession() {
-        this.usersession = Utils.getSessionID(this.paramcontext);
-    }
+   public void setGameid(String var1) {
+      this.gameid = var1;
+   }
 
-    public void createCharge(int u_money) {
-        this.umoney = (this.upoint * 10) / 100;
-    }
+   public void setParamcontext(Context var1) {
+      this.paramcontext = var1;
+   }
 
-    public void createConsumeId() {
-        this.consumeid = Utils.getUPConsumeid(this.userid, this.cpid, this.gameid);
-    }
+   public void setPaypwd(String var1) {
+      this.paypwd = var1;
+      this.createPayPwdToken();
+   }
 
-    public void updateConsumeId() {
-        Utils.clearUPConsumeid();
-        this.consumeid = Utils.getUPConsumeid(this.userid, this.cpid, this.gameid);
-    }
+   public void setPaypwdtoken(String var1) {
+      this.paypwdtoken = var1;
+   }
 
-    public void createSign() {
-        this.sign = String.valueOf(this.usersession.length() <= 5 ? this.usersession : this.usersession.substring(0, 5)) + (this.cpid.length() <= 5 ? this.cpid : this.cpid.substring(0, 5)) + (this.gameid.length() <= 5 ? this.gameid : this.gameid.substring(0, 5)) + this.upoint;
-    }
+   public void setSign(String var1) {
+      this.sign = var1;
+   }
 
-    public void createPayPwdToken() {
-        if (this.paypwd != null && this.paypwd.length() > 0) {
-            try {
-                this.paypwdtoken = MD5.getMD5(String.valueOf(MD5.getMD5(String.valueOf(this.userid) + this.paypwd).toUpperCase()) + this.tm);
-                return;
-            } catch (Exception e) {
-                this.paypwd = "";
-                return;
-            }
-        }
-        this.paypwd = "";
-    }
+   public void setTm(String var1) {
+      this.tm = var1;
+      this.createUCToken();
+      this.createPayPwdToken();
+   }
 
-    public void createUCToken() {
-        this.uctoken = String.valueOf(this.tm) + "`" + this.userid + "`" + this.userpass;
-    }
+   public void setUctoken(String var1) {
+      this.uctoken = var1;
+   }
+
+   public void setUmoney(int var1) {
+      this.umoney = var1;
+   }
+
+   public void setUpoint(int var1) {
+      this.upoint = var1;
+   }
+
+   public void setUserid(String var1) {
+      this.userid = var1;
+   }
+
+   public void setUserpass(String var1) {
+      this.userpass = var1;
+   }
+
+   public void setUsersession(String var1) {
+      this.usersession = var1;
+   }
+
+   public void updateConsumeId() {
+      Utils.clearUPConsumeid();
+      this.consumeid = Utils.getUPConsumeid(this.userid, this.cpid, this.gameid);
+   }
 }

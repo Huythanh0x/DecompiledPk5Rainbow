@@ -2,13 +2,12 @@ package com.uc.paymentsdk.model;
 
 import android.graphics.drawable.Drawable;
 
-/* loaded from: classes.dex */
 public interface IType {
-    String getDesc();
+   String getDesc();
 
-    Drawable getIcon();
+   Drawable getIcon();
 
-    String getId();
+   String getId();
 
-    String getName();
+   String getName();
 }

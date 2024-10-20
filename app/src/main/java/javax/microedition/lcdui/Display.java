@@ -2,23 +2,23 @@ package javax.microedition.lcdui;
 
 import javax.microedition.midlet.MIDlet;
 
-/* loaded from: classes.dex */
 public class Display {
-    private static Canvas canvas;
+   private static Canvas canvas;
 
-    private Display() {
-    }
+   private Display() {
+      super();
+   }
 
-    public static Display getDisplay(MIDlet midlet) {
-        return new Display();
-    }
+   public static Canvas getCanvas() {
+      return canvas;
+   }
 
-    public void setCurrent(Canvas gCanvas) {
-        CwaActivity.getInstance().setCanvas(gCanvas);
-        canvas = gCanvas;
-    }
+   public static Display getDisplay(MIDlet var0) {
+      return new Display();
+   }
 
-    public static Canvas getCanvas() {
-        return canvas;
-    }
+   public void setCurrent(Canvas var1) {
+      CwaActivity.getInstance().setCanvas(var1);
+      canvas = var1;
+   }
 }

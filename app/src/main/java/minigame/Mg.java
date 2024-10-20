@@ -2,62 +2,62 @@ package minigame;
 
 import main.GameRun;
 
-/* loaded from: classes.dex */
 public class Mg {
-    private static Mg mgListener;
-    private MiniGame_H mg;
-    public byte type;
+   private static Mg mgListener;
+   private MiniGame_H mg;
+   public byte type;
 
-    public Mg() {
-        mgListener = this;
-    }
+   public Mg() {
+      super();
+      mgListener = this;
+   }
 
-    public static Mg i() {
-        if (mgListener == null) {
-            mgListener = new Mg();
-        }
-        return mgListener;
-    }
+   public static Mg i() {
+      if (mgListener == null) {
+         mgListener = new Mg();
+      }
 
-    private void setGame(GameRun gr, int i) {
-        this.mg = null;
-        this.type = (byte) i;
-        switch (i) {
-            case 0:
-                this.mg = new Racing(gr);
-                return;
-            case 1:
-                this.mg = new Bearer(gr);
-                return;
-            case 2:
-                this.mg = new Cards(gr);
-                return;
-            case 3:
-                this.mg = new Guess(gr);
-                return;
-            default:
-                return;
-        }
-    }
+      return mgListener;
+   }
 
-    public void go(GameRun gr, int i, int mode, int lv) {
-        GameRun.run_state = 69;
-        setGame(gr, i);
-        this.mg.go(mode, lv);
-    }
+   private void setGame(GameRun var1, int var2) {
+      this.mg = null;
+      this.type = (byte)var2;
+      switch (var2) {
+         case 0:
+            this.mg = new Racing(var1);
+            break;
+         case 1:
+            this.mg = new Bearer(var1);
+            break;
+         case 2:
+            this.mg = new Cards(var1);
+            break;
+         case 3:
+            this.mg = new Guess(var1);
+      }
 
-    public void paint() {
-        this.mg.patin();
-    }
+   }
 
-    public void run() {
-        this.mg.run();
-    }
+   public void go(GameRun var1, int var2, int var3, int var4) {
+      GameRun.run_state = 69;
+      this.setGame(var1, var2);
+      this.mg.go(var3, var4);
+   }
 
-    public void key(GameRun gr) {
-        if (this.mg.key()) {
-            GameRun.run_state = -10;
-            this.mg = null;
-        }
-    }
+   public void key(GameRun var1) {
+      if (this.mg.key()) {
+         GameRun.run_state = -10;
+         this.mg = null;
+      }
+
+   }
+
+   public void paint() {
+      this.mg.patin();
+   }
+
+   public void run() {
+      this.mg.run();
+   }
 }

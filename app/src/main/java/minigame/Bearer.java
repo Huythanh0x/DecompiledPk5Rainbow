@@ -3,309 +3,384 @@ package minigame;
 import dm.Ms;
 import dm.Sprite;
 import dm.Ui;
-import java.lang.reflect.Array;
 import javax.microedition.lcdui.Image;
-import javax.microedition.media.Player;
 import main.Constants_H;
 import main.GameRun;
 
-/* loaded from: classes.dex */
 public class Bearer implements MiniGame_H {
-    private short ballC0;
-    private short ballC1;
-    private Sprite bsp;
-    private short count;
-    private byte cur;
-    GameRun gr;
-    private Image img;
-    private byte length;
-    private byte lv;
-    byte sel;
-    private Sprite[] sp;
-    private byte state;
-    private short time0;
-    private short time1;
-    private short[][] gDate = {new short[]{9, 1, 10, 2, 11, 4, 27, 8, 2, -10}, new short[]{50, 100, 150, 200}, new short[]{60, 40, 30, 10}, new short[]{8, 6, 13, 3, 20, 5, 30, 10}};
-    private short[][] ballDate = {new short[]{10, 20, 60, 10, 220}, new short[]{13, 40, 60, 12, Constants_H.FIRST_ROW}, new short[]{10, 40, 60, 10, 120}};
-    private short[] money = {150, 200, 300, 450};
-    private short[][] xy = (short[][]) Array.newInstance((Class<?>) Short.TYPE, 40, 7);
-    private short[] myxy = {0, 275, 67, 10};
-    private byte[] ball_time = {20, 15, 10, 5};
-    private final byte SPEED = 10;
+   private final byte SPEED;
+   private short ballC0;
+   private short ballC1;
+   private short[][] ballDate = new short[][]{{10, 20, 60, 10, 220}, {13, 40, 60, 12, 170}, {10, 40, 60, 10, 120}};
+   private byte[] ball_time;
+   private Sprite bsp;
+   private short count;
+   private byte cur;
+   private short[][] gDate = new short[][]{{9, 1, 10, 2, 11, 4, 27, 8, 2, -10}, {50, 100, 150, 200}, {60, 40, 30, 10}, {8, 6, 13, 3, 20, 5, 30, 10}};
+   GameRun gr;
+   private Image img;
+   private byte length;
+   private byte lv;
+   private short[] money = new short[]{150, 200, 300, 450};
+   private short[] myxy;
+   byte sel;
+   private Sprite[] sp;
+   private byte state;
+   private short time0;
+   private short time1;
+   private short[][] xy = new short[40][7];
 
-    public Bearer(GameRun gr_) {
-        this.gr = gr_;
-    }
+   public Bearer(GameRun var1) {
+      super();
+      short[] var2 = new short[]{0, 275, 67, 10, 0};
+      this.myxy = var2;
+      this.ball_time = new byte[]{20, 15, 10, 5};
+      this.SPEED = 10;
+      this.gr = var1;
+   }
 
-    private void nullGame() {
-        this.gDate = null;
-        this.money = null;
-        this.sp = null;
-        this.img = null;
-        this.ballDate = null;
-    }
+   private void addBall(int var1) {
+      this.xy[this.cur][0] = -20;
+      this.xy[this.cur][1] = this.ballDate[var1][4];
+      this.xy[this.cur][2] = (short)(this.ballDate[var1][1] / this.ballDate[var1][0]);
+      this.xy[this.cur][4] = this.ballDate[var1][0];
+      this.xy[this.cur][5] = (short)var1;
+      this.xy[this.cur][3] = this.ballDate[var1][3];
+      short[] var3 = this.xy[this.cur];
+      Ms.i();
+      var3[6] = (short)Ms.getRandom(this.gDate[0].length >> 1);
+      byte var2 = (byte)(this.cur + 1);
+      this.cur = var2;
+      if (var2 >= this.xy.length) {
+         this.cur = 0;
+      }
 
-    public void setLv(int lv_) {
-        this.lv = (byte) lv_;
-    }
+   }
 
-    @Override // minigame.MiniGame_H
-    public void go(int mode, int lv_) {
-        this.lv = (byte) lv_;
-        this.sp = new Sprite[2];
-        this.sp[0] = Ms.i().createSprite("data/npc2/38", true);
-        this.img = Ms.i().createImage("data/brow/m0");
-        byte[] date = Ms.i().getStream("data/gamee.data", -1);
-        Ms.i();
-        Ms.skip = 0;
-        this.bsp = Sprite.Create(Ms.i().createImage("data/map/5"), Ms.i().createShort2Array(date, 2), Ms.i().createShort3Array(date, 2), Ms.i().createShort3Array(date, 2));
-        go(mode);
-    }
+   private void draw0(int var1, int var2, int var3) {
+      int var5 = var3 + 45;
+      Ui.i().fillRectB();
+      Ui.i().drawK(var1, var2 + 25 + 5, 200 - 10, var5, 4);
+      Ui.i().drawK(var1 + 200 + 10, var2 + 25 + 5, 200, var5, 4);
+      Ui.i().drawK(var1 + 420 + 10, var2 + 25 + 5, 200 - 10, var5, 4);
+      Ui.i().drawString("\u6e38\u620f\u89c4\u5219", 320, var2 + 25 + 5, 33, 3, 1);
+      Ui.i().drawUi(7, 320 - 50 - 5, var2 + 25 - 4, 40, 0);
+      Ui.i().drawUi(7, 320 + 50 + 5, var2 + 25 - 4, 36, 4);
+      Ui.i().drawStringY(this.gr.about_a, 25, var2 + 75 + 10, 25, 0, 0);
+      var3 = var2 + 100;
+      Ui.i().drawString("\u7403\u7684\u5206\u6570\uff1a", var1 + 420 + 20, var3, 0, 0, 0);
+      int var6 = var3 + 50;
 
-    @Override // minigame.MiniGame_H
-    public void go(int mode) {
-        if (mode < 1) {
-            this.state = (byte) 0;
-            this.length = (byte) 10;
-            this.gr.setStringB(Constants_H.GAME_TXT_13, 160, 0);
-            this.gr.setStringB(Constants_H.GAME_TXT_27, Constants_H.WIDTH, 1);
-            return;
-        }
-        if (mode == 1) {
-            this.state = (byte) 1;
-            this.count = (short) 0;
-            this.cur = (byte) 0;
-            this.ballC0 = this.gDate[1][this.lv];
-            initABall(true);
-            for (byte i = 0; i < this.xy.length; i = (byte) (i + 1)) {
-                this.xy[i][5] = -1;
+      byte var4;
+      Ui var9;
+      String var10;
+      for(var3 = 0; var3 < this.gDate[0].length; var3 += 2) {
+         GameRun var8 = this.gr;
+         short var7 = this.gDate[0][var3];
+         if (var3 % 4 == 2) {
+            var4 = 100;
+         } else {
+            var4 = 0;
+         }
+
+         var8.drawItem(var7, var1 + 420 + 25 + var4, (var3 >> 2) * 30 + var6, 0);
+         var9 = Ui.i();
+         if (this.gDate[0][var3 + 1] < 0) {
+            var10 = "";
+         } else {
+            var10 = "+";
+         }
+
+         var10 = var10 + this.gDate[0][var3 + 1];
+         if (var3 % 4 == 2) {
+            var4 = 100;
+         } else {
+            var4 = 0;
+         }
+
+         var9.drawString(var10, var1 + 420 + 25 + var4 + 16, (var3 >> 2) * 30 + var6 - 4, 0, 0, 1);
+      }
+
+      var6 -= 50;
+      Ui.i().drawListKY(2, var1 + 200 + 12 + 25, var6, 200 - 50, 3, 30, 10, this.sel, 4, 2);
+
+      for(var3 = 0; var3 < this.gr.about_b.length; ++var3) {
+         System.out.println("i   " + var3);
+         var9 = Ui.i();
+         var10 = this.gr.about_b[var3].toString();
+         if (this.sel == var3) {
+            var4 = 0;
+         } else {
+            var4 = 3;
+         }
+
+         var9.drawString(var10, var1 + 200 + 15 + 25 + 26, var3 * 40 + var6 - 2, 0, var4, 1);
+         if (this.gr.pkey.isSelect(var1 + 200 + 12 + 25, var3 * 40 + var6 - 2, 200 - 50, 40)) {
+            System.out.println("asdfasfaf");
+            if (this.sel == var3) {
+               this.gr.pkey.setKey5();
+            } else {
+               this.sel = (byte)var3;
             }
-        }
-    }
+         }
+      }
 
-    @Override // minigame.MiniGame_H
-    public boolean key() {
-        if (this.state == 0) {
-            if (Ms.i().key_Up_Down()) {
-                this.sel = (byte) (this.sel ^ 1);
-            } else if (Ms.i().key_S1_Num5()) {
-                Ms.i().keyRelease();
-                if (this.sel == 0 && this.gr.isMoney(this.money[this.lv], true)) {
-                    go(1);
-                } else if (this.sel == 1) {
-                    Ms.i().keyRelease();
-                    nullGame();
-                    return true;
-                }
-            } else if (Ms.i().key_S2()) {
-                nullGame();
-                return true;
+      this.gr.showStringM("\u9700\u8981\u7684\u53c2\u52a0\u8d39\uff1a" + this.money[this.lv] + "\u91d1", 320, var2 + var5 - 50, 7, 0);
+      this.gr.drawMoney(320, 360, 3, false);
+      if (this.state == 0) {
+         Ui.i().drawYesNo(true, true);
+      }
+
+   }
+
+   private void drawGame(int var1, int var2, int var3, int var4) {
+      Ui.i().fillRect(5423359, var1, var2, var3, var4);
+      Ui.i().drawFrameOne(this.bsp, 0, var1 + (var3 >> 1), var2 + (var4 >> 1), 0);
+      Ui.i().drawString("\u5206\u6570\uff1a" + this.count, (var3 >> 1) + var1 - 25, var2, 24, 3, 1);
+      Ui.i().drawString("\u7403\u603b\u6570\uff1a" + this.ballC0, (var3 >> 1) + var1 + 25, var2, 20, 3, 1);
+      Ui.i().drawImage(this.img, var1 + var3, var4 - 15, 40);
+
+      byte var7;
+      for(var7 = 0; var7 < this.xy.length; ++var7) {
+         if (this.xy[var7][5] != -1) {
+            this.gr.drawItem(this.gDate[0][this.xy[var7][6] << 1], this.xy[var7][0] + var1, this.xy[var7][1] + var2, 0);
+         }
+      }
+
+      for(var7 = 0; var7 < 2; ++var7) {
+         Ui var5 = Ui.i();
+         Sprite var6 = this.sp[0];
+         byte var8;
+         if (this.myxy[4] == 0) {
+            var8 = 3;
+         } else {
+            var8 = 4;
+         }
+
+         var5.drawFrameOne(var6, var8, this.myxy[0] + var1 + var7 * 30 + 20, this.myxy[1] + var2 + 25, 0);
+      }
+
+      this.gr.drawMoney(320, 360, 3, false);
+   }
+
+   private void getAY(int var1) {
+      short[] var2;
+      if (this.xy[var1][4] > 0 && this.xy[var1][3] > 1) {
+         var2 = this.xy[var1];
+         --var2[3];
+      } else if (this.xy[var1][4] == 0) {
+         this.xy[var1][3] = 0;
+      } else if (this.xy[var1][4] < 0 && this.xy[var1][3] > -this.ballDate[this.xy[var1][5]][3]) {
+         var2 = this.xy[var1];
+         --var2[3];
+      }
+
+   }
+
+   private void initABall(boolean var1) {
+      short var2;
+      if (var1) {
+         var2 = 10;
+      } else {
+         var2 = this.gDate[2][this.lv];
+      }
+
+      this.time0 = var2;
+      this.time1 = this.ball_time[this.lv];
+      Ms.i();
+      this.ballC1 = (short)(Ms.getRandom(this.gDate[3][this.lv << 1]) + this.gDate[3][(this.lv << 1) + 1]);
+   }
+
+   private boolean isCollision(int var1) {
+      return Ms.i().isRect(this.myxy[0], this.myxy[1], this.myxy[2], this.myxy[3], this.xy[var1][0], this.xy[var1][1], 16, 16);
+   }
+
+   private boolean isSrc(int var1) {
+      boolean var2;
+      if (this.xy[var1][1] > 320 + 10) {
+         var2 = true;
+      } else {
+         var2 = false;
+      }
+
+      boolean var3;
+      if (!Ms.i().isRect(240 - 10, 320 - 40, 20, 10, this.xy[var1][0], this.xy[var1][1], 16, 16)) {
+         var3 = var2;
+         if (this.xy[var1][0] <= 240) {
+            return var3;
+         }
+
+         var3 = var2;
+         if (this.xy[var1][1] >= this.myxy[1]) {
+            return var3;
+         }
+      }
+
+      var3 = true;
+      this.count += this.gDate[0][this.xy[var1][6] * 2 + 1];
+      return var3;
+   }
+
+   private void nullGame() {
+      this.gDate = null;
+      this.money = null;
+      this.sp = null;
+      this.img = null;
+      this.ballDate = null;
+   }
+
+   public void go(int var1) {
+      if (var1 < 1) {
+         this.state = 0;
+         this.length = 10;
+         this.gr.setStringB("\u5728\u9650\u5b9a\u65f6\u95f4\u91cc\u63a5\u5c3d\u91cf\u591a\u7684\u7403\u5230\u6846\u91cc\uff0c\u6700\u540e\u6839\u636e\u6846\u91cc\u7403\u7684\u5206\u6570\u6765\u6362\u53d6\u91d1\u94b1\u3002", 160, 0);
+         this.gr.setStringB("\u5f00\u59cb\u6e38\u620f#n\u79bb\u5f00\u6e38\u620f", Constants_H.WIDTH, 1);
+      } else if (var1 == 1) {
+         this.state = 1;
+         this.count = 0;
+         this.cur = 0;
+         this.ballC0 = this.gDate[1][this.lv];
+         this.initABall(true);
+
+         for(byte var2 = 0; var2 < this.xy.length; ++var2) {
+            this.xy[var2][5] = -1;
+         }
+      }
+
+   }
+
+   public void go(int var1, int var2) {
+      this.lv = (byte)var2;
+      this.sp = new Sprite[2];
+      this.sp[0] = Ms.i().createSprite("data/npc2/38", true);
+      this.img = Ms.i().createImage("data/brow/m0");
+      byte[] var3 = Ms.i().getStream("data/gamee.data", -1);
+      Ms.i();
+      Ms.skip = 0;
+      this.bsp = Sprite.Create(Ms.i().createImage("data/map/5"), Ms.i().createShort2Array(var3, 2), Ms.i().createShort3Array(var3, 2), Ms.i().createShort3Array(var3, 2));
+      this.go(var1);
+   }
+
+   public boolean key() {
+      boolean var1;
+      if (this.state == 0) {
+         if (Ms.i().key_Up_Down()) {
+            this.sel = (byte)(this.sel ^ 1);
+         } else if (Ms.i().key_S1_Num5()) {
+            Ms.i().keyRelease();
+            if (this.sel == 0 && this.gr.isMoney(this.money[this.lv], true)) {
+               this.go(1);
+            } else if (this.sel == 1) {
+               Ms.i().keyRelease();
+               this.nullGame();
+               var1 = true;
+               return var1;
             }
-        } else if (this.state == 1) {
-            if (Ms.i().key_Left()) {
-                short[] sArr = this.myxy;
-                sArr[0] = (short) (sArr[0] - 10);
-                if (this.myxy[0] < 0) {
-                    this.myxy[0] = 0;
-                }
-            } else if (Ms.i().key_Right()) {
-                short[] sArr2 = this.myxy;
-                sArr2[0] = (short) (sArr2[0] + 10);
-                if (this.myxy[0] + this.myxy[2] > 220) {
-                    this.myxy[0] = (short) ((240 - this.myxy[2]) - 20);
-                }
+         } else if (Ms.i().key_S2()) {
+            this.nullGame();
+            var1 = true;
+            return var1;
+         }
+      } else if (this.state == 1) {
+         short[] var2;
+         if (Ms.i().key_Left()) {
+            var2 = this.myxy;
+            var2[0] = (short)(var2[0] - 10);
+            if (this.myxy[0] < 0) {
+               this.myxy[0] = 0;
             }
-        }
-        return false;
-    }
-
-    @Override // minigame.MiniGame_H
-    public void patin() {
-        draw0(10, 2, this.length * 25);
-        if (this.state != 0) {
-            drawGame(Player.REALIZED, 0, 240, Constants_H.WIDTH_H_);
-        }
-    }
-
-    private void draw0(int x, int y, int h) {
-        int h2 = h + 45;
-        Ui.i().fillRectB();
-        Ui.i().drawK(x, y + 25 + 5, Player.REALIZED - 10, h2, 4);
-        Ui.i().drawK(x + Player.REALIZED + 10, y + 25 + 5, Player.REALIZED, h2, 4);
-        Ui i = Ui.i();
-        int i2 = (Player.REALIZED + 10) * 2;
-        i.drawK(x + 420 + 10, y + 25 + 5, Player.REALIZED - 10, h2, 4);
-        Ui.i().drawString(Constants_H.GAME_TXT_7, Constants_H.WIDTH_H_, y + 25 + 5, 33, 3, 1);
-        Ui.i().drawUi(7, (Constants_H.WIDTH_H_ - 50) - 5, (y + 25) - 4, 40, 0);
-        Ui.i().drawUi(7, Constants_H.WIDTH_H_ + 50 + 5, (y + 25) - 4, 36, 4);
-        Ui.i().drawStringY(this.gr.about_a, 25, y + 75 + 10, 25, 0, 0);
-        int ty = y + 100;
-        Ui i3 = Ui.i();
-        int i4 = (Player.REALIZED + 10) * 2;
-        i3.drawString(Constants_H.GAME_TXT_14, x + 420 + 20, ty, 0, 0, 0);
-        int ty2 = ty + 50;
-        for (int i5 = 0; i5 < this.gDate[0].length; i5 += 2) {
-            GameRun gameRun = this.gr;
-            short s = this.gDate[0][i5];
-            int i6 = (Player.REALIZED + 10) * 2;
-            gameRun.drawItem(s, x + 420 + 25 + (i5 % 4 == 2 ? 100 : 0), ((i5 >> 2) * 30) + ty2, 0);
-            Ui i7 = Ui.i();
-            String str = String.valueOf(this.gDate[0][i5 + 1] < 0 ? "" : "+") + ((int) this.gDate[0][i5 + 1]);
-            int i8 = (Player.REALIZED + 10) * 2;
-            i7.drawString(str, x + 420 + 25 + (i5 % 4 == 2 ? 100 : 0) + 16, (((i5 >> 2) * 30) + ty2) - 4, 0, 0, 1);
-        }
-        int ty3 = ty2 - 50;
-        Ui.i().drawListKY(2, x + Player.REALIZED + 12 + 25, ty3, Player.REALIZED - 50, 3, 30, 10, this.sel, 4, 2);
-        int i9 = 0;
-        while (i9 < this.gr.about_b.length) {
-            System.out.println("i   " + i9);
-            Ui.i().drawString(this.gr.about_b[i9].toString(), x + Player.REALIZED + 15 + 25 + 26, ((i9 * 40) + ty3) - 2, 0, this.sel == i9 ? 0 : 3, 1);
-            if (this.gr.pkey.isSelect(x + Player.REALIZED + 12 + 25, ((i9 * 40) + ty3) - 2, Player.REALIZED - 50, 40)) {
-                System.out.println("asdfasfaf");
-                if (this.sel == i9) {
-                    this.gr.pkey.setKey5();
-                } else {
-                    this.sel = (byte) i9;
-                }
+         } else if (Ms.i().key_Right()) {
+            var2 = this.myxy;
+            var2[0] = (short)(var2[0] + 10);
+            if (this.myxy[0] + this.myxy[2] > 220) {
+               this.myxy[0] = (short)(240 - this.myxy[2] - 20);
             }
-            i9++;
-        }
-        this.gr.showStringM(Constants_H.GAME_TXT_12 + ((int) this.money[this.lv]) + Constants_H.MONEY_TXT_0, Constants_H.WIDTH_H_, (y + h2) - 50, 7, 0);
-        this.gr.drawMoney(Constants_H.WIDTH_H_, Constants_H.HEIGHT_, 3, false);
-        if (this.state == 0) {
-            Ui.i().drawYesNo(true, true);
-        }
-    }
+         }
+      }
 
-    private void drawGame(int x, int y, int w, int h) {
-        Ui.i().fillRect(5423359, x, y, w, h);
-        Ui.i().drawFrameOne(this.bsp, 0, x + (w >> 1), y + (h >> 1), 0);
-        Ui.i().drawString(Constants_H.GAME_TXT_15 + ((int) this.count), ((w >> 1) + x) - 25, y, 24, 3, 1);
-        Ui.i().drawString(Constants_H.GAME_TXT_16 + ((int) this.ballC0), (w >> 1) + x + 25, y, 20, 3, 1);
-        Ui.i().drawImage(this.img, x + w, h - 15, 40);
-        for (byte i = 0; i < this.xy.length; i = (byte) (i + 1)) {
-            if (this.xy[i][5] != -1) {
-                this.gr.drawItem(this.gDate[0][this.xy[i][6] << 1], this.xy[i][0] + x, this.xy[i][1] + y, 0);
+      var1 = false;
+      return var1;
+   }
+
+   public void patin() {
+      this.draw0(10, 2, this.length * 25);
+      if (this.state != 0) {
+         this.drawGame(200, 0, 240, 320);
+      }
+
+   }
+
+   public void run() {
+      if (this.state == 1) {
+         if (this.ballC0 > 0) {
+            if (this.time0 > 0) {
+               --this.time0;
+            } else if (this.time1 > 0) {
+               --this.time1;
+            } else if (this.ballC1 > 0) {
+               this.time1 = this.ball_time[this.lv];
+               this.addBall(Ms.getRandom(this.ballDate.length));
+               --this.ballC1;
+               --this.ballC0;
+            } else if (this.ballC1 == 0) {
+               this.initABall(false);
             }
-        }
-        for (byte i2 = 0; i2 < 2; i2 = (byte) (i2 + 1)) {
-            Ui.i().drawFrameOne(this.sp[0], this.myxy[4] == 0 ? 3 : 4, this.myxy[0] + x + (i2 * 30) + 20, this.myxy[1] + y + 25, 0);
-        }
-        this.gr.drawMoney(Constants_H.WIDTH_H_, Constants_H.HEIGHT_, 3, false);
-    }
+         }
 
-    private void addBall(int id) {
-        this.xy[this.cur][0] = -20;
-        this.xy[this.cur][1] = this.ballDate[id][4];
-        this.xy[this.cur][2] = (short) (this.ballDate[id][1] / this.ballDate[id][0]);
-        this.xy[this.cur][4] = this.ballDate[id][0];
-        this.xy[this.cur][5] = (short) id;
-        this.xy[this.cur][3] = this.ballDate[id][3];
-        short[] sArr = this.xy[this.cur];
-        Ms.i();
-        sArr[6] = (short) Ms.getRandom(this.gDate[0].length >> 1);
-        byte b = (byte) (this.cur + 1);
-        this.cur = b;
-        if (b >= this.xy.length) {
-            this.cur = (byte) 0;
-        }
-    }
+         short[] var4;
+         if (this.myxy[4] > 0) {
+            var4 = this.myxy;
+            --var4[4];
+         }
 
-    private void initABall(boolean mode) {
-        this.time0 = mode ? (short) 10 : this.gDate[2][this.lv];
-        this.time1 = this.ball_time[this.lv];
-        Ms.i();
-        this.ballC1 = (short) (Ms.getRandom(this.gDate[3][this.lv << 1]) + this.gDate[3][(this.lv << 1) + 1]);
-    }
+         boolean var2 = true;
 
-    private void getAY(int i) {
-        if (this.xy[i][4] <= 0 || this.xy[i][3] <= 1) {
-            if (this.xy[i][4] != 0) {
-                if (this.xy[i][4] >= 0 || this.xy[i][3] <= (-this.ballDate[this.xy[i][5]][3])) {
-                    return;
-                }
-                short[] sArr = this.xy[i];
-                sArr[3] = (short) (sArr[3] - 1);
-                return;
+         for(byte var1 = 0; var1 < this.xy.length; ++var1) {
+            if (this.xy[var1][5] != -1) {
+               boolean var3 = false;
+               var4 = this.xy[var1];
+               var4[0] += this.xy[var1][2];
+               var4 = this.xy[var1];
+               var4[1] -= this.xy[var1][3];
+               this.getAY(var1);
+               var4 = this.xy[var1];
+               --var4[4];
+               if (this.isSrc(var1)) {
+                  this.xy[var1][5] = -1;
+                  var2 = var3;
+               } else {
+                  var2 = var3;
+                  if (this.isCollision(var1)) {
+                     this.xy[var1][4] = this.ballDate[this.xy[var1][5]][0];
+                     this.myxy[4] = 1;
+                     this.xy[var1][3] = this.ballDate[this.xy[var1][5]][3];
+                     var2 = var3;
+                  }
+               }
             }
-            this.xy[i][3] = 0;
-            return;
-        }
-        short[] sArr2 = this.xy[i];
-        sArr2[3] = (short) (sArr2[3] - 1);
-    }
+         }
 
-    private boolean isSrc(int i) {
-        boolean bb = this.xy[i][1] > Constants_H.WIDTH_H_ + 10;
-        if (Ms.i().isRect(240 - 10, Constants_H.WIDTH_H_ - 40, 20, 10, this.xy[i][0], this.xy[i][1], 16, 16) || (this.xy[i][0] > 240 && this.xy[i][1] < this.myxy[1])) {
-            this.count = (short) (this.count + this.gDate[0][(this.xy[i][6] * 2) + 1]);
-            return true;
-        }
-        return bb;
-    }
+         if (this.ballC0 < 1 && var2) {
+            this.count = (short)(this.count * 15 / 10);
+            GameRun var5 = this.gr;
+            var5.money += this.count;
+            this.gr.say("\u83b7\u5f97\uff1a" + this.count + "\u91d1", 0);
+            if (this.count > 0) {
+               byte[] var6 = this.gr.rmsOther;
+               var6[6] = (byte)(var6[6] | 1 << this.lv);
+            }
 
-    private boolean isCollision(int i) {
-        boolean bb = Ms.i().isRect(this.myxy[0], this.myxy[1], this.myxy[2], this.myxy[3], this.xy[i][0], this.xy[i][1], 16, 16);
-        return bb;
-    }
+            this.state = 2;
+         }
 
-    @Override // minigame.MiniGame_H
-    public void run() {
-        if (this.state == 1) {
-            if (this.ballC0 > 0) {
-                if (this.time0 > 0) {
-                    this.time0 = (short) (this.time0 - 1);
-                } else if (this.time1 > 0) {
-                    this.time1 = (short) (this.time1 - 1);
-                } else if (this.ballC1 > 0) {
-                    this.time1 = this.ball_time[this.lv];
-                    addBall(Ms.getRandom(this.ballDate.length));
-                    this.ballC1 = (short) (this.ballC1 - 1);
-                    this.ballC0 = (short) (this.ballC0 - 1);
-                } else if (this.ballC1 == 0) {
-                    initABall(false);
-                }
-            }
-            if (this.myxy[4] > 0) {
-                short[] sArr = this.myxy;
-                sArr[4] = (short) (sArr[4] - 1);
-            }
-            boolean bb = true;
-            for (byte i = 0; i < this.xy.length; i = (byte) (i + 1)) {
-                if (this.xy[i][5] != -1) {
-                    bb = false;
-                    short[] sArr2 = this.xy[i];
-                    sArr2[0] = (short) (sArr2[0] + this.xy[i][2]);
-                    short[] sArr3 = this.xy[i];
-                    sArr3[1] = (short) (sArr3[1] - this.xy[i][3]);
-                    getAY(i);
-                    short[] sArr4 = this.xy[i];
-                    sArr4[4] = (short) (sArr4[4] - 1);
-                    if (isSrc(i)) {
-                        this.xy[i][5] = -1;
-                    } else if (isCollision(i)) {
-                        this.xy[i][4] = this.ballDate[this.xy[i][5]][0];
-                        this.myxy[4] = 1;
-                        this.xy[i][3] = this.ballDate[this.xy[i][5]][3];
-                    }
-                }
-            }
-            if (this.ballC0 < 1 && bb) {
-                this.count = (short) ((this.count * 15) / 10);
-                this.gr.money += this.count;
-                this.gr.say(Constants_H.MONEY_TXT_7 + ((int) this.count) + Constants_H.MONEY_TXT_0, 0);
-                if (this.count > 0) {
-                    byte[] bArr = this.gr.rmsOther;
-                    bArr[6] = (byte) (bArr[6] | (1 << this.lv));
-                }
-                this.state = (byte) 2;
-            }
-            this.gr.pkey.checkButton(4);
-            return;
-        }
-        if (this.state != 2 || this.gr.say_c != 0) {
-            return;
-        }
-        go(0);
-    }
+         this.gr.pkey.checkButton(4);
+      } else if (this.state == 2 && this.gr.say_c == 0) {
+         this.go(0);
+      }
+
+   }
+
+   public void setLv(int var1) {
+      this.lv = (byte)var1;
+   }
 }

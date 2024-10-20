@@ -3,204 +3,82 @@ package com.uc.paymentsdk.network.chain;
 import android.content.Context;
 import android.text.TextUtils;
 import com.uc.paymentsdk.network.Api;
-import com.uc.paymentsdk.network.ApiTask;
+import com.uc.paymentsdk.network.ApiTask$TaskHandler;
 import com.uc.paymentsdk.network.XMLParser;
-import com.uc.paymentsdk.network.chain.Handler;
 import com.uc.paymentsdk.payment.sms.SmsInfos;
 import com.uc.paymentsdk.util.PrefUtil;
 import com.uc.paymentsdk.util.Utils;
-import java.io.IOException;
 import org.apache.http.HttpResponse;
 
-/* loaded from: classes.dex */
-public class SyncSmsInfoHandler extends Handler implements ApiTask.TaskHandler {
-    private static int sStatus;
-    private final Integer LOCK;
-    private Handler.OnFinishListener mOnFinishListener;
+public class SyncSmsInfoHandler extends Handler implements ApiTask$TaskHandler {
+   private static int sStatus;
+   private final Integer LOCK = 0;
+   private Handler$OnFinishListener mOnFinishListener;
 
-    public SyncSmsInfoHandler(Context paramContext) {
-        super(paramContext);
-        this.LOCK = 0;
-    }
+   public SyncSmsInfoHandler(Context var1) {
+      super(var1);
+   }
 
-    public SyncSmsInfoHandler(Context paramContext, Handler.OnFinishListener paramOnFinishListener) {
-        super(paramContext);
-        this.LOCK = 0;
-        this.mOnFinishListener = paramOnFinishListener;
-    }
+   public SyncSmsInfoHandler(Context var1, Handler$OnFinishListener var2) {
+      super(var1);
+      this.mOnFinishListener = var2;
+   }
 
-    public static void init() {
-        sStatus = 0;
-    }
+   // $FF: synthetic method
+   static Integer access$0(SyncSmsInfoHandler var0) {
+      return var0.LOCK;
+   }
 
-    @Override // com.uc.paymentsdk.network.chain.Handler
-    public void handleRequest() {
-        switch (sStatus) {
-            case 0:
-                sStatus = 1;
-                Api.syncSmsInfo(this.mContext, this, Utils.getPaymentInfo().getCpID(), Utils.getPaymentInfo().getmGameID());
-                return;
-            case 1:
-                new Thread(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncSmsInfoHandler.1
-                    AnonymousClass1() {
-                    }
+   public static void init() {
+      sStatus = 0;
+   }
 
-                    @Override // java.lang.Runnable
-                    public void run() {
-                        synchronized (SyncSmsInfoHandler.this.LOCK) {
-                            try {
-                                SyncSmsInfoHandler.this.LOCK.wait();
-                            } catch (InterruptedException localInterruptedException) {
-                                localInterruptedException.printStackTrace();
-                            }
-                        }
-                        SyncSmsInfoHandler.this.mHandler.post(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncSmsInfoHandler.1.1
-                            RunnableC00021() {
-                            }
-
-                            @Override // java.lang.Runnable
-                            public void run() {
-                                SyncSmsInfoHandler.this.handleRequest();
-                            }
-                        });
-                    }
-
-                    /* renamed from: com.uc.paymentsdk.network.chain.SyncSmsInfoHandler$1$1 */
-                    /* loaded from: classes.dex */
-                    class RunnableC00021 implements Runnable {
-                        RunnableC00021() {
-                        }
-
-                        @Override // java.lang.Runnable
-                        public void run() {
-                            SyncSmsInfoHandler.this.handleRequest();
-                        }
-                    }
-                }).start();
-                return;
-            case 2:
-                if (getSuccessor() == null) {
-                    if (this.mOnFinishListener != null) {
-                        this.mOnFinishListener.onFinish();
-                        return;
-                    }
-                    return;
-                }
-                getSuccessor().handleRequest();
-                return;
-            default:
-                return;
-        }
-    }
-
-    /* renamed from: com.uc.paymentsdk.network.chain.SyncSmsInfoHandler$1 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass1 implements Runnable {
-        AnonymousClass1() {
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            synchronized (SyncSmsInfoHandler.this.LOCK) {
-                try {
-                    SyncSmsInfoHandler.this.LOCK.wait();
-                } catch (InterruptedException localInterruptedException) {
-                    localInterruptedException.printStackTrace();
-                }
+   public void handleRequest() {
+      switch (sStatus) {
+         case 0:
+            sStatus = 1;
+            Api.syncSmsInfo(this.mContext, this, Utils.getPaymentInfo().getCpID(), Utils.getPaymentInfo().getmGameID());
+            break;
+         case 1:
+            (new Thread(new SyncSmsInfoHandler$1(this))).start();
+            break;
+         case 2:
+            if (this.getSuccessor() == null) {
+               if (this.mOnFinishListener != null) {
+                  this.mOnFinishListener.onFinish();
+               }
+            } else {
+               this.getSuccessor().handleRequest();
             }
-            SyncSmsInfoHandler.this.mHandler.post(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncSmsInfoHandler.1.1
-                RunnableC00021() {
-                }
+      }
 
-                @Override // java.lang.Runnable
-                public void run() {
-                    SyncSmsInfoHandler.this.handleRequest();
-                }
-            });
-        }
+   }
 
-        /* renamed from: com.uc.paymentsdk.network.chain.SyncSmsInfoHandler$1$1 */
-        /* loaded from: classes.dex */
-        class RunnableC00021 implements Runnable {
-            RunnableC00021() {
-            }
+   public void onError(int param1, int param2) {
+      // $FF: Couldn't be decompiled
+   }
 
-            @Override // java.lang.Runnable
-            public void run() {
-                SyncSmsInfoHandler.this.handleRequest();
-            }
-        }
-    }
+   public Object onPreHandle(int var1, HttpResponse var2) {
+      String var3 = Utils.getBodyString(var1, var2);
+      SmsInfos var5;
+      if (TextUtils.isEmpty(var3)) {
+         var5 = null;
+      } else {
+         try {
+            var5 = XMLParser.parseSmsInfo(var3);
+         } catch (Exception var4) {
+            var4.printStackTrace();
+            var5 = null;
+            return var5;
+         }
 
-    @Override // com.uc.paymentsdk.network.ApiTask.TaskHandler
-    public void onSuccess(int paramInt, Object paramObject) {
-        sStatus = 2;
-        Utils.setSmsInfo((SmsInfos) paramObject);
-        synchronized (this.LOCK) {
-            this.LOCK.notifyAll();
-        }
-        if (getSuccessor() == null) {
-            if (this.mOnFinishListener != null) {
-                this.mOnFinishListener.onFinish();
-                return;
-            }
-            return;
-        }
-        getSuccessor().handleRequest();
-    }
+         PrefUtil.setSmsInfo(this.mContext, var3);
+      }
 
-    @Override // com.uc.paymentsdk.network.ApiTask.TaskHandler
-    public Object onPreHandle(int paramInt, HttpResponse paramHttpResponse) {
-        String str = Utils.getBodyString(paramInt, paramHttpResponse);
-        if (TextUtils.isEmpty(str)) {
-            return null;
-        }
-        try {
-            SmsInfos localSmsInfos = XMLParser.parseSmsInfo(str);
-            PrefUtil.setSmsInfo(this.mContext, str);
-            return localSmsInfos;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+      return var5;
+   }
 
-    @Override // com.uc.paymentsdk.network.ApiTask.TaskHandler
-    public void onError(int paramInt1, int paramInt2) {
-        sStatus = 2;
-        if (Utils.getSmsInfos() == null) {
-            try {
-                String str = PrefUtil.getSmsInfo(this.mContext);
-                if (str == null) {
-                    Utils.setSmsInfo(null);
-                } else {
-                    SmsInfos localSmsInfos = XMLParser.parseSmsInfo(str);
-                    if (localSmsInfos == null) {
-                        Utils.setSmsInfo(null);
-                    } else if (Utils.dateDiffByDay(localSmsInfos.smsInfos.get(0).getSmsendtime(), Utils.getCurrentTime(true), "yyyy-MM-dd") >= 0) {
-                        Utils.setSmsInfo(null);
-                    } else {
-                        Utils.setSmsInfo(localSmsInfos);
-                    }
-                }
-            } catch (IOException localIOException) {
-                sStatus = 0;
-                localIOException.printStackTrace();
-            } catch (Exception localException) {
-                sStatus = 0;
-                localException.printStackTrace();
-            }
-        }
-        synchronized (this.LOCK) {
-            this.LOCK.notifyAll();
-        }
-        if (getSuccessor() == null) {
-            if (this.mOnFinishListener != null) {
-                this.mOnFinishListener.onFinish();
-                return;
-            }
-            return;
-        }
-        getSuccessor().handleRequest();
-    }
+   public void onSuccess(int param1, Object param2) {
+      // $FF: Couldn't be decompiled
+   }
 }

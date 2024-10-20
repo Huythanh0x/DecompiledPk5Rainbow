@@ -1,68 +1,71 @@
 package com.uc.paymentsdk.payment.upoint;
 
-/* loaded from: classes.dex */
 public class UPointInfo {
-    String discount = "";
-    String discounttext = "";
-    String userphone = "";
-    String vipdiscount = "";
-    String vipdiscounttext = "";
-    String vipdiscounttime = "";
-    String discountinfo = "";
+   String discount = "";
+   String discountinfo = "";
+   String discounttext = "";
+   String userphone = "";
+   String vipdiscount = "";
+   String vipdiscounttext = "";
+   String vipdiscounttime = "";
 
-    public String getDiscount() {
-        return this.discount;
-    }
+   public UPointInfo() {
+      super();
+   }
 
-    public void setDiscount(String discount) {
-        this.discount = discount;
-    }
+   public String getDiscount() {
+      return this.discount;
+   }
 
-    public String getDiscounttext() {
-        return this.discounttext;
-    }
+   public String getDiscountinfo() {
+      return this.discountinfo;
+   }
 
-    public void setDiscounttext(String discounttext) {
-        this.discounttext = discounttext;
-    }
+   public String getDiscounttext() {
+      return this.discounttext;
+   }
 
-    public String getUserphone() {
-        return this.userphone;
-    }
+   public String getUserphone() {
+      return this.userphone;
+   }
 
-    public void setUserphone(String userphone) {
-        this.userphone = userphone;
-    }
+   public String getVipdiscount() {
+      return this.vipdiscount;
+   }
 
-    public String getVipdiscount() {
-        return this.vipdiscount;
-    }
+   public String getVipdiscounttext() {
+      return this.vipdiscounttext;
+   }
 
-    public void setVipdiscount(String vipdiscount) {
-        this.vipdiscount = vipdiscount;
-    }
+   public String getVipdiscounttime() {
+      return this.vipdiscounttime;
+   }
 
-    public String getVipdiscounttext() {
-        return this.vipdiscounttext;
-    }
+   public void setDiscount(String var1) {
+      this.discount = var1;
+   }
 
-    public void setVipdiscounttext(String vipdiscounttext) {
-        this.vipdiscounttext = vipdiscounttext;
-    }
+   public void setDiscountinfo(String var1) {
+      this.discountinfo = var1;
+   }
 
-    public String getVipdiscounttime() {
-        return this.vipdiscounttime;
-    }
+   public void setDiscounttext(String var1) {
+      this.discounttext = var1;
+   }
 
-    public void setVipdiscounttime(String vipdiscounttime) {
-        this.vipdiscounttime = vipdiscounttime;
-    }
+   public void setUserphone(String var1) {
+      this.userphone = var1;
+   }
 
-    public String getDiscountinfo() {
-        return this.discountinfo;
-    }
+   public void setVipdiscount(String var1) {
+      this.vipdiscount = var1;
+   }
 
-    public void setDiscountinfo(String discountinfo) {
-        this.discountinfo = discountinfo;
-    }
+   public void setVipdiscounttext(String var1) {
+      this.vipdiscounttext = var1;
+   }
+
+   public void setVipdiscounttime(String var1) {
+      this.vipdiscounttime = var1;
+   }
 }

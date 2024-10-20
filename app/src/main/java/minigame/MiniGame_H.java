@@ -1,14 +1,13 @@
 package minigame;
 
-/* loaded from: classes.dex */
 public interface MiniGame_H {
-    void go(int i);
+   void go(int var1);
 
-    void go(int i, int i2);
+   void go(int var1, int var2);
 
-    boolean key();
+   boolean key();
 
-    void patin();
+   void patin();
 
-    void run();
+   void run();
 }

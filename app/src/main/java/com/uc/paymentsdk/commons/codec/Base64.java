@@ -1,299 +1,346 @@
 package com.uc.paymentsdk.commons.codec;
 
-import javax.microedition.lcdui.Canvas;
-import main.Constants_H;
-
-/* loaded from: classes.dex */
 public class Base64 implements BinaryEncoder, BinaryDecoder {
-    static final int CHUNK_SIZE = 76;
-    static final int EIGHTBIT = 8;
-    static final int FOURBYTE = 4;
-    static final int LOOKUPLENGTH = 64;
-    static final byte PAD = 61;
-    static final int SIGN = -128;
-    static final int SIXTEENBIT = 16;
-    static final int TWENTYFOURBITGROUP = 24;
-    static final byte[] CHUNK_SEPARATOR = "\r\n".getBytes();
-    static final int BASELENGTH = 255;
-    private static byte[] base64Alphabet = new byte[BASELENGTH];
-    private static byte[] lookUpBase64Alphabet = new byte[64];
+   static final int BASELENGTH = 255;
+   static final byte[] CHUNK_SEPARATOR = "\r\n".getBytes();
+   static final int CHUNK_SIZE = 76;
+   static final int EIGHTBIT = 8;
+   static final int FOURBYTE = 4;
+   static final int LOOKUPLENGTH = 64;
+   static final byte PAD = 61;
+   static final int SIGN = -128;
+   static final int SIXTEENBIT = 16;
+   static final int TWENTYFOURBITGROUP = 24;
+   private static byte[] base64Alphabet = new byte[255];
+   private static byte[] lookUpBase64Alphabet = new byte[64];
 
-    static {
-        for (int i = 0; i < BASELENGTH; i++) {
-            base64Alphabet[i] = -1;
-        }
-        for (int i2 = 90; i2 >= 65; i2--) {
-            base64Alphabet[i2] = (byte) (i2 - 65);
-        }
-        for (int i3 = 122; i3 >= 97; i3--) {
-            base64Alphabet[i3] = (byte) ((i3 - 97) + 26);
-        }
-        for (int i4 = 57; i4 >= 48; i4--) {
-            base64Alphabet[i4] = (byte) ((i4 - 48) + 52);
-        }
-        base64Alphabet[43] = 62;
-        base64Alphabet[47] = 63;
-        for (int i5 = 0; i5 <= 25; i5++) {
-            lookUpBase64Alphabet[i5] = (byte) (i5 + 65);
-        }
-        int icount = 26;
-        int j = 0;
-        while (icount <= 51) {
-            lookUpBase64Alphabet[icount] = (byte) (j + 97);
-            icount++;
-            j++;
-        }
-        int icount2 = 52;
-        int j2 = 0;
-        while (icount2 <= 61) {
-            lookUpBase64Alphabet[icount2] = (byte) (j2 + 48);
-            icount2++;
-            j2++;
-        }
-        lookUpBase64Alphabet[62] = Constants_H.f89;
-        lookUpBase64Alphabet[63] = Constants_H.f20;
-    }
+   static {
+      int var0;
+      for(var0 = 0; var0 < 255; ++var0) {
+         base64Alphabet[var0] = -1;
+      }
 
-    private static boolean isBase64(byte paramByte) {
-        return paramByte == 61 || base64Alphabet[paramByte] != -1;
-    }
+      for(var0 = 90; var0 >= 65; --var0) {
+         base64Alphabet[var0] = (byte)(var0 - 65);
+      }
 
-    public static boolean isArrayByteBase64(byte[] paramArrayOfByte) {
-        byte[] paramArrayOfByte2 = discardWhitespace(paramArrayOfByte);
-        int i = paramArrayOfByte2.length;
-        if (i == 0) {
-            return true;
-        }
-        for (byte b : paramArrayOfByte2) {
-            if (!isBase64(b)) {
-                return false;
+      for(var0 = 122; var0 >= 97; --var0) {
+         base64Alphabet[var0] = (byte)(var0 - 97 + 26);
+      }
+
+      for(var0 = 57; var0 >= 48; --var0) {
+         base64Alphabet[var0] = (byte)(var0 - 48 + 52);
+      }
+
+      base64Alphabet[43] = 62;
+      base64Alphabet[47] = 63;
+
+      for(var0 = 0; var0 <= 25; ++var0) {
+         lookUpBase64Alphabet[var0] = (byte)(var0 + 65);
+      }
+
+      int var1 = 26;
+
+      for(var0 = 0; var1 <= 51; ++var0) {
+         lookUpBase64Alphabet[var1] = (byte)(var0 + 97);
+         ++var1;
+      }
+
+      var1 = 52;
+
+      for(var0 = 0; var1 <= 61; ++var0) {
+         lookUpBase64Alphabet[var1] = (byte)(var0 + 48);
+         ++var1;
+      }
+
+      lookUpBase64Alphabet[62] = 43;
+      lookUpBase64Alphabet[63] = 47;
+   }
+
+   public Base64() {
+      super();
+   }
+
+   public static byte[] decodeBase64(byte[] var0) {
+      byte[] var8 = discardNonBase64(var0);
+      if (var8.length == 0) {
+         var0 = new byte[0];
+      } else {
+         int var4 = var8.length / 4;
+         var0 = (byte[])null;
+         int var2 = 0;
+         int var1 = var8.length;
+
+         while(var8[var1 - 1] == 61) {
+            int var3 = var1 - 1;
+            var1 = var3;
+            if (var3 == 0) {
+               var0 = new byte[0];
+               return var0;
             }
-        }
-        return true;
-    }
+         }
 
-    public static byte[] encodeBase64(byte[] paramArrayOfByte) {
-        return encodeBase64(paramArrayOfByte, false);
-    }
+         var0 = new byte[var1 - var4];
 
-    public static byte[] encodeBase64Chunked(byte[] paramArrayOfByte) {
-        return encodeBase64(paramArrayOfByte, true);
-    }
-
-    @Override // com.uc.paymentsdk.commons.codec.Decoder
-    public Object decode(Object paramObject) throws DecoderException {
-        if (!(paramObject instanceof byte[])) {
-            throw new DecoderException("Parameter supplied to Base64 decode is not a byte[]");
-        }
-        return decode((byte[]) paramObject);
-    }
-
-    @Override // com.uc.paymentsdk.commons.codec.BinaryDecoder
-    public byte[] decode(byte[] paramArrayOfByte) {
-        return decodeBase64(paramArrayOfByte);
-    }
-
-    public static byte[] encodeBase64(byte[] paramArrayOfByte, boolean paramBoolean) {
-        int m;
-        int n;
-        int m2;
-        int i11;
-        int i112;
-        int i113;
-        int i9;
-        int i = paramArrayOfByte.length * 8;
-        int j = i % 24;
-        int k = i / 24;
-        if (j != 0) {
-            int m3 = k + 1;
-            m = m3 * 4;
-        } else {
-            m = k * 4;
-        }
-        if (!paramBoolean) {
-            n = 0;
-            m2 = m;
-        } else {
-            int n2 = CHUNK_SEPARATOR.length;
-            int n3 = n2 == 0 ? 0 : (int) Math.ceil(m / 76.0f);
-            n = n3;
-            m2 = m + (CHUNK_SEPARATOR.length * n3);
-        }
-        byte[] arrayOfByte = new byte[m2];
-        int i1 = 0;
-        int i2 = 0;
-        int i3 = 0;
-        int i4 = 0;
-        int i10 = 0;
-        int i92 = CHUNK_SIZE;
-        int i8 = 0;
-        int i6 = 0;
-        while (i8 < k) {
-            int i7 = i8 * 3;
-            int i72 = paramArrayOfByte[i7];
-            int i12 = i7 + 1;
-            int i42 = paramArrayOfByte[i12];
-            int i13 = i7 + 2;
-            int i5 = paramArrayOfByte[i13];
-            int i22 = (byte) (i42 & 15);
-            i1 = (byte) (i72 & 3);
-            if ((i72 & SIGN) == 0) {
-                i113 = (byte) (i72 >> 2);
-            } else {
-                int i23 = i72 >> 2;
-                i113 = (byte) (i23 ^ 192);
+         for(var1 = 0; var1 < var4; ++var1) {
+            int var5 = var1 * 4;
+            byte var7 = var8[var5 + 2];
+            byte var6 = var8[var5 + 3];
+            byte var9 = base64Alphabet[var8[var5]];
+            byte var10 = base64Alphabet[var8[var5 + 1]];
+            if (var7 != 61 && var6 != 61) {
+               var7 = base64Alphabet[var7];
+               var6 = base64Alphabet[var6];
+               var0[var2] = (byte)(var9 << 2 | var10 >> 4);
+               var0[var2 + 1] = (byte)((var10 & 15) << 4 | var7 >> 2 & 15);
+               var0[var2 + 2] = (byte)(var7 << 6 | var6);
+            } else if (var7 == 61) {
+               var0[var2] = (byte)(var9 << 2 | var10 >> 4);
+            } else if (var6 == 61) {
+               var6 = base64Alphabet[var7];
+               var0[var2] = (byte)(var9 << 2 | var10 >> 4);
+               var0[var2 + 1] = (byte)((var10 & 15) << 4 | var6 >> 2 & 15);
             }
-            int i122 = (i42 & SIGN) == 0 ? (byte) (i42 >> 4) : (byte) ((i42 >> 4) ^ 240);
-            int i132 = (i5 & SIGN) == 0 ? (byte) (i5 >> 6) : (byte) ((i5 >> 6) ^ 252);
-            arrayOfByte[i6] = lookUpBase64Alphabet[i113];
-            arrayOfByte[i6 + 1] = lookUpBase64Alphabet[i122 | (i1 << 4)];
-            arrayOfByte[i6 + 2] = lookUpBase64Alphabet[i132 | (i22 << 2)];
-            arrayOfByte[i6 + 3] = lookUpBase64Alphabet[i5 & 63];
-            int i62 = i6 + 4;
-            if (!paramBoolean) {
-                i9 = i92;
-            } else if (i62 != i92) {
-                i9 = i92;
-            } else {
-                System.arraycopy(CHUNK_SEPARATOR, 0, arrayOfByte, i62, CHUNK_SEPARATOR.length);
-                i10++;
-                int i93 = ((i10 + 1) * CHUNK_SIZE) + (CHUNK_SEPARATOR.length * i10);
-                i62 += CHUNK_SEPARATOR.length;
-                i9 = i93;
-            }
-            i92 = i9;
-            i8++;
-            i6 = i62;
-            i4 = i42;
-            i3 = i72;
-            i2 = i22;
-        }
-        int i52 = i8 * 3;
-        if (j == 8) {
-            int i32 = paramArrayOfByte[i52];
-            int i14 = (byte) (i32 & 3);
-            int i15 = i32 & SIGN;
-            if (i15 == 0) {
-                i112 = (byte) (i32 >> 2);
-            } else {
-                int i16 = i32 >> 2;
-                i112 = (byte) (i16 ^ 192);
-            }
-            arrayOfByte[i6] = lookUpBase64Alphabet[i112];
-            arrayOfByte[i6 + 1] = lookUpBase64Alphabet[i14 << 4];
-            arrayOfByte[i6 + 2] = PAD;
-            arrayOfByte[i6 + 3] = PAD;
-        } else if (j == 16) {
-            int i43 = paramArrayOfByte[i52];
-            int i17 = i52 + 1;
-            int i73 = paramArrayOfByte[i17];
-            int i24 = (byte) (i73 & 15);
-            int i18 = (byte) (i43 & 3);
-            if ((i43 & SIGN) == 0) {
-                i11 = (byte) (i43 >> 2);
-            } else {
-                int i25 = i43 >> 2;
-                i11 = (byte) (i25 ^ 192);
-            }
-            int i123 = (i73 & SIGN) == 0 ? (byte) (i73 >> 4) : (byte) ((i73 >> 4) ^ 240);
-            arrayOfByte[i6] = lookUpBase64Alphabet[i11];
-            arrayOfByte[i6 + 1] = lookUpBase64Alphabet[i123 | (i18 << 4)];
-            arrayOfByte[i6 + 2] = lookUpBase64Alphabet[i24 << 2];
-            arrayOfByte[i6 + 3] = PAD;
-        }
-        if (paramBoolean && i10 < n) {
-            byte[] bArr = CHUNK_SEPARATOR;
-            int i26 = CHUNK_SEPARATOR.length;
-            int i102 = CHUNK_SEPARATOR.length;
-            System.arraycopy(bArr, 0, arrayOfByte, m2 - i26, i102);
-        }
-        return arrayOfByte;
-    }
 
-    public static byte[] decodeBase64(byte[] paramArrayOfByte) {
-        byte[] paramArrayOfByte2 = discardNonBase64(paramArrayOfByte);
-        if (paramArrayOfByte2.length == 0) {
-            return new byte[0];
-        }
-        int i = paramArrayOfByte2.length / 4;
-        int i3 = 0;
-        int i5 = paramArrayOfByte2.length;
-        while (paramArrayOfByte2[i5 - 1] == 61) {
-            i5--;
-            if (i5 == 0) {
-                return new byte[0];
-            }
-        }
-        byte[] arrayOfByte = new byte[i5 - i];
-        for (int i52 = 0; i52 < i; i52++) {
-            int i4 = i52 * 4;
-            int i1 = paramArrayOfByte2[i4 + 2];
-            int i2 = paramArrayOfByte2[i4 + 3];
-            int j = base64Alphabet[paramArrayOfByte2[i4]];
-            int k = base64Alphabet[paramArrayOfByte2[i4 + 1]];
-            if (i1 != 61 && i2 != 61) {
-                int m = base64Alphabet[i1];
-                int n = base64Alphabet[i2];
-                arrayOfByte[i3] = (byte) ((j << 2) | (k >> 4));
-                arrayOfByte[i3 + 1] = (byte) (((k & 15) << 4) | ((m >> 2) & 15));
-                arrayOfByte[i3 + 2] = (byte) ((m << 6) | n);
-            } else if (i1 == 61) {
-                arrayOfByte[i3] = (byte) ((j << 2) | (k >> 4));
-            } else if (i2 == 61) {
-                int m2 = base64Alphabet[i1];
-                arrayOfByte[i3] = (byte) ((j << 2) | (k >> 4));
-                arrayOfByte[i3 + 1] = (byte) (((k & 15) << 4) | ((m2 >> 2) & 15));
-            }
-            i3 += 3;
-        }
-        return arrayOfByte;
-    }
+            var2 += 3;
+         }
+      }
 
-    static byte[] discardWhitespace(byte[] paramArrayOfByte) {
-        byte[] arrayOfByte1 = new byte[paramArrayOfByte.length];
-        int i = 0;
-        for (int j = 0; j < paramArrayOfByte.length; j++) {
-            switch (paramArrayOfByte[j]) {
-                case 9:
-                case 10:
-                case Canvas.KEY_NUM6 /* 13 */:
-                case 32:
-                    break;
-                default:
-                    arrayOfByte1[i] = paramArrayOfByte[j];
-                    i++;
-                    break;
+      return var0;
+   }
+
+   static byte[] discardNonBase64(byte[] var0) {
+      byte[] var3 = new byte[var0.length];
+      int var2 = 0;
+
+      for(int var1 = 0; var1 < var0.length; ++var1) {
+         if (isBase64(var0[var1])) {
+            var3[var2] = var0[var1];
+            ++var2;
+         }
+      }
+
+      var0 = new byte[var2];
+      System.arraycopy(var3, 0, var0, 0, var2);
+      return var0;
+   }
+
+   static byte[] discardWhitespace(byte[] var0) {
+      byte[] var4 = new byte[var0.length];
+      int var3 = 0;
+      int var1 = 0;
+
+      while(var1 < var0.length) {
+         int var2 = var3;
+         switch (var0[var1]) {
+            default:
+               var4[var3] = var0[var1];
+               var2 = var3 + 1;
+            case 9:
+            case 10:
+            case 13:
+            case 32:
+               ++var1;
+               var3 = var2;
+         }
+      }
+
+      var0 = new byte[var3];
+      System.arraycopy(var4, 0, var0, 0, var3);
+      return var0;
+   }
+
+   public static byte[] encodeBase64(byte[] var0) {
+      return encodeBase64(var0, false);
+   }
+
+   public static byte[] encodeBase64(byte[] var0, boolean var1) {
+      int var2 = var0.length * 8;
+      int var16 = var2 % 24;
+      int var17 = var2 / 24;
+      byte[] var18 = (byte[])null;
+      if (var16 != 0) {
+         var2 = (var17 + 1) * 4;
+      } else {
+         var2 = var17 * 4;
+      }
+
+      int var3;
+      int var4;
+      int var5;
+      if (var1) {
+         if (CHUNK_SEPARATOR.length == 0) {
+            var3 = 0;
+         } else {
+            var3 = (int)Math.ceil((double)((float)var2 / 76.0F));
+         }
+
+         var5 = CHUNK_SEPARATOR.length;
+         var4 = var3;
+         var5 = var2 + var5 * var3;
+      } else {
+         var4 = 0;
+         var5 = var2;
+      }
+
+      var18 = new byte[var5];
+      boolean var10 = false;
+      boolean var9 = false;
+      boolean var11 = false;
+      boolean var8 = false;
+      int var6 = 0;
+      var2 = 76;
+      int var7 = 0;
+
+      int var15;
+      byte var22;
+      byte var23;
+      for(var3 = 0; var7 < var17; var7 = var15) {
+         int var21 = var7 * 3;
+         byte var13 = var0[var21];
+         byte var14 = var0[var21 + 1];
+         var15 = var0[var21 + 2];
+         byte var12 = (byte)(var14 & 15);
+         byte var25 = (byte)(var13 & 3);
+         if ((var13 & -128) == 0) {
+            var22 = (byte)(var13 >> 2);
+         } else {
+            var22 = (byte)(var13 >> 2 ^ 192);
+         }
+
+         if ((var14 & -128) == 0) {
+            var23 = (byte)(var14 >> 4);
+         } else {
+            var23 = (byte)(var14 >> 4 ^ 240);
+         }
+
+         byte var24;
+         if ((var15 & -128) == 0) {
+            var24 = (byte)(var15 >> 6);
+         } else {
+            var24 = (byte)(var15 >> 6 ^ 252);
+         }
+
+         var18[var3] = lookUpBase64Alphabet[var22];
+         var18[var3 + 1] = lookUpBase64Alphabet[var23 | var25 << 4];
+         var18[var3 + 2] = lookUpBase64Alphabet[var24 | var12 << 2];
+         var18[var3 + 3] = lookUpBase64Alphabet[var15 & 63];
+         var3 += 4;
+         if (var1 && var3 == var2) {
+            System.arraycopy(CHUNK_SEPARATOR, 0, var18, var3, CHUNK_SEPARATOR.length);
+            ++var6;
+            var2 = CHUNK_SEPARATOR.length;
+            var3 += CHUNK_SEPARATOR.length;
+            var2 = (var6 + 1) * 76 + var2 * var6;
+         }
+
+         var15 = var7 + 1;
+      }
+
+      var7 *= 3;
+      byte var19;
+      byte var20;
+      if (var16 == 8) {
+         var19 = var0[var7];
+         var20 = (byte)(var19 & 3);
+         if ((var19 & -128) == 0) {
+            var19 = (byte)(var19 >> 2);
+         } else {
+            var19 = (byte)(var19 >> 2 ^ 192);
+         }
+
+         var18[var3] = lookUpBase64Alphabet[var19];
+         var18[var3 + 1] = lookUpBase64Alphabet[var20 << 4];
+         var18[var3 + 2] = 61;
+         var18[var3 + 3] = 61;
+      } else if (var16 == 16) {
+         var19 = var0[var7];
+         var20 = var0[var7 + 1];
+         var22 = (byte)(var20 & 15);
+         var23 = (byte)(var19 & 3);
+         if ((var19 & -128) == 0) {
+            var19 = (byte)(var19 >> 2);
+         } else {
+            var19 = (byte)(var19 >> 2 ^ 192);
+         }
+
+         if ((var20 & -128) == 0) {
+            var20 = (byte)(var20 >> 4);
+         } else {
+            var20 = (byte)(var20 >> 4 ^ 240);
+         }
+
+         var18[var3] = lookUpBase64Alphabet[var19];
+         var18[var3 + 1] = lookUpBase64Alphabet[var20 | var23 << 4];
+         var18[var3 + 2] = lookUpBase64Alphabet[var22 << 2];
+         var18[var3 + 3] = 61;
+      }
+
+      if (var1 && var6 < var4) {
+         System.arraycopy(CHUNK_SEPARATOR, 0, var18, var5 - CHUNK_SEPARATOR.length, CHUNK_SEPARATOR.length);
+      }
+
+      return var18;
+   }
+
+   public static byte[] encodeBase64Chunked(byte[] var0) {
+      return encodeBase64(var0, true);
+   }
+
+   public static boolean isArrayByteBase64(byte[] var0) {
+      var0 = discardWhitespace(var0);
+      int var2 = var0.length;
+      boolean var3;
+      if (var2 == 0) {
+         var3 = true;
+      } else {
+         for(int var1 = 0; var1 < var2; ++var1) {
+            if (!isBase64(var0[var1])) {
+               var3 = false;
+               return var3;
             }
-        }
-        byte[] arrayOfByte2 = new byte[i];
-        System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, i);
-        return arrayOfByte2;
-    }
+         }
 
-    static byte[] discardNonBase64(byte[] paramArrayOfByte) {
-        byte[] arrayOfByte1 = new byte[paramArrayOfByte.length];
-        int i = 0;
-        for (int j = 0; j < paramArrayOfByte.length; j++) {
-            if (isBase64(paramArrayOfByte[j])) {
-                arrayOfByte1[i] = paramArrayOfByte[j];
-                i++;
-            }
-        }
-        byte[] arrayOfByte2 = new byte[i];
-        System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, i);
-        return arrayOfByte2;
-    }
+         var3 = true;
+      }
 
-    @Override // com.uc.paymentsdk.commons.codec.Encoder
-    public Object encode(Object paramObject) throws EncoderException {
-        if (!(paramObject instanceof byte[])) {
-            throw new EncoderException("Parameter supplied to Base64 encode is not a byte[]");
-        }
-        return encode((byte[]) paramObject);
-    }
+      return var3;
+   }
 
-    @Override // com.uc.paymentsdk.commons.codec.BinaryEncoder
-    public byte[] encode(byte[] paramArrayOfByte) {
-        return encodeBase64(paramArrayOfByte, false);
-    }
+   private static boolean isBase64(byte var0) {
+      boolean var1;
+      if (var0 == 61) {
+         var1 = true;
+      } else if (base64Alphabet[var0] != -1) {
+         var1 = true;
+      } else {
+         var1 = false;
+      }
+
+      return var1;
+   }
+
+   public Object decode(Object var1) throws DecoderException {
+      if (!(var1 instanceof byte[])) {
+         throw new DecoderException("Parameter supplied to Base64 decode is not a byte[]");
+      } else {
+         return this.decode((byte[])var1);
+      }
+   }
+
+   public byte[] decode(byte[] var1) {
+      return decodeBase64(var1);
+   }
+
+   public Object encode(Object var1) throws EncoderException {
+      if (!(var1 instanceof byte[])) {
+         throw new EncoderException("Parameter supplied to Base64 encode is not a byte[]");
+      } else {
+         return this.encode((byte[])var1);
+      }
+   }
+
+   public byte[] encode(byte[] var1) {
+      return encodeBase64(var1, false);
+   }
 }

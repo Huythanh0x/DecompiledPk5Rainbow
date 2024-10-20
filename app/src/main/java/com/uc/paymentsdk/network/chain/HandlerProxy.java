@@ -1,24 +1,21 @@
 package com.uc.paymentsdk.network.chain;
 
 import android.content.Context;
-import com.uc.paymentsdk.network.chain.Handler;
 
-/* loaded from: classes.dex */
 public class HandlerProxy extends Handler {
-    private Handler handler;
+   private Handler handler;
 
-    public HandlerProxy(Context paramContext, Handler.OnFinishListener paramOnFinishListener) {
-        super(paramContext);
-        this.handler = new SyncSmsInfoHandler(paramContext, paramOnFinishListener);
-    }
+   public HandlerProxy(Context var1) {
+      super(var1);
+      this.handler = new SyncSmsInfoHandler(var1);
+   }
 
-    public HandlerProxy(Context paramContext) {
-        super(paramContext);
-        this.handler = new SyncSmsInfoHandler(paramContext);
-    }
+   public HandlerProxy(Context var1, Handler$OnFinishListener var2) {
+      super(var1);
+      this.handler = new SyncSmsInfoHandler(var1, var2);
+   }
 
-    @Override // com.uc.paymentsdk.network.chain.Handler
-    public void handleRequest() {
-        this.handler.handleRequest();
-    }
+   public void handleRequest() {
+      this.handler.handleRequest();
+   }
 }

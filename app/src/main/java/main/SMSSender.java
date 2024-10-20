@@ -8,6 +8,14 @@ import dm.Ms;
 import dm.Sound;
 import dm.Ui;
 
+/**
+ *
+ */
+/**
+ * The SMSSender class is responsible for handling SMS-related operations within the game.
+ * It implements the Key_H interface and provides methods for creating, sending, and managing SMS messages.
+ * This class also handles various game states and user interactions related to SMS functionalities.
+ */
 public class SMSSender implements Key_H {
     public static GameRun gr;
     public static boolean isWorking;
@@ -31,6 +39,12 @@ public class SMSSender implements Key_H {
     private int tState;
     private byte totalPage;
 
+    /**
+     * Constructs an SMSSender instance with the specified GameRun object.
+     * Initializes various SMS-related properties and creates SMS messages.
+     *
+     * @param var1 the GameRun instance associated with this SMSSender
+     */
     public SMSSender(GameRun var1) {
         super();
         byte[] var5 = new byte[]{0, 2, 4, 5};
@@ -54,10 +68,16 @@ public class SMSSender implements Key_H {
 
     }
 
+    /**
+     * Creates SMS messages and initializes the menu text.
+     */
     private void createSMS() {
         this.menuTxt = new String[][]{{"商城"}, {"购买30000金", ""}, {"购买5000金", "身为四大家族之首的贵公子，没钱可不行！立刻拥有5000金。"}, {"购买50徽章", ""}, {"购买10徽章", "购买该特殊道具，立刻拥有10徽章，能购买双倍经验，宠物技能，强大的宠物捕获球等各种神奇的道具。"}, {"宠物升5级", "让您随身携带的全部宠物立刻升5级（超过70级宠物不能再升级）"}, {"购买奇异兽", "购买该特殊道具，获得可爱的奇异兽，移动速度可以提高一倍，且不会遇到任何敌人！无限使用，心动不如行动，快购买吧！"}, {"正版验证", "游戏试玩结束，购买此项将开启后续所有游戏内容、地图。同时将免费赠送您5枚徽章（可购买强力道具）"}, {"升级复活", "让您携带的所有宠物全恢复，同时立刻让您携带的宠物提升5级（超过70级宠物不能再升级），让接下来的战斗变的更轻松。"}};
     }
 
+    /**
+     * Draws the SMS-related UI elements.
+     */
     private void draw0() {
         boolean var4 = true;
         boolean var6 = true;
@@ -171,14 +191,31 @@ public class SMSSender implements Key_H {
         Ui.i().drawYesNo(var4, var5);
     }
 
+    /**
+     * Generates a tip message for SMS sending.
+     *
+     * @param var1 the number of SMS messages already sent
+     * @param var2 the number of SMS messages required to complete the purchase
+     * @return a string containing the SMS tip message
+     */
     private String getSmsTip(int var1, int var2) {
         return "" + "您已发送" + var1 + "条短信。" + "购买此项，还需发送" + var2 + "条短信。" + "确认发送短信吗？";
     }
 
+    /**
+     * Sets the showLine property to 3.
+     */
     private void goWord() {
         this.showLine = 3;
     }
 
+    /**
+     * Returns the singleton instance of SMSSender.
+     * If the instance does not exist, it creates a new one.
+     *
+     * @param var0 the GameRun instance associated with this SMSSender
+     * @return the singleton instance of SMSSender
+     */
     public static SMSSender i(GameRun var0) {
         if (smsSender == null) {
             smsSender = new SMSSender(var0);
@@ -187,6 +224,9 @@ public class SMSSender implements Key_H {
         return smsSender;
     }
 
+    /**
+     * Restores the previous game state.
+     */
     private void outState() {
         if (this.tState != -1) {
             GameRun.run_state = this.tState;
@@ -197,6 +237,9 @@ public class SMSSender implements Key_H {
 
     }
 
+    /**
+     * Draws the SMS menu and related UI elements.
+     */
     public void draw() {
         if (this.menu_state == 0) {
             int var1 = 640 - 2;
@@ -242,18 +285,39 @@ public class SMSSender implements Key_H {
 
     }
 
+    /**
+     * Returns the current sendSms value.
+     *
+     * @return the current sendSms value
+     */
     public byte getSendSms() {
         return this.sendSms;
     }
 
+    /**
+     * Returns the current menu state.
+     *
+     * @return the current menu state
+     */
     public byte getSmsSenderMenuState() {
         return this.menu_state;
     }
 
+    /**
+     * Returns the current tState value.
+     *
+     * @return the current tState value
+     */
     public int getTstate() {
         return this.tState;
     }
 
+    /**
+     * Sets the game state and menu state based on the provided parameters.
+     *
+     * @param var1 the menu state to set
+     * @param var2 a boolean indicating whether to save the current game state
+     */
     public void go(int var1, boolean var2) {
         if (var2) {
             this.tState = GameRun.run_state;
@@ -289,6 +353,9 @@ public class SMSSender implements Key_H {
 
     }
 
+    /**
+     * Levels up all the player's monsters by 5 levels.
+     */
     public void goLevel() {
         GameRun.run_state = -21;
         this.idSmsLevel = 0;
@@ -324,6 +391,11 @@ public class SMSSender implements Key_H {
 
     }
 
+    /**
+     * Checks if any of the player's monsters can level up.
+     *
+     * @return true if any monster can level up, false otherwise
+     */
     public boolean isMyMonLevel() {
         byte var1 = (byte)(gr.myMon_length - 1);
 
@@ -345,6 +417,9 @@ public class SMSSender implements Key_H {
         return var2;
     }
 
+    /**
+     * Handles key input for SMS-related actions.
+     */
     public void key() {
         if (this.sendSms == -1 && Ms.i().key_Up_Down()) {
             if (!Ms.i().key_delay() && this.menu[this.menu_state].length > 1) {
@@ -372,6 +447,9 @@ public class SMSSender implements Key_H {
 
     }
 
+    /**
+     * Handles key input for leveling up monsters.
+     */
     public void keyLevel() {
         if (!Ms.i().key_delay() && gr.b_c == 1 && gr.say_s == 0) {
             gr.b_c = 0;
@@ -379,10 +457,16 @@ public class SMSSender implements Key_H {
 
     }
 
+    /**
+     * Paints the SMS-related UI elements.
+     */
     public void paint() {
         this.draw();
     }
 
+    /**
+     * Paints the UI elements related to leveling up monsters.
+     */
     public void paintLevel() {
         if (gr.b_c == 1) {
             gr.drawEvolveUI(0, this.idSmsLevel, true);
@@ -390,6 +474,9 @@ public class SMSSender implements Key_H {
 
     }
 
+    /**
+     * Runs the SMS sending process.
+     */
     public void run() {
         if (this.sendSms == 1) {
             this.sendSms = 2;
@@ -398,6 +485,9 @@ public class SMSSender implements Key_H {
 
     }
 
+    /**
+     * Runs the process for leveling up monsters.
+     */
     public void runLevel() {
         if (gr.b_c == 0) {
             if (gr.levelUp_in_battle[this.idSmsLevel][0] == 1) {
@@ -436,6 +526,10 @@ public class SMSSender implements Key_H {
 
     }
 
+
+    /**
+     * Handles the success of an SMS send operation.
+     */
     public void sendSuccess() {
         if (this.sendSms == 4 && this.smsCount[smsType][1] > 1) {
             byte[] var3 = gr.rmsSms;
@@ -523,14 +617,27 @@ public class SMSSender implements Key_H {
         GameRun.mc.temp_state = GameRun.run_state;
     }
 
+    /**
+     * Sets the sendSms value.
+     *
+     * @param var1 the value to set for sendSms
+     */
     public void setSendSms(int var1) {
         this.sendSms = (byte)var1;
     }
 
+    /**
+     * Sets the SMS type based on the current menu selection.
+     */
     public void setSmsType() {
         smsType = (byte)(this.menu[this.menu_state][this.sel[0]] - 1);
     }
 
+    /**
+     * Sets the SMS value based on the current SMS type.
+     *
+     * @param var1 the value to set for the SMS
+     */
     public void setSmsValue(int var1) {
         switch (smsType) {
             case 1:

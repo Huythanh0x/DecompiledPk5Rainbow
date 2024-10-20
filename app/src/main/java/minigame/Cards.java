@@ -5,6 +5,10 @@ import dm.Ui;
 import main.Constants_H;
 import main.GameRun;
 
+/**
+ * The Cards class implements the MiniGame_H interface and represents a card-based mini-game.
+ * It manages the game state, drawing of cards, and user interactions.
+ */
 public class Cards implements MiniGame_H {
     private short count;
     private byte[][] findC;
@@ -30,11 +34,25 @@ public class Cards implements MiniGame_H {
     private byte ty;
     private short wh = 320;
 
+    /**
+     * Constructs a new Cards instance with the specified GameRun object.
+     *
+     * @param var1 the GameRun object associated with this Cards instance.
+     */
     public Cards(GameRun var1) {
         super();
         this.gr = var1;
     }
 
+    /**
+     * Draws a card on the game screen.
+     *
+     * @param var1 the row index of the card.
+     * @param var2 the column index of the card.
+     * @param var3 the x-coordinate where the card should be drawn.
+     * @param var4 the y-coordinate where the card should be drawn.
+     * @param var5 the state of the card (0, 1, or other).
+     */
     private void drawCard(int var1, int var2, int var3, int var4, int var5) {
         if (var5 == 0) {
             Ui.i().drawK(var3, var4, this.gw, this.gh, 1);
@@ -55,6 +73,13 @@ public class Cards implements MiniGame_H {
 
     }
 
+    /**
+     * Draws the game screen, including all cards and UI elements.
+     *
+     * @param var1 the x-coordinate offset for drawing.
+     * @param var2 the y-coordinate offset for drawing.
+     * @param var3 an additional parameter for drawing.
+     */
     private void drawGame(int var1, int var2, int var3) {
         for(var1 = 0; var1 < this.findN.length; ++var1) {
             for(var2 = 0; var2 < this.findN[var1].length; ++var2) {
@@ -100,12 +125,22 @@ public class Cards implements MiniGame_H {
 
     }
 
+    /**
+     * Resets the game state by setting the card arrays to null.
+     */
     private void nullGame() {
         this.findN = null;
         this.findC = null;
         this.num = null;
     }
 
+    /**
+     * Draws the initial game screen with UI elements.
+     *
+     * @param var1 the x-coordinate offset for drawing.
+     * @param var2 the y-coordinate offset for drawing.
+     * @param var3 an additional parameter for drawing.
+     */
     public void draw0(int var1, int var2, int var3) {
         Ui.i().fillRectB();
         Ui.i().drawK(var1, var2 + 25 + 5, 200 - 10, var3, 4);
@@ -151,6 +186,11 @@ public class Cards implements MiniGame_H {
 
     }
 
+    /**
+     * Initializes the game state and starts the game.
+     *
+     * @param var1 an integer parameter for game initialization.
+     */
     public void go(int var1) {
         this.gr.line_max = 9;
         this.count = 100;
@@ -209,6 +249,12 @@ public class Cards implements MiniGame_H {
 
     }
 
+    /**
+     * Initializes the game state with a specified level and starts the game.
+     *
+     * @param var1 an integer parameter for game initialization.
+     * @param var2 the level of the game.
+     */
     public void go(int var1, int var2) {
         this.gr.setStringB(this.gr.createString("data/gamec.d"), 160, 0);
         this.gr.setStringB("开始游戏#n离开游戏", Constants_H.WIDTH, 1);
@@ -225,6 +271,11 @@ public class Cards implements MiniGame_H {
         this.go(var1);
     }
 
+    /**
+     * Handles key input events and updates the game state accordingly.
+     *
+     * @return true if the game should exit, false otherwise.
+     */
     public boolean key() {
         boolean var3;
         if (Ms.i().key_delay()) {
@@ -278,6 +329,9 @@ public class Cards implements MiniGame_H {
         return var3;
     }
 
+    /**
+     * Draws the game screen and updates the game state.
+     */
     public void patin() {
         this.draw0(10, 2, 280);
         if (this.state != 0) {
@@ -286,6 +340,9 @@ public class Cards implements MiniGame_H {
 
     }
 
+    /**
+     * Runs the game logic, updating the game state based on the current conditions.
+     */
     public void run() {
         if (this.time < 1) {
             if (this.time == 0) {

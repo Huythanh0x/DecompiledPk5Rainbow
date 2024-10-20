@@ -15,6 +15,70 @@ import javax.microedition.rms.RecordStoreNotOpenException;
 
 import main.Key_H;
 
+/**
+ * The {@code Ms} class implements the {@code Key_H} interface and provides various utility methods 
+ * for handling byte arrays, images, sprites, and key events. It also includes methods for mathematical 
+ * calculations and record store operations.
+ * 
+ * <h2>Class Dependencies:</h2>
+ * <ul>
+ *   <li>{@code Key_H} - Interface that this class implements.</li>
+ *   <li>{@code Font} - Used for font-related operations.</li>
+ *   <li>{@code Random} - Used for generating random numbers.</li>
+ *   <li>{@code RecordStore} - Used for record store operations.</li>
+ *   <li>{@code Image} - Used for image-related operations.</li>
+ *   <li>{@code Sprite} - Used for sprite-related operations.</li>
+ *   <li>{@code DataInputStream} - Used for reading data streams.</li>
+ *   <li>{@code ByteArrayOutputStream} - Used for writing byte arrays.</li>
+ *   <li>{@code ByteArrayInputStream} - Used for reading byte arrays.</li>
+ *   <li>{@code Vector} - Used for dynamic array operations.</li>
+ *   <li>{@code StringBuffer} - Used for string manipulation.</li>
+ * </ul>
+ * 
+ * <h2>Usage:</h2>
+ * <p>This class provides a variety of static and instance methods for different operations:</p>
+ * <ul>
+ *   <li>Mathematical operations: {@code abs}, {@code compare_min}, {@code mathPercent}, {@code mathSpeedDown}, {@code mathSpeedN}, {@code mathSpeedUp}, {@code sqrt}</li>
+ *   <li>Byte array operations: {@code byteArrayToShortArray}, {@code create2Array}, {@code create3Array}, {@code create4Array}, {@code createArray}, {@code createIntArray}, {@code createShort2Array}, {@code createShort3Array}, {@code createShortArray}, {@code shortArrayToByteArray}</li>
+ *   <li>Image operations: {@code createCellImage}, {@code createImage}, {@code createImageArray}, {@code createImageArray_}, {@code createImage_}</li>
+ *   <li>Sprite operations: {@code createSprite}, {@code setSprite}</li>
+ *   <li>String operations: {@code createString2Array}, {@code createStringArray}, {@code createStringArrayOne}, {@code equals}, {@code getDialogs}, {@code getStringWidth}, {@code groupString}</li>
+ *   <li>Key event operations: {@code keyRelease}, {@code key_Down}, {@code key_Left}, {@code key_Left_Right}, {@code key_Num0}, {@code key_Num1}, {@code key_Num3}, {@code key_Num9}, {@code key_Right}, {@code key_S1}, {@code key_S1_Num5}, {@code key_S2}, {@code key_Up}, {@code key_Up_Down}, {@code key_delay}, {@code runDelay}</li>
+ *   <li>Record store operations: {@code rmsOptions}, {@code setRmsInit}</li>
+ *   <li>Miscellaneous operations: {@code checkIsSimulate}, {@code correctSelect}, {@code getEventNowData}, {@code getInt}, {@code getLen_byte}, {@code getLen_short}, {@code getMin}, {@code getPrecision}, {@code getShort}, {@code getSleep}, {@code isRect}, {@code loadText}, {@code putInt}, {@code putShort}, {@code readEventNowData}, {@code select}, {@code selectS}, {@code sleep}</li>
+ * </ul>
+ * 
+ * <h2>Initialization:</h2>
+ * <p>The class initializes some static variables in a static block:</p>
+ * <ul>
+ *   <li>{@code random} - Initialized with a new {@code Random} instance.</li>
+ *   <li>{@code font} - Initialized with a specific font.</li>
+ *   <li>{@code key_delay} - Initialized to 0.</li>
+ *   <li>{@code key_time} - Initialized to 10.</li>
+ * </ul>
+ * 
+ * <h2>Singleton Instance:</h2>
+ * <p>The class maintains a singleton instance {@code msListener} which can be accessed using the {@code i()} method.</p>
+ * 
+ * <h2>Example Usage:</h2>
+ * <pre>{@code
+ * Ms msInstance = Ms.i();
+ * int absoluteValue = Ms.abs(-5);
+ * Image image = msInstance.createImage("example");
+ * }</pre>
+ * 
+ * @see Key_H
+ * @see Font
+ * @see Random
+ * @see RecordStore
+ * @see Image
+ * @see Sprite
+ * @see DataInputStream
+ * @see ByteArrayOutputStream
+ * @see ByteArrayInputStream
+ * @see Vector
+ * @see StringBuffer
+ */
 public class Ms implements Key_H
 {
     public static Font font;

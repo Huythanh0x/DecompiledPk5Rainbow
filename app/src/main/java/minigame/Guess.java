@@ -7,6 +7,10 @@ import javax.microedition.lcdui.Image;
 import main.Constants_H;
 import main.GameRun;
 
+/**
+ * The Guess class implements the MiniGame_H interface and represents a guessing mini-game.
+ * It contains methods to initialize, draw, and run the game, as well as handle user input.
+ */
 public class Guess implements MiniGame_H {
     final short BOX_Y1 = 150;
     final short MON_Y = 165;
@@ -32,11 +36,19 @@ public class Guess implements MiniGame_H {
     private byte transNum = 0;
     private byte winNum = 0;
 
+    /**
+     * Constructor for the Guess class.
+     *
+     * @param var1 The GameRun instance associated with this game.
+     */
     public Guess(GameRun var1) {
         super();
         this.gr = var1;
     }
 
+    /**
+     * Draws the initial game screen, including UI elements and game rules.
+     */
     private void draw() {
         if (this.state == 0) {
             Ui.i().drawString("游戏规则", 320, 4, 17, 3, 1);
@@ -81,6 +93,9 @@ public class Guess implements MiniGame_H {
         this.gr.drawMoney(320, 360, 3, false);
     }
 
+    /**
+     * Draws the game elements during gameplay, including boxes and monsters.
+     */
     private void drawGame() {
         Ui.i().drawString("胜利次数：" + this.winNum + "/" + this.gameData[3][this.lv], 320, 4, 17, 3, 1);
         int var2;
@@ -164,10 +179,23 @@ public class Guess implements MiniGame_H {
 
     }
 
+    /**
+     * Draws a monster sprite at the specified position.
+     *
+     * @param var1 The index of the monster sprite.
+     * @param var2 The action index of the monster.
+     * @param var3 The x-coordinate to draw the monster.
+     * @param var4 The y-coordinate to draw the monster.
+     */
     private void drawMon(int var1, int var2, int var3, int var4) {
         Ui.i().drawFrameOne(this.imgMon[var1], this.imgMon[var1].action(this.gr.mList_id[var2][1] * 3, 0, 0), var3, var4, 0);
     }
 
+    /**
+     * Generates a list of monsters for the game.
+     *
+     * @return A byte array containing the indices of the monsters.
+     */
     private byte[] getGameMonList() {
         byte[] var4 = new byte[3];
 
@@ -211,6 +239,9 @@ public class Guess implements MiniGame_H {
         return var4;
     }
 
+    /**
+     * Initializes the game by setting up the boxes and monsters.
+     */
     private void initGame() {
         byte[] var2 = this.getGameMonList();
 
@@ -228,6 +259,11 @@ public class Guess implements MiniGame_H {
         this.mon_size_move = 0;
     }
 
+    /**
+     * Handles the win condition of the game.
+     *
+     * @return A byte value indicating the win state.
+     */
     private byte win() {
         byte var1 = (byte)(this.winNum + 1);
         this.winNum = var1;
@@ -251,6 +287,11 @@ public class Guess implements MiniGame_H {
         return var1;
     }
 
+    /**
+     * Starts or resets the game based on the provided parameters.
+     *
+     * @param var1 The game state to set.
+     */
     public void go(int var1) {
         if (var1 < 1) {
             this.b_win = 0;
@@ -270,6 +311,12 @@ public class Guess implements MiniGame_H {
 
     }
 
+    /**
+     * Starts the game with a specified level.
+     *
+     * @param var1 The game state to set.
+     * @param var2 The level to start the game at.
+     */
     public void go(int var1, int var2) {
         this.gr.setStringB(this.gr.createString("data/gamed.d"), 180, 0);
         this.gr.setStringB("开始游戏#n离开游戏", Constants_H.WIDTH, 1);
@@ -284,6 +331,11 @@ public class Guess implements MiniGame_H {
         this.go(var1);
     }
 
+    /**
+     * Handles key input for the game.
+     *
+     * @return A boolean indicating whether a key action was performed.
+     */
     public boolean key() {
         boolean var2;
         if (Ms.i().key_delay()) {
@@ -358,6 +410,9 @@ public class Guess implements MiniGame_H {
         return var2;
     }
 
+    /**
+     * Paints the game screen by drawing the UI and game elements.
+     */
     public void patin() {
         Ui.i().fillRectB();
         this.draw();
@@ -367,6 +422,9 @@ public class Guess implements MiniGame_H {
 
     }
 
+    /**
+     * Runs the game logic, updating the game state and handling transitions.
+     */
     public void run() {
         int var2;
         int[] var4;

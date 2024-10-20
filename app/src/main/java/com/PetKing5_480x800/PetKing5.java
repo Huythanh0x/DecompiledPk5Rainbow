@@ -12,23 +12,73 @@ import main.SMSSender;
 import main.XConnection;
 
 /* loaded from: classes.dex */
+/**
+ * The PetKing5 class extends CwaActivity and serves as the main activity for the PetKing5 application.
+ * It handles the initialization of various components and manages the payment process through different SMS types.
+ * 
+ * <p>Key functionalities include:</p>
+ * <ul>
+ *   <li>Initialization of SMSSender and PaymentsActivity in the constructor.</li>
+ *   <li>Setting up the activity in the onCreate method.</li>
+ *   <li>Handling different SMS payment types in the setSmshah method.</li>
+ *   <li>Processing the result of payment activities in the onActivityResult method.</li>
+ * </ul>
+ * 
+ * <p>Fields:</p>
+ * <ul>
+ *   <li>ad: An AlertDialog instance.</li>
+ *   <li>instance: An XConnection instance.</li>
+ *   <li>intent: A static Intent instance.</li>
+ *   <li>gr: A static GameRun instance.</li>
+ * </ul>
+ * 
+ * <p>Methods:</p>
+ * <ul>
+ *   <li>PetKing5(): Constructor that initializes SMSSender and PaymentsActivity.</li>
+ *   <li>onDestroy(): Overrides the onDestroy method of CwaActivity and Activity.</li>
+ *   <li>onCreate(Bundle savedInstanceState): Overrides the onCreate method of CwaActivity and Activity to set up the activity.</li>
+ *   <li>setSmshah(): Handles different SMS payment types and starts the corresponding payment activity.</li>
+ *   <li>onActivityResult(int requestCode, int resultCode, Intent data): Processes the result of payment activities and updates the game state accordingly.</li>
+ * </ul>
+ */
+/**
+ * The PetKing5 class extends CwaActivity and serves as the main activity for the PetKing5 application.
+ * It handles the initialization of various components and manages the payment process through different SMS types.
+ */
+/**
+ * PetKing5 is an activity class that extends CwaActivity and handles various
+ * functionalities related to SMS payments and game state management.
+ * It initializes necessary components and processes payment results.
+ */
 public class PetKing5 extends CwaActivity {
     AlertDialog ad;
     XConnection instance;
     public static Intent intent = null;
     public static GameRun gr = null;
 
+    /**
+     * Constructor that initializes SMSSender and PaymentsActivity.
+     */
     public PetKing5() {
         SMSSender.pk = this;
         PaymentsActivity.init(this);
     }
 
-    @Override // javax.microedition.lcdui.CwaActivity, android.app.Activity
+    /**
+     * Overrides the onDestroy method of CwaActivity and Activity.
+     * Cleans up resources when the activity is destroyed.
+     */
+    @Override
     public void onDestroy() {
         super.onDestroy();
     }
 
-    @Override // javax.microedition.lcdui.CwaActivity, android.app.Activity
+    /**
+     * Overrides the onCreate method of CwaActivity and Activity to set up the activity.
+     *
+     * @param savedInstanceState The saved instance state bundle.
+     */
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         setFullWindow(true);
         super.onCreate(savedInstanceState);
@@ -38,6 +88,10 @@ public class PetKing5 extends CwaActivity {
         intent = getIntent();
     }
 
+    /**
+     * Handles different SMS payment types and starts the corresponding payment activity.
+     * Depending on the SMS type, it creates an intent with payment information and starts the activity.
+     */
     public void setSmshah() {
         switch (SMSSender.smsType) {
             case 1:
@@ -82,7 +136,14 @@ public class PetKing5 extends CwaActivity {
         }
     }
 
-    @Override // android.app.Activity
+    /**
+     * Processes the result of payment activities and updates the game state accordingly.
+     *
+     * @param requestCode The request code.
+     * @param resultCode The result code.
+     * @param data The intent data.
+     */
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {

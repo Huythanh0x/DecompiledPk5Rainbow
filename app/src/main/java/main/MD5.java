@@ -1,9 +1,19 @@
 package main;
 
 /* loaded from: classes.dex */
+/**
+ * The MD5 class provides methods to compute the MD5 hash of a given string.
+ * It implements the MD5 hashing algorithm as defined in RFC 1321.
+ */
 public class MD5 {
     String hex_chr = "0123456789abcdef";
 
+    /**
+     * Converts an integer to a hexadecimal string.
+     *
+     * @param num The integer to convert.
+     * @return The hexadecimal string representation of the integer.
+     */
     private String rhex(int num) {
         String str = "";
         for (int j = 0; j <= 3; j++) {
@@ -12,6 +22,12 @@ public class MD5 {
         return str;
     }
 
+    /**
+     * Converts a string to an array of integers representing the MD5 blocks.
+     *
+     * @param str The input string.
+     * @return An array of integers representing the MD5 blocks.
+     */
     private int[] str2blks_MD5(String str) {
         int nblk = ((str.length() + 8) >> 6) + 1;
         int[] blks = new int[nblk * 16];
@@ -30,34 +46,113 @@ public class MD5 {
         return blks;
     }
 
+    /**
+     * Adds two integers with overflow handling.
+     *
+     * @param x The first integer.
+     * @param y The second integer.
+     * @return The sum of the two integers.
+     */
     private int add(int x, int y) {
         return (((x & Integer.MAX_VALUE) + (Integer.MAX_VALUE & y)) ^ (x & Integer.MIN_VALUE)) ^ (y & Integer.MIN_VALUE);
     }
 
+    /**
+     * Rotates an integer left by a specified number of bits.
+     *
+     * @param num The integer to rotate.
+     * @param cnt The number of bits to rotate.
+     * @return The rotated integer.
+     */
     private int rol(int num, int cnt) {
         return (num << cnt) | (num >>> (32 - cnt));
     }
 
+    /**
+     * Common transformation function used by the MD5 algorithm.
+     *
+     * @param q The result of the transformation.
+     * @param a The first integer.
+     * @param b The second integer.
+     * @param x The third integer.
+     * @param s The number of bits to rotate.
+     * @param t The fourth integer.
+     * @return The result of the transformation.
+     */
     private int cmn(int q, int a, int b, int x, int s, int t) {
         return add(rol(add(add(a, q), add(x, t)), s), b);
     }
 
+    /**
+     * The first transformation function used by the MD5 algorithm.
+     *
+     * @param a The first integer.
+     * @param b The second integer.
+     * @param c The third integer.
+     * @param d The fourth integer.
+     * @param x The fifth integer.
+     * @param s The number of bits to rotate.
+     * @param t The sixth integer.
+     * @return The result of the transformation.
+     */
     private int ff(int a, int b, int c, int d, int x, int s, int t) {
         return cmn(((b ^ (-1)) & d) | (b & c), a, b, x, s, t);
     }
 
+    /**
+     * The second transformation function used by the MD5 algorithm.
+     *
+     * @param a The first integer.
+     * @param b The second integer.
+     * @param c The third integer.
+     * @param d The fourth integer.
+     * @param x The fifth integer.
+     * @param s The number of bits to rotate.
+     * @param t The sixth integer.
+     * @return The result of the transformation.
+     */
     private int gg(int a, int b, int c, int d, int x, int s, int t) {
         return cmn(((d ^ (-1)) & c) | (b & d), a, b, x, s, t);
     }
 
+    /**
+     * The third transformation function used by the MD5 algorithm.
+     *
+     * @param a The first integer.
+     * @param b The second integer.
+     * @param c The third integer.
+     * @param d The fourth integer.
+     * @param x The fifth integer.
+     * @param s The number of bits to rotate.
+     * @param t The sixth integer.
+     * @return The result of the transformation.
+     */
     private int hh(int a, int b, int c, int d, int x, int s, int t) {
         return cmn((b ^ c) ^ d, a, b, x, s, t);
     }
 
+    /**
+     * The fourth transformation function used by the MD5 algorithm.
+     *
+     * @param a The first integer.
+     * @param b The second integer.
+     * @param c The third integer.
+     * @param d The fourth integer.
+     * @param x The fifth integer.
+     * @param s The number of bits to rotate.
+     * @param t The sixth integer.
+     * @return The result of the transformation.
+     */
     private int ii(int a, int b, int c, int d, int x, int s, int t) {
         return cmn(c ^ ((d ^ (-1)) | b), a, b, x, s, t);
     }
 
+    /**
+     * Computes the MD5 hash of a given string.
+     *
+     * @param str The input string.
+     * @return The MD5 hash of the input string.
+     */
     public String calcMD5(String str) {
         int[] x = str2blks_MD5(str);
         int a = 1732584193;

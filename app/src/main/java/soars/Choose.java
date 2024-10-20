@@ -12,11 +12,21 @@ import main.GameRun;
 import main.SMSSender;
 
 /* loaded from: classes.dex */
+/**
+ * The Choose class extends Activity and provides functionality for handling button clicks
+ * and key events within the application.
+ */
 public class Choose extends Activity {
     private Button btn = null;
     private Button btn2 = null;
-
-    @Override // android.app.Activity, android.view.KeyEvent.Callback
+    /**
+     * Handles key down events.
+     *
+     * @param keyCode the code of the key that was pressed
+     * @param event the KeyEvent object containing full information about the event
+     * @return true if the event was handled, false otherwise
+     */
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case 4:
@@ -31,7 +41,12 @@ public class Choose extends Activity {
         }
     }
 
-    @Override // android.app.Activity
+    /**
+     * Called when the activity is first created.
+     *
+     * @param savedInstanceState if the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle)
+     */
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -54,25 +69,36 @@ public class Choose extends Activity {
             }
         });
     }
-
-    /* renamed from: soars.Choose$1 */
-    /* loaded from: classes.dex */
+    /**
+     * Inner class to handle click events for the first button.
+     */
     class AnonymousClass1 implements View.OnClickListener {
 
-        @Override // android.view.View.OnClickListener
+        /**
+         * Handles click events for the first button.
+         *
+         * @param v the view that was clicked
+         */
+        @Override
         public void onClick(View v) {
             SMSSender.smsSender.setSmsValue(0);
             Choose.this.finishFromChild(Choose.this.getParent());
         }
     }
 
-    /* renamed from: soars.Choose$2 */
-    /* loaded from: classes.dex */
+    /**
+     * Inner class to handle click events for the second button.
+     */
     class AnonymousClass2 implements View.OnClickListener {
         AnonymousClass2() {
         }
 
-        @Override // android.view.View.OnClickListener
+        /**
+         * Handles click events for the second button.
+         *
+         * @param v the view that was clicked
+         */
+        @Override
         public void onClick(View v) {
             SMSSender.smsSender.setSmsValue(1);
             Choose.this.finishFromChild(Choose.this.getParent());

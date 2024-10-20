@@ -7,6 +7,11 @@ import javax.microedition.lcdui.Image;
 import main.Constants_H;
 import main.GameRun;
 
+/**
+ * The Bearer class implements the MiniGame_H interface and represents a mini-game where the player
+ * catches balls to earn points and money. The game involves various states and levels, and the player
+ * can move left or right to catch the balls.
+ */
 public class Bearer implements MiniGame_H {
     private final byte SPEED;
     private short ballC0;
@@ -30,6 +35,11 @@ public class Bearer implements MiniGame_H {
     private short time1;
     private short[][] xy;
 
+    /**
+     * Constructs a new Bearer instance with the specified GameRun object.
+     *
+     * @param var1 the GameRun object associated with this Bearer instance
+     */
     public Bearer(GameRun var1) {
         super();
         short[] var3 = new short[]{9, 1, 10, 2, 11, 4, 27, 8, 2, -10};
@@ -45,6 +55,11 @@ public class Bearer implements MiniGame_H {
         this.gr = var1;
     }
 
+    /**
+     * Adds a ball to the game at the specified index.
+     *
+     * @param var1 the index of the ball to be added
+     */
     private void addBall(int var1) {
         this.xy[this.cur][0] = -20;
         this.xy[this.cur][1] = this.ballDate[var1][4];
@@ -63,6 +78,13 @@ public class Bearer implements MiniGame_H {
 
     }
 
+    /**
+     * Draws the initial game screen with the specified parameters.
+     *
+     * @param var1 the x-coordinate of the drawing area
+     * @param var2 the y-coordinate of the drawing area
+     * @param var3 the height of the drawing area
+     */
     private void draw0(int var1, int var2, int var3) {
         int var5 = var3 + 45;
         Ui.i().fillRectB();
@@ -138,6 +160,14 @@ public class Bearer implements MiniGame_H {
 
     }
 
+    /**
+     * Draws the game screen during gameplay with the specified parameters.
+     *
+     * @param var1 the x-coordinate of the drawing area
+     * @param var2 the y-coordinate of the drawing area
+     * @param var3 the width of the drawing area
+     * @param var4 the height of the drawing area
+     */
     private void drawGame(int var1, int var2, int var3, int var4) {
         Ui.i().fillRect(5423359, var1, var2, var3, var4);
         Ui.i().drawFrameOne(this.bsp, 0, var1 + (var3 >> 1), var2 + (var4 >> 1), 0);
@@ -168,6 +198,11 @@ public class Bearer implements MiniGame_H {
         this.gr.drawMoney(320, 360, 3, false);
     }
 
+    /**
+     * Adjusts the y-coordinate of the ball at the specified index.
+     *
+     * @param var1 the index of the ball to be adjusted
+     */
     private void getAY(int var1) {
         short[] var2;
         if (this.xy[var1][4] > 0 && this.xy[var1][3] > 1) {
@@ -182,6 +217,11 @@ public class Bearer implements MiniGame_H {
 
     }
 
+    /**
+     * Initializes a ball with the specified parameter.
+     *
+     * @param var1 a boolean indicating whether to initialize the ball with a default value
+     */
     private void initABall(boolean var1) {
         short var2;
         if (var1) {
@@ -196,10 +236,22 @@ public class Bearer implements MiniGame_H {
         this.ballC1 = (short)(Ms.getRandom(this.gDate[3][this.lv << 1]) + this.gDate[3][(this.lv << 1) + 1]);
     }
 
+    /**
+     * Checks for collision between the player and the ball at the specified index.
+     *
+     * @param var1 the index of the ball to be checked
+     * @return true if a collision is detected, false otherwise
+     */
     private boolean isCollision(int var1) {
         return Ms.i().isRect(this.myxy[0], this.myxy[1], this.myxy[2], this.myxy[3], this.xy[var1][0], this.xy[var1][1], 16, 16);
     }
 
+    /**
+     * Checks if the ball at the specified index is out of bounds or has scored.
+     *
+     * @param var1 the index of the ball to be checked
+     * @return true if the ball is out of bounds or has scored, false otherwise
+     */
     private boolean isSrc(int var1) {
         boolean var2;
         if (this.xy[var1][1] > 320 + 10) {
@@ -226,6 +278,9 @@ public class Bearer implements MiniGame_H {
         return var3;
     }
 
+    /**
+     * Resets the game data to null.
+     */
     private void nullGame() {
         this.gDate = null;
         this.money = null;
@@ -234,6 +289,11 @@ public class Bearer implements MiniGame_H {
         this.ballDate = null;
     }
 
+    /**
+     * Starts or resumes the game with the specified state.
+     *
+     * @param var1 the state of the game to be set
+     */
     public void go(int var1) {
         if (var1 < 1) {
             this.state = 0;
@@ -254,6 +314,12 @@ public class Bearer implements MiniGame_H {
 
     }
 
+    /**
+     * Starts or resumes the game with the specified state and level.
+     *
+     * @param var1 the state of the game to be set
+     * @param var2 the level of the game to be set
+     */
     public void go(int var1, int var2) {
         this.lv = (byte)var2;
         this.sp = new Sprite[2];
@@ -266,6 +332,11 @@ public class Bearer implements MiniGame_H {
         this.go(var1);
     }
 
+    /**
+     * Handles key events during the game.
+     *
+     * @return true if a key event is handled, false otherwise
+     */
     public boolean key() {
         boolean var1;
         if (this.state == 0) {
@@ -307,6 +378,9 @@ public class Bearer implements MiniGame_H {
         return var1;
     }
 
+    /**
+     * Draws the game screen.
+     */
     public void patin() {
         this.draw0(10, 2, this.length * 25);
         if (this.state != 0) {
@@ -315,6 +389,9 @@ public class Bearer implements MiniGame_H {
 
     }
 
+    /**
+     * Runs the game logic.
+     */
     public void run() {
         if (this.state == 1) {
             if (this.ballC0 > 0) {
@@ -385,6 +462,11 @@ public class Bearer implements MiniGame_H {
 
     }
 
+    /**
+     * Sets the level of the game.
+     *
+     * @param var1 the level to be set
+     */
     public void setLv(int var1) {
         this.lv = (byte)var1;
     }

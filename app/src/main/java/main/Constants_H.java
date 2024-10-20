@@ -1058,7 +1058,12 @@ public class Constants_H {
     public static final int OFF_WIDTH = WIDTH + 20;
     public static final int OFF_HEIGHT = HEIGHT + 20;
 
+    /**
+     * Static initializer block to set up various constants and metrics.
+     * Initializes screen dimensions, cell sizes, and other related metrics.
+     */
     static {
+        // Initial static values
         WIDTH__ = 533;
         HEIGHT__ = WIDTH_H_;
         WIDTH_H = WIDTH >> 1;
@@ -1071,6 +1076,8 @@ public class Constants_H {
         HALF_YCELLS = (byte) (YCELLS >> 1);
         ROW_CELLS = (byte) (XCELLS + 1);
         COL_SELLS = (byte) (YCELLS + 1);
+
+        // Retrieve display metrics
         DisplayMetrics dm2 = new DisplayMetrics();
         CwaActivity.getInstance().getWindowManager().getDefaultDisplay().getMetrics(dm2);
         WIDTH__ = dm2.widthPixels;

@@ -31,16 +31,16 @@ jobs:
       - name: Upload Javadoc artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload the javadoc directory to the root
+          # Upload the javadoc directory
           path: 'javadoc'
-          destination-path: 'javadoc'
+          name: 'javadoc-artifact'
           
       - name: Upload APK Dependency Graph artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload the apk-dependency-graph directory to /apk-dependency-graph
+          # Upload the apk-dependency-graph directory
           path: 'apk-dependency-graph'
-          destination-path: 'apk-dependency-graph'
+          name: 'apk-dependency-graph-artifact'
           
       - name: Deploy to GitHub Pages
         id: deployment

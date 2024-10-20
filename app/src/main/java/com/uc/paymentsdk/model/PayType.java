@@ -1,8 +1,16 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  com.uc.paymentsdk.model.AbstractType
+ */
 package com.uc.paymentsdk.model;
 
-/* loaded from: classes.dex */
-public class PayType extends AbstractType {
-    public PayType(String paramString1, String paramString2, String paramString3, String paramString4) {
-        super(paramString1, paramString2, paramString3, paramString4);
+import com.uc.paymentsdk.model.AbstractType;
+
+public class PayType
+extends AbstractType {
+    public PayType(String string, String string2, String string3, String string4) {
+        super(string, string2, string3, string4);
     }
 }

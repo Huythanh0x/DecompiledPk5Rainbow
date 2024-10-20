@@ -1,26 +1,99 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  android.util.Log
+ *  dm.Ms
+ *  javax.microedition.media.Manager
+ *  javax.microedition.media.Player
+ *  javax.microedition.media.control.VolumeControl
+ */
 package dm;
 
 import android.util.Log;
+import dm.Ms;
 import javax.microedition.media.Manager;
 import javax.microedition.media.Player;
 import javax.microedition.media.control.VolumeControl;
 
-/* loaded from: classes.dex */
 public final class Sound {
     private static Sound soundListener;
+    public byte[] loop;
     private byte loop_s;
+    private byte musicId = (byte)-1;
+    private byte musicId_temp = (byte)-1;
     private byte play_music;
     private Player snd_music;
-    private VolumeControl vc_snd;
-    private boolean sound_play = false;
     private boolean sound_on = false;
-    private byte musicId = -1;
-    private byte musicId_temp = -1;
-    private byte volume = 30;
-    public byte[] loop = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+    private boolean sound_play = false;
+    private VolumeControl vc_snd;
+    private byte volume = (byte)30;
 
     public Sound() {
+        this.loop = new byte[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
         soundListener = this;
+    }
+
+    /*
+     * Loose catch block
+     * Enabled force condition propagation
+     */
+    private Player createMusic(int n, int n2) {
+        if (n2 >= 0) {
+            if (this.snd_music != null) {
+                this.snd_music.close();
+            }
+            this.snd_music = null;
+            StringBuilder stringBuilder = new StringBuilder("/music/");
+            this.snd_music = Manager.createPlayer((String)stringBuilder.append(n).append(".mid").toString(), (String)(new String[]{"audio/midi", "audio/x-wav"})[n2]);
+            this.snd_music.prefetch();
+            this.vc_snd = null;
+            this.createVolume(this.volume);
+        }
+        return this.snd_music;
+        catch (Exception exception) {
+            exception.printStackTrace();
+            return this.snd_music;
+        }
+    }
+
+    /*
+     * Loose catch block
+     * Enabled force condition propagation
+     */
+    private Player createMusicForMenu(int n, int n2) {
+        if (n2 >= 0) {
+            if (this.snd_music != null) {
+                this.snd_music.close();
+            }
+            this.snd_music = null;
+            StringBuilder stringBuilder = new StringBuilder("/music/");
+            this.snd_music = Manager.createPlayer((String)stringBuilder.append(n).append(".mid").toString(), (String)(new String[]{"audio/midi", "audio/x-wav"})[n2]);
+            this.snd_music.prefetch();
+            this.vc_snd = null;
+            this.createVolumeForMenu(this.volume);
+        }
+        return this.snd_music;
+        catch (Exception exception) {
+            exception.printStackTrace();
+            return this.snd_music;
+        }
+    }
+
+    private void createVolume(int n) {
+        if (this.vc_snd == null) {
+            this.vc_snd = (VolumeControl)this.snd_music.getControl("VolumeControl");
+        }
+        Log.e((String)"", (String)("\u8fd9\u4e2a\u6e38\u620f\u7684\u97f3\u4e50\u662f" + n));
+        this.vc_snd.setLevel(n);
+    }
+
+    private void createVolumeForMenu(int n) {
+        if (this.vc_snd == null) {
+            this.vc_snd = (VolumeControl)this.snd_music.getControl("VolumeControl");
+        }
+        Log.e((String)"", (String)("\u8fd9\u4e2a\u6e38\u620f\u7684\u97f3\u4e50\u662f" + n));
+        this.vc_snd.setLevelForMenu(n);
     }
 
     public static Sound i() {
@@ -30,206 +103,206 @@ public final class Sound {
         return soundListener;
     }
 
-    public void setSoundON(boolean sound_on_) {
-        this.sound_on = sound_on_;
-    }
-
-    public boolean getSoundON() {
-        return this.sound_on;
-    }
-
-    public void setMusicId(int musicId_) {
-        this.musicId = (byte) musicId_;
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean getHaveSoundPlayState() {
+        try {
+            if (this.snd_music != null && this.snd_music.getState() == 400) {
+                System.out.println("getHaveSoundPlayState() true");
+                return true;
+            }
+            System.out.println("getHaveSoundPlayState() false");
+            return false;
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
+            System.out.println("getHaveSoundPlayState() false");
+            return false;
+        }
     }
 
     public byte getMusicId() {
         return this.musicId;
     }
 
-    public void setVolume(int volume_) {
-        this.volume = (byte) volume_;
+    public boolean getSoundON() {
+        return this.sound_on;
     }
 
     public byte getVolume() {
         return this.volume;
     }
 
-    private Player createMusicForMenu(int id, int flag) {
-        String[] tt_str = {"audio/midi", "audio/x-wav"};
-        if (flag >= 0) {
-            try {
-                if (this.snd_music != null) {
-                    this.snd_music.close();
-                }
-                this.snd_music = null;
-                this.snd_music = Manager.createPlayer("/music/" + id + ".mid", tt_str[flag]);
-                this.snd_music.prefetch();
-                this.vc_snd = null;
-                createVolumeForMenu(this.volume);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return this.snd_music;
-    }
-
-    private Player createMusic(int id, int flag) {
-        String[] tt_str = {"audio/midi", "audio/x-wav"};
-        if (flag >= 0) {
-            try {
-                if (this.snd_music != null) {
-                    this.snd_music.close();
-                }
-                this.snd_music = null;
-                this.snd_music = Manager.createPlayer("/music/" + id + ".mid", tt_str[flag]);
-                this.snd_music.prefetch();
-                this.vc_snd = null;
-                createVolume(this.volume);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return this.snd_music;
-    }
-
-    public void setMusic(boolean b) {
-        if (this.sound_on && this.musicId >= 0) {
-            try {
-                if (this.musicId_temp != this.musicId || b) {
-                    this.loop_s = this.loop[this.musicId];
-                    this.play_music = this.musicId;
-                    this.musicId_temp = this.play_music;
-                    if (this.snd_music != null) {
-                        this.snd_music.close();
+    /*
+     * Unable to fully structure code
+     */
+    public void keyVolume(int var1_1) {
+        block4: {
+            block5: {
+                block3: {
+                    if (var1_1 != 0) break block3;
+                    this.volume = var2_2 = (byte)(this.volume + 30);
+                    if (var2_2 > 90) {
+                        this.volume = 0;
                     }
-                    this.snd_music = null;
-                    createMusic(this.play_music, 0);
-                }
-                this.sound_play = true;
-            } catch (Exception e) {
-                this.sound_play = false;
-            }
-        }
-    }
+lbl5:
+                    // 8 sources
 
-    public void setMusicForMenu(boolean b) {
-        if (this.sound_on && this.musicId >= 0) {
-            try {
-                if (this.musicId_temp != this.musicId || b) {
-                    this.loop_s = this.loop[this.musicId];
-                    this.play_music = this.musicId;
-                    this.musicId_temp = this.play_music;
-                    if (this.snd_music != null) {
-                        this.snd_music.close();
+                    while (this.volume == 0) {
+                        this.sound_on = false;
+                        this.soundStop();
+lbl8:
+                        // 2 sources
+
+                        return;
                     }
-                    this.snd_music = null;
-                    createMusicForMenu(this.play_music, 0);
+                    break block4;
                 }
-                this.sound_play = true;
-            } catch (Exception e) {
-                this.sound_play = false;
+                if (var1_1 != 1 || !Ms.i().key_Right()) ** GOTO lbl5
+                this.volume = var2_3 = (byte)(this.volume + 30);
+                if (var2_3 <= 90) break block5;
+                this.volume = 0;
+                ** GOTO lbl5
             }
+            if (!Ms.i().key_Left()) ** GOTO lbl5
+            this.volume = var2_3 = (byte)(this.volume - 30);
+            if (var2_3 >= 0) ** GOTO lbl5
+            this.volume = (byte)90;
+            ** GOTO lbl5
         }
-    }
-
-    public void soundStart() {
-        try {
-            this.snd_music.start();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void soundPlay() {
-        if (this.sound_on && this.play_music >= 0 && this.sound_play) {
-            if (this.loop_s == -1 && this.snd_music != null) {
-                this.snd_music.setLoopCount(-1);
-                soundStart();
-                this.play_music = (byte) -1;
-            } else if (this.loop_s > 0 && this.snd_music != null && this.snd_music.getState() != 400) {
-                this.snd_music.setLoopCount(1);
-                soundStart();
-                this.loop_s = (byte) (this.loop_s - 1);
-            } else if (this.loop_s == 0) {
-                this.play_music = (byte) -1;
-            }
-        }
+        this.sound_on = true;
+        ** while (true)
     }
 
     void playTone() {
     }
 
+    /*
+     * Enabled force condition propagation
+     */
+    public void setMusic(boolean bl) {
+        if (!this.sound_on || this.musicId < 0) {
+            return;
+        }
+        try {
+            if (this.musicId_temp != this.musicId || bl) {
+                this.loop_s = this.loop[this.musicId];
+                this.musicId_temp = this.play_music = this.musicId;
+                if (this.snd_music != null) {
+                    this.snd_music.close();
+                }
+                this.snd_music = null;
+                this.createMusic(this.play_music, 0);
+            }
+            this.sound_play = true;
+            return;
+        }
+        catch (Exception exception) {
+            this.sound_play = false;
+            return;
+        }
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public void setMusicForMenu(boolean bl) {
+        if (!this.sound_on || this.musicId < 0) {
+            return;
+        }
+        try {
+            if (this.musicId_temp != this.musicId || bl) {
+                this.loop_s = this.loop[this.musicId];
+                this.musicId_temp = this.play_music = this.musicId;
+                if (this.snd_music != null) {
+                    this.snd_music.close();
+                }
+                this.snd_music = null;
+                this.createMusicForMenu(this.play_music, 0);
+            }
+            this.sound_play = true;
+            return;
+        }
+        catch (Exception exception) {
+            this.sound_play = false;
+            return;
+        }
+    }
+
+    public void setMusicId(int n) {
+        this.musicId = (byte)n;
+    }
+
+    public void setSoundON(boolean bl) {
+        this.sound_on = bl;
+    }
+
+    public void setVolume(int n) {
+        this.volume = (byte)n;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void soundPlay() {
+        block3: {
+            block2: {
+                if (!this.sound_on || this.play_music < 0) lbl-1000:
+                // 6 sources
+
+                {
+                    return;
+                }
+                if (!this.sound_play) ** GOTO lbl-1000
+                if (this.loop_s != -1 || this.snd_music == null) break block2;
+                this.snd_music.setLoopCount(-1);
+                this.soundStart();
+                this.play_music = (byte)-1;
+                ** GOTO lbl-1000
+            }
+            if (this.loop_s <= 0 || this.snd_music == null || this.snd_music.getState() == 400) break block3;
+            this.snd_music.setLoopCount(1);
+            this.soundStart();
+            this.loop_s = (byte)(this.loop_s - 1);
+            ** GOTO lbl-1000
+        }
+        if (this.loop_s != 0) ** GOTO lbl-1000
+        this.play_music = (byte)-1;
+        ** while (true)
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public void soundStart() {
+        try {
+            this.snd_music.start();
+            return;
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
+            return;
+        }
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
     public void soundStop() {
         try {
             if (this.snd_music != null) {
                 this.snd_music.close();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
+            return;
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
+            return;
+        }
+        finally {
             this.sound_play = false;
-        }
-    }
-
-    private void createVolumeForMenu(int volume) {
-        if (this.vc_snd == null) {
-            this.vc_snd = (VolumeControl) this.snd_music.getControl("VolumeControl");
-        }
-        Log.e("", "这个游戏的音乐是" + volume);
-        this.vc_snd.setLevelForMenu(volume);
-    }
-
-    private void createVolume(int volume) {
-        if (this.vc_snd == null) {
-            this.vc_snd = (VolumeControl) this.snd_music.getControl("VolumeControl");
-        }
-        Log.e("", "这个游戏的音乐是" + volume);
-        this.vc_snd.setLevel(volume);
-    }
-
-    public void keyVolume(int mode) {
-        if (mode == 0) {
-            byte b = (byte) (this.volume + 30);
-            this.volume = b;
-            if (b > 90) {
-                this.volume = (byte) 0;
-            }
-        } else if (mode == 1 && Ms.i().key_Right()) {
-            byte b2 = (byte) (this.volume + 30);
-            this.volume = b2;
-            if (b2 > 90) {
-                this.volume = (byte) 0;
-            } else if (Ms.i().key_Left()) {
-                byte b3 = (byte) (this.volume - 30);
-                this.volume = b3;
-                if (b3 < 0) {
-                    this.volume = (byte) 90;
-                }
-            }
-        }
-        if (this.volume == 0) {
-            this.sound_on = false;
-            soundStop();
-        } else {
-            this.sound_on = true;
-        }
-    }
-
-    public boolean getHaveSoundPlayState() {
-        boolean z;
-        try {
-            if (this.snd_music != null && this.snd_music.getState() == 400) {
-                System.out.println("getHaveSoundPlayState() true");
-                z = true;
-            } else {
-                System.out.println("getHaveSoundPlayState() false");
-                z = false;
-            }
-            return z;
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("getHaveSoundPlayState() false");
-            return false;
+            return;
         }
     }
 }

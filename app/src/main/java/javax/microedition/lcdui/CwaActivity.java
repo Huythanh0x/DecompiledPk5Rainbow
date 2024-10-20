@@ -1,3 +1,25 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  android.app.Activity
+ *  android.app.ActivityManager
+ *  android.app.ActivityManager$RunningAppProcessInfo
+ *  android.app.AlertDialog$Builder
+ *  android.content.Context
+ *  android.content.DialogInterface$OnClickListener
+ *  android.content.res.Configuration
+ *  android.media.AudioManager
+ *  android.os.Bundle
+ *  android.os.Process
+ *  android.util.Log
+ *  android.view.KeyEvent
+ *  android.view.View
+ *  dalvik.system.VMRuntime
+ *  javax.microedition.lcdui.Canvas
+ *  javax.microedition.midlet.MIDlet
+ *  javax.microedition.midlet.MIDletManager
+ */
 package javax.microedition.lcdui;
 
 import android.app.Activity;
@@ -11,45 +33,34 @@ import android.os.Bundle;
 import android.os.Process;
 import android.util.Log;
 import android.view.KeyEvent;
-import com.uc.paymentsdk.util.Constants;
+import android.view.View;
 import dalvik.system.VMRuntime;
+import java.util.Iterator;
 import java.util.List;
-import javax.microedition.lcdui.game.GameCanvas;
+import javax.microedition.lcdui.Canvas;
 import javax.microedition.midlet.MIDlet;
 import javax.microedition.midlet.MIDletManager;
-import main.Constants_H;
 
-/* loaded from: classes.dex */
-public class CwaActivity extends Activity {
+public class CwaActivity
+extends Activity {
     private static final String LOG_TAG = "CwaActivity";
-    private static final int MIN_HEAP_SIZE = 12582912;
+    private static final int MIN_HEAP_SIZE = 0xC00000;
     private static final float TARGET_HEAP_UTILIZATION = 0.75f;
     private static Context context;
     private static Canvas curCanvas;
     private static CwaActivity cwaActivity;
     public AudioManager audioManager;
-    private MIDletManager jam = MIDletManager.getInstance();
     private boolean isFullWindow = false;
+    private MIDletManager jam = MIDletManager.getInstance();
 
-    public CwaActivity() {
+    protected CwaActivity() {
         if (cwaActivity == null) {
             cwaActivity = this;
         }
     }
 
-    private void killBackgroundProcess() {
-        ActivityManager activityManager = (ActivityManager) getSystemService("activity");
-        List<ActivityManager.RunningAppProcessInfo> apps = activityManager.getRunningAppProcesses();
-        int mypid = Process.myPid();
-        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : apps) {
-            if (runningAppProcessInfo.pid != mypid && runningAppProcessInfo.importance > 300) {
-                Process.killProcess(runningAppProcessInfo.pid);
-            }
-        }
-    }
-
-    public static CwaActivity getInstance() {
-        return cwaActivity;
+    static /* synthetic */ MIDletManager access$0(CwaActivity cwaActivity) {
+        return cwaActivity.jam;
     }
 
     public static Context getContextInstance() {
@@ -59,142 +70,110 @@ public class CwaActivity extends Activity {
         return context;
     }
 
-    public void setCanvas(Canvas canvas) {
-        curCanvas = canvas;
+    public static CwaActivity getInstance() {
+        return cwaActivity;
+    }
+
+    private void initActivity() {
+        VMRuntime.getRuntime().setMinimumHeapSize(0xC00000L);
+        VMRuntime.getRuntime().setTargetHeapUtilization(0.75f);
+        this.getWindow().setFlags(128, 128);
+    }
+
+    private void killBackgroundProcess() {
+        List list = ((ActivityManager)this.getSystemService("activity")).getRunningAppProcesses();
+        int n = Process.myPid();
+        Iterator<E> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            list = (ActivityManager.RunningAppProcessInfo)iterator.next();
+            if (((ActivityManager.RunningAppProcessInfo)list).pid == n || ((ActivityManager.RunningAppProcessInfo)list).importance <= 300) continue;
+            Process.killProcess((int)((ActivityManager.RunningAppProcessInfo)list).pid);
+        }
+        return;
+    }
+
+    private void setFullScreen() {
+        this.getWindow().setFlags(1024, 1024);
+        this.requestWindowFeature(1);
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean dispatchKeyEvent(KeyEvent keyEvent) {
+        switch (keyEvent.getKeyCode()) {
+            default: {
+                return super.dispatchKeyEvent(keyEvent);
+            }
+            case 27: 
+            case 80: 
+        }
+        return true;
     }
 
     public Canvas getCanvas() {
         return curCanvas;
     }
 
-    private void setFullScreen() {
-        getWindow().setFlags(GameCanvas.GAME_B_PRESSED, GameCanvas.GAME_B_PRESSED);
-        requestWindowFeature(1);
+    public void onConfigurationChanged(Configuration configuration) {
+        super.onConfigurationChanged(configuration);
     }
 
-    private void initActivity() {
-        VMRuntime.getRuntime().setMinimumHeapSize(12582912L);
-        VMRuntime.getRuntime().setTargetHeapUtilization(TARGET_HEAP_UTILIZATION);
-        getWindow().setFlags(128, 128);
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.killBackgroundProcess();
+        this.initActivity();
+        this.audioManager = (AudioManager)this.getSystemService("audio");
+        if (this.isFullWindow) {
+            this.setFullScreen();
+        }
     }
 
-    @Override // android.app.Activity, android.content.ComponentCallbacks
+    protected void onDestroy() {
+        super.onDestroy();
+        System.exit(0);
+        Process.killProcess((int)Process.myPid());
+    }
+
     public void onLowMemory() {
-        killBackgroundProcess();
+        this.killBackgroundProcess();
         super.onLowMemory();
     }
 
-    public void setFullWindow(boolean mode) {
-        this.isFullWindow = mode;
-    }
-
-    @Override // android.app.Activity, android.content.ComponentCallbacks
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-    }
-
-    @Override // android.app.Activity
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        killBackgroundProcess();
-        initActivity();
-        this.audioManager = (AudioManager) getSystemService("audio");
-        if (this.isFullWindow) {
-            setFullScreen();
-        }
-    }
-
-    public void setMIDlet(MIDlet midlet) {
-        this.jam.setMIDlet(midlet);
-    }
-
-    public void setContentView() {
-        if (curCanvas != null) {
-            getInstance().setContentView(curCanvas);
-        } else {
-            Log.e(LOG_TAG, "current canvas is null");
-        }
-    }
-
-    @Override // android.app.Activity
     protected void onPause() {
         super.onPause();
         this.jam.notifyPaused();
     }
 
-    @Override // android.app.Activity
     protected void onResume() {
         super.onResume();
         this.jam.notifyResumed();
     }
 
-    @Override // android.app.Activity
-    public void onDestroy() {
-        super.onDestroy();
-        System.exit(0);
-        Process.killProcess(Process.myPid());
+    public void setCanvas(Canvas canvas) {
+        curCanvas = canvas;
     }
 
-    @Override // android.app.Activity, android.view.Window.Callback
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        switch (event.getKeyCode()) {
-            case 27:
-            case Constants.CUSTOM_TEXTVIEW_HEIGHT_HDPI /* 80 */:
-                return true;
-            default:
-                return super.dispatchKeyEvent(event);
+    /*
+     * Enabled force condition propagation
+     */
+    public void setContentView() {
+        if (curCanvas != null) {
+            CwaActivity.getInstance().setContentView((View)curCanvas);
+            return;
         }
+        Log.e((String)LOG_TAG, (String)"current canvas is null");
+    }
+
+    public void setFullWindow(boolean bl) {
+        this.isFullWindow = bl;
+    }
+
+    protected void setMIDlet(MIDlet mIDlet) {
+        this.jam.setMIDlet(mIDlet);
     }
 
     public void showExitDialog() {
-        new AlertDialog.Builder(this).setMessage("确认退出？").setPositiveButton(Constants_H.PAUSE_TXT_22, new DialogInterface.OnClickListener() { // from class: javax.microedition.lcdui.CwaActivity.1
-            AnonymousClass1() {
-            }
-
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface dialog, int which) {
-                if (which == -1) {
-                    CwaActivity.this.jam.notifyDestroyed();
-                    CwaActivity.this.jam.notifyExit();
-                }
-            }
-        }).setNegativeButton(Constants_H.PAUSE_TXT_23, new DialogInterface.OnClickListener() { // from class: javax.microedition.lcdui.CwaActivity.2
-            AnonymousClass2() {
-            }
-
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                CwaActivity.this.jam.notifyResumed();
-            }
-        }).show();
-    }
-
-    /* renamed from: javax.microedition.lcdui.CwaActivity$1 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass1 implements DialogInterface.OnClickListener {
-        AnonymousClass1() {
-        }
-
-        @Override // android.content.DialogInterface.OnClickListener
-        public void onClick(DialogInterface dialog, int which) {
-            if (which == -1) {
-                CwaActivity.this.jam.notifyDestroyed();
-                CwaActivity.this.jam.notifyExit();
-            }
-        }
-    }
-
-    /* renamed from: javax.microedition.lcdui.CwaActivity$2 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass2 implements DialogInterface.OnClickListener {
-        AnonymousClass2() {
-        }
-
-        @Override // android.content.DialogInterface.OnClickListener
-        public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
-            CwaActivity.this.jam.notifyResumed();
-        }
+        new AlertDialog.Builder((Context)this).setMessage((CharSequence)"\u786e\u8ba4\u9000\u51fa\uff1f").setPositiveButton((CharSequence)"\u662f", (DialogInterface.OnClickListener)new /* Unavailable Anonymous Inner Class!! */).setNegativeButton((CharSequence)"\u5426", (DialogInterface.OnClickListener)new /* Unavailable Anonymous Inner Class!! */).show();
     }
 }

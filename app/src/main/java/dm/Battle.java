@@ -1,30 +1,48 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  dm.Monster
+ */
 package dm;
 
-import java.lang.reflect.Array;
+import dm.Monster;
 
-/* loaded from: classes.dex */
 public class Battle {
+    public byte act_num = 1;
     public byte action;
+    public boolean b_renascence = false;
     public byte baoji;
     public byte bg_id;
+    public short[] cThrow;
+    public byte[] ceff;
     public short cexp;
     public short chp;
+    public byte[] countS;
     public byte dead;
     public byte fs_level;
+    public short[][] hit;
     public Monster[] mon;
     public byte now_id;
     public byte rate_off;
     public byte skill;
-    public byte throw_state = -1;
-    public byte[] countS = new byte[10];
-    public byte[] ceff = new byte[6];
-    public short[] cThrow = new short[4];
-    public short[][] hit = (short[][]) Array.newInstance((Class<?>) Short.TYPE, 3, 5);
-    public boolean b_renascence = false;
-    public byte act_num = 1;
+    public byte throw_state = (byte)-1;
 
-    public Battle(Monster[] _mon) {
-        this.mon = _mon;
+    public Battle(Monster[] monsterArray) {
+        this.countS = new byte[10];
+        this.ceff = new byte[6];
+        this.cThrow = new short[4];
+        this.hit = new short[3][5];
+        this.mon = monsterArray;
+    }
+
+    public void addHit(int n, int n2, int n3) {
+        this.hit[n3][0] = (short)n2;
+        short[] sArray = this.hit[n3];
+        sArray[1] = (short)(sArray[1] + n);
+        this.hit[n3][2] = 0;
+        this.hit[n3][3] = 0;
+        this.hit[n3][4] = 0;
     }
 
     public Monster getMon() {
@@ -32,17 +50,11 @@ public class Battle {
     }
 
     public void initHit() {
-        for (byte i = 0; i < this.hit.length; i = (byte) (i + 1)) {
-            this.hit[i][1] = 0;
+        int n = 0;
+        while (n < this.hit.length) {
+            this.hit[n][1] = 0;
+            n = (byte)(n + 1);
         }
-    }
-
-    public void addHit(int h, int type, int i) {
-        this.hit[i][0] = (short) type;
-        short[] sArr = this.hit[i];
-        sArr[1] = (short) (sArr[1] + h);
-        this.hit[i][2] = 0;
-        this.hit[i][3] = 0;
-        this.hit[i][4] = 0;
+        return;
     }
 }

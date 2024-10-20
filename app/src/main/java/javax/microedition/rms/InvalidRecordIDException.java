@@ -1,13 +1,21 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  javax.microedition.rms.RecordStoreException
+ */
 package javax.microedition.rms;
 
-/* loaded from: classes.dex */
-public class InvalidRecordIDException extends RecordStoreException {
-    private static final long serialVersionUID = 1;
+import javax.microedition.rms.RecordStoreException;
 
-    public InvalidRecordIDException(String message) {
-        super(message);
-    }
+public class InvalidRecordIDException
+extends RecordStoreException {
+    private static final long serialVersionUID = 1L;
 
     public InvalidRecordIDException() {
+    }
+
+    public InvalidRecordIDException(String string) {
+        super(string);
     }
 }

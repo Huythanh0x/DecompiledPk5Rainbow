@@ -1,3 +1,22 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  android.util.Log
+ *  com.nokia.mid.ui.DirectGraphics
+ *  com.nokia.mid.ui.DirectUtils
+ *  dm.Monster
+ *  dm.Ms
+ *  dm.Sound
+ *  dm.Ui
+ *  javax.microedition.lcdui.Graphics
+ *  javax.microedition.lcdui.Image
+ *  main.Constants_H
+ *  main.Key_H
+ *  main.MainCanvas
+ *  main.Map
+ *  main.PointerKey
+ */
 package main;
 
 import android.util.Log;
@@ -10,24 +29,29 @@ import dm.Ui;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
-import javax.microedition.media.Player;
+import main.Constants_H;
+import main.Key_H;
+import main.MainCanvas;
+import main.Map;
+import main.PointerKey;
 
-/* loaded from: classes.dex */
-public class GameRun_F implements Key_H {
+public class GameRun_F
+implements Key_H {
     static DirectGraphics dg;
     static Graphics g;
     public static MainCanvas mc;
     static Graphics offG;
-    public static int run_state = 1;
+    public static int run_state;
     static Image scrT;
     public StringBuffer[] about_a;
     public StringBuffer[] about_b;
     public StringBuffer[] about_c;
     public StringBuffer[] about_d;
     public String[] action_str;
+    final byte[] anchor = new byte[]{20, 36, 40, 24, 24, 40, 36, 20};
+    private byte brow5;
     public byte cMon_count;
     public Monster[] cMonsters;
     public byte cur_a;
@@ -35,11 +59,18 @@ public class GameRun_F implements Key_H {
     public byte cur_c;
     public Monster cur_emon;
     public Monster cur_mon;
+    public String gogoST;
+    public String gogoString;
+    public byte help_page;
     public byte[] info;
+    public int introT;
+    public int introX;
     public byte[][][] items;
     public byte[] itemsLength;
     public byte[] len;
     public Map map;
+    public byte max_monsters;
+    public byte max_takes;
     public byte[] monInfoList;
     public short move_x;
     public short move_y;
@@ -47,578 +78,859 @@ public class GameRun_F implements Key_H {
     public Monster[] myMonsters;
     public byte[][] nidusList;
     public byte[] nidusMap;
+    public byte page_max;
     public PointerKey pkey;
+    public byte popMenu;
     public byte[] rmsNidus;
     public byte[] rmsOther;
     public byte[] rmsSms;
+    public byte[][] select;
+    public byte[][] selectBag;
+    public byte[] select_it;
+    public byte[] select_st;
     public byte selectx;
     public byte selecty;
     public StringBuffer[] showS;
+    public byte[] src_c;
     public String str_cur;
-    final byte[] anchor = {20, Constants_H.f79, 40, 24, 24, 40, Constants_H.f79, 20};
-    final short[] transB = {0, 90, 180, 270, 8192, 8282, 8372, 8462};
-    public int introX = Constants_H.WIDTH_H;
-    public String gogoString = "";
-    public int introT = Constants_H.WIDTH_;
-    public String gogoST = "";
-    private byte brow5 = 0;
-    public byte page_max = 0;
-    public byte help_page = 0;
-    public byte[] src_c = new byte[4];
-    public byte popMenu = -1;
-    public byte[] select_it = new byte[4];
-    public byte[] select_st = new byte[4];
-    public byte[][] selectBag = (byte[][]) Array.newInstance((Class<?>) Byte.TYPE, 4, 2);
-    public byte[][] select = (byte[][]) Array.newInstance((Class<?>) Byte.TYPE, 2, 2);
-    public byte max_takes = 3;
-    public byte max_monsters = 10;
+    final short[] transB;
 
-    public void initGraphics(Graphics _g) {
-        g = _g;
-        dg = DirectUtils.getDirectGraphics(_g);
+    static {
+        run_state = 1;
+    }
+
+    public GameRun_F() {
+        short[] sArray = new short[8];
+        sArray[1] = 90;
+        sArray[2] = 180;
+        sArray[3] = 270;
+        sArray[4] = 8192;
+        sArray[5] = 8282;
+        sArray[6] = 8372;
+        sArray[7] = 8462;
+        this.transB = sArray;
+        this.introX = Constants_H.WIDTH_H;
+        this.gogoString = "";
+        this.introT = 640;
+        this.gogoST = "";
+        this.brow5 = 0;
+        this.page_max = 0;
+        this.help_page = 0;
+        this.src_c = new byte[4];
+        this.popMenu = (byte)-1;
+        this.select_it = new byte[4];
+        this.select_st = new byte[4];
+        this.selectBag = new byte[4][2];
+        this.select = new byte[2][2];
+        this.max_takes = (byte)3;
+        this.max_monsters = (byte)10;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    private void drawSnare5(int var1_1, int var2_2) {
+        var4_3 = Ui.i();
+        if (this.brow5 % 3 == 0) {
+            var3_4 = 1;
+lbl4:
+            // 2 sources
+
+            while (true) {
+                var4_3.drawUi(8, var1_1, var2_2 + var3_4, 0, 0);
+                var1_1 = this.brow5;
+                this.brow5 = (byte)(var1_1 + 1);
+                if (var1_1 > 100) {
+                    this.brow5 = 0;
+                }
+                return;
+            }
+        }
+        var3_4 = 0;
+        ** while (true)
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean addNidus(int n) {
+        int n2 = 0;
+        while (true) {
+            if (n2 >= this.rmsNidus.length) {
+                return false;
+            }
+            if (this.rmsNidus[n2] == -2) break;
+            n2 = (byte)(n2 + 5);
+        }
+        this.rmsNidus[n2] = (byte)n;
+        Ms.i().putShort(0, this.rmsNidus, n2 + 1);
+        Ms.i().putShort(200, this.rmsNidus, n2 + 3);
+        return true;
+    }
+
+    public byte[] createData(int n) {
+        return Ms.i().getStream("4", n);
+    }
+
+    public String createString(String string) {
+        Ms.i();
+        Ms.skip = 0;
+        return Ms.i().createStringArray(Ms.i().getStream(string, -1))[0].toString();
+    }
+
+    public void delNidus(int n) {
+        this.rmsNidus[n * 5] = -2;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void drawHelpStr(Graphics var1_1, StringBuffer[] var2_2, int var3_3, int var4_4, int var5_5, int var6_6) {
+        block5: {
+            var7_8 = var8_7 = (byte)(this.help_page * var3_3);
+            while (true) {
+                if (var7_8 >= var8_7 + var3_3 || var7_8 >= var2_2.length) {
+                    if (var2_2.length > var3_3) {
+                        var4_4 = var2_2.length / var3_3;
+                        if (var2_2.length % var3_3 == 0) break;
+                        var3_3 = 1;
+lbl8:
+                        // 2 sources
+
+                        while (true) {
+                            this.page_max = (byte)(var4_4 + var3_3);
+                            Ui.i().drawString(String.valueOf(this.help_page + 1) + "/" + this.page_max, Constants_H.WIDTH_H, Constants_H.HEIGHT - 2, 1 | 32, 3, 0);
+                            Ui.i().drawTriangle(Constants_H.WIDTH_H, Constants_H.HEIGHT - 12, 75, true, true);
+lbl12:
+                            // 2 sources
+
+                            return;
+                        }
+                    }
+                    break block5;
+                }
+                Ui.i().drawString(var2_2[var7_8].toString(), var4_4, var5_5 + (var7_8 - var8_7) * 27, var6_6, 3, 0);
+                var7_8 = (byte)(var7_8 + 1);
+            }
+            var3_3 = 0;
+            ** while (true)
+        }
+        this.page_max = 1;
+        ** while (true)
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void drawMenu(StringBuffer[] var1_1, int var2_2, int var3_3, int var4_4) {
+        block7: {
+            if (var4_4 > 0) {
+                Ui.i().drawKuang(var2_2, var3_3, var4_4, var1_1.length * 27 + 12);
+                var5_5 = var4_4;
+lbl4:
+                // 2 sources
+
+                while (true) {
+                    var6_6 = 0;
+lbl6:
+                    // 2 sources
+
+                    while (true) {
+                        if (var6_6 >= var1_1.length) {
+                            return;
+                        }
+                        ** GOTO lbl14
+                        break;
+                    }
+                    break;
+                }
+            } else {
+                Ms.i();
+                var5_5 = Ms.abs((int)var4_4);
+                ** continue;
+            }
+lbl14:
+            // 1 sources
+
+            if (var6_6 == 0) {
+                var4_4 = 9;
+lbl16:
+                // 3 sources
+
+                while (true) {
+                    Ui.i().drawString(var1_1[var6_6].toString(), (var5_5 >> 1) + var2_2, var3_3 + 4 + var6_6 * 27, 1 | 16, var4_4, 0);
+                    var6_6 = (byte)(var6_6 + 1);
+                    ** continue;
+                    break;
+                }
+            }
+            if (var6_6 != this.cur_a) break block7;
+            var4_4 = 8;
+            ** GOTO lbl16
+        }
+        var4_4 = 0;
+        ** while (true)
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void drawPauseMenu(int var1_1, int var2_2, int var3_3, int var4_4) {
+        block11: {
+            block10: {
+                block9: {
+                    Ui.i().drawK2(var1_1, var2_2, var3_3, var4_4, 1);
+                    Ui.i().drawK1(var1_1 + 9, var2_2 + 25 + 11, var3_3 - 18, var4_4 - 25 - 19, 0);
+                    Ui.i().drawListKY(6, var1_1 + 8, var2_2 + 25 + 13, var3_3 - 16, 1, 33, -1, (int)this.selecty, 4, 2);
+                    this.pkey.selectListSY(this.action_str.length, var1_1 + 8, var2_2 + 25 + 13, var3_3 - 16, 1, 33, -1, (int)this.selecty);
+                    var5_5 = this.pkey.selectMenuX(2, var1_1, var2_2 + 3, var3_3 >> 1, 38);
+                    if (var5_5 != -1) {
+                        this.selectx = var5_5;
+                        this.selecty = 0;
+                        this.setPauseS(this.selectx);
+                    }
+                    if (this.selectx == 1) {
+                        var7_6 = Ui.i();
+                        var4_4 = Sound.i().getVolume();
+                        if (this.selecty == 1) {
+                            var6_7 = true;
+lbl15:
+                            // 2 sources
+
+                            while (true) {
+                                var7_6.drawVolume((var3_3 >> 1) + var1_1 + 25 - 8 - 60, var2_2 + 25 + 16 + 33, var4_4, var6_7);
+                                Ui.i().drawListSYHasSound((Object[])this.action_str, var1_1 + 8, var2_2 + 25 + 13, var3_3 - 16, 32, (int)this.selecty, 0, 3, 0);
+lbl18:
+                                // 2 sources
+
+                                while (true) {
+                                    var7_6 = Ui.i();
+                                    if (this.selectx != 0) break block9;
+                                    var4_4 = -60;
+lbl22:
+                                    // 2 sources
+
+                                    while (true) {
+                                        var7_6.drawK1((var3_3 >> 1) + var1_1 + var4_4, var2_2 + 4, 56, 29, 4);
+                                        var7_6 = Ui.i();
+                                        if (this.selectx != 0) break block10;
+                                        var4_4 = 0;
+lbl27:
+                                        // 2 sources
+
+                                        while (true) {
+                                            var7_6.drawString("\u83dc\u5355", (var3_3 >> 1) + var1_1 - 25 - 3, var2_2 + 3, 1 | 16, var4_4, 0);
+                                            var7_6 = Ui.i();
+                                            if (this.selectx == 0) {
+                                                var4_4 = 1;
+lbl32:
+                                                // 2 sources
+
+                                                while (true) {
+                                                    var7_6.drawString("\u7cfb\u7edf", (var3_3 >> 1) + var1_1 + 25 + 3, var2_2 + 3, 1 | 16, var4_4, 0);
+                                                    Ui.i().drawTriangle((var3_3 >> 1) + var1_1, var2_2 + 12, 80, true, true);
+                                                    return;
+                                                }
+                                            }
+                                            break block11;
+                                            break;
+                                        }
+                                        break;
+                                    }
+                                    break;
+                                }
+                                break;
+                            }
+                        }
+                        var6_7 = false;
+                        ** continue;
+                    }
+                    Ui.i().drawListSY((Object[])this.action_str, var1_1 + 8, var2_2 + 25 + 13, var3_3 - 16, 32, (int)this.selecty, 0, 3, 0);
+                    ** while (true)
+                }
+                var4_4 = 2;
+                ** while (true)
+            }
+            var4_4 = 1;
+            ** while (true)
+        }
+        var4_4 = 0;
+        ** while (true)
+    }
+
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    public void drawSelectMenu(Object[] var1_1, int var2_2, int var3_3, int var4_4, int var5_5, int var6_6, int var7_7) {
+        block10: {
+            block8: {
+                block9: {
+                    block7: {
+                        var8_8 = 0;
+                        block0: while (true) {
+                            if (var8_8 >= var1_1.length) {
+                                return;
+                            }
+                            var10_10 /* !! */  = Ui.i();
+                            if (var8_8 != var7_7) break;
+                            var9_9 = 1;
+lbl8:
+                            // 2 sources
+
+                            while (true) {
+                                var10_10 /* !! */ .drawK0(var2_2, var3_3 + (var5_5 + 33) * var8_8, var4_4, 33, var9_9);
+                                var11_11 = Ui.i();
+                                var10_10 /* !! */  = var1_1[var8_8].toString();
+                                if (var8_8 != var7_7) break block7;
+                                var9_9 = 0;
+lbl14:
+                                // 2 sources
+
+                                while (true) {
+                                    var11_11.drawString((String)var10_10 /* !! */ , (var4_4 >> 1) + var2_2, var3_3 + 2 + (var5_5 + 33) * var8_8, 1 | 16, var9_9, 1);
+                                    Log.e((String)"sk", (String)"drawSelectMenu");
+                                    if (this.pkey.isSelect(var2_2, (var5_5 + 33) * var8_8 + var3_3, var4_4, 33)) {
+                                        if (this.map.my.state != 12) break block8;
+                                        if (var8_8 != var7_7) break block9;
+                                        this.map.my.state = (byte)13;
+                                    }
+lbl22:
+                                    // 7 sources
+
+                                    while (true) {
+                                        var8_8 = (byte)(var8_8 + 1);
+                                        continue block0;
+                                        break;
+                                    }
+                                    break;
+                                }
+                                break;
+                            }
+                            break;
+                        }
+                        var9_9 = var6_6;
+                        ** while (true)
+                    }
+                    var9_9 = 3;
+                    ** while (true)
+                }
+                this.cur_a = (byte)var8_8;
+                ** GOTO lbl22
+            }
+            if (GameRun_F.run_state != 35 && GameRun_F.run_state != 25 && this.map.my.state != 16 && GameRun_F.run_state != 65 && GameRun_F.run_state != 66 && GameRun_F.run_state != 61) ** GOTO lbl22
+            if (var8_8 != var7_7) break block10;
+            this.pkey.setKey5();
+            ** GOTO lbl22
+        }
+        this.popMenu = (byte)var8_8;
+        ** while (true)
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void drawSelectMenu_(Object[] var1_1, int var2_2, int var3_3, int var4_4, int var5_5, int var6_6, int var7_7) {
+        block10: {
+            block8: {
+                block9: {
+                    block7: {
+                        var8_8 = 0;
+                        block0: while (true) {
+                            if (var8_8 >= var1_1.length) {
+                                return;
+                            }
+                            var10_10 = Ui.i();
+                            if (var8_8 != var7_7) break;
+                            var9_9 = 1;
+lbl8:
+                            // 2 sources
+
+                            while (true) {
+                                var10_10.drawK0(var2_2, var3_3 + (var5_5 + 33) * var8_8, var4_4, 25 + 8, var9_9);
+                                var10_10 = Ui.i();
+                                var11_11 = var1_1[var8_8].toString();
+                                if (var8_8 != var7_7) break block7;
+                                var9_9 = 0;
+lbl14:
+                                // 2 sources
+
+                                while (true) {
+                                    var10_10.drawString(var11_11, (var4_4 >> 1) + var2_2, var3_3 + 2 + (var5_5 + 33) * var8_8, 1 | 16, var9_9, 1);
+                                    GameRun_F.g.setColor(0xFF0000);
+                                    if (this.pkey.isSelect(Constants_H.WIDTH * var2_2 / Constants_H.WIDTH__, ((var5_5 + 33) * var8_8 + var3_3) * Constants_H.WIDTH / Constants_H.WIDTH__, Constants_H.WIDTH * var4_4 / Constants_H.WIDTH__, Constants_H.WIDTH * 33 / Constants_H.WIDTH__)) {
+                                        if (this.map.my.state != 12) break block8;
+                                        if (var8_8 != var7_7) break block9;
+                                        this.map.my.state = (byte)13;
+                                    }
+lbl21:
+                                    // 7 sources
+
+                                    while (true) {
+                                        var8_8 = (byte)(var8_8 + 1);
+                                        continue block0;
+                                        break;
+                                    }
+                                    break;
+                                }
+                                break;
+                            }
+                            break;
+                        }
+                        var9_9 = var6_6;
+                        ** while (true)
+                    }
+                    var9_9 = 3;
+                    ** while (true)
+                }
+                this.cur_a = (byte)var8_8;
+                ** GOTO lbl21
+            }
+            if (GameRun_F.run_state != 35 && GameRun_F.run_state != 25 && this.map.my.state != 16 && GameRun_F.run_state != 65 && GameRun_F.run_state != 66) ** GOTO lbl21
+            if (var8_8 != var7_7) break block10;
+            this.pkey.setKey5();
+            ** GOTO lbl21
+        }
+        this.popMenu = (byte)var8_8;
+        ** while (true)
+    }
+
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    public void drawSrcLine(Graphics var1_1, int var2_2, int var3_3, int var4_4, boolean var5_5, boolean var6_6) {
+        block12: {
+            block13: {
+                block11: {
+                    block15: {
+                        block14: {
+                            var7_7 = 0;
+                            var9_8 = (byte)(var3_3 / var4_4);
+                            var1_1 /* !! */ .setColor(0);
+                            if (var5_5) break block13;
+                            var3_3 = (short)(2 << this.src_c[0]);
+                            var4_4 = (byte)(var4_4 - 1);
+                            block0: while (true) {
+                                if (var4_4 <= -1) {
+                                    if (var6_6 && this.src_c[0] < 12) {
+                                        var1_1 /* !! */  = (Graphics)this.src_c;
+                                        var1_1 /* !! */ [0] = (Graphics)((byte)(var1_1 /* !! */ [0] + true));
+lbl12:
+                                        // 6 sources
+
+                                        return;
+                                    }
+                                    break block11;
+                                }
+                                if (var9_8 - var3_3 > 0) break;
+lbl16:
+                                // 2 sources
+
+                                while (true) {
+                                    var4_4 = (byte)(var4_4 - 1);
+                                    var3_3 = (short)(var3_3 / 2);
+                                    continue block0;
+                                    break;
+                                }
+                                break;
+                            }
+                            if (var3_3 >= 2) break block14;
+                            var7_7 = 0;
+lbl22:
+                            // 2 sources
+
+                            while (var3_3 < 2) {
+                                var8_9 = 0;
+lbl24:
+                                // 2 sources
+
+                                while (true) {
+                                    var1_1 /* !! */ .fillRect(0, var4_4 * var9_8 + var2_2 + var7_7, 640, var9_8 - var8_9);
+                                    ** continue;
+                                    break;
+                                }
+lbl27:
+                                // 1 sources
+
+                                ** GOTO lbl16
+                            }
+                            break block15;
+                        }
+                        var7_7 = var3_3;
+                        ** GOTO lbl22
+                    }
+                    var8_9 = var3_3;
+                    ** while (true)
+                }
+                if (var6_6 || this.src_c[0] <= 0) ** GOTO lbl12
+                var1_1 /* !! */  = (Graphics)this.src_c;
+                var1_1 /* !! */ [0] = (Graphics)((byte)(var1_1 /* !! */ [0] - true));
+                ** GOTO lbl12
+            }
+            var3_3 = (short)(2 << this.src_c[1]);
+            block5: while (true) {
+                block16: {
+                    if (var5_5 && var7_7 < var4_4) break block16;
+                    if (!var6_6 || this.src_c[1] >= 12) break block12;
+                    var1_1 /* !! */  = (Graphics)this.src_c;
+                    var1_1 /* !! */ [1] = (Graphics)((byte)(var1_1 /* !! */ [1] + true));
+                    ** GOTO lbl12
+                }
+                if (var9_8 - var3_3 > 0) break;
+lbl50:
+                // 2 sources
+
+                while (true) {
+                    var7_7 = (byte)(var7_7 + 1);
+                    var3_3 = (short)(var3_3 / 2);
+                    continue block5;
+                    break;
+                }
+                break;
+            }
+            if (var3_3 < 2) {
+                var8_10 = 0;
+lbl56:
+                // 2 sources
+
+                while (true) {
+                    var1_1 /* !! */ .fillRect(0, var7_7 * var9_8 + var2_2, 640, var9_8 - var8_10);
+                    ** continue;
+                    break;
+                }
+            }
+            var8_10 = var3_3;
+            ** while (true)
+        }
+        if (var6_6 || this.src_c[1] <= 0) ** GOTO lbl12
+        var1_1 /* !! */  = (Graphics)this.src_c;
+        var1_1 /* !! */ [1] = (Graphics)((byte)(var1_1 /* !! */ [1] - true));
+        ** while (true)
+    }
+
+    public void drawZero(int n, int n2, int n3, int n4) {
+        Ui.i().drawString("\u70b9\u51fb\u5c4f\u5e55\u7ee7\u7eed", n, n2, n3, n4, 0);
+    }
+
+    public void drawZero(String string, int n) {
+        Ui.i().drawString("\u70b9\u51fb\u5c4f\u5e55" + string, Constants_H.WIDTH_H, n, 1 | 0x20, 0, 0);
+    }
+
+    public byte getNLevel(int n) {
+        return this.nidusList[1][this.getRid(n)];
+    }
+
+    public short getNexp(int n, int n2) {
+        return Ms.i().getShort(this.rmsNidus, n * 5 + n2);
+    }
+
+    public byte getNid(int n) {
+        return this.nidusList[0][this.getRid(n)];
+    }
+
+    public byte getRid(int n) {
+        return this.rmsNidus[n * 5];
+    }
+
+    public short getSIndexW(String string) {
+        byte by;
+        int n = 0;
+        byte by2 = 0;
+        byte by3 = by = (byte)string.indexOf("#", 0);
+        int n2 = n;
+        byte by4 = by2;
+        if (by == 0) {
+            by3 = 1;
+            by4 = by2;
+            n2 = n;
+        }
+        while (by3 != -1) {
+            by4 = (byte)(by4 + by3);
+            by3 = (byte)string.indexOf("#", (int)by4);
+            n2 = (byte)(n2 + 1);
+        }
+        return (short)(Ms.i().getStringWidth("#1") * n2);
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void gogoWord(String var1_1, int var2_2, int var3_3, int var4_4, int var5_5, int var6_6, int var7_7) {
+        var8_8 = (short)(Ms.i().getStringWidth(var1_1) - this.getSIndexW(var1_1));
+        if (var8_8 > 640 - var2_2 - var4_4) {
+            this.introX -= var7_7;
+            if (this.introX + var8_8 < var2_2) {
+                this.introX = 640 - var4_4 - 75;
+            }
+lbl6:
+            // 4 sources
+
+            while (true) {
+                GameRun_F.g.clipRect(var2_2, var3_3, 640 - var4_4 - var2_2, 30);
+                Ui.i().drawStringColor(var1_1, this.introX, var3_3, var5_5, var6_6);
+                GameRun_F.g.setClip(0, 0, 640, 360);
+                return;
+            }
+        }
+        this.introX = var2_2;
+        ** while (true)
+    }
+
+    public void gogoWordM(String string, int n, int n2, int n3, int n4, int n5) {
+        short s = (short)Ms.i().getStringWidth(string);
+        this.introT -= n5;
+        if (this.introT + s < n2 << 1) {
+            this.introT = 640 + 1;
+        }
+        g.clipRect(n2, n, 640 - (n2 << 1), 30);
+        Ui.i().drawString(string, this.introT, n, 0, n3, n4);
+        g.setClip(0, 0, 640, 360);
+    }
+
+    public void initGraphics(Graphics graphics) {
+        g = graphics;
+        dg = DirectUtils.getDirectGraphics((Graphics)graphics);
     }
 
     public void initOffG() {
-        scrT = Image.createImage(Constants_H.WIDTH + 20, Constants_H.HEIGHT + 20);
+        scrT = Image.createImage((int)(Constants_H.WIDTH + 20), (int)(Constants_H.HEIGHT + 20));
         offG = scrT.getGraphics();
-    }
-
-    public void setStringB(String str, int w, int mode) {
-        if (mode != 0) {
-            if (mode != 1) {
-                if (mode != 2) {
-                    if (mode == 3) {
-                        this.about_d = Ms.i().groupString(str, w);
-                        return;
-                    }
-                    return;
-                }
-                this.about_c = Ms.i().groupString(str, w);
-                return;
-            }
-            this.about_b = Ms.i().groupString(str, w);
-            return;
-        }
-        this.about_a = Ms.i().groupString(str, w);
-    }
-
-    public short getSIndexW(String str) {
-        byte num = 0;
-        byte start = 0;
-        byte end = (byte) str.indexOf("#", 0);
-        if (end == 0) {
-            end = 1;
-        }
-        while (end != -1) {
-            start = (byte) (start + end);
-            end = (byte) str.indexOf("#", start);
-            num = (byte) (num + 1);
-        }
-        return (short) (Ms.i().getStringWidth("#1") * num);
-    }
-
-    public void drawZero(int x, int y, int anchor, int color) {
-        Ui.i().drawString(Constants_H.GAME_TXT_28, x, y, anchor, color, 0);
-    }
-
-    public void drawZero(String str, int y) {
-        Ui.i().drawString("点击屏幕" + str, Constants_H.WIDTH_H, y, 1 | 32, 0, 0);
-    }
-
-    public void gogoWord(String string, int x, int y, int w, int color, int strT, int speed) {
-        short sw = (short) (Ms.i().getStringWidth(string) - getSIndexW(string));
-        if (sw > (Constants_H.WIDTH_ - x) - w) {
-            this.introX -= speed;
-            if (this.introX + sw < x) {
-                this.introX = (Constants_H.WIDTH_ - w) - 75;
-            }
-        } else {
-            this.introX = x;
-        }
-        g.clipRect(x, y, (Constants_H.WIDTH_ - w) - x, 30);
-        Ui.i().drawStringColor(string, this.introX, y, color, strT);
-        g.setClip(0, 0, Constants_H.WIDTH_, Constants_H.HEIGHT_);
-    }
-
-    public void gogoWordM(String string, int y, int w, int color, int strT, int speed) {
-        short sw = (short) Ms.i().getStringWidth(string);
-        this.introT -= speed;
-        if (this.introT + sw < (w << 1)) {
-            this.introT = Constants_H.WIDTH_ + 1;
-        }
-        g.clipRect(w, y, Constants_H.WIDTH_ - (w << 1), 30);
-        Ui.i().drawString(string, this.introT, y, 0, color, strT);
-        g.setClip(0, 0, Constants_H.WIDTH_, Constants_H.HEIGHT_);
-    }
-
-    public void setGogoWord() {
-        this.introT = Constants_H.WIDTH;
-        Ms.i();
-        Ms.skip = 0;
-        StringBuffer[] sr = Ms.i().createStringArray(Ms.i().getStream("data/other/hint.t", -1));
-        Ms.i();
-        this.gogoST = sr[Ms.getRandom(sr.length)].toString();
-    }
-
-    private void drawSnare5(int x, int y) {
-        Ui.i().drawUi(8, x, y + (this.brow5 % 3 == 0 ? 1 : 0), 0, 0);
-        byte b = this.brow5;
-        this.brow5 = (byte) (b + 1);
-        if (b > 100) {
-            this.brow5 = (byte) 0;
-        }
-    }
-
-    public void showString(StringBuffer[] showS, int y, int offx, int mode) {
-        int WIDTH = Constants_H.WIDTH__;
-        int WIDTH_H = Constants_H.WIDTH__ / 2;
-        int y2 = y + 5;
-        if (mode != 0) {
-            Ui.i().drawKuang(offx - 5, y2, WIDTH + 10, (showS.length * 25) + 12);
-            if (mode == 2) {
-                drawSnare5(WIDTH_H + offx, (showS.length * 25) + y2 + 4);
-            }
-        }
-        for (byte d = 0; d < showS.length; d = (byte) (d + 1)) {
-            Ui.i().drawStringColor(showS[d].toString(), 25 + offx, y2 + 4 + (d * 25), -1, 1);
-        }
-    }
-
-    public void showString(String string, int y, int offx) {
-        byte strNum = (byte) (string.length() / 11);
-        Ui.i().drawK0(offx - 5, y, Constants_H.WIDTH_ + 10, ((strNum + 1) * 25) + 8, 3);
-        showStringM(string, Constants_H.WIDTH_H_ + offx, y + 3, 11, 0);
-    }
-
-    public void showStringM(String str, int x, int y, int num, int c) {
-        byte strNum = (byte) (str.length() / num);
-        for (byte d = 0; d <= strNum; d = (byte) (d + 1)) {
-            if (strNum == 0) {
-                Ui.i().drawString(str, x, y, 1 | 16, c, 1);
-                Log.e("sk", "strNum == 0");
-            } else {
-                Ui.i().drawString(str.substring(d * num, d + 1 > strNum ? str.length() : (d + 1) * num), x, y + (d * 25), 1 | 16, c, 0);
-                Log.e("sk", "else");
-            }
-        }
-    }
-
-    public void showStringM_(String str, int x, int y, int num, int c) {
-        byte strNum = (byte) (str.length() / num);
-        for (byte d = 0; d <= strNum; d = (byte) (d + 1)) {
-            if (strNum == 0) {
-                Ui.i().drawString(str, x, y, 1 | 16, c, 1);
-                Log.e("sk", "strNum == 0");
-            } else {
-                Ui.i().drawString(str.substring(d * num, d + 1 > strNum ? str.length() : (d + 1) * num), x, y + (d * 25), 1 | 16, c, 0);
-            }
-        }
-    }
-
-    public void drawHelpStr(Graphics g2, StringBuffer[] help_strbuff, int line_num, int x, int y, int anchor) {
-        byte line_start = (byte) (this.help_page * line_num);
-        for (byte i = line_start; i < line_start + line_num && i < help_strbuff.length; i = (byte) (i + 1)) {
-            Ui.i().drawString(help_strbuff[i].toString(), x, y + ((i - line_start) * 27), anchor, 3, 0);
-        }
-        if (help_strbuff.length > line_num) {
-            this.page_max = (byte) ((help_strbuff.length / line_num) + (help_strbuff.length % line_num != 0 ? 1 : 0));
-            Ui.i().drawString(String.valueOf(this.help_page + 1) + "/" + ((int) this.page_max), Constants_H.WIDTH_H, Constants_H.HEIGHT - 2, 1 | 32, 3, 0);
-            Ui.i().drawTriangle(Constants_H.WIDTH_H, Constants_H.HEIGHT - 12, 75, true, true);
-            return;
-        }
-        this.page_max = (byte) 1;
-    }
-
-    public void drawSrcLine(Graphics g2, int y, int h, int piece, boolean dir, boolean mode) {
-        byte i = 0;
-        byte ph = (byte) (h / piece);
-        g2.setColor(0);
-        if (!dir) {
-            short speed = (short) (2 << this.src_c[0]);
-            byte i2 = (byte) (piece - 1);
-            while (i2 > -1) {
-                if (ph - speed > 0) {
-                    g2.fillRect(0, (i2 * ph) + y + (speed < 2 ? (short) 0 : speed), Constants_H.WIDTH_, ph - (speed < 2 ? (short) 0 : speed));
-                }
-                i2 = (byte) (i2 - 1);
-                speed = (short) (speed / 2);
-            }
-            if (!mode || this.src_c[0] >= 12) {
-                if (mode || this.src_c[0] <= 0) {
-                    return;
-                }
-                byte[] bArr = this.src_c;
-                bArr[0] = (byte) (bArr[0] - 1);
-                return;
-            }
-            byte[] bArr2 = this.src_c;
-            bArr2[0] = (byte) (bArr2[0] + 1);
-            return;
-        }
-        short speed2 = (short) (2 << this.src_c[1]);
-        while (dir && i < piece) {
-            if (ph - speed2 > 0) {
-                g2.fillRect(0, (i * ph) + y, Constants_H.WIDTH_, ph - (speed2 < 2 ? (short) 0 : speed2));
-            }
-            i = (byte) (i + 1);
-            speed2 = (short) (speed2 / 2);
-        }
-        if (!mode || this.src_c[1] >= 12) {
-            if (mode || this.src_c[1] <= 0) {
-                return;
-            }
-            byte[] bArr3 = this.src_c;
-            bArr3[1] = (byte) (bArr3[1] - 1);
-            return;
-        }
-        byte[] bArr4 = this.src_c;
-        bArr4[1] = (byte) (bArr4[1] + 1);
-    }
-
-    public String createString(String name) {
-        Ms.i();
-        Ms.skip = 0;
-        StringBuffer[] str = Ms.i().createStringArray(Ms.i().getStream(name, -1));
-        return str[0].toString();
-    }
-
-    public byte[] createData(int no) {
-        return Ms.i().getStream("4", no);
-    }
-
-    public void setAction_str(String[] temp_str) {
-        this.action_str = temp_str;
-    }
-
-    public void drawMenu(StringBuffer[] menu, int x, int y, int w) {
-        byte color;
-        if (w > 0) {
-            Ui.i().drawKuang(x, y, w, (menu.length * 27) + 12);
-        } else {
-            Ms.i();
-            w = Ms.abs(w);
-        }
-        byte d = 0;
-        while (d < menu.length) {
-            if (d == 0) {
-                color = 9;
-            } else {
-                color = d == this.cur_a ? (byte) 8 : (byte) 0;
-            }
-            Ui.i().drawString(menu[d].toString(), (w >> 1) + x, y + 4 + (d * 27), 1 | 16, color, 0);
-            d = (byte) (d + 1);
-        }
-    }
-
-    public void drawSelectMenu(Object[] menu, int x, int y, int w, int dis, int cn, int s_f) {
-        byte d = 0;
-        while (d < menu.length) {
-            Ui.i().drawK0(x, y + ((dis + 33) * d), w, 33, d == s_f ? 1 : cn);
-            Ui.i().drawString(menu[d].toString(), (w >> 1) + x, y + 2 + ((dis + 33) * d), 1 | 16, d == s_f ? 0 : 3, 1);
-            Log.e("sk", "drawSelectMenu");
-            if (this.pkey.isSelect(x, ((dis + 33) * d) + y, w, 33)) {
-                if (this.map.my.state == 12) {
-                    if (d == s_f) {
-                        this.map.my.state = (byte) 13;
-                    } else {
-                        this.cur_a = d;
-                    }
-                } else if (run_state == 35 || run_state == 25 || this.map.my.state == 16 || run_state == 65 || run_state == 66 || run_state == 61) {
-                    if (d == s_f) {
-                        this.pkey.setKey5();
-                    } else {
-                        this.popMenu = d;
-                    }
-                }
-            }
-            d = (byte) (d + 1);
-        }
-    }
-
-    public void drawSelectMenu_(Object[] menu, int x, int y, int w, int dis, int cn, int s_f) {
-        byte d = 0;
-        while (d < menu.length) {
-            int i = 25 + 8;
-            Ui.i().drawK0(x, y + ((dis + 33) * d), w, 25 + 8, d == s_f ? 1 : cn);
-            int i2 = 25 + 8;
-            Ui.i().drawString(menu[d].toString(), (w >> 1) + x, y + 2 + ((dis + 33) * d), 1 | 16, d == s_f ? 0 : 3, 1);
-            g.setColor(16711680);
-            int i3 = 25 + 8;
-            int i4 = 25 + 8;
-            if (this.pkey.isSelect((Constants_H.WIDTH * x) / Constants_H.WIDTH__, ((((dis + 33) * d) + y) * Constants_H.WIDTH) / Constants_H.WIDTH__, (Constants_H.WIDTH * w) / Constants_H.WIDTH__, (Constants_H.WIDTH * 33) / Constants_H.WIDTH__)) {
-                if (this.map.my.state == 12) {
-                    if (d == s_f) {
-                        this.map.my.state = (byte) 13;
-                    } else {
-                        this.cur_a = d;
-                    }
-                } else if (run_state == 35 || run_state == 25 || this.map.my.state == 16 || run_state == 65 || run_state == 66) {
-                    if (d == s_f) {
-                        this.pkey.setKey5();
-                    } else {
-                        this.popMenu = d;
-                    }
-                }
-            }
-            d = (byte) (d + 1);
-        }
-    }
-
-    public void setPauseS(int mode) {
-        if (mode == 0) {
-            setAction_str(new String[]{Constants_H.PAUSE_TXT_0, Constants_H.PAUSE_TXT_1, Constants_H.PAUSE_TXT_2, Constants_H.PAUSE_TXT_3, Constants_H.PAUSE_TXT_24, Constants_H.PAUSE_TXT_4});
-        } else {
-            setAction_str(new String[]{Constants_H.PAUSE_TXT_5, Constants_H.PAUSE_TXT_6, Constants_H.PAUSE_TXT_7, Constants_H.PAUSE_TXT_8});
-        }
-    }
-
-    public void drawPauseMenu(int x, int y, int w, int h) {
-        Ui.i().drawK2(x, y, w, h, 1);
-        Ui.i().drawK1(x + 9, y + 25 + 11, w - 18, (h - 25) - 19, 0);
-        Ui.i().drawListKY(6, x + 8, y + 25 + 13, w - 16, 1, 33, -1, this.selecty, 4, 2);
-        this.pkey.selectListSY(this.action_str.length, x + 8, y + 25 + 13, w - 16, 1, 33, -1, this.selecty);
-        byte t = this.pkey.selectMenuX(2, x, y + 3, w >> 1, 38);
-        if (t != -1) {
-            this.selectx = t;
-            this.selecty = (byte) 0;
-            setPauseS(this.selectx);
-        }
-        if (this.selectx == 1) {
-            Ui.i().drawVolume(((((w >> 1) + x) + 25) - 8) - 60, y + 25 + 16 + 33, Sound.i().getVolume(), this.selecty == 1);
-            Ui.i().drawListSYHasSound(this.action_str, x + 8, y + 25 + 13, w - 16, 32, this.selecty, 0, 3, 0);
-        } else {
-            Ui.i().drawListSY(this.action_str, x + 8, y + 25 + 13, w - 16, 32, this.selecty, 0, 3, 0);
-        }
-        Ui.i().drawK1((w >> 1) + x + (this.selectx == 0 ? -60 : 2), y + 4, 56, 29, 4);
-        Ui.i().drawString(Constants_H.PAUSE_TXT_16, (((w >> 1) + x) - 25) - 3, y + 3, 1 | 16, this.selectx == 0 ? 0 : 1, 0);
-        Ui.i().drawString(Constants_H.PAUSE_TXT_17, (w >> 1) + x + 25 + 3, y + 3, 1 | 16, this.selectx == 0 ? 1 : 0, 0);
-        Ui.i().drawTriangle((w >> 1) + x, y + 12, 80, true, true);
-    }
-
-    public void saveMon(ByteArrayOutputStream byteArray, Monster mon) throws IOException {
-        byteArray.write(mon.monster);
-        for (int i = 0; i < 5; i++) {
-            short s = mon.monsterPro[i];
-            byteArray.write((byte) (s & 255));
-            byteArray.write((byte) ((s >> 8) & 255));
-        }
-    }
-
-    public void loadMon(ByteArrayInputStream byteArray, Monster mon, byte[][] data) throws IOException {
-        mon.monster = new byte[18];
-        mon.monsterPro = new short[8];
-        byteArray.read(mon.monster);
-        this.len = new byte[10];
-        byteArray.read(this.len);
-        for (int i = 0; i < 5; i++) {
-            mon.monsterPro[i] = (short) (((this.len[(i * 2) + 1] & 255) << 8) | (this.len[(i * 2) + 0] & 255));
-        }
-        mon.setProAFD(data[mon.monster[0]]);
-        this.len = null;
-    }
-
-    public void saveMon(int flag) {
-        ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-        int i = 0;
-        try {
-            if (flag == 0) {
-                byteArray.write(this.cMon_count);
-                while (i < this.cMon_count) {
-                    saveMon(byteArray, this.cMonsters[i]);
-                    i++;
-                }
-                Ms.i().rmsOptions(8, byteArray.toByteArray(), 2);
-            } else {
-                byteArray.write(this.myMon_length);
-                while (i < this.myMon_length) {
-                    saveMon(byteArray, this.myMonsters[i]);
-                    i++;
-                }
-                Ms.i().rmsOptions(9, byteArray.toByteArray(), 2);
-            }
-            byteArray.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void loadMon(int flag, byte[][] data) {
-        ByteArrayInputStream byteArray;
-        this.info = Ms.i().rmsOptions(flag + 8, null, 1);
-        int i = 0;
-        try {
-            if (flag == 0) {
-                this.cMonsters = new Monster[95];
-                if (this.info[0] == -1) {
-                    this.cMon_count = (byte) 0;
-                    return;
-                }
-                byteArray = new ByteArrayInputStream(this.info);
-                this.cMon_count = (byte) byteArray.read();
-                while (i < this.cMon_count) {
-                    this.cMonsters[i] = new Monster();
-                    loadMon(byteArray, this.cMonsters[i], data);
-                    i++;
-                }
-            } else {
-                this.myMonsters = new Monster[5];
-                if (this.info[0] == -1) {
-                    this.myMon_length = (byte) 0;
-                    return;
-                }
-                byteArray = new ByteArrayInputStream(this.info);
-                this.myMon_length = (byte) byteArray.read();
-                while (i < this.myMon_length) {
-                    this.myMonsters[i] = new Monster();
-                    loadMon(byteArray, this.myMonsters[i], data);
-                    i++;
-                }
-            }
-            byteArray.close();
-            this.info = null;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void saveInfoList() {
-        Ms.i().rmsOptions(6, this.monInfoList, 2);
-    }
-
-    public void loadInfoList() {
-        this.info = Ms.i().rmsOptions(6, null, 1);
-        if (this.info[0] == -1) {
-            this.monInfoList = new byte[105];
-            for (int i = 0; i < this.monInfoList.length; i++) {
-                this.monInfoList[i] = 0;
-            }
-        } else {
-            this.monInfoList = this.info;
-        }
-        this.info = null;
-    }
-
-    public void loadRmsOther() {
-        this.info = Ms.i().rmsOptions(10, null, 1);
-        if (this.info[0] == -1) {
-            setMaxTakes(true);
-            initRmsOther();
-        } else {
-            this.rmsOther = this.info;
-            setMaxTakes(false);
-        }
-        this.info = null;
-    }
-
-    public void setMaxTakes(boolean bb) {
-        if (bb) {
-            this.max_takes = (byte) 3;
-            this.max_monsters = (byte) 10;
-            return;
-        }
-        if (this.rmsOther[3] == 2) {
-            this.max_takes = (byte) 4;
-            this.max_monsters = (byte) 20;
-            return;
-        }
-        if (this.rmsOther[3] == 3) {
-            this.max_takes = (byte) 5;
-            this.max_monsters = (byte) 40;
-        } else if (this.rmsOther[3] == 4) {
-            this.max_takes = (byte) 5;
-            this.max_monsters = (byte) 80;
-        } else if (this.rmsOther[3] == 5) {
-            this.max_takes = (byte) 5;
-            this.max_monsters = Constants_H.MAX_MONSTERS;
-        }
-    }
-
-    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    public byte isMyLevel(boolean bb) {
-        switch (this.rmsOther[3]) {
-            case 1:
-                if (!bb || this.monInfoList[103] <= 4) {
-                    return (byte) 5;
-                }
-                this.rmsOther[3] = 2;
-                return (byte) -1;
-            case 2:
-                if (bb && this.monInfoList[103] > 9) {
-                    this.rmsOther[3] = 3;
-                    return (byte) -1;
-                }
-                return (byte) 10;
-            case 3:
-                if (bb && this.monInfoList[103] > 14) {
-                    this.rmsOther[3] = 4;
-                    return (byte) -1;
-                }
-                return (byte) 15;
-            case 4:
-                if (bb && this.monInfoList[103] > 29) {
-                    this.rmsOther[3] = 5;
-                    return (byte) -1;
-                }
-                return (byte) 30;
-            default:
-                return (byte) -1;
-        }
-    }
-
-    public void saveItem() {
-        int len = 0;
-        for (int i = 0; i < 4; i++) {
-            len += this.itemsLength[i];
-        }
-        this.info = new byte[this.items.length + (len * 2)];
-        int len2 = 0;
-        for (int i2 = 0; i2 < 4; i2++) {
-            this.info[i2] = this.itemsLength[i2];
-        }
-        for (int i3 = 0; i3 < this.items.length; i3++) {
-            int j = 0;
-            while (j < this.itemsLength[i3]) {
-                this.info[(len2 * 2) + 4] = this.items[i3][j][0];
-                this.info[(len2 * 2) + 4 + 1] = this.items[i3][j][1];
-                j++;
-                len2++;
-            }
-        }
-        Ms.i().rmsOptions(4, this.info, 2);
-        this.info = null;
-    }
-
-    public void loadItem() {
-        this.info = Ms.i().rmsOptions(4, null, 1);
-        this.len = new byte[]{16, 19, 23, 12};
-        this.itemsLength = new byte[4];
-        if (this.info[0] != -1) {
-            for (int i = 0; i < 4; i++) {
-                this.itemsLength[i] = this.info[i];
-            }
-        }
-        this.items = new byte[this.itemsLength.length][];
-        int k = 0;
-        for (int i2 = 0; i2 < this.items.length; i2++) {
-            this.items[i2] = (byte[][]) Array.newInstance((Class<?>) Byte.TYPE, this.len[i2], 2);
-            int j = 0;
-            while (j < this.itemsLength[i2]) {
-                this.items[i2][j][0] = this.info[(k * 2) + 4];
-                this.items[i2][j][1] = this.info[(k * 2) + 4 + 1];
-                j++;
-                k++;
-            }
-        }
-        this.info = null;
-        this.len = null;
     }
 
     public void initRmsOther() {
         this.rmsOther = null;
-        byte[] bArr = new byte[12];
-        bArr[0] = -1;
-        bArr[3] = 1;
-        this.rmsOther = bArr;
+        byte[] byArray = new byte[12];
+        byArray[0] = -1;
+        byArray[3] = 1;
+        this.rmsOther = byArray;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public byte isMyLevel(boolean var1_1) {
+        switch (this.rmsOther[3]) lbl-1000:
+        // 4 sources
+
+        {
+            default: lbl-1000:
+            // 2 sources
+
+            {
+                while (true) {
+                    var2_2 = -1;
+lbl5:
+                    // 5 sources
+
+                    return (byte)var2_2;
+                }
+            }
+            case 1: {
+                if (!var1_1 || this.monInfoList[103] <= 4) ** GOTO lbl11
+                this.rmsOther[3] = 2;
+                ** GOTO lbl-1000
+lbl11:
+                // 1 sources
+
+                var2_2 = 5;
+                ** GOTO lbl5
+            }
+            case 2: {
+                if (!var1_1 || this.monInfoList[103] <= 9) ** GOTO lbl17
+                this.rmsOther[3] = 3;
+                ** GOTO lbl-1000
+lbl17:
+                // 1 sources
+
+                var2_2 = 10;
+                ** GOTO lbl5
+            }
+            case 3: {
+                if (!var1_1 || this.monInfoList[103] <= 14) ** GOTO lbl23
+                this.rmsOther[3] = 4;
+                ** GOTO lbl-1000
+lbl23:
+                // 1 sources
+
+                var2_2 = 15;
+                ** GOTO lbl5
+            }
+            case 4: 
+        }
+        if (var1_1 && this.monInfoList[103] > 29) {
+            this.rmsOther[3] = 5;
+            ** continue;
+        }
+        var2_2 = 30;
+        ** while (true)
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void loadInfoList() {
+        this.info = Ms.i().rmsOptions(6, null, 1);
+        if (this.info[0] == -1) {
+            this.monInfoList = new byte[105];
+            var1_1 = 0;
+            while (true) {
+                if (var1_1 >= this.monInfoList.length) lbl-1000:
+                // 2 sources
+
+                {
+                    while (true) {
+                        this.info = null;
+                        return;
+                    }
+                }
+                this.monInfoList[var1_1] = 0;
+                ++var1_1;
+            }
+        }
+        this.monInfoList = this.info;
+        ** while (true)
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void loadItem() {
+        this.info = Ms.i().rmsOptions(4, null, 1);
+        this.len = new byte[]{16, 19, 23, 12};
+        this.itemsLength = new byte[4];
+        if (this.info[0] == -1) ** GOTO lbl8
+        var1_1 = 0;
+        block0: while (true) {
+            block7: {
+                if (var1_1 < 4) break block7;
+lbl8:
+                // 2 sources
+
+                this.items = new byte[this.itemsLength.length][][];
+                var1_1 = 0;
+                var2_2 = 0;
+lbl11:
+                // 2 sources
+
+                while (true) {
+                    if (var1_1 < this.items.length) break block0;
+                    this.info = null;
+                    this.len = null;
+                    return;
+                }
+            }
+            this.itemsLength[var1_1] = this.info[var1_1];
+            ++var1_1;
+        }
+        var4_4 = this.items;
+        var3_3 = this.len[var1_1];
+        var4_4[var1_1] = new byte[var3_3][2];
+        var3_3 = 0;
+        while (true) {
+            if (var3_3 >= this.itemsLength[var1_1]) {
+                ++var1_1;
+                ** continue;
+            }
+            this.items[var1_1][var3_3][0] = this.info[var2_2 * 2 + 4];
+            this.items[var1_1][var3_3][1] = this.info[var2_2 * 2 + 4 + 1];
+            ++var3_3;
+            ++var2_2;
+        }
+    }
+
+    /*
+     * Exception decompiling
+     */
+    public void loadMon(int var1_1, byte[][] var2_2) {
+        /*
+         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+         * 
+         * java.lang.IllegalStateException: Backjump on non jumping statement @NONE, blocks:[] lbl20 : TryStatement: try { 1[TRYBLOCK]
+         * 
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner$1.call(Cleaner.java:44)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner$1.call(Cleaner.java:22)
+         *     at org.benf.cfr.reader.util.graph.GraphVisitorDFS.process(GraphVisitorDFS.java:68)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner.removeUnreachableCode(Cleaner.java:54)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:550)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
+         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
+         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
+         *     at org.benf.cfr.reader.Driver.doClass(Driver.java:84)
+         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:78)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompile(CFRDecompiler.java:91)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompileToZip(CFRDecompiler.java:122)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.decompileSaveAll(ResourceDecompiling.java:262)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.lambda$decompileSaveAll$0(ResourceDecompiling.java:111)
+         *     at java.base/java.lang.Thread.run(Thread.java:840)
+         */
+        throw new IllegalStateException("Decompilation failed");
+    }
+
+    public void loadMon(ByteArrayInputStream byteArrayInputStream, Monster monster, byte[][] byArray) throws IOException {
+        monster.monster = new byte[18];
+        monster.monsterPro = new short[8];
+        byteArrayInputStream.read(monster.monster);
+        this.len = new byte[10];
+        byteArrayInputStream.read(this.len);
+        int n = 0;
+        while (true) {
+            if (n >= 5) {
+                monster.setProAFD(byArray[monster.monster[0]]);
+                this.len = null;
+                return;
+            }
+            monster.monsterPro[n] = (short)((this.len[n * 2 + 1] & 0xFF) << 8 | this.len[n * 2 + 0] & 0xFF);
+            ++n;
+        }
+    }
+
+    public void loadRmsNidus() {
+        this.rmsNidus = Ms.i().rmsOptions(3, null, 1);
+        if (this.rmsNidus[0] == -1) {
+            this.rmsNidus = null;
+            byte[] byArray = new byte[25];
+            byArray[0] = -2;
+            byArray[3] = 10;
+            byArray[4] = 10;
+            byArray[5] = -2;
+            byArray[8] = 10;
+            byArray[9] = 10;
+            byArray[10] = -2;
+            byArray[13] = 10;
+            byArray[14] = 10;
+            byArray[15] = -2;
+            byArray[18] = 10;
+            byArray[19] = 10;
+            byArray[20] = -2;
+            byArray[23] = 10;
+            byArray[24] = 10;
+            this.rmsNidus = byArray;
+        }
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void loadRmsOther() {
+        this.info = Ms.i().rmsOptions(10, null, 1);
+        if (this.info[0] == -1) {
+            this.setMaxTakes(true);
+            this.initRmsOther();
+lbl5:
+            // 2 sources
+
+            while (true) {
+                this.info = null;
+                return;
+            }
+        }
+        this.rmsOther = this.info;
+        this.setMaxTakes(false);
+        ** while (true)
     }
 
     public void loadRmsSms() {
@@ -628,60 +940,345 @@ public class GameRun_F implements Key_H {
             this.rmsSms = new byte[7];
         }
         if (this.rmsSms[0] == 10) {
-            byte[] bArr = this.rmsOther;
-            bArr[2] = (byte) (bArr[2] | 8);
+            byte[] byArray = this.rmsOther;
+            byArray[2] = (byte)(byArray[2] | 8);
         }
     }
 
-    public void loadRmsNidus() {
-        this.rmsNidus = Ms.i().rmsOptions(3, null, 1);
-        if (this.rmsNidus[0] == -1) {
-            this.rmsNidus = null;
-            this.rmsNidus = new byte[]{-2, 0, 0, 10, 10, -2, 0, 0, 10, 10, -2, 0, 0, 10, 10, -2, 0, 0, 10, 10, -2, 0, 0, 10, 10};
-        }
+    public void saveInfoList() {
+        Ms.i().rmsOptions(6, this.monInfoList, 2);
     }
 
-    public byte getRid(int i) {
-        return this.rmsNidus[i * 5];
-    }
+    /*
+     * Unable to fully structure code
+     */
+    public void saveItem() {
+        block7: {
+            var2_1 = 0;
+            var1_2 = 0;
+            block0: while (true) {
+                if (var1_2 >= 4) {
+                    this.info = new byte[this.items.length + var2_1 * 2];
+                    var2_1 = 0;
+                    var1_2 = 0;
+lbl8:
+                    // 2 sources
 
-    public byte getNid(int i) {
-        return this.nidusList[0][getRid(i)];
-    }
+                    while (true) {
+                        if (var1_2 < 4) break block0;
+                        var1_2 = 0;
+lbl11:
+                        // 2 sources
 
-    public byte getNLevel(int i) {
-        return this.nidusList[1][getRid(i)];
-    }
-
-    public short getNexp(int i, int n) {
-        return Ms.i().getShort(this.rmsNidus, (i * 5) + n);
-    }
-
-    public boolean addNidus(int id) {
-        for (byte i = 0; i < this.rmsNidus.length; i = (byte) (i + 5)) {
-            if (this.rmsNidus[i] == -2) {
-                this.rmsNidus[i] = (byte) id;
-                Ms.i().putShort(0, this.rmsNidus, i + 1);
-                Ms.i().putShort(Player.REALIZED, this.rmsNidus, i + 3);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void delNidus(int i) {
-        this.rmsNidus[i * 5] = -2;
-    }
-
-    public void setNidusExp(int exp) {
-        int exp2 = exp / 10 < 1 ? 1 : exp / 10;
-        for (byte i = 0; i < 5; i = (byte) (i + 1)) {
-            if (getRid(i) != -2) {
-                Ms.i().putShort(getNexp(i, 1) + exp2, this.rmsNidus, (i * 5) + 1);
-                if (getNexp(i, 1) > getNexp(i, 3)) {
-                    Ms.i().putShort(getNexp(i, 3), this.rmsNidus, (i * 5) + 1);
+                        while (true) {
+                            if (var1_2 >= this.items.length) {
+                                Ms.i().rmsOptions(4, this.info, 2);
+                                this.info = null;
+                                return;
+                            }
+                            break block7;
+                            break;
+                        }
+                        break;
+                    }
                 }
+                var2_1 += this.itemsLength[var1_2];
+                ++var1_2;
+            }
+            this.info[var1_2] = this.itemsLength[var1_2];
+            ++var1_2;
+            ** while (true)
+        }
+        var3_3 = 0;
+        while (true) {
+            if (var3_3 >= this.itemsLength[var1_2]) {
+                ++var1_2;
+                ** continue;
+            }
+            this.info[var2_1 * 2 + 4] = this.items[var1_2][var3_3][0];
+            this.info[var2_1 * 2 + 4 + 1] = this.items[var1_2][var3_3][1];
+            ++var3_3;
+            ++var2_1;
+        }
+    }
+
+    /*
+     * Exception decompiling
+     */
+    public void saveMon(int var1_1) {
+        /*
+         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+         * 
+         * java.lang.IllegalStateException: Backjump on non jumping statement @NONE, blocks:[] lbl27 : TryStatement: try { 2[TRYBLOCK]
+         * 
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner$1.call(Cleaner.java:44)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner$1.call(Cleaner.java:22)
+         *     at org.benf.cfr.reader.util.graph.GraphVisitorDFS.process(GraphVisitorDFS.java:68)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner.removeUnreachableCode(Cleaner.java:54)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:550)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
+         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
+         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
+         *     at org.benf.cfr.reader.Driver.doClass(Driver.java:84)
+         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:78)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompile(CFRDecompiler.java:91)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompileToZip(CFRDecompiler.java:122)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.decompileSaveAll(ResourceDecompiling.java:262)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.lambda$decompileSaveAll$0(ResourceDecompiling.java:111)
+         *     at java.base/java.lang.Thread.run(Thread.java:840)
+         */
+        throw new IllegalStateException("Decompilation failed");
+    }
+
+    public void saveMon(ByteArrayOutputStream byteArrayOutputStream, Monster monster) throws IOException {
+        byteArrayOutputStream.write(monster.monster);
+        int n = 0;
+        while (n < 5) {
+            short s = monster.monsterPro[n];
+            byteArrayOutputStream.write((byte)(s & 0xFF));
+            byteArrayOutputStream.write((byte)(s >> 8 & 0xFF));
+            ++n;
+        }
+        return;
+    }
+
+    public void setAction_str(String[] stringArray) {
+        this.action_str = stringArray;
+        stringArray = null;
+    }
+
+    public void setGogoWord() {
+        this.introT = Constants_H.WIDTH;
+        Ms.i();
+        Ms.skip = 0;
+        StringBuffer[] stringBufferArray = Ms.i().createStringArray(Ms.i().getStream("data/other/hint.t", -1));
+        Ms.i();
+        this.gogoST = stringBufferArray[Ms.getRandom((int)stringBufferArray.length)].toString();
+        stringBufferArray = null;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void setMaxTakes(boolean var1_1) {
+        block4: {
+            block3: {
+                block2: {
+                    if (var1_1) {
+                        this.max_takes = (byte)3;
+                        this.max_monsters = (byte)10;
+lbl4:
+                        // 6 sources
+
+                        return;
+                    }
+                    if (this.rmsOther[3] != 2) break block2;
+                    this.max_takes = (byte)4;
+                    this.max_monsters = (byte)20;
+                    ** GOTO lbl4
+                }
+                if (this.rmsOther[3] != 3) break block3;
+                this.max_takes = (byte)5;
+                this.max_monsters = (byte)40;
+                ** GOTO lbl4
+            }
+            if (this.rmsOther[3] != 4) break block4;
+            this.max_takes = (byte)5;
+            this.max_monsters = (byte)80;
+            ** GOTO lbl4
+        }
+        if (this.rmsOther[3] != 5) ** GOTO lbl4
+        this.max_takes = (byte)5;
+        this.max_monsters = (byte)95;
+        ** while (true)
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void setNidusExp(int var1_1) {
+        if (var1_1 / 10 < 1) {
+            var1_1 = 1;
+lbl3:
+            // 2 sources
+
+            while (true) {
+                var2_2 = 0;
+lbl5:
+                // 2 sources
+
+                while (true) {
+                    if (var2_2 >= 5) {
+                        return;
+                    }
+                    ** GOTO lbl11
+                    break;
+                }
+                break;
+            }
+        } else {
+            var1_1 /= 10;
+            ** continue;
+        }
+lbl11:
+        // 1 sources
+
+        if (this.getRid(var2_2) == -2) lbl-1000:
+        // 3 sources
+
+        {
+            while (true) {
+                var2_2 = (byte)(var2_2 + 1);
+                ** continue;
+                break;
             }
         }
+        Ms.i().putShort(this.getNexp(var2_2, 1) + var1_1, this.rmsNidus, var2_2 * 5 + 1);
+        if (this.getNexp(var2_2, 1) <= this.getNexp(var2_2, 3)) ** GOTO lbl-1000
+        Ms.i().putShort((int)this.getNexp(var2_2, 3), this.rmsNidus, var2_2 * 5 + 1);
+        ** while (true)
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public void setPauseS(int n) {
+        if (n == 0) {
+            this.setAction_str(new String[]{"\u4fdd\u5b58\u6e38\u620f", "\u67e5\u770b\u5ba0\u7269", "\u4eba\u7269\u80cc\u5305", "\u5ba0\u7269\u56fe\u9274", "\u67e5\u770b\u4efb\u52a1", "\u8fd4\u56de\u6e38\u620f"});
+            return;
+        }
+        this.setAction_str(new String[]{"\u8bfb\u53d6\u8fdb\u5ea6", "\u58f0\u97f3", "\u6e38\u620f\u5e2e\u52a9", "\u56de\u4e3b\u83dc\u5355"});
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void setStringB(String var1_1, int var2_2, int var3_3) {
+        block3: {
+            block2: {
+                if (var3_3 == 0) {
+                    this.about_a = Ms.i().groupString(var1_1, var2_2);
+lbl3:
+                    // 5 sources
+
+                    return;
+                }
+                if (var3_3 != 1) break block2;
+                this.about_b = Ms.i().groupString(var1_1, var2_2);
+                ** GOTO lbl3
+            }
+            if (var3_3 != 2) break block3;
+            this.about_c = Ms.i().groupString(var1_1, var2_2);
+            ** GOTO lbl3
+        }
+        if (var3_3 != 3) ** GOTO lbl3
+        this.about_d = Ms.i().groupString(var1_1, var2_2);
+        ** while (true)
+    }
+
+    public void showString(String string, int n, int n2) {
+        byte by = (byte)(string.length() / 11);
+        Ui.i().drawK0(n2 - 5, n, 640 + 10, (by + 1) * 25 + 8, 3);
+        this.showStringM(string, 320 + n2, n + 3, 11, 0);
+    }
+
+    public void showString(StringBuffer[] stringBufferArray, int n, int n2, int n3) {
+        int n4 = Constants_H.WIDTH__;
+        int n5 = Constants_H.WIDTH__ / 2;
+        int n6 = n + 5;
+        if (n3 != 0) {
+            Ui.i().drawKuang(n2 - 5, n6, n4 + 10, stringBufferArray.length * 25 + 12);
+            if (n3 == 2) {
+                this.drawSnare5(n5 + n2, stringBufferArray.length * 25 + n6 + 4);
+            }
+        }
+        n = 0;
+        while (n < stringBufferArray.length) {
+            Ui.i().drawStringColor(stringBufferArray[n].toString(), 25 + n2, n6 + 4 + n * 25, -1, 1);
+            n = (byte)(n + 1);
+        }
+        return;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void showStringM(String var1_1, int var2_2, int var3_3, int var4_4, int var5_5) {
+        var8_6 = (byte)(var1_1.length() / var4_4);
+        var6_7 = 0;
+        block0: while (true) {
+            if (var6_7 > var8_6) {
+                return;
+            }
+            if (var8_6 != 0) break;
+            Ui.i().drawString(var1_1, var2_2, var3_3, 1 | 16, var5_5, 1);
+            Log.e((String)"sk", (String)"strNum == 0");
+lbl10:
+            // 2 sources
+
+            while (true) {
+                var6_7 = (byte)(var6_7 + 1);
+                continue block0;
+                break;
+            }
+            break;
+        }
+        var9_9 = Ui.i();
+        if (var6_7 + 1 > var8_6) {
+            var7_8 = var1_1.length();
+lbl16:
+            // 2 sources
+
+            while (true) {
+                var9_9.drawString(var1_1.substring(var6_7 * var4_4, var7_8), var2_2, var3_3 + var6_7 * 25, 1 | 16, var5_5, 0);
+                Log.e((String)"sk", (String)"else");
+                ** continue;
+                break;
+            }
+        }
+        var7_8 = (var6_7 + 1) * var4_4;
+        ** while (true)
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void showStringM_(String var1_1, int var2_2, int var3_3, int var4_4, int var5_5) {
+        var8_6 = (byte)(var1_1.length() / var4_4);
+        var6_7 = 0;
+        block0: while (true) {
+            if (var6_7 > var8_6) {
+                return;
+            }
+            if (var8_6 != 0) break;
+            Ui.i().drawString(var1_1, var2_2, var3_3, 1 | 16, var5_5, 1);
+            Log.e((String)"sk", (String)"strNum == 0");
+lbl10:
+            // 2 sources
+
+            while (true) {
+                var6_7 = (byte)(var6_7 + 1);
+                continue block0;
+                break;
+            }
+            break;
+        }
+        var9_9 = Ui.i();
+        if (var6_7 + 1 > var8_6) {
+            var7_8 = var1_1.length();
+lbl16:
+            // 2 sources
+
+            while (true) {
+                var9_9.drawString(var1_1.substring(var6_7 * var4_4, var7_8), var2_2, var3_3 + var6_7 * 25, 1 | 16, var5_5, 0);
+                ** continue;
+                break;
+            }
+        }
+        var7_8 = (var6_7 + 1) * var4_4;
+        ** while (true)
     }
 }

@@ -1,3 +1,11 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  javax.microedition.lcdui.Canvas
+ *  javax.microedition.lcdui.Graphics
+ */
 package javax.microedition.lcdui.game;
 
 import android.content.Context;
@@ -5,8 +13,8 @@ import android.util.AttributeSet;
 import javax.microedition.lcdui.Canvas;
 import javax.microedition.lcdui.Graphics;
 
-/* loaded from: classes.dex */
-public abstract class GameCanvas extends Canvas {
+public abstract class GameCanvas
+extends Canvas {
     public static final int DOWN_PRESSED = 64;
     public static final int FIRE_PRESSED = 256;
     public static final int GAME_A_PRESSED = 512;
@@ -17,11 +25,10 @@ public abstract class GameCanvas extends Canvas {
     public static final int RIGHT_PRESSED = 32;
     public static final int UP_PRESSED = 2;
 
-    public GameCanvas(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    public GameCanvas(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    @Override // javax.microedition.lcdui.Canvas
-    public void paint(Graphics g) {
+    public void paint(Graphics graphics) {
     }
 }

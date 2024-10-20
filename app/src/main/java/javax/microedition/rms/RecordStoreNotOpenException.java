@@ -1,13 +1,21 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  javax.microedition.rms.RecordStoreException
+ */
 package javax.microedition.rms;
 
-/* loaded from: classes.dex */
-public class RecordStoreNotOpenException extends RecordStoreException {
-    private static final long serialVersionUID = 1;
+import javax.microedition.rms.RecordStoreException;
 
-    public RecordStoreNotOpenException(String message) {
-        super(message);
-    }
+public class RecordStoreNotOpenException
+extends RecordStoreException {
+    private static final long serialVersionUID = 1L;
 
     public RecordStoreNotOpenException() {
+    }
+
+    public RecordStoreNotOpenException(String string) {
+        super(string);
     }
 }

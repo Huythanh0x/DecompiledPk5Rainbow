@@ -1,412 +1,629 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  dm.Ms
+ *  dm.Sprite
+ *  dm.Ui
+ *  javax.microedition.lcdui.Image
+ *  main.Constants_H
+ *  main.GameRun
+ *  minigame.MiniGame_H
+ */
 package minigame;
 
 import dm.Ms;
 import dm.Sprite;
 import dm.Ui;
-import java.lang.reflect.Array;
 import javax.microedition.lcdui.Image;
-import javax.microedition.media.Player;
 import main.Constants_H;
 import main.GameRun;
+import minigame.MiniGame_H;
 
-/* loaded from: classes.dex */
-public class Guess implements MiniGame_H {
+public class Guess
+implements MiniGame_H {
+    final short BOX_Y1;
+    final short MON_Y;
+    final short TIME = (short)20;
+    final short TIME2 = (short)40;
     private byte b_win;
     private int[][] box;
     private byte[] boxNum;
     private byte[][] gameData;
+    private byte gameR = 0;
     GameRun gr;
     private Image[] imgBox;
     private Sprite[] imgMon;
     private byte length;
     private byte lv;
+    private byte maxTransNum;
+    private byte mon_size_move = 0;
     byte sel;
     private int sell_money;
-    private byte time;
-    final short TIME = 20;
-    final short TIME2 = 40;
-    final short BOX_Y1 = 150;
-    final short MON_Y = 165;
-    private byte mon_size_move = 0;
     private byte state = 0;
-    private byte gameR = 0;
-    private byte winNum = 0;
-    private byte transNum = 0;
-    private byte maxTransNum = 20;
     private byte tempTransNum = 0;
+    private byte time;
+    private byte transNum = 0;
+    private byte winNum = 0;
 
-    public Guess(GameRun gr_) {
-        this.gr = gr_;
+    public Guess(GameRun gameRun) {
+        this.BOX_Y1 = (short)150;
+        this.MON_Y = (short)165;
+        this.maxTransNum = (byte)20;
+        this.gr = gameRun;
     }
 
-    @Override // minigame.MiniGame_H
-    public void patin() {
-        Ui.i().fillRectB();
-        draw();
-        if (this.state != 0) {
-            drawGame();
-        }
-    }
-
-    private void drawGame() {
-        int i = 240 - 4;
-        int i2 = Constants_H.WIDTH_H_ - 4;
-        Ui.i().drawString(Constants_H.GAME_TXT_21 + ((int) this.winNum) + "/" + ((int) this.gameData[3][this.lv]), Constants_H.WIDTH_H_, 4, 17, 3, 1);
-        if (this.state == 1) {
-            Ui.g.setClip(202, 65, 240, 100);
-            for (int i3 = 0; i3 < this.box.length; i3++) {
-                if (this.box[i3][1] != -1) {
-                    drawMon(i3, this.box[i3][1], this.box[i3][2] + 202, (this.time < 40 ? (byte) 0 : this.mon_size_move) + Constants_H.ADD_EFFECT);
-                }
-            }
-            Ui.g.setClip(0, 0, Constants_H.WIDTH_, Constants_H.HEIGHT_);
-            if (this.time >= 20) {
-                for (int i4 = 0; i4 < this.box.length; i4++) {
-                    Ui.i().drawImage(this.imgBox[1], this.box[i4][2] + 202, this.box[i4][3], 17);
-                }
-                return;
-            }
-            return;
-        }
-        if (this.state == 2) {
-            for (int i5 = 0; i5 < this.box.length; i5++) {
-                Ui.i().drawImage(this.imgBox[1], this.box[i5][2] + 202, this.box[i5][3], 17);
-            }
-            return;
-        }
-        if (this.state == 3) {
-            for (int i6 = 0; i6 < this.box.length; i6++) {
-                if (this.gr.pkey.isSelect((this.box[i6][2] + 202) - 20, this.box[i6][3], 40, 40)) {
-                    this.gr.selectx = (byte) i6;
-                    this.gr.pkey.setKey5();
-                }
-                Ui.i().drawImage(this.imgBox[1], this.box[i6][2] + 202, this.box[i6][3], 17);
-            }
-            Ui.i().drawImage(this.imgBox[0], (this.box[this.gr.selectx][2] + 202) - 1, this.box[this.gr.selectx][3] - (this.time % 4 <= 2 ? 5 : 0), 17);
-            byte b = (byte) (this.time + 1);
-            this.time = b;
-            if (b > 20) {
-                this.time = (byte) 0;
-            }
-            drawMon(this.box[this.gr.selecty][0], this.box[this.gr.selecty][1], this.gameData[0][1] + 202 + 100, 135);
-            this.gr.showStringM(Constants_H.GAME_TXT_22 + this.gr.getNameMon(this.box[this.gr.selecty][1]) + Constants_H.GAME_TXT_23, 202 + 240 + 90, 29 * 5, 6, 0);
-            return;
-        }
-        if (this.state == 4) {
-            int i7 = this.box[this.gr.selecty][0];
-            int[][] iArr = this.box;
-            int WIDTH_H = this.gr.selecty;
-            drawMon(i7, iArr[WIDTH_H][1], this.gameData[0][1] + 202 + 100, 135);
-            Ui.i().drawImage(this.imgBox[1], this.box[this.gr.selectx][2] + 202, this.box[this.gr.selectx][3], 17);
-            if (this.box[this.gr.selectx][1] != -1) {
-                drawMon(this.box[this.gr.selectx][0], this.box[this.gr.selectx][1], this.box[this.gr.selectx][2] + 202, this.box[this.gr.selectx][3] + 35);
-            }
-            if (this.b_win > 0) {
-                this.gr.showStringM(Constants_H.GAME_TXT_24, 202 + 240 + 90, 29 * 5, 6, 0);
-            } else {
-                this.gr.showStringM(Constants_H.GAME_TXT_25, 202 + 240 + 90, 29 * 5, 6, 0);
-            }
-            this.gr.showStringM(Constants_H.GAME_TXT_28, 202 + 240 + 90, 29 * 7, 6, 0);
-            if (this.gr.pkey.isSelect(0, 0, Constants_H.WIDTH_, Constants_H.HEIGHT_)) {
-                this.gr.pkey.setKey5();
-            }
-        }
-    }
-
+    /*
+     * Unable to fully structure code
+     */
     private void draw() {
-        if (this.state == 0) {
-            Ui.i().drawString(Constants_H.GAME_TXT_7, Constants_H.WIDTH_H_, 4, 17, 3, 1);
-            Ui.i().drawUi(7, Constants_H.WIDTH_H_ - 75, 27, 40, 0);
-            Ui.i().drawUi(7, Constants_H.WIDTH_H_ + 75, 27, 36, 4);
-        }
-        int h = 29 * 10;
-        Ui.i().drawK(10, 25 + 10, Player.REALIZED, h, 4);
-        Ui.i().drawK(10 + Player.REALIZED + 10, 25 + 10, Player.REALIZED, h, 4);
-        Ui i = Ui.i();
-        int i2 = (Player.REALIZED + 10) * 2;
-        i.drawK(10 + 420, 25 + 10, Player.REALIZED, h, 4);
-        Ui.i().drawStringY(this.gr.about_a, 10 + 6, 25 + 10, 29, 0, 0);
-        if (this.state == 0) {
-            this.gr.showStringM(Constants_H.GAME_TXT_12 + this.sell_money + Constants_H.MONEY_TXT_0, Constants_H.WIDTH_H_, (25 + 290) - 50, 7, 0);
-            int ty = 25 + 75 + 5;
-            Ui.i().drawListKY(2, 10 + Player.REALIZED + 12 + 25, ty, Player.REALIZED - 50, 3, 30, 10, this.sel, 4, 2);
-            int i3 = 0;
-            while (i3 < this.gr.about_b.length) {
-                Ui.i().drawString(this.gr.about_b[i3].toString(), 10 + Player.REALIZED + 15 + 25 + 26, ((i3 * 40) + 105) - 2, 0, this.sel == i3 ? 0 : 3, 1);
-                if (this.gr.pkey.isSelect(10 + Player.REALIZED + 12 + 25, ((i3 * 40) + 105) - 2, Player.REALIZED - 50, 40)) {
-                    if (this.sel == i3) {
+        block11: {
+            if (this.state == 0) {
+                Ui.i().drawString("\u6e38\u620f\u89c4\u5219", 320, 4, 17, 3, 1);
+                Ui.i().drawUi(7, 320 - 75, 27, 40, 0);
+                Ui.i().drawUi(7, 320 + 75, 27, 36, 4);
+            }
+            var1_1 = 29 * 10;
+            Ui.i().drawK(10, 25 + 10, 200, var1_1, 4);
+            Ui.i().drawK(10 + 200 + 10, 25 + 10, 200, var1_1, 4);
+            Ui.i().drawK(10 + 420, 25 + 10, 200, var1_1, 4);
+            Ui.i().drawStringY(this.gr.about_a, 10 + 6, 25 + 10, 29, 0, 0);
+            if (this.state != 0) ** GOTO lbl16
+            this.gr.showStringM("\u9700\u8981\u7684\u53c2\u52a0\u8d39\uff1a" + this.sell_money + "\u91d1", 320, 25 + 290 - 50, 7, 0);
+            Ui.i().drawListKY(2, 10 + 200 + 12 + 25, 25 + 75 + 5, 200 - 50, 3, 30, 10, (int)this.sel, 4, 2);
+            var1_1 = 0;
+            block0: while (true) {
+                block12: {
+                    if (var1_1 < this.gr.about_b.length) break block12;
+lbl16:
+                    // 2 sources
+
+                    if (this.state == 0) {
+                        Ui.i().drawYesNo(true, true);
+                    }
+                    this.gr.drawMoney(320, 360, 3, false);
+                    return;
+                }
+                var4_4 = Ui.i();
+                var3_3 = this.gr.about_b[var1_1].toString();
+                if (this.sel != var1_1) break;
+                var2_2 = 0;
+lbl25:
+                // 2 sources
+
+                while (true) {
+                    var4_4.drawString(var3_3, 10 + 200 + 15 + 25 + 26, var1_1 * 40 + 105 - 2, 0, var2_2, 1);
+                    if (this.gr.pkey.isSelect(10 + 200 + 12 + 25, var1_1 * 40 + 105 - 2, 200 - 50, 40)) {
+                        if (this.sel != var1_1) break block11;
                         this.gr.pkey.setKey5();
-                    } else {
-                        this.sel = (byte) i3;
                     }
+lbl30:
+                    // 4 sources
+
+                    while (true) {
+                        ++var1_1;
+                        continue block0;
+                        break;
+                    }
+                    break;
                 }
-                i3++;
+                break;
             }
+            var2_2 = 3;
+            ** while (true)
         }
-        if (this.state == 0) {
-            Ui.i().drawYesNo(true, true);
-        }
-        this.gr.drawMoney(Constants_H.WIDTH_H_, Constants_H.HEIGHT_, 3, false);
+        this.sel = (byte)var1_1;
+        ** while (true)
     }
 
-    private void drawMon(int i, int id, int x, int y) {
-        Ui.i().drawFrameOne(this.imgMon[i], this.imgMon[i].action(this.gr.mList_id[id][1] * 3, 0, 0), x, y, 0);
-    }
+    /*
+     * Unable to fully structure code
+     */
+    private void drawGame() {
+        block20: {
+            block18: {
+                block17: {
+                    block15: {
+                        block14: {
+                            Ui.i().drawString("\u80dc\u5229\u6b21\u6570\uff1a" + this.winNum + "/" + this.gameData[3][this.lv], 320, 4, 17, 3, 1);
+                            if (this.state != 1) break block15;
+                            Ui.g.setClip(202, 65, 240, 100);
+                            var2_1 = 0;
+                            block0: while (true) {
+                                block16: {
+                                    if (var2_1 < this.box.length) break block16;
+                                    Ui.g.setClip(0, 0, 640, 360);
+                                    if (this.time < 20) ** GOTO lbl12
+                                    var2_1 = 0;
+lbl10:
+                                    // 2 sources
 
-    @Override // minigame.MiniGame_H
-    public void run() {
-        if (this.state == 1) {
-            if (this.time < 20) {
-                this.time = (byte) (this.time + 1);
-                return;
-            }
-            if (this.box[0][3] < 150) {
-                for (byte i = 0; i < 3; i = (byte) (i + 1)) {
-                    int[] iArr = this.box[i];
-                    iArr[3] = iArr[3] + 25;
-                }
-                return;
-            }
-            byte b = (byte) (this.time + 1);
-            this.time = b;
-            if (b >= 40) {
-                if (this.mon_size_move < 40) {
-                    this.mon_size_move = (byte) (this.mon_size_move + 5);
-                    return;
-                } else {
-                    this.state = (byte) 2;
-                    this.time = (byte) 0;
-                    return;
-                }
-            }
-            return;
-        }
-        if (this.state == 2) {
-            if (this.time <= 0) {
-                if (this.transNum < this.maxTransNum) {
-                    this.time = (byte) 1;
-                    this.transNum = (byte) (this.transNum + 1);
-                    byte[] bArr = this.boxNum;
-                    Ms.i();
-                    bArr[0] = (byte) Ms.getRandom(3);
-                    do {
-                        byte[] bArr2 = this.boxNum;
-                        Ms.i();
-                        bArr2[1] = (byte) Ms.getRandom(3);
-                    } while (this.boxNum[1] == this.boxNum[0]);
-                    if (this.box[this.boxNum[1]][2] < this.box[this.boxNum[0]][2]) {
-                        this.gameR = this.boxNum[1];
-                        this.boxNum[1] = this.boxNum[0];
-                        this.boxNum[0] = this.gameR;
+                                    while (true) {
+                                        if (var2_1 < this.box.length) break block14;
+lbl12:
+                                        // 7 sources
+
+                                        return;
+                                    }
+                                }
+                                if (this.box[var2_1][1] != -1) break;
+lbl16:
+                                // 2 sources
+
+                                while (true) {
+                                    ++var2_1;
+                                    continue block0;
+                                    break;
+                                }
+                                break;
+                            }
+                            var5_8 = this.box[var2_1][1];
+                            var4_6 = this.box[var2_1][2];
+                            if (this.time < 40) {
+                                var3_4 = 0;
+lbl23:
+                                // 2 sources
+
+                                while (true) {
+                                    this.drawMon(var2_1, var5_8, var4_6 + 202, var3_4 + 165);
+                                    ** continue;
+                                    break;
+                                }
+                            }
+                            var3_4 = this.mon_size_move;
+                            ** while (true)
+                        }
+                        Ui.i().drawImage(this.imgBox[1], this.box[var2_1][2] + 202, this.box[var2_1][3], 17);
+                        ++var2_1;
+                        ** while (true)
                     }
-                    Ms.i();
-                    this.gameR = (byte) (Ms.abs(this.box[this.boxNum[1]][2] - this.box[this.boxNum[0]][2]) / 2);
-                    this.tempTransNum = (byte) ((this.gameR * 2) / this.gameData[1][this.lv]);
-                    return;
+                    if (this.state != 2) break block17;
+                    var2_2 = 0;
+                    while (true) {
+                        if (var2_2 >= this.box.length) ** GOTO lbl12
+                        Ui.i().drawImage(this.imgBox[1], this.box[var2_2][2] + 202, this.box[var2_2][3], 17);
+                        ++var2_2;
+                    }
                 }
-                this.time = (byte) 0;
-                this.state = (byte) 3;
-                do {
-                    GameRun gameRun = this.gr;
-                    Ms.i();
-                    gameRun.selecty = (byte) Ms.getRandom(this.box.length);
-                } while (this.box[this.gr.selecty][1] == -1);
-                return;
-            }
-            if (this.time > this.tempTransNum) {
-                this.time = (byte) 0;
-                int[] temp = new int[4];
-                for (byte i2 = 0; i2 < this.box.length; i2 = (byte) (i2 + 1)) {
-                    for (byte j = 0; j < this.box.length; j = (byte) (j + 1)) {
-                        if (this.box[j][2] > this.box[i2][2]) {
-                            System.arraycopy(this.box[i2], 0, temp, 0, temp.length);
-                            System.arraycopy(this.box[j], 0, this.box[i2], 0, this.box[j].length);
-                            System.arraycopy(temp, 0, this.box[j], 0, temp.length);
+                if (this.state != 3) break block18;
+                var2_3 = 0;
+                while (true) {
+                    block19: {
+                        if (var2_3 < this.box.length) break block19;
+                        var6_9 = Ui.i();
+                        var7_10 = this.imgBox[0];
+                        var3_5 = this.box[this.gr.selectx][2];
+                        var4_7 = this.box[this.gr.selectx][3];
+                        if (this.time % 4 > 2) break;
+                        var2_3 = 5;
+lbl51:
+                        // 2 sources
+
+                        while (true) {
+                            var6_9.drawImage(var7_10, var3_5 + 202 - 1, var4_7 - var2_3, 17);
+                            this.time = var1_11 = (byte)(this.time + 1);
+                            if (var1_11 > 20) {
+                                this.time = 0;
+                            }
+                            this.drawMon(this.box[this.gr.selecty][0], this.box[this.gr.selecty][1], this.gameData[0][1] + 202 + 100, 135);
+                            this.gr.showStringM("\u8bf7\u6307\u51fa" + this.gr.getNameMon(this.box[this.gr.selecty][1]) + "\u6240\u5728\u7bb1\u5b50", 202 + 240 + 90, 29 * 5, 6, 0);
+                            ** GOTO lbl12
+                            break;
                         }
                     }
+                    if (this.gr.pkey.isSelect(this.box[var2_3][2] + 202 - 20, this.box[var2_3][3], 40, 40)) {
+                        this.gr.selectx = (byte)var2_3;
+                        this.gr.pkey.setKey5();
+                    }
+                    Ui.i().drawImage(this.imgBox[1], this.box[var2_3][2] + 202, this.box[var2_3][3], 17);
+                    ++var2_3;
                 }
-                for (byte i3 = 0; i3 < 3; i3 = (byte) (i3 + 1)) {
-                    this.box[i3][2] = this.gameData[0][i3] + 100;
-                    this.box[i3][3] = 150;
+                var2_3 = 0;
+                ** while (true)
+            }
+            if (this.state != 4) ** GOTO lbl12
+            this.drawMon(this.box[this.gr.selecty][0], this.box[this.gr.selecty][1], this.gameData[0][1] + 202 + 100, 135);
+            Ui.i().drawImage(this.imgBox[1], this.box[this.gr.selectx][2] + 202, this.box[this.gr.selectx][3], 17);
+            if (this.box[this.gr.selectx][1] != -1) {
+                this.drawMon(this.box[this.gr.selectx][0], this.box[this.gr.selectx][1], this.box[this.gr.selectx][2] + 202, this.box[this.gr.selectx][3] + 35);
+            }
+            if (this.b_win <= 0) break block20;
+            this.gr.showStringM("\u60a8\u771f\u5389\u5bb3\uff01", 202 + 240 + 90, 29 * 5, 6, 0);
+lbl76:
+            // 2 sources
+
+            while (true) {
+                this.gr.showStringM("\u70b9\u51fb\u5c4f\u5e55\u7ee7\u7eed", 202 + 240 + 90, 29 * 7, 6, 0);
+                if (!this.gr.pkey.isSelect(0, 0, 640, 360)) ** GOTO lbl12
+                this.gr.pkey.setKey5();
+                ** continue;
+                break;
+            }
+        }
+        this.gr.showStringM("\u8bf4\u4e0d\u5b9a\u4e0b\u6b21\u5c31\u80fd\u884c\u7684\u3002", 202 + 240 + 90, 29 * 5, 6, 0);
+        ** while (true)
+    }
+
+    private void drawMon(int n, int n2, int n3, int n4) {
+        Ui.i().drawFrameOne(this.imgMon[n], this.imgMon[n].action(this.gr.mList_id[n2][1] * 3, 0, 0), n3, n4, 0);
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    private byte[] getGameMonList() {
+        block10: {
+            var4_1 = new byte[3];
+            var2_2 = 0;
+            block0: while (true) {
+                if (var2_2 >= var4_1.length) {
+                    var3_3 = 0;
+lbl6:
+                    // 2 sources
+
+                    while (true) {
+                        if (var3_3 < this.gameData[2][this.lv]) break block0;
+                        Ms.i();
+                        var2_2 = (byte)Ms.getRandom((int)2);
+                        var1_5 = var4_1[var4_1.length - 1];
+                        var4_1[var4_1.length - 1] = var4_1[var2_2];
+                        var4_1[var2_2] = var1_5;
+                        var2_2 = 0;
+lbl15:
+                        // 2 sources
+
+                        while (true) {
+                            if (var2_2 >= 3) {
+                                return var4_1;
+                            }
+                            break block10;
+                            break;
+                        }
+                        break;
+                    }
                 }
+                var4_1[var2_2] = -1;
+                var2_2 = (byte)(var2_2 + 1);
+            }
+            var5_4 = this.gameData[4];
+            Ms.i();
+            var4_1[var3_3] = var5_4[Ms.getRandom((int)this.gameData[4].length)];
+            var2_2 = 0;
+            while (true) {
+                if (var2_2 >= var3_3) {
+                    var3_3 = (byte)(var3_3 + 1);
+                    ** continue;
+                }
+                if (var4_1[var2_2] == var4_1[var3_3]) {
+                    var5_4 = this.gameData[4];
+                    Ms.i();
+                    var4_1[var3_3] = var5_4[Ms.getRandom((int)this.gameData[4].length)];
+                    var2_2 = 0;
+                    continue;
+                }
+                var2_2 = (byte)(var2_2 + 1);
+            }
+        }
+        if (var4_1[var2_2] == -1) lbl-1000:
+        // 2 sources
+
+        {
+            while (true) {
+                var2_2 = (byte)(var2_2 + 1);
+                ** continue;
+                break;
+            }
+        }
+        var3_3 = this.gr.mList_id[var4_1[var2_2]][0];
+        this.imgMon[var2_2] = Ms.i().createSprite("data/npc2/" + var3_3, this.gr.isNpc2ImageType((int)var3_3));
+        ** while (true)
+    }
+
+    private void initGame() {
+        byte[] byArray = this.getGameMonList();
+        int n = 0;
+        while (true) {
+            if (n >= 3) {
+                byArray = null;
+                Ms.i();
+                this.maxTransNum = (byte)(Ms.getRandom((int)(this.lv + 2)) + 2 + this.lv);
+                this.transNum = 0;
+                this.mon_size_move = 0;
                 return;
             }
-            this.time = (byte) (this.time + 1);
-            int[] iArr2 = this.box[this.boxNum[0]];
-            iArr2[2] = iArr2[2] + ((this.gameR * 2) / this.tempTransNum);
-            int temp2 = ((this.gameR * 2) / this.tempTransNum) * this.time;
-            this.box[this.boxNum[0]][3] = 150 - Ms.i().sqrt((this.gameR * this.gameR) - ((temp2 - this.gameR) * (temp2 - this.gameR)));
-            int[] iArr3 = this.box[this.boxNum[1]];
-            iArr3[2] = iArr3[2] - ((this.gameR * 2) / this.tempTransNum);
-            this.box[this.boxNum[1]][3] = Ms.i().sqrt((this.gameR * this.gameR) - ((temp2 - this.gameR) * (temp2 - this.gameR))) + 150;
+            this.box[n][0] = n;
+            this.box[n][1] = byArray[n];
+            this.box[n][2] = this.gameData[0][n] + 100;
+            this.box[n][3] = 0;
+            n = (byte)(n + 1);
+        }
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    private byte win() {
+        int n;
+        this.winNum = n = (int)(this.winNum + 1);
+        if (n < this.gameData[3][this.lv]) return (byte)3;
+        int n2 = this.sell_money + this.lv * this.lv * 150 + (2 - this.lv) * 25;
+        GameRun gameRun = this.gr;
+        gameRun.money += n2;
+        this.gr.say("\u83b7\u5f97\u91d1\u94b1\uff1a" + n2, 0);
+        byte[] byArray = this.gr.rmsOther;
+        byArray[10] = (byte)(byArray[10] | 1 << this.lv);
+        if (this.lv != 2) return (byte)2;
+        if (this.gr.rmsOther[11] >= 3) return (byte)2;
+        byte[] byArray2 = this.gr.rmsOther;
+        byArray2[11] = (byte)(byArray2[11] + 1);
+        return (byte)2;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public void go(int n) {
+        if (n < 1) {
+            this.b_win = 0;
+            this.gr.selecty = 0;
+            this.gr.selectx = 0;
+            this.winNum = 0;
+            this.state = 0;
+            this.gr.buyOk = 0;
+            this.gr.line_max = (byte)9;
+            this.sell_money = this.lv * 200 + 200;
+            this.length = (byte)(this.gr.about_a.length - this.gr.line_max);
             return;
         }
-        if (this.state == 4) {
-            if ((this.gr.selectx == 2 && this.box[this.gr.selectx][2] > this.gameData[0][1] + 100) || (this.gr.selectx == 0 && this.box[this.gr.selectx][2] < this.gameData[0][1] + 100)) {
-                int[] iArr4 = this.box[this.gr.selectx];
-                iArr4[2] = iArr4[2] + ((this.gameData[0][1] - this.gameData[0][this.gr.selectx]) / 7);
-            }
-        }
+        this.time = 0;
+        this.state = 1;
+        this.initGame();
     }
 
-    @Override // minigame.MiniGame_H
-    public boolean key() {
-        if (Ms.i().key_delay()) {
-            return false;
-        }
-        if (this.state == 0) {
-            if (Ms.i().key_Up_Down()) {
-                this.sel = (byte) (this.sel ^ 1);
-            } else if (Ms.i().key_S1_Num5()) {
-                Ms.i().keyRelease();
-                if (this.sel == 0 && this.gr.isMoney(this.sell_money, true)) {
-                    go(1, this.lv);
-                } else if (this.sel == 1) {
-                    Ms.i().keyRelease();
-                    this.gr.about_a = null;
-                    this.imgBox = null;
-                    this.boxNum = null;
-                    this.gameData = null;
-                    this.box = null;
-                    this.imgMon = null;
-                    return true;
-                }
-            } else if (Ms.i().key_S2()) {
-                Ms.i().keyRelease();
-                this.gr.about_a = null;
-                this.imgBox = null;
-                this.boxNum = null;
-                this.gameData = null;
-                this.box = null;
-                this.imgMon = null;
-                return true;
-            }
-        } else if (this.state == 3) {
-            if (Ms.i().key_Left_Right()) {
-                this.gr.selectx = Ms.i().select(this.gr.selectx, 0, this.box.length - 1);
-            } else if (Ms.i().key_S1_Num5()) {
-                Ms.i().keyRelease();
-                this.state = (byte) 4;
-                this.b_win = (byte) (this.gr.selectx == this.gr.selecty ? 1 : -1);
-            }
-        } else if (this.state == 4 && Ms.i().key_S1_Num5()) {
-            Ms.i().keyRelease();
-            if (this.b_win == 1) {
-                this.b_win = win();
-                if (this.b_win == 3) {
-                    go(1, this.lv);
-                }
-            } else if (this.b_win == -1 || (this.b_win == 2 && this.gr.say_c == 0)) {
-                if (this.b_win == 2 && this.gr.rmsOther[11] == 3) {
-                    this.gr.rmsOther[11] = 4;
-                    this.gr.getMonster(83, 25, 0, -1);
-                } else if (this.b_win == -1 && this.gr.rmsOther[11] < 3) {
-                    this.gr.rmsOther[11] = 0;
-                }
-                go(0, this.lv);
-            }
-        }
-        return false;
-    }
-
-    private byte win() {
-        byte b = (byte) (this.winNum + 1);
-        this.winNum = b;
-        if (b < this.gameData[3][this.lv]) {
-            return (byte) 3;
-        }
-        int tm = this.sell_money + (this.lv * this.lv * 150) + ((2 - this.lv) * 25);
-        this.gr.money += tm;
-        this.gr.say(Constants_H.MONEY_TXT_9 + tm, 0);
-        byte[] bArr = this.gr.rmsOther;
-        bArr[10] = (byte) (bArr[10] | (1 << this.lv));
-        if (this.lv == 2 && this.gr.rmsOther[11] < 3) {
-            byte[] bArr2 = this.gr.rmsOther;
-            bArr2[11] = (byte) (bArr2[11] + 1);
-        }
-        return (byte) 2;
-    }
-
-    @Override // minigame.MiniGame_H
-    public void go(int mode, int lv_) {
-        this.gr.setStringB(this.gr.createString("data/gamed.d"), Constants_H.HEIGHT_H_, 0);
-        this.gr.setStringB(Constants_H.GAME_TXT_27, Constants_H.WIDTH, 1);
-        this.lv = (byte) lv_;
+    public void go(int n, int n2) {
+        this.gr.setStringB(this.gr.createString("data/gamed.d"), 180, 0);
+        this.gr.setStringB("\u5f00\u59cb\u6e38\u620f#n\u79bb\u5f00\u6e38\u620f", Constants_H.WIDTH, 1);
+        this.lv = (byte)n2;
         this.imgBox = new Image[2];
         this.imgBox[0] = Ms.i().createImage("data/brow/m2");
         this.imgBox[1] = Ms.i().createImage("data/brow/m3");
         this.boxNum = new byte[2];
-        this.gameData = new byte[][]{new byte[]{-60, 17, 90}, new byte[]{8, 13, 20, 30}, new byte[]{1, 2, 3, 3}, new byte[]{6, 4, 2, 2}, new byte[]{83, 30, 55}};
-        this.box = (int[][]) Array.newInstance((Class<?>) Integer.TYPE, 3, 4);
+        this.gameData = new byte[][]{{-60, 17, 90}, {8, 13, 20, 30}, {1, 2, 3, 3}, {6, 4, 2, 2}, {83, 30, 55}};
+        this.box = new int[3][4];
         this.imgMon = new Sprite[3];
-        go(mode);
+        this.go(n);
     }
 
-    @Override // minigame.MiniGame_H
-    public void go(int mode) {
-        if (mode < 1) {
-            this.b_win = (byte) 0;
-            this.gr.selecty = (byte) 0;
-            this.gr.selectx = (byte) 0;
-            this.winNum = (byte) 0;
-            this.state = (byte) 0;
-            this.gr.buyOk = (byte) 0;
-            this.gr.line_max = (byte) 9;
-            this.sell_money = (this.lv * 200) + Player.REALIZED;
-            this.length = (byte) (this.gr.about_a.length - this.gr.line_max);
-            return;
+    /*
+     * Unable to fully structure code
+     */
+    public boolean key() {
+        block14: {
+            block11: {
+                block13: {
+                    block12: {
+                        block7: {
+                            block9: {
+                                block10: {
+                                    block8: {
+                                        if (Ms.i().key_delay()) {
+                                            var2_1 = false;
+lbl3:
+                                            // 4 sources
+
+                                            return var2_1;
+                                        }
+                                        if (this.state != 0) break block7;
+                                        if (!Ms.i().key_Up_Down()) break block8;
+                                        this.sel = (byte)(this.sel ^ 1);
+lbl8:
+                                        // 11 sources
+
+                                        while (true) {
+                                            var2_1 = false;
+                                            ** GOTO lbl3
+                                            break;
+                                        }
+                                    }
+                                    if (!Ms.i().key_S1_Num5()) break block9;
+                                    Ms.i().keyRelease();
+                                    if (this.sel != 0 || !this.gr.isMoney(this.sell_money, true)) break block10;
+                                    this.go(1, this.lv);
+                                    ** GOTO lbl8
+                                }
+                                if (this.sel != 1) ** GOTO lbl8
+                                Ms.i().keyRelease();
+                                this.gr.about_a = null;
+                                this.imgBox = null;
+                                this.boxNum = null;
+                                this.gameData = null;
+                                this.box = null;
+                                this.imgMon = null;
+                                var2_1 = true;
+                                ** GOTO lbl3
+                            }
+                            if (!Ms.i().key_S2()) ** GOTO lbl8
+                            Ms.i().keyRelease();
+                            this.gr.about_a = null;
+                            this.imgBox = null;
+                            this.boxNum = null;
+                            this.gameData = null;
+                            this.box = null;
+                            this.imgMon = null;
+                            var2_1 = true;
+                            ** while (true)
+                        }
+                        if (this.state != 3) break block11;
+                        if (!Ms.i().key_Left_Right()) break block12;
+                        this.gr.selectx = Ms.i().select((int)this.gr.selectx, 0, this.box.length - 1);
+                        ** GOTO lbl8
+                    }
+                    if (!Ms.i().key_S1_Num5()) ** GOTO lbl8
+                    Ms.i().keyRelease();
+                    this.state = (byte)4;
+                    if (this.gr.selectx != this.gr.selecty) break block13;
+                    var1_2 = 1;
+lbl50:
+                    // 2 sources
+
+                    while (true) {
+                        this.b_win = (byte)var1_2;
+                        ** GOTO lbl8
+                        break;
+                    }
+                }
+                var1_2 = -1;
+                ** while (true)
+            }
+            if (this.state != 4 || !Ms.i().key_S1_Num5()) ** GOTO lbl8
+            Ms.i().keyRelease();
+            if (this.b_win != 1) break block14;
+            this.b_win = this.win();
+            if (this.b_win == 3) {
+                this.go(1, this.lv);
+            }
+            ** GOTO lbl8
         }
-        this.time = (byte) 0;
-        this.state = (byte) 1;
-        initGame();
+        if (this.b_win != -1 && (this.b_win != 2 || this.gr.say_c != 0)) ** GOTO lbl8
+        if (this.b_win == 2 && this.gr.rmsOther[11] == 3) {
+            this.gr.rmsOther[11] = 4;
+            this.gr.getMonster(83, 25, 0, -1);
+lbl70:
+            // 3 sources
+
+            while (true) {
+                this.go(0, this.lv);
+                ** continue;
+                break;
+            }
+        }
+        if (this.b_win != -1 || this.gr.rmsOther[11] >= 3) ** GOTO lbl70
+        this.gr.rmsOther[11] = 0;
+        ** while (true)
     }
 
-    private void initGame() {
-        byte[] monList = getGameMonList();
-        for (byte i = 0; i < 3; i = (byte) (i + 1)) {
-            this.box[i][0] = i;
-            this.box[i][1] = monList[i];
-            this.box[i][2] = this.gameData[0][i] + 100;
-            this.box[i][3] = 0;
+    public void patin() {
+        Ui.i().fillRectB();
+        this.draw();
+        if (this.state != 0) {
+            this.drawGame();
         }
-        Ms.i();
-        this.maxTransNum = (byte) (Ms.getRandom(this.lv + 2) + 2 + this.lv);
-        this.transNum = (byte) 0;
-        this.mon_size_move = (byte) 0;
     }
 
-    private byte[] getGameMonList() {
-        byte[] monList = new byte[3];
-        for (byte i = 0; i < monList.length; i = (byte) (i + 1)) {
-            monList[i] = -1;
-        }
-        for (byte i2 = 0; i2 < this.gameData[2][this.lv]; i2 = (byte) (i2 + 1)) {
-            byte[] bArr = this.gameData[4];
-            Ms.i();
-            monList[i2] = bArr[Ms.getRandom(this.gameData[4].length)];
-            byte n = 0;
-            while (n < i2) {
-                if (monList[n] == monList[i2]) {
-                    byte[] bArr2 = this.gameData[4];
-                    Ms.i();
-                    monList[i2] = bArr2[Ms.getRandom(this.gameData[4].length)];
-                    n = 0;
-                } else {
-                    n = (byte) (n + 1);
+    /*
+     * Unable to fully structure code
+     */
+    public void run() {
+        block14: {
+            block17: {
+                block15: {
+                    block16: {
+                        block11: {
+                            block13: {
+                                block12: {
+                                    if (this.state != 1) break block11;
+                                    if (this.time < 20) {
+                                        this.time = (byte)(this.time + 1);
+lbl4:
+                                        // 11 sources
+
+                                        return;
+                                    }
+                                    if (this.box[0][3] >= 150) break block12;
+                                    var2_1 = 0;
+                                    while (true) {
+                                        if (var2_1 >= 3) ** GOTO lbl4
+                                        var4_4 = this.box[var2_1];
+                                        var4_4[3] = var4_4[3] + 25;
+                                        var2_1 = (byte)(var2_1 + 1);
+                                    }
+                                }
+                                this.time = var1_10 = (byte)(this.time + 1);
+                                if (var1_10 < 40) ** GOTO lbl4
+                                if (this.mon_size_move >= 40) break block13;
+                                this.mon_size_move = (byte)(this.mon_size_move + 5);
+                                ** GOTO lbl4
+                            }
+                            this.state = (byte)2;
+                            this.time = 0;
+                            ** GOTO lbl4
+                        }
+                        if (this.state != 2) break block14;
+                        if (this.time > 0) break block15;
+                        if (this.transNum >= this.maxTransNum) break block16;
+                        this.time = 1;
+                        this.transNum = (byte)(this.transNum + 1);
+                        var4_5 = this.boxNum;
+                        Ms.i();
+                        var4_5[0] = (byte)Ms.getRandom((int)3);
+                        do {
+                            var4_5 = this.boxNum;
+                            Ms.i();
+                            var4_5[1] = (byte)Ms.getRandom((int)3);
+                        } while (this.boxNum[1] == this.boxNum[0]);
+                        if (this.box[this.boxNum[1]][2] < this.box[this.boxNum[0]][2]) {
+                            this.gameR = this.boxNum[1];
+                            this.boxNum[1] = this.boxNum[0];
+                            this.boxNum[0] = this.gameR;
+                        }
+                        Ms.i();
+                        this.gameR = (byte)(Ms.abs((int)(this.box[this.boxNum[1]][2] - this.box[this.boxNum[0]][2])) / 2);
+                        this.tempTransNum = (byte)(this.gameR * 2 / this.gameData[1][this.lv]);
+                        ** GOTO lbl4
+                    }
+                    this.time = 0;
+                    this.state = (byte)3;
+                    do {
+                        var4_6 = this.gr;
+                        Ms.i();
+                        var4_6.selecty = (byte)Ms.getRandom((int)this.box.length);
+                    } while (this.box[this.gr.selecty][1] == -1);
+                    ** GOTO lbl4
+                }
+                if (this.time <= this.tempTransNum) break block17;
+                this.time = 0;
+                var4_7 = new int[4];
+                var2_2 = 0;
+                block4: while (true) {
+                    block18: {
+                        if (var2_2 < this.box.length) break block18;
+                        var2_2 = 0;
+                        while (true) {
+                            if (var2_2 >= 3) ** GOTO lbl4
+                            this.box[var2_2][2] = this.gameData[0][var2_2] + 100;
+                            this.box[var2_2][3] = 150;
+                            var2_2 = (byte)(var2_2 + 1);
+                        }
+                    }
+                    var3_11 = 0;
+                    while (true) {
+                        if (var3_11 >= this.box.length) {
+                            var2_2 = (byte)(var2_2 + 1);
+                            continue block4;
+                        }
+                        if (this.box[var3_11][2] > this.box[var2_2][2]) {
+                            System.arraycopy(this.box[var2_2], 0, var4_7, 0, var4_7.length);
+                            System.arraycopy(this.box[var3_11], 0, this.box[var2_2], 0, this.box[var3_11].length);
+                            System.arraycopy(var4_7, 0, this.box[var3_11], 0, var4_7.length);
+                        }
+                        var3_11 = (byte)(var3_11 + 1);
+                    }
+                    break;
                 }
             }
+            this.time = (byte)(this.time + 1);
+            var4_8 = this.box[this.boxNum[0]];
+            var4_8[2] = var4_8[2] + this.gameR * 2 / this.tempTransNum;
+            var2_3 = this.gameR * 2 / this.tempTransNum * this.time;
+            this.box[this.boxNum[0]][3] = 150 - Ms.i().sqrt(this.gameR * this.gameR - (var2_3 - this.gameR) * (var2_3 - this.gameR));
+            var4_8 = this.box[this.boxNum[1]];
+            var4_8[2] = var4_8[2] - this.gameR * 2 / this.tempTransNum;
+            this.box[this.boxNum[1]][3] = Ms.i().sqrt(this.gameR * this.gameR - (var2_3 - this.gameR) * (var2_3 - this.gameR)) + 150;
+            ** GOTO lbl4
         }
-        Ms.i();
-        byte i3 = (byte) Ms.getRandom(2);
-        byte n2 = monList[monList.length - 1];
-        monList[monList.length - 1] = monList[i3];
-        monList[i3] = n2;
-        for (byte i4 = 0; i4 < 3; i4 = (byte) (i4 + 1)) {
-            if (monList[i4] != -1) {
-                byte t = this.gr.mList_id[monList[i4]][0];
-                this.imgMon[i4] = Ms.i().createSprite("data/npc2/" + ((int) t), this.gr.isNpc2ImageType(t));
-            }
-        }
-        return monList;
+        if (this.state != 4 || (this.gr.selectx != 2 || this.box[this.gr.selectx][2] <= this.gameData[0][1] + 100) && (this.gr.selectx != 0 || this.box[this.gr.selectx][2] >= this.gameData[0][1] + 100)) ** GOTO lbl4
+        var4_9 = this.box[this.gr.selectx];
+        var4_9[2] = var4_9[2] + (this.gameData[0][1] - this.gameData[0][this.gr.selectx]) / 7;
+        ** while (true)
     }
 }

@@ -1,10 +1,13 @@
+/*
+ * Decompiled with CFR.
+ */
 package com.uc.paymentsdk.commons.codec;
 
-/* loaded from: classes.dex */
-public class EncoderException extends Exception {
+public class EncoderException
+extends Exception {
     private static final long serialVersionUID = 6722812237474429716L;
 
-    public EncoderException(String paramString) {
-        super(paramString);
+    public EncoderException(String string) {
+        super(string);
     }
 }

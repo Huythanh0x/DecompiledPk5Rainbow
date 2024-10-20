@@ -1,3 +1,12 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  android.media.AudioManager
+ *  android.util.Log
+ *  javax.microedition.lcdui.CwaActivity
+ *  javax.microedition.media.Control
+ */
 package javax.microedition.media.control;
 
 import android.media.AudioManager;
@@ -5,61 +14,13 @@ import android.util.Log;
 import javax.microedition.lcdui.CwaActivity;
 import javax.microedition.media.Control;
 
-/* loaded from: classes.dex */
-public class VolumeControl implements Control {
-    private boolean mute = false;
+public class VolumeControl
+implements Control {
+    private AudioManager audioManager = (AudioManager)CwaActivity.getContextInstance().getSystemService("audio");
     private int currentVolume = 0;
-    private AudioManager audioManager = (AudioManager) CwaActivity.getContextInstance().getSystemService("audio");
     private int maxVolume = this.audioManager.getStreamMaxVolume(3);
+    private boolean mute = false;
     private float percent = 100 / this.maxVolume;
-
-    public int getLevel() {
-        return (int) (this.currentVolume * this.percent);
-    }
-
-    public boolean isMuted() {
-        return getLevel() == 0;
-    }
-
-    public int setLevel(int level) {
-        if (level < 0) {
-            level = 0;
-        } else if (level > 100) {
-            level = 100;
-        }
-        int androidLevel = (int) (level / this.percent);
-        if (!this.mute) {
-            this.currentVolume = androidLevel;
-            Log.e("", "这个游戏的管理器的比例值是" + this.percent);
-            Log.e("", "这个游戏的管理器声音是" + androidLevel);
-        }
-        return level;
-    }
-
-    public int setLevelForMenu(int level) {
-        if (level < 0) {
-            level = 0;
-        } else if (level > 100) {
-            level = 100;
-        }
-        int androidLevel = (int) (level / this.percent);
-        if (!this.mute) {
-            this.currentVolume = androidLevel;
-            Log.e("", "这个游戏的管理器的比例值是" + this.percent);
-            Log.e("", "这个游戏的管理器声音是" + androidLevel);
-            Log.e("", "dddddddddddddddddddddd");
-            this.audioManager.setStreamVolume(3, androidLevel, 16);
-        }
-        return level;
-    }
-
-    public void setMute(boolean mute) {
-        if (mute) {
-            mute();
-        } else {
-            unmute();
-        }
-    }
 
     private void mute() {
         this.mute = true;
@@ -69,5 +30,80 @@ public class VolumeControl implements Control {
     private void unmute() {
         this.mute = false;
         this.audioManager.setStreamVolume(3, this.currentVolume, 16);
+    }
+
+    public int getLevel() {
+        return (int)((float)this.currentVolume * this.percent);
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean isMuted() {
+        if (this.getLevel() != 0) return false;
+        return true;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public int setLevel(int var1_1) {
+        if (var1_1 < 0) {
+            var2_2 = 0;
+lbl3:
+            // 3 sources
+
+            while (true) {
+                var1_1 = (int)((float)var2_2 / this.percent);
+                if (!this.mute) {
+                    this.currentVolume = var1_1;
+                    Log.e((String)"", (String)("\u8fd9\u4e2a\u6e38\u620f\u7684\u7ba1\u7406\u5668\u7684\u6bd4\u4f8b\u503c\u662f" + this.percent));
+                    Log.e((String)"", (String)("\u8fd9\u4e2a\u6e38\u620f\u7684\u7ba1\u7406\u5668\u58f0\u97f3\u662f" + var1_1));
+                }
+                return var2_2;
+            }
+        }
+        var2_2 = var1_1;
+        if (var1_1 <= 100) ** GOTO lbl3
+        var2_2 = 100;
+        ** while (true)
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public int setLevelForMenu(int var1_1) {
+        if (var1_1 < 0) {
+            var2_2 = 0;
+lbl3:
+            // 3 sources
+
+            while (true) {
+                var1_1 = (int)((float)var2_2 / this.percent);
+                if (!this.mute) {
+                    this.currentVolume = var1_1;
+                    Log.e((String)"", (String)("\u8fd9\u4e2a\u6e38\u620f\u7684\u7ba1\u7406\u5668\u7684\u6bd4\u4f8b\u503c\u662f" + this.percent));
+                    Log.e((String)"", (String)("\u8fd9\u4e2a\u6e38\u620f\u7684\u7ba1\u7406\u5668\u58f0\u97f3\u662f" + var1_1));
+                    Log.e((String)"", (String)"dddddddddddddddddddddd");
+                    this.audioManager.setStreamVolume(3, var1_1, 16);
+                }
+                return var2_2;
+            }
+        }
+        var2_2 = var1_1;
+        if (var1_1 <= 100) ** GOTO lbl3
+        var2_2 = 100;
+        ** while (true)
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public void setMute(boolean bl) {
+        if (bl) {
+            this.mute();
+            return;
+        }
+        this.unmute();
     }
 }

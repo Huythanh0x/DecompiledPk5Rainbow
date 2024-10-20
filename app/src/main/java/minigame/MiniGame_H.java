@@ -1,14 +1,16 @@
+/*
+ * Decompiled with CFR.
+ */
 package minigame;
 
-/* loaded from: classes.dex */
 public interface MiniGame_H {
-    void go(int i);
+    public void go(int var1);
 
-    void go(int i, int i2);
+    public void go(int var1, int var2);
 
-    boolean key();
+    public boolean key();
 
-    void patin();
+    public void patin();
 
-    void run();
+    public void run();
 }

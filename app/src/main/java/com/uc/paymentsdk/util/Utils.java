@@ -1,18 +1,53 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  android.app.Activity
+ *  android.content.ContentResolver
+ *  android.content.Context
+ *  android.content.pm.PackageManager
+ *  android.content.pm.PackageManager$NameNotFoundException
+ *  android.graphics.drawable.Drawable
+ *  android.graphics.drawable.GradientDrawable
+ *  android.graphics.drawable.GradientDrawable$Orientation
+ *  android.provider.Settings$SettingNotFoundException
+ *  android.provider.Settings$System
+ *  android.telephony.TelephonyManager
+ *  android.view.View
+ *  android.view.View$OnClickListener
+ *  android.view.ViewGroup$LayoutParams
+ *  android.widget.ImageView
+ *  android.widget.LinearLayout
+ *  android.widget.LinearLayout$LayoutParams
+ *  android.widget.RelativeLayout
+ *  android.widget.RelativeLayout$LayoutParams
+ *  android.widget.TextView
+ *  com.uc.paymentsdk.commons.codec.DigestUtils
+ *  com.uc.paymentsdk.payment.PaymentInfo
+ *  com.uc.paymentsdk.payment.sms.SimCardNotSupportException
+ *  com.uc.paymentsdk.payment.sms.SmsInfos
+ *  com.uc.paymentsdk.payment.upoint.UPointInfo
+ *  com.uc.paymentsdk.payment.upoint.UPointPayInfo
+ *  com.uc.paymentsdk.util.Constants
+ *  com.uc.paymentsdk.util.PrefUtil
+ *  org.apache.http.HttpEntity
+ *  org.apache.http.HttpResponse
+ *  org.apache.http.ParseException
+ *  org.apache.http.util.EntityUtils
+ *  res.FileLoader
+ */
 package com.uc.paymentsdk.util;
 
-import android.R;
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -23,7 +58,8 @@ import com.uc.paymentsdk.payment.sms.SimCardNotSupportException;
 import com.uc.paymentsdk.payment.sms.SmsInfos;
 import com.uc.paymentsdk.payment.upoint.UPointInfo;
 import com.uc.paymentsdk.payment.upoint.UPointPayInfo;
-import java.io.BufferedReader;
+import com.uc.paymentsdk.util.Constants;
+import com.uc.paymentsdk.util.PrefUtil;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -33,9 +69,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -45,15 +79,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.regex.Pattern;
-import javax.microedition.lcdui.game.GameCanvas;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
 import org.apache.http.util.EntityUtils;
 import res.FileLoader;
 
-/* loaded from: classes.dex */
 public class Utils {
     private static final String TITLE_ICON_BACK = "back";
     private static final String TITLE_ICON_CANCEL = "cancel";
@@ -63,530 +97,654 @@ public class Utils {
     private static SmsInfos sSmsInfos;
     private static UPointInfo sUPointInfo;
     private static UPointPayInfo sUPointPayInfo;
-    private static String sessionidstr = "";
-    private static String upconsumeid = "";
+    private static String sessionidstr;
+    private static String upconsumeid;
 
-    public static int getInt(int paramInt1, String paramString, int paramInt2) {
-        if (paramString == null) {
-            return paramInt2;
+    static {
+        sessionidstr = "";
+        upconsumeid = "";
+    }
+
+    public static void CheckSimCardSupprotInfo(Context context) throws SimCardNotSupportException {
+        if (Utils.isAirMode(context)) {
+            throw new SimCardNotSupportException("\u5f53\u524d\u624b\u673a\u8bbe\u7f6e\u4e3a\u98de\u884c\u6a21\u5f0f\uff0c\u4e0d\u80fd\u53d1\u9001\u77ed\u4fe1\u3002");
         }
-        try {
-            return (int) Long.parseLong(paramString.trim(), paramInt1);
-        } catch (NumberFormatException e) {
-            return paramInt2;
+        if (5 != ((TelephonyManager)context.getSystemService("phone")).getSimState()) {
+            throw new SimCardNotSupportException("\u5bf9\u4e0d\u8d77\uff0c\u77ed\u4fe1\u53d1\u9001\u4e0d\u6210\u529f\u3001\u65e0\u6cd5\u6fc0\u6d3b\u6b64\u529f\u80fd\uff0c\u8bf7\u63d2\u5165SIM\u5361\u540e\u518d\u8bd5\u3002");
         }
-    }
-
-    public static int getInt(int paramInt, String paramString) {
-        return getInt(paramInt, paramString, 0);
-    }
-
-    public static int getInt(String paramString, int paramInt) {
-        return getInt(10, paramString, paramInt);
-    }
-
-    public static int getInt(String paramString) {
-        return getInt(10, paramString);
-    }
-
-    public static double getDouble(String paramString) {
-        return Double.parseDouble(paramString);
-    }
-
-    public static long getLong(String paramString) {
-        if (paramString == null) {
-            return 0L;
-        }
-        try {
-            return Long.parseLong(paramString.trim());
-        } catch (NumberFormatException e) {
-            return 0L;
-        }
-    }
-
-    public static String getUTF8String(byte[] paramArrayOfByte) {
-        return paramArrayOfByte == null ? "" : getUTF8String(paramArrayOfByte, 0, paramArrayOfByte.length);
-    }
-
-    public static String getUTF8String(byte[] paramArrayOfByte, int paramInt1, int paramInt2) {
-        if (paramArrayOfByte == null) {
-            return "";
-        }
-        try {
-            return new String(paramArrayOfByte, paramInt1, paramInt2, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            return "";
-        }
-    }
-
-    public static byte[] getUTF8Bytes(String paramString) {
-        if (paramString == null) {
-            return new byte[0];
-        }
-        try {
-            return paramString.getBytes("UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            try {
-                ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-                DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
-                localDataOutputStream.writeUTF(paramString);
-                byte[] arrayOfByte1 = localByteArrayOutputStream.toByteArray();
-                localByteArrayOutputStream.close();
-                localDataOutputStream.close();
-                byte[] arrayOfByte2 = new byte[arrayOfByte1.length - 2];
-                System.arraycopy(arrayOfByte1, 2, arrayOfByte2, 0, arrayOfByte2.length);
-                return arrayOfByte2;
-            } catch (IOException e2) {
-                return new byte[0];
-            }
-        }
-    }
-
-    public static void initTitleBar(Activity paramActivity) {
-        View localView1 = paramActivity.getWindow().findViewById(R.id.title);
-        if (localView1 != null) {
-            if (localView1 instanceof TextView) {
-                ((TextView) localView1).setTextSize(13.0f);
-            }
-            Object parent = localView1.getParent();
-            if (parent != null && (parent instanceof View)) {
-                View localView2 = (View) parent;
-                localView2.setBackgroundColor(134875644);
-            }
-        }
-        paramActivity.setTitle("UC支付");
-    }
-
-    private static String getTitleIconFileName(String paramString) {
-        boolean bool = isHdpi();
-        if (TITLE_ICON_BACK.equals(paramString)) {
-            if (bool) {
-                return "back_btn_hdpi.png";
-            }
-            return "back_btn.png";
-        }
-        if (TITLE_ICON_CANCEL.equals(paramString)) {
-            if (bool) {
-                return "cancel_btn_hdpi.png";
-            }
-            return "cancel_btn.png";
-        }
-        throw new IllegalArgumentException(Constants.ERROR_TYPE_NOT_SUPPORTED);
-    }
-
-    public static RelativeLayout initSubTitle(Context paramContext, View.OnClickListener listener, String paramString, boolean iscancel) {
-        RelativeLayout relativeLayout = new RelativeLayout(paramContext);
-        relativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-        GradientDrawable gb = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{Constants.COLOR_SUBTITLE_BACKGROUND1, Constants.COLOR_SUBTITLE_BACKGROUND2});
-        relativeLayout.setBackgroundDrawable(gb);
-        ImageView backicon = new ImageView(paramContext);
-        backicon.setImageDrawable(getDrawableFromFile(getTitleIconFileName(TITLE_ICON_BACK)));
-        backicon.setId(9);
-        RelativeLayout.LayoutParams paramsleft = new RelativeLayout.LayoutParams(-2, -2);
-        paramsleft.addRule(9);
-        paramsleft.addRule(15);
-        backicon.setLayoutParams(paramsleft);
-        backicon.setOnClickListener(listener);
-        backicon.setPadding(8, 0, 0, 0);
-        ImageView cancelicon = new ImageView(paramContext);
-        cancelicon.setImageDrawable(getDrawableFromFile(getTitleIconFileName(TITLE_ICON_CANCEL)));
-        cancelicon.setId(10);
-        RelativeLayout.LayoutParams paramsright = new RelativeLayout.LayoutParams(-2, -2);
-        paramsright.addRule(11);
-        paramsright.addRule(15);
-        cancelicon.setLayoutParams(paramsright);
-        cancelicon.setOnClickListener(listener);
-        cancelicon.setPadding(0, 0, 10, 0);
-        TextView localTextView = new TextView(paramContext);
-        localTextView.setGravity(17);
-        localTextView.setTextColor(Constants.COLOR_TITLE_BACKGROUND);
-        localTextView.setPadding(0, 10, 0, 10);
-        localTextView.setTextSize(23.0f);
-        localTextView.setText(paramString);
-        RelativeLayout.LayoutParams paramscenter = new RelativeLayout.LayoutParams(-2, -2);
-        paramscenter.addRule(14);
-        localTextView.setLayoutParams(paramscenter);
-        relativeLayout.addView(backicon);
-        relativeLayout.addView(localTextView);
-        if (iscancel) {
-            relativeLayout.addView(cancelicon);
-        }
-        return relativeLayout;
-    }
-
-    public static String getAppkey(Context paramContext) throws PackageManager.NameNotFoundException {
-        ApplicationInfo localApplicationInfo = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
-        return localApplicationInfo.metaData.get(Constants.APPKEY).toString();
-    }
-
-    public static String getCpID(Context paramContext) throws PackageManager.NameNotFoundException {
-        ApplicationInfo localApplicationInfo = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
-        return localApplicationInfo.metaData.get(Constants.CPID).toString();
-    }
-
-    public static LinearLayout generateFooterView(Context paramContext) {
-        LinearLayout localLinearLayout = new LinearLayout(paramContext);
-        localLinearLayout.setOrientation(1);
-        TextView lineTextView = generateBorderView(paramContext);
-        LinearLayout.LayoutParams lineLayoutParams = new LinearLayout.LayoutParams(-1, 1);
-        lineTextView.setLayoutParams(lineLayoutParams);
-        LinearLayout.LayoutParams footLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-        TextView footerTextView = new TextView(paramContext);
-        footerTextView.setTextSize(16.0f);
-        footerTextView.setGravity(17);
-        footerTextView.setPadding(0, 20, 0, 20);
-        footerTextView.setText("UC游戏-UC优视");
-        footerTextView.setTextColor(-12303292);
-        localLinearLayout.addView(lineTextView);
-        localLinearLayout.addView(footerTextView, footLayoutParams);
-        return localLinearLayout;
-    }
-
-    public static PaymentInfo getPaymentInfo() {
-        return sPaymentInfo;
-    }
-
-    public static void setPaymentInfo(PaymentInfo paramPaymentInfo) {
-        sPaymentInfo = paramPaymentInfo;
-    }
-
-    private static InputStream getFileStream(String paramString) {
-        return FileLoader.class.getResourceAsStream(paramString);
-    }
-
-    public static void loadFile(String paramString1, String paramString2) throws IOException, FileNotFoundException {
-        InputStream localInputStream = getFileStream(paramString1);
-        File localFile = new File(paramString2);
-        localFile.createNewFile();
-        FileOutputStream localFileOutputStream = new FileOutputStream(localFile);
-        byte[] arrayOfByte = new byte[GameCanvas.GAME_B_PRESSED];
-        while (true) {
-            int i = localInputStream.read(arrayOfByte);
-            if (i > 0) {
-                localFileOutputStream.write(arrayOfByte, 0, i);
-            } else {
-                localFileOutputStream.close();
-                localInputStream.close();
-                return;
-            }
-        }
-    }
-
-    public static Drawable getDrawableFromFile(String paramString) {
-        return Drawable.createFromStream(getFileStream(paramString), paramString);
-    }
-
-    public static String getXmlFromFile(String paramString) throws IOException {
-        return convertStreamToString(getFileStream(paramString));
-    }
-
-    public static TextView generateBorderView(Context paramContext) {
-        TextView localTextView = new TextView(paramContext);
-        localTextView.setBackgroundResource(R.drawable.divider_horizontal_dark);
-        return localTextView;
-    }
-
-    public static void generateOrderId(PaymentInfo paramPaymentInfo) {
-        String str2;
-        String str1 = getIpAddress();
-        try {
-            str2 = String.valueOf(URLEncoder.encode(paramPaymentInfo.getUsername(), "UTF-8")) + paramPaymentInfo.getAppkey() + URLEncoder.encode(paramPaymentInfo.getPayname(), "UTF-8") + System.currentTimeMillis() + str1;
-        } catch (UnsupportedEncodingException e) {
-            str2 = "";
-        }
-        paramPaymentInfo.setOrderID(DigestUtils.md5Hex(str2));
-    }
-
-    public static String getXmlRequestBody(HashMap<String, Object> paramHashMap, Context paramContext) {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("<request");
-        if (paramHashMap.containsKey("local_version")) {
-            localStringBuilder.append(" local_version=\"" + paramHashMap.get("local_version") + "\" ");
-            paramHashMap.remove("local_version");
-        }
-        localStringBuilder.append(">");
-        for (String str : paramHashMap.keySet()) {
-            localStringBuilder.append("<").append(str).append(">");
-            localStringBuilder.append(paramHashMap.get(str));
-            localStringBuilder.append("</").append(str).append(">");
-        }
-        localStringBuilder.append("</request>");
-        return localStringBuilder.toString();
-    }
-
-    public static String getQueryString(HashMap<String, Object> paramHashMap) {
-        StringBuilder querystring = new StringBuilder();
-        for (String str : paramHashMap.keySet()) {
-            if (querystring.length() < 1) {
-                querystring.append(String.valueOf(str) + "=");
-            } else {
-                querystring.append("&" + str + "=");
-            }
-            querystring.append(paramHashMap.get(str));
-        }
-        return querystring.toString();
-    }
-
-    public static String getUserAgent(Context paramContext) {
-        String str = "";
-        PackageManager localPackageManager = paramContext.getPackageManager();
-        try {
-            str = localPackageManager.getApplicationLabel(localPackageManager.getApplicationInfo(paramContext.getPackageName(), 128)).toString();
-        } catch (PackageManager.NameNotFoundException e) {
-        }
-        return "packageName=" + paramContext.getPackageName() + ",appName=" + str + ",channelID=1";
-    }
-
-    public static String getBodyString(int paramInt, HttpResponse paramHttpResponse) {
-        try {
-            String str = EntityUtils.toString(paramHttpResponse.getEntity(), "UTF-8");
-            return str;
-        } catch (IOException e) {
-            return null;
-        } catch (ParseException e2) {
-            return null;
-        }
-    }
-
-    private static String getIpAddress() {
-        try {
-            Enumeration localEnumeration1 = NetworkInterface.getNetworkInterfaces();
-            while (localEnumeration1.hasMoreElements()) {
-                NetworkInterface localNetworkInterface = localEnumeration1.nextElement();
-                Enumeration localEnumeration2 = localNetworkInterface.getInetAddresses();
-                while (localEnumeration2.hasMoreElements()) {
-                    InetAddress localInetAddress = localEnumeration2.nextElement();
-                    if (!localInetAddress.isLoopbackAddress()) {
-                        return localInetAddress.getHostAddress();
-                    }
-                }
-            }
-        } catch (SocketException e) {
-        }
-        return "";
-    }
-
-    public static boolean isHdpi() {
-        return sIsHdpi;
-    }
-
-    public static void init(Context context) {
-        try {
-            ApplicationInfo localApplicationInfo = context.getPackageManager().getApplicationInfo(context.getPackageName(), 128);
-            try {
-                try {
-                    Field localField = localApplicationInfo.getClass().getField("targetSdkVersion");
-                    int i = localField.getInt(localApplicationInfo);
-                    if (i < 4) {
-                        sIsHdpi = false;
-                    } else {
-                        WindowManager localWindowManager = (WindowManager) context.getSystemService("window");
-                        DisplayMetrics localObject = new DisplayMetrics();
-                        localWindowManager.getDefaultDisplay().getMetrics(localObject);
-                        sIsHdpi = ((double) localObject.density) > 1.0d;
-                    }
-                } catch (IllegalArgumentException e) {
-                    sIsHdpi = false;
-                } catch (NoSuchFieldException e2) {
-                    sIsHdpi = false;
-                }
-            } catch (IllegalAccessException e3) {
-                sIsHdpi = false;
-            } catch (SecurityException e4) {
-                sIsHdpi = false;
-            }
-        } catch (PackageManager.NameNotFoundException e5) {
-            sIsHdpi = false;
-        }
-    }
-
-    public static boolean isAirMode(Context paramContext) {
-        try {
-            if (Settings.System.getInt(paramContext.getContentResolver(), "airplane_mode_on") == 1) {
-                return true;
-            }
-        } catch (Settings.SettingNotFoundException e) {
-        }
-        return false;
-    }
-
-    public static String getSimNumber(Context paramContext) {
-        String str = ((TelephonyManager) paramContext.getSystemService("phone")).getSubscriberId();
-        return str;
-    }
-
-    public static SmsInfos getSmsInfos() {
-        return sSmsInfos;
-    }
-
-    public static void setSmsInfo(SmsInfos paramSmsInfos) {
-        sSmsInfos = paramSmsInfos;
-    }
-
-    public static UPointInfo getUPointInfo() {
-        return sUPointInfo;
-    }
-
-    public static void setUPointInfo(UPointInfo sUPointInfo2) {
-        sUPointInfo = sUPointInfo2;
     }
 
     public static void clearSmsInfos() {
         sSmsInfos = null;
     }
 
+    public static void clearUPConsumeid() {
+        upconsumeid = "";
+    }
+
     public static void clearUPointInfo() {
         sUPointInfo = null;
-    }
-
-    public static UPointPayInfo getUPointPayInfo() {
-        return sUPointPayInfo;
-    }
-
-    public static void setUPointPayInfo(UPointPayInfo UPointPayInfo) {
-        sUPointPayInfo = UPointPayInfo;
     }
 
     public static void clearUPointPayInfo() {
         sUPointPayInfo = null;
     }
 
-    public static void CheckSimCardSupprotInfo(Context paramContext) throws SimCardNotSupportException {
-        if (isAirMode(paramContext)) {
-            throw new SimCardNotSupportException("当前手机设置为飞行模式，不能发送短信。");
-        }
-        if (5 != ((TelephonyManager) paramContext.getSystemService("phone")).getSimState()) {
-            throw new SimCardNotSupportException("对不起，短信发送不成功、无法激活此功能，请插入SIM卡后再试。");
-        }
+    /*
+     * Exception decompiling
+     */
+    public static String convertStreamToString(InputStream var0) {
+        /*
+         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+         * 
+         * org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [11[UNCONDITIONALDOLOOP]], but top level block is 2[TRYBLOCK]
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.processEndingBlocks(Op04StructuredStatement.java:435)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.buildNestedBlocks(Op04StructuredStatement.java:484)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.createInitialStructuredBlock(Op03SimpleStatement.java:736)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:850)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
+         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
+         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
+         *     at org.benf.cfr.reader.Driver.doClass(Driver.java:84)
+         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:78)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompile(CFRDecompiler.java:91)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompileToZip(CFRDecompiler.java:122)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.decompileSaveAll(ResourceDecompiling.java:262)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.lambda$decompileSaveAll$0(ResourceDecompiling.java:111)
+         *     at java.base/java.lang.Thread.run(Thread.java:840)
+         */
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    public static int getSmsPayment() {
-        return getPaymentInfo().getMoney() / 10;
-    }
-
-    public static void writeSmsInfoPayment(Context paramContext, String paramString) {
-        try {
-            String str = new StringBuilder(String.valueOf(System.currentTimeMillis())).toString();
-            BufferedWriter localBufferedWriter = new BufferedWriter(new FileWriter(String.valueOf(paramContext.getFilesDir().getAbsolutePath()) + "/" + str + ".smspayment"));
-            localBufferedWriter.write(paramString.toString());
-            localBufferedWriter.flush();
-            localBufferedWriter.close();
-        } catch (Exception localException) {
-            localException.printStackTrace();
-        }
-    }
-
-    public static String convertStreamToString(InputStream paramInputStream) {
-        BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(paramInputStream));
-        StringBuilder localStringBuilder = new StringBuilder();
+    public static String createARanConsumeID(int n) {
+        String string = "";
         while (true) {
-            try {
-                try {
-                    String str = localBufferedReader.readLine();
-                    if (str == null) {
-                        try {
-                            break;
-                        } catch (IOException localIOException4) {
-                        }
-                    } else {
-                        localStringBuilder.append(str);
-                    }
-                } catch (IOException localIOException2) {
-                    localIOException2.printStackTrace();
-                    try {
-                        paramInputStream.close();
-                    } catch (IOException localIOException42) {
-                        localIOException42.printStackTrace();
-                    }
+            if (string.length() >= n) {
+                if (string.length() > n) {
+                    string.substring(0, n);
                 }
-            } finally {
-                try {
-                    paramInputStream.close();
-                } catch (IOException localIOException43) {
-                    localIOException43.printStackTrace();
+                return string;
+            }
+            string = String.valueOf(string) + Utils.getRan(10L);
+        }
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public static String createARanSessionid(int var0) {
+        var4_1 = System.currentTimeMillis();
+        var2_2 = 1L;
+        var1_3 = 0;
+        block0: while (true) {
+            if (var1_3 >= var0) {
+                var6_4 = String.valueOf(Utils.getRan(var2_2));
+lbl7:
+                // 2 sources
+
+                while (true) {
+                    if (var6_4.length() < var0) break block0;
+                    return String.valueOf(var4_1) + var6_4;
                 }
             }
+            var2_2 *= 10L;
+            ++var1_3;
         }
-        return localStringBuilder.toString();
+        var6_4 = String.valueOf(var6_4) + Utils.getRan(10L);
+        ** while (true)
     }
 
-    public static String createARanConsumeID(int number) {
-        String rdmstr = "";
-        while (rdmstr.length() < number) {
-            rdmstr = String.valueOf(rdmstr) + getRan(10L);
+    /*
+     * Enabled force condition propagation
+     */
+    public static int dateDiffByDay(String string, String string2, String object) {
+        long l;
+        object = new SimpleDateFormat((String)object);
+        try {
+            l = (((DateFormat)object).parse(string2).getTime() - ((DateFormat)object).parse(string).getTime()) / 86400000L;
         }
-        if (rdmstr.length() > number) {
-            rdmstr.substring(0, number);
+        catch (Exception exception) {
+            return -1;
         }
-        return rdmstr;
+        return (int)l;
     }
 
-    private static long getRan(long range) {
+    public static TextView generateBorderView(Context context) {
+        context = new TextView(context);
+        context.setBackgroundResource(17301524);
+        return context;
+    }
+
+    public static LinearLayout generateFooterView(Context context) {
+        LinearLayout linearLayout = new LinearLayout(context);
+        linearLayout.setOrientation(1);
+        TextView textView = Utils.generateBorderView(context);
+        textView.setLayoutParams((ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, 1));
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -2);
+        context = new TextView(context);
+        context.setTextSize(16.0f);
+        context.setGravity(17);
+        context.setPadding(0, 20, 0, 20);
+        context.setText((CharSequence)"UC\u6e38\u620f-UC\u4f18\u89c6");
+        context.setTextColor(-12303292);
+        linearLayout.addView((View)textView);
+        linearLayout.addView((View)context, (ViewGroup.LayoutParams)layoutParams);
+        return linearLayout;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public static void generateOrderId(PaymentInfo var0) {
+        var2_1 = Utils.getIpAddress();
+        try {
+            var1_2 = new StringBuilder(String.valueOf(URLEncoder.encode(var0.getUsername(), "UTF-8")));
+            var1_2 = var1_2.append(var0.getAppkey()).append(URLEncoder.encode(var0.getPayname(), "UTF-8")).append(System.currentTimeMillis()).append(var2_1).toString();
+        }
+        catch (UnsupportedEncodingException var1_3) {
+            var1_2 = "";
+            ** continue;
+        }
+lbl8:
+        // 2 sources
+
+        while (true) {
+            var0.setOrderID(DigestUtils.md5Hex((String)var1_2));
+            return;
+        }
+    }
+
+    public static String getAppkey(Context context) throws PackageManager.NameNotFoundException {
+        return context.getPackageManager().getApplicationInfo((String)context.getPackageName(), (int)128).metaData.get("ucgame_appkey").toString();
+    }
+
+    /*
+     * WARNING - void declaration
+     * Enabled force condition propagation
+     */
+    public static String getBodyString(int n, HttpResponse object) {
+        void var1_3;
+        Object var2_8 = null;
+        try {
+            String string = EntityUtils.toString((HttpEntity)object.getEntity(), (String)"UTF-8");
+            return var1_3;
+        }
+        catch (IOException iOException) {
+            Object var1_5 = var2_8;
+            return var1_3;
+        }
+        catch (ParseException parseException) {
+            Object var1_7 = var2_8;
+            return var1_3;
+        }
+    }
+
+    public static String getCpID(Context context) throws PackageManager.NameNotFoundException {
+        return context.getPackageManager().getApplicationInfo((String)context.getPackageName(), (int)128).metaData.get("ucgame_cpid").toString();
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public static String getCurrentTime(boolean bl) {
+        SimpleDateFormat simpleDateFormat;
+        if (bl) {
+            simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            return simpleDateFormat.format(new Date());
+        }
+        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        return simpleDateFormat.format(new Date());
+    }
+
+    public static double getDouble(String string) {
+        return Double.parseDouble(string);
+    }
+
+    public static Drawable getDrawableFromFile(String string) {
+        return Drawable.createFromStream((InputStream)Utils.getFileStream(string), (String)string);
+    }
+
+    private static InputStream getFileStream(String string) {
+        return FileLoader.class.getResourceAsStream(string);
+    }
+
+    public static int getInt(int n, String string) {
+        return Utils.getInt(n, string, 0);
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public static int getInt(int n, String string, int n2) {
+        long l;
+        if (string == null) {
+            return n2;
+        }
+        try {
+            l = Long.parseLong(string.trim(), n);
+        }
+        catch (NumberFormatException numberFormatException) {
+            return n2;
+        }
+        return (int)l;
+    }
+
+    public static int getInt(String string) {
+        return Utils.getInt(10, string);
+    }
+
+    public static int getInt(String string, int n) {
+        return Utils.getInt(10, string, n);
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    private static String getIpAddress() {
+        try {
+            InetAddress inetAddress;
+            Enumeration<NetworkInterface> enumeration = NetworkInterface.getNetworkInterfaces();
+            block2: while (true) {
+                boolean bl;
+                if (!(bl = enumeration.hasMoreElements())) {
+                    return "";
+                }
+                Enumeration<InetAddress> enumeration2 = enumeration.nextElement().getInetAddresses();
+                do {
+                    if (!enumeration2.hasMoreElements()) continue block2;
+                } while ((inetAddress = (InetAddress)enumeration2.nextElement()).isLoopbackAddress());
+                break;
+            }
+            return inetAddress.getHostAddress();
+        }
+        catch (SocketException socketException) {
+            return "";
+        }
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public static long getLong(String string) {
+        if (string == null) {
+            return 0L;
+        }
+        try {
+            return Long.parseLong(string.trim());
+        }
+        catch (NumberFormatException numberFormatException) {
+            return 0L;
+        }
+    }
+
+    public static PaymentInfo getPaymentInfo() {
+        return sPaymentInfo;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public static String getQueryString(HashMap<String, Object> var0) {
+        var2_1 = new StringBuilder();
+        var3_2 = var0.keySet().iterator();
+        block0: while (true) {
+            if (!var3_2.hasNext()) {
+                return var2_1.toString();
+            }
+            var1_3 = var3_2.next();
+            if (var2_1.length() >= 1) break;
+            var2_1.append(String.valueOf(var1_3) + "=");
+lbl10:
+            // 2 sources
+
+            while (true) {
+                var2_1.append(var0.get(var1_3));
+                continue block0;
+                break;
+            }
+            break;
+        }
+        var2_1.append("&" + var1_3 + "=");
+        ** while (true)
+    }
+
+    private static long getRan(long l) {
         if (rdm == null) {
             rdm = new Random();
         }
-        long rtn = (rdm.nextLong() >>> 1) % range;
-        return rtn;
+        return (rdm.nextLong() >>> 1) % l;
     }
 
-    public static String createARanSessionid(int number) {
-        long timestemp = System.currentTimeMillis();
-        long range = 1;
-        for (int x = 0; x < number; x++) {
-            range *= 10;
+    /*
+     * WARNING - void declaration
+     * Enabled force condition propagation
+     */
+    public static String getSessionID(Context object) {
+        void var0_2;
+        sessionidstr = PrefUtil.getUserSession((Context)object);
+        if (sessionidstr == null || sessionidstr.equals("")) {
+            sessionidstr = Utils.createARanSessionid(8);
+            PrefUtil.setUserSession((Context)object, (String)sessionidstr);
+            String string = sessionidstr;
+            return var0_2;
         }
-        long rdmint = getRan(range);
-        String rdmstr = String.valueOf(rdmint);
-        while (rdmstr.length() < number) {
-            rdmstr = String.valueOf(rdmstr) + getRan(10L);
-        }
-        return String.valueOf(timestemp) + rdmstr;
+        String string = sessionidstr;
+        return var0_2;
     }
 
-    public static String getCurrentTime(boolean isdateonly) {
-        DateFormat format1;
-        if (isdateonly) {
-            format1 = new SimpleDateFormat("yyyy-MM-dd");
-        } else {
-            format1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        }
-        return format1.format(new Date());
+    public static String getSimNumber(Context context) {
+        return ((TelephonyManager)context.getSystemService("phone")).getSubscriberId();
     }
 
-    public static int dateDiffByDay(String starttime, String endtime, String format) {
-        SimpleDateFormat sd = new SimpleDateFormat(format);
-        try {
-            long diff = sd.parse(endtime).getTime() - sd.parse(starttime).getTime();
-            long day = diff / 86400000;
-            return (int) day;
-        } catch (Exception e) {
-            return -1;
-        }
+    public static SmsInfos getSmsInfos() {
+        return sSmsInfos;
     }
 
-    public static String getSessionID(Context paramContext) {
-        sessionidstr = PrefUtil.getUserSession(paramContext);
-        if (sessionidstr != null && !sessionidstr.equals("")) {
-            return sessionidstr;
-        }
-        sessionidstr = createARanSessionid(8);
-        PrefUtil.setUserSession(paramContext, sessionidstr);
-        return sessionidstr;
+    public static int getSmsPayment() {
+        return Utils.getPaymentInfo().getMoney() / 10;
     }
 
-    public static String getUPConsumeid(String uid, String cpid, String gameid) {
+    /*
+     * Enabled force condition propagation
+     */
+    private static String getTitleIconFileName(String string) {
+        boolean bl = Utils.isHdpi();
+        if (TITLE_ICON_BACK.equals(string)) {
+            if (!bl) return "back_btn.png";
+            return "back_btn_hdpi.png";
+        }
+        if (!TITLE_ICON_CANCEL.equals(string)) throw new IllegalArgumentException("type not supported.");
+        if (!bl) return "cancel_btn.png";
+        return "cancel_btn_hdpi.png";
+    }
+
+    public static String getUPConsumeid(String string, String string2, String string3) {
         if (upconsumeid == null || upconsumeid.equals("")) {
-            upconsumeid = String.valueOf(cpid) + gameid + uid + createARanConsumeID(10);
+            upconsumeid = String.valueOf(string2) + string3 + string + Utils.createARanConsumeID(10);
         }
         return upconsumeid;
     }
 
-    public static void clearUPConsumeid() {
-        upconsumeid = "";
+    public static UPointInfo getUPointInfo() {
+        return sUPointInfo;
     }
 
-    public static boolean isNumeric(String str) {
-        Pattern pattern = Pattern.compile("[0-9]*");
-        return pattern.matcher(str).matches();
+    public static UPointPayInfo getUPointPayInfo() {
+        return sUPointPayInfo;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public static byte[] getUTF8Bytes(String var0) {
+        if (var0 == null) {
+            var0 = new byte[0];
+lbl3:
+            // 4 sources
+
+            return var0;
+        }
+        try {
+            var1_2 = var0.getBytes("UTF-8");
+        }
+        catch (UnsupportedEncodingException var1_3) {
+            try {
+                var3_5 = new ByteArrayOutputStream();
+                var2_6 = new DataOutputStream(var3_5);
+                var2_6.writeUTF((String)var0);
+                var1_4 = var3_5.toByteArray();
+                var3_5.close();
+                var2_6.close();
+                var0 = new byte[var1_4.length - 2];
+                System.arraycopy(var1_4, 2, var0, 0, ((Object)var0).length);
+                ** GOTO lbl3
+            }
+            catch (IOException var0_1) {
+                var0 = new byte[0];
+                ** continue;
+            }
+        }
+        var0 = var1_2;
+        ** GOTO lbl3
+    }
+
+    /*
+     * WARNING - void declaration
+     * Enabled force condition propagation
+     */
+    public static String getUTF8String(byte[] object) {
+        void var0_2;
+        if (object == null) {
+            return var0_2;
+        }
+        String string = Utils.getUTF8String(object, 0, ((byte[])object).length);
+        return var0_2;
+    }
+
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    public static String getUTF8String(byte[] var0, int var1_2, int var2_3) {
+        if (var0 /* !! */  == null) {
+            var0 /* !! */  = (byte[])"";
+lbl3:
+            // 3 sources
+
+            return var0 /* !! */ ;
+        }
+        try {
+            var3_4 = new String(var0 /* !! */ , var1_2, var2_3, "UTF-8");
+        }
+        catch (UnsupportedEncodingException var0_1) {
+            var0 /* !! */  = (byte[])"";
+            ** continue;
+        }
+        var0 /* !! */  = (byte[])var3_4;
+        ** GOTO lbl3
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public static String getUserAgent(Context context) {
+        String string = "";
+        PackageManager packageManager = context.getPackageManager();
+        try {
+            String string2;
+            string = string2 = packageManager.getApplicationLabel(packageManager.getApplicationInfo(context.getPackageName(), 128)).toString();
+            return "packageName=" + context.getPackageName() + ",appName=" + string + ",channelID=1";
+        }
+        catch (PackageManager.NameNotFoundException nameNotFoundException) {
+            return "packageName=" + context.getPackageName() + ",appName=" + string + ",channelID=1";
+        }
+    }
+
+    public static String getXmlFromFile(String string) throws IOException {
+        return Utils.convertStreamToString(Utils.getFileStream(string));
+    }
+
+    public static String getXmlRequestBody(HashMap<String, Object> hashMap, Context object) {
+        object = new StringBuilder();
+        ((StringBuilder)object).append("<request");
+        if (hashMap.containsKey("local_version")) {
+            ((StringBuilder)object).append(" local_version=\"" + hashMap.get("local_version") + "\" ");
+            hashMap.remove("local_version");
+        }
+        ((StringBuilder)object).append(">");
+        Iterator<String> iterator = hashMap.keySet().iterator();
+        while (true) {
+            if (!iterator.hasNext()) {
+                ((StringBuilder)object).append("</request>");
+                return ((StringBuilder)object).toString();
+            }
+            String string = iterator.next();
+            ((StringBuilder)object).append("<").append(string).append(">");
+            ((StringBuilder)object).append(hashMap.get(string));
+            ((StringBuilder)object).append("</").append(string).append(">");
+        }
+    }
+
+    /*
+     * Exception decompiling
+     */
+    public static void init(Context var0) {
+        /*
+         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+         * 
+         * java.lang.IllegalStateException: Backjump on non jumping statement @NONE, blocks:[0, 5] lbl14 : TryStatement: try { 2[TRYBLOCK]
+         * 
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner$1.call(Cleaner.java:44)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner$1.call(Cleaner.java:22)
+         *     at org.benf.cfr.reader.util.graph.GraphVisitorDFS.process(GraphVisitorDFS.java:68)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner.removeUnreachableCode(Cleaner.java:54)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:550)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
+         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
+         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
+         *     at org.benf.cfr.reader.Driver.doClass(Driver.java:84)
+         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:78)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompile(CFRDecompiler.java:91)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompileToZip(CFRDecompiler.java:122)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.decompileSaveAll(ResourceDecompiling.java:262)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.lambda$decompileSaveAll$0(ResourceDecompiling.java:111)
+         *     at java.base/java.lang.Thread.run(Thread.java:840)
+         */
+        throw new IllegalStateException("Decompilation failed");
+    }
+
+    public static RelativeLayout initSubTitle(Context context, View.OnClickListener onClickListener, String string, boolean bl) {
+        RelativeLayout relativeLayout = new RelativeLayout(context);
+        relativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+        relativeLayout.setBackgroundDrawable((Drawable)new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{Constants.COLOR_SUBTITLE_BACKGROUND1, Constants.COLOR_SUBTITLE_BACKGROUND2}));
+        ImageView imageView = new ImageView(context);
+        imageView.setImageDrawable(Utils.getDrawableFromFile(Utils.getTitleIconFileName(TITLE_ICON_BACK)));
+        imageView.setId(9);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-2, -2);
+        layoutParams.addRule(9);
+        layoutParams.addRule(15);
+        imageView.setLayoutParams((ViewGroup.LayoutParams)layoutParams);
+        imageView.setOnClickListener(onClickListener);
+        imageView.setPadding(8, 0, 0, 0);
+        layoutParams = new ImageView(context);
+        layoutParams.setImageDrawable(Utils.getDrawableFromFile(Utils.getTitleIconFileName(TITLE_ICON_CANCEL)));
+        layoutParams.setId(10);
+        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(-2, -2);
+        layoutParams2.addRule(11);
+        layoutParams2.addRule(15);
+        layoutParams.setLayoutParams((ViewGroup.LayoutParams)layoutParams2);
+        layoutParams.setOnClickListener(onClickListener);
+        layoutParams.setPadding(0, 0, 10, 0);
+        context = new TextView(context);
+        context.setGravity(17);
+        context.setTextColor(Constants.COLOR_TITLE_BACKGROUND);
+        context.setPadding(0, 10, 0, 10);
+        context.setTextSize(23.0f);
+        context.setText((CharSequence)string);
+        onClickListener = new RelativeLayout.LayoutParams(-2, -2);
+        onClickListener.addRule(14);
+        context.setLayoutParams((ViewGroup.LayoutParams)onClickListener);
+        relativeLayout.addView((View)imageView);
+        relativeLayout.addView((View)context);
+        if (bl) {
+            relativeLayout.addView((View)layoutParams);
+        }
+        return relativeLayout;
+    }
+
+    public static void initTitleBar(Activity activity) {
+        View view = activity.getWindow().findViewById(16908310);
+        if (view != null) {
+            if (view instanceof TextView) {
+                ((TextView)view).setTextSize(13.0f);
+            }
+            if ((view = view.getParent()) != null && view instanceof View) {
+                view.setBackgroundColor(134875644);
+            }
+        }
+        activity.setTitle((CharSequence)"UC\u652f\u4ed8");
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public static boolean isAirMode(Context context) {
+        try {
+            int n = Settings.System.getInt((ContentResolver)context.getContentResolver(), (String)"airplane_mode_on");
+            if (n != 1) return false;
+            return true;
+        }
+        catch (Settings.SettingNotFoundException settingNotFoundException) {
+            // empty catch block
+        }
+        return false;
+    }
+
+    public static boolean isHdpi() {
+        return sIsHdpi;
+    }
+
+    public static boolean isNumeric(String string) {
+        return Pattern.compile("[0-9]*").matcher(string).matches();
+    }
+
+    public static void loadFile(String object, String object2) throws IOException, FileNotFoundException {
+        object = Utils.getFileStream((String)object);
+        object2 = new File((String)object2);
+        ((File)object2).createNewFile();
+        object2 = new FileOutputStream((File)object2);
+        byte[] byArray = new byte[1024];
+        while (true) {
+            int n;
+            if ((n = ((InputStream)object).read(byArray)) <= 0) {
+                ((FileOutputStream)object2).close();
+                ((InputStream)object).close();
+                return;
+            }
+            ((FileOutputStream)object2).write(byArray, 0, n);
+        }
+    }
+
+    public static void setPaymentInfo(PaymentInfo paymentInfo) {
+        sPaymentInfo = paymentInfo;
+    }
+
+    public static void setSmsInfo(SmsInfos smsInfos) {
+        sSmsInfos = smsInfos;
+    }
+
+    public static void setUPointInfo(UPointInfo uPointInfo) {
+        sUPointInfo = uPointInfo;
+    }
+
+    public static void setUPointPayInfo(UPointPayInfo uPointPayInfo) {
+        sUPointPayInfo = uPointPayInfo;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public static void writeSmsInfoPayment(Context context, String string) {
+        try {
+            StringBuilder stringBuilder = new StringBuilder(String.valueOf(System.currentTimeMillis()));
+            String string2 = stringBuilder.toString();
+            StringBuilder stringBuilder2 = new StringBuilder(String.valueOf(context.getFilesDir().getAbsolutePath()));
+            FileWriter fileWriter = new FileWriter(stringBuilder2.append("/").append(string2).append(".smspayment").toString());
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(string.toString());
+            bufferedWriter.flush();
+            bufferedWriter.close();
+            return;
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
+            return;
+        }
     }
 }

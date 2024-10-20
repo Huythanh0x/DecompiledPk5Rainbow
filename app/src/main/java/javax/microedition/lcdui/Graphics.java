@@ -1,16 +1,39 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  android.graphics.Bitmap
+ *  android.graphics.Canvas
+ *  android.graphics.Color
+ *  android.graphics.DashPathEffect
+ *  android.graphics.Matrix
+ *  android.graphics.Paint
+ *  android.graphics.Paint$Align
+ *  android.graphics.Paint$Style
+ *  android.graphics.Path
+ *  android.graphics.PathEffect
+ *  android.graphics.Rect
+ *  android.graphics.RectF
+ *  android.graphics.Region$Op
+ *  javax.microedition.lcdui.Font
+ *  javax.microedition.lcdui.Image
+ */
 package javax.microedition.lcdui;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PathEffect;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Region;
+import javax.microedition.lcdui.Font;
+import javax.microedition.lcdui.Image;
 
-/* loaded from: classes.dex */
 public final class Graphics {
     public static final int BASELINE = 64;
     public static final int BOTTOM = 32;
@@ -21,58 +44,74 @@ public final class Graphics {
     public static final int SOLID = 0;
     public static final int TOP = 16;
     public static final int VCENTER = 2;
+    private static final DashPathEffect dashPathEffect = new DashPathEffect(new float[]{5.0f, 5.0f}, 0.0f);
+    private static Rect rect1;
+    private static Rect rect2;
+    protected static Matrix regionMatrix;
+    private static final StringBuffer sb;
+    protected static float[][] tTrans;
+    protected static float[] tTransTemp;
+    protected static int[][] tTransXY;
     private static Matrix ttmatrix;
     private Bitmap area;
-    private android.graphics.Canvas canvas;
+    private Canvas canvas;
     private int cliph;
     private int clipw;
     private int clipx;
     private int clipy;
-    private Bitmap graphicbitmap;
-    private int[] rgb;
-    private static final DashPathEffect dashPathEffect = new DashPathEffect(new float[]{5.0f, 5.0f}, 0.0f);
-    private static final StringBuffer sb = new StringBuffer();
-    protected static float[][] tTrans = {new float[]{1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f}, new float[]{1.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f}, new float[]{-1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f}, new float[]{-1.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f}, new float[]{0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f}, new float[]{0.0f, -1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f}, new float[]{0.0f, 1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f}, new float[]{0.0f, -1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f}};
-    protected static float[] tTransTemp = new float[9];
-    protected static Matrix regionMatrix = new Matrix();
-    protected static int[][] tTransXY = {new int[2], new int[]{0, 1}, new int[]{1}, new int[]{1, 1}, new int[2], new int[]{1}, new int[]{0, 1}, new int[]{1, 1}};
-    private static Rect rect1 = new Rect();
-    private static Rect rect2 = new Rect();
     private Font font = Font.getDefaultFont();
+    private Bitmap graphicbitmap;
+    private boolean isResetPainter = false;
+    private int[] rgb;
+    float scale_x = 1.0f;
+    float scale_y = 1.0f;
     private int strokeStyle = 0;
     private int translateX = 0;
     private int translateY = 0;
-    private boolean isResetPainter = false;
-    float scale_x = 1.0f;
-    float scale_y = 1.0f;
+
+    static {
+        sb = new StringBuffer();
+        tTrans = new float[][]{{1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f}, {-1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f}, {-1.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f}, {0.0f, -1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f}, {0.0f, -1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f}};
+        tTransTemp = new float[9];
+        regionMatrix = new Matrix();
+        int[] nArray = new int[2];
+        int[] nArray2 = new int[2];
+        nArray2[1] = 1;
+        int[] nArray3 = new int[2];
+        nArray3[0] = 1;
+        int[] nArray4 = new int[]{1, 1};
+        int[] nArray5 = new int[2];
+        int[] nArray6 = new int[2];
+        nArray6[0] = 1;
+        int[] nArray7 = new int[2];
+        nArray7[1] = 1;
+        tTransXY = new int[][]{nArray, nArray2, nArray3, nArray4, nArray5, nArray6, nArray7, {1, 1}};
+        rect1 = new Rect();
+        rect2 = new Rect();
+    }
+
+    public Graphics() {
+        this.initPaint();
+    }
+
+    public Graphics(Canvas canvas) {
+        this.canvas = canvas;
+        this.initPaint();
+    }
+
+    Graphics(Canvas canvas, Paint paint, Bitmap bitmap) {
+        this.canvas = canvas;
+        this.graphicbitmap = bitmap;
+        this.font.tmpPaint = paint;
+        this.initPaint();
+    }
 
     private void initPaint() {
         this.font.tmpPaint.setAntiAlias(true);
     }
 
-    public Graphics() {
-        initPaint();
-    }
-
-    public Graphics(android.graphics.Canvas canvas) {
-        this.canvas = canvas;
-        initPaint();
-    }
-
-    public void setCanvas(android.graphics.Canvas canvas) {
-        this.canvas = canvas;
-        initPaint();
-    }
-
-    public Graphics(android.graphics.Canvas canvas, Paint painter, Bitmap bitmap) {
-        this.canvas = canvas;
-        this.graphicbitmap = bitmap;
-        this.font.tmpPaint = painter;
-        initPaint();
-    }
-
-    public void clipRect(int x, int y, int width, int height) {
-        this.canvas.clipRect(x, y, x + width, y + height, Region.Op.INTERSECT);
+    public void clipRect(int n, int n2, int n3, int n4) {
+        this.canvas.clipRect((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4), Region.Op.INTERSECT);
         Rect rect = this.canvas.getClipBounds();
         this.clipx = rect.left;
         this.clipy = rect.top;
@@ -80,266 +119,402 @@ public final class Graphics {
         this.cliph = rect.bottom - rect.top;
     }
 
-    public void copyArea(int x_src, int y_src, int width, int height, int x_dest, int y_dest, int anchor) {
-        if (this.graphicbitmap != null) {
-            boolean anchorError = false;
-            if (anchor == 0) {
-                anchor = 20;
-            }
-            if ((anchor & 64) != 0) {
-                anchorError = true;
-            }
-            if ((anchor & 16) != 0) {
-                if ((anchor & 34) != 0) {
-                    anchorError = true;
+    /*
+     * Unable to fully structure code
+     */
+    public void copyArea(int var1_1, int var2_2, int var3_3, int var4_4, int var5_5, int var6_6, int var7_7) {
+        block20: {
+            block11: {
+                block19: {
+                    block17: {
+                        block18: {
+                            block13: {
+                                block16: {
+                                    block14: {
+                                        block15: {
+                                            block12: {
+                                                if (this.graphicbitmap == null) ** GOTO lbl67
+                                                var8_8 = 0;
+                                                var9_9 = var7_7;
+                                                if (var7_7 == 0) {
+                                                    var9_9 = 20;
+                                                }
+                                                var7_7 = var8_8;
+                                                if ((var9_9 & 64) != 0) {
+                                                    var7_7 = 1;
+                                                }
+                                                if ((var9_9 & 16) == 0) break block12;
+                                                var8_8 = var6_6;
+                                                if ((var9_9 & 34) != 0) {
+                                                    var7_7 = 1;
+                                                    var8_8 = var6_6;
+                                                }
+lbl14:
+                                                // 7 sources
+
+                                                while ((var9_9 & 4) != 0) {
+                                                    var6_6 = var5_5;
+                                                    if ((var9_9 & 9) != 0) {
+                                                        var7_7 = 1;
+                                                        var6_6 = var5_5;
+                                                    }
+lbl19:
+                                                    // 7 sources
+
+                                                    while (var7_7 != 0) {
+                                                        throw new IllegalArgumentException("anchor error");
+                                                    }
+                                                    break block11;
+                                                }
+                                                break block13;
+                                            }
+                                            if ((var9_9 & 32) == 0) break block14;
+                                            if ((var9_9 & 2) == 0) break block15;
+                                            var7_7 = 1;
+                                            var8_8 = var6_6;
+                                            ** GOTO lbl14
+                                        }
+                                        var8_8 = var6_6 - (var4_4 - 1);
+                                        ** GOTO lbl14
+                                    }
+                                    if ((var9_9 & 2) == 0) break block16;
+                                    var8_8 = var6_6 - (var4_4 - 1 >>> 1);
+                                    ** GOTO lbl14
+                                }
+                                var7_7 = 1;
+                                var8_8 = var6_6;
+                                ** GOTO lbl14
+                            }
+                            if ((var9_9 & 8) == 0) break block17;
+                            if ((var9_9 & 1) == 0) break block18;
+                            var7_7 = 1;
+                            var6_6 = var5_5;
+                            ** GOTO lbl19
+                        }
+                        var6_6 = var5_5 - (var3_3 - 1);
+                        ** GOTO lbl19
+                    }
+                    if ((var9_9 & 1) == 0) break block19;
+                    var6_6 = var5_5 - (var3_3 - 1 >>> 1);
+                    ** GOTO lbl19
                 }
-            } else if ((anchor & 32) != 0) {
-                if ((anchor & 2) != 0) {
-                    anchorError = true;
-                } else {
-                    y_dest -= height - 1;
-                }
-            } else if ((anchor & 2) != 0) {
-                y_dest -= (height - 1) >>> 1;
-            } else {
-                anchorError = true;
+                var7_7 = 1;
+                var6_6 = var5_5;
+                ** GOTO lbl19
             }
-            if ((anchor & 4) != 0) {
-                if ((anchor & 9) != 0) {
-                    anchorError = true;
-                }
-            } else if ((anchor & 8) != 0) {
-                if ((anchor & 1) != 0) {
-                    anchorError = true;
-                } else {
-                    x_dest -= width - 1;
-                }
-            } else if ((anchor & 1) != 0) {
-                x_dest -= (width - 1) >>> 1;
-            } else {
-                anchorError = true;
+            if (this.area == null || this.area.getWidth() != var3_3 || this.area.getHeight() != var4_4) break block20;
+            if (this.rgb == null || this.rgb != null && this.rgb.length != var3_3 * var4_4) {
+                this.rgb = new int[var3_3 * var4_4];
             }
-            if (anchorError) {
-                throw new IllegalArgumentException("anchor error");
-            }
-            if (this.area != null && this.area.getWidth() == width && this.area.getHeight() == height) {
-                if (this.rgb == null || (this.rgb != null && this.rgb.length != width * height)) {
-                    this.rgb = new int[width * height];
-                }
-                this.graphicbitmap.getPixels(this.rgb, 0, width, x_src, y_src, width, height);
-                this.area.setPixels(this.rgb, 0, width, 0, 0, width, height);
-            } else {
-                this.area = Bitmap.createBitmap(this.graphicbitmap, x_src, y_src, width, height);
-            }
-            this.font.tmpPaint.setStyle(Paint.Style.STROKE);
-            this.canvas.drawBitmap(this.area, x_dest, y_dest, this.font.tmpPaint);
-            this.font.tmpPaint.setStyle(Paint.Style.FILL);
-        }
-    }
+            this.graphicbitmap.getPixels(this.rgb, 0, var3_3, var1_1, var2_2, var3_3, var4_4);
+            this.area.setPixels(this.rgb, 0, var3_3, 0, 0, var3_3, var4_4);
+lbl63:
+            // 2 sources
 
-    public void drawArc(int x, int y, int width, int height, int startAngle, int arcAngle) {
-        this.font.tmpPaint.setStyle(Paint.Style.STROKE);
-        this.canvas.drawArc(new RectF(x, y, x + width, y + height), startAngle, arcAngle, false, this.font.tmpPaint);
-        this.font.tmpPaint.setStyle(Paint.Style.FILL);
-    }
+            while (true) {
+                this.font.tmpPaint.setStyle(Paint.Style.STROKE);
+                this.canvas.drawBitmap(this.area, (float)var6_6, (float)var8_8, this.font.tmpPaint);
+                this.font.tmpPaint.setStyle(Paint.Style.FILL);
+lbl67:
+                // 2 sources
 
-    public void setFont(Font font) {
-        this.font = font;
-    }
-
-    public void drawChar(char character, int x, int y, int anchor) {
-        sb.delete(0, sb.length());
-        sb.append(character);
-        drawString(sb.toString(), x, y, anchor);
-    }
-
-    public void drawString(String str, int x, int y, int anchor) {
-        int y2 = y - 5;
-        if (anchor == 0) {
-            anchor = 20;
-        }
-        if ((anchor & 16) != 0) {
-            y2 -= this.font.getMetricsInt().top;
-        } else if ((anchor & 32) != 0) {
-            y2 -= this.font.getMetricsInt().bottom;
-        } else if ((anchor & 2) != 0) {
-            y2 += ((this.font.getMetricsInt().descent - this.font.getMetricsInt().ascent) / 2) - this.font.getMetricsInt().descent;
-        }
-        if ((anchor & 1) != 0) {
-            this.font.tmpPaint.setTextAlign(Paint.Align.CENTER);
-        } else if ((anchor & 8) != 0) {
-            this.font.tmpPaint.setTextAlign(Paint.Align.RIGHT);
-        } else if ((anchor & 4) != 0) {
-            this.font.tmpPaint.setTextAlign(Paint.Align.LEFT);
-        }
-        this.canvas.drawText(str, x, y2, this.font.tmpPaint);
-    }
-
-    public void drawChars(char[] data, int offset, int length, int x, int y, int anchor) {
-        sb.delete(0, sb.length());
-        sb.append(data, offset, length);
-        drawString(sb.toString(), x, y, anchor);
-    }
-
-    public void drawRect(int x, int y, int width, int height) {
-        this.font.tmpPaint.setStyle(Paint.Style.STROKE);
-        this.canvas.drawRect(x, y, x + width, y + height, this.font.tmpPaint);
-        this.font.tmpPaint.setStyle(Paint.Style.FILL);
-    }
-
-    public void drawImage(Image img, int x, int y, int anchor) {
-        if ((anchor & 8) != 0) {
-            x -= img.getWidth();
-        } else if ((anchor & 1) != 0) {
-            x -= img.getWidth() / 2;
-        }
-        if ((anchor & 32) != 0) {
-            y -= img.getHeight();
-        } else if ((anchor & 2) != 0) {
-            y -= img.getHeight() / 2;
-        }
-        this.canvas.drawBitmap(img.getBitMapInpackage(), x, y, this.font.tmpPaint);
-    }
-
-    public void getXY(float x, float y) {
-        this.scale_x = x;
-        this.scale_y = y;
-    }
-
-    public void drawRegion(Image src, int x_src, int y_src, int width, int height, int transform, int x, int y, int anchor) {
-        int tmp_w = width;
-        int tmp_h = height;
-        if (transform > 3) {
-            tmp_w = height;
-            tmp_h = width;
-        }
-        if ((anchor & 8) != 0) {
-            x -= tmp_w;
-        } else if ((anchor & 1) != 0) {
-            x -= tmp_w / 2;
-        }
-        if ((anchor & 32) != 0) {
-            y -= tmp_h;
-        } else if ((anchor & 2) != 0) {
-            y -= tmp_h / 2;
-        }
-        if (transform == 0) {
-            rect1.set(x_src, y_src, x_src + width, y_src + height);
-            rect2.set(x, y, x + width, y + height);
-            this.canvas.drawBitmap(src.getBitMapInpackage(), rect1, rect2, this.font.tmpPaint);
-            return;
-        }
-        ttmatrix = this.canvas.getMatrix();
-        System.arraycopy(tTrans[transform], 0, tTransTemp, 0, 9);
-        tTransTemp[2] = (tTransXY[transform][0] * tmp_w) + x;
-        tTransTemp[5] = (tTransXY[transform][1] * tmp_h) + y;
-        regionMatrix.setValues(tTransTemp);
-        if (this.scale_x != 1.0f || this.scale_y != 1.0f) {
-            regionMatrix.postScale(this.scale_x, this.scale_y);
-        }
-        this.canvas.setMatrix(regionMatrix);
-        rect1.set(x_src, y_src, x_src + width, y_src + height);
-        rect2.set(0, 0, width + 1, height);
-        this.canvas.drawBitmap(src.getBitMapInpackage(), rect1, rect2, this.font.tmpPaint);
-        this.canvas.setMatrix(ttmatrix);
-    }
-
-    public void drawRGB(int[] rgbData, int offset, int scanlength, int x, int y, int width, int height, boolean processAlpha) {
-        if (rgbData == null) {
-            throw new NullPointerException();
-        }
-        if (width > 0 && height > 0) {
-            int l = rgbData.length;
-            if (width < 0 || height < 0 || offset < 0 || offset >= l || ((scanlength < 0 && (height - 1) * scanlength < 0) || (scanlength >= 0 && (((height - 1) * scanlength) + width) - 1 >= l))) {
-                throw new ArrayIndexOutOfBoundsException();
-            }
-            int rgb1 = rgbData[0];
-            int rgb2 = rgbData[l / 2];
-            int rgb3 = rgbData[l / 3];
-            int rgb4 = rgbData[l / 4];
-            int rgb5 = rgbData[(l * 5) / 8];
-            int rgb6 = rgbData[(l * 4) / 5];
-            if (rgb1 == rgb2 && rgb2 == rgb3 && rgb3 == rgb4 && rgb4 == rgb5 && rgb5 == rgb6) {
-                this.font.tmpPaint.setColor(rgb1);
-                fillRect(x, y, width, height);
                 return;
             }
-            if (scanlength < width) {
-                scanlength = width;
-            }
-            this.font.tmpPaint.setStyle(Paint.Style.STROKE);
-            this.canvas.drawBitmap(rgbData, offset, scanlength, x, y, width, height, processAlpha, this.font.tmpPaint);
-            this.font.tmpPaint.setStyle(Paint.Style.FILL);
         }
+        this.area = Bitmap.createBitmap((Bitmap)this.graphicbitmap, (int)var1_1, (int)var2_2, (int)var3_3, (int)var4_4);
+        ** while (true)
     }
 
-    public void drawRoundRect(int x, int y, int width, int height, int arcWidth, int arcHeight) {
+    public void drawArc(int n, int n2, int n3, int n4, int n5, int n6) {
         this.font.tmpPaint.setStyle(Paint.Style.STROKE);
-        RectF rectF = new RectF(x, y, x + width, y + height);
-        this.canvas.drawRoundRect(rectF, arcWidth, arcHeight, this.font.tmpPaint);
+        this.canvas.drawArc(new RectF((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4)), (float)n5, (float)n6, false, this.font.tmpPaint);
         this.font.tmpPaint.setStyle(Paint.Style.FILL);
     }
 
-    public void drawSubstring(String str, int offset, int len, int x, int y, int anchor) {
-        if (anchor == 0) {
-            anchor = 20;
+    public void drawChar(char c, int n, int n2, int n3) {
+        sb.delete(0, sb.length());
+        sb.append(c);
+        this.drawString(sb.toString(), n, n2, n3);
+    }
+
+    public void drawChars(char[] cArray, int n, int n2, int n3, int n4, int n5) {
+        sb.delete(0, sb.length());
+        sb.append(cArray, n, n2);
+        this.drawString(sb.toString(), n3, n4, n5);
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void drawImage(Image var1_1, int var2_2, int var3_3, int var4_4) {
+        block3: {
+            block2: {
+                if ((var4_4 & 8) == 0) break block2;
+                var5_5 = var2_2 - var1_1.getWidth();
+lbl3:
+                // 3 sources
+
+                while ((var4_4 & 32) != 0) {
+                    var2_2 = var3_3 - var1_1.getHeight();
+lbl5:
+                    // 3 sources
+
+                    while (true) {
+                        this.canvas.drawBitmap(var1_1.getBitMapInpackage(), (float)var5_5, (float)var2_2, this.font.tmpPaint);
+                        return;
+                    }
+                }
+                break block3;
+            }
+            var5_5 = var2_2;
+            if ((var4_4 & 1) == 0) ** GOTO lbl3
+            var5_5 = var2_2 - var1_1.getWidth() / 2;
+            ** GOTO lbl3
         }
-        if ((anchor & 16) != 0) {
-            y -= this.font.getMetricsInt().top;
-        } else if ((anchor & 32) != 0) {
-            y -= this.font.getMetricsInt().bottom;
-        } else if ((anchor & 2) != 0) {
-            y += ((this.font.getMetricsInt().descent - this.font.getMetricsInt().ascent) / 2) - this.font.getMetricsInt().descent;
+        var2_2 = var3_3;
+        if ((var4_4 & 2) == 0) ** GOTO lbl5
+        var2_2 = var3_3 - var1_1.getHeight() / 2;
+        ** while (true)
+    }
+
+    public void drawLine(float f, float f2, float f3, float f4) {
+        this.canvas.drawLine(f, f2, f3, f4, this.font.tmpPaint);
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public void drawRGB(int[] nArray, int n, int n2, int n3, int n4, int n5, int n6, boolean bl) {
+        if (nArray == null) {
+            throw new NullPointerException();
         }
-        if ((anchor & 1) != 0) {
-            this.font.tmpPaint.setTextAlign(Paint.Align.CENTER);
-        } else if ((anchor & 8) != 0) {
+        if (n5 <= 0 || n6 <= 0) {
+            return;
+        }
+        int n7 = nArray.length;
+        if (n5 < 0 || n6 < 0 || n < 0 || n >= n7 || n2 < 0 && (n6 - 1) * n2 < 0 || n2 >= 0 && (n6 - 1) * n2 + n5 - 1 >= n7) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        int n8 = nArray[0];
+        int n9 = nArray[n7 / 2];
+        int n10 = nArray[n7 / 3];
+        int n11 = nArray[n7 / 4];
+        int n12 = nArray[n7 * 5 / 8];
+        n7 = nArray[n7 * 4 / 5];
+        if (n8 == n9 && n9 == n10 && n10 == n11 && n11 == n12 && n12 == n7) {
+            this.font.tmpPaint.setColor(n8);
+            this.fillRect(n3, n4, n5, n6);
+            return;
+        }
+        n11 = n2;
+        if (n2 < n5) {
+            n11 = n5;
+        }
+        this.font.tmpPaint.setStyle(Paint.Style.STROKE);
+        this.canvas.drawBitmap(nArray, n, n11, n3, n4, n5, n6, bl, this.font.tmpPaint);
+        this.font.tmpPaint.setStyle(Paint.Style.FILL);
+    }
+
+    public void drawRect(int n, int n2, int n3, int n4) {
+        this.font.tmpPaint.setStyle(Paint.Style.STROKE);
+        this.canvas.drawRect((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4), this.font.tmpPaint);
+        this.font.tmpPaint.setStyle(Paint.Style.FILL);
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void drawRegion(Image var1_1, int var2_2, int var3_3, int var4_4, int var5_5, int var6_6, int var7_7, int var8_8, int var9_9) {
+        block5: {
+            block7: {
+                block6: {
+                    var12_10 = var4_4;
+                    var11_11 = var5_5;
+                    if (var6_6 > 3) {
+                        var12_10 = var5_5;
+                        var11_11 = var4_4;
+                    }
+                    if ((var9_9 & 8) == 0) break block6;
+                    var10_12 = var7_7 - var12_10;
+lbl8:
+                    // 3 sources
+
+                    while ((var9_9 & 32) != 0) {
+                        var7_7 = var8_8 - var11_11;
+lbl10:
+                        // 3 sources
+
+                        while (var6_6 == 0) {
+                            Graphics.rect1.set(var2_2, var3_3, var2_2 + var4_4, var3_3 + var5_5);
+                            Graphics.rect2.set(var10_12, var7_7, var10_12 + var4_4, var7_7 + var5_5);
+                            this.canvas.drawBitmap(var1_1.getBitMapInpackage(), Graphics.rect1, Graphics.rect2, this.font.tmpPaint);
+lbl14:
+                            // 2 sources
+
+                            return;
+                        }
+                        break block5;
+                    }
+                    break block7;
+                }
+                var10_12 = var7_7;
+                if ((var9_9 & 1) == 0) ** GOTO lbl8
+                var10_12 = var7_7 - var12_10 / 2;
+                ** GOTO lbl8
+            }
+            var7_7 = var8_8;
+            if ((var9_9 & 2) == 0) ** GOTO lbl10
+            var7_7 = var8_8 - var11_11 / 2;
+            ** GOTO lbl10
+        }
+        Graphics.ttmatrix = this.canvas.getMatrix();
+        System.arraycopy(Graphics.tTrans[var6_6], 0, Graphics.tTransTemp, 0, 9);
+        Graphics.tTransTemp[2] = Graphics.tTransXY[var6_6][0] * var12_10 + var10_12;
+        Graphics.tTransTemp[5] = Graphics.tTransXY[var6_6][1] * var11_11 + var7_7;
+        Graphics.regionMatrix.setValues(Graphics.tTransTemp);
+        if (this.scale_x != 1.0f || this.scale_y != 1.0f) {
+            Graphics.regionMatrix.postScale(this.scale_x, this.scale_y);
+        }
+        this.canvas.setMatrix(Graphics.regionMatrix);
+        Graphics.rect1.set(var2_2, var3_3, var2_2 + var4_4, var3_3 + var5_5);
+        Graphics.rect2.set(0, 0, var4_4 + 1, var5_5);
+        this.canvas.drawBitmap(var1_1.getBitMapInpackage(), Graphics.rect1, Graphics.rect2, this.font.tmpPaint);
+        this.canvas.setMatrix(Graphics.ttmatrix);
+        ** while (true)
+    }
+
+    public void drawRoundRect(int n, int n2, int n3, int n4, int n5, int n6) {
+        this.font.tmpPaint.setStyle(Paint.Style.STROKE);
+        RectF rectF = new RectF((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4));
+        this.canvas.drawRoundRect(rectF, (float)n5, (float)n6, this.font.tmpPaint);
+        this.font.tmpPaint.setStyle(Paint.Style.FILL);
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void drawString(String var1_1, int var2_2, int var3_3, int var4_4) {
+        block6: {
+            block4: {
+                block5: {
+                    block3: {
+                        var6_5 = var3_3 - 5;
+                        var5_6 = var4_4;
+                        if (var4_4 == 0) {
+                            var5_6 = 20;
+                        }
+                        if ((var5_6 & 16) == 0) break block3;
+                        var3_3 = var6_5 - this.font.getMetricsInt().top;
+lbl7:
+                        // 4 sources
+
+                        while ((var5_6 & 1) != 0) {
+                            this.font.tmpPaint.setTextAlign(Paint.Align.CENTER);
+lbl9:
+                            // 4 sources
+
+                            while (true) {
+                                this.canvas.drawText(var1_1, (float)var2_2, (float)var3_3, this.font.tmpPaint);
+                                return;
+                            }
+                        }
+                        break block4;
+                    }
+                    if ((var5_6 & 32) == 0) break block5;
+                    var3_3 = var6_5 - this.font.getMetricsInt().bottom;
+                    ** GOTO lbl7
+                }
+                var3_3 = var6_5;
+                if ((var5_6 & 2) == 0) ** GOTO lbl7
+                var3_3 = var6_5 + ((this.font.getMetricsInt().descent - this.font.getMetricsInt().ascent) / 2 - this.font.getMetricsInt().descent);
+                ** GOTO lbl7
+            }
+            if ((var5_6 & 8) == 0) break block6;
             this.font.tmpPaint.setTextAlign(Paint.Align.RIGHT);
-        } else if ((anchor & 4) != 0) {
-            this.font.tmpPaint.setTextAlign(Paint.Align.LEFT);
+            ** GOTO lbl9
         }
-        this.canvas.drawText(str, offset, len + offset, x, y, this.font.tmpPaint);
+        if ((var5_6 & 4) == 0) ** GOTO lbl9
+        this.font.tmpPaint.setTextAlign(Paint.Align.LEFT);
+        ** while (true)
     }
 
-    public void fillArc(int x, int y, int width, int height, int startAngle, int arcAngle) {
-        this.canvas.drawArc(new RectF(x, y, x + width, y + height), startAngle, arcAngle, false, this.font.tmpPaint);
+    /*
+     * Unable to fully structure code
+     */
+    public void drawSubstring(String var1_1, int var2_2, int var3_3, int var4_4, int var5_5, int var6_6) {
+        block6: {
+            block4: {
+                block5: {
+                    block3: {
+                        var7_7 = var6_6;
+                        if (var6_6 == 0) {
+                            var7_7 = 20;
+                        }
+                        if ((var7_7 & 16) == 0) break block3;
+                        var6_6 = var5_5 - this.font.getMetricsInt().top;
+lbl6:
+                        // 4 sources
+
+                        while ((var7_7 & 1) != 0) {
+                            this.font.tmpPaint.setTextAlign(Paint.Align.CENTER);
+lbl8:
+                            // 4 sources
+
+                            while (true) {
+                                this.canvas.drawText(var1_1, var2_2, var3_3 + var2_2, (float)var4_4, (float)var6_6, this.font.tmpPaint);
+                                return;
+                            }
+                        }
+                        break block4;
+                    }
+                    if ((var7_7 & 32) == 0) break block5;
+                    var6_6 = var5_5 - this.font.getMetricsInt().bottom;
+                    ** GOTO lbl6
+                }
+                var6_6 = var5_5;
+                if ((var7_7 & 2) == 0) ** GOTO lbl6
+                var6_6 = var5_5 + ((this.font.getMetricsInt().descent - this.font.getMetricsInt().ascent) / 2 - this.font.getMetricsInt().descent);
+                ** GOTO lbl6
+            }
+            if ((var7_7 & 8) == 0) break block6;
+            this.font.tmpPaint.setTextAlign(Paint.Align.RIGHT);
+            ** GOTO lbl8
+        }
+        if ((var7_7 & 4) == 0) ** GOTO lbl8
+        this.font.tmpPaint.setTextAlign(Paint.Align.LEFT);
+        ** while (true)
     }
 
-    public void fillRect(int x, int y, int width, int height) {
-        this.canvas.drawRect(x, y, x + width, y + height, this.font.tmpPaint);
+    public void fillArc(int n, int n2, int n3, int n4, int n5, int n6) {
+        this.canvas.drawArc(new RectF((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4)), (float)n5, (float)n6, false, this.font.tmpPaint);
     }
 
-    public void fillRoundRect(int x, int y, int width, int height, int arcWidth, int arcHeight) {
-        this.canvas.drawRoundRect(new RectF(x, y, x + width, y + height), arcWidth, arcHeight, this.font.tmpPaint);
+    public void fillRect(int n, int n2, int n3, int n4) {
+        this.canvas.drawRect((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4), this.font.tmpPaint);
     }
 
-    public void fillTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
+    public void fillRoundRect(int n, int n2, int n3, int n4, int n5, int n6) {
+        this.canvas.drawRoundRect(new RectF((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4)), (float)n5, (float)n6, this.font.tmpPaint);
+    }
+
+    public void fillTriangle(int n, int n2, int n3, int n4, int n5, int n6) {
         Path path = new Path();
-        path.moveTo(x1, y1);
-        path.lineTo(x2, y2);
-        path.lineTo(x3, y3);
-        path.lineTo(x1, y1);
+        path.moveTo((float)n, (float)n2);
+        path.lineTo((float)n3, (float)n4);
+        path.lineTo((float)n5, (float)n6);
+        path.lineTo((float)n, (float)n2);
         this.canvas.drawPath(path, this.font.tmpPaint);
     }
 
-    public void translate(int x, int y) {
-        this.canvas.translate(x, y);
-        this.translateX += x;
-        this.translateY += y;
-        this.clipx -= x;
-        this.clipy -= y;
-    }
-
     public int getBlueComponent() {
-        return this.font.tmpPaint.getColor() & 255;
+        return this.font.tmpPaint.getColor() & 0xFF;
     }
 
-    public int getGreenComponent() {
-        return (this.font.tmpPaint.getColor() >> 8) & 255;
-    }
-
-    public int getRedComponent() {
-        return (this.font.tmpPaint.getColor() >> 16) & 255;
+    public Canvas getCanvas() throws NullPointerException {
+        if (this.canvas == null) {
+            throw new NullPointerException();
+        }
+        return this.canvas;
     }
 
     public int getClipHeight() {
@@ -362,8 +537,8 @@ public final class Graphics {
         return this.font.tmpPaint.getColor();
     }
 
-    public int getDisplayColor(int color) {
-        return color;
+    public int getDisplayColor(int n) {
+        return n;
     }
 
     public Font getFont() {
@@ -371,23 +546,19 @@ public final class Graphics {
     }
 
     public int getGrayScale() {
-        return ((getRedComponent() + getGreenComponent()) + getBlueComponent()) / 3;
+        return (this.getRedComponent() + this.getGreenComponent() + this.getBlueComponent()) / 3;
+    }
+
+    public int getGreenComponent() {
+        return this.font.tmpPaint.getColor() >> 8 & 0xFF;
+    }
+
+    public int getRedComponent() {
+        return this.font.tmpPaint.getColor() >> 16 & 0xFF;
     }
 
     public int getStrokeStyle() {
         return this.strokeStyle;
-    }
-
-    public void setStrokeStyle(int style) {
-        if (style != 0 || style != 1) {
-            throw new IllegalArgumentException();
-        }
-        this.strokeStyle = style;
-        if (style == 0) {
-            this.font.tmpPaint.setPathEffect(null);
-        } else if (style == 1) {
-            this.font.tmpPaint.setPathEffect(dashPathEffect);
-        }
     }
 
     public int getTranslateX() {
@@ -398,60 +569,98 @@ public final class Graphics {
         return this.translateY;
     }
 
-    public void setClip(int x, int y, int width, int height) {
-        this.clipx = x;
-        this.clipy = y;
-        this.clipw = width;
-        this.cliph = height;
-        if (width >= 0 && height >= 0) {
-            this.canvas.clipRect(x, y, x + width, y + height, Region.Op.REPLACE);
-        }
-    }
-
-    public void setColor(int RGB) {
-        if ((RGB & (-16777216)) != 0) {
-            this.font.tmpPaint.setColor(RGB);
-        } else {
-            this.font.tmpPaint.setColor((-16777216) | RGB);
-        }
-    }
-
-    public void setColor(int red, int green, int blue) {
-        setColor(Color.rgb(red, green, blue));
-    }
-
-    public void setGrayScale(int grey) {
-        if (grey < 0 || grey > 255) {
-            throw new IllegalArgumentException();
-        }
-        setColor(grey, grey, grey);
-    }
-
-    public void drawLine(float x1, float y1, float x2, float y2) {
-        this.canvas.drawLine(x1, y1, x2, y2, this.font.tmpPaint);
-    }
-
-    public void painterAutoReset(boolean flag) {
-        this.isResetPainter = flag;
+    public void getXY(float f, float f2) {
+        this.scale_x = f;
+        this.scale_y = f2;
     }
 
     public boolean isAutoResetPainter() {
         return this.isResetPainter;
     }
 
-    public void painterReset() {
-        this.font.tmpPaint.reset();
+    public void painterAutoReset(boolean bl) {
+        this.isResetPainter = bl;
     }
 
-    public android.graphics.Canvas getCanvas() throws NullPointerException {
-        if (this.canvas == null) {
-            throw new NullPointerException();
-        }
-        return this.canvas;
+    public void painterReset() {
+        this.font.tmpPaint.reset();
     }
 
     public void restCanvas() {
         this.canvas.restore();
         this.canvas.save(2);
+    }
+
+    void setCanvas(Canvas canvas) {
+        this.canvas = canvas;
+        this.initPaint();
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public void setClip(int n, int n2, int n3, int n4) {
+        this.clipx = n;
+        this.clipy = n2;
+        this.clipw = n3;
+        this.cliph = n4;
+        if (n3 < 0 || n4 < 0) {
+            return;
+        }
+        this.canvas.clipRect((float)n, (float)n2, (float)(n + n3), (float)(n2 + n4), Region.Op.REPLACE);
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public void setColor(int n) {
+        if ((n & 0xFF000000) != 0) {
+            this.font.tmpPaint.setColor(n);
+            return;
+        }
+        this.font.tmpPaint.setColor(0xFF000000 | n);
+    }
+
+    public void setColor(int n, int n2, int n3) {
+        this.setColor(Color.rgb((int)n, (int)n2, (int)n3));
+    }
+
+    public void setFont(Font font) {
+        this.font = font;
+    }
+
+    public void setGrayScale(int n) {
+        if (n < 0 || n > 255) {
+            throw new IllegalArgumentException();
+        }
+        this.setColor(n, n, n);
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void setStrokeStyle(int var1_1) {
+        if (var1_1 != 0 || var1_1 != 1) {
+            throw new IllegalArgumentException();
+        }
+        this.strokeStyle = var1_1;
+        if (var1_1 == 0) {
+            this.font.tmpPaint.setPathEffect(null);
+lbl7:
+            // 3 sources
+
+            return;
+        }
+        if (var1_1 != 1) ** GOTO lbl7
+        this.font.tmpPaint.setPathEffect((PathEffect)Graphics.dashPathEffect);
+        ** while (true)
+    }
+
+    public void translate(int n, int n2) {
+        this.canvas.translate((float)n, (float)n2);
+        this.translateX += n;
+        this.translateY += n2;
+        this.clipx -= n;
+        this.clipy -= n2;
     }
 }

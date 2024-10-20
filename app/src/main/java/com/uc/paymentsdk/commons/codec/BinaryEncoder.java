@@ -1,6 +1,16 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  com.uc.paymentsdk.commons.codec.Encoder
+ *  com.uc.paymentsdk.commons.codec.EncoderException
+ */
 package com.uc.paymentsdk.commons.codec;
 
-/* loaded from: classes.dex */
-public interface BinaryEncoder extends Encoder {
-    byte[] encode(byte[] bArr) throws EncoderException;
+import com.uc.paymentsdk.commons.codec.Encoder;
+import com.uc.paymentsdk.commons.codec.EncoderException;
+
+public interface BinaryEncoder
+extends Encoder {
+    public byte[] encode(byte[] var1) throws EncoderException;
 }

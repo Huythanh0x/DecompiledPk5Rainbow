@@ -1,108 +1,121 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  com.uc.paymentsdk.network.ApiTask
+ *  com.uc.paymentsdk.network.ApiTask$TaskHandler
+ *  com.uc.paymentsdk.payment.PaymentInfo
+ *  com.uc.paymentsdk.payment.upoint.UPointPayInfo
+ *  com.uc.paymentsdk.util.PrefUtil
+ *  com.uc.paymentsdk.util.Utils
+ */
 package com.uc.paymentsdk.network;
 
 import android.content.Context;
-import com.uc.paymentsdk.commons.codec.MD5;
 import com.uc.paymentsdk.network.ApiTask;
 import com.uc.paymentsdk.payment.PaymentInfo;
 import com.uc.paymentsdk.payment.upoint.UPointPayInfo;
-import com.uc.paymentsdk.util.Constants;
 import com.uc.paymentsdk.util.PrefUtil;
 import com.uc.paymentsdk.util.Utils;
 import java.util.HashMap;
 
-/* loaded from: classes.dex */
 public class Api {
-    public static void pay(Context paramContext, ApiTask.TaskHandler paramTaskHandler, PaymentInfo paramPaymentInfo, UPointPayInfo upayinfo) {
-        HashMap<String, Object> localHashMap = new HashMap<>(9);
-        localHashMap.put("user_id", upayinfo.getUserid());
-        localHashMap.put("&cpid", upayinfo.getCpid());
-        localHashMap.put("&gameid", upayinfo.getGameid());
-        localHashMap.put("&optid", paramPaymentInfo.getmActionID());
-        localHashMap.put("&u_money", Integer.valueOf(upayinfo.getUpoint()));
-        localHashMap.put("&charge", Integer.valueOf(upayinfo.getUmoney()));
-        localHashMap.put("&consume_id", upayinfo.getConsumeid());
-        localHashMap.put("&ucid", upayinfo.getUsersession());
-        localHashMap.put("&sign", upayinfo.getSign());
-        localHashMap.put("&uc_token", upayinfo.getUctoken());
-        localHashMap.put("&pay_pwd", upayinfo.getPaypwd());
-        localHashMap.put("&consume_time", upayinfo.getTm());
-        localHashMap.put("&tm", upayinfo.getTm());
-        localHashMap.put("&eid", UPointPayInfo.getEid());
-        localHashMap.put("&ch_code", upayinfo.getChcode());
-        new ApiTask(paramContext, 3, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
+    public static void confirmPayResult(Context context, ApiTask.TaskHandler taskHandler, String string, String string2) {
+        HashMap<String, String> hashMap = new HashMap<String, String>(2);
+        hashMap.put("order_id", string);
+        hashMap.put("app_key", string2);
+        new ApiTask(context, 5, taskHandler, hashMap, "post").execute((Object[])new Void[0]);
     }
 
-    public static void confirmPayResult(Context paramContext, ApiTask.TaskHandler paramTaskHandler, String paramString1, String paramString2) {
-        HashMap<String, Object> localHashMap = new HashMap<>(2);
-        localHashMap.put("order_id", paramString1);
-        localHashMap.put("app_key", paramString2);
-        new ApiTask(paramContext, 5, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
+    public static void pay(Context context, ApiTask.TaskHandler taskHandler, PaymentInfo paymentInfo, UPointPayInfo uPointPayInfo) {
+        HashMap<String, Object> hashMap = new HashMap<String, Object>(9);
+        hashMap.put("user_id", uPointPayInfo.getUserid());
+        hashMap.put("&cpid", uPointPayInfo.getCpid());
+        hashMap.put("&gameid", uPointPayInfo.getGameid());
+        hashMap.put("&optid", paymentInfo.getmActionID());
+        hashMap.put("&u_money", uPointPayInfo.getUpoint());
+        hashMap.put("&charge", uPointPayInfo.getUmoney());
+        hashMap.put("&consume_id", uPointPayInfo.getConsumeid());
+        hashMap.put("&ucid", uPointPayInfo.getUsersession());
+        hashMap.put("&sign", uPointPayInfo.getSign());
+        hashMap.put("&uc_token", uPointPayInfo.getUctoken());
+        hashMap.put("&pay_pwd", uPointPayInfo.getPaypwd());
+        hashMap.put("&consume_time", uPointPayInfo.getTm());
+        hashMap.put("&tm", uPointPayInfo.getTm());
+        hashMap.put("&eid", UPointPayInfo.getEid());
+        hashMap.put("&ch_code", uPointPayInfo.getChcode());
+        new ApiTask(context, 3, taskHandler, hashMap, "post").execute((Object[])new Void[0]);
     }
 
-    public static void queryUPointDiscount(Context paramContext, ApiTask.TaskHandler paramTaskHandler, String cpid, String gameid, int charge) {
-        HashMap<String, Object> localHashMap = new HashMap<>(1);
-        localHashMap.put("cpid", cpid);
-        localHashMap.put("gameid", gameid);
-        localHashMap.put("u_money", Integer.valueOf(charge));
-        new ApiTask(paramContext, 18, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
+    /*
+     * Exception decompiling
+     */
+    public static void postSmsPayment(Context var0, ApiTask.TaskHandler var1_1, String var2_2, String var3_3, String var4_4, int var5_5, String var6_6, String var7_7, String var8_8, String var9_9, int var10_10) {
+        /*
+         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+         * 
+         * org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.getStartingBlocks(Op04StructuredStatement.java:412)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.buildNestedBlocks(Op04StructuredStatement.java:487)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.createInitialStructuredBlock(Op03SimpleStatement.java:736)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:850)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
+         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
+         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
+         *     at org.benf.cfr.reader.Driver.doClass(Driver.java:84)
+         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:78)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompile(CFRDecompiler.java:91)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompileToZip(CFRDecompiler.java:122)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.decompileSaveAll(ResourceDecompiling.java:262)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.lambda$decompileSaveAll$0(ResourceDecompiling.java:111)
+         *     at java.base/java.lang.Thread.run(Thread.java:840)
+         */
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    public static void syncChargeChannel(Context paramContext, ApiTask.TaskHandler paramTaskHandler) {
-        HashMap<String, Object> localHashMap = new HashMap<>(1);
-        localHashMap.put("action", "getRechargeChannels");
-        new ApiTask(paramContext, 17, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
+    public static void queryUPointDiscount(Context context, ApiTask.TaskHandler taskHandler, String string, String string2, int n) {
+        HashMap<String, Object> hashMap = new HashMap<String, Object>(1);
+        hashMap.put("cpid", string);
+        hashMap.put("gameid", string2);
+        hashMap.put("u_money", n);
+        new ApiTask(context, 18, taskHandler, hashMap, "post").execute((Object[])new Void[0]);
     }
 
-    public static void syncPayChannel(Context paramContext, ApiTask.TaskHandler paramTaskHandler) {
-        HashMap<String, Object> localHashMap = new HashMap<>(0);
-        new ApiTask(paramContext, 6, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
+    public static void syncChargeChannel(Context context, ApiTask.TaskHandler taskHandler) {
+        HashMap<String, String> hashMap = new HashMap<String, String>(1);
+        hashMap.put("action", "getRechargeChannels");
+        new ApiTask(context, 17, taskHandler, hashMap, "post").execute((Object[])new Void[0]);
     }
 
-    public static void syncUPointDiscount(Context paramContext, ApiTask.TaskHandler paramTaskHandler, String cpid, String gameid, int charge) {
-        HashMap<String, Object> localHashMap = new HashMap<>(1);
-        localHashMap.put("cpid", cpid);
-        localHashMap.put("gameid", gameid);
-        localHashMap.put("u_money", Integer.valueOf(charge));
-        new ApiTask(paramContext, 18, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
+    public static void syncPayChannel(Context context, ApiTask.TaskHandler taskHandler) {
+        new ApiTask(context, 6, taskHandler, new HashMap<K, V>(0), "post").execute((Object[])new Void[0]);
     }
 
-    public static void syncSmsInfo(Context paramContext, ApiTask.TaskHandler paramTaskHandler, String cpid, String gameid) {
-        HashMap<String, Object> localHashMap = new HashMap<>(1);
-        String usersession = Utils.getSessionID(paramContext);
-        if (usersession == null) {
-            usersession = Utils.createARanSessionid(8);
-            PrefUtil.setUserSession(paramContext, usersession);
+    public static void syncSmsInfo(Context context, ApiTask.TaskHandler taskHandler, String string, String string2) {
+        String string3;
+        HashMap<String, String> hashMap = new HashMap<String, String>(1);
+        String string4 = string3 = Utils.getSessionID((Context)context);
+        if (string3 == null) {
+            string4 = Utils.createARanSessionid((int)8);
+            PrefUtil.setUserSession((Context)context, (String)string4);
         }
-        localHashMap.put("user_id", usersession);
-        localHashMap.put("cpid", cpid);
-        localHashMap.put("gameid", gameid);
-        localHashMap.put("area", "");
-        localHashMap.put("imsi", Utils.getSimNumber(paramContext));
-        new ApiTask(paramContext, 7, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
+        hashMap.put("user_id", string4);
+        hashMap.put("cpid", string);
+        hashMap.put("gameid", string2);
+        hashMap.put("area", "");
+        hashMap.put("imsi", Utils.getSimNumber((Context)context));
+        new ApiTask(context, 7, taskHandler, hashMap, "post").execute((Object[])new Void[0]);
     }
 
-    public static void postSmsPayment(Context paramContext, ApiTask.TaskHandler paramTaskHandler, String cpid, String gameid, String optid, int charge, String optobj, String sms_channel, String sms_port, String sms_content, int sms_type) {
-        String usersession = Utils.getSessionID(paramContext);
-        Object consumeid = Utils.createARanConsumeID(20);
-        String sign = "";
-        try {
-            sign = MD5.getMD5(String.valueOf(usersession.length() <= 5 ? usersession : usersession.substring(0, 5)) + (cpid.length() <= 5 ? cpid : cpid.substring(0, 5)) + (gameid.length() <= 5 ? gameid : gameid.substring(0, 5)) + charge);
-        } catch (Exception e) {
-        }
-        HashMap<String, Object> localHashMap = new HashMap<>(4);
-        localHashMap.put("user_id", usersession);
-        localHashMap.put("cpid", cpid);
-        localHashMap.put("gameid", gameid);
-        localHashMap.put("optid", optid);
-        localHashMap.put("consume_id", consumeid);
-        localHashMap.put("charge", Integer.valueOf(charge));
-        localHashMap.put("optobj", optobj);
-        localHashMap.put("sms_channel", sms_channel);
-        localHashMap.put("sms_port", sms_port);
-        localHashMap.put("sms_content", sms_content);
-        localHashMap.put("sms_type", Integer.valueOf(sms_type));
-        localHashMap.put("sendtime", Utils.getCurrentTime(false));
-        localHashMap.put("sign", sign);
-        new ApiTask(paramContext, 8, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
+    public static void syncUPointDiscount(Context context, ApiTask.TaskHandler taskHandler, String string, String string2, int n) {
+        HashMap<String, Object> hashMap = new HashMap<String, Object>(1);
+        hashMap.put("cpid", string);
+        hashMap.put("gameid", string2);
+        hashMap.put("u_money", n);
+        new ApiTask(context, 18, taskHandler, hashMap, "post").execute((Object[])new Void[0]);
     }
 }

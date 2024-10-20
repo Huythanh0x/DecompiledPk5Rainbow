@@ -1,69 +1,96 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  org.json.JSONException
+ *  org.json.JSONObject
+ */
 package com.uc.paymentsdk.network;
 
 import java.util.ArrayList;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/* loaded from: classes.dex */
 public class JSONParser {
-    public static ArrayList<String> parseAlipayOrder(String paramString) throws JSONException {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        int i = localJSONObject.getInt("resultCode");
-        if (1 != i) {
-            return null;
-        }
-        ArrayList localArrayList = new ArrayList(2);
-        localArrayList.add(localJSONObject.getString("alipayParam"));
-        localArrayList.add(localJSONObject.getString("orderNo"));
-        return localArrayList;
+    /*
+     * Enabled force condition propagation
+     */
+    public static ArrayList<String> parseAlipayOrder(String arrayList) throws JSONException {
+        JSONObject jSONObject = new JSONObject(arrayList);
+        if (1 != jSONObject.getInt("resultCode")) return null;
+        arrayList = new ArrayList<E>(2);
+        arrayList.add(jSONObject.getString("alipayParam"));
+        arrayList.add(jSONObject.getString("orderNo"));
+        return arrayList;
     }
 
-    public static int parseAlipayResult(String paramString) throws JSONException {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        return localJSONObject.getInt("resultCode");
+    public static int parseAlipayResult(String string) throws JSONException {
+        return new JSONObject(string).getInt("resultCode");
     }
 
-    public static int parseChargeG(String paramString) throws JSONException {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        return localJSONObject.getInt("resultCode");
-    }
+    /*
+     * Unable to fully structure code
+     */
+    public static String[] parseChargeChannel(String var0) throws JSONException {
+        block10: {
+            if (1 != (var0 = new JSONObject((String)var0)).getInt("resultCode")) break block10;
+            var3_1 = var0.getJSONArray("channels");
+            var0 = new String[var3_1.length()];
+            var1_2 = 0;
+            var2_3 = var3_1.length();
+            block5: while (true) {
+                if (var1_2 >= var2_3) lbl-1000:
+                // 2 sources
 
-    public static ArrayList<Integer> parseJifengquanAndGBalance(String paramString) throws JSONException {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        int i = localJSONObject.getInt("resultCode");
-        if (1 != i) {
-            return null;
-        }
-        ArrayList localArrayList = new ArrayList(2);
-        localArrayList.add(Integer.valueOf(localJSONObject.getInt("gVolume")));
-        localArrayList.add(Integer.valueOf(localJSONObject.getInt("gMoney")));
-        return localArrayList;
-    }
-
-    public static String[] parseChargeChannel(String paramString) throws JSONException {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        int i = localJSONObject.getInt("resultCode");
-        if (1 == i) {
-            JSONArray localJSONArray = localJSONObject.getJSONArray("channels");
-            String[] arrayOfString = new String[localJSONArray.length()];
-            int k = localJSONArray.length();
-            for (int j = 0; j < k; j++) {
-                int m = localJSONArray.getInt(j);
-                switch (m) {
-                    case 1:
-                        arrayOfString[j] = "alipay";
-                        break;
-                    case 2:
-                        arrayOfString[j] = "g";
-                        break;
-                    case 3:
-                        arrayOfString[j] = "phonecard";
-                        break;
+                {
+                    return var0;
                 }
+                switch (var3_1.getInt(var1_2)) lbl-1000:
+                // 3 sources
+
+                {
+                    default: lbl-1000:
+                    // 2 sources
+
+                    {
+                        while (true) {
+                            ++var1_2;
+                            continue block5;
+                            break;
+                        }
+                    }
+                    case 1: {
+                        var0[var1_2] = "alipay";
+                        ** GOTO lbl-1000
+                    }
+                    case 2: {
+                        var0[var1_2] = "g";
+                        ** GOTO lbl-1000
+                    }
+                    case 3: 
+                }
+                break;
             }
-            return arrayOfString;
+            var0[var1_2] = "phonecard";
+            ** while (true)
         }
-        return null;
+        var0 = null;
+        ** while (true)
+    }
+
+    public static int parseChargeG(String string) throws JSONException {
+        return new JSONObject(string).getInt("resultCode");
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public static ArrayList<Integer> parseJifengquanAndGBalance(String arrayList) throws JSONException {
+        JSONObject jSONObject = new JSONObject(arrayList);
+        if (1 != jSONObject.getInt("resultCode")) return null;
+        arrayList = new ArrayList<E>(2);
+        arrayList.add(jSONObject.getInt("gVolume"));
+        arrayList.add(jSONObject.getInt("gMoney"));
+        return arrayList;
     }
 }

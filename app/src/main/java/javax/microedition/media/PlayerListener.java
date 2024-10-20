@@ -1,6 +1,5 @@
 package javax.microedition.media;
 
-/* loaded from: classes.dex */
 public interface PlayerListener {
     public static final String CLOSED = "closed";
     public static final String DEVICE_AVAILABLE = "deviceAvailable";
@@ -12,5 +11,6 @@ public interface PlayerListener {
     public static final String STOPPED = "stopped";
     public static final String VOLUME_CHANGED = "volumeChanged";
 
-    void playerUpdate(Player player, String str, Object obj);
+    void playerUpdate(Player arg1, String arg2, Object arg3);
 }
+

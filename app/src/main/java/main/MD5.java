@@ -1,143 +1,139 @@
 package main;
 
-/* loaded from: classes.dex */
 public class MD5 {
-    String hex_chr = "0123456789abcdef";
+    String hex_chr;
+
+    public MD5() {
+        this.hex_chr = "0123456789abcdef";
+    }
+
+    private int add(int x, int y) {
+        return (x & 0x7FFFFFFF) + (0x7FFFFFFF & y) ^ x & 0x80000000 ^ y & 0x80000000;
+    }
+
+    public String calcMD5(String str) {
+        int[] arr_v = this.str2blks_MD5(str);
+        int a = 0x67452301;
+        int b = 0xEFCDAB89;
+        int c = 0x98BADCFE;
+        int d = 0x10325476;
+        for(int i = 0; i < arr_v.length; i += 16) {
+            int a = this.ff(a, b, c, d, arr_v[i], 7, -680876936);
+            int d = this.ff(d, a, b, c, arr_v[i + 1], 12, 0xE8C7B756);
+            int c = this.ff(c, d, a, b, arr_v[i + 2], 17, 0x242070DB);
+            int b = this.ff(b, c, d, a, arr_v[i + 3], 22, -1044525330);
+            int a = this.ff(a, b, c, d, arr_v[i + 4], 7, 0xF57C0FAF);
+            int d = this.ff(d, a, b, c, arr_v[i + 5], 12, 1200080426);
+            int c = this.ff(c, d, a, b, arr_v[i + 6], 17, 0xA8304613);
+            int b = this.ff(b, c, d, a, arr_v[i + 7], 22, 0xFD469501);
+            int a = this.ff(a, b, c, d, arr_v[i + 8], 7, 1770035416);
+            int d = this.ff(d, a, b, c, arr_v[i + 9], 12, 0x8B44F7AF);
+            int c = this.ff(c, d, a, b, arr_v[i + 10], 17, 0xFFFF5BB1);
+            int b = this.ff(b, c, d, a, arr_v[i + 11], 22, -1990404162);
+            int a = this.ff(a, b, c, d, arr_v[i + 12], 7, 1804603682);
+            int d = this.ff(d, a, b, c, arr_v[i + 13], 12, -40341101);
+            int c = this.ff(c, d, a, b, arr_v[i + 14], 17, -1502002290);
+            int b = this.ff(b, c, d, a, arr_v[i + 15], 22, 0x49B40821);
+            int a = this.gg(a, b, c, d, arr_v[i + 1], 5, -165796510);
+            int d = this.gg(d, a, b, c, arr_v[i + 6], 9, 0xC040B340);
+            int c = this.gg(c, d, a, b, arr_v[i + 11], 14, 0x265E5A51);
+            int b = this.gg(b, c, d, a, arr_v[i], 20, -373897302);
+            int a = this.gg(a, b, c, d, arr_v[i + 5], 5, 0xD62F105D);
+            int d = this.gg(d, a, b, c, arr_v[i + 10], 9, 38016083);
+            int c = this.gg(c, d, a, b, arr_v[i + 15], 14, 0xD8A1E681);
+            int b = this.gg(b, c, d, a, arr_v[i + 4], 20, 0xE7D3FBC8);
+            int a = this.gg(a, b, c, d, arr_v[i + 9], 5, 0x21E1CDE6);
+            int d = this.gg(d, a, b, c, arr_v[i + 14], 9, -1019803690);
+            int c = this.gg(c, d, a, b, arr_v[i + 3], 14, 0xF4D50D87);
+            int b = this.gg(b, c, d, a, arr_v[i + 8], 20, 1163531501);
+            int a = this.gg(a, b, c, d, arr_v[i + 13], 5, 0xA9E3E905);
+            int d = this.gg(d, a, b, c, arr_v[i + 2], 9, 0xFCEFA3F8);
+            int c = this.gg(c, d, a, b, arr_v[i + 7], 14, 0x676F02D9);
+            int b = this.gg(b, c, d, a, arr_v[i + 12], 20, -1926607734);
+            int a = this.hh(a, b, c, d, arr_v[i + 5], 4, 0xFFFA3942);
+            int d = this.hh(d, a, b, c, arr_v[i + 8], 11, 0x8771F681);
+            int c = this.hh(c, d, a, b, arr_v[i + 11], 16, 1839030562);
+            int b = this.hh(b, c, d, a, arr_v[i + 14], 23, 0xFDE5380C);
+            int a = this.hh(a, b, c, d, arr_v[i + 1], 4, -1530992060);
+            int d = this.hh(d, a, b, c, arr_v[i + 4], 11, 0x4BDECFA9);
+            int c = this.hh(c, d, a, b, arr_v[i + 7], 16, 0xF6BB4B60);
+            int b = this.hh(b, c, d, a, arr_v[i + 10], 23, -1094730640);
+            int a = this.hh(a, b, c, d, arr_v[i + 13], 4, 0x289B7EC6);
+            int d = this.hh(d, a, b, c, arr_v[i], 11, 0xEAA127FA);
+            int c = this.hh(c, d, a, b, arr_v[i + 3], 16, 0xD4EF3085);
+            int b = this.hh(b, c, d, a, arr_v[i + 6], 23, 0x4881D05);
+            int a = this.hh(a, b, c, d, arr_v[i + 9], 4, 0xD9D4D039);
+            int d = this.hh(d, a, b, c, arr_v[i + 12], 11, 0xE6DB99E5);
+            int c = this.hh(c, d, a, b, arr_v[i + 15], 16, 0x1FA27CF8);
+            int b = this.hh(b, c, d, a, arr_v[i + 2], 23, 0xC4AC5665);
+            int a = this.ii(a, b, c, d, arr_v[i], 6, -198630844);
+            int d = this.ii(d, a, b, c, arr_v[i + 7], 10, 0x432AFF97);
+            int c = this.ii(c, d, a, b, arr_v[i + 14], 15, -1416354905);
+            int b = this.ii(b, c, d, a, arr_v[i + 5], 21, 0xFC93A039);
+            int a = this.ii(a, b, c, d, arr_v[i + 12], 6, 1700485571);
+            int d = this.ii(d, a, b, c, arr_v[i + 3], 10, 0x8F0CCC92);
+            int c = this.ii(c, d, a, b, arr_v[i + 10], 15, 0xFFEFF47D);
+            int b = this.ii(b, c, d, a, arr_v[i + 1], 21, 0x85845DD1);
+            int a = this.ii(a, b, c, d, arr_v[i + 8], 6, 0x6FA87E4F);
+            int d = this.ii(d, a, b, c, arr_v[i + 15], 10, 0xFE2CE6E0);
+            int c = this.ii(c, d, a, b, arr_v[i + 6], 15, -1560198380);
+            int b = this.ii(b, c, d, a, arr_v[i + 13], 21, 0x4E0811A1);
+            int a = this.ii(a, b, c, d, arr_v[i + 4], 6, -145523070);
+            int d = this.ii(d, a, b, c, arr_v[i + 11], 10, -1120210379);
+            int c = this.ii(c, d, a, b, arr_v[i + 2], 15, 0x2AD7D2BB);
+            a = this.add(a, a);
+            b = this.add(this.ii(b, c, d, a, arr_v[i + 9], 21, 0xEB86D391), b);
+            c = this.add(c, c);
+            d = this.add(d, d);
+        }
+        return this.rhex(a) + this.rhex(b) + this.rhex(c) + this.rhex(d);
+    }
+
+    private int cmn(int q, int a, int b, int x, int s, int t) {
+        return this.add(this.rol(this.add(this.add(a, q), this.add(x, t)), s), b);
+    }
+
+    private int ff(int a, int b, int c, int d, int x, int s, int t) {
+        return this.cmn(~b & d | b & c, a, b, x, s, t);
+    }
+
+    private int gg(int a, int b, int c, int d, int x, int s, int t) {
+        return this.cmn(~d & c | b & d, a, b, x, s, t);
+    }
+
+    private int hh(int a, int b, int c, int d, int x, int s, int t) {
+        return this.cmn(b ^ c ^ d, a, b, x, s, t);
+    }
+
+    private int ii(int a, int b, int c, int d, int x, int s, int t) {
+        return this.cmn(c ^ (~d | b), a, b, x, s, t);
+    }
 
     private String rhex(int num) {
         String str = "";
-        for (int j = 0; j <= 3; j++) {
-            str = String.valueOf(str) + this.hex_chr.charAt((num >> ((j * 8) + 4)) & 15) + this.hex_chr.charAt((num >> (j * 8)) & 15);
+        for(int j = 0; j <= 3; ++j) {
+            str = String.valueOf(str) + this.hex_chr.charAt(num >> j * 8 + 4 & 15) + this.hex_chr.charAt(num >> j * 8 & 15);
         }
         return str;
     }
 
+    private int rol(int num, int cnt) {
+        return num << cnt | num >>> 0x20 - cnt;
+    }
+
     private int[] str2blks_MD5(String str) {
-        int nblk = ((str.length() + 8) >> 6) + 1;
+        int nblk = (str.length() + 8 >> 6) + 1;
         int[] blks = new int[nblk * 16];
-        for (int i = 0; i < nblk * 16; i++) {
+        for(int i = 0; i < nblk * 16; ++i) {
             blks[i] = 0;
         }
-        int i2 = 0;
-        while (i2 < str.length()) {
-            int i3 = i2 >> 2;
-            blks[i3] = blks[i3] | (str.charAt(i2) << ((i2 % 4) * 8));
-            i2++;
+        int i;
+        for(i = 0; i < str.length(); ++i) {
+            blks[i >> 2] |= str.charAt(i) << i % 4 * 8;
         }
-        int i4 = i2 >> 2;
-        blks[i4] = blks[i4] | (128 << ((i2 % 4) * 8));
-        blks[(nblk * 16) - 2] = str.length() * 8;
+        blks[i >> 2] |= 0x80 << i % 4 * 8;
+        blks[nblk * 16 - 2] = str.length() * 8;
         return blks;
     }
-
-    private int add(int x, int y) {
-        return (((x & Integer.MAX_VALUE) + (Integer.MAX_VALUE & y)) ^ (x & Integer.MIN_VALUE)) ^ (y & Integer.MIN_VALUE);
-    }
-
-    private int rol(int num, int cnt) {
-        return (num << cnt) | (num >>> (32 - cnt));
-    }
-
-    private int cmn(int q, int a, int b, int x, int s, int t) {
-        return add(rol(add(add(a, q), add(x, t)), s), b);
-    }
-
-    private int ff(int a, int b, int c, int d, int x, int s, int t) {
-        return cmn(((b ^ (-1)) & d) | (b & c), a, b, x, s, t);
-    }
-
-    private int gg(int a, int b, int c, int d, int x, int s, int t) {
-        return cmn(((d ^ (-1)) & c) | (b & d), a, b, x, s, t);
-    }
-
-    private int hh(int a, int b, int c, int d, int x, int s, int t) {
-        return cmn((b ^ c) ^ d, a, b, x, s, t);
-    }
-
-    private int ii(int a, int b, int c, int d, int x, int s, int t) {
-        return cmn(c ^ ((d ^ (-1)) | b), a, b, x, s, t);
-    }
-
-    public String calcMD5(String str) {
-        int[] x = str2blks_MD5(str);
-        int a = 1732584193;
-        int b = -271733879;
-        int c = -1732584194;
-        int d = 271733878;
-        for (int i = 0; i < x.length; i += 16) {
-            int olda = a;
-            int oldb = b;
-            int oldc = c;
-            int oldd = d;
-            int a2 = ff(a, b, c, d, x[i + 0], 7, -680876936);
-            int d2 = ff(d, a2, b, c, x[i + 1], 12, -389564586);
-            int c2 = ff(c, d2, a2, b, x[i + 2], 17, 606105819);
-            int b2 = ff(b, c2, d2, a2, x[i + 3], 22, -1044525330);
-            int a3 = ff(a2, b2, c2, d2, x[i + 4], 7, -176418897);
-            int d3 = ff(d2, a3, b2, c2, x[i + 5], 12, 1200080426);
-            int c3 = ff(c2, d3, a3, b2, x[i + 6], 17, -1473231341);
-            int b3 = ff(b2, c3, d3, a3, x[i + 7], 22, -45705983);
-            int a4 = ff(a3, b3, c3, d3, x[i + 8], 7, 1770035416);
-            int d4 = ff(d3, a4, b3, c3, x[i + 9], 12, -1958414417);
-            int c4 = ff(c3, d4, a4, b3, x[i + 10], 17, -42063);
-            int b4 = ff(b3, c4, d4, a4, x[i + 11], 22, -1990404162);
-            int a5 = ff(a4, b4, c4, d4, x[i + 12], 7, 1804603682);
-            int d5 = ff(d4, a5, b4, c4, x[i + 13], 12, -40341101);
-            int c5 = ff(c4, d5, a5, b4, x[i + 14], 17, -1502002290);
-            int b5 = ff(b4, c5, d5, a5, x[i + 15], 22, 1236535329);
-            int a6 = gg(a5, b5, c5, d5, x[i + 1], 5, -165796510);
-            int d6 = gg(d5, a6, b5, c5, x[i + 6], 9, -1069501632);
-            int c6 = gg(c5, d6, a6, b5, x[i + 11], 14, 643717713);
-            int b6 = gg(b5, c6, d6, a6, x[i + 0], 20, -373897302);
-            int a7 = gg(a6, b6, c6, d6, x[i + 5], 5, -701558691);
-            int d7 = gg(d6, a7, b6, c6, x[i + 10], 9, 38016083);
-            int c7 = gg(c6, d7, a7, b6, x[i + 15], 14, -660478335);
-            int b7 = gg(b6, c7, d7, a7, x[i + 4], 20, -405537848);
-            int a8 = gg(a7, b7, c7, d7, x[i + 9], 5, 568446438);
-            int d8 = gg(d7, a8, b7, c7, x[i + 14], 9, -1019803690);
-            int c8 = gg(c7, d8, a8, b7, x[i + 3], 14, -187363961);
-            int b8 = gg(b7, c8, d8, a8, x[i + 8], 20, 1163531501);
-            int a9 = gg(a8, b8, c8, d8, x[i + 13], 5, -1444681467);
-            int d9 = gg(d8, a9, b8, c8, x[i + 2], 9, -51403784);
-            int c9 = gg(c8, d9, a9, b8, x[i + 7], 14, 1735328473);
-            int b9 = gg(b8, c9, d9, a9, x[i + 12], 20, -1926607734);
-            int a10 = hh(a9, b9, c9, d9, x[i + 5], 4, -378558);
-            int d10 = hh(d9, a10, b9, c9, x[i + 8], 11, -2022574463);
-            int c10 = hh(c9, d10, a10, b9, x[i + 11], 16, 1839030562);
-            int b10 = hh(b9, c10, d10, a10, x[i + 14], 23, -35309556);
-            int a11 = hh(a10, b10, c10, d10, x[i + 1], 4, -1530992060);
-            int d11 = hh(d10, a11, b10, c10, x[i + 4], 11, 1272893353);
-            int c11 = hh(c10, d11, a11, b10, x[i + 7], 16, -155497632);
-            int b11 = hh(b10, c11, d11, a11, x[i + 10], 23, -1094730640);
-            int a12 = hh(a11, b11, c11, d11, x[i + 13], 4, 681279174);
-            int d12 = hh(d11, a12, b11, c11, x[i + 0], 11, -358537222);
-            int c12 = hh(c11, d12, a12, b11, x[i + 3], 16, -722521979);
-            int b12 = hh(b11, c12, d12, a12, x[i + 6], 23, 76029189);
-            int a13 = hh(a12, b12, c12, d12, x[i + 9], 4, -640364487);
-            int d13 = hh(d12, a13, b12, c12, x[i + 12], 11, -421815835);
-            int c13 = hh(c12, d13, a13, b12, x[i + 15], 16, 530742520);
-            int b13 = hh(b12, c13, d13, a13, x[i + 2], 23, -995338651);
-            int a14 = ii(a13, b13, c13, d13, x[i + 0], 6, -198630844);
-            int d14 = ii(d13, a14, b13, c13, x[i + 7], 10, 1126891415);
-            int c14 = ii(c13, d14, a14, b13, x[i + 14], 15, -1416354905);
-            int b14 = ii(b13, c14, d14, a14, x[i + 5], 21, -57434055);
-            int a15 = ii(a14, b14, c14, d14, x[i + 12], 6, 1700485571);
-            int d15 = ii(d14, a15, b14, c14, x[i + 3], 10, -1894986606);
-            int c15 = ii(c14, d15, a15, b14, x[i + 10], 15, -1051523);
-            int b15 = ii(b14, c15, d15, a15, x[i + 1], 21, -2054922799);
-            int a16 = ii(a15, b15, c15, d15, x[i + 8], 6, 1873313359);
-            int d16 = ii(d15, a16, b15, c15, x[i + 15], 10, -30611744);
-            int c16 = ii(c15, d16, a16, b15, x[i + 6], 15, -1560198380);
-            int b16 = ii(b15, c16, d16, a16, x[i + 13], 21, 1309151649);
-            int a17 = ii(a16, b16, c16, d16, x[i + 4], 6, -145523070);
-            int d17 = ii(d16, a17, b16, c16, x[i + 11], 10, -1120210379);
-            int c17 = ii(c16, d17, a17, b16, x[i + 2], 15, 718787259);
-            int b17 = ii(b16, c17, d17, a17, x[i + 9], 21, -343485551);
-            a = add(a17, olda);
-            b = add(b17, oldb);
-            c = add(c17, oldc);
-            d = add(d17, oldd);
-        }
-        return String.valueOf(rhex(a)) + rhex(b) + rhex(c) + rhex(d);
-    }
 }
+

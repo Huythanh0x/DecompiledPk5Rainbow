@@ -2,7 +2,6 @@ package com.uc.paymentsdk.util;
 
 import android.graphics.Color;
 
-/* loaded from: classes.dex */
 public class Constants {
     public static final int ACTION_ARRIVE_PAY_POINT = 9;
     public static final int ACTION_CHARGE_PHONECARD = 10;
@@ -19,15 +18,21 @@ public class Constants {
     public static final int ACTION_REGISTER = 1;
     public static final int ACTION_SYNC_CARD_INFO = 11;
     public static final int ACTION_SYNC_SMS_INFO = 7;
+    public static final String[] API_URLS = null;
     public static final String APPKEY = "ucgame_appkey";
     public static final int CHARGEMENT_DEFAULT = 10;
-    public static final long CHARGE_QUERY_RESULT_TIME = 3000;
+    public static final int CHARGE_ALIPAY_INPUT_LENGTH_MAX = 0;
+    public static final int CHARGE_G_INPUT_LENGTH_MAX = 0;
+    public static final long CHARGE_QUERY_RESULT_TIME = 3000L;
     public static final String CODE_KEY_PAY_AND_ACCOUNT = "sdk_mappn_201008";
-    public static final int COLOR_CHARGE_CHANGE_TYPE = -9716991;
+    public static final int COLOR_CHARGE_CHANGE_TYPE = 0xFF6BBB01;
     public static final int COLOR_ERROR_BACKGROUND = -7026460;
-    public static final int COLOR_LINK_TEXT = -24576;
-    public static final int COLOR_LISTVIEW_ITEM_BACKGROUND = -984326;
-    public static final int COLOR_PRESSED = -19456;
+    public static final int COLOR_LINK_TEXT = 0xFFFFA000;
+    public static final int COLOR_LISTVIEW_ITEM_BACKGROUND = 0xFFF0FAFA;
+    public static final int COLOR_PRESSED = 0xFFFFB400;
+    public static final int COLOR_SUBTITLE_BACKGROUND1 = 0;
+    public static final int COLOR_SUBTITLE_BACKGROUND2 = 0;
+    public static final int COLOR_TITLE_BACKGROUND = 0;
     public static final String CPID = "ucgame_cpid";
     public static final String CPID_PATTERN = "^[0-9a-zA-Z]{1,10}$";
     public static final int CUSTOM_TEXTVIEW_HEIGHT = 53;
@@ -54,20 +59,20 @@ public class Constants {
     public static final int ERROR_CODE_APPKEY_WRONG = 426;
     public static final int ERROR_CODE_ARG_OUT_OF_SCROPE = 425;
     public static final int ERROR_CODE_CHANEL_NOT_EXIST = 424;
-    public static final int ERROR_CODE_EMAIL_HAVE_EXIST = 216;
-    public static final int ERROR_CODE_EMAIL_WRONG_FORMAT = 215;
-    public static final int ERROR_CODE_INSUFFICIENT_BALANCE = 219;
+    public static final int ERROR_CODE_EMAIL_HAVE_EXIST = 0xD8;
+    public static final int ERROR_CODE_EMAIL_WRONG_FORMAT = 0xD7;
+    public static final int ERROR_CODE_INSUFFICIENT_BALANCE = 0xDB;
     public static final int ERROR_CODE_NETWORK = -1;
     public static final int ERROR_CODE_PARSER = -2;
-    public static final int ERROR_CODE_PASSWORD_INVALIDATE = 217;
-    public static final int ERROR_CODE_PASSWORD_WRONG = 212;
-    public static final int ERROR_CODE_PAY_FAILED = 218;
+    public static final int ERROR_CODE_PASSWORD_INVALIDATE = 0xD9;
+    public static final int ERROR_CODE_PASSWORD_WRONG = 0xD4;
+    public static final int ERROR_CODE_PAY_FAILED = 0xDA;
     public static final int ERROR_CODE_REQUEST_DECODE_FAILED = 427;
     public static final int ERROR_CODE_UNKNOWN = 500;
     public static final int ERROR_CODE_USERAGENT_PARAM_EMPTY = 421;
-    public static final int ERROR_CODE_USERNAME_HAVE_EXIST = 214;
-    public static final int ERROR_CODE_USERNAME_INVALIDATE = 213;
-    public static final int ERROR_CODE_USERNAME_NOT_EXIST = 211;
+    public static final int ERROR_CODE_USERNAME_HAVE_EXIST = 0xD6;
+    public static final int ERROR_CODE_USERNAME_INVALIDATE = 0xD5;
+    public static final int ERROR_CODE_USERNAME_NOT_EXIST = 0xD3;
     public static final int ERROR_CODE_XML_PARSE_FAILED = 422;
     public static final int ERROR_CODE_XML_PARSE_FAILED2 = 423;
     public static final String ERROR_INVALID_ACCOUNT = "用户名或密码错误。";
@@ -138,7 +143,7 @@ public class Constants {
     public static final String TEXT_INSUFFENT_BALANCE = "余额不足";
     public static final String TEXT_INSUFFENT_BALANCE2 = "欠费";
     public static final String TEXT_NOT_DELETE = "不删";
-    public static final String TEXT_PAY_SMS_BACK_CONFIRM = "购买确认短信未删除，如需购买请再次发送短信或采用其他支付方式，<font color='red'>请勿到短信收件箱进行回复</font>，谢谢！";
+    public static final String TEXT_PAY_SMS_BACK_CONFIRM = "购买确认短信未删除，如需购买请再次发送短信或采用其他支付方式，<font color=\'red\'>请勿到短信收件箱进行回复</font>，谢谢！";
     public static final String TEXT_PAY_SMS_CHANCEL_CONFIRM = "您已经支付过【%d】元短信，现在取消发送将不能成功购买【%s】。如取消发送已付金额不会返还，只能计算到您下次购买【%s】中。请再次确认是否取消这次支付？";
     public static final String TEXT_PAY_SMS_CONFIRM_INDEXOF = "，";
     public static final String TEXT_PAY_SMS_CONFRIM_RESULT_CONTAIN = "通信账户支付";
@@ -150,10 +155,14 @@ public class Constants {
     public static final String TEXT_PAY_SMS_FAILED_INSUFFENT_BALANCE = "余额不足，支付失败";
     public static final int TEXT_SIZE = 16;
     public static final String VERSION = "2.3.2";
-    public static final String[] API_URLS = {"http://g2.uc.cn/ucgame/charge/login", "http://g2.uc.cn/ucgame/charge/register", "http://g2.uc.cn/ucgame/charge/check_username", "http://g2.uc.cn/ucgame/charge/charge_umoney", "http://g2.uc.cn/ucgame/charge/charge_umoney", "http://g2.uc.cn/ucgame/charge/sdkConfirm", "http://g2.uc.cn/ucgame/charge/getPayType", "http://g2.uc.cn/ucgame/charge/update_sms", "http://g2.uc.cn/ucgame/charge/getClientMessagePay", "http://g2.uc.cn/ucgame/charge/sdkPayPointArrive", "http://g2.uc.cn/ucgame/charge/rechargeRequest", "http://g2.uc.cn/ucgame/charge/getCardConfigServlet", "http://g2.uc.cn/ucgame/charge/queryServlet", "http://g2.uc.cn/ucgame/charge/businessProcess.do", "http://g2.uc.cn/ucgame/charge/businessProcess.do", "http://g2.uc.cn/ucgame/charge/businessProcess.do", "http://g2.uc.cn/ucgame/charge/businessProcess.do", "http://g2.uc.cn/ucgame/charge/businessProcess", "http://g2.uc.cn/ucgame/charge/gain_discount"};
-    public static final int COLOR_TITLE_BACKGROUND = Color.parseColor("#FF8B4B3C");
-    public static final int COLOR_SUBTITLE_BACKGROUND1 = Color.parseColor("#FFFFB546");
-    public static final int COLOR_SUBTITLE_BACKGROUND2 = Color.parseColor("#FFFF6633");
-    public static final int CHARGE_ALIPAY_INPUT_LENGTH_MAX = (int) Math.log10(10000.0d);
-    public static final int CHARGE_G_INPUT_LENGTH_MAX = CHARGE_ALIPAY_INPUT_LENGTH_MAX + 1;
+
+    static {
+        Constants.API_URLS = new String[]{"http://g2.uc.cn/ucgame/charge/login", "http://g2.uc.cn/ucgame/charge/register", "http://g2.uc.cn/ucgame/charge/check_username", "http://g2.uc.cn/ucgame/charge/charge_umoney", "http://g2.uc.cn/ucgame/charge/charge_umoney", "http://g2.uc.cn/ucgame/charge/sdkConfirm", "http://g2.uc.cn/ucgame/charge/getPayType", "http://g2.uc.cn/ucgame/charge/update_sms", "http://g2.uc.cn/ucgame/charge/getClientMessagePay", "http://g2.uc.cn/ucgame/charge/sdkPayPointArrive", "http://g2.uc.cn/ucgame/charge/rechargeRequest", "http://g2.uc.cn/ucgame/charge/getCardConfigServlet", "http://g2.uc.cn/ucgame/charge/queryServlet", "http://g2.uc.cn/ucgame/charge/businessProcess.do", "http://g2.uc.cn/ucgame/charge/businessProcess.do", "http://g2.uc.cn/ucgame/charge/businessProcess.do", "http://g2.uc.cn/ucgame/charge/businessProcess.do", "http://g2.uc.cn/ucgame/charge/businessProcess", "http://g2.uc.cn/ucgame/charge/gain_discount"};
+        Constants.COLOR_TITLE_BACKGROUND = Color.parseColor("#FF8B4B3C");
+        Constants.COLOR_SUBTITLE_BACKGROUND1 = Color.parseColor("#FFFFB546");
+        Constants.COLOR_SUBTITLE_BACKGROUND2 = Color.parseColor("#FFFF6633");
+        Constants.CHARGE_ALIPAY_INPUT_LENGTH_MAX = 4;
+        Constants.CHARGE_G_INPUT_LENGTH_MAX = Constants.CHARGE_ALIPAY_INPUT_LENGTH_MAX + 1;
+    }
 }
+

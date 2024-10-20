@@ -1,8 +1,7 @@
 package javax.microedition.media;
 
-/* loaded from: classes.dex */
 public class MediaException extends Exception {
-    private static final long serialVersionUID = 1;
+    private static final long serialVersionUID = 1L;
 
     public MediaException() {
     }
@@ -11,3 +10,4 @@ public class MediaException extends Exception {
         super(s);
     }
 }
+

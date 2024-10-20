@@ -3,7 +3,6 @@ package com.nokia.mid.ui;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 
-/* loaded from: classes.dex */
 public class DirectUtils {
     private static DirectGraphics dg;
 
@@ -12,8 +11,9 @@ public class DirectUtils {
     }
 
     public static DirectGraphics getDirectGraphics(Graphics g) {
-        dg = new DirectGraphics();
-        dg.g = g;
-        return dg;
+        DirectUtils.dg = new DirectGraphics();
+        DirectUtils.dg.g = g;
+        return DirectUtils.dg;
     }
 }
+

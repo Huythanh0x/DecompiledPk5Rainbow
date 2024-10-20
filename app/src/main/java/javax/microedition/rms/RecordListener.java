@@ -1,10 +1,10 @@
 package javax.microedition.rms;
 
-/* loaded from: classes.dex */
 public interface RecordListener {
-    void recordAdded(RecordStore recordStore, int i);
+    void recordAdded(RecordStore arg1, int arg2);
 
-    void recordChanged(RecordStore recordStore, int i);
+    void recordChanged(RecordStore arg1, int arg2);
 
-    void recordDeleted(RecordStore recordStore, int i);
+    void recordDeleted(RecordStore arg1, int arg2);
 }
+

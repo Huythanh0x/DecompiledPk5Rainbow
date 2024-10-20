@@ -2,9 +2,7 @@ package main;
 
 import android.util.DisplayMetrics;
 import javax.microedition.lcdui.CwaActivity;
-import javax.microedition.media.Player;
 
-/* loaded from: classes.dex */
 public class Constants_H {
     public static final byte ABOUT_BUTTON = 4;
     public static final byte ABOUT_MENU = 5;
@@ -44,7 +42,7 @@ public class Constants_H {
     public static final byte BATTLE_HIT = -2;
     public static final byte BATTLE_NUM = 2;
     public static final byte BATTLE_OVER = -15;
-    public static final byte BATTLE_STATE = -31;
+    public static final byte BATTLE_STATE = (byte)0xE1;
     public static final String BATTLE_TXT_0 = "攻击";
     public static final String BATTLE_TXT_1 = "道具";
     public static final String BATTLE_TXT_10 = "需要的技能值不够！";
@@ -116,7 +114,7 @@ public class Constants_H {
     public static final short ENEMY_X = 377;
     public static final byte ENEMY_Y = 97;
     public static final byte ENMON = 0;
-    public static final byte EVOLVE_MAGIC = 31;
+    public static final byte EVOLVE_MAGIC = 0x1F;
     public static final byte EXIT_BUTTON = 5;
     public static final byte EXPUP = 8;
     public static final byte FACE_DOWN = 2;
@@ -135,7 +133,7 @@ public class Constants_H {
     public static final byte FRAME_CHANGE_C = 0;
     public static final byte FRAME_MAX = 1;
     public static final byte FW = 19;
-    public static final int GAME_ERROR = 9999;
+    public static final int GAME_ERROR = 0x270F;
     public static final byte GAME_EXIT = 101;
     public static final byte GAME_FLASH = 11;
     public static final byte GAME_INIT = 10;
@@ -206,6 +204,7 @@ public class Constants_H {
     public static final byte HCELL_HEIGHT = 10;
     public static final byte HCELL_WIDTH = 10;
     public static final byte HEAL_MAP = 16;
+    public static int HEIGHT = 0;
     public static final int HEIGHT_ = 360;
     public static int HEIGHT_H = 0;
     public static final int HEIGHT_H_ = 180;
@@ -261,7 +260,7 @@ public class Constants_H {
     public static final byte MASTERY = 7;
     public static final byte MASTERY_ = 3;
     public static final byte MAX_LEVEL = 60;
-    public static final byte MAX_MONSTERS = 95;
+    public static final byte MAX_MONSTERS = 0x5F;
     public static final byte MAX_TAKES = 5;
     public static final byte MEET_DOOR = 5;
     public static final byte MEET_ITEM = 3;
@@ -320,7 +319,7 @@ public class Constants_H {
     public static final byte MONSTER_INFO = 67;
     public static final byte MONSTER_KIND = 4;
     public static final byte MONSTER_LEVEL = 2;
-    public static final byte MONSTER_LEVELUP = -32;
+    public static final byte MONSTER_LEVELUP = (byte)0xE0;
     public static final byte MONSTER_LEVEL_MAX = 60;
     public static final byte MONSTER_MAX_HP = 2;
     public static final byte MONSTER_MAX_MP = 3;
@@ -336,8 +335,8 @@ public class Constants_H {
     public static final byte MONSTER_SKILL_5 = 13;
     public static final byte MONSTER_SKILL_6 = 14;
     public static final byte MONSTER_SKILL_7 = 15;
-    public static final short MONSTER_X = 248;
-    public static final byte MONSTER_Y = 111;
+    public static final short MONSTER_X = 0xF8;
+    public static final byte MONSTER_Y = 0x6F;
     public static final byte MON_NUM = 102;
     public static final byte MOVE = 0;
     public static final byte MOVE_DOWN = 3;
@@ -362,8 +361,8 @@ public class Constants_H {
     public static final byte MY_THROW = 8;
     public static final byte MY_TRUNK = 27;
     public static final byte MY_TRUNK_1 = 26;
-    public static final short MY_X = 266;
-    public static final short MY_Y = 236;
+    public static final short MY_X = 0x10A;
+    public static final short MY_Y = 0xEC;
     public static final byte M_HEIGHT = 19;
     public static final byte M_LENGTH = 8;
     public static final byte M_TYPE = 3;
@@ -398,7 +397,9 @@ public class Constants_H {
     public static final byte NPC_TYPE_NIDUS = 1;
     public static final byte NPC_TYPE_SHADOW = 2;
     public static final byte NPC_TYPE_SHADOW0 = 3;
+    public static final int OFF_HEIGHT = 0;
     public static final int OFF_HEIGHT_ = 380;
+    public static final int OFF_WIDTH = 0;
     public static final int OFF_WIDTH_ = 660;
     public static final byte OPTION_BUTTON = 2;
     public static final byte OVER = 100;
@@ -482,8 +483,9 @@ public class Constants_H {
     public static final byte RUN_IN_MAP = -10;
     public static final byte RUN_LEVEL_UP = 20;
     public static final byte SAVEING = 100;
-    public static final short SCREEN_Y = 252;
-    public static final short SECOND_ROW = 188;
+    public static final short SCREEN_X = 0;
+    public static final short SCREEN_Y = 0xFC;
+    public static final short SECOND_ROW = 0xBC;
     public static final byte SEC_SKILL = 3;
     public static final byte SEE_MONSTER = 55;
     public static final byte SELECT_ACTION = -70;
@@ -503,9 +505,9 @@ public class Constants_H {
     public static final byte SMS_PAUSE = -20;
     public static final String SMS_TXT_0 = "购买8000金#n购买80000金#n购买10徽章#n购买50徽章#n宠物升级#n购买神龟#n正版验证#n战斗复活#n短信商城";
     public static final byte SOUND_SET_MENU = 3;
-    public static final int SRC_BATTLE_H;
-    public static final int SRC_BATTLE_H_ = 196;
-    public static final int SRC_BATTLE_H__;
+    public static final int SRC_BATTLE_H = 0;
+    public static final int SRC_BATTLE_H_ = 0xC4;
+    public static final int SRC_BATTLE_H__ = 0;
     public static final byte STINGING = 3;
     public static final byte STONE = 5;
     public static final byte STOP_DOWN = 0;
@@ -645,6 +647,7 @@ public class Constants_H {
     public static final byte VIEW_NIDUS = 66;
     public static final byte WALK = 0;
     public static final byte WATER = 2;
+    public static int WIDTH = 0;
     public static final int WIDTH_ = 640;
     public static int WIDTH_H = 0;
     public static final int WIDTH_H_ = 320;
@@ -656,432 +659,169 @@ public class Constants_H {
     public static final byte _BROW = 6;
     public static final byte _SHOW = 4;
     public static final byte sellPrice = 10;
-
-    /* renamed from: 万能药 */
-    public static final byte f0 = 8;
-
-    /* renamed from: 五彩果实 */
-    public static final byte f1 = 27;
-
-    /* renamed from: 亲和天使 */
-    public static final byte f2 = 41;
-
-    /* renamed from: 健壮体魄 */
-    public static final byte f3 = 2;
-
-    /* renamed from: 兴奋菇 */
-    public static final byte f4 = 12;
-
-    /* renamed from: 兽魂 */
-    public static final byte f5 = 17;
-
-    /* renamed from: 军心涣散 */
-    public static final byte f6 = 26;
-
-    /* renamed from: 初级治疗 */
-    public static final byte f7 = 27;
-
-    /* renamed from: 动作攻击 */
-    public static final byte f8 = 1;
-
-    /* renamed from: 动作死亡 */
-    public static final byte f9 = 2;
-
-    /* renamed from: 动作站立 */
-    public static final byte f10 = 0;
-
-    /* renamed from: 卖出 */
-    public static final byte f11 = 4;
-
-    /* renamed from: 古鲸之心 */
-    public static final byte f12 = 29;
-
-    /* renamed from: 和谐攻击 */
-    public static final byte f13 = 9;
-
-    /* renamed from: 噬魂 */
-    public static final byte f14 = 20;
-
-    /* renamed from: 圣灵宽恕 */
-    public static final byte f15 = 13;
-
-    /* renamed from: 地狱之火 */
-    public static final byte f16 = 22;
-
-    /* renamed from: 坐船 */
-    public static final byte f17 = 5;
-
-    /* renamed from: 坚韧石 */
-    public static final byte f18 = 16;
-
-    /* renamed from: 大师球 */
-    public static final byte f19 = 11;
-
-    /* renamed from: 大海意志 */
-    public static final byte f20 = 47;
-
-    /* renamed from: 天怒 */
-    public static final byte f21 = 14;
-
-    /* renamed from: 天空意志 */
-    public static final byte f22 = 45;
-
-    /* renamed from: 天羽 */
-    public static final byte f23 = 23;
-
-    /* renamed from: 学习技能 */
-    public static final byte f24 = 35;
-
-    /* renamed from: 宝箱 */
-    public static final byte f25 = 32;
-
-    /* renamed from: 宠物的蛋 */
-    public static final byte f26 = 3;
-
-    /* renamed from: 宠物蛋 */
-    public static final byte f27 = 58;
-
-    /* renamed from: 封印球 */
-    public static final byte f28 = 9;
-
-    /* renamed from: 封闭技能 */
-    public static final byte f29 = 30;
-
-    /* renamed from: 封闭效果 */
-    public static final byte f30 = 6;
-
-    /* renamed from: 尖牙利齿 */
-    public static final byte f31 = 32;
-
-    /* renamed from: 巧克力 */
-    public static final byte f32 = 2;
-
-    /* renamed from: 幸运之星 */
-    public static final byte f33 = 39;
-
-    /* renamed from: 异化材料 */
-    public static final byte f34 = 34;
-
-    /* renamed from: 忠诚伙伴 */
-    public static final byte f35 = 40;
-
-    /* renamed from: 怒意狂暴 */
-    public static final byte f36 = 17;
-
-    /* renamed from: 意志坚定 */
-    public static final byte f37 = 8;
-
-    /* renamed from: 意志涣散 */
-    public static final byte f38 = 7;
-
-    /* renamed from: 战斗店 */
-    public static final byte f39 = 0;
-
-    /* renamed from: 战斗道具 */
-    public static final byte f40 = 0;
-
-    /* renamed from: 扑咬 */
-    public static final byte f41 = 15;
-
-    /* renamed from: 技能卷轴 */
-    public static final byte f42 = 2;
-
-    /* renamed from: 撕裂击 */
-    public static final byte f43 = 16;
-
-    /* renamed from: 撕裂效果 */
-    public static final byte f44 = 2;
-
-    /* renamed from: 无效果 */
-    public static final byte f45 = 7;
-
-    /* renamed from: 昏睡效果 */
-    public static final byte f46 = 1;
-
-    /* renamed from: 普通攻击 */
-    public static final byte f47 = 25;
-
-    /* renamed from: 暴风旋阵 */
-    public static final byte f48 = 11;
-
-    /* renamed from: 替身木偶 */
-    public static final byte f49 = 48;
-
-    /* renamed from: 朱果 */
-    public static final byte f50 = 19;
-
-    /* renamed from: 枯黄枝叶 */
-    public static final byte f51 = 3;
-
-    /* renamed from: 树瘴石 */
-    public static final byte f52 = 18;
-
-    /* renamed from: 树神之怒 */
-    public static final byte f53 = 4;
-
-    /* renamed from: 植物 */
-    public static final byte f54 = 0;
-
-    /* renamed from: 死亡之触 */
-    public static final byte f55 = 29;
-
-    /* renamed from: 残忍攻击 */
-    public static final byte f56 = 10;
-
-    /* renamed from: 毒液攻击 */
-    public static final byte f57 = 31;
-
-    /* renamed from: 水泡 */
-    public static final byte f58 = 20;
-
-    /* renamed from: 没有天赋 */
-    public static final byte f59 = 0;
-
-    /* renamed from: 浑浊水质 */
-    public static final byte f60 = 11;
-
-    /* renamed from: 海洋 */
-    public static final byte f61 = 4;
-
-    /* renamed from: 深海珊瑚 */
-    public static final byte f62 = 21;
-
-    /* renamed from: 熊之铠甲 */
-    public static final byte f63 = 26;
-
-    /* renamed from: 特殊 */
-    public static final byte f64 = 5;
-
-    /* renamed from: 狂暴嘶吼 */
-    public static final byte f65 = 19;
-
-    /* renamed from: 猛砸 */
-    public static final byte f66 = 5;
-
-    /* renamed from: 生命石 */
-    public static final byte f67 = 7;
-
-    /* renamed from: 疾风速降 */
-    public static final byte f68 = 12;
-
-    /* renamed from: 白金 */
-    public static final byte f69 = 25;
-
-    /* renamed from: 石化效果 */
-    public static final byte f70 = 0;
-
-    /* renamed from: 破碎外壳 */
-    public static final byte f71 = 5;
-
-    /* renamed from: 禁锢效果 */
-    public static final byte f72 = 4;
-
-    /* renamed from: 离空石 */
-    public static final byte f73 = 22;
-
-    /* renamed from: 粉碎螺旋 */
-    public static final byte f74 = 8;
-
-    /* renamed from: 精原石 */
-    public static final byte f75 = 24;
-
-    /* renamed from: 精神攻击 */
-    public static final byte f76 = 34;
-
-    /* renamed from: 纯净水质 */
-    public static final byte f77 = 12;
-
-    /* renamed from: 经验丰富 */
-    public static final byte f78 = 37;
-
-    /* renamed from: 经验多多 */
-    public static final byte f79 = 36;
-
-    /* renamed from: 缠绕 */
-    public static final byte f80 = 0;
-
-    /* renamed from: 聚能石 */
-    public static final byte f81 = 4;
-
-    /* renamed from: 肆虐冲锋 */
-    public static final byte f82 = 18;
-
-    /* renamed from: 能量壁垒 */
-    public static final byte f83 = 35;
-
-    /* renamed from: 能量石 */
-    public static final byte f84 = 3;
-
-    /* renamed from: 腐蚀效果 */
-    public static final byte f85 = 5;
-
-    /* renamed from: 自然康复 */
-    public static final byte f86 = 4;
-
-    /* renamed from: 自然风暴 */
-    public static final byte f87 = 3;
-
-    /* renamed from: 花粉纷飞 */
-    public static final byte f88 = 1;
-
-    /* renamed from: 花草意志 */
-    public static final byte f89 = 43;
-
-    /* renamed from: 荆棘陷阱 */
-    public static final byte f90 = 2;
-
-    /* renamed from: 虎之气概 */
-    public static final byte f91 = 30;
-
-    /* renamed from: 虚弱体魄 */
-    public static final byte f92 = 1;
-
-    /* renamed from: 蜜心糖 */
-    public static final byte f93 = 13;
-
-    /* renamed from: 训练店 */
-    public static final byte f94 = 2;
-
-    /* renamed from: 辅助店 */
-    public static final byte f95 = 1;
-
-    /* renamed from: 辅助道具 */
-    public static final byte f96 = 1;
-
-    /* renamed from: 逃命专家 */
-    public static final byte f97 = 42;
-
-    /* renamed from: 避怪丸 */
-    public static final byte f98 = 14;
-
-    /* renamed from: 重生之心 */
-    public static final byte f99 = 38;
-
-    /* renamed from: 野兽 */
-    public static final byte f100 = 3;
-
-    /* renamed from: 野兽意志 */
-    public static final byte f101 = 44;
-
-    /* renamed from: 金之辉耀 */
-    public static final byte f102 = 31;
-
-    /* renamed from: 金属 */
-    public static final byte f103 = 1;
-
-    /* renamed from: 金属外壳 */
-    public static final byte f104 = 6;
-
-    /* renamed from: 金属意志 */
-    public static final byte f105 = 46;
-
-    /* renamed from: 钢筋铁骨 */
-    public static final byte f106 = 33;
-
-    /* renamed from: 钥匙 */
-    public static final byte f107 = 33;
-
-    /* renamed from: 铁水浇灌 */
-    public static final byte f108 = 7;
-
-    /* renamed from: 铁浮屠 */
-    public static final byte f109 = 6;
-
-    /* renamed from: 银杏果 */
-    public static final byte f110 = 5;
-
-    /* renamed from: 随身店 */
-    public static final byte f111 = 3;
-
-    /* renamed from: 霸皇战意 */
-    public static final byte f112 = 9;
-
-    /* renamed from: 飞翔斩 */
-    public static final byte f113 = 10;
-
-    /* renamed from: 飞行 */
-    public static final byte f114 = 2;
-
-    /* renamed from: 饮料 */
-    public static final byte f115 = 0;
-
-    /* renamed from: 饼干 */
-    public static final byte f116 = 1;
-
-    /* renamed from: 香水 */
-    public static final byte f117 = 15;
-
-    /* renamed from: 骑宠无 */
-    public static final byte f118 = -1;
-
-    /* renamed from: 骑宠植物 */
-    public static final byte f119 = 0;
-
-    /* renamed from: 骑宠水生 */
-    public static final byte f120 = 4;
-
-    /* renamed from: 骑宠野兽 */
-    public static final byte f121 = 3;
-
-    /* renamed from: 骑宠金属 */
-    public static final byte f122 = 1;
-
-    /* renamed from: 骑宠飞行 */
-    public static final byte f123 = 2;
-
-    /* renamed from: 高级治疗 */
-    public static final byte f124 = 28;
-
-    /* renamed from: 高级球 */
-    public static final byte f125 = 10;
-
-    /* renamed from: 魅惑效果 */
-    public static final byte f126 = 3;
-
-    /* renamed from: 黄金果实 */
-    public static final byte f127 = 28;
-
-    /* renamed from: 黄金糖 */
-    public static final byte f128 = 6;
-
-    /* renamed from: 黯之罪罚 */
-    public static final byte f129 = 23;
-
-    /* renamed from: 黯灭波 */
-    public static final byte f130 = 21;
-
-    /* renamed from: 黯魔素身 */
-    public static final byte f131 = 24;
-    public static int WIDTH = Player.STARTED;
-    public static int HEIGHT = 240;
-    public static final short SCREEN_X = (short) WIDTH;
-    public static final int OFF_WIDTH = WIDTH + 20;
-    public static final int OFF_HEIGHT = HEIGHT + 20;
+    public static final byte 万能药 = 8;
+    public static final byte 五彩果实 = 27;
+    public static final byte 亲和天使 = 41;
+    public static final byte 健壮体魄 = 2;
+    public static final byte 兴奋菇 = 12;
+    public static final byte 兽魂 = 17;
+    public static final byte 军心涣散 = 26;
+    public static final byte 初级治疗 = 27;
+    public static final byte 动作攻击 = 1;
+    public static final byte 动作死亡 = 2;
+    public static final byte 动作站立 = 0;
+    public static final byte 卖出 = 4;
+    public static final byte 古鲸之心 = 29;
+    public static final byte 和谐攻击 = 9;
+    public static final byte 噬魂 = 20;
+    public static final byte 圣灵宽恕 = 13;
+    public static final byte 地狱之火 = 22;
+    public static final byte 坐船 = 5;
+    public static final byte 坚韧石 = 16;
+    public static final byte 大师球 = 11;
+    public static final byte 大海意志 = 0x2F;
+    public static final byte 天怒 = 14;
+    public static final byte 天空意志 = 45;
+    public static final byte 天羽 = 23;
+    public static final byte 学习技能 = 35;
+    public static final byte 宝箱 = 0x20;
+    public static final byte 宠物的蛋 = 3;
+    public static final byte 宠物蛋 = 58;
+    public static final byte 封印球 = 9;
+    public static final byte 封闭技能 = 30;
+    public static final byte 封闭效果 = 6;
+    public static final byte 尖牙利齿 = 0x20;
+    public static final byte 巧克力 = 2;
+    public static final byte 幸运之星 = 39;
+    public static final byte 异化材料 = 34;
+    public static final byte 忠诚伙伴 = 40;
+    public static final byte 怒意狂暴 = 17;
+    public static final byte 意志坚定 = 8;
+    public static final byte 意志涣散 = 7;
+    public static final byte 战斗店 = 0;
+    public static final byte 战斗道具 = 0;
+    public static final byte 扑咬 = 15;
+    public static final byte 技能卷轴 = 2;
+    public static final byte 撕裂击 = 16;
+    public static final byte 撕裂效果 = 2;
+    public static final byte 无效果 = 7;
+    public static final byte 昏睡效果 = 1;
+    public static final byte 普通攻击 = 25;
+    public static final byte 暴风旋阵 = 11;
+    public static final byte 替身木偶 = 0x30;
+    public static final byte 朱果 = 19;
+    public static final byte 枯黄枝叶 = 3;
+    public static final byte 树瘴石 = 18;
+    public static final byte 树神之怒 = 4;
+    public static final byte 植物 = 0;
+    public static final byte 死亡之触 = 29;
+    public static final byte 残忍攻击 = 10;
+    public static final byte 毒液攻击 = 0x1F;
+    public static final byte 水泡 = 20;
+    public static final byte 没有天赋 = 0;
+    public static final byte 浑浊水质 = 11;
+    public static final byte 海洋 = 4;
+    public static final byte 深海珊瑚 = 21;
+    public static final byte 熊之铠甲 = 26;
+    public static final byte 特殊 = 5;
+    public static final byte 狂暴嘶吼 = 19;
+    public static final byte 猛砸 = 5;
+    public static final byte 生命石 = 7;
+    public static final byte 疾风速降 = 12;
+    public static final byte 白金 = 25;
+    public static final byte 石化效果 = 0;
+    public static final byte 破碎外壳 = 5;
+    public static final byte 禁锢效果 = 4;
+    public static final byte 离空石 = 22;
+    public static final byte 粉碎螺旋 = 8;
+    public static final byte 精原石 = 24;
+    public static final byte 精神攻击 = 34;
+    public static final byte 纯净水质 = 12;
+    public static final byte 经验丰富 = 37;
+    public static final byte 经验多多 = 36;
+    public static final byte 缠绕 = 0;
+    public static final byte 聚能石 = 4;
+    public static final byte 肆虐冲锋 = 18;
+    public static final byte 能量壁垒 = 35;
+    public static final byte 能量石 = 3;
+    public static final byte 腐蚀效果 = 5;
+    public static final byte 自然康复 = 4;
+    public static final byte 自然风暴 = 3;
+    public static final byte 花粉纷飞 = 1;
+    public static final byte 花草意志 = 43;
+    public static final byte 荆棘陷阱 = 2;
+    public static final byte 虎之气概 = 30;
+    public static final byte 虚弱体魄 = 1;
+    public static final byte 蜜心糖 = 13;
+    public static final byte 训练店 = 2;
+    public static final byte 辅助店 = 1;
+    public static final byte 辅助道具 = 1;
+    public static final byte 逃命专家 = 42;
+    public static final byte 避怪丸 = 14;
+    public static final byte 重生之心 = 38;
+    public static final byte 野兽 = 3;
+    public static final byte 野兽意志 = 44;
+    public static final byte 金之辉耀 = 0x1F;
+    public static final byte 金属 = 1;
+    public static final byte 金属外壳 = 6;
+    public static final byte 金属意志 = 46;
+    public static final byte 钢筋铁骨 = 33;
+    public static final byte 钥匙 = 33;
+    public static final byte 铁水浇灌 = 7;
+    public static final byte 铁浮屠 = 6;
+    public static final byte 银杏果 = 5;
+    public static final byte 随身店 = 3;
+    public static final byte 霸皇战意 = 9;
+    public static final byte 飞翔斩 = 10;
+    public static final byte 飞行 = 2;
+    public static final byte 饮料 = 0;
+    public static final byte 饼干 = 1;
+    public static final byte 香水 = 15;
+    public static final byte 骑宠无 = -1;
+    public static final byte 骑宠植物 = 0;
+    public static final byte 骑宠水生 = 4;
+    public static final byte 骑宠野兽 = 3;
+    public static final byte 骑宠金属 = 1;
+    public static final byte 骑宠飞行 = 2;
+    public static final byte 高级治疗 = 28;
+    public static final byte 高级球 = 10;
+    public static final byte 魅惑效果 = 3;
+    public static final byte 黄金果实 = 28;
+    public static final byte 黄金糖 = 6;
+    public static final byte 黯之罪罚 = 23;
+    public static final byte 黯灭波 = 21;
+    public static final byte 黯魔素身 = 24;
 
     static {
-        WIDTH__ = 533;
-        HEIGHT__ = WIDTH_H_;
-        WIDTH_H = WIDTH >> 1;
-        HEIGHT_H = HEIGHT >> 1;
-        SRC_BATTLE_H = HEIGHT_H + 16;
-        SRC_BATTLE_H__ = (HEIGHT__ / 2) + 16;
-        XCELLS = (byte) (WIDTH / 20);
-        YCELLS = (byte) (HEIGHT / 20);
-        HALF_XCELLS = (byte) (XCELLS >> 1);
-        HALF_YCELLS = (byte) (YCELLS >> 1);
-        ROW_CELLS = (byte) (XCELLS + 1);
-        COL_SELLS = (byte) (YCELLS + 1);
-        DisplayMetrics dm2 = new DisplayMetrics();
-        CwaActivity.getInstance().getWindowManager().getDefaultDisplay().getMetrics(dm2);
-        WIDTH__ = dm2.widthPixels;
-        HEIGHT__ = dm2.heightPixels;
-        WIDTH_H = WIDTH >> 1;
-        HEIGHT_H = HEIGHT >> 1;
-        XCELLS = (byte) (WIDTH / 20);
-        YCELLS = (byte) (HEIGHT / 20);
-        HALF_XCELLS = (byte) (XCELLS >> 1);
-        HALF_YCELLS = (byte) (YCELLS >> 1);
-        ROW_CELLS = (byte) (XCELLS + 1);
-        COL_SELLS = (byte) (YCELLS + 1);
+        Constants_H.WIDTH = 400;
+        Constants_H.HEIGHT = 0xF0;
+        Constants_H.WIDTH__ = 533;
+        Constants_H.HEIGHT__ = 320;
+        Constants_H.WIDTH_H = Constants_H.WIDTH >> 1;
+        Constants_H.HEIGHT_H = Constants_H.HEIGHT >> 1;
+        Constants_H.SRC_BATTLE_H = Constants_H.HEIGHT_H + 16;
+        Constants_H.SRC_BATTLE_H__ = Constants_H.HEIGHT__ / 2 + 16;
+        Constants_H.XCELLS = (byte)(Constants_H.WIDTH / 20);
+        Constants_H.YCELLS = (byte)(Constants_H.HEIGHT / 20);
+        Constants_H.HALF_XCELLS = (byte)(Constants_H.XCELLS >> 1);
+        Constants_H.HALF_YCELLS = (byte)(Constants_H.YCELLS >> 1);
+        Constants_H.ROW_CELLS = (byte)(Constants_H.XCELLS + 1);
+        Constants_H.COL_SELLS = (byte)(Constants_H.YCELLS + 1);
+        Constants_H.SCREEN_X = (short)Constants_H.WIDTH;
+        Constants_H.OFF_WIDTH = Constants_H.WIDTH + 20;
+        Constants_H.OFF_HEIGHT = Constants_H.HEIGHT + 20;
+        DisplayMetrics dm = new DisplayMetrics();
+        CwaActivity.getInstance().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        Constants_H.WIDTH__ = dm.widthPixels;
+        Constants_H.HEIGHT__ = dm.heightPixels;
+        Constants_H.WIDTH_H = Constants_H.WIDTH >> 1;
+        Constants_H.HEIGHT_H = Constants_H.HEIGHT >> 1;
+        Constants_H.XCELLS = (byte)(Constants_H.WIDTH / 20);
+        Constants_H.YCELLS = (byte)(Constants_H.HEIGHT / 20);
+        Constants_H.HALF_XCELLS = (byte)(Constants_H.XCELLS >> 1);
+        Constants_H.HALF_YCELLS = (byte)(Constants_H.YCELLS >> 1);
+        Constants_H.ROW_CELLS = (byte)(Constants_H.XCELLS + 1);
+        Constants_H.COL_SELLS = (byte)(Constants_H.YCELLS + 1);
     }
 }
+

@@ -5,30 +5,43 @@ import android.util.Log;
 import javax.microedition.lcdui.CwaActivity;
 import javax.microedition.media.Control;
 
-/* loaded from: classes.dex */
 public class VolumeControl implements Control {
-    private boolean mute = false;
-    private int currentVolume = 0;
-    private AudioManager audioManager = (AudioManager) CwaActivity.getContextInstance().getSystemService("audio");
-    private int maxVolume = this.audioManager.getStreamMaxVolume(3);
-    private float percent = 100 / this.maxVolume;
+    private AudioManager audioManager;
+    private int currentVolume;
+    private int maxVolume;
+    private boolean mute;
+    private float percent;
+
+    public VolumeControl() {
+        this.mute = false;
+        this.currentVolume = 0;
+        this.audioManager = (AudioManager)CwaActivity.getContextInstance().getSystemService("audio");
+        this.maxVolume = this.audioManager.getStreamMaxVolume(3);
+        this.percent = (float)(100 / this.maxVolume);
+    }
 
     public int getLevel() {
-        return (int) (this.currentVolume * this.percent);
+        return (int)(((float)this.currentVolume) * this.percent);
     }
 
     public boolean isMuted() {
-        return getLevel() == 0;
+        return this.getLevel() == 0;
+    }
+
+    private void mute() {
+        this.mute = true;
+        this.audioManager.setStreamVolume(3, 0, 16);
     }
 
     public int setLevel(int level) {
-        if (level < 0) {
+        if(level < 0) {
             level = 0;
-        } else if (level > 100) {
+        }
+        else if(level > 100) {
             level = 100;
         }
-        int androidLevel = (int) (level / this.percent);
-        if (!this.mute) {
+        int androidLevel = (int)(((float)level) / this.percent);
+        if(!this.mute) {
             this.currentVolume = androidLevel;
             Log.e("", "这个游戏的管理器的比例值是" + this.percent);
             Log.e("", "这个游戏的管理器声音是" + androidLevel);
@@ -37,13 +50,14 @@ public class VolumeControl implements Control {
     }
 
     public int setLevelForMenu(int level) {
-        if (level < 0) {
+        if(level < 0) {
             level = 0;
-        } else if (level > 100) {
+        }
+        else if(level > 100) {
             level = 100;
         }
-        int androidLevel = (int) (level / this.percent);
-        if (!this.mute) {
+        int androidLevel = (int)(((float)level) / this.percent);
+        if(!this.mute) {
             this.currentVolume = androidLevel;
             Log.e("", "这个游戏的管理器的比例值是" + this.percent);
             Log.e("", "这个游戏的管理器声音是" + androidLevel);
@@ -54,16 +68,11 @@ public class VolumeControl implements Control {
     }
 
     public void setMute(boolean mute) {
-        if (mute) {
-            mute();
-        } else {
-            unmute();
+        if(mute) {
+            this.mute();
+            return;
         }
-    }
-
-    private void mute() {
-        this.mute = true;
-        this.audioManager.setStreamVolume(3, 0, 16);
+        this.unmute();
     }
 
     private void unmute() {
@@ -71,3 +80,4 @@ public class VolumeControl implements Control {
         this.audioManager.setStreamVolume(3, this.currentVolume, 16);
     }
 }
+

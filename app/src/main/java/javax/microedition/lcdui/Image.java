@@ -1,41 +1,18 @@
 package javax.microedition.lcdui;
 
+import android.graphics.Bitmap.Config;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Paint;
 import com.android.Util.AndroidUtil;
 import java.io.IOException;
 import java.io.InputStream;
 
-/* loaded from: classes.dex */
 public class Image {
     private Graphics img_g;
     private Bitmap mBitmap;
-
-    private Image() {
-    }
-
-    public static Image createImage(byte[] imageData, int imageOffset, int imageLength) {
-        Image image = new Image();
-        image.mBitmap = BitmapFactory.decodeByteArray(imageData, imageOffset, imageLength);
-        return image;
-    }
-
-    public static Image createImage(Image source, int x, int y, int width, int height, int transform) {
-        int tmp_w = width;
-        int tmp_h = height;
-        if (transform > 3) {
-            tmp_w = height;
-            tmp_h = width;
-        }
-        Image image = new Image();
-        System.arraycopy(Graphics.tTrans[transform], 0, Graphics.tTransTemp, 0, 9);
-        Graphics.tTransTemp[2] = Graphics.tTransXY[transform][0] * tmp_w;
-        Graphics.tTransTemp[5] = Graphics.tTransXY[transform][1] * tmp_h;
-        Graphics.regionMatrix.setValues(Graphics.tTransTemp);
-        image.mBitmap = Bitmap.createBitmap(source.getBitMapInpackage(), x, y, width, height, Graphics.regionMatrix, false);
-        return image;
-    }
 
     public static Image createImage(int width, int height) {
         Image image = new Image();
@@ -51,16 +28,46 @@ public class Image {
 
     public static Image createImage(String name) throws IOException {
         Image image = new Image();
-        InputStream is = AndroidUtil.getResourceAsStream(name);
-        image.mBitmap = BitmapFactory.decodeStream(is);
-        if (image.mBitmap == null) {
+        image.mBitmap = BitmapFactory.decodeStream(AndroidUtil.getResourceAsStream(name));
+        if(image.mBitmap == null) {
             throw new IOException();
         }
         return image;
     }
 
-    public Bitmap getBitMapInpackage() {
-        return this.mBitmap;
+    public static Image createImage(String name, int zoom) throws IOException {
+        Image image = new Image();
+        InputStream inputStream0 = AndroidUtil.getResourceAsStream(name);
+        BitmapFactory.Options opts = new BitmapFactory.Options();
+        opts.inInputShareable = true;
+        opts.inSampleSize = zoom;
+        image.mBitmap = BitmapFactory.decodeStream(inputStream0, null, opts);
+        if(image.mBitmap == null) {
+            throw new IOException();
+        }
+        return image;
+    }
+
+    public static Image createImage(Image source, int x, int y, int width, int height, int transform) {
+        int tmp_w = width;
+        int tmp_h = height;
+        if(transform > 3) {
+            tmp_w = height;
+            tmp_h = width;
+        }
+        Image image = new Image();
+        System.arraycopy(Graphics.tTrans[transform], 0, Graphics.tTransTemp, 0, 9);
+        Graphics.tTransTemp[2] = (float)(Graphics.tTransXY[transform][0] * tmp_w);
+        Graphics.tTransTemp[5] = (float)(Graphics.tTransXY[transform][1] * tmp_h);
+        Graphics.regionMatrix.setValues(Graphics.tTransTemp);
+        image.mBitmap = Bitmap.createBitmap(source.getBitMapInpackage(), x, y, width, height, Graphics.regionMatrix, false);
+        return image;
+    }
+
+    public static Image createImage(byte[] imageData, int imageOffset, int imageLength) {
+        Image image = new Image();
+        image.mBitmap = BitmapFactory.decodeByteArray(imageData, imageOffset, imageLength);
+        return image;
     }
 
     public static Image createRGBImage(int[] rgb, int width, int height, boolean processAlpha) {
@@ -69,16 +76,22 @@ public class Image {
         return image;
     }
 
+    public Bitmap getBitMap() {
+        return this.mBitmap;
+    }
+
+    Bitmap getBitMapInpackage() {
+        return this.mBitmap;
+    }
+
     public Graphics getGraphics() {
-        if (this.mBitmap.isMutable()) {
-            if (this.img_g == null) {
-                android.graphics.Canvas imagecanvas = new android.graphics.Canvas(this.mBitmap);
-                Paint painter = new Paint();
-                this.img_g = new Graphics(imagecanvas, painter, this.mBitmap);
-            }
-            return this.img_g;
+        if(!this.mBitmap.isMutable()) {
+            throw new IllegalStateException();
         }
-        throw new IllegalStateException();
+        if(this.img_g == null) {
+            this.img_g = new Graphics(new Canvas(this.mBitmap), new Paint(), this.mBitmap);
+        }
+        return this.img_g;
     }
 
     public int getHeight() {
@@ -96,21 +109,5 @@ public class Image {
     public boolean isMutable() {
         return this.mBitmap.isMutable();
     }
-
-    public Bitmap getBitMap() {
-        return this.mBitmap;
-    }
-
-    public static Image createImage(String name, int zoom) throws IOException {
-        Image image = new Image();
-        InputStream is = AndroidUtil.getResourceAsStream(name);
-        BitmapFactory.Options opts = new BitmapFactory.Options();
-        opts.inInputShareable = true;
-        opts.inSampleSize = zoom;
-        image.mBitmap = BitmapFactory.decodeStream(is, null, opts);
-        if (image.mBitmap == null) {
-            throw new IOException();
-        }
-        return image;
-    }
 }
+

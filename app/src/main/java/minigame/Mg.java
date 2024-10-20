@@ -2,48 +2,33 @@ package minigame;
 
 import main.GameRun;
 
-/* loaded from: classes.dex */
 public class Mg {
-    private static Mg mgListener;
     private MiniGame_H mg;
+    private static Mg mgListener;
     public byte type;
 
     public Mg() {
-        mgListener = this;
-    }
-
-    public static Mg i() {
-        if (mgListener == null) {
-            mgListener = new Mg();
-        }
-        return mgListener;
-    }
-
-    private void setGame(GameRun gr, int i) {
-        this.mg = null;
-        this.type = (byte) i;
-        switch (i) {
-            case 0:
-                this.mg = new Racing(gr);
-                return;
-            case 1:
-                this.mg = new Bearer(gr);
-                return;
-            case 2:
-                this.mg = new Cards(gr);
-                return;
-            case 3:
-                this.mg = new Guess(gr);
-                return;
-            default:
-                return;
-        }
+        Mg.mgListener = this;
     }
 
     public void go(GameRun gr, int i, int mode, int lv) {
         GameRun.run_state = 69;
-        setGame(gr, i);
+        this.setGame(gr, i);
         this.mg.go(mode, lv);
+    }
+
+    public static Mg i() {
+        if(Mg.mgListener == null) {
+            Mg.mgListener = new Mg();
+        }
+        return Mg.mgListener;
+    }
+
+    public void key(GameRun gr) {
+        if(this.mg.key()) {
+            GameRun.run_state = -10;
+            this.mg = null;
+        }
     }
 
     public void paint() {
@@ -54,10 +39,26 @@ public class Mg {
         this.mg.run();
     }
 
-    public void key(GameRun gr) {
-        if (this.mg.key()) {
-            GameRun.run_state = -10;
-            this.mg = null;
+    private void setGame(GameRun gr, int i) {
+        this.mg = null;
+        this.type = (byte)i;
+        switch(i) {
+            case 0: {
+                this.mg = new Racing(gr);
+                return;
+            }
+            case 1: {
+                this.mg = new Bearer(gr);
+                return;
+            }
+            case 2: {
+                this.mg = new Cards(gr);
+                return;
+            }
+            case 3: {
+                this.mg = new Guess(gr);
+            }
         }
     }
 }
+

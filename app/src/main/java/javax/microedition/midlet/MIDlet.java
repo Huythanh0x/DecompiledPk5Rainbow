@@ -7,6 +7,7 @@ import javax.microedition.lcdui.CwaActivity;
 
 /* loaded from: classes.dex */
 public abstract class MIDlet {
+    /* JADX INFO: Access modifiers changed from: protected */
     public abstract void destroyApp(boolean z) throws MIDletStateChangeException;
 
     protected abstract void pauseApp();

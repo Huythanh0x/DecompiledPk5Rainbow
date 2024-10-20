@@ -708,7 +708,7 @@ public class Map implements Key_H {
     public void eventCheck() {
         /*
             Method dump skipped, instructions count: 5420
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: main.Map.eventCheck():void");
     }
@@ -1260,12 +1260,12 @@ public class Map implements Key_H {
     /* JADX WARN: Removed duplicated region for block: B:18:0x00ec  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void drawBlackSRC(javax.microedition.lcdui.Graphics r22, int r23, boolean r24) {
         /*
             Method dump skipped, instructions count: 404
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: main.Map.drawBlackSRC(javax.microedition.lcdui.Graphics, int, boolean):void");
     }
@@ -2409,7 +2409,7 @@ public class Map implements Key_H {
      */
     /* JADX WARN: Code restructure failed: missing block: B:11:0x010c, code lost:
     
-        if (r4 < r10) goto L116;
+        if (r4 < r10) goto L49;
      */
     /* JADX WARN: Code restructure failed: missing block: B:13:0x012a, code lost:
     
@@ -2427,10 +2427,10 @@ public class Map implements Key_H {
     /* JADX WARN: Code restructure failed: missing block: B:14:0x0174, code lost:
     
         switch(r12) {
-            case 1: goto L121;
-            case 2: goto L122;
-            case 3: goto L123;
-            default: goto L125;
+            case 1: goto L54;
+            case 2: goto L55;
+            case 3: goto L56;
+            default: goto L58;
         };
      */
     /* JADX WARN: Code restructure failed: missing block: B:17:0x017e, code lost:
@@ -2505,12 +2505,12 @@ public class Map implements Key_H {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private void loadMapData(int r21) {
         /*
             Method dump skipped, instructions count: 544
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: main.Map.loadMapData(int):void");
     }

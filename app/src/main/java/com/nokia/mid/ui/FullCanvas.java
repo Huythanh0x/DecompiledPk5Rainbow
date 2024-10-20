@@ -17,6 +17,7 @@ public abstract class FullCanvas extends Canvas {
     public static int KEY_SOFTKEY2 = 2;
     public static int KEY_SOFTKEY3 = 23;
 
+    /* JADX INFO: Access modifiers changed from: protected */
     public FullCanvas() {
         CwaActivity.getInstance().setFullWindow(true);
     }

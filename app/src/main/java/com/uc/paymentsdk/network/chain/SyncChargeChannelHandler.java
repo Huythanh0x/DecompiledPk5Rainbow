@@ -41,9 +41,6 @@ public class SyncChargeChannelHandler extends Handler implements ApiTask.TaskHan
                 return;
             case 1:
                 new Thread(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncChargeChannelHandler.1
-                    AnonymousClass1() {
-                    }
-
                     @Override // java.lang.Runnable
                     public void run() {
                         synchronized (SyncChargeChannelHandler.this.LOCK) {
@@ -54,26 +51,11 @@ public class SyncChargeChannelHandler extends Handler implements ApiTask.TaskHan
                             }
                         }
                         SyncChargeChannelHandler.this.mHandler.post(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncChargeChannelHandler.1.1
-                            RunnableC00001() {
-                            }
-
                             @Override // java.lang.Runnable
                             public void run() {
                                 SyncChargeChannelHandler.this.handleRequest();
                             }
                         });
-                    }
-
-                    /* renamed from: com.uc.paymentsdk.network.chain.SyncChargeChannelHandler$1$1 */
-                    /* loaded from: classes.dex */
-                    class RunnableC00001 implements Runnable {
-                        RunnableC00001() {
-                        }
-
-                        @Override // java.lang.Runnable
-                        public void run() {
-                            SyncChargeChannelHandler.this.handleRequest();
-                        }
                     }
                 }).start();
                 return;
@@ -89,45 +71,6 @@ public class SyncChargeChannelHandler extends Handler implements ApiTask.TaskHan
                 return;
             default:
                 return;
-        }
-    }
-
-    /* renamed from: com.uc.paymentsdk.network.chain.SyncChargeChannelHandler$1 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass1 implements Runnable {
-        AnonymousClass1() {
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            synchronized (SyncChargeChannelHandler.this.LOCK) {
-                try {
-                    SyncChargeChannelHandler.this.LOCK.wait();
-                } catch (InterruptedException localInterruptedException) {
-                    localInterruptedException.printStackTrace();
-                }
-            }
-            SyncChargeChannelHandler.this.mHandler.post(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncChargeChannelHandler.1.1
-                RunnableC00001() {
-                }
-
-                @Override // java.lang.Runnable
-                public void run() {
-                    SyncChargeChannelHandler.this.handleRequest();
-                }
-            });
-        }
-
-        /* renamed from: com.uc.paymentsdk.network.chain.SyncChargeChannelHandler$1$1 */
-        /* loaded from: classes.dex */
-        class RunnableC00001 implements Runnable {
-            RunnableC00001() {
-            }
-
-            @Override // java.lang.Runnable
-            public void run() {
-                SyncChargeChannelHandler.this.handleRequest();
-            }
         }
     }
 

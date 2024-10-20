@@ -30,6 +30,7 @@ public final class Font {
     private Font() {
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     public Paint.FontMetricsInt getMetricsInt() {
         return this.metrics;
     }

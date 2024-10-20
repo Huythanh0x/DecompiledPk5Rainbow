@@ -23,6 +23,7 @@ public class PetKing5 extends CwaActivity {
         PaymentsActivity.init(this);
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     @Override // javax.microedition.lcdui.CwaActivity, android.app.Activity
     public void onDestroy() {
         super.onDestroy();

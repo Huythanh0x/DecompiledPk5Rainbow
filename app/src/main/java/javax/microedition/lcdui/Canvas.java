@@ -40,6 +40,7 @@ public abstract class Canvas extends View implements View.OnTouchListener, View.
 
     protected abstract void paint(Graphics graphics);
 
+    /* JADX INFO: Access modifiers changed from: protected */
     public Canvas() {
         super(CwaActivity.getContextInstance());
         this.scale_x = 1.0f;
@@ -51,6 +52,7 @@ public abstract class Canvas extends View implements View.OnTouchListener, View.
         setOnTouchListener(this);
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     public Canvas(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.scale_x = 1.0f;

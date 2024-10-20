@@ -31,6 +31,7 @@ public class CwaActivity extends Activity {
     private MIDletManager jam = MIDletManager.getInstance();
     private boolean isFullWindow = false;
 
+    /* JADX INFO: Access modifiers changed from: protected */
     public CwaActivity() {
         if (cwaActivity == null) {
             cwaActivity = this;
@@ -104,6 +105,7 @@ public class CwaActivity extends Activity {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     public void setMIDlet(MIDlet midlet) {
         this.jam.setMIDlet(midlet);
     }
@@ -128,6 +130,7 @@ public class CwaActivity extends Activity {
         this.jam.notifyResumed();
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     @Override // android.app.Activity
     public void onDestroy() {
         super.onDestroy();
@@ -148,9 +151,6 @@ public class CwaActivity extends Activity {
 
     public void showExitDialog() {
         new AlertDialog.Builder(this).setMessage("确认退出？").setPositiveButton(Constants_H.PAUSE_TXT_22, new DialogInterface.OnClickListener() { // from class: javax.microedition.lcdui.CwaActivity.1
-            AnonymousClass1() {
-            }
-
             @Override // android.content.DialogInterface.OnClickListener
             public void onClick(DialogInterface dialog, int which) {
                 if (which == -1) {
@@ -159,42 +159,11 @@ public class CwaActivity extends Activity {
                 }
             }
         }).setNegativeButton(Constants_H.PAUSE_TXT_23, new DialogInterface.OnClickListener() { // from class: javax.microedition.lcdui.CwaActivity.2
-            AnonymousClass2() {
-            }
-
             @Override // android.content.DialogInterface.OnClickListener
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 CwaActivity.this.jam.notifyResumed();
             }
         }).show();
-    }
-
-    /* renamed from: javax.microedition.lcdui.CwaActivity$1 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass1 implements DialogInterface.OnClickListener {
-        AnonymousClass1() {
-        }
-
-        @Override // android.content.DialogInterface.OnClickListener
-        public void onClick(DialogInterface dialog, int which) {
-            if (which == -1) {
-                CwaActivity.this.jam.notifyDestroyed();
-                CwaActivity.this.jam.notifyExit();
-            }
-        }
-    }
-
-    /* renamed from: javax.microedition.lcdui.CwaActivity$2 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass2 implements DialogInterface.OnClickListener {
-        AnonymousClass2() {
-        }
-
-        @Override // android.content.DialogInterface.OnClickListener
-        public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
-            CwaActivity.this.jam.notifyResumed();
-        }
     }
 }

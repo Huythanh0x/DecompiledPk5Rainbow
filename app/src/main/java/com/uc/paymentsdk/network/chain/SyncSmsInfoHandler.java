@@ -42,9 +42,6 @@ public class SyncSmsInfoHandler extends Handler implements ApiTask.TaskHandler {
                 return;
             case 1:
                 new Thread(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncSmsInfoHandler.1
-                    AnonymousClass1() {
-                    }
-
                     @Override // java.lang.Runnable
                     public void run() {
                         synchronized (SyncSmsInfoHandler.this.LOCK) {
@@ -55,26 +52,11 @@ public class SyncSmsInfoHandler extends Handler implements ApiTask.TaskHandler {
                             }
                         }
                         SyncSmsInfoHandler.this.mHandler.post(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncSmsInfoHandler.1.1
-                            RunnableC00021() {
-                            }
-
                             @Override // java.lang.Runnable
                             public void run() {
                                 SyncSmsInfoHandler.this.handleRequest();
                             }
                         });
-                    }
-
-                    /* renamed from: com.uc.paymentsdk.network.chain.SyncSmsInfoHandler$1$1 */
-                    /* loaded from: classes.dex */
-                    class RunnableC00021 implements Runnable {
-                        RunnableC00021() {
-                        }
-
-                        @Override // java.lang.Runnable
-                        public void run() {
-                            SyncSmsInfoHandler.this.handleRequest();
-                        }
                     }
                 }).start();
                 return;
@@ -90,45 +72,6 @@ public class SyncSmsInfoHandler extends Handler implements ApiTask.TaskHandler {
                 return;
             default:
                 return;
-        }
-    }
-
-    /* renamed from: com.uc.paymentsdk.network.chain.SyncSmsInfoHandler$1 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass1 implements Runnable {
-        AnonymousClass1() {
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            synchronized (SyncSmsInfoHandler.this.LOCK) {
-                try {
-                    SyncSmsInfoHandler.this.LOCK.wait();
-                } catch (InterruptedException localInterruptedException) {
-                    localInterruptedException.printStackTrace();
-                }
-            }
-            SyncSmsInfoHandler.this.mHandler.post(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncSmsInfoHandler.1.1
-                RunnableC00021() {
-                }
-
-                @Override // java.lang.Runnable
-                public void run() {
-                    SyncSmsInfoHandler.this.handleRequest();
-                }
-            });
-        }
-
-        /* renamed from: com.uc.paymentsdk.network.chain.SyncSmsInfoHandler$1$1 */
-        /* loaded from: classes.dex */
-        class RunnableC00021 implements Runnable {
-            RunnableC00021() {
-            }
-
-            @Override // java.lang.Runnable
-            public void run() {
-                SyncSmsInfoHandler.this.handleRequest();
-            }
         }
     }
 

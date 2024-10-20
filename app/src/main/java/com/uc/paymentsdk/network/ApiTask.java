@@ -33,6 +33,7 @@ public class ApiTask extends AsyncTask<Void, Void, Object> {
         void onSuccess(int i, Object obj);
     }
 
+    /* JADX INFO: Access modifiers changed from: package-private */
     public ApiTask(Context paramContext, int paramInt, TaskHandler paramTaskHandler, HashMap<String, Object> paramHashMap, String httpMethod) {
         this.mContext = paramContext;
         this.mReuqestAction = paramInt;
@@ -41,6 +42,7 @@ public class ApiTask extends AsyncTask<Void, Void, Object> {
         this.httpmethod = httpMethod;
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     @Override // android.os.AsyncTask
     public Object doInBackground(Void[] paramArrayOfVoid) {
         HttpResponse localHttpResponse;

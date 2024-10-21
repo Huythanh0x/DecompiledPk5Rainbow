@@ -1,230 +1,240 @@
 package com.uc.paymentsdk.network;
 
 import android.text.TextUtils;
-import com.uc.paymentsdk.model.TypeFactory;
 import com.uc.paymentsdk.payment.sms.SmsInfo;
 import com.uc.paymentsdk.payment.sms.SmsInfos;
 import com.uc.paymentsdk.payment.upoint.UPointInfo;
-import com.uc.paymentsdk.util.Constants;
 import com.uc.paymentsdk.util.Utils;
 import java.io.StringReader;
 import java.util.ArrayList;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-/* loaded from: classes.dex */
 public class XMLParser {
-    private static final String RESPONSE = "response";
-
-    private static void skipUnknownTag(XmlPullParser paramXmlPullParser) throws Exception {
-        String str = paramXmlPullParser.getName();
-        while (paramXmlPullParser.next() > 0) {
-            if (paramXmlPullParser.getEventType() != 3 || !paramXmlPullParser.getName().equals(str)) {
-            }
-        }
-    }
-
-    private static String getAttributeValue(XmlPullParser paramXmlPullParser, String paramString) {
-        String str = paramXmlPullParser.getAttributeValue("", paramString);
-        return str == null ? "" : str.trim();
-    }
-
-    public static ArrayList<String> parseAccount(String paramString) throws Exception {
-        if (TextUtils.isEmpty(paramString)) {
-            return null;
-        }
-        XmlPullParser localXmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
-        localXmlPullParser.setInput(new StringReader(paramString));
-        ArrayList localArrayList = new ArrayList(3);
-        localXmlPullParser.nextTag();
-        localXmlPullParser.require(2, "", RESPONSE);
-        while (localXmlPullParser.nextTag() == 2) {
-            String str = localXmlPullParser.getName();
-            localXmlPullParser.require(2, "", str);
-            if ("name".equals(str)) {
-                localArrayList.add(localXmlPullParser.nextText());
-            } else if ("uid".equals(str)) {
-                localArrayList.add(localXmlPullParser.nextText());
-            } else if ("email".equals(str)) {
-                localArrayList.add(localXmlPullParser.nextText());
-            } else {
-                skipUnknownTag(localXmlPullParser);
-            }
-            localXmlPullParser.require(3, "", str);
-        }
-        localXmlPullParser.require(3, "", RESPONSE);
-        return localArrayList;
-    }
-
-    public static String parseAppname(String paramString) throws Exception {
-        if (TextUtils.isEmpty(paramString)) {
-            return "";
-        }
-        XmlPullParser localXmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
-        localXmlPullParser.setInput(new StringReader(paramString));
-        localXmlPullParser.nextTag();
-        localXmlPullParser.require(2, "", RESPONSE);
-        while (localXmlPullParser.nextTag() == 2) {
-            String str = localXmlPullParser.getName();
-            localXmlPullParser.require(2, "", str);
-            if ("appname".equals(str)) {
-                return localXmlPullParser.nextText();
-            }
-            skipUnknownTag(localXmlPullParser);
-            localXmlPullParser.require(3, "", str);
-        }
-        localXmlPullParser.require(3, "", RESPONSE);
+  private static final String RESPONSE = "response";
+  
+  private static String getAttributeValue(XmlPullParser paramXmlPullParser, String paramString) {
+    null = paramXmlPullParser.getAttributeValue("", paramString);
+    return (null == null) ? "" : null.trim();
+  }
+  
+  public static ArrayList<String> parseAccount(String paramString) throws Exception {
+    if (TextUtils.isEmpty(paramString))
+      return null; 
+    XmlPullParser xmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
+    xmlPullParser.setInput(new StringReader(paramString));
+    ArrayList<String> arrayList = new ArrayList(3);
+    xmlPullParser.nextTag();
+    xmlPullParser.require(2, "", "response");
+    while (true) {
+      if (xmlPullParser.nextTag() != 2) {
+        xmlPullParser.require(3, "", "response");
+        return arrayList;
+      } 
+      String str = xmlPullParser.getName();
+      xmlPullParser.require(2, "", str);
+      if ("name".equals(str)) {
+        arrayList.add(xmlPullParser.nextText());
+      } else if ("uid".equals(str)) {
+        arrayList.add(xmlPullParser.nextText());
+      } else if ("email".equals(str)) {
+        arrayList.add(xmlPullParser.nextText());
+      } else {
+        skipUnknownTag(xmlPullParser);
+      } 
+      xmlPullParser.require(3, "", str);
+    } 
+  }
+  
+  public static String parseAppname(String paramString) throws Exception {
+    if (TextUtils.isEmpty(paramString))
+      return ""; 
+    XmlPullParser xmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
+    xmlPullParser.setInput(new StringReader(paramString));
+    xmlPullParser.nextTag();
+    xmlPullParser.require(2, "", "response");
+    while (true) {
+      if (xmlPullParser.nextTag() != 2) {
+        xmlPullParser.require(3, "", "response");
         return "";
-    }
-
-    public static String parsePayOrder(String paramString) throws Exception {
-        return TextUtils.isEmpty(paramString) ? "" : paramString;
-    }
-
-    public static String parseChargePhoneCard(String paramString) throws Exception {
-        if (TextUtils.isEmpty(paramString)) {
-            return null;
-        }
-        XmlPullParser localXmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
-        localXmlPullParser.setInput(new StringReader(paramString));
-        String str1 = "";
-        localXmlPullParser.nextTag();
-        localXmlPullParser.require(2, "", "result");
-        while (localXmlPullParser.nextTag() == 2) {
-            String str2 = localXmlPullParser.getName();
-            localXmlPullParser.require(2, "", str2);
-            if ("pay_result".equals(str2)) {
-                str1 = getAttributeValue(localXmlPullParser, "order_id");
-                localXmlPullParser.nextTag();
-            } else {
-                skipUnknownTag(localXmlPullParser);
-            }
-            localXmlPullParser.require(3, "", str2);
-        }
-        localXmlPullParser.require(3, "", "result");
-        return str1;
-    }
-
-    public static int parsePhoneCardChargeResult(String paramString) throws Exception {
-        if (TextUtils.isEmpty(paramString)) {
-            return -1;
-        }
-        XmlPullParser localXmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
-        localXmlPullParser.setInput(new StringReader(paramString));
-        int i = -1;
-        localXmlPullParser.nextTag();
-        localXmlPullParser.require(2, "", "result");
-        while (localXmlPullParser.nextTag() == 2) {
-            String str = localXmlPullParser.getName();
-            localXmlPullParser.require(2, "", str);
-            if ("pay_result".equals(str)) {
-                i = Utils.getInt(getAttributeValue(localXmlPullParser, "status"));
-                localXmlPullParser.nextTag();
-            } else {
-                skipUnknownTag(localXmlPullParser);
-            }
-            localXmlPullParser.require(3, "", str);
-        }
-        localXmlPullParser.require(3, "", "result");
-        return i;
-    }
-
-    public static String parsePayChannel(String paramString) throws Exception {
-        if (TextUtils.isEmpty(paramString)) {
-            return null;
-        }
-        XmlPullParser localXmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
-        localXmlPullParser.setInput(new StringReader(paramString));
-        localXmlPullParser.nextTag();
-        localXmlPullParser.require(2, "", RESPONSE);
-        while (localXmlPullParser.nextTag() == 2) {
-            String str = localXmlPullParser.getName();
-            localXmlPullParser.require(2, "", str);
-            if ("channels".equals(str)) {
-                return localXmlPullParser.nextText().replace("1", TypeFactory.TYPE_PAY_UPOINT).replace("2", "sms");
-            }
-            skipUnknownTag(localXmlPullParser);
-            localXmlPullParser.require(3, "", str);
-        }
-        localXmlPullParser.require(3, "", RESPONSE);
+      } 
+      paramString = xmlPullParser.getName();
+      xmlPullParser.require(2, "", paramString);
+      if ("appname".equals(paramString))
+        return xmlPullParser.nextText(); 
+      skipUnknownTag(xmlPullParser);
+      xmlPullParser.require(3, "", paramString);
+    } 
+  }
+  
+  public static String parseChargePhoneCard(String paramString) throws Exception {
+    if (TextUtils.isEmpty(paramString))
+      return null; 
+    XmlPullParser xmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
+    xmlPullParser.setInput(new StringReader(paramString));
+    paramString = "";
+    xmlPullParser.nextTag();
+    xmlPullParser.require(2, "", "result");
+    while (true) {
+      if (xmlPullParser.nextTag() != 2) {
+        xmlPullParser.require(3, "", "result");
+        return paramString;
+      } 
+      String str = xmlPullParser.getName();
+      xmlPullParser.require(2, "", str);
+      if ("pay_result".equals(str)) {
+        paramString = getAttributeValue(xmlPullParser, "order_id");
+        xmlPullParser.nextTag();
+      } else {
+        skipUnknownTag(xmlPullParser);
+      } 
+      xmlPullParser.require(3, "", str);
+    } 
+  }
+  
+  public static String parsePayChannel(String paramString) throws Exception {
+    if (TextUtils.isEmpty(paramString))
+      return null; 
+    XmlPullParser xmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
+    xmlPullParser.setInput(new StringReader(paramString));
+    xmlPullParser.nextTag();
+    xmlPullParser.require(2, "", "response");
+    while (true) {
+      if (xmlPullParser.nextTag() != 2) {
+        xmlPullParser.require(3, "", "response");
         return null;
-    }
-
-    public static UPointInfo parseUPointInfo(String upointinfostr) throws Exception {
-        if (TextUtils.isEmpty(upointinfostr)) {
-            return null;
-        }
-        UPointInfo localUPointInfo = new UPointInfo();
-        String[] infoarr = upointinfostr.split("#");
-        if (infoarr[1].equals("none")) {
-            localUPointInfo.setDiscount("无");
-            localUPointInfo.setDiscounttext(new StringBuilder(String.valueOf(Utils.getPaymentInfo().getMoney())).toString());
-        } else {
-            localUPointInfo.setDiscount(infoarr[1]);
-            localUPointInfo.setDiscounttext(infoarr[3]);
-        }
-        localUPointInfo.setDiscountinfo(infoarr[2]);
-        if (infoarr[4] != null && infoarr[4].length() > 0) {
-            localUPointInfo.setUserphone(infoarr[4]);
-        }
-        if (infoarr[5] != null && !infoarr[5].equals("none")) {
-            localUPointInfo.setVipdiscount(infoarr[5]);
-        }
-        if (infoarr[6] != null && !infoarr[6].equals("none")) {
-            localUPointInfo.setDiscounttext(infoarr[6]);
-        }
-        if (infoarr[7] != null && !infoarr[7].equals("none")) {
-            localUPointInfo.setVipdiscounttime(infoarr[7]);
-        }
-        return localUPointInfo;
-    }
-
-    public static SmsInfos parseSmsInfo(String usefulsmsinfo) throws Exception {
-        int smsconfirm;
-        if (TextUtils.isEmpty(usefulsmsinfo)) {
-            return null;
-        }
-        SmsInfos localSmsInfos = new SmsInfos();
-        String[] smsarr = usefulsmsinfo.split("\\^\\|\\*");
-        for (int i = 0; i < smsarr.length; i++) {
-            SmsInfo localSmsInfo = new SmsInfo();
-            if (smsarr[i].split("\\^\\$\\*").length < 2) {
-                smsconfirm = 0;
-            } else {
-                smsconfirm = Integer.parseInt(smsarr[i].split("\\^\\$\\*")[0]);
-            }
-            if (smsconfirm == 1) {
-                localSmsInfo.needconfirm = true;
-            } else {
-                localSmsInfo.needconfirm = false;
-            }
-            String[] smsinfoarr = smsarr[i].substring(smsarr[i].indexOf("^$*") > 0 ? smsarr[i].indexOf("^$*") + 3 : 0, smsarr[i].indexOf("^&*")).split(Constants.TERM);
-            if (smsinfoarr == null || smsinfoarr.length < 2) {
-                return null;
-            }
-            localSmsInfo.setMoney(Integer.parseInt(smsinfoarr[4]));
-            localSmsInfo.setSmstype(Integer.parseInt(smsinfoarr[3].split("#")[0]));
-            localSmsInfo.setSmschannelid(smsinfoarr[0]);
-            localSmsInfo.setSmsnumber(smsinfoarr[1].split("#")[0]);
-            if (smsconfirm == 1) {
-                localSmsInfo.setSmsconfirmnumber(smsinfoarr[1].split("#")[1]);
-            } else {
-                localSmsInfo.setSmsconfirmnumber("");
-            }
-            localSmsInfo.setSmsheader(smsinfoarr[2].split("#")[0]);
-            if (smsconfirm == 1) {
-                localSmsInfo.setSmsconfirmheader(smsinfoarr[2].split("#")[1]);
-            } else {
-                localSmsInfo.setSmsconfirmheader("");
-            }
-            if (smsarr[i].indexOf("^&*") > 0) {
-                localSmsInfo.setInfobeforesend(smsarr[i].substring(smsarr[i].indexOf("^&*") + 3).split("#")[0]);
-            } else {
-                localSmsInfo.setInfobeforesend("");
-            }
-            localSmsInfo.setSmsendtime(smsinfoarr[5]);
-            localSmsInfos.add(localSmsInfo);
-        }
-        return localSmsInfos;
-    }
+      } 
+      paramString = xmlPullParser.getName();
+      xmlPullParser.require(2, "", paramString);
+      if ("channels".equals(paramString))
+        return xmlPullParser.nextText().replace("1", "upoint").replace("2", "sms"); 
+      skipUnknownTag(xmlPullParser);
+      xmlPullParser.require(3, "", paramString);
+    } 
+  }
+  
+  public static String parsePayOrder(String paramString) throws Exception {
+    if (TextUtils.isEmpty(paramString))
+      paramString = ""; 
+    return paramString;
+  }
+  
+  public static int parsePhoneCardChargeResult(String paramString) throws Exception {
+    if (TextUtils.isEmpty(paramString))
+      return -1; 
+    XmlPullParser xmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
+    xmlPullParser.setInput(new StringReader(paramString));
+    int i = -1;
+    xmlPullParser.nextTag();
+    xmlPullParser.require(2, "", "result");
+    while (true) {
+      if (xmlPullParser.nextTag() != 2) {
+        xmlPullParser.require(3, "", "result");
+        return i;
+      } 
+      paramString = xmlPullParser.getName();
+      xmlPullParser.require(2, "", paramString);
+      if ("pay_result".equals(paramString)) {
+        i = Utils.getInt(getAttributeValue(xmlPullParser, "status"));
+        xmlPullParser.nextTag();
+      } else {
+        skipUnknownTag(xmlPullParser);
+      } 
+      xmlPullParser.require(3, "", paramString);
+    } 
+  }
+  
+  public static SmsInfos parseSmsInfo(String paramString) throws Exception {
+    if (TextUtils.isEmpty(paramString))
+      return null; 
+    SmsInfos smsInfos = new SmsInfos();
+    String[] arrayOfString = paramString.split("\\^\\|\\*");
+    for (byte b = 0;; b++) {
+      int i;
+      boolean bool;
+      if (b >= arrayOfString.length)
+        return smsInfos; 
+      SmsInfo smsInfo = new SmsInfo();
+      if ((arrayOfString[b].split("\\^\\$\\*")).length < 2) {
+        i = 0;
+      } else {
+        i = Integer.parseInt(arrayOfString[b].split("\\^\\$\\*")[0]);
+      } 
+      if (i == 1) {
+        smsInfo.needconfirm = true;
+      } else {
+        smsInfo.needconfirm = false;
+      } 
+      String str = arrayOfString[b];
+      if (arrayOfString[b].indexOf("^$*") > 0) {
+        bool = arrayOfString[b].indexOf("^$*") + 3;
+      } else {
+        bool = false;
+      } 
+      String[] arrayOfString1 = str.substring(bool, arrayOfString[b].indexOf("^&*")).split(",");
+      if (arrayOfString1 == null || arrayOfString1.length < 2)
+        return null; 
+      smsInfo.setMoney(Integer.parseInt(arrayOfString1[4]));
+      smsInfo.setSmstype(Integer.parseInt(arrayOfString1[3].split("#")[0]));
+      smsInfo.setSmschannelid(arrayOfString1[0]);
+      smsInfo.setSmsnumber(arrayOfString1[1].split("#")[0]);
+      if (i == 1) {
+        smsInfo.setSmsconfirmnumber(arrayOfString1[1].split("#")[1]);
+      } else {
+        smsInfo.setSmsconfirmnumber("");
+      } 
+      smsInfo.setSmsheader(arrayOfString1[2].split("#")[0]);
+      if (i == 1) {
+        smsInfo.setSmsconfirmheader(arrayOfString1[2].split("#")[1]);
+      } else {
+        smsInfo.setSmsconfirmheader("");
+      } 
+      if (arrayOfString[b].indexOf("^&*") > 0) {
+        smsInfo.setInfobeforesend(arrayOfString[b].substring(arrayOfString[b].indexOf("^&*") + 3).split("#")[0]);
+      } else {
+        smsInfo.setInfobeforesend("");
+      } 
+      smsInfo.setSmsendtime(arrayOfString1[5]);
+      smsInfos.add(smsInfo);
+    } 
+  }
+  
+  public static UPointInfo parseUPointInfo(String paramString) throws Exception {
+    if (TextUtils.isEmpty(paramString))
+      return null; 
+    UPointInfo uPointInfo = new UPointInfo();
+    String[] arrayOfString = paramString.split("#");
+    if (arrayOfString[1].equals("none")) {
+      uPointInfo.setDiscount("无");
+      uPointInfo.setDiscounttext((new StringBuilder(String.valueOf(Utils.getPaymentInfo().getMoney()))).toString());
+    } else {
+      uPointInfo.setDiscount(arrayOfString[1]);
+      uPointInfo.setDiscounttext(arrayOfString[3]);
+    } 
+    uPointInfo.setDiscountinfo(arrayOfString[2]);
+    if (arrayOfString[4] != null && arrayOfString[4].length() > 0)
+      uPointInfo.setUserphone(arrayOfString[4]); 
+    if (arrayOfString[5] != null && !arrayOfString[5].equals("none"))
+      uPointInfo.setVipdiscount(arrayOfString[5]); 
+    if (arrayOfString[6] != null && !arrayOfString[6].equals("none"))
+      uPointInfo.setDiscounttext(arrayOfString[6]); 
+    if (arrayOfString[7] != null && !arrayOfString[7].equals("none"))
+      uPointInfo.setVipdiscounttime(arrayOfString[7]); 
+    return uPointInfo;
+  }
+  
+  private static void skipUnknownTag(XmlPullParser paramXmlPullParser) throws Exception {
+    String str = paramXmlPullParser.getName();
+    while (true) {
+      if (paramXmlPullParser.next() <= 0)
+        return; 
+      if (paramXmlPullParser.getEventType() != 3 || !paramXmlPullParser.getName().equals(str));
+    } 
+  }
 }
+
+
+/* Location:              /Users/thanh0x/DevTools0x/Rb2.0vip-dex2jar.jar!/com/uc/paymentsdk/network/XMLParser.class
+ * Java compiler version: 6 (50.0)
+ * JD-Core Version:       1.1.3
+ */

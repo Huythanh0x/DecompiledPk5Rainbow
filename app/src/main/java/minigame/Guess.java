@@ -3,410 +3,503 @@ package minigame;
 import dm.Ms;
 import dm.Sprite;
 import dm.Ui;
-import java.lang.reflect.Array;
 import javax.microedition.lcdui.Image;
-import javax.microedition.media.Player;
 import main.Constants_H;
 import main.GameRun;
 
-/* loaded from: classes.dex */
 public class Guess implements MiniGame_H {
-    private byte b_win;
-    private int[][] box;
-    private byte[] boxNum;
-    private byte[][] gameData;
-    GameRun gr;
-    private Image[] imgBox;
-    private Sprite[] imgMon;
-    private byte length;
-    private byte lv;
-    byte sel;
-    private int sell_money;
-    private byte time;
-    final short TIME = 20;
-    final short TIME2 = 40;
-    final short BOX_Y1 = 150;
-    final short MON_Y = 165;
-    private byte mon_size_move = 0;
-    private byte state = 0;
-    private byte gameR = 0;
-    private byte winNum = 0;
-    private byte transNum = 0;
-    private byte maxTransNum = 20;
-    private byte tempTransNum = 0;
-
-    public Guess(GameRun gr_) {
-        this.gr = gr_;
-    }
-
-    @Override // minigame.MiniGame_H
-    public void patin() {
-        Ui.i().fillRectB();
-        draw();
-        if (this.state != 0) {
-            drawGame();
-        }
-    }
-
-    private void drawGame() {
-        int i = 240 - 4;
-        int i2 = Constants_H.WIDTH_H_ - 4;
-        Ui.i().drawString(Constants_H.GAME_TXT_21 + ((int) this.winNum) + "/" + ((int) this.gameData[3][this.lv]), Constants_H.WIDTH_H_, 4, 17, 3, 1);
-        if (this.state == 1) {
-            Ui.g.setClip(202, 65, 240, 100);
-            for (int i3 = 0; i3 < this.box.length; i3++) {
-                if (this.box[i3][1] != -1) {
-                    drawMon(i3, this.box[i3][1], this.box[i3][2] + 202, (this.time < 40 ? (byte) 0 : this.mon_size_move) + Constants_H.ADD_EFFECT);
-                }
-            }
-            Ui.g.setClip(0, 0, Constants_H.WIDTH_, Constants_H.HEIGHT_);
-            if (this.time >= 20) {
-                for (int i4 = 0; i4 < this.box.length; i4++) {
-                    Ui.i().drawImage(this.imgBox[1], this.box[i4][2] + 202, this.box[i4][3], 17);
-                }
-                return;
-            }
-            return;
-        }
-        if (this.state == 2) {
-            for (int i5 = 0; i5 < this.box.length; i5++) {
-                Ui.i().drawImage(this.imgBox[1], this.box[i5][2] + 202, this.box[i5][3], 17);
-            }
-            return;
-        }
-        if (this.state == 3) {
-            for (int i6 = 0; i6 < this.box.length; i6++) {
-                if (this.gr.pkey.isSelect((this.box[i6][2] + 202) - 20, this.box[i6][3], 40, 40)) {
-                    this.gr.selectx = (byte) i6;
-                    this.gr.pkey.setKey5();
-                }
-                Ui.i().drawImage(this.imgBox[1], this.box[i6][2] + 202, this.box[i6][3], 17);
-            }
-            Ui.i().drawImage(this.imgBox[0], (this.box[this.gr.selectx][2] + 202) - 1, this.box[this.gr.selectx][3] - (this.time % 4 <= 2 ? 5 : 0), 17);
-            byte b = (byte) (this.time + 1);
-            this.time = b;
-            if (b > 20) {
-                this.time = (byte) 0;
-            }
-            drawMon(this.box[this.gr.selecty][0], this.box[this.gr.selecty][1], this.gameData[0][1] + 202 + 100, 135);
-            this.gr.showStringM(Constants_H.GAME_TXT_22 + this.gr.getNameMon(this.box[this.gr.selecty][1]) + Constants_H.GAME_TXT_23, 202 + 240 + 90, 29 * 5, 6, 0);
-            return;
-        }
-        if (this.state == 4) {
-            int i7 = this.box[this.gr.selecty][0];
-            int[][] iArr = this.box;
-            int WIDTH_H = this.gr.selecty;
-            drawMon(i7, iArr[WIDTH_H][1], this.gameData[0][1] + 202 + 100, 135);
-            Ui.i().drawImage(this.imgBox[1], this.box[this.gr.selectx][2] + 202, this.box[this.gr.selectx][3], 17);
-            if (this.box[this.gr.selectx][1] != -1) {
-                drawMon(this.box[this.gr.selectx][0], this.box[this.gr.selectx][1], this.box[this.gr.selectx][2] + 202, this.box[this.gr.selectx][3] + 35);
-            }
-            if (this.b_win > 0) {
-                this.gr.showStringM(Constants_H.GAME_TXT_24, 202 + 240 + 90, 29 * 5, 6, 0);
+  final short BOX_Y1 = 150;
+  
+  final short MON_Y = 165;
+  
+  final short TIME = 20;
+  
+  final short TIME2 = 40;
+  
+  private byte b_win;
+  
+  private int[][] box;
+  
+  private byte[] boxNum;
+  
+  private byte[][] gameData;
+  
+  private byte gameR = 0;
+  
+  GameRun gr;
+  
+  private Image[] imgBox;
+  
+  private Sprite[] imgMon;
+  
+  private byte length;
+  
+  private byte lv;
+  
+  private byte maxTransNum = 20;
+  
+  private byte mon_size_move = 0;
+  
+  byte sel;
+  
+  private int sell_money;
+  
+  private byte state = 0;
+  
+  private byte tempTransNum = 0;
+  
+  private byte time;
+  
+  private byte transNum = 0;
+  
+  private byte winNum = 0;
+  
+  public Guess(GameRun paramGameRun) {
+    this.gr = paramGameRun;
+  }
+  
+  private void draw() {
+    if (this.state == 0) {
+      Ui.i().drawString("游戏规则", 320, 4, 17, 3, 1);
+      Ui.i().drawUi(7, 320 - 75, 27, 40, 0);
+      Ui.i().drawUi(7, 320 + 75, 27, 36, 4);
+    } 
+    int i = 29 * 10;
+    Ui.i().drawK(10, 25 + 10, 200, i, 4);
+    Ui.i().drawK(10 + 200 + 10, 25 + 10, 200, i, 4);
+    Ui.i().drawK(10 + 420, 25 + 10, 200, i, 4);
+    Ui.i().drawStringY(this.gr.about_a, 10 + 6, 25 + 10, 29, 0, 0);
+    if (this.state == 0) {
+      this.gr.showStringM("需要的参加费：" + this.sell_money + "金", 320, 25 + 290 - 50, 7, 0);
+      Ui.i().drawListKY(2, 10 + 200 + 12 + 25, 25 + 75 + 5, 200 - 50, 3, 30, 10, this.sel, 4, 2);
+      i = 0;
+      while (true) {
+        if (i < this.gr.about_b.length) {
+          byte b;
+          Ui ui = Ui.i();
+          String str = this.gr.about_b[i].toString();
+          if (this.sel == i) {
+            b = 0;
+          } else {
+            b = 3;
+          } 
+          ui.drawString(str, 10 + 200 + 15 + 25 + 26, i * 40 + 105 - 2, 0, b, 1);
+          if (this.gr.pkey.isSelect(10 + 200 + 12 + 25, i * 40 + 105 - 2, 200 - 50, 40))
+            if (this.sel == i) {
+              this.gr.pkey.setKey5();
             } else {
-                this.gr.showStringM(Constants_H.GAME_TXT_25, 202 + 240 + 90, 29 * 5, 6, 0);
-            }
-            this.gr.showStringM(Constants_H.GAME_TXT_28, 202 + 240 + 90, 29 * 7, 6, 0);
-            if (this.gr.pkey.isSelect(0, 0, Constants_H.WIDTH_, Constants_H.HEIGHT_)) {
-                this.gr.pkey.setKey5();
-            }
-        }
-    }
-
-    private void draw() {
-        if (this.state == 0) {
-            Ui.i().drawString(Constants_H.GAME_TXT_7, Constants_H.WIDTH_H_, 4, 17, 3, 1);
-            Ui.i().drawUi(7, Constants_H.WIDTH_H_ - 75, 27, 40, 0);
-            Ui.i().drawUi(7, Constants_H.WIDTH_H_ + 75, 27, 36, 4);
-        }
-        int h = 29 * 10;
-        Ui.i().drawK(10, 25 + 10, Player.REALIZED, h, 4);
-        Ui.i().drawK(10 + Player.REALIZED + 10, 25 + 10, Player.REALIZED, h, 4);
-        Ui i = Ui.i();
-        int i2 = (Player.REALIZED + 10) * 2;
-        i.drawK(10 + 420, 25 + 10, Player.REALIZED, h, 4);
-        Ui.i().drawStringY(this.gr.about_a, 10 + 6, 25 + 10, 29, 0, 0);
-        if (this.state == 0) {
-            this.gr.showStringM(Constants_H.GAME_TXT_12 + this.sell_money + Constants_H.MONEY_TXT_0, Constants_H.WIDTH_H_, (25 + 290) - 50, 7, 0);
-            int ty = 25 + 75 + 5;
-            Ui.i().drawListKY(2, 10 + Player.REALIZED + 12 + 25, ty, Player.REALIZED - 50, 3, 30, 10, this.sel, 4, 2);
-            int i3 = 0;
-            while (i3 < this.gr.about_b.length) {
-                Ui.i().drawString(this.gr.about_b[i3].toString(), 10 + Player.REALIZED + 15 + 25 + 26, ((i3 * 40) + 105) - 2, 0, this.sel == i3 ? 0 : 3, 1);
-                if (this.gr.pkey.isSelect(10 + Player.REALIZED + 12 + 25, ((i3 * 40) + 105) - 2, Player.REALIZED - 50, 40)) {
-                    if (this.sel == i3) {
-                        this.gr.pkey.setKey5();
-                    } else {
-                        this.sel = (byte) i3;
-                    }
-                }
-                i3++;
-            }
-        }
-        if (this.state == 0) {
-            Ui.i().drawYesNo(true, true);
-        }
-        this.gr.drawMoney(Constants_H.WIDTH_H_, Constants_H.HEIGHT_, 3, false);
-    }
-
-    private void drawMon(int i, int id, int x, int y) {
-        Ui.i().drawFrameOne(this.imgMon[i], this.imgMon[i].action(this.gr.mList_id[id][1] * 3, 0, 0), x, y, 0);
-    }
-
-    @Override // minigame.MiniGame_H
-    public void run() {
-        if (this.state == 1) {
-            if (this.time < 20) {
-                this.time = (byte) (this.time + 1);
-                return;
-            }
-            if (this.box[0][3] < 150) {
-                for (byte i = 0; i < 3; i = (byte) (i + 1)) {
-                    int[] iArr = this.box[i];
-                    iArr[3] = iArr[3] + 25;
-                }
-                return;
-            }
-            byte b = (byte) (this.time + 1);
-            this.time = b;
-            if (b >= 40) {
-                if (this.mon_size_move < 40) {
-                    this.mon_size_move = (byte) (this.mon_size_move + 5);
-                    return;
-                } else {
-                    this.state = (byte) 2;
-                    this.time = (byte) 0;
-                    return;
-                }
-            }
-            return;
-        }
-        if (this.state == 2) {
-            if (this.time <= 0) {
-                if (this.transNum < this.maxTransNum) {
-                    this.time = (byte) 1;
-                    this.transNum = (byte) (this.transNum + 1);
-                    byte[] bArr = this.boxNum;
-                    Ms.i();
-                    bArr[0] = (byte) Ms.getRandom(3);
-                    do {
-                        byte[] bArr2 = this.boxNum;
-                        Ms.i();
-                        bArr2[1] = (byte) Ms.getRandom(3);
-                    } while (this.boxNum[1] == this.boxNum[0]);
-                    if (this.box[this.boxNum[1]][2] < this.box[this.boxNum[0]][2]) {
-                        this.gameR = this.boxNum[1];
-                        this.boxNum[1] = this.boxNum[0];
-                        this.boxNum[0] = this.gameR;
-                    }
-                    Ms.i();
-                    this.gameR = (byte) (Ms.abs(this.box[this.boxNum[1]][2] - this.box[this.boxNum[0]][2]) / 2);
-                    this.tempTransNum = (byte) ((this.gameR * 2) / this.gameData[1][this.lv]);
-                    return;
-                }
-                this.time = (byte) 0;
-                this.state = (byte) 3;
-                do {
-                    GameRun gameRun = this.gr;
-                    Ms.i();
-                    gameRun.selecty = (byte) Ms.getRandom(this.box.length);
-                } while (this.box[this.gr.selecty][1] == -1);
-                return;
-            }
-            if (this.time > this.tempTransNum) {
-                this.time = (byte) 0;
-                int[] temp = new int[4];
-                for (byte i2 = 0; i2 < this.box.length; i2 = (byte) (i2 + 1)) {
-                    for (byte j = 0; j < this.box.length; j = (byte) (j + 1)) {
-                        if (this.box[j][2] > this.box[i2][2]) {
-                            System.arraycopy(this.box[i2], 0, temp, 0, temp.length);
-                            System.arraycopy(this.box[j], 0, this.box[i2], 0, this.box[j].length);
-                            System.arraycopy(temp, 0, this.box[j], 0, temp.length);
-                        }
-                    }
-                }
-                for (byte i3 = 0; i3 < 3; i3 = (byte) (i3 + 1)) {
-                    this.box[i3][2] = this.gameData[0][i3] + 100;
-                    this.box[i3][3] = 150;
-                }
-                return;
-            }
-            this.time = (byte) (this.time + 1);
-            int[] iArr2 = this.box[this.boxNum[0]];
-            iArr2[2] = iArr2[2] + ((this.gameR * 2) / this.tempTransNum);
-            int temp2 = ((this.gameR * 2) / this.tempTransNum) * this.time;
-            this.box[this.boxNum[0]][3] = 150 - Ms.i().sqrt((this.gameR * this.gameR) - ((temp2 - this.gameR) * (temp2 - this.gameR)));
-            int[] iArr3 = this.box[this.boxNum[1]];
-            iArr3[2] = iArr3[2] - ((this.gameR * 2) / this.tempTransNum);
-            this.box[this.boxNum[1]][3] = Ms.i().sqrt((this.gameR * this.gameR) - ((temp2 - this.gameR) * (temp2 - this.gameR))) + 150;
-            return;
-        }
-        if (this.state == 4) {
-            if ((this.gr.selectx == 2 && this.box[this.gr.selectx][2] > this.gameData[0][1] + 100) || (this.gr.selectx == 0 && this.box[this.gr.selectx][2] < this.gameData[0][1] + 100)) {
-                int[] iArr4 = this.box[this.gr.selectx];
-                iArr4[2] = iArr4[2] + ((this.gameData[0][1] - this.gameData[0][this.gr.selectx]) / 7);
-            }
-        }
-    }
-
-    @Override // minigame.MiniGame_H
-    public boolean key() {
-        if (Ms.i().key_delay()) {
-            return false;
-        }
-        if (this.state == 0) {
-            if (Ms.i().key_Up_Down()) {
-                this.sel = (byte) (this.sel ^ 1);
-            } else if (Ms.i().key_S1_Num5()) {
-                Ms.i().keyRelease();
-                if (this.sel == 0 && this.gr.isMoney(this.sell_money, true)) {
-                    go(1, this.lv);
-                } else if (this.sel == 1) {
-                    Ms.i().keyRelease();
-                    this.gr.about_a = null;
-                    this.imgBox = null;
-                    this.boxNum = null;
-                    this.gameData = null;
-                    this.box = null;
-                    this.imgMon = null;
-                    return true;
-                }
-            } else if (Ms.i().key_S2()) {
-                Ms.i().keyRelease();
-                this.gr.about_a = null;
-                this.imgBox = null;
-                this.boxNum = null;
-                this.gameData = null;
-                this.box = null;
-                this.imgMon = null;
-                return true;
-            }
-        } else if (this.state == 3) {
-            if (Ms.i().key_Left_Right()) {
-                this.gr.selectx = Ms.i().select(this.gr.selectx, 0, this.box.length - 1);
-            } else if (Ms.i().key_S1_Num5()) {
-                Ms.i().keyRelease();
-                this.state = (byte) 4;
-                this.b_win = (byte) (this.gr.selectx == this.gr.selecty ? 1 : -1);
-            }
-        } else if (this.state == 4 && Ms.i().key_S1_Num5()) {
-            Ms.i().keyRelease();
-            if (this.b_win == 1) {
-                this.b_win = win();
-                if (this.b_win == 3) {
-                    go(1, this.lv);
-                }
-            } else if (this.b_win == -1 || (this.b_win == 2 && this.gr.say_c == 0)) {
-                if (this.b_win == 2 && this.gr.rmsOther[11] == 3) {
-                    this.gr.rmsOther[11] = 4;
-                    this.gr.getMonster(83, 25, 0, -1);
-                } else if (this.b_win == -1 && this.gr.rmsOther[11] < 3) {
-                    this.gr.rmsOther[11] = 0;
-                }
-                go(0, this.lv);
-            }
-        }
-        return false;
-    }
-
-    private byte win() {
-        byte b = (byte) (this.winNum + 1);
-        this.winNum = b;
-        if (b < this.gameData[3][this.lv]) {
-            return (byte) 3;
-        }
-        int tm = this.sell_money + (this.lv * this.lv * 150) + ((2 - this.lv) * 25);
-        this.gr.money += tm;
-        this.gr.say(Constants_H.MONEY_TXT_9 + tm, 0);
-        byte[] bArr = this.gr.rmsOther;
-        bArr[10] = (byte) (bArr[10] | (1 << this.lv));
-        if (this.lv == 2 && this.gr.rmsOther[11] < 3) {
-            byte[] bArr2 = this.gr.rmsOther;
-            bArr2[11] = (byte) (bArr2[11] + 1);
-        }
-        return (byte) 2;
-    }
-
-    @Override // minigame.MiniGame_H
-    public void go(int mode, int lv_) {
-        this.gr.setStringB(this.gr.createString("data/gamed.d"), Constants_H.HEIGHT_H_, 0);
-        this.gr.setStringB(Constants_H.GAME_TXT_27, Constants_H.WIDTH, 1);
-        this.lv = (byte) lv_;
-        this.imgBox = new Image[2];
-        this.imgBox[0] = Ms.i().createImage("data/brow/m2");
-        this.imgBox[1] = Ms.i().createImage("data/brow/m3");
-        this.boxNum = new byte[2];
-        this.gameData = new byte[][]{new byte[]{-60, 17, 90}, new byte[]{8, 13, 20, 30}, new byte[]{1, 2, 3, 3}, new byte[]{6, 4, 2, 2}, new byte[]{83, 30, 55}};
-        this.box = (int[][]) Array.newInstance((Class<?>) Integer.TYPE, 3, 4);
-        this.imgMon = new Sprite[3];
-        go(mode);
-    }
-
-    @Override // minigame.MiniGame_H
-    public void go(int mode) {
-        if (mode < 1) {
-            this.b_win = (byte) 0;
-            this.gr.selecty = (byte) 0;
-            this.gr.selectx = (byte) 0;
-            this.winNum = (byte) 0;
-            this.state = (byte) 0;
-            this.gr.buyOk = (byte) 0;
-            this.gr.line_max = (byte) 9;
-            this.sell_money = (this.lv * 200) + Player.REALIZED;
-            this.length = (byte) (this.gr.about_a.length - this.gr.line_max);
-            return;
-        }
-        this.time = (byte) 0;
-        this.state = (byte) 1;
-        initGame();
-    }
-
-    private void initGame() {
-        byte[] monList = getGameMonList();
-        for (byte i = 0; i < 3; i = (byte) (i + 1)) {
-            this.box[i][0] = i;
-            this.box[i][1] = monList[i];
-            this.box[i][2] = this.gameData[0][i] + 100;
-            this.box[i][3] = 0;
-        }
-        Ms.i();
-        this.maxTransNum = (byte) (Ms.getRandom(this.lv + 2) + 2 + this.lv);
-        this.transNum = (byte) 0;
-        this.mon_size_move = (byte) 0;
-    }
-
-    private byte[] getGameMonList() {
-        byte[] monList = new byte[3];
-        for (byte i = 0; i < monList.length; i = (byte) (i + 1)) {
-            monList[i] = -1;
-        }
-        for (byte i2 = 0; i2 < this.gameData[2][this.lv]; i2 = (byte) (i2 + 1)) {
-            byte[] bArr = this.gameData[4];
+              this.sel = (byte)i;
+            }  
+          i++;
+          continue;
+        } 
+        if (this.state == 0)
+          Ui.i().drawYesNo(true, true); 
+        this.gr.drawMoney(320, 360, 3, false);
+        return;
+      } 
+    } 
+    if (this.state == 0)
+      Ui.i().drawYesNo(true, true); 
+    this.gr.drawMoney(320, 360, 3, false);
+  }
+  
+  private void drawGame() {
+    Ui.i().drawString("胜利次数：" + this.winNum + "/" + this.gameData[3][this.lv], 320, 4, 17, 3, 1);
+    if (this.state == 1) {
+      Ui.g.setClip(202, 65, 240, 100);
+      for (byte b = 0;; b++) {
+        if (b >= this.box.length) {
+          Ui.g.setClip(0, 0, 640, 360);
+          if (this.time >= 20) {
+            b = 0;
+            while (true) {
+              if (b < this.box.length) {
+                Ui.i().drawImage(this.imgBox[1], this.box[b][2] + 202, this.box[b][3], 17);
+                b++;
+                continue;
+              } 
+              return;
+            } 
+            break;
+          } 
+          continue;
+        } 
+        if (this.box[b][1] != -1) {
+          byte b1;
+          int j = this.box[b][1];
+          int i = this.box[b][2];
+          if (this.time < 40) {
+            b1 = 0;
+          } else {
+            b1 = this.mon_size_move;
+          } 
+          drawMon(b, j, i + 202, b1 + 165);
+        } 
+      } 
+    } 
+    if (this.state == 2) {
+      byte b = 0;
+      while (true) {
+        if (b < this.box.length) {
+          Ui.i().drawImage(this.imgBox[1], this.box[b][2] + 202, this.box[b][3], 17);
+          b++;
+          continue;
+        } 
+        return;
+      } 
+    } 
+    if (this.state == 3)
+      for (byte b = 0;; b++) {
+        if (b >= this.box.length) {
+          Ui ui = Ui.i();
+          Image image = this.imgBox[0];
+          int j = this.box[this.gr.selectx][2];
+          int i = this.box[this.gr.selectx][3];
+          if (this.time % 4 <= 2) {
+            b = 5;
+          } else {
+            b = 0;
+          } 
+          ui.drawImage(image, j + 202 - 1, i - b, 17);
+          byte b1 = (byte)(this.time + 1);
+          this.time = b1;
+          if (b1 > 20)
+            this.time = 0; 
+          drawMon(this.box[this.gr.selecty][0], this.box[this.gr.selecty][1], this.gameData[0][1] + 202 + 100, 135);
+          this.gr.showStringM("请指出" + this.gr.getNameMon(this.box[this.gr.selecty][1]) + "所在箱子", 202 + 240 + 90, 29 * 5, 6, 0);
+          return;
+        } 
+        if (this.gr.pkey.isSelect(this.box[b][2] + 202 - 20, this.box[b][3], 40, 40)) {
+          this.gr.selectx = (byte)b;
+          this.gr.pkey.setKey5();
+        } 
+        Ui.i().drawImage(this.imgBox[1], this.box[b][2] + 202, this.box[b][3], 17);
+      }  
+    if (this.state == 4) {
+      drawMon(this.box[this.gr.selecty][0], this.box[this.gr.selecty][1], this.gameData[0][1] + 202 + 100, 135);
+      Ui.i().drawImage(this.imgBox[1], this.box[this.gr.selectx][2] + 202, this.box[this.gr.selectx][3], 17);
+      if (this.box[this.gr.selectx][1] != -1)
+        drawMon(this.box[this.gr.selectx][0], this.box[this.gr.selectx][1], this.box[this.gr.selectx][2] + 202, this.box[this.gr.selectx][3] + 35); 
+      if (this.b_win > 0) {
+        this.gr.showStringM("您真厉害！", 202 + 240 + 90, 29 * 5, 6, 0);
+      } else {
+        this.gr.showStringM("说不定下次就能行的。", 202 + 240 + 90, 29 * 5, 6, 0);
+      } 
+      this.gr.showStringM("点击屏幕继续", 202 + 240 + 90, 29 * 7, 6, 0);
+      if (this.gr.pkey.isSelect(0, 0, 640, 360))
+        this.gr.pkey.setKey5(); 
+    } 
+  }
+  
+  private void drawMon(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
+    Ui.i().drawFrameOne(this.imgMon[paramInt1], this.imgMon[paramInt1].action(this.gr.mList_id[paramInt2][1] * 3, 0, 0), paramInt3, paramInt4, 0);
+  }
+  
+  private byte[] getGameMonList() {
+    byte[] arrayOfByte = new byte[3];
+    for (byte b = 0;; b = (byte)(b + 1)) {
+      if (b >= arrayOfByte.length) {
+        byte b1 = 0;
+        label28: while (true) {
+          if (b1 >= this.gameData[2][this.lv]) {
             Ms.i();
-            monList[i2] = bArr[Ms.getRandom(this.gameData[4].length)];
-            byte n = 0;
-            while (n < i2) {
-                if (monList[n] == monList[i2]) {
-                    byte[] bArr2 = this.gameData[4];
-                    Ms.i();
-                    monList[i2] = bArr2[Ms.getRandom(this.gameData[4].length)];
-                    n = 0;
-                } else {
-                    n = (byte) (n + 1);
-                }
-            }
-        }
+            b = (byte)Ms.getRandom(2);
+            byte b2 = arrayOfByte[arrayOfByte.length - 1];
+            arrayOfByte[arrayOfByte.length - 1] = arrayOfByte[b];
+            arrayOfByte[b] = b2;
+            for (b = 0;; b = (byte)(b + 1)) {
+              if (b >= 3)
+                return arrayOfByte; 
+              if (arrayOfByte[b] != -1) {
+                b1 = this.gr.mList_id[arrayOfByte[b]][0];
+                this.imgMon[b] = Ms.i().createSprite("data/npc2/" + b1, this.gr.isNpc2ImageType(b1));
+              } 
+            } 
+            break;
+          } 
+          byte[] arrayOfByte1 = this.gameData[4];
+          Ms.i();
+          arrayOfByte[b1] = arrayOfByte1[Ms.getRandom((this.gameData[4]).length)];
+          for (b = 0;; b = (byte)(b + 1)) {
+            if (b >= b1) {
+              b1 = (byte)(b1 + 1);
+              continue label28;
+            } 
+            if (arrayOfByte[b] == arrayOfByte[b1]) {
+              arrayOfByte1 = this.gameData[4];
+              Ms.i();
+              arrayOfByte[b1] = arrayOfByte1[Ms.getRandom((this.gameData[4]).length)];
+              b = 0;
+              continue;
+            } 
+          } 
+          break;
+        } 
+      } 
+      arrayOfByte[b] = -1;
+    } 
+  }
+  
+  private void initGame() {
+    byte[] arrayOfByte = getGameMonList();
+    for (byte b = 0;; b = (byte)(b + 1)) {
+      if (b >= 3) {
+        arrayOfByte = (byte[])null;
         Ms.i();
-        byte i3 = (byte) Ms.getRandom(2);
-        byte n2 = monList[monList.length - 1];
-        monList[monList.length - 1] = monList[i3];
-        monList[i3] = n2;
-        for (byte i4 = 0; i4 < 3; i4 = (byte) (i4 + 1)) {
-            if (monList[i4] != -1) {
-                byte t = this.gr.mList_id[monList[i4]][0];
-                this.imgMon[i4] = Ms.i().createSprite("data/npc2/" + ((int) t), this.gr.isNpc2ImageType(t));
-            }
-        }
-        return monList;
-    }
+        this.maxTransNum = (byte)(Ms.getRandom(this.lv + 2) + 2 + this.lv);
+        this.transNum = 0;
+        this.mon_size_move = 0;
+        return;
+      } 
+      this.box[b][0] = b;
+      this.box[b][1] = arrayOfByte[b];
+      this.box[b][2] = this.gameData[0][b] + 100;
+      this.box[b][3] = 0;
+    } 
+  }
+  
+  private byte win() {
+    null = (byte)(this.winNum + 1);
+    this.winNum = null;
+    if (null >= this.gameData[3][this.lv]) {
+      int i = this.sell_money + this.lv * this.lv * 150 + (2 - this.lv) * 25;
+      GameRun gameRun = this.gr;
+      gameRun.money += i;
+      this.gr.say("获得金钱：" + i, 0);
+      byte[] arrayOfByte = this.gr.rmsOther;
+      arrayOfByte[10] = (byte)(arrayOfByte[10] | 1 << this.lv);
+      if (this.lv == 2 && this.gr.rmsOther[11] < 3) {
+        arrayOfByte = this.gr.rmsOther;
+        arrayOfByte[11] = (byte)(arrayOfByte[11] + 1);
+      } 
+      return 2;
+    } 
+    return 3;
+  }
+  
+  public void go(int paramInt) {
+    if (paramInt < 1) {
+      this.b_win = 0;
+      this.gr.selecty = 0;
+      this.gr.selectx = 0;
+      this.winNum = 0;
+      this.state = 0;
+      this.gr.buyOk = 0;
+      this.gr.line_max = 9;
+      this.sell_money = this.lv * 200 + 200;
+      this.length = (byte)(this.gr.about_a.length - this.gr.line_max);
+      return;
+    } 
+    this.time = 0;
+    this.state = 1;
+    initGame();
+  }
+  
+  public void go(int paramInt1, int paramInt2) {
+    this.gr.setStringB(this.gr.createString("data/gamed.d"), 180, 0);
+    this.gr.setStringB("开始游戏#n离开游戏", Constants_H.WIDTH, 1);
+    this.lv = (byte)paramInt2;
+    this.imgBox = new Image[2];
+    this.imgBox[0] = Ms.i().createImage("data/brow/m2");
+    this.imgBox[1] = Ms.i().createImage("data/brow/m3");
+    this.boxNum = new byte[2];
+    byte[] arrayOfByte3 = { -60, 17, 90 };
+    byte[] arrayOfByte2 = { 1, 2, 3, 3 };
+    byte[] arrayOfByte4 = { 6, 4, 2, 2 };
+    byte[] arrayOfByte1 = { 83, 30, 55 };
+    this.gameData = new byte[][] { arrayOfByte3, { 8, 13, 20, 30 }, arrayOfByte2, arrayOfByte4, arrayOfByte1 };
+    this.box = new int[3][4];
+    this.imgMon = new Sprite[3];
+    go(paramInt1);
+  }
+  
+  public boolean key() {
+    if (Ms.i().key_delay())
+      return false; 
+    if (this.state == 0) {
+      if (Ms.i().key_Up_Down()) {
+        this.sel = (byte)(this.sel ^ 0x1);
+      } else if (Ms.i().key_S1_Num5()) {
+        Ms.i().keyRelease();
+        if (this.sel == 0 && this.gr.isMoney(this.sell_money, true)) {
+          go(1, this.lv);
+        } else if (this.sel == 1) {
+          Ms.i().keyRelease();
+          this.gr.about_a = null;
+          this.imgBox = null;
+          this.boxNum = null;
+          this.gameData = null;
+          this.box = null;
+          this.imgMon = null;
+          return true;
+        } 
+      } else if (Ms.i().key_S2()) {
+        Ms.i().keyRelease();
+        this.gr.about_a = null;
+        this.imgBox = null;
+        this.boxNum = null;
+        this.gameData = null;
+        this.box = null;
+        this.imgMon = null;
+        return true;
+      } 
+    } else if (this.state == 3) {
+      if (Ms.i().key_Left_Right()) {
+        this.gr.selectx = Ms.i().select(this.gr.selectx, 0, this.box.length - 1);
+      } else if (Ms.i().key_S1_Num5()) {
+        byte b;
+        Ms.i().keyRelease();
+        this.state = 4;
+        if (this.gr.selectx == this.gr.selecty) {
+          b = 1;
+        } else {
+          b = -1;
+        } 
+        this.b_win = (byte)b;
+      } 
+    } else if (this.state == 4 && Ms.i().key_S1_Num5()) {
+      Ms.i().keyRelease();
+      if (this.b_win == 1) {
+        this.b_win = win();
+        if (this.b_win == 3)
+          go(1, this.lv); 
+      } else if (this.b_win == -1 || (this.b_win == 2 && this.gr.say_c == 0)) {
+        if (this.b_win == 2 && this.gr.rmsOther[11] == 3) {
+          this.gr.rmsOther[11] = 4;
+          this.gr.getMonster(83, 25, 0, -1);
+        } else if (this.b_win == -1 && this.gr.rmsOther[11] < 3) {
+          this.gr.rmsOther[11] = 0;
+        } 
+        go(0, this.lv);
+      } 
+    } 
+    return false;
+  }
+  
+  public void patin() {
+    Ui.i().fillRectB();
+    draw();
+    if (this.state != 0)
+      drawGame(); 
+  }
+  
+  public void run() {
+    if (this.state == 1) {
+      if (this.time < 20) {
+        this.time = (byte)(this.time + 1);
+        return;
+      } 
+      if (this.box[0][3] < 150) {
+        byte b1 = 0;
+        while (true) {
+          if (b1 < 3) {
+            int[] arrayOfInt = this.box[b1];
+            arrayOfInt[3] = arrayOfInt[3] + 25;
+            b1 = (byte)(b1 + 1);
+            continue;
+          } 
+          return;
+        } 
+      } 
+      byte b = (byte)(this.time + 1);
+      this.time = b;
+      if (b >= 40) {
+        if (this.mon_size_move < 40) {
+          this.mon_size_move = (byte)(this.mon_size_move + 5);
+          return;
+        } 
+        this.state = 2;
+        this.time = 0;
+      } 
+      return;
+    } 
+    if (this.state == 2) {
+      if (this.time <= 0) {
+        if (this.transNum < this.maxTransNum) {
+          this.time = 1;
+          this.transNum = (byte)(this.transNum + 1);
+          byte[] arrayOfByte = this.boxNum;
+          Ms.i();
+          arrayOfByte[0] = (byte)Ms.getRandom(3);
+          while (true) {
+            arrayOfByte = this.boxNum;
+            Ms.i();
+            arrayOfByte[1] = (byte)Ms.getRandom(3);
+            if (this.boxNum[1] != this.boxNum[0]) {
+              if (this.box[this.boxNum[1]][2] < this.box[this.boxNum[0]][2]) {
+                this.gameR = this.boxNum[1];
+                this.boxNum[1] = this.boxNum[0];
+                this.boxNum[0] = this.gameR;
+              } 
+              Ms.i();
+              this.gameR = (byte)(Ms.abs(this.box[this.boxNum[1]][2] - this.box[this.boxNum[0]][2]) / 2);
+              this.tempTransNum = (byte)(this.gameR * 2 / this.gameData[1][this.lv]);
+              return;
+            } 
+          } 
+        } 
+        this.time = 0;
+        this.state = 3;
+        while (true) {
+          GameRun gameRun = this.gr;
+          Ms.i();
+          gameRun.selecty = (byte)Ms.getRandom(this.box.length);
+          if (this.box[this.gr.selecty][1] != -1)
+            return; 
+        } 
+      } 
+      if (this.time > this.tempTransNum) {
+        this.time = 0;
+        int[] arrayOfInt1 = new int[4];
+        byte b = 0;
+        label61: while (true) {
+          if (b >= this.box.length) {
+            b = 0;
+            while (true) {
+              if (b < 3) {
+                this.box[b][2] = this.gameData[0][b] + 100;
+                this.box[b][3] = 150;
+                b = (byte)(b + 1);
+                continue;
+              } 
+              return;
+            } 
+            break;
+          } 
+          for (byte b1 = 0;; b1 = (byte)(b1 + 1)) {
+            if (b1 >= this.box.length) {
+              b = (byte)(b + 1);
+              continue label61;
+            } 
+            if (this.box[b1][2] > this.box[b][2]) {
+              System.arraycopy(this.box[b], 0, arrayOfInt1, 0, arrayOfInt1.length);
+              System.arraycopy(this.box[b1], 0, this.box[b], 0, (this.box[b1]).length);
+              System.arraycopy(arrayOfInt1, 0, this.box[b1], 0, arrayOfInt1.length);
+            } 
+          } 
+          break;
+        } 
+      } 
+      this.time = (byte)(this.time + 1);
+      int[] arrayOfInt = this.box[this.boxNum[0]];
+      arrayOfInt[2] = arrayOfInt[2] + this.gameR * 2 / this.tempTransNum;
+      int i = this.gameR * 2 / this.tempTransNum * this.time;
+      this.box[this.boxNum[0]][3] = 150 - Ms.i().sqrt(this.gameR * this.gameR - (i - this.gameR) * (i - this.gameR));
+      arrayOfInt = this.box[this.boxNum[1]];
+      arrayOfInt[2] = arrayOfInt[2] - this.gameR * 2 / this.tempTransNum;
+      this.box[this.boxNum[1]][3] = Ms.i().sqrt(this.gameR * this.gameR - (i - this.gameR) * (i - this.gameR)) + 150;
+      return;
+    } 
+    if (this.state == 4 && ((this.gr.selectx == 2 && this.box[this.gr.selectx][2] > this.gameData[0][1] + 100) || (this.gr.selectx == 0 && this.box[this.gr.selectx][2] < this.gameData[0][1] + 100))) {
+      int[] arrayOfInt = this.box[this.gr.selectx];
+      arrayOfInt[2] = arrayOfInt[2] + (this.gameData[0][1] - this.gameData[0][this.gr.selectx]) / 7;
+    } 
+  }
 }
+
+
+/* Location:              /Users/thanh0x/DevTools0x/Rb2.0vip-dex2jar.jar!/minigame/Guess.class
+ * Java compiler version: 6 (50.0)
+ * JD-Core Version:       1.1.3
+ */

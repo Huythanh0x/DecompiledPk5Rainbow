@@ -1,6 +1,8 @@
+/*
+ * Decompiled with CFR.
+ */
 package javax.microedition.rms;
 
-/* loaded from: classes.dex */
 public interface RecordFilter {
-    boolean matches(byte[] bArr);
+    public boolean matches(byte[] var1);
 }

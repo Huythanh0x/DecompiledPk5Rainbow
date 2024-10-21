@@ -1,38 +1,186 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  com.android.Util.AndroidUtil
+ *  dm.Sprite
+ *  javax.microedition.lcdui.Font
+ *  javax.microedition.lcdui.Image
+ *  javax.microedition.rms.RecordStore
+ *  main.Key_H
+ */
 package dm;
 
-import android.util.Log;
 import com.android.Util.AndroidUtil;
-import com.uc.paymentsdk.util.Constants;
+import dm.Sprite;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.util.Random;
-import java.util.Vector;
 import javax.microedition.lcdui.Font;
 import javax.microedition.lcdui.Image;
-import javax.microedition.lcdui.game.GameCanvas;
 import javax.microedition.rms.RecordStore;
-import main.Constants_H;
 import main.Key_H;
 
-/* loaded from: classes.dex */
-public class Ms implements Key_H {
+public class Ms
+implements Key_H {
+    public static Font font;
     public static int key;
     public static boolean keyRepeat;
+    public static byte key_delay;
+    public static byte key_time;
     private static Ms msListener;
+    private static Random random;
     private static RecordStore rms;
     public static int skip;
     public static int skip2;
+    final int RMSSIZE;
     private int sleep_time;
-    private static Random random = new Random();
-    public static Font font = Font.getFont(0, 0, 26);
-    public static byte key_delay = 0;
-    public static byte key_time = 10;
-    final int RMSSIZE = 15360;
-    private final byte[] transA = {0, 6, 3, 5, 2, 7, 1, 4};
+    private final byte[] transA;
+
+    static {
+        random = new Random();
+        font = Font.getFont((int)0, (int)0, (int)26);
+        key_delay = 0;
+        key_time = (byte)10;
+    }
 
     public Ms() {
+        this.RMSSIZE = 15360;
+        byte[] byArray = new byte[8];
+        byArray[1] = 6;
+        byArray[2] = 3;
+        byArray[3] = 5;
+        byArray[4] = 2;
+        byArray[5] = 7;
+        byArray[6] = 1;
+        byArray[7] = 4;
+        this.transA = byArray;
         msListener = this;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public static int abs(int n) {
+        if (n <= 0) return -n;
+        return n;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    private boolean checkIsSimulate() {
+        if (Runtime.getRuntime().totalMemory() >= 8000000L) {
+            return true;
+        }
+        try {
+            Class.forName("emulator.Emulator");
+            Class.forName("com.sprintpcs.util.System");
+            return true;
+        }
+        catch (Exception exception) {
+            String string = System.getProperty("microedition.platform");
+            if (string.toLowerCase().indexOf("wtk") != -1) return true;
+            if (string.toLowerCase().indexOf("javasdk") != -1) return true;
+            if (string.toLowerCase().indexOf("j2me") != -1) return true;
+            return false;
+        }
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public static int compare_min(int n, int n2) {
+        if (n > n2) return n2;
+        return n;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public static long getNum(byte[] var0) {
+        var3_1 = 0;
+        var4_2 = var0.length;
+        var2_3 = 0;
+        block7: while (true) {
+            if (var2_3 >= var4_2) {
+                return var3_1;
+            }
+            var1_4 = var3_1;
+            switch (var4_2) {
+                default: {
+                    var1_4 = var3_1;
+                }
+lbl11:
+                // 5 sources
+
+                case 3: 
+                case 5: 
+                case 6: 
+                case 7: lbl-1000:
+                // 2 sources
+
+                {
+                    while (true) {
+                        ++var2_3;
+                        var3_1 = var1_4;
+                        continue block7;
+                        break;
+                    }
+                }
+                case 1: {
+                    var1_4 = var3_1 + (byte)((var0[var2_3] & 255) << var2_3 * 8);
+                    ** GOTO lbl11
+                }
+                case 2: {
+                    var1_4 = var3_1 + (short)((var0[var2_3] & 255) << var2_3 * 8);
+                    ** GOTO lbl11
+                }
+                case 4: {
+                    var1_4 = var3_1 + ((var0[var2_3] & 255) << var2_3 * 8);
+                    ** GOTO lbl11
+                }
+                case 8: 
+            }
+            break;
+        }
+        var1_4 = (int)((long)var3_1 + (long)((var0[var2_3] & 255) << var2_3 * 8));
+        ** while (true)
+    }
+
+    public static int getRandom(int n) {
+        return (random.nextInt() & Integer.MAX_VALUE) % n;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    private short getStreamL(byte[] byArray, int n) {
+        if (n == 0) {
+            n = skip;
+            skip = n + 1;
+            return byArray[n];
+        }
+        if (n == 1) {
+            n = skip;
+            skip = n + 1;
+            return (short)(byArray[n] + 100);
+        }
+        if (n == 2) {
+            n = skip;
+            skip = n + 1;
+            byte by = byArray[n];
+            n = skip;
+            skip = n + 1;
+            return (short)((by & 0xFF) << 8 | byArray[n] & 0xFF);
+        }
+        n = skip;
+        skip = n + 1;
+        n = byArray[n];
+        int n2 = skip;
+        skip = n2 + 1;
+        return (short)(n & 0xFF | (byArray[n2] & 0xFF) << 8);
     }
 
     public static Ms i() {
@@ -42,734 +190,1000 @@ public class Ms implements Key_H {
         return msListener;
     }
 
-    public void sleep(int time) {
-        this.sleep_time = time;
+    public short[] byteArrayToShortArray(byte[] byArray) {
+        skip = 0;
+        int n = byArray.length >> 1;
+        short[] sArray = new short[n];
+        int n2 = 0;
+        while (n2 < n) {
+            sArray[n2] = this.getStreamL(byArray, 2);
+            ++n2;
+        }
+        return sArray;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void correctSelect(byte[] var1_1, int var2_2, int var3_3) {
+        if (var1_1[0] < var2_2) {
+            var1_1[1] = (byte)(var1_1[0] - var3_3 + 1);
+lbl3:
+            // 2 sources
+
+            while (true) {
+                if (var1_1[0] < 0) {
+                    var1_1[0] = 0;
+                }
+                if (var1_1[1] < 0) {
+                    var1_1[1] = 0;
+                }
+                return;
+            }
+        }
+        var1_1[0] = (byte)(var2_2 - 1);
+        var1_1[1] = (byte)(var2_2 - var3_3);
+        ** while (true)
+    }
+
+    public byte[][] create2Array(byte[] byArray) {
+        int n = skip;
+        skip = n + 1;
+        byte[][] byArrayArray = new byte[this.getLen_byte(byArray[n])][];
+        n = 0;
+        while (n < byArrayArray.length) {
+            byArrayArray[n] = this.createArray(byArray);
+            ++n;
+        }
+        return byArrayArray;
+    }
+
+    public byte[][][] create3Array(byte[] byArray) {
+        int n = skip;
+        skip = n + 1;
+        byte[][][] byArrayArray = new byte[this.getLen_byte(byArray[n])][][];
+        n = 0;
+        while (n < byArrayArray.length) {
+            byArrayArray[n] = this.create2Array(byArray);
+            ++n;
+        }
+        return byArrayArray;
+    }
+
+    public byte[][][][] create4Array(byte[] byArray) {
+        int n = skip;
+        skip = n + 1;
+        byte[][][][] byArrayArray = new byte[this.getLen_byte(byArray[n])][][][];
+        n = 0;
+        while (n < byArrayArray.length) {
+            byArrayArray[n] = this.create3Array(byArray);
+            ++n;
+        }
+        return byArrayArray;
+    }
+
+    public byte[] createArray(byte[] byArray) {
+        int n = skip;
+        skip = n + 1;
+        byte[] byArray2 = new byte[this.getLen_byte(byArray[n])];
+        n = 0;
+        while (n < byArray2.length) {
+            int n2 = skip;
+            skip = n2 + 1;
+            byArray2[n] = byArray[n2];
+            ++n;
+        }
+        return byArray2;
+    }
+
+    Image createCellImage(Image image, int n, int n2, int n3, int n4) {
+        return this.createImage(image, n % (image.getWidth() / n2) * n2, n % (image.getHeight() / n3) * n3, n2, n3, n4);
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public Image createImage(String string) {
+        try {
+            StringBuilder stringBuilder = new StringBuilder("/");
+            return Image.createImage((String)stringBuilder.append(string).append(".png").toString());
+        }
+        catch (Exception exception) {
+            return null;
+        }
+    }
+
+    public Image createImage(String object, int n) {
+        object = this.getStream((String)object, n);
+        return Image.createImage((byte[])object, (int)0, (int)((Object)object).length);
+    }
+
+    Image createImage(Image image, int n, int n2, int n3, int n4, int n5) {
+        int n6 = n3;
+        if (n + n3 > image.getWidth()) {
+            n6 = image.getWidth() - n;
+        }
+        n3 = n4;
+        if (n2 + n4 > image.getHeight()) {
+            n3 = image.getHeight() - n2;
+        }
+        return Image.createImage((Image)image, (int)n, (int)n2, (int)n6, (int)n3, (int)this.transA[n5]);
+    }
+
+    public Image[] createImageArray(int n, String string) {
+        Image[] imageArray = new Image[n];
+        n = 0;
+        while (n < imageArray.length) {
+            imageArray[n] = this.createImage(String.valueOf(string) + n);
+            n = (short)(n + 1);
+        }
+        return imageArray;
+    }
+
+    public Image[] createImageArray_(int n, String string, int n2) {
+        Image[] imageArray = new Image[n];
+        n = 0;
+        while (n < imageArray.length) {
+            imageArray[n] = this.createImage_(String.valueOf(string) + n, n2);
+            n = (short)(n + 1);
+        }
+        return imageArray;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public Image createImage_(String string, int n) {
+        try {
+            StringBuilder stringBuilder = new StringBuilder("/");
+            return Image.createImage((String)stringBuilder.append(string).append(".png").toString(), (int)n);
+        }
+        catch (Exception exception) {
+            return null;
+        }
+    }
+
+    public int[] createIntArray(byte[] byArray) {
+        int[] nArray = new int[this.getStreamL(byArray, 0)];
+        int n = 0;
+        while (n < nArray.length) {
+            int n2 = skip;
+            skip = n2 + 1;
+            n2 = byArray[n2];
+            int n3 = skip;
+            skip = n3 + 1;
+            n3 = byArray[n3];
+            int n4 = skip;
+            skip = n4 + 1;
+            byte by = byArray[n4];
+            n4 = skip;
+            skip = n4 + 1;
+            nArray[n] = n2 & 0xFF | (n3 & 0xFF) << 8 | (by & 0xFF) << 16 | (byArray[n4] & 0xFF) << 24;
+            ++n;
+        }
+        return nArray;
+    }
+
+    public short[][] createShort2Array(byte[] byArray, int n) {
+        short[][] sArrayArray = new short[this.getStreamL(byArray, n)][];
+        int n2 = 0;
+        while (n2 < sArrayArray.length) {
+            sArrayArray[n2] = this.createShortArray(byArray, n);
+            ++n2;
+        }
+        return sArrayArray;
+    }
+
+    public short[][][] createShort3Array(byte[] byArray, int n) {
+        short[][][] sArrayArray = new short[this.getStreamL(byArray, n)][][];
+        int n2 = 0;
+        while (n2 < sArrayArray.length) {
+            sArrayArray[n2] = this.createShort2Array(byArray, n);
+            ++n2;
+        }
+        return sArrayArray;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public short[] createShortArray(byte[] var1_1, int var2_2) {
+        var5_3 = new short[this.getStreamL(var1_1, var2_2)];
+        var3_4 = 0;
+        block0: while (true) {
+            if (var3_4 >= var5_3.length) {
+                return var5_3;
+            }
+            if (var2_2 != 2) break;
+            var4_5 = 2;
+lbl8:
+            // 2 sources
+
+            while (true) {
+                var5_3[var3_4] = this.getStreamL(var1_1, var4_5);
+                ++var3_4;
+                continue block0;
+                break;
+            }
+            break;
+        }
+        var4_5 = -1;
+        ** while (true)
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public Sprite createSprite(String string, boolean bl) {
+        byte[] byArray = this.getStream(String.valueOf(string) + ".data", -1);
+        skip = 0;
+        if (!bl) return Sprite.Create((Image)this.createImage(string), (short[][])this.createShort2Array(byArray, 2), (short[][][])this.createShort3Array(byArray, 2), (short[][][])this.createShort3Array(byArray, 2));
+        return Sprite.Create((Image)this.createImage(string), (byte[][])this.create2Array(byArray), (byte[][][])this.create3Array(byArray), (byte[][][])this.create3Array(byArray));
+    }
+
+    public StringBuffer[][] createString2Array(byte[] byArray) {
+        int n = skip;
+        skip = n + 1;
+        StringBuffer[][] stringBufferArray = new StringBuffer[byArray[n]][];
+        n = 0;
+        while (n < stringBufferArray.length) {
+            stringBufferArray[n] = this.createStringArray(byArray);
+            n = (byte)(n + 1);
+        }
+        return stringBufferArray;
+    }
+
+    public StringBuffer[] createStringArray(byte[] byArray) {
+        int n = skip;
+        skip = n + 1;
+        StringBuffer[] stringBufferArray = new StringBuffer[this.getLen_byte(byArray[n])];
+        n = 0;
+        while (n < stringBufferArray.length) {
+            short s;
+            short s2 = s = byArray[skip];
+            if (s < 0) {
+                s2 = (short)(s + 256);
+            }
+            stringBufferArray[n] = new StringBuffer(this.getDialogs(byArray, skip + 1, s2));
+            skip += s2 * 2 + 1;
+            n = (byte)(n + 1);
+        }
+        return stringBufferArray;
+    }
+
+    public StringBuffer createStringArrayOne(byte[] byArray) {
+        return new StringBuffer(this.getDialogs(byArray, 2, this.getLen_byte(byArray[1])));
+    }
+
+    public boolean equals(StringBuffer stringBuffer, String string) {
+        return stringBuffer.toString().equals(string);
+    }
+
+    public String getDialogs(byte[] byArray, int n, int n2) {
+        StringBuffer stringBuffer = new StringBuffer();
+        int n3 = 0;
+        while (n3 < n2) {
+            stringBuffer.append((char)(byArray[(n3 << 1) + n] << 8 | byArray[(n3 << 1) + n + 1] & 0xFF));
+            ++n3;
+        }
+        return stringBuffer.toString();
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public byte[] getEventNowData(short[][] var1_1) {
+        var4_2 = new ByteArrayOutputStream();
+        var4_2.write(var1_1.length);
+        var2_3 = 0;
+        block0: while (true) {
+            if (var2_3 >= var1_1.length) {
+                return var4_2.toByteArray();
+            }
+            if (var1_1[var2_3] != null) break;
+            var4_2.write(0);
+            while (true) {
+                ++var2_3;
+                continue block0;
+                break;
+            }
+            break;
+        }
+        var4_2.write(var1_1[var2_3].length);
+        var3_4 = 0;
+        while (true) {
+            if (var3_4 >= var1_1[var2_3].length) ** continue;
+            var4_2.write(var1_1[var2_3][var3_4] & 255);
+            var4_2.write(var1_1[var2_3][var3_4] >> 8 & 255);
+            ++var3_4;
+        }
+    }
+
+    public int getInt(byte[] byArray, int n) {
+        return (byArray[n] & 0xFF) << 24 | (byArray[n + 1] & 0xFF) << 16 | (byArray[n + 2] & 0xFF) << 8 | byArray[n + 3] & 0xFF;
+    }
+
+    public int getLen_byte(byte by) {
+        if (by < 0) {
+            by = (byte)(by + 256);
+        }
+        return by;
+    }
+
+    public int getLen_short(short s) {
+        if (s < 0) {
+            s = (short)(65536 + s);
+        }
+        return s;
+    }
+
+    public byte getMin(byte by, byte by2) {
+        if (by > by2) {
+            by = by2;
+        }
+        return by;
+    }
+
+    public String getPrecision(int n) {
+        return String.valueOf(n / 10) + "." + n % 10;
+    }
+
+    public short getShort(byte[] byArray, int n) {
+        return (short)((byArray[n] & 0xFF) << 8 | byArray[n + 1] & 0xFF);
     }
 
     public int getSleep() {
         return this.sleep_time;
     }
 
-    public byte[] rmsOptions(int recordId, byte[] info, int flag) {
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    public byte[] getStream(String var1_1, int var2_3) {
+        var4_5 /* !! */  = var5_4 = (byte[])null;
         try {
-            if (rms == null) {
-                rms = RecordStore.openRecordStore(Constants_H.RMS_NAME, true);
-            }
-            if (rms.getNumRecords() == 0) {
-                setRmsInit(true);
-            }
-            if (flag != 0) {
-                if (flag == 1) {
-                    return rms.getRecord(recordId);
+            var4_5 /* !! */  = var5_4;
+            var4_5 /* !! */  = var5_4;
+            var7_7 = new StringBuilder("/");
+            var4_5 /* !! */  = var5_4;
+            var6_6 = new DataInputStream(AndroidUtil.getResourceAsStream((String)var7_7.append((String)var1_1).toString()));
+            if (var2_3 <= -1) ** GOTO lbl15
+            var4_5 /* !! */  = var5_4;
+            var6_6.readByte();
+            var3_8 = 0;
+            while (true) lbl-1000:
+            // 2 sources
+
+            {
+                block6: {
+                    if (var3_8 < var2_3) break block6;
+lbl15:
+                    // 2 sources
+
+                    var4_5 /* !! */  = var5_4;
+                    var1_1 = new byte[this.getLen_short(var6_6.readShort())];
+                    var4_5 /* !! */  = (byte[])var1_1;
+                    var6_6.read((byte[])var1_1);
+                    var4_5 /* !! */  = (byte[])var1_1;
+                    var6_6.close();
+lbl22:
+                    // 2 sources
+
+                    return var1_1;
                 }
-                if (flag == 2) {
-                    rms.setRecord(recordId, info, 0, info.length);
-                } else if (flag == 3) {
-                    setRmsInit(false);
-                } else if (flag == 4) {
-                    if (rms != null) {
-                        rms.closeRecordStore();
-                        rms = null;
+                var4_5 /* !! */  = var5_4;
+                var6_6.skip(this.getLen_short(var6_6.readShort()));
+                break;
+            }
+        }
+        catch (Exception var1_2) {
+            var1_2.printStackTrace();
+            var1_1 = var4_5 /* !! */ ;
+            ** continue;
+        }
+        {
+            var3_8 = (byte)(var3_8 + 1);
+            ** while (true)
+        }
+    }
+
+    public int getStringWidth(String string) {
+        return font.stringWidth(string);
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public StringBuffer[] groupString(String var1_1, int var2_2) {
+        block8: {
+            block10: {
+                block9: {
+                    block7: {
+                        var15_3 = new StringBuffer[30];
+                        var12_4 = new StringBuffer();
+                        var16_5 = new StringBuffer((String)var1_1);
+                        var10_6 = var1_1.length();
+                        var3_7 = 0;
+                        var11_8 = (byte)this.getStringWidth("#0");
+                        var8_9 = -1;
+                        var4_10 = 0;
+                        var1_1 = "";
+                        var5_11 = 0;
+                        block0: while (true) {
+                            if (var5_11 >= var10_6) {
+                                var1_1 = new StringBuffer[var8_9 + 1];
+                                System.arraycopy(var15_3, 0, var1_1, 0, var8_9 + 1);
+                                var12_4 = null;
+                                return var1_1;
+                            }
+                            if (var16_5.charAt(0) != '#') break block7;
+                            if (var16_5.charAt(1) != 'n') break;
+                            var4_10 = 1;
+lbl20:
+                            // 2 sources
+
+                            while (true) {
+                                var16_5.deleteCharAt(0);
+                                var16_5.deleteCharAt(0);
+                                var9_14 = var5_11 + 1;
+                                var13_15 = var1_1;
+                                var5_11 = var3_7;
+lbl28:
+                                // 4 sources
+
+                                while (true) {
+                                    var6_12 = var4_10;
+                                    var7_13 = var8_9;
+                                    var3_7 = var5_11;
+                                    var14_16 = var12_4;
+                                    if (var4_10 == 0) ** GOTO lbl44
+                                    var7_13 = (byte)(var8_9 + 1);
+                                    if (var13_15.length() != 0) break block8;
+                                    var3_7 = 0;
+lbl37:
+                                    // 2 sources
+
+                                    while (true) {
+                                        var3_7 = (byte)var3_7;
+                                        var6_12 = 0;
+                                        var15_3[var7_13] = var12_4;
+                                        var14_16 = new StringBuffer();
+                                        var14_16.append((String)var13_15);
+lbl44:
+                                        // 2 sources
+
+                                        var5_11 = var9_14 + 1;
+                                        var4_10 = var6_12;
+                                        var8_9 = var7_13;
+                                        var1_1 = var13_15;
+                                        var12_4 = var14_16;
+                                        continue block0;
+                                        break;
+                                    }
+                                    break;
+                                }
+                                break;
+                            }
+                            break;
+                        }
+                        var1_1 = "#" + var16_5.charAt(1);
+                        var12_4.append((String)var1_1);
+                        var3_7 = (byte)(var3_7 + 1);
+                        ** while (true)
                     }
-                } else if (flag == 5) {
-                    Log.e("rms.getSizeAvailable() = ", new StringBuilder().append(rms.getSizeAvailable()).toString());
-                    return null;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+                    var12_4.append(var16_5.charAt(0));
+                    if (var2_2 == 0 || this.getStringWidth(var12_4.toString()) > var11_8 * var3_7 + var2_2) break block9;
+                    var16_5.deleteCharAt(0);
+                    var7_13 = var4_10;
+                    var6_12 = var5_11;
+lbl63:
+                    // 3 sources
 
-    public void setRmsInit(boolean mode) throws Exception {
-        byte[] info = new byte[140];
-        info[0] = -1;
-        byte[] aaa = new byte[280];
-        for (int i = 0; i < 83; i++) {
-            if (mode || i != 4) {
-                if (i != 12) {
-                    if (mode) {
-                        rms.addRecord(info, 0, info.length);
-                    } else {
-                        rms.setRecord(i + 1, info, 0, info.length);
+                    while (true) {
+                        var9_14 = var6_12;
+                        var4_10 = var7_13;
+                        var5_11 = var3_7;
+                        var13_15 = var1_1;
+                        if (var6_12 != var10_6 - 1) ** GOTO lbl28
+                        var9_14 = var6_12;
+                        var4_10 = var7_13;
+                        var5_11 = var3_7;
+                        var13_15 = var1_1;
+                        if (var7_13 != 0) ** GOTO lbl28
+                        var4_10 = 1;
+                        var9_14 = var6_12;
+                        var5_11 = var3_7;
+                        var13_15 = var1_1;
+                        ** continue;
+                        break;
                     }
-                } else if (mode) {
-                    rms.addRecord(aaa, 0, aaa.length);
-                } else {
-                    rms.setRecord(i + 1, aaa, 0, aaa.length);
                 }
+                if (var2_2 == 0) break block10;
+                var6_12 = var5_11 - 1;
+                var12_4.deleteCharAt(var12_4.length() - 1);
+                var7_13 = 1;
+                ** GOTO lbl63
             }
+            var16_5.deleteCharAt(0);
+            var6_12 = var5_11;
+            var7_13 = var4_10;
+            ** while (true)
         }
+        var3_7 = 1;
+        ** while (true)
     }
 
-    public byte[] getEventNowData(short[][] event_now) {
-        ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-        byteArray.write(event_now.length);
-        for (int i = 0; i < event_now.length; i++) {
-            if (event_now[i] == null) {
-                byteArray.write(0);
-            } else {
-                byteArray.write(event_now[i].length);
-                for (int j = 0; j < event_now[i].length; j++) {
-                    byteArray.write(event_now[i][j] & 255);
-                    byteArray.write((event_now[i][j] >> 8) & 255);
-                }
-            }
-        }
-        return byteArray.toByteArray();
-    }
-
-    public short[][] readEventNowData() {
-        ByteArrayInputStream byteArray = new ByteArrayInputStream(rmsOptions(12, null, 1));
-        short[][] event_now = new short[byteArray.read()];
-        for (int i = 0; i < event_now.length; i++) {
-            int nn = byteArray.read();
-            if (nn != 0) {
-                event_now[i] = new short[nn];
-                for (int j = 0; j < event_now[i].length; j++) {
-                    event_now[i][j] = (short) (byteArray.read() | (byteArray.read() << 8));
-                }
-            }
-        }
-        return event_now;
-    }
-
-    public static long getNum(byte[] b) {
-        int rtn = 0;
-        int len = b.length;
-        for (int i = 0; i < len; i++) {
-            switch (len) {
-                case 1:
-                    rtn += (byte) ((b[i] & 255) << (i * 8));
-                    break;
-                case 2:
-                    rtn += (short) ((b[i] & 255) << (i * 8));
-                    break;
-                case 4:
-                    rtn += (b[i] & 255) << (i * 8);
-                    break;
-                case 8:
-                    rtn = (int) (rtn + ((b[i] & 255) << (i * 8)));
-                    break;
-            }
-        }
-        return rtn;
-    }
-
-    public int getLen_byte(byte value) {
-        return value < 0 ? value + 256 : value;
-    }
-
-    public int getLen_short(short value) {
-        return value < 0 ? 65536 + value : value;
-    }
-
-    public int getInt(byte[] buf, int i) {
-        return ((buf[i] & 255) << 24) | ((buf[i + 1] & 255) << 16) | ((buf[i + 2] & 255) << 8) | (buf[i + 3] & 255);
-    }
-
-    public void putInt(int value, byte[] buf, int i) {
-        buf[i] = (byte) ((value >> 24) & 255);
-        buf[i + 1] = (byte) ((value >> 16) & 255);
-        buf[i + 2] = (byte) ((value >> 8) & 255);
-        buf[i + 3] = (byte) (value & 255);
-    }
-
-    public short getShort(byte[] buf, int i) {
-        return (short) (((buf[i] & 255) << 8) | (buf[i + 1] & 255));
-    }
-
-    public void putShort(int value, byte[] buf, int i) {
-        buf[i] = (byte) ((value >> 8) & 255);
-        buf[i + 1] = (byte) (value & 255);
-    }
-
-    public void putShort(byte[] buf, int value) {
-        int i = skip;
-        skip = i + 1;
-        buf[i] = (byte) ((value >> 8) & 255);
-        int i2 = skip;
-        skip = i2 + 1;
-        buf[i2] = (byte) ((value >> 0) & 255);
-    }
-
-    public short[] byteArrayToShortArray(byte[] bytebuf) {
-        skip = 0;
-        int len = bytebuf.length >> 1;
-        short[] shortbuf = new short[len];
-        for (int i = 0; i < len; i++) {
-            shortbuf[i] = getStreamL(bytebuf, 2);
-        }
-        return shortbuf;
-    }
-
-    public byte[] shortArrayToByteArray(short[] shortbuf) {
-        skip = 0;
-        int len = shortbuf.length;
-        byte[] bytebuf = new byte[len << 1];
-        for (short s : shortbuf) {
-            putShort(bytebuf, s);
-        }
-        return bytebuf;
-    }
-
-    private short getStreamL(byte[] data, int mode) {
-        if (mode == 0) {
-            int i = skip;
-            skip = i + 1;
-            return data[i];
-        }
-        if (mode == 1) {
-            int i2 = skip;
-            skip = i2 + 1;
-            return (short) (data[i2] + 100);
-        }
-        if (mode == 2) {
-            int i3 = skip;
-            skip = i3 + 1;
-            int i4 = (data[i3] & 255) << 8;
-            int i5 = skip;
-            skip = i5 + 1;
-            return (short) (i4 | (data[i5] & 255));
-        }
-        int i6 = skip;
-        skip = i6 + 1;
-        int i7 = data[i6] & 255;
-        int i8 = skip;
-        skip = i8 + 1;
-        return (short) (i7 | ((data[i8] & 255) << 8));
-    }
-
-    public byte[] getStream(String i, int num) {
-        byte[] data = (byte[]) null;
-        try {
-            DataInputStream dataInput = new DataInputStream(AndroidUtil.getResourceAsStream("/" + i));
-            if (num > -1) {
-                dataInput.readByte();
-                for (byte n = 0; n < num; n = (byte) (n + 1)) {
-                    dataInput.skip(getLen_short(dataInput.readShort()));
-                }
-            }
-            data = new byte[getLen_short(dataInput.readShort())];
-            dataInput.read(data);
-            dataInput.close();
-            return data;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return data;
-        }
-    }
-
-    public int[] createIntArray(byte[] data) {
-        int[] array = new int[getStreamL(data, 0)];
-        for (int i = 0; i < array.length; i++) {
-            int i2 = skip;
-            skip = i2 + 1;
-            int i3 = data[i2] & 255;
-            int i4 = skip;
-            skip = i4 + 1;
-            int i5 = i3 | ((data[i4] & 255) << 8);
-            int i6 = skip;
-            skip = i6 + 1;
-            int i7 = i5 | ((data[i6] & 255) << 16);
-            int i8 = skip;
-            skip = i8 + 1;
-            array[i] = i7 | ((data[i8] & 255) << 24);
-        }
-        return array;
-    }
-
-    public short[] createShortArray(byte[] data, int mode) {
-        short[] array = new short[getStreamL(data, mode)];
-        for (int j = 0; j < array.length; j++) {
-            array[j] = getStreamL(data, mode == 2 ? 2 : -1);
-        }
-        return array;
-    }
-
-    public short[][] createShort2Array(byte[] data, int mode) {
-        short[][] array = new short[getStreamL(data, mode)];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = createShortArray(data, mode);
-        }
-        return array;
-    }
-
-    public short[][][] createShort3Array(byte[] data, int mode) {
-        short[][][] array = new short[getStreamL(data, mode)][];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = createShort2Array(data, mode);
-        }
-        return array;
-    }
-
-    public byte[] createArray(byte[] data) {
-        int i = skip;
-        skip = i + 1;
-        byte[] array = new byte[getLen_byte(data[i])];
-        for (int j = 0; j < array.length; j++) {
-            int i2 = skip;
-            skip = i2 + 1;
-            array[j] = data[i2];
-        }
-        return array;
-    }
-
-    public byte[][] create2Array(byte[] data) {
-        int i = skip;
-        skip = i + 1;
-        byte[][] array = new byte[getLen_byte(data[i])];
-        for (int i2 = 0; i2 < array.length; i2++) {
-            array[i2] = createArray(data);
-        }
-        return array;
-    }
-
-    public byte[][][] create3Array(byte[] data) {
-        int i = skip;
-        skip = i + 1;
-        byte[][][] array = new byte[getLen_byte(data[i])][];
-        for (int i2 = 0; i2 < array.length; i2++) {
-            array[i2] = create2Array(data);
-        }
-        return array;
-    }
-
-    public byte[][][][] create4Array(byte[] data) {
-        int i = skip;
-        skip = i + 1;
-        byte[][][][] array = new byte[getLen_byte(data[i])][][];
-        for (int i2 = 0; i2 < array.length; i2++) {
-            array[i2] = create3Array(data);
-        }
-        return array;
-    }
-
-    public StringBuffer[] createStringArray(byte[] bArr) {
-        int i = skip;
-        skip = i + 1;
-        StringBuffer[] string = new StringBuffer[getLen_byte(bArr[i])];
-        for (byte i2 = 0; i2 < string.length; i2 = (byte) (i2 + 1)) {
-            short s = bArr[skip];
-            if (s < 0) {
-                s = (short) (s + 256);
-            }
-            string[i2] = new StringBuffer(getDialogs(bArr, skip + 1, s));
-            skip += (s * 2) + 1;
-        }
-        return string;
-    }
-
-    public StringBuffer createStringArrayOne(byte[] data) {
-        return new StringBuffer(getDialogs(data, 2, getLen_byte(data[1])));
-    }
-
-    public StringBuffer[][] createString2Array(byte[] bArr) {
-        int i = skip;
-        skip = i + 1;
-        StringBuffer[][] string = new StringBuffer[bArr[i]];
-        for (byte i2 = 0; i2 < string.length; i2 = (byte) (i2 + 1)) {
-            string[i2] = createStringArray(bArr);
-        }
-        return string;
-    }
-
-    public String getDialogs(byte[] data, int start, int len) {
-        StringBuffer dialog = new StringBuffer();
-        for (int i = 0; i < len; i++) {
-            dialog.append((char) ((data[(i << 1) + start] << 8) | (data[(i << 1) + start + 1] & 255)));
-        }
-        return dialog.toString();
-    }
-
-    public StringBuffer[] groupString(String info, int width) {
-        StringBuffer[] tempResult = new StringBuffer[30];
-        StringBuffer temp = new StringBuffer();
-        StringBuffer orig = new StringBuffer(info);
-        short infoLength = (short) info.length();
-        byte tc = 0;
-        byte tw = (byte) getStringWidth("#0");
-        byte rows = -1;
-        boolean isNewRow = false;
-        String tcolor = "";
-        int i = 0;
-        while (i < infoLength) {
-            if (orig.charAt(0) == '#') {
-                if (orig.charAt(1) == 'n') {
-                    isNewRow = true;
-                } else {
-                    tcolor = "#" + orig.charAt(1);
-                    temp.append(tcolor);
-                    tc = (byte) (tc + 1);
-                }
-                orig.deleteCharAt(0);
-                orig.deleteCharAt(0);
-                i++;
-            } else {
-                temp.append(orig.charAt(0));
-                if (width != 0 && getStringWidth(temp.toString()) <= (tw * tc) + width) {
-                    orig.deleteCharAt(0);
-                } else if (width != 0) {
-                    i--;
-                    temp.deleteCharAt(temp.length() - 1);
-                    isNewRow = true;
-                } else {
-                    orig.deleteCharAt(0);
-                }
-                if (i == infoLength - 1 && !isNewRow) {
-                    isNewRow = true;
-                }
-            }
-            if (isNewRow) {
-                rows = (byte) (rows + 1);
-                tc = (byte) (tcolor.length() == 0 ? 0 : 1);
-                isNewRow = false;
-                tempResult[rows] = temp;
-                temp = new StringBuffer();
-                temp.append(tcolor);
-            }
-            i++;
-        }
-        StringBuffer[] result = new StringBuffer[rows + 1];
-        System.arraycopy(tempResult, 0, result, 0, rows + 1);
-        return result;
-    }
-
-    public String[] loadText(byte[] bArr) {
-        try {
-            StringBuffer stringbuffer = new StringBuffer("");
-            int j = 2;
-            while (j < bArr.length) {
-                int j2 = j + 1;
-                int i = bArr[j];
-                if (i < 0) {
-                    i += GameCanvas.FIRE_PRESSED;
-                }
-                j = j2 + 1;
-                int i2 = bArr[j2];
-                if (i2 < 0) {
-                    i2 += GameCanvas.FIRE_PRESSED;
-                }
-                char c = (char) ((i2 << 8) + i);
-                stringbuffer.append(c);
-            }
-            String strReturn = stringbuffer.toString();
-            Vector vecString = new Vector();
-            int k = 0;
-            int l = 0;
-            for (int j3 = 0; j3 < strReturn.length(); j3++) {
-                if (strReturn.charAt(j3) == '\n' || j3 == strReturn.length()) {
-                    String temp = strReturn.substring(k, l);
-                    vecString.addElement(temp);
-                    k = l + 1;
-                }
-                l++;
-            }
-            String[] reStr = new String[vecString.size()];
-            for (int j4 = 0; j4 < vecString.size(); j4++) {
-                String s = (String) vecString.elementAt(j4);
-                reStr[j4] = s;
-            }
-            return reStr;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    Image createImage(Image image, int x, int y, int width, int height, int trans) {
-        if (x + width > image.getWidth()) {
-            width = image.getWidth() - x;
-        }
-        if (y + height > image.getHeight()) {
-            height = image.getHeight() - y;
-        }
-        return Image.createImage(image, x, y, width, height, this.transA[trans]);
-    }
-
-    Image createCellImage(Image image, int cell_index, int cell_width, int cell_height, int trans) {
-        int temp_cell_x = (cell_index % (image.getWidth() / cell_width)) * cell_width;
-        int temp_cell_y = (cell_index % (image.getHeight() / cell_height)) * cell_height;
-        return createImage(image, temp_cell_x, temp_cell_y, cell_width, cell_height, trans);
-    }
-
-    public Image[] createImageArray(int len, String name) {
-        Image[] img = new Image[len];
-        for (short i = 0; i < img.length; i = (short) (i + 1)) {
-            img[i] = createImage(String.valueOf(name) + ((int) i));
-        }
-        return img;
-    }
-
-    public Image[] createImageArray_(int len, String name, int a) {
-        Image[] img = new Image[len];
-        for (short i = 0; i < img.length; i = (short) (i + 1)) {
-            img[i] = createImage_(String.valueOf(name) + ((int) i), a);
-        }
-        return img;
-    }
-
-    public Image createImage(String name, int no) {
-        byte[] data = getStream(name, no);
-        return Image.createImage(data, 0, data.length);
-    }
-
-    public Image createImage(String imageName) {
-        try {
-            return Image.createImage("/" + imageName + ".png");
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public Image createImage_(String imageName, int a) {
-        try {
-            return Image.createImage("/" + imageName + ".png", a);
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public Sprite createSprite(String name, boolean mode) {
-        byte[] date = getStream(String.valueOf(name) + ".data", -1);
-        skip = 0;
-        if (mode) {
-            return Sprite.Create(createImage(name), create2Array(date), create3Array(date), create3Array(date));
-        }
-        return Sprite.Create(createImage(name), createShort2Array(date, 2), createShort3Array(date, 2), createShort3Array(date, 2));
-    }
-
-    public void setSprite(Sprite sp, String name, boolean mode) {
-        byte[] date = getStream(String.valueOf(name) + ".data", -1);
-        skip = 0;
-        sp.nullIMFA();
-        if (mode) {
-            sp.Set(createImage(name), create2Array(date), create3Array(date), create3Array(date));
-        } else {
-            sp.Set(createImage(name), createShort2Array(date, 2), createShort3Array(date, 2), createShort3Array(date, 2));
-        }
-    }
-
-    public boolean equals(StringBuffer sbuff, String str) {
-        return sbuff.toString().equals(str);
-    }
-
-    public boolean isRect(int a0, int a1, int aw, int ah, int b0, int b1, int bw, int bh) {
-        return a0 < b0 + bw && a0 + aw > b0 && a1 < b1 + bh && a1 + ah > b1;
-    }
-
-    public String getPrecision(int t) {
-        return String.valueOf(t / 10) + "." + (t % 10);
-    }
-
-    public int sqrt(int x) {
-        int y;
-        if (x <= 0) {
-            return 0;
-        }
-        int x2 = x * Constants.PAYMENT_JIFENGQUAN_MAX;
-        int b = Constants.PAYMENT_JIFENGQUAN_MAX;
-        do {
-            y = b;
-            b = ((x2 / b) + b) >> 1;
-        } while (b < y);
-        return y / 100;
-    }
-
-    public static int getRandom(int ss) {
-        return (random.nextInt() & Integer.MAX_VALUE) % ss;
-    }
-
-    public static int abs(int a) {
-        return a > 0 ? a : -a;
-    }
-
-    public static int compare_min(int c0, int c1) {
-        return c0 <= c1 ? c0 : c1;
-    }
-
-    public short mathPercent(int m0, int m1, int per) {
-        if (per < 1) {
-            per = 1;
-        }
-        return (short) ((m0 * m1) / per);
-    }
-
-    public int getStringWidth(String str) {
-        return font.stringWidth(str);
-    }
-
-    public byte getMin(byte i0, byte i1) {
-        return i0 > i1 ? i1 : i0;
-    }
-
-    public short mathSpeedDown(int volue, int num, boolean bb) {
-        int volue2;
-        if (volue / num != 0) {
-            volue2 = volue - (volue / num);
-        } else if (!bb || volue <= 0) {
-            volue2 = (!bb || volue >= 0) ? 0 : volue + 1;
-        } else {
-            volue2 = volue - 1;
-        }
-        return (short) volue2;
-    }
-
-    public short mathSpeedUp(int volue, int max, int speed) {
-        int volue2 = volue - ((max - volue) / speed);
-        return (short) (volue2 < 0 ? 0 : volue2);
-    }
-
-    public short mathSpeedN(int volue, int maxv, int speed, boolean bb) {
-        int volue2;
-        if (volue > maxv && volue - speed > maxv) {
-            volue2 = volue - speed;
-        } else if (volue < maxv && volue + speed < maxv) {
-            volue2 = volue + speed;
-        } else if (!bb || volue <= maxv) {
-            volue2 = (!bb || volue >= maxv) ? maxv : volue + 1;
-        } else {
-            volue2 = volue - 1;
-        }
-        return (short) volue2;
-    }
-
-    public byte select(int select, int min, int max) {
-        if (max == 0) {
-            return (byte) select;
-        }
-        if (abs(key) % 2 == 1 && select - 1 < min) {
-            select = max;
-        } else if (abs(key) % 2 == 0 && (select = select + 1) > max) {
-            select = min;
-        }
-        return (byte) select;
-    }
-
-    public void selectS(byte[] select, int min, int max, int showLine) {
-        if (max != 0) {
-            select[0] = select(select[0], min, max - 1);
-            if (select[1] - 1 == select[0]) {
-                select[1] = (byte) (select[1] - 1);
-                return;
-            }
-            if (select[1] + showLine == select[0]) {
-                select[1] = (byte) (select[1] + 1);
-            } else {
-                if (select[0] != max - 1) {
-                    if (select[0] == min) {
-                        select[1] = (byte) min;
-                        return;
-                    }
-                    return;
-                }
-                select[1] = (byte) (max - min < showLine ? min : max - showLine);
-            }
-        }
-    }
-
-    public void correctSelect(byte[] select, int max, int showLine) {
-        if (select[0] < max) {
-            select[1] = (byte) ((select[0] - showLine) + 1);
-        } else {
-            select[0] = (byte) (max - 1);
-            select[1] = (byte) (max - showLine);
-        }
-        if (select[0] < 0) {
-            select[0] = 0;
-        }
-        if (select[1] < 0) {
-            select[1] = 0;
-        }
-    }
-
-    private boolean checkIsSimulate() {
-        if (Runtime.getRuntime().totalMemory() >= 8000000) {
-            return true;
-        }
-        try {
-            Class.forName("emulator.Emulator");
-            Class.forName("com.sprintpcs.util.System");
-            return true;
-        } catch (Exception e) {
-            String platForm = System.getProperty("microedition.platform");
-            return (platForm.toLowerCase().indexOf("wtk") == -1 && platForm.toLowerCase().indexOf("javasdk") == -1 && platForm.toLowerCase().indexOf("j2me") == -1) ? false : true;
-        }
-    }
-
-    public void runDelay() {
-        if (key_delay > 0) {
-            key_delay = (byte) (key_delay - 1);
-        }
-    }
-
-    public boolean key_delay() {
-        if (key_delay != 0) {
-            return true;
-        }
-        key_delay = key_time;
-        if (key_time > 1) {
-            key_time = (byte) (key_time - 1);
-        }
-        return false;
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean isRect(int n, int n2, int n3, int n4, int n5, int n6, int n7, int n8) {
+        if (n >= n5 + n7) return false;
+        if (n + n3 <= n5) return false;
+        if (n2 >= n6 + n8) return false;
+        if (n2 + n4 <= n6) return false;
+        return true;
     }
 
     public void keyRelease() {
         keyRepeat = false;
-        key_delay = (byte) 0;
-        key_time = (byte) 10;
+        key_delay = 0;
+        key_time = (byte)10;
     }
 
-    public boolean key_Up_Down() {
-        return key == -1 || key == -2;
-    }
-
-    public boolean key_Up() {
-        return key == -1;
-    }
-
+    /*
+     * Enabled force condition propagation
+     */
     public boolean key_Down() {
-        return key == -2;
+        if (key != -2) return false;
+        return true;
     }
 
-    public boolean key_Left_Right() {
-        return key == -3 || key == -4;
-    }
-
+    /*
+     * Enabled force condition propagation
+     */
     public boolean key_Left() {
-        return key == -3;
+        if (key != -3) return false;
+        return true;
     }
 
-    public boolean key_Right() {
-        return key == -4;
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean key_Left_Right() {
+        if (key == -3) return true;
+        if (key == -4) return true;
+        return false;
     }
 
-    public boolean key_S1_Num5() {
-        return key == -6 || key == 53 || key == -5;
-    }
-
-    public boolean key_S1() {
-        return key == -6;
-    }
-
-    public boolean key_S2() {
-        return key == -7;
-    }
-
+    /*
+     * Enabled force condition propagation
+     */
     public boolean key_Num0() {
-        return key == 48;
+        if (key != 48) return false;
+        return true;
     }
 
+    /*
+     * Enabled force condition propagation
+     */
     public boolean key_Num1() {
-        return key == 49;
+        if (key != 49) return false;
+        return true;
     }
 
+    /*
+     * Enabled force condition propagation
+     */
     public boolean key_Num3() {
-        return key == 51;
+        if (key != 51) return false;
+        return true;
     }
 
+    /*
+     * Enabled force condition propagation
+     */
     public boolean key_Num9() {
-        return key == 57;
+        if (key != 57) return false;
+        return true;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean key_Right() {
+        if (key != -4) return false;
+        return true;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean key_S1() {
+        if (key != -6) return false;
+        return true;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean key_S1_Num5() {
+        if (key == -6) return true;
+        if (key == 53) return true;
+        if (key == -5) return true;
+        return false;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean key_S2() {
+        if (key != -7) return false;
+        return true;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean key_Up() {
+        if (key != -1) return false;
+        return true;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean key_Up_Down() {
+        if (key == -1) return true;
+        if (key == -2) return true;
+        return false;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean key_delay() {
+        if (key_delay != 0) return true;
+        key_delay = key_time;
+        if (key_time <= 1) return false;
+        key_time = (byte)(key_time - 1);
+        return false;
+    }
+
+    /*
+     * Exception decompiling
+     */
+    public String[] loadText(byte[] var1_1) {
+        /*
+         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+         * 
+         * java.lang.IllegalStateException: Backjump on non jumping statement @NONE, blocks:[] lbl44 : TryStatement: try { 3[TRYBLOCK]
+         * 
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner$1.call(Cleaner.java:44)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner$1.call(Cleaner.java:22)
+         *     at org.benf.cfr.reader.util.graph.GraphVisitorDFS.process(GraphVisitorDFS.java:68)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner.removeUnreachableCode(Cleaner.java:54)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:550)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
+         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
+         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
+         *     at org.benf.cfr.reader.Driver.doClass(Driver.java:84)
+         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:78)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompile(CFRDecompiler.java:91)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompileToZip(CFRDecompiler.java:122)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.decompileSaveAll(ResourceDecompiling.java:262)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.lambda$decompileSaveAll$0(ResourceDecompiling.java:111)
+         *     at java.base/java.lang.Thread.run(Thread.java:840)
+         */
+        throw new IllegalStateException("Decompilation failed");
+    }
+
+    public short mathPercent(int n, int n2, int n3) {
+        int n4 = n3;
+        if (n3 < 1) {
+            n4 = 1;
+        }
+        return (short)(n * n2 / n4);
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public short mathSpeedDown(int n, int n2, boolean bl) {
+        if (n / n2 != 0) {
+            n -= n / n2;
+            return (short)n;
+        }
+        if (bl && n > 0) {
+            --n;
+            return (short)n;
+        }
+        if (!bl) return 0;
+        if (n >= 0) return 0;
+        ++n;
+        return (short)n;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public short mathSpeedN(int n, int n2, int n3, boolean bl) {
+        if (n > n2 && n - n3 > n2) {
+            n -= n3;
+            return (short)n;
+        }
+        if (n < n2 && n + n3 < n2) {
+            n += n3;
+            return (short)n;
+        }
+        if (bl && n > n2) {
+            --n;
+            return (short)n;
+        }
+        if (bl && n < n2) {
+            ++n;
+            return (short)n;
+        }
+        n = n2;
+        return (short)n;
+    }
+
+    public short mathSpeedUp(int n, int n2, int n3) {
+        if ((n -= (n2 - n) / n3) < 0) {
+            n = 0;
+        }
+        return (short)n;
+    }
+
+    public void putInt(int n, byte[] byArray, int n2) {
+        byArray[n2] = (byte)(n >> 24 & 0xFF);
+        byArray[n2 + 1] = (byte)(n >> 16 & 0xFF);
+        byArray[n2 + 2] = (byte)(n >> 8 & 0xFF);
+        byArray[n2 + 3] = (byte)(n & 0xFF);
+    }
+
+    public void putShort(int n, byte[] byArray, int n2) {
+        byArray[n2] = (byte)(n >> 8 & 0xFF);
+        byArray[n2 + 1] = (byte)(n & 0xFF);
+    }
+
+    public void putShort(byte[] byArray, int n) {
+        int n2 = skip;
+        skip = n2 + 1;
+        byArray[n2] = (byte)(n >> 8 & 0xFF);
+        n2 = skip;
+        skip = n2 + 1;
+        byArray[n2] = (byte)(n >> 0 & 0xFF);
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public short[][] readEventNowData() {
+        var3_1 = null;
+        var3_1 = new ByteArrayInputStream(this.rmsOptions(12, null, 1));
+        var4_2 = new short[var3_1.read()][];
+        var1_3 = 0;
+        block0: while (true) {
+            if (var1_3 >= var4_2.length) {
+                return var4_2;
+            }
+            var2_4 = var3_1.read();
+            if (var2_4 != 0) break;
+            while (true) {
+                ++var1_3;
+                continue block0;
+                break;
+            }
+            break;
+        }
+        var4_2[var1_3] = new short[var2_4];
+        var2_4 = 0;
+        while (true) {
+            if (var2_4 >= var4_2[var1_3].length) ** continue;
+            var4_2[var1_3][var2_4] = (short)(var3_1.read() | var3_1.read() << 8);
+            ++var2_4;
+        }
+    }
+
+    /*
+     * Exception decompiling
+     */
+    public byte[] rmsOptions(int var1_1, byte[] var2_2, int var3_4) {
+        /*
+         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+         * 
+         * java.lang.IllegalStateException: Backjump on non jumping statement @NONE, blocks:[] lbl21 : TryStatement: try { 1[TRYBLOCK]
+         * 
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner$1.call(Cleaner.java:44)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner$1.call(Cleaner.java:22)
+         *     at org.benf.cfr.reader.util.graph.GraphVisitorDFS.process(GraphVisitorDFS.java:68)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner.removeUnreachableCode(Cleaner.java:54)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:550)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
+         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
+         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
+         *     at org.benf.cfr.reader.Driver.doClass(Driver.java:84)
+         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:78)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompile(CFRDecompiler.java:91)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompileToZip(CFRDecompiler.java:122)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.decompileSaveAll(ResourceDecompiling.java:262)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.lambda$decompileSaveAll$0(ResourceDecompiling.java:111)
+         *     at java.base/java.lang.Thread.run(Thread.java:840)
+         */
+        throw new IllegalStateException("Decompilation failed");
+    }
+
+    public void runDelay() {
+        if (key_delay > 0) {
+            key_delay = (byte)(key_delay - 1);
+        }
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public byte select(int n, int n2, int n3) {
+        if (n3 == 0) {
+            return (byte)n;
+        }
+        int n4 = n--;
+        if (Ms.abs(key) % 2 == 1) {
+            n4 = n;
+            if (n < n2) {
+                n = n3;
+                return (byte)n;
+            }
+        }
+        n = n4++;
+        if (Ms.abs(key) % 2 != 0) return (byte)n;
+        n = n4;
+        if (n4 <= n3) return (byte)n;
+        n = n2;
+        return (byte)n;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void selectS(byte[] var1_1, int var2_2, int var3_3, int var4_4) {
+        block5: {
+            block6: {
+                block4: {
+                    block3: {
+                        if (var3_3 == 0) lbl-1000:
+                        // 6 sources
+
+                        {
+                            return;
+                        }
+                        var1_1[0] = this.select(var1_1[0], var2_2, var3_3 - 1);
+                        if (var1_1[1] - 1 != var1_1[0]) break block3;
+                        var1_1[1] = (byte)(var1_1[1] - 1);
+                        ** GOTO lbl-1000
+                    }
+                    if (var1_1[1] + var4_4 != var1_1[0]) break block4;
+                    var1_1[1] = (byte)(var1_1[1] + 1);
+                    ** GOTO lbl-1000
+                }
+                if (var1_1[0] != var3_3 - 1) break block5;
+                if (var3_3 - var2_2 >= var4_4) break block6;
+lbl15:
+                // 2 sources
+
+                while (true) {
+                    var1_1[1] = (byte)var2_2;
+                    ** GOTO lbl-1000
+                    break;
+                }
+            }
+            var2_2 = var3_3 - var4_4;
+            ** while (true)
+        }
+        if (var1_1[0] != var2_2) ** GOTO lbl-1000
+        var1_1[1] = (byte)var2_2;
+        ** while (true)
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void setRmsInit(boolean var1_1) throws Exception {
+        block5: {
+            block3: {
+                block4: {
+                    var4_2 = new byte[140];
+                    var4_2[0] = -1;
+                    var3_3 = new byte[280];
+                    var2_4 = 0;
+                    block0: while (true) {
+                        if (var2_4 >= 83) {
+                            var3_3 = null;
+                            return;
+                        }
+                        if (var1_1 || var2_4 != 4) break;
+lbl10:
+                        // 5 sources
+
+                        while (true) {
+                            ++var2_4;
+                            continue block0;
+                            break;
+                        }
+                        break;
+                    }
+                    if (var2_4 == 12) break block3;
+                    if (!var1_1) break block4;
+                    Ms.rms.addRecord(var4_2, 0, var4_2.length);
+                    ** GOTO lbl10
+                }
+                Ms.rms.setRecord(var2_4 + 1, var4_2, 0, var4_2.length);
+                ** GOTO lbl10
+            }
+            if (!var1_1) break block5;
+            Ms.rms.addRecord(var3_3, 0, var3_3.length);
+            ** GOTO lbl10
+        }
+        Ms.rms.setRecord(var2_4 + 1, var3_3, 0, var3_3.length);
+        ** while (true)
+    }
+
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    public void setSprite(Sprite var1_1, String var2_2, boolean var3_3) {
+        var4_4 = this.getStream(String.valueOf(var2_2) + ".data", -1);
+        Ms.skip = 0;
+        var1_1 /* !! */ .nullIMFA();
+        if (var3_3) {
+            var1_1 /* !! */ .Set(this.createImage(var2_2), this.create2Array(var4_4), this.create3Array(var4_4), this.create3Array(var4_4));
+lbl6:
+            // 2 sources
+
+            while (true) {
+                var1_1 /* !! */  = (Sprite)((byte[])null);
+                return;
+            }
+        }
+        var1_1 /* !! */ .Set(this.createImage(var2_2), this.createShort2Array(var4_4, 2), this.createShort3Array(var4_4, 2), this.createShort3Array(var4_4, 2));
+        ** while (true)
+    }
+
+    public byte[] shortArrayToByteArray(short[] sArray) {
+        skip = 0;
+        int n = sArray.length;
+        byte[] byArray = new byte[n << 1];
+        int n2 = 0;
+        while (n2 < n) {
+            this.putShort(byArray, sArray[n2]);
+            ++n2;
+        }
+        return byArray;
+    }
+
+    public void sleep(int n) {
+        this.sleep_time = n;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public int sqrt(int n) {
+        int n2;
+        int n3;
+        if (n <= 0) return 0;
+        int n4 = 10000;
+        do {
+            n2 = n4;
+            n4 = n3 = n * 10000 / n2 + n2 >> 1;
+        } while (n3 < n2);
+        return n2 / 100;
     }
 }

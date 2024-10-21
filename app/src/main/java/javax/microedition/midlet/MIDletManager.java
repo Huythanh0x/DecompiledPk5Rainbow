@@ -1,21 +1,32 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  javax.microedition.lcdui.CwaActivity
+ *  javax.microedition.lcdui.Display
+ *  javax.microedition.midlet.MIDlet
+ *  javax.microedition.midlet.MIDletStateChangeException
+ */
 package javax.microedition.midlet;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.microedition.lcdui.CwaActivity;
 import javax.microedition.lcdui.Display;
+import javax.microedition.midlet.MIDlet;
+import javax.microedition.midlet.MIDletStateChangeException;
 
-/* loaded from: classes.dex */
 public class MIDletManager {
     private static MIDletManager jam;
-    private MIDlet currentMidlet;
     private boolean autoLaunch = true;
-    private boolean paused = false;
+    private MIDlet currentMidlet;
     private boolean destroyed = true;
-    private Map<String, String> midlets = new LinkedHashMap();
-    private Map<String, String> jad = new LinkedHashMap();
+    private Map<String, String> jad;
+    private Map<String, String> midlets = new LinkedHashMap<String, String>();
+    private boolean paused = false;
 
     private MIDletManager() {
+        this.jad = new LinkedHashMap<String, String>();
     }
 
     public static final MIDletManager getInstance() {
@@ -25,29 +36,38 @@ public class MIDletManager {
         return jam;
     }
 
-    public void setAutoLaunch(boolean autoLaunch) {
-        this.autoLaunch = autoLaunch;
+    public final String getAppProperty(MIDlet mIDlet, String string) {
+        return this.jad.get(string);
+    }
+
+    public MIDlet getCurrenMIDlet() {
+        return this.currentMidlet;
     }
 
     public boolean isAutoLaunch() {
         return this.autoLaunch;
     }
 
-    public final String getAppProperty(MIDlet midlet, String key) {
-        return this.jad.get(key);
-    }
-
+    /*
+     * Unable to fully structure code
+     */
     public final void notifyDestroyed() {
         if (this.currentMidlet != null && !this.destroyed) {
             this.destroyed = true;
-            try {
-                this.currentMidlet.destroyApp(true);
-            } catch (MIDletStateChangeException e) {
-                e.printStackTrace();
-            }
+            this.currentMidlet.destroyApp(true);
         }
-        this.jad.clear();
-        this.midlets.clear();
+lbl5:
+        // 4 sources
+
+        while (true) {
+            this.jad.clear();
+            this.midlets.clear();
+            return;
+        }
+        catch (MIDletStateChangeException var1_1) {
+            var1_1.printStackTrace();
+            ** continue;
+        }
     }
 
     public final void notifyExit() {
@@ -68,11 +88,11 @@ public class MIDletManager {
         }
     }
 
-    public MIDlet getCurrenMIDlet() {
-        return this.currentMidlet;
+    public void setAutoLaunch(boolean bl) {
+        this.autoLaunch = bl;
     }
 
-    public void setMIDlet(MIDlet midlet) {
-        this.currentMidlet = midlet;
+    public void setMIDlet(MIDlet mIDlet) {
+        this.currentMidlet = mIDlet;
     }
 }

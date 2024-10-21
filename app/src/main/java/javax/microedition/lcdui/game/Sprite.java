@@ -1,7 +1,15 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  javax.microedition.lcdui.game.Layer
+ */
 package javax.microedition.lcdui.game;
 
-/* loaded from: classes.dex */
-public class Sprite extends Layer {
+import javax.microedition.lcdui.game.Layer;
+
+public class Sprite
+extends Layer {
     public static final int TRANS_MIRROR = 2;
     public static final int TRANS_MIRROR_ROT180 = 1;
     public static final int TRANS_MIRROR_ROT270 = 4;

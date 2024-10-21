@@ -1,24 +1,80 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  android.app.Activity
+ *  android.app.Dialog
+ *  android.content.BroadcastReceiver
+ *  android.content.Context
+ *  android.content.Intent
+ *  android.content.IntentFilter
+ *  android.content.pm.PackageManager$NameNotFoundException
+ *  android.database.ContentObserver
+ *  android.graphics.Color
+ *  android.os.Bundle
+ *  android.os.Handler
+ *  android.text.Html
+ *  android.text.TextUtils
+ *  android.text.method.PasswordTransformationMethod
+ *  android.text.method.TransformationMethod
+ *  android.text.util.Linkify
+ *  android.view.KeyEvent
+ *  android.view.View
+ *  android.view.View$OnClickListener
+ *  android.view.ViewGroup$LayoutParams
+ *  android.widget.AdapterView
+ *  android.widget.AdapterView$OnItemClickListener
+ *  android.widget.Button
+ *  android.widget.CheckBox
+ *  android.widget.EditText
+ *  android.widget.HeaderViewListAdapter
+ *  android.widget.LinearLayout
+ *  android.widget.LinearLayout$LayoutParams
+ *  android.widget.ListAdapter
+ *  android.widget.ListView
+ *  android.widget.RelativeLayout
+ *  android.widget.RelativeLayout$LayoutParams
+ *  android.widget.ScrollView
+ *  android.widget.TextView
+ *  com.uc.paymentsdk.commons.ui.CustomAdapter
+ *  com.uc.paymentsdk.model.IType
+ *  com.uc.paymentsdk.model.TypeFactory
+ *  com.uc.paymentsdk.network.Api
+ *  com.uc.paymentsdk.network.ApiTask$TaskHandler
+ *  com.uc.paymentsdk.network.XMLParser
+ *  com.uc.paymentsdk.network.chain.Handler$OnFinishListener
+ *  com.uc.paymentsdk.network.chain.HandlerProxy
+ *  com.uc.paymentsdk.network.chain.SyncChargeChannelHandler
+ *  com.uc.paymentsdk.network.chain.SyncPayChannelHandler
+ *  com.uc.paymentsdk.network.chain.SyncSmsInfoHandler
+ *  com.uc.paymentsdk.payment.PaymentInfo
+ *  com.uc.paymentsdk.payment.sms.SimCardNotSupportException
+ *  com.uc.paymentsdk.payment.sms.SmsInfo
+ *  com.uc.paymentsdk.payment.upoint.UPointInfo
+ *  com.uc.paymentsdk.payment.upoint.UPointPayInfo
+ *  com.uc.paymentsdk.util.DialogUtil
+ *  com.uc.paymentsdk.util.DialogUtil$WarningDialogListener
+ *  com.uc.paymentsdk.util.PrefUtil
+ *  com.uc.paymentsdk.util.Utils
+ *  org.apache.http.HttpResponse
+ */
 package com.uc.paymentsdk.payment;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteAbortException;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
-import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
+import android.text.method.TransformationMethod;
 import android.text.util.Linkify;
 import android.view.KeyEvent;
 import android.view.View;
@@ -45,24 +101,25 @@ import com.uc.paymentsdk.network.chain.HandlerProxy;
 import com.uc.paymentsdk.network.chain.SyncChargeChannelHandler;
 import com.uc.paymentsdk.network.chain.SyncPayChannelHandler;
 import com.uc.paymentsdk.network.chain.SyncSmsInfoHandler;
+import com.uc.paymentsdk.payment.PaymentInfo;
 import com.uc.paymentsdk.payment.sms.SimCardNotSupportException;
 import com.uc.paymentsdk.payment.sms.SmsInfo;
 import com.uc.paymentsdk.payment.upoint.UPointInfo;
 import com.uc.paymentsdk.payment.upoint.UPointPayInfo;
-import com.uc.paymentsdk.util.Constants;
 import com.uc.paymentsdk.util.DialogUtil;
 import com.uc.paymentsdk.util.PrefUtil;
 import com.uc.paymentsdk.util.Utils;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.regex.Pattern;
-import javax.microedition.media.Player;
-import main.Constants_H;
 import org.apache.http.HttpResponse;
 
-/* loaded from: classes.dex */
-public class PaymentsActivity extends Activity implements View.OnClickListener, ApiTask.TaskHandler, AdapterView.OnItemClickListener, DialogUtil.WarningDialogListener, Handler.OnFinishListener {
+public class PaymentsActivity
+extends Activity
+implements View.OnClickListener,
+ApiTask.TaskHandler,
+AdapterView.OnItemClickListener,
+DialogUtil.WarningDialogListener,
+Handler.OnFinishListener {
     private static final String CONTENT_SMS_INBOX = "content://sms/";
     private static final int DIALOG_500 = 11;
     private static final int DIALOG_ACCOUNT_WRONG = 34;
@@ -113,7 +170,7 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
     private static final int ID_PAY_SMS_OK = 3;
     private static final int ID_PAY_UPOINT = 7;
     private static final int ID_PAY_UPOINT_PAYPASS = 8;
-    private static final long PAY_SMS_TIMEOUT = 60000;
+    private static final long PAY_SMS_TIMEOUT = 60000L;
     private static final int RETRY_MAX = 2;
     private static final String TERM = ",,,,";
     private static final int TYPE_PAYMENT_LIST = 0;
@@ -138,10 +195,12 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
     private String mNumber;
     private PaymentInfo mPaymentInfo;
     private ContentObserver mSmsContent;
-    private android.os.Handler mSmsHander;
+    private Handler mSmsHander;
     private int mSmsId;
     private SmsInfo mSmsInfo;
+    private final BroadcastReceiver mSmsReceiver = new /* Unavailable Anonymous Inner Class!! */;
     private String mSmsResultInfo;
+    private final Runnable mSmsRunnable = new /* Unavailable Anonymous Inner Class!! */;
     private int mTimeoutCounter;
     private TextView mTvDiscountTextView;
     private TextView mTvProduct;
@@ -150,405 +209,81 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
     private TextView mTvVipDiscountTimeTextView;
     private int mType;
     private UPointPayInfo mUPayInfo;
-    private final BroadcastReceiver mSmsReceiver = new BroadcastReceiver() { // from class: com.uc.paymentsdk.payment.PaymentsActivity.1
-        AnonymousClass1() {
-        }
 
-        @Override // android.content.BroadcastReceiver
-        public void onReceive(Context paramContext, Intent paramIntent) {
-            switch (getResultCode()) {
-                case -1:
-                    if (4 == PaymentsActivity.this.mType) {
-                        if (PaymentsActivity.this.mSmsInfo.isNeedconfirm()) {
-                            try {
-                                Thread.sleep(5000L);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            PaymentsActivity.this.removeDialog(17);
-                            String smsConfirmText = PaymentsActivity.this.mSmsInfo.getSmsConfirmContent();
-                            String smsaddress = PaymentsActivity.this.mSmsInfo.getSmsConfirmNumber();
-                            PaymentsActivity.this.buildSmsPaymentConfirmView(smsaddress, smsConfirmText);
-                            return;
-                        }
-                        PaymentsActivity.this.mLeftSmsToSendCount--;
-                        PaymentsActivity.this.removeDialog(17);
-                        PrefUtil.setPayedAmount(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this.getPayedAmount());
-                        if (PaymentsActivity.this.mLeftSmsToSendCount < 1) {
-                            try {
-                                PaymentsActivity.this.unregisterReceiver(PaymentsActivity.this.mSmsReceiver);
-                            } catch (IllegalArgumentException e2) {
-                            }
-                            PaymentsActivity.this.mSmsResultInfo = "支付已完成，祝您玩得开心。";
-                            PaymentsActivity.this.showDialog(20);
-                        } else {
-                            PaymentsActivity.this.buildSmsPaymentView();
-                        }
-                        if (PaymentsActivity.this.mSmsInfo.getSmstype() == 1) {
-                            Api.postSmsPayment(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this, PaymentsActivity.this.mPaymentInfo.getCpID(), PaymentsActivity.this.mPaymentInfo.getmGameID(), PaymentsActivity.this.mPaymentInfo.getmActionID(), Utils.getSmsPayment(), PaymentsActivity.this.mPaymentInfo.getmActionID(), PaymentsActivity.this.mSmsInfo.getSmschannelid(), PaymentsActivity.this.mSmsInfo.getSmsnumber(), PaymentsActivity.this.mSmsInfo.getContent(), PaymentsActivity.this.mSmsInfo.getSmstype());
-                            return;
-                        }
-                        return;
-                    }
-                    PaymentsActivity.this.removeDialog(17);
-                    PaymentsActivity.this.mLeftSmsToSendCount--;
-                    PrefUtil.setPayedAmount(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this.getPayedAmount());
-                    if (PaymentsActivity.this.mLeftSmsToSendCount < 1) {
-                        try {
-                            PaymentsActivity.this.unregisterReceiver(PaymentsActivity.this.mSmsReceiver);
-                        } catch (IllegalArgumentException e3) {
-                        }
-                        PaymentsActivity.this.mSmsResultInfo = "支付已完成，祝您玩得开心。";
-                        PaymentsActivity.this.showDialog(20);
-                    } else {
-                        PaymentsActivity.this.buildSmsPaymentView();
-                    }
-                    if (PaymentsActivity.this.mSmsInfo.getSmstype() == 1) {
-                        Api.postSmsPayment(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this, PaymentsActivity.this.mPaymentInfo.getCpID(), PaymentsActivity.this.mPaymentInfo.getmGameID(), PaymentsActivity.this.mPaymentInfo.getmActionID(), Utils.getSmsPayment(), PaymentsActivity.this.mPaymentInfo.getmActionID(), PaymentsActivity.this.mSmsInfo.getSmschannelid(), PaymentsActivity.this.mSmsInfo.getSmsnumber(), PaymentsActivity.this.mSmsInfo.getContent(), PaymentsActivity.this.mSmsInfo.getSmstype());
-                        return;
-                    }
-                    return;
-                case 1:
-                case 133404:
-                    return;
-                case 2:
-                    PaymentsActivity.this.removeDialog(17);
-                    PaymentsActivity.this.mSmsResultInfo = "当前手机设置为飞行模式，不能发送短信。";
-                    PaymentsActivity.this.showDialog(21);
-                    if ((PaymentsActivity.this.mLeftSmsToSendCount != -1 || 5 == PaymentsActivity.this.mType) && PaymentsActivity.this.mSmsContent != null) {
-                        PaymentsActivity.this.getContentResolver().unregisterContentObserver(PaymentsActivity.this.mSmsContent);
-                        return;
-                    }
-                    return;
-                default:
-                    PaymentsActivity.this.removeDialog(17);
-                    PaymentsActivity.this.mSmsResultInfo = Constants.TEXT_PAY_SMS_FAILED_INSUFFENT_BALANCE;
-                    PaymentsActivity.this.showDialog(21);
-                    if ((PaymentsActivity.this.mLeftSmsToSendCount != -1 || 5 == PaymentsActivity.this.mType) && PaymentsActivity.this.mSmsContent != null) {
-                        PaymentsActivity.this.getContentResolver().unregisterContentObserver(PaymentsActivity.this.mSmsContent);
-                        return;
-                    }
-                    return;
-            }
-        }
-    };
-    private final Runnable mSmsRunnable = new Runnable() { // from class: com.uc.paymentsdk.payment.PaymentsActivity.2
-        AnonymousClass2() {
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            if (PaymentsActivity.this.mSmsContent != null) {
-                PaymentsActivity.this.getContentResolver().unregisterContentObserver(PaymentsActivity.this.mSmsContent);
-            }
-            PaymentsActivity.this.removeDialog(17);
-            if (PaymentsActivity.this.mSmsInfo.needconfirm) {
-                PaymentsActivity.this.mSmsResultInfo = "对不起，接收确认短信超时，请重新尝试支付！";
-                PaymentsActivity.this.showDialog(21);
-            } else if (PaymentsActivity.this.mLeftSmsToSendCount > 0) {
-                PaymentsActivity.this.mSmsResultInfo = "对不起，短信支付已经超时，请重新支付！";
-                PaymentsActivity.this.showDialog(21);
-            } else {
-                PrefUtil.setPayedAmount(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this.getPayedAmount());
-                PaymentsActivity.this.mSmsResultInfo = "感谢您的使用，祝您玩得开心！";
-                PaymentsActivity.this.showDialog(20);
-            }
-            try {
-                PaymentsActivity.this.unregisterReceiver(PaymentsActivity.this.mSmsReceiver);
-            } catch (IllegalArgumentException e) {
-            }
-        }
-    };
-
-    /* renamed from: com.uc.paymentsdk.payment.PaymentsActivity$1 */
-    /* loaded from: classes.dex */
-    class AnonymousClass1 extends BroadcastReceiver {
-        AnonymousClass1() {
-        }
-
-        @Override // android.content.BroadcastReceiver
-        public void onReceive(Context paramContext, Intent paramIntent) {
-            switch (getResultCode()) {
-                case -1:
-                    if (4 == PaymentsActivity.this.mType) {
-                        if (PaymentsActivity.this.mSmsInfo.isNeedconfirm()) {
-                            try {
-                                Thread.sleep(5000L);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            PaymentsActivity.this.removeDialog(17);
-                            String smsConfirmText = PaymentsActivity.this.mSmsInfo.getSmsConfirmContent();
-                            String smsaddress = PaymentsActivity.this.mSmsInfo.getSmsConfirmNumber();
-                            PaymentsActivity.this.buildSmsPaymentConfirmView(smsaddress, smsConfirmText);
-                            return;
-                        }
-                        PaymentsActivity.this.mLeftSmsToSendCount--;
-                        PaymentsActivity.this.removeDialog(17);
-                        PrefUtil.setPayedAmount(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this.getPayedAmount());
-                        if (PaymentsActivity.this.mLeftSmsToSendCount < 1) {
-                            try {
-                                PaymentsActivity.this.unregisterReceiver(PaymentsActivity.this.mSmsReceiver);
-                            } catch (IllegalArgumentException e2) {
-                            }
-                            PaymentsActivity.this.mSmsResultInfo = "支付已完成，祝您玩得开心。";
-                            PaymentsActivity.this.showDialog(20);
-                        } else {
-                            PaymentsActivity.this.buildSmsPaymentView();
-                        }
-                        if (PaymentsActivity.this.mSmsInfo.getSmstype() == 1) {
-                            Api.postSmsPayment(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this, PaymentsActivity.this.mPaymentInfo.getCpID(), PaymentsActivity.this.mPaymentInfo.getmGameID(), PaymentsActivity.this.mPaymentInfo.getmActionID(), Utils.getSmsPayment(), PaymentsActivity.this.mPaymentInfo.getmActionID(), PaymentsActivity.this.mSmsInfo.getSmschannelid(), PaymentsActivity.this.mSmsInfo.getSmsnumber(), PaymentsActivity.this.mSmsInfo.getContent(), PaymentsActivity.this.mSmsInfo.getSmstype());
-                            return;
-                        }
-                        return;
-                    }
-                    PaymentsActivity.this.removeDialog(17);
-                    PaymentsActivity.this.mLeftSmsToSendCount--;
-                    PrefUtil.setPayedAmount(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this.getPayedAmount());
-                    if (PaymentsActivity.this.mLeftSmsToSendCount < 1) {
-                        try {
-                            PaymentsActivity.this.unregisterReceiver(PaymentsActivity.this.mSmsReceiver);
-                        } catch (IllegalArgumentException e3) {
-                        }
-                        PaymentsActivity.this.mSmsResultInfo = "支付已完成，祝您玩得开心。";
-                        PaymentsActivity.this.showDialog(20);
-                    } else {
-                        PaymentsActivity.this.buildSmsPaymentView();
-                    }
-                    if (PaymentsActivity.this.mSmsInfo.getSmstype() == 1) {
-                        Api.postSmsPayment(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this, PaymentsActivity.this.mPaymentInfo.getCpID(), PaymentsActivity.this.mPaymentInfo.getmGameID(), PaymentsActivity.this.mPaymentInfo.getmActionID(), Utils.getSmsPayment(), PaymentsActivity.this.mPaymentInfo.getmActionID(), PaymentsActivity.this.mSmsInfo.getSmschannelid(), PaymentsActivity.this.mSmsInfo.getSmsnumber(), PaymentsActivity.this.mSmsInfo.getContent(), PaymentsActivity.this.mSmsInfo.getSmstype());
-                        return;
-                    }
-                    return;
-                case 1:
-                case 133404:
-                    return;
-                case 2:
-                    PaymentsActivity.this.removeDialog(17);
-                    PaymentsActivity.this.mSmsResultInfo = "当前手机设置为飞行模式，不能发送短信。";
-                    PaymentsActivity.this.showDialog(21);
-                    if ((PaymentsActivity.this.mLeftSmsToSendCount != -1 || 5 == PaymentsActivity.this.mType) && PaymentsActivity.this.mSmsContent != null) {
-                        PaymentsActivity.this.getContentResolver().unregisterContentObserver(PaymentsActivity.this.mSmsContent);
-                        return;
-                    }
-                    return;
-                default:
-                    PaymentsActivity.this.removeDialog(17);
-                    PaymentsActivity.this.mSmsResultInfo = Constants.TEXT_PAY_SMS_FAILED_INSUFFENT_BALANCE;
-                    PaymentsActivity.this.showDialog(21);
-                    if ((PaymentsActivity.this.mLeftSmsToSendCount != -1 || 5 == PaymentsActivity.this.mType) && PaymentsActivity.this.mSmsContent != null) {
-                        PaymentsActivity.this.getContentResolver().unregisterContentObserver(PaymentsActivity.this.mSmsContent);
-                        return;
-                    }
-                    return;
-            }
-        }
+    static /* synthetic */ int access$0(PaymentsActivity paymentsActivity) {
+        return paymentsActivity.mType;
     }
 
-    /* renamed from: com.uc.paymentsdk.payment.PaymentsActivity$2 */
-    /* loaded from: classes.dex */
-    class AnonymousClass2 implements Runnable {
-        AnonymousClass2() {
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            if (PaymentsActivity.this.mSmsContent != null) {
-                PaymentsActivity.this.getContentResolver().unregisterContentObserver(PaymentsActivity.this.mSmsContent);
-            }
-            PaymentsActivity.this.removeDialog(17);
-            if (PaymentsActivity.this.mSmsInfo.needconfirm) {
-                PaymentsActivity.this.mSmsResultInfo = "对不起，接收确认短信超时，请重新尝试支付！";
-                PaymentsActivity.this.showDialog(21);
-            } else if (PaymentsActivity.this.mLeftSmsToSendCount > 0) {
-                PaymentsActivity.this.mSmsResultInfo = "对不起，短信支付已经超时，请重新支付！";
-                PaymentsActivity.this.showDialog(21);
-            } else {
-                PrefUtil.setPayedAmount(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this.getPayedAmount());
-                PaymentsActivity.this.mSmsResultInfo = "感谢您的使用，祝您玩得开心！";
-                PaymentsActivity.this.showDialog(20);
-            }
-            try {
-                PaymentsActivity.this.unregisterReceiver(PaymentsActivity.this.mSmsReceiver);
-            } catch (IllegalArgumentException e) {
-            }
-        }
+    static /* synthetic */ SmsInfo access$1(PaymentsActivity paymentsActivity) {
+        return paymentsActivity.mSmsInfo;
     }
 
-    @Override // android.app.Activity
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
-        this.mIsValid = initPayment();
-        if (this.mIsValid) {
-            Utils.init(getApplicationContext());
-            Utils.initTitleBar(this);
-            buildPaymentView();
-            confirmEnterPaymentPoint();
-            new HandlerProxy(getApplicationContext()).handleRequest();
-        }
+    static /* synthetic */ ContentObserver access$10(PaymentsActivity paymentsActivity) {
+        return paymentsActivity.mSmsContent;
     }
 
-    public void confirmEnterPaymentPoint() {
-        PrefUtil.increaseArriveCount(getApplicationContext());
+    static /* synthetic */ int access$11(PaymentsActivity paymentsActivity) {
+        return paymentsActivity.mSmsId;
     }
 
-    private boolean initPayment() {
-        String str;
-        this.mPaymentInfo = (PaymentInfo) getIntent().getSerializableExtra(EXTRA_KEY_PAYMENTINFO);
-        if (this.mPaymentInfo == null) {
-            throw new IllegalArgumentException("PaymentInfo必须设置");
-        }
-        this.mPaymentInfo.setPaytype("sms");
-        int i = this.mPaymentInfo.getMoney();
-        if (i <= 0 || i > 10000 || i % 5 != 0) {
-            showDialog(0);
-            return false;
-        }
-        if (this.mPaymentInfo.getPayname() == null) {
-            throw new IllegalArgumentException("必须指定支付内容名称");
-        }
-        if (this.mPaymentInfo.getPaydesc() == null) {
-            throw new IllegalArgumentException("必须指定支付内容描述");
-        }
-        if (this.mPaymentInfo.getmGameID() == null) {
-            throw new IllegalArgumentException("必须指定游戏ID");
-        }
-        if (this.mPaymentInfo.getmGameID().length() != 2) {
-            throw new IllegalArgumentException("游戏ID必须为两位数字");
-        }
-        if (!Utils.isNumeric(this.mPaymentInfo.getmGameID())) {
-            throw new IllegalArgumentException("游戏ID必须为两位数字");
-        }
-        if (this.mPaymentInfo.getmActionID() == null) {
-            throw new IllegalArgumentException("必须指定支付点ID");
-        }
-        if (this.mPaymentInfo.getmActionID().length() != 2) {
-            throw new IllegalArgumentException("支付点ID必须为两位数字");
-        }
-        if (!Utils.isNumeric(this.mPaymentInfo.getmActionID())) {
-            throw new IllegalArgumentException("支付点ID必须为两位数字");
-        }
-        if (this.mPaymentInfo.getPayname().length() > 50) {
-            this.mPaymentInfo.setPayname(this.mPaymentInfo.getPayname().substring(0, 50));
-        }
-        if (this.mPaymentInfo.getPaydesc().length() > 100) {
-            this.mPaymentInfo.setPaydesc(this.mPaymentInfo.getPaydesc().substring(0, 100));
-        }
-        try {
-            str = Utils.getCpID(getApplicationContext());
-        } catch (PackageManager.NameNotFoundException e) {
-            showDialog(22);
-        } catch (NullPointerException e2) {
-            showDialog(22);
-        }
-        if (!Pattern.matches(Constants.CPID_PATTERN, str)) {
-            showDialog(22);
-            return false;
-        }
-        this.mPaymentInfo.setCpID(str);
-        if (this.mPaymentInfo.getUsername() != null) {
-            PrefUtil.setUCUserName(getApplicationContext(), this.mPaymentInfo.getUsername());
-        }
-        Utils.setPaymentInfo(this.mPaymentInfo);
-        return true;
+    static /* synthetic */ int access$12(PaymentsActivity paymentsActivity) {
+        return paymentsActivity.mLeftSmsToReceiveCount;
     }
 
-    @Override // android.app.Activity
-    protected void onPrepareDialog(int paramInt, Dialog paramDialog) {
-        super.onPrepareDialog(paramInt, paramDialog);
-        if (paramDialog.isShowing()) {
-            paramDialog.dismiss();
-        }
+    static /* synthetic */ Handler access$13(PaymentsActivity paymentsActivity) {
+        return paymentsActivity.mSmsHander;
     }
 
-    @Override // android.app.Activity
-    protected Dialog onCreateDialog(int paramInt) {
-        switch (paramInt) {
-            case 0:
-                return DialogUtil.createOKWarningDialog(this, paramInt, "该应用要求支付的金额不符合要求，不能成功支付。", this);
-            case 1:
-            case 3:
-            case 4:
-            case 12:
-            default:
-                return super.onCreateDialog(paramInt);
-            case 2:
-                return DialogUtil.createOKWarningDialogSupportLink(this, paramInt, "什么是U点?", "U点是<a href='http://wap.uc.cn'>UC-优视</a>提供的一种虚拟货币，主要用于购买软件和游戏里的内容（如：道具、关卡、软件、使用时长等）。<br /><br />U点兑换标准：<br />1元可兑换10U点。<br />通过以下链接充值U点：<br /><a href='http://pay.uc.cn'>UC-优视</a>", null);
-            case 5:
-                return DialogUtil.createOKWarningDialog(this, paramInt, "U点不足,不能继续支付！", null);
-            case 6:
-                return DialogUtil.createIndeterminateProgressDialog(this, paramInt, "正在支付，请勿关闭程序，请稍后......", false, null);
-            case 7:
-                return DialogUtil.createOKWarningDialog(this, paramInt, "支付不成功，请确定您的账户当中的余额充足并网络连接正常。", null);
-            case 8:
-                return DialogUtil.createOKWarningDialog(this, paramInt, "支付不成功，请确定您的账户当中的余额充足并网络连接正常。", null);
-            case 9:
-                return DialogUtil.createOKWarningDialog(this, paramInt, "支付不成功，请确定您的账户当中的余额充足并网络连接正常。", null);
-            case 10:
-                return DialogUtil.createYesNoDialog(this, paramInt, "支付不成功，连接服务器超时，是否重试?", this);
-            case 11:
-                return DialogUtil.createOKWarningDialog(this, paramInt, "支付不成功，请确定您的账户当中的余额充足并网络连接正常。\n请联系客服4006-400-401。", null);
-            case 13:
-                return DialogUtil.createOKWarningDialog(this, paramInt, "U点支付成功，祝您玩的开心", String.format("您的余额为%dU点", this.mNumber, Integer.valueOf(this.mBalance)), this);
-            case 14:
-                return DialogUtil.createIndeterminateProgressDialog(this, paramInt, "连接服务器，请稍等...", false, null);
-            case 15:
-                return DialogUtil.createOKWarningDialog(this, paramInt, "网络连接错误，请检查网络后再试。", this);
-            case 16:
-                return DialogUtil.createOKWarningDialog(this, paramInt, this.mSmsResultInfo, this);
-            case 17:
-                return DialogUtil.createIndeterminateProgressDialog(this, paramInt, "短信发送过程可能持续一分钟，请耐心等待...", false, null);
-            case 18:
-                return DialogUtil.createOKWarningDialog(this, paramInt, "短信发送失败", null);
-            case 19:
-                return DialogUtil.createIndeterminateProgressDialog(this, paramInt, "正在获取信息，请稍候......", false, null);
-            case 20:
-                return DialogUtil.createOKWarningDialog(this, paramInt, Constants_H.MONEY_TXT_18, this.mSmsResultInfo, this);
-            case 21:
-                return DialogUtil.createOKWarningDialog(this, paramInt, this.mSmsResultInfo, this);
-            case 22:
-                return DialogUtil.createOKWarningDialog(this, paramInt, Constants.ERROR_START_CPID_INVALID, this);
-            case 23:
-                return DialogUtil.createTwoButtonsDialog(this, paramInt, "您已经取消了购买，将不会获得相应内容。请确认是否取消？", "取消", "不取消", this);
-            case 24:
-                return DialogUtil.createTwoButtonsDialog(this, paramInt, Html.fromHtml(Constants.TEXT_PAY_SMS_BACK_CONFIRM), Constants.TEXT_BACK_TO_PAYPOINT, Constants.TEXT_EXIT, this);
-            case DIALOG_PAY_SMS_DELETE_BACK_CONFIRM /* 25 */:
-                return DialogUtil.createTwoButtonsDialog(this, paramInt, Constants.TEXT_PAY_SMS_DELETE_BACK_CONFIRM, Constants.TEXT_BACK_TO_PAYPOINT, Constants.TEXT_EXIT, this);
-            case 26:
-                return DialogUtil.createOKWarningDialog(this, paramInt, "支付超时，点击确定重新验证支付结果。最多 需要1分钟，请耐心等待...", this);
-            case DIALOG_PAY_SMS_RETRY_MULTIPLE /* 27 */:
-                int i = getPayedAmount();
-                int j = PrefUtil.getPayedAmount(getApplicationContext());
-                return DialogUtil.createTwoButtonsDialog(this, paramInt, String.format(Constants.TEXT_PAY_SMS_CHANCEL_CONFIRM, Integer.valueOf(j + i), this.mPaymentInfo.getPayname(), this.mPaymentInfo.getPayname()), Constants.TEXT_BACK_TO_PAY, Constants.TEXT_CONFIRM_TO_CANCEL, this);
-            case DIALOG_PASSWORD_OR_USERNAME_IS_EMPTY /* 28 */:
-                return DialogUtil.createOKWarningDialog(this, paramInt, Constants.ERROR_PASSWORD_OR_USERNAME_IS_EMPTY, null);
-            case DIALOG_PASSWORD_IS_EMPTY /* 29 */:
-                return DialogUtil.createOKWarningDialog(this, paramInt, Constants.ERROR_PASSWORD_IS_EMPTY, null);
-            case DIALOG_USERNAME_IS_EMPTY /* 30 */:
-                return DialogUtil.createOKWarningDialog(this, paramInt, Constants.ERROR_USERNAME_IS_EMPTY, null);
-            case DIALOG_USERNAME_WRONG /* 31 */:
-                return DialogUtil.createOKWarningDialog(this, paramInt, Constants.ERROR_REGISTER_USERNAME_WRONG, null);
-            case 32:
-                return DialogUtil.createOKWarningDialog(this, paramInt, Constants.ERROR_REGISTER_UNSERNAME_WRONG2, null);
-            case 33:
-                return DialogUtil.createOKWarningDialog(this, paramInt, Constants.ERROR_REGISTER_PASSWORD_WRONG, null);
-            case DIALOG_ACCOUNT_WRONG /* 34 */:
-                return DialogUtil.createOKWarningDialog(this, paramInt, "登录失败，您的帐号和密码不匹配。", null);
-            case DIALOG_UPOINT_PAYING /* 35 */:
-                return DialogUtil.createIndeterminateProgressDialog(this, paramInt, "U点支付中，请稍候...", false, null);
-            case 36:
-                return DialogUtil.createYesNoDialog(this, paramInt, "您手机时间不正确，为了确保安全支付，是否需要系统自动修正并完成支付?", this);
-            case DIALOG_UPOINT_PAYPASS_WRONG /* 37 */:
-                return DialogUtil.createOKWarningDialog(this, paramInt, "支付不成功，您的支付密码有误，不能支付成功！", null);
-            case DIALOG_SMS_FAIL /* 38 */:
-                return DialogUtil.createOKWarningDialog(this, paramInt, "支付不成功，您已经禁止了发送支付短信，请重新尝试支付。", null);
-        }
+    static /* synthetic */ Runnable access$14(PaymentsActivity paymentsActivity) {
+        return paymentsActivity.mSmsRunnable;
     }
 
-    public int getPayedAmount() {
-        int i = Utils.getSmsPayment() - PrefUtil.getPayedAmount(getApplicationContext());
-        int j = i / this.mSmsInfo.money;
-        return this.mSmsInfo.money * (j - this.mLeftSmsToSendCount);
+    static /* synthetic */ void access$15(PaymentsActivity paymentsActivity, int n) {
+        paymentsActivity.mSmsId = n;
+    }
+
+    static /* synthetic */ void access$16(PaymentsActivity paymentsActivity, int n) {
+        paymentsActivity.mLeftSmsToReceiveCount = n;
+    }
+
+    static /* synthetic */ void access$17(PaymentsActivity paymentsActivity, boolean bl) {
+        paymentsActivity.mIsSynced = bl;
+    }
+
+    static /* synthetic */ void access$18(PaymentsActivity paymentsActivity, TextView textView, TextView textView2, int n, Button button, Button button2, RelativeLayout relativeLayout) {
+        paymentsActivity.initSmsPayView(textView, textView2, n, button, button2, relativeLayout);
+    }
+
+    static /* synthetic */ void access$2(PaymentsActivity paymentsActivity, String string, String string2) {
+        paymentsActivity.buildSmsPaymentConfirmView(string, string2);
+    }
+
+    static /* synthetic */ int access$3(PaymentsActivity paymentsActivity) {
+        return paymentsActivity.mLeftSmsToSendCount;
+    }
+
+    static /* synthetic */ void access$4(PaymentsActivity paymentsActivity, int n) {
+        paymentsActivity.mLeftSmsToSendCount = n;
+    }
+
+    static /* synthetic */ int access$5(PaymentsActivity paymentsActivity) {
+        return paymentsActivity.getPayedAmount();
+    }
+
+    static /* synthetic */ void access$6(PaymentsActivity paymentsActivity) {
+        paymentsActivity.buildSmsPaymentView();
+    }
+
+    static /* synthetic */ BroadcastReceiver access$7(PaymentsActivity paymentsActivity) {
+        return paymentsActivity.mSmsReceiver;
+    }
+
+    static /* synthetic */ void access$8(PaymentsActivity paymentsActivity, String string) {
+        paymentsActivity.mSmsResultInfo = string;
+    }
+
+    static /* synthetic */ PaymentInfo access$9(PaymentsActivity paymentsActivity) {
+        return paymentsActivity.mPaymentInfo;
     }
 
     private void buildPaymentView() {
@@ -560,874 +295,1015 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
         this.mIsShowInfo = false;
         this.mSmsHander = null;
         this.mSmsContent = null;
-        RelativeLayout paytitle = Utils.initSubTitle(getApplicationContext(), this, "购买内容", false);
-        TextView payContentTextView = new TextView(getApplicationContext());
-        payContentTextView.setTextSize(16.0f);
-        payContentTextView.setTextColor(Color.parseColor("#FF858D8D"));
-        payContentTextView.setPadding(10, 10, 0, 10);
-        payContentTextView.setText("尊敬的用户，您需要为以下内容支付费用，请阅读以下信息，确认所购内容无误。");
-        TextView payContentDetailTextView = new TextView(getApplicationContext());
-        payContentDetailTextView.setTextSize(16.0f);
-        payContentDetailTextView.setPadding(20, 0, 20, 0);
-        payContentDetailTextView.setText(String.format("所购内容 : %s", this.mPaymentInfo.getPaydesc()));
-        payContentDetailTextView.setTextColor(-12303292);
-        String moneyStr = new DecimalFormat("##0.00").format(this.mPaymentInfo.getMoney() / 10.0f);
-        TextView payCountTextView = new TextView(getApplicationContext());
-        payCountTextView.setTextSize(16.0f);
-        payCountTextView.setPadding(20, 0, 0, 20);
-        payCountTextView.setText(String.format("支付金额: %s元", moneyStr));
-        payCountTextView.setTextColor(-12303292);
-        LinearLayout linearLayout = new LinearLayout(getApplicationContext());
-        linearLayout.setBackgroundColor(-1);
-        linearLayout.setOrientation(1);
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-        linearLayout.addView(paytitle, localLayoutParams);
-        linearLayout.addView(payContentTextView, localLayoutParams);
-        linearLayout.addView(payContentDetailTextView, localLayoutParams);
-        linearLayout.addView(payCountTextView, localLayoutParams);
-        this.mListView = new ListView(getApplicationContext());
+        RelativeLayout relativeLayout = Utils.initSubTitle((Context)this.getApplicationContext(), (View.OnClickListener)this, (String)"\u8d2d\u4e70\u5185\u5bb9", (boolean)false);
+        TextView textView = new TextView(this.getApplicationContext());
+        textView.setTextSize(16.0f);
+        textView.setTextColor(Color.parseColor((String)"#FF858D8D"));
+        textView.setPadding(10, 10, 0, 10);
+        textView.setText((CharSequence)"\u5c0a\u656c\u7684\u7528\u6237\uff0c\u60a8\u9700\u8981\u4e3a\u4ee5\u4e0b\u5185\u5bb9\u652f\u4ed8\u8d39\u7528\uff0c\u8bf7\u9605\u8bfb\u4ee5\u4e0b\u4fe1\u606f\uff0c\u786e\u8ba4\u6240\u8d2d\u5185\u5bb9\u65e0\u8bef\u3002");
+        TextView textView2 = new TextView(this.getApplicationContext());
+        textView2.setTextSize(16.0f);
+        textView2.setPadding(20, 0, 20, 0);
+        textView2.setText((CharSequence)String.format("\u6240\u8d2d\u5185\u5bb9 : %s", this.mPaymentInfo.getPaydesc()));
+        textView2.setTextColor(-12303292);
+        String string = new DecimalFormat("##0.00").format((float)this.mPaymentInfo.getMoney() / 10.0f);
+        TextView textView3 = new TextView(this.getApplicationContext());
+        textView3.setTextSize(16.0f);
+        textView3.setPadding(20, 0, 0, 20);
+        textView3.setText((CharSequence)String.format("\u652f\u4ed8\u91d1\u989d: %s\u5143", string));
+        textView3.setTextColor(-12303292);
+        string = new LinearLayout(this.getApplicationContext());
+        string.setBackgroundColor(-1);
+        string.setOrientation(1);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -2);
+        string.addView((View)relativeLayout, (ViewGroup.LayoutParams)layoutParams);
+        string.addView((View)textView, (ViewGroup.LayoutParams)layoutParams);
+        string.addView((View)textView2, (ViewGroup.LayoutParams)layoutParams);
+        string.addView((View)textView3, (ViewGroup.LayoutParams)layoutParams);
+        this.mListView = new ListView(this.getApplicationContext());
         this.mListView.setBackgroundColor(-1);
         this.mListView.setCacheColorHint(-1);
-        this.mListView.addHeaderView(linearLayout, null, true);
-        this.mListView.setOnItemClickListener(this);
-        this.mListView.addFooterView(Utils.generateFooterView(this), null, false);
-        setContentView(this.mListView);
-        fillData();
-        new HandlerProxy(getApplicationContext(), this).handleRequest();
+        this.mListView.addHeaderView((View)string, null, true);
+        this.mListView.setOnItemClickListener((AdapterView.OnItemClickListener)this);
+        this.mListView.addFooterView((View)Utils.generateFooterView((Context)this), null, false);
+        this.setContentView((View)this.mListView);
+        this.fillData();
+        new HandlerProxy(this.getApplicationContext(), (Handler.OnFinishListener)this).handleRequest();
     }
 
-    private void buildUPointPaymentView() {
-        this.mType = 1;
-        TextView payTypeNameTextView = new TextView(getApplicationContext());
-        payTypeNameTextView.setTextSize(16.0f);
-        payTypeNameTextView.setPadding(20, 0, 20, 0);
-        payTypeNameTextView.setTextColor(-12303292);
-        payTypeNameTextView.setText(String.format("支付名称 : %s", this.mPaymentInfo.getPayname()));
-        this.mTvProduct = new TextView(getApplicationContext());
-        this.mTvProduct.setTextSize(16.0f);
-        this.mTvProduct.setPadding(20, 0, 20, 0);
-        this.mTvProduct.setText("产品名 : ");
-        this.mTvProduct.setTextColor(-12303292);
-        TextView payContentTextView = new TextView(getApplicationContext());
-        payContentTextView.setTextSize(16.0f);
-        payContentTextView.setPadding(20, 0, 20, 20);
-        payContentTextView.setText(String.format("所购内容 : %s", this.mPaymentInfo.getPaydesc()));
-        payContentTextView.setTextColor(-12303292);
-        TextView payCountTextView = new TextView(getApplicationContext());
-        payCountTextView.setTextSize(16.0f);
-        payCountTextView.setPadding(20, 0, 20, 0);
-        payCountTextView.setText(String.format("支付数额 : %dU点（价值%s元）", Integer.valueOf(this.mPaymentInfo.getMoney()), new DecimalFormat("##0.00").format(this.mPaymentInfo.getMoney() / 10.0f)));
-        payCountTextView.setTextColor(-13487566);
-        this.mTvDiscountTextView = new TextView(getApplicationContext());
-        this.mTvDiscountTextView.setTextSize(16.0f);
-        this.mTvDiscountTextView.setPadding(20, 0, 20, 0);
-        this.mTvDiscountTextView.setText("U点折扣 : ");
-        this.mTvDiscountTextView.setTextColor(-13487566);
-        this.mTvVipDiscountTextView = new TextView(getApplicationContext());
-        this.mTvVipDiscountTextView.setTextSize(16.0f);
-        this.mTvVipDiscountTextView.setPadding(20, 0, 20, 0);
-        this.mTvVipDiscountTextView.setText("会员折扣 : ");
-        this.mTvVipDiscountTextView.setTextColor(-13487566);
-        this.mTvVipDiscountTimeTextView = new TextView(getApplicationContext());
-        this.mTvVipDiscountTimeTextView.setTextSize(16.0f);
-        this.mTvVipDiscountTimeTextView.setPadding(20, 0, 20, 0);
-        this.mTvVipDiscountTimeTextView.setText("会员折扣到期时间 : ");
-        this.mTvVipDiscountInfo = new TextView(getApplicationContext());
-        this.mTvVipDiscountInfo.setTextColor(-13487566);
-        this.mTvVipDiscountInfo = new TextView(getApplicationContext());
-        this.mTvVipDiscountInfo.setTextSize(16.0f);
-        this.mTvVipDiscountInfo.setPadding(20, 0, 20, 0);
-        this.mTvVipDiscountInfo.setText("会员折扣信息 : ");
-        this.mTvVipDiscountInfo.setTextColor(-13487566);
-        this.mBtnPay = new Button(getApplicationContext());
-        this.mBtnPay.setText("确认");
-        this.mBtnPay.setOnClickListener(this);
-        this.mBtnPay.setVisibility(8);
-        LinearLayout.LayoutParams localLayoutParams3 = new LinearLayout.LayoutParams(Player.PREFETCHED, -2);
-        localLayoutParams3.gravity = 1;
-        LinearLayout localLinearLayout2 = new LinearLayout(getApplicationContext());
-        localLinearLayout2.addView(this.mBtnPay, localLayoutParams3);
-        localLinearLayout2.setGravity(1);
-        LinearLayout localLinearLayout3 = new LinearLayout(getApplicationContext());
-        localLinearLayout3.setOrientation(1);
-        localLinearLayout3.setBackgroundColor(-1);
-        LinearLayout.LayoutParams localLayoutParams4 = new LinearLayout.LayoutParams(-1, -2);
-        localLinearLayout3.addView(Utils.initSubTitle(getApplicationContext(), this, "需要支付的内容", true), localLayoutParams4);
-        localLinearLayout3.addView(payTypeNameTextView, localLayoutParams4);
-        localLinearLayout3.addView(this.mTvProduct, localLayoutParams4);
-        localLinearLayout3.addView(payContentTextView, localLayoutParams4);
-        localLinearLayout3.addView(payCountTextView, localLayoutParams4);
-        localLinearLayout3.addView(this.mTvDiscountTextView, localLayoutParams4);
-        localLinearLayout3.addView(this.mTvVipDiscountTextView, localLayoutParams4);
-        localLinearLayout3.addView(this.mTvVipDiscountTimeTextView, localLayoutParams4);
-        localLinearLayout3.addView(this.mTvVipDiscountInfo, localLayoutParams4);
-        localLinearLayout3.addView(localLinearLayout2, localLayoutParams4);
-        ScrollView localScrollView = new ScrollView(getApplicationContext());
-        localScrollView.setBackgroundColor(-1);
-        localScrollView.addView(localLinearLayout3);
-        setContentView(localScrollView);
-        if (Utils.getUPointInfo() == null) {
-            showDialog(14);
-            Api.queryUPointDiscount(getApplicationContext(), this, Utils.getPaymentInfo().getCpID(), Utils.getPaymentInfo().getmGameID(), Utils.getPaymentInfo().getMoney());
-        } else {
-            initUPointPayView(Utils.getUPointInfo());
-        }
-    }
-
-    private void initUPointPayView(UPointInfo info) {
-        this.mTvDiscountTextView.setText(String.format("U点折扣 : %s折(%sU点)", info.getDiscount(), info.getDiscounttext()));
-        if (info.getVipdiscount() != null && info.getVipdiscount().length() > 0) {
-            this.mTvDiscountTextView.setText(String.format("会员折扣 : %s折(%sU点)", info.getVipdiscount(), info.getVipdiscounttext()));
-            this.mTvVipDiscountTimeTextView.setText(String.format("会员折扣到期时间 : ", info.getVipdiscounttime()));
-            this.mTvVipDiscountInfo.setText("会员折扣到期时间 : " + info.getDiscountinfo());
-        } else {
-            this.mTvVipDiscountTextView.setVisibility(8);
-            this.mTvVipDiscountTimeTextView.setVisibility(8);
-            this.mTvVipDiscountInfo.setVisibility(8);
-        }
-        this.mBtnPay.setVisibility(0);
-    }
-
-    private void buildUPointPayLoginView() {
-        this.mType = 2;
-        RelativeLayout title = Utils.initSubTitle(getApplicationContext(), this, "请您输入UC帐号", true);
-        title.setId(10);
-        RelativeLayout.LayoutParams titleParams = new RelativeLayout.LayoutParams(-1, -2);
-        titleParams.addRule(10, -1);
-        title.setLayoutParams(titleParams);
-        TextView noticeTextView = new TextView(getApplicationContext());
-        RelativeLayout.LayoutParams noticeParams = new RelativeLayout.LayoutParams(-1, -2);
-        noticeParams.addRule(3, 10);
-        noticeParams.setMargins(10, 5, 10, 10);
-        noticeTextView.setLayoutParams(noticeParams);
-        noticeTextView.setId(1);
-        noticeTextView.setCompoundDrawablePadding(10);
-        noticeTextView.setTextColor(-13487566);
-        noticeTextView.setCompoundDrawablesWithIntrinsicBounds(Utils.getDrawableFromFile(Utils.isHdpi() ? Constants.RES_LOCK_HDPI : Constants.RES_LOCK), (Drawable) null, (Drawable) null, (Drawable) null);
-        noticeTextView.setText("您好，购买此内容，请先登录UC账号。您可以输入UC帐号或者手机号码进行登录");
-        TextView lineTextView = Utils.generateBorderView(getApplication());
-        lineTextView.setId(11);
-        RelativeLayout.LayoutParams lineParams = new RelativeLayout.LayoutParams(-1, 1);
-        lineParams.addRule(3, 1);
-        lineTextView.setLayoutParams(lineParams);
-        RelativeLayout.LayoutParams accountParams = new RelativeLayout.LayoutParams(-1, -2);
-        accountParams.setMargins(10, 10, 10, 5);
-        TextView accountLable = new TextView(getApplicationContext());
-        accountLable.setLayoutParams(accountParams);
-        accountLable.setId(2);
-        accountLable.setText("UC账号:");
-        accountLable.setTextColor(-13487566);
-        RelativeLayout.LayoutParams usernameParams = new RelativeLayout.LayoutParams(-1, -2);
-        usernameParams.addRule(3, 2);
-        usernameParams.setMargins(10, 5, 10, 5);
-        this.mEtUsername = new EditText(getApplicationContext());
-        this.mEtUsername.setLayoutParams(usernameParams);
-        this.mEtUsername.setSingleLine();
-        this.mEtUsername.setId(3);
-        this.mEtUsername.setHint("用户名");
-        this.mEtPassword = new EditText(getApplicationContext());
-        this.mEtPassword.setId(4);
-        this.mEtPassword.setHint("密码");
-        this.mEtPassword.setSingleLine();
-        this.mEtPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        RelativeLayout.LayoutParams userpassParams = new RelativeLayout.LayoutParams(-1, -2);
-        userpassParams.addRule(3, 3);
-        userpassParams.setMargins(10, 5, 10, 5);
-        this.mEtPassword.setLayoutParams(userpassParams);
-        this.mEtSavePass = new CheckBox(getApplicationContext());
-        RelativeLayout.LayoutParams savepassParams = new RelativeLayout.LayoutParams(-1, -2);
-        savepassParams.addRule(3, 4);
-        savepassParams.setMargins(10, 5, 10, 5);
-        this.mEtSavePass.setId(5);
-        this.mEtSavePass.setTextColor(-12303292);
-        this.mEtSavePass.setText("保存密码");
-        this.mEtSavePass.setLayoutParams(savepassParams);
-        if (PrefUtil.getUCUserName(getApplicationContext()) != null) {
-            this.mEtUsername.setText(PrefUtil.getUCUserName(getApplicationContext()));
-            this.mEtSavePass.setChecked(true);
-        } else {
-            this.mEtSavePass.setChecked(false);
-        }
-        if (PrefUtil.getUCUserPass(getApplicationContext()) != null) {
-            this.mEtPassword.setText(PrefUtil.getUCUserPass(getApplicationContext()));
-        }
-        Button submitBtn = new Button(getApplicationContext());
-        submitBtn.setId(7);
-        submitBtn.setText("确定购买");
-        submitBtn.setOnClickListener(this);
-        RelativeLayout.LayoutParams submitLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-        submitLayoutParams.topMargin = 10;
-        submitLayoutParams.addRule(3, 5);
-        submitLayoutParams.addRule(14);
-        submitBtn.setLayoutParams(submitLayoutParams);
-        RelativeLayout inputareaLayout = new RelativeLayout(getApplicationContext());
-        inputareaLayout.setId(7);
-        inputareaLayout.setBackgroundColor(Constants.COLOR_LISTVIEW_ITEM_BACKGROUND);
-        RelativeLayout.LayoutParams localLayoutParams8 = new RelativeLayout.LayoutParams(-1, -2);
-        localLayoutParams8.addRule(3, 11);
-        inputareaLayout.setLayoutParams(localLayoutParams8);
-        inputareaLayout.addView(accountLable);
-        inputareaLayout.addView(this.mEtUsername);
-        inputareaLayout.addView(this.mEtPassword);
-        inputareaLayout.addView(this.mEtSavePass);
-        inputareaLayout.addView(submitBtn);
-        RelativeLayout relativeLayout = new RelativeLayout(getApplicationContext());
-        relativeLayout.setBackgroundColor(-1);
-        relativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-        relativeLayout.addView(title);
-        relativeLayout.addView(noticeTextView);
-        relativeLayout.addView(lineTextView);
-        relativeLayout.addView(inputareaLayout);
-        TextView lineTextView1 = Utils.generateBorderView(getApplication());
-        RelativeLayout.LayoutParams localLayoutParams9 = new RelativeLayout.LayoutParams(-1, 1);
-        localLayoutParams9.addRule(3, 7);
-        lineTextView1.setLayoutParams(localLayoutParams9);
-        relativeLayout.addView(lineTextView1);
-        ScrollView scrollView = new ScrollView(getApplication());
-        scrollView.setBackgroundColor(-1);
-        scrollView.addView(relativeLayout);
-        setContentView(scrollView);
-    }
-
-    private void buildUPointPayPassView() {
-        this.mType = 3;
-        RelativeLayout title = Utils.initSubTitle(getApplicationContext(), this, "请您输入U点支付密码", true);
-        title.setId(10);
-        RelativeLayout.LayoutParams titleParams = new RelativeLayout.LayoutParams(-1, -2);
-        titleParams.addRule(10, -1);
-        title.setLayoutParams(titleParams);
-        TextView noticeTextView = new TextView(getApplicationContext());
-        RelativeLayout.LayoutParams noticeParams = new RelativeLayout.LayoutParams(-1, -2);
-        noticeParams.addRule(3, 10);
-        noticeParams.setMargins(10, 5, 10, 10);
-        noticeTextView.setLayoutParams(noticeParams);
-        noticeTextView.setId(1);
-        noticeTextView.setCompoundDrawablePadding(10);
-        noticeTextView.setTextColor(-13487566);
-        noticeTextView.setCompoundDrawablesWithIntrinsicBounds(Utils.getDrawableFromFile(Utils.isHdpi() ? Constants.RES_LOCK_HDPI : Constants.RES_LOCK), (Drawable) null, (Drawable) null, (Drawable) null);
-        noticeTextView.setText("您好，您的U点设置有支付密码，请收入后点击确认进行支付");
-        TextView lineTextView = Utils.generateBorderView(getApplication());
-        lineTextView.setId(11);
-        RelativeLayout.LayoutParams lineParams = new RelativeLayout.LayoutParams(-1, 1);
-        lineParams.addRule(3, 1);
-        lineTextView.setLayoutParams(lineParams);
-        RelativeLayout.LayoutParams accountParams = new RelativeLayout.LayoutParams(-1, -2);
-        accountParams.setMargins(10, 10, 10, 5);
-        TextView accountLable = new TextView(getApplicationContext());
-        accountLable.setLayoutParams(accountParams);
-        accountLable.setId(2);
-        accountLable.setText("UC支付密码:");
-        accountLable.setTextColor(-13487566);
-        RelativeLayout.LayoutParams usernameParams = new RelativeLayout.LayoutParams(-1, -2);
-        usernameParams.addRule(3, 2);
-        usernameParams.setMargins(10, 5, 10, 5);
-        this.mEtPayPass = new EditText(getApplicationContext());
-        this.mEtPayPass.setLayoutParams(usernameParams);
-        this.mEtPayPass.setSingleLine();
-        this.mEtPayPass.setId(3);
-        this.mEtPayPass.setHint("支付密码");
-        Button submitBtn = new Button(getApplicationContext());
-        submitBtn.setId(7);
-        submitBtn.setText("确定购买");
-        submitBtn.setOnClickListener(this);
-        RelativeLayout.LayoutParams submitLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-        submitLayoutParams.topMargin = 10;
-        submitLayoutParams.addRule(3, 5);
-        submitLayoutParams.addRule(14);
-        submitBtn.setLayoutParams(submitLayoutParams);
-        RelativeLayout inputareaLayout = new RelativeLayout(getApplicationContext());
-        inputareaLayout.setId(7);
-        inputareaLayout.setBackgroundColor(Constants.COLOR_LISTVIEW_ITEM_BACKGROUND);
-        RelativeLayout.LayoutParams localLayoutParams8 = new RelativeLayout.LayoutParams(-1, -2);
-        localLayoutParams8.addRule(3, 11);
-        inputareaLayout.setLayoutParams(localLayoutParams8);
-        inputareaLayout.addView(accountLable);
-        inputareaLayout.addView(this.mEtPayPass);
-        inputareaLayout.addView(submitBtn);
-        RelativeLayout relativeLayout = new RelativeLayout(getApplicationContext());
-        relativeLayout.setBackgroundColor(-1);
-        relativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-        relativeLayout.addView(title);
-        relativeLayout.addView(noticeTextView);
-        relativeLayout.addView(lineTextView);
-        relativeLayout.addView(inputareaLayout);
-        TextView lineTextView1 = Utils.generateBorderView(getApplication());
-        RelativeLayout.LayoutParams localLayoutParams9 = new RelativeLayout.LayoutParams(-1, 1);
-        localLayoutParams9.addRule(3, 7);
-        lineTextView1.setLayoutParams(localLayoutParams9);
-        relativeLayout.addView(lineTextView1);
-        ScrollView scrollView = new ScrollView(getApplication());
-        scrollView.setBackgroundColor(-1);
-        scrollView.addView(relativeLayout);
-        setContentView(scrollView);
-    }
-
-    public void buildSmsPaymentView() {
-        this.mType = 4;
-        this.mSmsId = 0;
-        RelativeLayout relativeLayout = new RelativeLayout(getApplicationContext());
-        relativeLayout.setBackgroundColor(-1);
-        relativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-        RelativeLayout title = Utils.initSubTitle(getApplicationContext(), this, "短信支付", false);
-        title.setId(1);
-        title.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
-        relativeLayout.addView(title);
-        TextView waitTextView = new TextView(this);
-        waitTextView.setId(2);
-        waitTextView.setTextSize(18.0f);
-        waitTextView.setTextColor(-12303292);
-        waitTextView.setPadding(10, 10, 0, 0);
-        waitTextView.setFocusable(true);
-        waitTextView.setClickable(true);
-        waitTextView.setLinkTextColor(Constants.COLOR_LINK_TEXT);
-        waitTextView.setText("尊敬的用户，正在获取信息，请稍后......");
-        RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -2);
-        localLayoutParams1.addRule(3, 1);
-        waitTextView.setLayoutParams(localLayoutParams1);
-        relativeLayout.addView(waitTextView);
-        TextView beforeSendText = new TextView(this);
-        beforeSendText.setId(3);
-        beforeSendText.setTextSize(16.0f);
-        beforeSendText.setTextColor(-7829368);
-        beforeSendText.setPadding(10, DIALOG_USERNAME_IS_EMPTY, 0, 0);
-        beforeSendText.setFocusable(true);
-        beforeSendText.setClickable(true);
-        beforeSendText.setLinkTextColor(Constants.COLOR_LINK_TEXT);
-        RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -2);
-        localLayoutParams2.addRule(3, 2);
-        beforeSendText.setLayoutParams(localLayoutParams2);
-        relativeLayout.addView(beforeSendText);
-        Button submitBtn = new Button(getApplicationContext());
-        submitBtn.setText("点播");
-        submitBtn.setId(3);
-        submitBtn.setOnClickListener(this);
-        Button cancelButton = new Button(getApplicationContext());
-        cancelButton.setText("取消");
-        cancelButton.setId(4);
-        cancelButton.setOnClickListener(this);
-        try {
-            Utils.CheckSimCardSupprotInfo(getApplicationContext());
-            int smsPayCount = Utils.getSmsPayment();
-            if (smsPayCount <= PrefUtil.getPayedAmount(getApplicationContext())) {
-                this.mSmsResultInfo = "您已支付完成，将返回您的游戏中。";
-                showDialog(20);
-            } else if (!this.mIsSynced) {
-                showDialog(19);
-                new SyncSmsInfoHandler(getApplicationContext(), new Handler.OnFinishListener(waitTextView, beforeSendText, smsPayCount, cancelButton, submitBtn, relativeLayout) { // from class: com.uc.paymentsdk.payment.PaymentsActivity.3
-                    Button cancelBtn;
-                    RelativeLayout contentPanel;
-                    Button okBtn;
-                    int smsPayment;
-                    TextView tvInfo2;
-                    TextView waitTV;
-
-                    AnonymousClass3(TextView waitTextView2, TextView beforeSendText2, int smsPayCount2, Button cancelButton2, Button submitBtn2, RelativeLayout relativeLayout2) {
-                        this.waitTV = waitTextView2;
-                        this.tvInfo2 = beforeSendText2;
-                        this.smsPayment = smsPayCount2;
-                        this.cancelBtn = cancelButton2;
-                        this.okBtn = submitBtn2;
-                        this.contentPanel = relativeLayout2;
-                    }
-
-                    @Override // com.uc.paymentsdk.network.chain.Handler.OnFinishListener
-                    public void onFinish() {
-                        if (Utils.getSmsInfos() != null) {
-                            PaymentsActivity.this.mIsSynced = true;
-                            PaymentsActivity.this.removeDialog(19);
-                            PaymentsActivity.this.initSmsPayView(this.waitTV, this.tvInfo2, this.smsPayment, this.cancelBtn, this.okBtn, this.contentPanel);
-                        } else {
-                            PaymentsActivity.this.removeDialog(19);
-                            PaymentsActivity.this.showDialog(15);
-                        }
-                    }
-                }).handleRequest();
-            } else {
-                initSmsPayView(waitTextView2, beforeSendText2, smsPayCount2, cancelButton2, submitBtn2, relativeLayout2);
-            }
-        } catch (SimCardNotSupportException localSimCardNotSupportException) {
-            this.mSmsResultInfo = localSimCardNotSupportException.getMessage();
-            showDialog(16);
-        }
-    }
-
-    /* renamed from: com.uc.paymentsdk.payment.PaymentsActivity$3 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass3 implements Handler.OnFinishListener {
-        Button cancelBtn;
-        RelativeLayout contentPanel;
-        Button okBtn;
-        int smsPayment;
-        TextView tvInfo2;
-        TextView waitTV;
-
-        AnonymousClass3(TextView waitTextView2, TextView beforeSendText2, int smsPayCount2, Button cancelButton2, Button submitBtn2, RelativeLayout relativeLayout2) {
-            this.waitTV = waitTextView2;
-            this.tvInfo2 = beforeSendText2;
-            this.smsPayment = smsPayCount2;
-            this.cancelBtn = cancelButton2;
-            this.okBtn = submitBtn2;
-            this.contentPanel = relativeLayout2;
-        }
-
-        @Override // com.uc.paymentsdk.network.chain.Handler.OnFinishListener
-        public void onFinish() {
-            if (Utils.getSmsInfos() != null) {
-                PaymentsActivity.this.mIsSynced = true;
-                PaymentsActivity.this.removeDialog(19);
-                PaymentsActivity.this.initSmsPayView(this.waitTV, this.tvInfo2, this.smsPayment, this.cancelBtn, this.okBtn, this.contentPanel);
-            } else {
-                PaymentsActivity.this.removeDialog(19);
-                PaymentsActivity.this.showDialog(15);
-            }
-        }
-    }
-
-    public void initSmsPayView(TextView tvSmsMessage, TextView tvSmsText, int payMoney, Button cancelBtn, Button okBtn, RelativeLayout tableLayout) {
-        Spanned showtext;
-        Spanned showtext2;
-        RelativeLayout.LayoutParams okBtnParams = new RelativeLayout.LayoutParams(150, -2);
-        try {
-            int payedCount = PrefUtil.getPayedAmount(getApplicationContext());
-            if (payedCount == 0) {
-                if (this.mSmsInfo == null) {
-                    this.mSmsInfo = Utils.getSmsInfos().filterSmsInfo(getApplicationContext(), payMoney);
-                    this.mSmsInfo.setExtInfo(this.mPaymentInfo);
-                }
-                int smsTotalToSendCount = payMoney / this.mSmsInfo.money;
-                if (payMoney % this.mSmsInfo.money != 0) {
-                    smsTotalToSendCount++;
-                }
-                if (!this.mSmsInfo.isNeedconfirm()) {
-                    if (this.mLeftSmsToSendCount == -1) {
-                        this.mLeftSmsToReceiveCount = smsTotalToSendCount;
-                        this.mLeftSmsToSendCount = smsTotalToSendCount;
-                        showtext2 = Html.fromHtml(String.format("尊敬的用户，感谢您为游戏支付，您需要发送<font color='#FF4500'>[ %d ]</font>条 %d 元的短信，购买<font color='#FF4500'>[%s]</font>，共计<font color='#FF4500'>[ %d ]</font>元，点击<font color='#FF4500'>[点播]</font>开始发送。请注意发送开始后，您不能中断发送，否则购买将不成功。", Integer.valueOf(this.mLeftSmsToSendCount), Integer.valueOf(this.mSmsInfo.money), this.mPaymentInfo.getPayname(), Integer.valueOf(payMoney)));
-                        this.mIsShowInfo = true;
-                    } else {
-                        showtext2 = Html.fromHtml(String.format("尊敬的用户，点击<font color='#FF4500'>[确定]</font>按钮，发送第<font color='#FF4500'>[ %d ]</font>条短信。", Integer.valueOf((smsTotalToSendCount - this.mLeftSmsToSendCount) + 1)));
-                        cancelBtn.setVisibility(8);
-                        okBtn.setText("确定");
-                        okBtnParams.addRule(14, -1);
-                    }
-                    tvSmsMessage.setText(showtext2);
-                    tvSmsText.setText(this.mSmsInfo.getInfobeforesend());
-                } else {
-                    tvSmsMessage.setText(this.mSmsInfo.getInfobeforesend());
-                    cancelBtn.setVisibility(8);
-                    okBtn.setText("确定");
-                    okBtnParams.addRule(14, -1);
-                }
-            } else {
-                int payMoney2 = payMoney - payedCount;
-                if (this.mSmsInfo == null) {
-                    this.mSmsInfo = Utils.getSmsInfos().filterSmsInfo(getApplicationContext(), payMoney2);
-                    this.mSmsInfo.setExtInfo(this.mPaymentInfo);
-                }
-                if (!this.mSmsInfo.isNeedconfirm()) {
-                    if (this.mLeftSmsToSendCount == -1) {
-                        int smsTotalToSendCount2 = payMoney2 / this.mSmsInfo.money;
-                        if (payMoney2 % this.mSmsInfo.money != 0) {
-                            smsTotalToSendCount2++;
-                        }
-                        this.mIsShowInfo = true;
-                        this.mLeftSmsToSendCount = smsTotalToSendCount2;
-                        this.mLeftSmsToReceiveCount = smsTotalToSendCount2;
-                        showtext = Html.fromHtml(String.format("您以前成功发送过总计 %d 元的短信购买<font color='#FF4500'>[%s]</font>，目前还需发送<font color='#FF4500'>[ %d ]</font>条  %d 元短信继续购买，点击<font color='#FF4500'>[点播]</font>按钮开始发送。", Integer.valueOf(payedCount), this.mPaymentInfo.getPayname(), Integer.valueOf(this.mLeftSmsToSendCount), Integer.valueOf(this.mSmsInfo.money)));
-                    } else {
-                        showtext = Html.fromHtml(String.format("尊敬的用户，点击<font color='#FF4500'>[确定]</font>按钮，开始发送第<font color='#FF4500'>[ %d ]</font>条短信。", Integer.valueOf(((payMoney2 / this.mSmsInfo.money) - this.mLeftSmsToSendCount) + 1), Integer.valueOf(this.mLeftSmsToSendCount)));
-                        cancelBtn.setVisibility(8);
-                        okBtn.setText("确定");
-                        okBtnParams.addRule(14, -1);
-                    }
-                    tvSmsMessage.setText(showtext);
-                    tvSmsText.setText(this.mSmsInfo.getInfobeforesend());
-                } else {
-                    tvSmsMessage.setText(this.mSmsInfo.getInfobeforesend());
-                    cancelBtn.setVisibility(8);
-                    okBtn.setText("确定");
-                    okBtnParams.addRule(14, -1);
-                }
-            }
-            Linkify.addLinks(tvSmsMessage, 4);
-            Linkify.addLinks(tvSmsText, 4);
-        } catch (SimCardNotSupportException localSimCardNotSupportException) {
-            this.mSmsResultInfo = localSimCardNotSupportException.getMessage();
-            showDialog(16);
-        }
-        okBtnParams.addRule(12, -1);
-        okBtnParams.setMargins(10, 20, 10, 10);
-        okBtn.setLayoutParams(okBtnParams);
-        tableLayout.addView(okBtn);
-        RelativeLayout.LayoutParams cancelBtnParams = new RelativeLayout.LayoutParams(150, -2);
-        cancelBtnParams.addRule(11, -1);
-        cancelBtnParams.addRule(12, -1);
-        cancelBtnParams.setMargins(10, 20, 10, 10);
-        cancelBtn.setLayoutParams(cancelBtnParams);
-        tableLayout.addView(cancelBtn);
-        setContentView(tableLayout);
-    }
-
-    public void buildSmsPaymentConfirmView(String smsaddress, String smsconfirmnumber) {
+    /*
+     * Enabled force condition propagation
+     */
+    private void buildSmsPaymentConfirmView(String string, String string2) {
         this.mType = 5;
         try {
-            Utils.CheckSimCardSupprotInfo(getApplicationContext());
-            RelativeLayout relativeLayout = new RelativeLayout(getApplicationContext());
-            relativeLayout.setBackgroundColor(-1);
-            relativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-            RelativeLayout title = Utils.initSubTitle(getApplicationContext(), this, "购买内容", true);
-            title.setId(1);
-            title.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
-            relativeLayout.addView(title);
-            TextView localTextView2 = new TextView(this);
-            localTextView2.setId(2);
-            localTextView2.setTextSize(16.0f);
-            localTextView2.setTextColor(-13487566);
-            localTextView2.setPadding(10, 10, 0, 0);
-            localTextView2.setFocusable(true);
-            localTextView2.setClickable(true);
-            localTextView2.setLinkTextColor(Constants.COLOR_LINK_TEXT);
-            localTextView2.setText(String.format("再次点击下一步即同意向\n%s发送短信以完成本次短信发送过程。", smsaddress, this.mPaymentInfo.getPayname(), Integer.valueOf(Utils.getSmsPayment())));
-            Linkify.addLinks(localTextView2, 4);
-            RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -2);
-            localLayoutParams1.addRule(3, 1);
-            localTextView2.setLayoutParams(localLayoutParams1);
-            relativeLayout.addView(localTextView2);
-            Button localButton1 = new Button(getApplicationContext());
-            localButton1.setText("下一步");
-            localButton1.setId(5);
-            this.mConfirmSmsInfoString = String.valueOf(smsaddress) + TERM + smsconfirmnumber;
-            localButton1.setTag(this.mConfirmSmsInfoString);
-            localButton1.setOnClickListener(this);
-            RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(150, -2);
-            localLayoutParams2.addRule(12, -1);
-            localLayoutParams2.setMargins(10, 20, 10, 10);
-            localButton1.setLayoutParams(localLayoutParams2);
-            relativeLayout.addView(localButton1);
-            Button localButton2 = new Button(getApplicationContext());
-            localButton2.setText("取消");
-            localButton2.setId(6);
-            localButton2.setOnClickListener(this);
-            RelativeLayout.LayoutParams localLayoutParams3 = new RelativeLayout.LayoutParams(150, -2);
-            localLayoutParams3.addRule(11, -1);
-            localLayoutParams3.addRule(12, -1);
-            localLayoutParams3.setMargins(10, 20, 10, 10);
-            localButton2.setLayoutParams(localLayoutParams3);
-            relativeLayout.addView(localButton2);
-            setContentView(relativeLayout);
-        } catch (SimCardNotSupportException localSimCardNotSupportException) {
-            this.mSmsResultInfo = localSimCardNotSupportException.getMessage();
-            showDialog(16);
+            Utils.CheckSimCardSupprotInfo((Context)this.getApplicationContext());
         }
-    }
-
-    private void fillData() {
-        ArrayList<IType> arrayListofPayType = PrefUtil.getAvailablePayType(getApplicationContext(), this.mPaymentInfo.getPaytype());
-        IType[] arrayOfPayType = new IType[arrayListofPayType.size()];
-        if (PaymentInfo.PAYTYPE_OVERAGE.equals(this.mPaymentInfo.getPaytype())) {
-            Iterator<IType> localIterator = arrayListofPayType.iterator();
-            while (true) {
-                if (!localIterator.hasNext()) {
-                    break;
-                }
-                IType aPayType = localIterator.next();
-                if (TypeFactory.TYPE_PAY_UPOINT.equals(aPayType.getId())) {
-                    arrayOfPayType[0] = aPayType;
-                    break;
-                }
-            }
-        } else if ("sms".equals(this.mPaymentInfo.getPaytype())) {
-            Iterator<IType> localIterator2 = arrayListofPayType.iterator();
-            while (true) {
-                if (!localIterator2.hasNext()) {
-                    break;
-                }
-                IType aPayType2 = localIterator2.next();
-                if ("sms".equals(aPayType2.getId())) {
-                    arrayOfPayType[0] = aPayType2;
-                    break;
-                }
-            }
-        } else {
-            Iterator<IType> localIterator3 = arrayListofPayType.iterator();
-            while (localIterator3.hasNext()) {
-                IType aPayType3 = localIterator3.next();
-                if (TypeFactory.TYPE_PAY_UPOINT.equals(aPayType3.getId())) {
-                    arrayOfPayType[0] = aPayType3;
-                } else if ("sms".equals(aPayType3.getId())) {
-                    arrayOfPayType[arrayOfPayType.length - 1] = aPayType3;
-                }
-            }
-        }
-        this.mListView.setAdapter((ListAdapter) new CustomAdapter(getApplicationContext(), arrayOfPayType));
-    }
-
-    @Override // android.view.View.OnClickListener
-    public void onClick(View paramView) {
-        if (paramView == this.mBtnPay) {
-            this.mBtnPay.setEnabled(false);
-            buildUPointPayLoginView();
+        catch (SimCardNotSupportException simCardNotSupportException) {
+            this.mSmsResultInfo = simCardNotSupportException.getMessage();
+            this.showDialog(16);
             return;
         }
-        switch (paramView.getId()) {
-            case 3:
+        RelativeLayout relativeLayout = new RelativeLayout(this.getApplicationContext());
+        relativeLayout.setBackgroundColor(-1);
+        relativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+        RelativeLayout relativeLayout2 = Utils.initSubTitle((Context)this.getApplicationContext(), (View.OnClickListener)this, (String)"\u8d2d\u4e70\u5185\u5bb9", (boolean)true);
+        relativeLayout2.setId(1);
+        relativeLayout2.setLayoutParams((ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -2));
+        relativeLayout.addView((View)relativeLayout2);
+        relativeLayout2 = new TextView((Context)this);
+        relativeLayout2.setId(2);
+        relativeLayout2.setTextSize(16.0f);
+        relativeLayout2.setTextColor(-13487566);
+        relativeLayout2.setPadding(10, 10, 0, 0);
+        relativeLayout2.setFocusable(true);
+        relativeLayout2.setClickable(true);
+        relativeLayout2.setLinkTextColor(-24576);
+        relativeLayout2.setText((CharSequence)String.format("\u518d\u6b21\u70b9\u51fb\u4e0b\u4e00\u6b65\u5373\u540c\u610f\u5411\n%s\u53d1\u9001\u77ed\u4fe1\u4ee5\u5b8c\u6210\u672c\u6b21\u77ed\u4fe1\u53d1\u9001\u8fc7\u7a0b\u3002", string, this.mPaymentInfo.getPayname(), Utils.getSmsPayment()));
+        Linkify.addLinks((TextView)relativeLayout2, (int)4);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -2);
+        layoutParams.addRule(3, 1);
+        relativeLayout2.setLayoutParams((ViewGroup.LayoutParams)layoutParams);
+        relativeLayout.addView((View)relativeLayout2);
+        relativeLayout2 = new Button(this.getApplicationContext());
+        relativeLayout2.setText((CharSequence)"\u4e0b\u4e00\u6b65");
+        relativeLayout2.setId(5);
+        this.mConfirmSmsInfoString = String.valueOf(string) + TERM + string2;
+        relativeLayout2.setTag((Object)this.mConfirmSmsInfoString);
+        relativeLayout2.setOnClickListener((View.OnClickListener)this);
+        string = new RelativeLayout.LayoutParams(150, -2);
+        string.addRule(12, -1);
+        string.setMargins(10, 20, 10, 10);
+        relativeLayout2.setLayoutParams((ViewGroup.LayoutParams)string);
+        relativeLayout.addView((View)relativeLayout2);
+        string = new Button(this.getApplicationContext());
+        string.setText((CharSequence)"\u53d6\u6d88");
+        string.setId(6);
+        string.setOnClickListener((View.OnClickListener)this);
+        string2 = new RelativeLayout.LayoutParams(150, -2);
+        string2.addRule(11, -1);
+        string2.addRule(12, -1);
+        string2.setMargins(10, 20, 10, 10);
+        string.setLayoutParams((ViewGroup.LayoutParams)string2);
+        relativeLayout.addView((View)string);
+        this.setContentView((View)relativeLayout);
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    private void buildSmsPaymentView() {
+        this.mType = 4;
+        this.mSmsId = 0;
+        RelativeLayout relativeLayout = new RelativeLayout(this.getApplicationContext());
+        relativeLayout.setBackgroundColor(-1);
+        relativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+        RelativeLayout relativeLayout2 = Utils.initSubTitle((Context)this.getApplicationContext(), (View.OnClickListener)this, (String)"\u77ed\u4fe1\u652f\u4ed8", (boolean)false);
+        relativeLayout2.setId(1);
+        relativeLayout2.setLayoutParams((ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -2));
+        relativeLayout.addView((View)relativeLayout2);
+        relativeLayout2 = new TextView((Context)this);
+        relativeLayout2.setId(2);
+        relativeLayout2.setTextSize(18.0f);
+        relativeLayout2.setTextColor(-12303292);
+        relativeLayout2.setPadding(10, 10, 0, 0);
+        relativeLayout2.setFocusable(true);
+        relativeLayout2.setClickable(true);
+        relativeLayout2.setLinkTextColor(-24576);
+        relativeLayout2.setText((CharSequence)"\u5c0a\u656c\u7684\u7528\u6237\uff0c\u6b63\u5728\u83b7\u53d6\u4fe1\u606f\uff0c\u8bf7\u7a0d\u540e......");
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -2);
+        layoutParams.addRule(3, 1);
+        relativeLayout2.setLayoutParams((ViewGroup.LayoutParams)layoutParams);
+        relativeLayout.addView((View)relativeLayout2);
+        layoutParams = new TextView((Context)this);
+        layoutParams.setId(3);
+        layoutParams.setTextSize(16.0f);
+        layoutParams.setTextColor(-7829368);
+        layoutParams.setPadding(10, 30, 0, 0);
+        layoutParams.setFocusable(true);
+        layoutParams.setClickable(true);
+        layoutParams.setLinkTextColor(-24576);
+        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(-1, -2);
+        layoutParams2.addRule(3, 2);
+        layoutParams.setLayoutParams((ViewGroup.LayoutParams)layoutParams2);
+        relativeLayout.addView((View)layoutParams);
+        Button button = new Button(this.getApplicationContext());
+        button.setText((CharSequence)"\u70b9\u64ad");
+        button.setId(3);
+        button.setOnClickListener((View.OnClickListener)this);
+        layoutParams2 = new Button(this.getApplicationContext());
+        layoutParams2.setText((CharSequence)"\u53d6\u6d88");
+        layoutParams2.setId(4);
+        layoutParams2.setOnClickListener((View.OnClickListener)this);
+        try {
+            Utils.CheckSimCardSupprotInfo((Context)this.getApplicationContext());
+        }
+        catch (SimCardNotSupportException simCardNotSupportException) {
+            this.mSmsResultInfo = simCardNotSupportException.getMessage();
+            this.showDialog(16);
+            return;
+        }
+        int n = Utils.getSmsPayment();
+        if (n <= PrefUtil.getPayedAmount((Context)this.getApplicationContext())) {
+            this.mSmsResultInfo = "\u60a8\u5df2\u652f\u4ed8\u5b8c\u6210\uff0c\u5c06\u8fd4\u56de\u60a8\u7684\u6e38\u620f\u4e2d\u3002";
+            this.showDialog(20);
+            return;
+        }
+        if (!this.mIsSynced) {
+            this.showDialog(19);
+            new SyncSmsInfoHandler(this.getApplicationContext(), (Handler.OnFinishListener)new /* Unavailable Anonymous Inner Class!! */).handleRequest();
+            return;
+        }
+        this.initSmsPayView((TextView)relativeLayout2, (TextView)layoutParams, n, (Button)layoutParams2, button, relativeLayout);
+    }
+
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    private void buildUPointPayLoginView() {
+        this.mType = 2;
+        var2_1 = Utils.initSubTitle((Context)this.getApplicationContext(), (View.OnClickListener)this, (String)"\u8bf7\u60a8\u8f93\u5165UC\u5e10\u53f7", (boolean)true);
+        var2_1.setId(10);
+        var1_2 /* !! */  = new RelativeLayout.LayoutParams(-1, -2);
+        var1_2 /* !! */ .addRule(10, -1);
+        var2_1.setLayoutParams((ViewGroup.LayoutParams)var1_2 /* !! */ );
+        var3_3 = new TextView(this.getApplicationContext());
+        var1_2 /* !! */  = new RelativeLayout.LayoutParams(-1, -2);
+        var1_2 /* !! */ .addRule(3, 10);
+        var1_2 /* !! */ .setMargins(10, 5, 10, 10);
+        var3_3.setLayoutParams((ViewGroup.LayoutParams)var1_2 /* !! */ );
+        var3_3.setId(1);
+        var3_3.setCompoundDrawablePadding(10);
+        var3_3.setTextColor(-13487566);
+        if (Utils.isHdpi()) {
+            var1_2 /* !! */  = "lock_hdpi.png";
+lbl17:
+            // 2 sources
+
+            while (true) {
+                var3_3.setCompoundDrawablesWithIntrinsicBounds(Utils.getDrawableFromFile((String)var1_2 /* !! */ ), null, null, null);
+                var3_3.setText((CharSequence)"\u60a8\u597d\uff0c\u8d2d\u4e70\u6b64\u5185\u5bb9\uff0c\u8bf7\u5148\u767b\u5f55UC\u8d26\u53f7\u3002\u60a8\u53ef\u4ee5\u8f93\u5165UC\u5e10\u53f7\u6216\u8005\u624b\u673a\u53f7\u7801\u8fdb\u884c\u767b\u5f55");
+                var1_2 /* !! */  = Utils.generateBorderView((Context)this.getApplication());
+                var1_2 /* !! */ .setId(11);
+                var4_4 = new RelativeLayout.LayoutParams(-1, 1);
+                var4_4.addRule(3, 1);
+                var1_2 /* !! */ .setLayoutParams((ViewGroup.LayoutParams)var4_4);
+                var5_5 = new RelativeLayout.LayoutParams(-1, -2);
+                var5_5.setMargins(10, 10, 10, 5);
+                var4_4 = new TextView(this.getApplicationContext());
+                var4_4.setLayoutParams((ViewGroup.LayoutParams)var5_5);
+                var4_4.setId(2);
+                var4_4.setText((CharSequence)"UC\u8d26\u53f7:");
+                var4_4.setTextColor(-13487566);
+                var5_5 = new RelativeLayout.LayoutParams(-1, -2);
+                var5_5.addRule(3, 2);
+                var5_5.setMargins(10, 5, 10, 5);
+                this.mEtUsername = new EditText(this.getApplicationContext());
+                this.mEtUsername.setLayoutParams((ViewGroup.LayoutParams)var5_5);
+                this.mEtUsername.setSingleLine();
+                this.mEtUsername.setId(3);
+                this.mEtUsername.setHint((CharSequence)"\u7528\u6237\u540d");
+                this.mEtPassword = new EditText(this.getApplicationContext());
+                this.mEtPassword.setId(4);
+                this.mEtPassword.setHint((CharSequence)"\u5bc6\u7801");
+                this.mEtPassword.setSingleLine();
+                this.mEtPassword.setTransformationMethod((TransformationMethod)PasswordTransformationMethod.getInstance());
+                var5_5 = new RelativeLayout.LayoutParams(-1, -2);
+                var5_5.addRule(3, 3);
+                var5_5.setMargins(10, 5, 10, 5);
+                this.mEtPassword.setLayoutParams((ViewGroup.LayoutParams)var5_5);
+                this.mEtSavePass = new CheckBox(this.getApplicationContext());
+                var5_5 = new RelativeLayout.LayoutParams(-1, -2);
+                var5_5.addRule(3, 4);
+                var5_5.setMargins(10, 5, 10, 5);
+                this.mEtSavePass.setId(5);
+                this.mEtSavePass.setTextColor(-12303292);
+                this.mEtSavePass.setText((CharSequence)"\u4fdd\u5b58\u5bc6\u7801");
+                this.mEtSavePass.setLayoutParams((ViewGroup.LayoutParams)var5_5);
+                if (PrefUtil.getUCUserName((Context)this.getApplicationContext()) != null) {
+                    this.mEtUsername.setText((CharSequence)PrefUtil.getUCUserName((Context)this.getApplicationContext()));
+                    this.mEtSavePass.setChecked(true);
+lbl60:
+                    // 2 sources
+
+                    while (true) {
+                        if (PrefUtil.getUCUserPass((Context)this.getApplicationContext()) != null) {
+                            this.mEtPassword.setText((CharSequence)PrefUtil.getUCUserPass((Context)this.getApplicationContext()));
+                        }
+                        var6_6 = new Button(this.getApplicationContext());
+                        var6_6.setId(7);
+                        var6_6.setText((CharSequence)"\u786e\u5b9a\u8d2d\u4e70");
+                        var6_6.setOnClickListener((View.OnClickListener)this);
+                        var5_5 = new RelativeLayout.LayoutParams(-1, -2);
+                        var5_5.topMargin = 10;
+                        var5_5.addRule(3, 5);
+                        var5_5.addRule(14);
+                        var6_6.setLayoutParams((ViewGroup.LayoutParams)var5_5);
+                        var5_5 = new RelativeLayout(this.getApplicationContext());
+                        var5_5.setId(7);
+                        var5_5.setBackgroundColor(-984326);
+                        var7_7 = new RelativeLayout.LayoutParams(-1, -2);
+                        var7_7.addRule(3, 11);
+                        var5_5.setLayoutParams((ViewGroup.LayoutParams)var7_7);
+                        var5_5.addView((View)var4_4);
+                        var5_5.addView((View)this.mEtUsername);
+                        var5_5.addView((View)this.mEtPassword);
+                        var5_5.addView((View)this.mEtSavePass);
+                        var5_5.addView((View)var6_6);
+                        var4_4 = new RelativeLayout(this.getApplicationContext());
+                        var4_4.setBackgroundColor(-1);
+                        var4_4.setLayoutParams((ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
+                        var4_4.addView((View)var2_1);
+                        var4_4.addView((View)var3_3);
+                        var4_4.addView((View)var1_2 /* !! */ );
+                        var4_4.addView((View)var5_5);
+                        var1_2 /* !! */  = Utils.generateBorderView((Context)this.getApplication());
+                        var2_1 = new RelativeLayout.LayoutParams(-1, 1);
+                        var2_1.addRule(3, 7);
+                        var1_2 /* !! */ .setLayoutParams((ViewGroup.LayoutParams)var2_1);
+                        var4_4.addView((View)var1_2 /* !! */ );
+                        var1_2 /* !! */  = new ScrollView((Context)this.getApplication());
+                        var1_2 /* !! */ .setBackgroundColor(-1);
+                        var1_2 /* !! */ .addView((View)var4_4);
+                        this.setContentView((View)var1_2 /* !! */ );
+                        return;
+                    }
+                }
                 break;
-            case 4:
-                buildPaymentView();
-                return;
-            case 5:
-                if (this.mConfirmSmsInfoString != null && this.mConfirmSmsInfoString.contains(TERM)) {
-                    sendConfirmSms(this.mConfirmSmsInfoString);
-                    return;
-                }
-                return;
-            case 6:
-                showDialog(23);
-                return;
-            case 7:
-                ((Button) paramView).setEnabled(false);
-                String usernamestr = this.mEtUsername.getText().toString();
-                String pwdstr = this.mEtPassword.getText().toString();
-                if (TextUtils.isEmpty(usernamestr) && TextUtils.isEmpty(pwdstr)) {
-                    showDialog(DIALOG_PASSWORD_OR_USERNAME_IS_EMPTY);
-                    return;
-                }
-                if (TextUtils.isEmpty(pwdstr)) {
-                    showDialog(DIALOG_PASSWORD_IS_EMPTY);
-                    return;
-                } else if (TextUtils.isEmpty(usernamestr)) {
-                    showDialog(DIALOG_USERNAME_IS_EMPTY);
-                    return;
-                } else {
-                    this.mUPayInfo = new UPointPayInfo(usernamestr, pwdstr, "", this.mPaymentInfo.getCpID(), this.mPaymentInfo.getmGameID(), this.mPaymentInfo.getMoney(), "");
-                    pay();
-                    return;
-                }
-            case 8:
-                ((Button) paramView).setEnabled(false);
-                String paypassstr = this.mEtPayPass.getText().toString();
-                if (TextUtils.isEmpty(paypassstr)) {
-                    showDialog(DIALOG_PASSWORD_OR_USERNAME_IS_EMPTY);
-                    break;
-                } else {
-                    this.mUPayInfo.setPaypwd(paypassstr);
-                    pay();
-                    break;
-                }
-            case 9:
-                switch (this.mType) {
-                    case 0:
-                        finish();
-                        return;
-                    case 1:
-                        buildPaymentView();
-                        return;
-                    case 2:
-                        buildUPointPaymentView();
-                        return;
-                    case 3:
-                        buildUPointPayLoginView();
-                        return;
-                    case 4:
-                        if (!this.mSmsInfo.isNeedconfirm() && !this.mIsShowInfo) {
-                            int totalToPay = Utils.getSmsPayment();
-                            int totalSMS = totalToPay / this.mSmsInfo.money;
-                            if (this.mLeftSmsToSendCount != -1 && this.mLeftSmsToSendCount != totalSMS) {
-                                showDialog(DIALOG_PAY_SMS_RETRY_MULTIPLE);
-                                return;
-                            } else {
-                                buildSmsPaymentView();
-                                return;
-                            }
-                        }
-                        buildPaymentView();
-                        return;
-                    case 5:
-                        showDialog(23);
-                        return;
-                    default:
-                        return;
-                }
-            case 10:
-                switch (this.mType) {
-                    case 4:
-                        if (this.mSmsInfo.isNeedconfirm() || this.mIsShowInfo) {
-                            int i = Utils.getSmsPayment();
-                            int j = i / this.mSmsInfo.money;
-                            if (this.mLeftSmsToSendCount != -1 && this.mLeftSmsToSendCount != j) {
-                                showDialog(DIALOG_PAY_SMS_RETRY_MULTIPLE);
-                                return;
-                            } else {
-                                buildPaymentView();
-                                return;
-                            }
-                        }
-                        return;
-                    case 5:
-                        showDialog(23);
-                        return;
-                    default:
-                        finish();
-                        return;
-                }
-            default:
-                return;
-        }
-        if (this.mIsShowInfo) {
-            buildSmsPaymentView();
-            this.mIsShowInfo = false;
-        } else if (this.mSmsInfo != null) {
-            registerReceiver(this.mSmsReceiver, new IntentFilter(SmsInfo.ACTION_SMS_SENT));
-            sendFirstSms(this.mSmsInfo);
-        }
-    }
-
-    private void sendFirstSms(SmsInfo paramSmsInfo) {
-        showDialog(17);
-        try {
-            paramSmsInfo.sendFirstSms(getApplicationContext());
-        } catch (Exception e) {
-            if (this.mSmsHander != null && this.mSmsRunnable != null) {
-                this.mSmsHander.removeCallbacks(this.mSmsRunnable);
-                getContentResolver().unregisterContentObserver(this.mSmsContent);
-                try {
-                    unregisterReceiver(this.mSmsReceiver);
-                } catch (IllegalArgumentException e2) {
-                }
             }
-            removeDialog(17);
-            showDialog(DIALOG_SMS_FAIL);
+        } else {
+            var1_2 /* !! */  = "lock.png";
+            ** continue;
         }
+        this.mEtSavePass.setChecked(false);
+        ** while (true)
     }
 
-    private void sendConfirmSms(String paramString) {
-        showDialog(17);
-        try {
-            SmsInfo.sendSms(getApplicationContext(), paramString.split(TERM)[0], paramString.split(TERM)[1]);
-        } catch (Exception e) {
-            if (this.mSmsHander != null && this.mSmsRunnable != null) {
-                this.mSmsHander.removeCallbacks(this.mSmsRunnable);
-                getContentResolver().unregisterContentObserver(this.mSmsContent);
-                try {
-                    unregisterReceiver(this.mSmsReceiver);
-                } catch (IllegalArgumentException e2) {
-                }
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    private void buildUPointPayPassView() {
+        this.mType = 3;
+        var2_1 = Utils.initSubTitle((Context)this.getApplicationContext(), (View.OnClickListener)this, (String)"\u8bf7\u60a8\u8f93\u5165U\u70b9\u652f\u4ed8\u5bc6\u7801", (boolean)true);
+        var2_1.setId(10);
+        var1_2 /* !! */  = new RelativeLayout.LayoutParams(-1, -2);
+        var1_2 /* !! */ .addRule(10, -1);
+        var2_1.setLayoutParams((ViewGroup.LayoutParams)var1_2 /* !! */ );
+        var3_3 = new TextView(this.getApplicationContext());
+        var1_2 /* !! */  = new RelativeLayout.LayoutParams(-1, -2);
+        var1_2 /* !! */ .addRule(3, 10);
+        var1_2 /* !! */ .setMargins(10, 5, 10, 10);
+        var3_3.setLayoutParams((ViewGroup.LayoutParams)var1_2 /* !! */ );
+        var3_3.setId(1);
+        var3_3.setCompoundDrawablePadding(10);
+        var3_3.setTextColor(-13487566);
+        if (Utils.isHdpi()) {
+            var1_2 /* !! */  = "lock_hdpi.png";
+lbl17:
+            // 2 sources
+
+            while (true) {
+                var3_3.setCompoundDrawablesWithIntrinsicBounds(Utils.getDrawableFromFile((String)var1_2 /* !! */ ), null, null, null);
+                var3_3.setText((CharSequence)"\u60a8\u597d\uff0c\u60a8\u7684U\u70b9\u8bbe\u7f6e\u6709\u652f\u4ed8\u5bc6\u7801\uff0c\u8bf7\u6536\u5165\u540e\u70b9\u51fb\u786e\u8ba4\u8fdb\u884c\u652f\u4ed8");
+                var1_2 /* !! */  = Utils.generateBorderView((Context)this.getApplication());
+                var1_2 /* !! */ .setId(11);
+                var4_4 = new RelativeLayout.LayoutParams(-1, 1);
+                var4_4.addRule(3, 1);
+                var1_2 /* !! */ .setLayoutParams((ViewGroup.LayoutParams)var4_4);
+                var5_5 = new RelativeLayout.LayoutParams(-1, -2);
+                var5_5.setMargins(10, 10, 10, 5);
+                var4_4 = new TextView(this.getApplicationContext());
+                var4_4.setLayoutParams((ViewGroup.LayoutParams)var5_5);
+                var4_4.setId(2);
+                var4_4.setText((CharSequence)"UC\u652f\u4ed8\u5bc6\u7801:");
+                var4_4.setTextColor(-13487566);
+                var5_5 = new RelativeLayout.LayoutParams(-1, -2);
+                var5_5.addRule(3, 2);
+                var5_5.setMargins(10, 5, 10, 5);
+                this.mEtPayPass = new EditText(this.getApplicationContext());
+                this.mEtPayPass.setLayoutParams((ViewGroup.LayoutParams)var5_5);
+                this.mEtPayPass.setSingleLine();
+                this.mEtPayPass.setId(3);
+                this.mEtPayPass.setHint((CharSequence)"\u652f\u4ed8\u5bc6\u7801");
+                var6_6 = new Button(this.getApplicationContext());
+                var6_6.setId(7);
+                var6_6.setText((CharSequence)"\u786e\u5b9a\u8d2d\u4e70");
+                var6_6.setOnClickListener((View.OnClickListener)this);
+                var5_5 = new RelativeLayout.LayoutParams(-1, -2);
+                var5_5.topMargin = 10;
+                var5_5.addRule(3, 5);
+                var5_5.addRule(14);
+                var6_6.setLayoutParams((ViewGroup.LayoutParams)var5_5);
+                var5_5 = new RelativeLayout(this.getApplicationContext());
+                var5_5.setId(7);
+                var5_5.setBackgroundColor(-984326);
+                var7_7 = new RelativeLayout.LayoutParams(-1, -2);
+                var7_7.addRule(3, 11);
+                var5_5.setLayoutParams((ViewGroup.LayoutParams)var7_7);
+                var5_5.addView((View)var4_4);
+                var5_5.addView((View)this.mEtPayPass);
+                var5_5.addView((View)var6_6);
+                var4_4 = new RelativeLayout(this.getApplicationContext());
+                var4_4.setBackgroundColor(-1);
+                var4_4.setLayoutParams((ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
+                var4_4.addView((View)var2_1);
+                var4_4.addView((View)var3_3);
+                var4_4.addView((View)var1_2 /* !! */ );
+                var4_4.addView((View)var5_5);
+                var2_1 = Utils.generateBorderView((Context)this.getApplication());
+                var1_2 /* !! */  = new RelativeLayout.LayoutParams(-1, 1);
+                var1_2 /* !! */ .addRule(3, 7);
+                var2_1.setLayoutParams((ViewGroup.LayoutParams)var1_2 /* !! */ );
+                var4_4.addView((View)var2_1);
+                var1_2 /* !! */  = new ScrollView((Context)this.getApplication());
+                var1_2 /* !! */ .setBackgroundColor(-1);
+                var1_2 /* !! */ .addView((View)var4_4);
+                this.setContentView((View)var1_2 /* !! */ );
+                return;
             }
-            removeDialog(17);
-            showDialog(DIALOG_SMS_FAIL);
+        }
+        var1_2 /* !! */  = "lock.png";
+        ** while (true)
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    private void buildUPointPaymentView() {
+        this.mType = 1;
+        TextView textView = new TextView(this.getApplicationContext());
+        textView.setTextSize(16.0f);
+        textView.setPadding(20, 0, 20, 0);
+        textView.setTextColor(-12303292);
+        textView.setText((CharSequence)String.format("\u652f\u4ed8\u540d\u79f0 : %s", this.mPaymentInfo.getPayname()));
+        this.mTvProduct = new TextView(this.getApplicationContext());
+        this.mTvProduct.setTextSize(16.0f);
+        this.mTvProduct.setPadding(20, 0, 20, 0);
+        this.mTvProduct.setText((CharSequence)"\u4ea7\u54c1\u540d : ");
+        this.mTvProduct.setTextColor(-12303292);
+        TextView textView2 = new TextView(this.getApplicationContext());
+        textView2.setTextSize(16.0f);
+        textView2.setPadding(20, 0, 20, 20);
+        textView2.setText((CharSequence)String.format("\u6240\u8d2d\u5185\u5bb9 : %s", this.mPaymentInfo.getPaydesc()));
+        textView2.setTextColor(-12303292);
+        TextView textView3 = new TextView(this.getApplicationContext());
+        textView3.setTextSize(16.0f);
+        textView3.setPadding(20, 0, 20, 0);
+        textView3.setText((CharSequence)String.format("\u652f\u4ed8\u6570\u989d : %dU\u70b9\uff08\u4ef7\u503c%s\u5143\uff09", this.mPaymentInfo.getMoney(), new DecimalFormat("##0.00").format((float)this.mPaymentInfo.getMoney() / 10.0f)));
+        textView3.setTextColor(-13487566);
+        this.mTvDiscountTextView = new TextView(this.getApplicationContext());
+        this.mTvDiscountTextView.setTextSize(16.0f);
+        this.mTvDiscountTextView.setPadding(20, 0, 20, 0);
+        this.mTvDiscountTextView.setText((CharSequence)"U\u70b9\u6298\u6263 : ");
+        this.mTvDiscountTextView.setTextColor(-13487566);
+        this.mTvVipDiscountTextView = new TextView(this.getApplicationContext());
+        this.mTvVipDiscountTextView.setTextSize(16.0f);
+        this.mTvVipDiscountTextView.setPadding(20, 0, 20, 0);
+        this.mTvVipDiscountTextView.setText((CharSequence)"\u4f1a\u5458\u6298\u6263 : ");
+        this.mTvVipDiscountTextView.setTextColor(-13487566);
+        this.mTvVipDiscountTimeTextView = new TextView(this.getApplicationContext());
+        this.mTvVipDiscountTimeTextView.setTextSize(16.0f);
+        this.mTvVipDiscountTimeTextView.setPadding(20, 0, 20, 0);
+        this.mTvVipDiscountTimeTextView.setText((CharSequence)"\u4f1a\u5458\u6298\u6263\u5230\u671f\u65f6\u95f4 : ");
+        this.mTvVipDiscountInfo = new TextView(this.getApplicationContext());
+        this.mTvVipDiscountInfo.setTextColor(-13487566);
+        this.mTvVipDiscountInfo = new TextView(this.getApplicationContext());
+        this.mTvVipDiscountInfo.setTextSize(16.0f);
+        this.mTvVipDiscountInfo.setPadding(20, 0, 20, 0);
+        this.mTvVipDiscountInfo.setText((CharSequence)"\u4f1a\u5458\u6298\u6263\u4fe1\u606f : ");
+        this.mTvVipDiscountInfo.setTextColor(-13487566);
+        this.mBtnPay = new Button(this.getApplicationContext());
+        this.mBtnPay.setText((CharSequence)"\u786e\u8ba4");
+        this.mBtnPay.setOnClickListener((View.OnClickListener)this);
+        this.mBtnPay.setVisibility(8);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(300, -2);
+        layoutParams.gravity = 1;
+        LinearLayout linearLayout = new LinearLayout(this.getApplicationContext());
+        linearLayout.addView((View)this.mBtnPay, (ViewGroup.LayoutParams)layoutParams);
+        linearLayout.setGravity(1);
+        layoutParams = new LinearLayout(this.getApplicationContext());
+        layoutParams.setOrientation(1);
+        layoutParams.setBackgroundColor(-1);
+        LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams.addView((View)Utils.initSubTitle((Context)this.getApplicationContext(), (View.OnClickListener)this, (String)"\u9700\u8981\u652f\u4ed8\u7684\u5185\u5bb9", (boolean)true), (ViewGroup.LayoutParams)layoutParams2);
+        layoutParams.addView((View)textView, (ViewGroup.LayoutParams)layoutParams2);
+        layoutParams.addView((View)this.mTvProduct, (ViewGroup.LayoutParams)layoutParams2);
+        layoutParams.addView((View)textView2, (ViewGroup.LayoutParams)layoutParams2);
+        layoutParams.addView((View)textView3, (ViewGroup.LayoutParams)layoutParams2);
+        layoutParams.addView((View)this.mTvDiscountTextView, (ViewGroup.LayoutParams)layoutParams2);
+        layoutParams.addView((View)this.mTvVipDiscountTextView, (ViewGroup.LayoutParams)layoutParams2);
+        layoutParams.addView((View)this.mTvVipDiscountTimeTextView, (ViewGroup.LayoutParams)layoutParams2);
+        layoutParams.addView((View)this.mTvVipDiscountInfo, (ViewGroup.LayoutParams)layoutParams2);
+        layoutParams.addView((View)linearLayout, (ViewGroup.LayoutParams)layoutParams2);
+        textView = new ScrollView(this.getApplicationContext());
+        textView.setBackgroundColor(-1);
+        textView.addView((View)layoutParams);
+        this.setContentView((View)textView);
+        if (Utils.getUPointInfo() == null) {
+            this.showDialog(14);
+            Api.queryUPointDiscount((Context)this.getApplicationContext(), (ApiTask.TaskHandler)this, (String)Utils.getPaymentInfo().getCpID(), (String)Utils.getPaymentInfo().getmGameID(), (int)Utils.getPaymentInfo().getMoney());
+            return;
+        }
+        this.initUPointPayView(Utils.getUPointInfo());
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    private void fillData() {
+        block6: {
+            block5: {
+                var2_1 = PrefUtil.getAvailablePayType((Context)this.getApplicationContext(), (String)this.mPaymentInfo.getPaytype());
+                var1_2 = new IType[var2_1.size()];
+                if (!"overage".equals(this.mPaymentInfo.getPaytype())) break block5;
+                var3_3 = var2_1.iterator();
+                do {
+                    if (var3_3.hasNext()) continue;
+lbl7:
+                    // 5 sources
+
+                    while (true) {
+                        this.mListView.setAdapter((ListAdapter)new CustomAdapter(this.getApplicationContext(), var1_2));
+                        return;
+                    }
+                } while (!"upoint".equals((var2_1 = (IType)var3_3.next()).getId()));
+                var1_2[0] = var2_1;
+                ** GOTO lbl7
+            }
+            if (!"sms".equals(this.mPaymentInfo.getPaytype())) break block6;
+            var2_1 = var2_1.iterator();
+            do {
+                if (!var2_1.hasNext()) ** GOTO lbl7
+            } while (!"sms".equals((var3_4 = (IType)var2_1.next()).getId()));
+            var1_2[0] = var3_4;
+            ** GOTO lbl7
+        }
+        var2_1 = var2_1.iterator();
+        while (true) {
+            if (var2_1.hasNext()) ** break;
+            ** continue;
+            var3_5 = (IType)var2_1.next();
+            if ("upoint".equals(var3_5.getId())) {
+                var1_2[0] = var3_5;
+                continue;
+            }
+            if (!"sms".equals(var3_5.getId())) continue;
+            var1_2[var1_2.length - 1] = var3_5;
         }
     }
 
-    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    /* JADX WARN: Failed to find 'out' block for switch in B:1:0x0000. Please report as an issue. */
-    @Override // com.uc.paymentsdk.util.DialogUtil.WarningDialogListener
-    public void onWarningDialogOK(int paramInt) {
-        switch (paramInt) {
-            case 0:
-            case 1:
-            case 22:
-                finish();
-                return;
-            case 10:
-                pay();
-                return;
-            case 13:
-                Intent localIntent = new Intent();
-                setResult(-1, localIntent);
-                finish();
-                return;
-            case 15:
-            case 16:
-            case 24:
-                buildPaymentView();
-                return;
-            case 20:
-                PrefUtil.clearPayedAmount(getApplicationContext());
-                Intent localIntent2 = new Intent();
-                setResult(-1, localIntent2);
-                finish();
-                return;
-            case 21:
-            case DIALOG_PAY_SMS_DELETE_BACK_CONFIRM /* 25 */:
-                if (this.mSmsHander != null && this.mSmsRunnable != null) {
-                    this.mSmsHander.removeCallbacks(this.mSmsRunnable);
-                }
-                if (this.mSmsContent != null) {
-                    getContentResolver().unregisterContentObserver(this.mSmsContent);
-                }
-                try {
-                    unregisterReceiver(this.mSmsReceiver);
-                } catch (IllegalArgumentException e) {
-                }
-                buildPaymentView();
-                return;
-            case 23:
-                showDialog(24);
-                return;
-            case 26:
-                if (4 == this.mType) {
-                    sendFirstSms(this.mSmsInfo);
-                    return;
-                } else {
-                    sendConfirmSms(this.mConfirmSmsInfoString);
-                    return;
-                }
-            case 36:
-                pay();
-                return;
-            default:
-                return;
+    private int getPayedAmount() {
+        int n = (Utils.getSmsPayment() - PrefUtil.getPayedAmount((Context)this.getApplicationContext())) / this.mSmsInfo.money;
+        return this.mSmsInfo.money * (n - this.mLeftSmsToSendCount);
+    }
+
+    public static void init(Context context) {
+        SyncChargeChannelHandler.init();
+        SyncPayChannelHandler.init();
+        SyncSmsInfoHandler.init();
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    private boolean initPayment() {
+        this.mPaymentInfo = (PaymentInfo)this.getIntent().getSerializableExtra("com.mappn.sdk.paymentinfo");
+        if (this.mPaymentInfo == null) {
+            throw new IllegalArgumentException("PaymentInfo\u5fc5\u987b\u8bbe\u7f6e");
+        }
+        this.mPaymentInfo.setPaytype("sms");
+        var1_1 = this.mPaymentInfo.getMoney();
+        if (var1_1 <= 0 || var1_1 > 10000 || var1_1 % 5 != 0) {
+            this.showDialog(0);
+            var2_2 = false;
+lbl9:
+            // 3 sources
+
+            return var2_2;
+        }
+        if (this.mPaymentInfo.getPayname() == null) {
+            throw new IllegalArgumentException("\u5fc5\u987b\u6307\u5b9a\u652f\u4ed8\u5185\u5bb9\u540d\u79f0");
+        }
+        if (this.mPaymentInfo.getPaydesc() == null) {
+            throw new IllegalArgumentException("\u5fc5\u987b\u6307\u5b9a\u652f\u4ed8\u5185\u5bb9\u63cf\u8ff0");
+        }
+        if (this.mPaymentInfo.getmGameID() == null) {
+            throw new IllegalArgumentException("\u5fc5\u987b\u6307\u5b9a\u6e38\u620fID");
+        }
+        if (this.mPaymentInfo.getmGameID().length() != 2) {
+            throw new IllegalArgumentException("\u6e38\u620fID\u5fc5\u987b\u4e3a\u4e24\u4f4d\u6570\u5b57");
+        }
+        if (!Utils.isNumeric((String)this.mPaymentInfo.getmGameID())) {
+            throw new IllegalArgumentException("\u6e38\u620fID\u5fc5\u987b\u4e3a\u4e24\u4f4d\u6570\u5b57");
+        }
+        if (this.mPaymentInfo.getmActionID() == null) {
+            throw new IllegalArgumentException("\u5fc5\u987b\u6307\u5b9a\u652f\u4ed8\u70b9ID");
+        }
+        if (this.mPaymentInfo.getmActionID().length() != 2) {
+            throw new IllegalArgumentException("\u652f\u4ed8\u70b9ID\u5fc5\u987b\u4e3a\u4e24\u4f4d\u6570\u5b57");
+        }
+        if (!Utils.isNumeric((String)this.mPaymentInfo.getmActionID())) {
+            throw new IllegalArgumentException("\u652f\u4ed8\u70b9ID\u5fc5\u987b\u4e3a\u4e24\u4f4d\u6570\u5b57");
+        }
+        if (this.mPaymentInfo.getPayname().length() > 50) {
+            this.mPaymentInfo.setPayname(this.mPaymentInfo.getPayname().substring(0, 50));
+        }
+        if (this.mPaymentInfo.getPaydesc().length() > 100) {
+            this.mPaymentInfo.setPaydesc(this.mPaymentInfo.getPaydesc().substring(0, 100));
+        }
+        try {
+            block18: {
+                var3_3 = Utils.getCpID((Context)this.getApplicationContext());
+                if (Pattern.matches("^[0-9a-zA-Z]{1,10}$", var3_3)) break block18;
+                this.showDialog(22);
+                var2_2 = false;
+                ** GOTO lbl9
+            }
+            this.mPaymentInfo.setCpID(var3_3);
+        }
+        catch (PackageManager.NameNotFoundException var3_4) {
+            this.showDialog(22);
+        }
+        catch (NullPointerException var3_5) {
+            this.showDialog(22);
+            ** continue;
+        }
+lbl39:
+        // 3 sources
+
+        while (true) {
+            if (this.mPaymentInfo.getUsername() != null) {
+                PrefUtil.setUCUserName((Context)this.getApplicationContext(), (String)this.mPaymentInfo.getUsername());
+            }
+            Utils.setPaymentInfo((PaymentInfo)this.mPaymentInfo);
+            var2_2 = true;
+            ** continue;
+            break;
         }
     }
 
-    @Override // com.uc.paymentsdk.util.DialogUtil.WarningDialogListener
-    public void onWarningDialogCancel(int paramInt) {
-        switch (paramInt) {
-            case 23:
-            case 26:
-            default:
+    /*
+     * Exception decompiling
+     */
+    private void initSmsPayView(TextView var1_1, TextView var2_3, int var3_4, Button var4_5, Button var5_6, RelativeLayout var6_7) {
+        /*
+         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+         * 
+         * java.lang.IllegalStateException: Backjump on non jumping statement @NONE, blocks:[] lbl55 : TryStatement: try { 2[TRYBLOCK]
+         * 
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner$1.call(Cleaner.java:44)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner$1.call(Cleaner.java:22)
+         *     at org.benf.cfr.reader.util.graph.GraphVisitorDFS.process(GraphVisitorDFS.java:68)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Cleaner.removeUnreachableCode(Cleaner.java:54)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:550)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
+         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
+         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
+         *     at org.benf.cfr.reader.Driver.doClass(Driver.java:84)
+         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:78)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompile(CFRDecompiler.java:91)
+         *     at the.bytecode.club.bytecodeviewer.decompilers.impl.CFRDecompiler.decompileToZip(CFRDecompiler.java:122)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.decompileSaveAll(ResourceDecompiling.java:262)
+         *     at the.bytecode.club.bytecodeviewer.resources.ResourceDecompiling.lambda$decompileSaveAll$0(ResourceDecompiling.java:111)
+         *     at java.base/java.lang.Thread.run(Thread.java:840)
+         */
+        throw new IllegalStateException("Decompilation failed");
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    private void initUPointPayView(UPointInfo var1_1) {
+        this.mTvDiscountTextView.setText((CharSequence)String.format("U\u70b9\u6298\u6263 : %s\u6298(%sU\u70b9)", new Object[]{var1_1.getDiscount(), var1_1.getDiscounttext()}));
+        if (var1_1.getVipdiscount() != null && var1_1.getVipdiscount().length() > 0) {
+            this.mTvDiscountTextView.setText((CharSequence)String.format("\u4f1a\u5458\u6298\u6263 : %s\u6298(%sU\u70b9)", new Object[]{var1_1.getVipdiscount(), var1_1.getVipdiscounttext()}));
+            this.mTvVipDiscountTimeTextView.setText((CharSequence)String.format("\u4f1a\u5458\u6298\u6263\u5230\u671f\u65f6\u95f4 : ", new Object[]{var1_1.getVipdiscounttime()}));
+            this.mTvVipDiscountInfo.setText((CharSequence)("\u4f1a\u5458\u6298\u6263\u5230\u671f\u65f6\u95f4 : " + var1_1.getDiscountinfo()));
+lbl6:
+            // 2 sources
+
+            while (true) {
+                this.mBtnPay.setVisibility(0);
                 return;
-            case 24:
-            case DIALOG_PAY_SMS_DELETE_BACK_CONFIRM /* 25 */:
-                if (this.mSmsHander != null && this.mSmsRunnable != null) {
-                    this.mSmsHander.removeCallbacks(this.mSmsRunnable);
-                    getContentResolver().unregisterContentObserver(this.mSmsContent);
-                    try {
-                        unregisterReceiver(this.mSmsReceiver);
-                    } catch (IllegalArgumentException e) {
-                    }
-                }
-                finish();
-                return;
-            case DIALOG_PAY_SMS_RETRY_MULTIPLE /* 27 */:
-                if (this.mSmsHander != null && this.mSmsRunnable != null) {
-                    this.mSmsHander.removeCallbacks(this.mSmsRunnable);
-                    getContentResolver().unregisterContentObserver(this.mSmsContent);
-                    try {
-                        unregisterReceiver(this.mSmsReceiver);
-                    } catch (IllegalArgumentException e2) {
-                    }
-                }
-                buildPaymentView();
-                return;
+            }
         }
+        this.mTvVipDiscountTextView.setVisibility(8);
+        this.mTvVipDiscountTimeTextView.setVisibility(8);
+        this.mTvVipDiscountInfo.setVisibility(8);
+        ** while (true)
     }
 
     private void pay() {
-        showDialog(6);
-        Api.pay(getApplicationContext(), this, this.mPaymentInfo, this.mUPayInfo);
+        this.showDialog(6);
+        Api.pay((Context)this.getApplicationContext(), (ApiTask.TaskHandler)this, (PaymentInfo)this.mPaymentInfo, (UPointPayInfo)this.mUPayInfo);
     }
 
-    @Override // android.app.Activity
-    protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {
-        super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    /*
+     * Unable to fully structure code
+     */
+    private void sendConfirmSms(String var1_1) {
+        this.showDialog(17);
+        try {
+            SmsInfo.sendSms((Context)this.getApplicationContext(), (String)var1_1.split(",,,,")[0], (String)var1_1.split(",,,,")[1]);
+lbl4:
+            // 2 sources
+
+            return;
+        }
+        catch (Exception var1_2) {
+            if (this.mSmsHander != null && this.mSmsRunnable != null) {
+                this.mSmsHander.removeCallbacks(this.mSmsRunnable);
+                this.getContentResolver().unregisterContentObserver(this.mSmsContent);
+                this.unregisterReceiver(this.mSmsReceiver);
+            }
+lbl12:
+            // 4 sources
+
+            while (true) {
+                this.removeDialog(17);
+                this.showDialog(38);
+                ** continue;
+                break;
+            }
+            catch (IllegalArgumentException var1_3) {
+                ** continue;
+            }
+        }
     }
 
-    @Override // android.app.Activity
+    /*
+     * Unable to fully structure code
+     */
+    private void sendFirstSms(SmsInfo var1_1) {
+        this.showDialog(17);
+        try {
+            var1_1.sendFirstSms(this.getApplicationContext());
+lbl4:
+            // 2 sources
+
+            return;
+        }
+        catch (Exception var1_2) {
+            if (this.mSmsHander != null && this.mSmsRunnable != null) {
+                this.mSmsHander.removeCallbacks(this.mSmsRunnable);
+                this.getContentResolver().unregisterContentObserver(this.mSmsContent);
+                this.unregisterReceiver(this.mSmsReceiver);
+            }
+lbl12:
+            // 4 sources
+
+            while (true) {
+                this.removeDialog(17);
+                this.showDialog(38);
+                ** continue;
+                break;
+            }
+            catch (IllegalArgumentException var1_3) {
+                ** continue;
+            }
+        }
+    }
+
+    public void confirmEnterPaymentPoint() {
+        PrefUtil.increaseArriveCount((Context)this.getApplicationContext());
+    }
+
+    protected void onActivityResult(int n, int n2, Intent intent) {
+        super.onActivityResult(n, n2, intent);
+    }
+
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    public void onClick(View var1_1) {
+        if (var1_1 /* !! */  == this.mBtnPay) {
+            this.mBtnPay.setEnabled(false);
+            this.buildUPointPayLoginView();
+lbl4:
+            // 27 sources
+
+            return;
+        }
+        switch (var1_1 /* !! */ .getId()) {
+            default: {
+                ** GOTO lbl4
+            }
+lbl9:
+            // 3 sources
+
+            case 3: {
+                if (!this.mIsShowInfo) break;
+                this.buildSmsPaymentView();
+                this.mIsShowInfo = false;
+                ** GOTO lbl4
+            }
+            case 7: {
+                ((Button)var1_1 /* !! */ ).setEnabled(false);
+                var3_2 = this.mEtUsername.getText().toString();
+                var1_1 /* !! */  = this.mEtPassword.getText().toString();
+                if (!TextUtils.isEmpty((CharSequence)var3_2) || !TextUtils.isEmpty((CharSequence)var1_1 /* !! */ )) ** GOTO lbl21
+                this.showDialog(28);
+                ** GOTO lbl4
+lbl21:
+                // 1 sources
+
+                if (!TextUtils.isEmpty((CharSequence)var1_1 /* !! */ )) ** GOTO lbl24
+                this.showDialog(29);
+                ** GOTO lbl4
+lbl24:
+                // 1 sources
+
+                if (!TextUtils.isEmpty((CharSequence)var3_2)) ** GOTO lbl27
+                this.showDialog(30);
+                ** GOTO lbl4
+lbl27:
+                // 1 sources
+
+                this.mUPayInfo = new UPointPayInfo(var3_2, (String)var1_1 /* !! */ , "", this.mPaymentInfo.getCpID(), this.mPaymentInfo.getmGameID(), this.mPaymentInfo.getMoney(), "");
+                this.pay();
+                ** GOTO lbl4
+            }
+            case 8: {
+                ((Button)var1_1 /* !! */ ).setEnabled(false);
+                var1_1 /* !! */  = this.mEtPayPass.getText().toString();
+                if (!TextUtils.isEmpty((CharSequence)var1_1 /* !! */ )) ** GOTO lbl36
+                this.showDialog(28);
+                ** GOTO lbl9
+lbl36:
+                // 1 sources
+
+                this.mUPayInfo.setPaypwd((String)var1_1 /* !! */ );
+                this.pay();
+                ** GOTO lbl9
+            }
+        }
+        if (this.mSmsInfo == null) ** GOTO lbl4
+        this.registerReceiver(this.mSmsReceiver, new IntentFilter("com.uc.androidsdk.SMS_SENT_ACTION"));
+        this.sendFirstSms(this.mSmsInfo);
+        ** GOTO lbl4
+        {
+            case 5: {
+                if (this.mConfirmSmsInfoString == null || !this.mConfirmSmsInfoString.contains(",,,,")) ** GOTO lbl4
+                this.sendConfirmSms(this.mConfirmSmsInfoString);
+                ** GOTO lbl4
+            }
+            case 4: {
+                this.buildPaymentView();
+                ** GOTO lbl4
+            }
+            case 6: {
+                this.showDialog(23);
+                ** GOTO lbl4
+            }
+            case 9: {
+                switch (this.mType) {
+                    default: {
+                        ** GOTO lbl4
+                    }
+                    case 0: {
+                        this.finish();
+                        ** GOTO lbl4
+                    }
+                    case 1: {
+                        this.buildPaymentView();
+                        ** GOTO lbl4
+                    }
+                    case 2: {
+                        this.buildUPointPaymentView();
+                        ** GOTO lbl4
+                    }
+                    case 3: {
+                        this.buildUPointPayLoginView();
+                        ** GOTO lbl4
+                    }
+                    case 4: {
+                        if (this.mSmsInfo.isNeedconfirm() || this.mIsShowInfo) ** GOTO lbl78
+                        var2_3 = Utils.getSmsPayment() / this.mSmsInfo.money;
+                        if (this.mLeftSmsToSendCount == -1 || this.mLeftSmsToSendCount == var2_3) ** GOTO lbl76
+                        this.showDialog(27);
+                        ** GOTO lbl4
+lbl76:
+                        // 1 sources
+
+                        this.buildSmsPaymentView();
+                        ** GOTO lbl4
+lbl78:
+                        // 1 sources
+
+                        this.buildPaymentView();
+                        ** GOTO lbl4
+                    }
+                    case 5: 
+                }
+                this.showDialog(23);
+                ** GOTO lbl4
+            }
+            ** case 10:
+        }
+lbl84:
+        // 1 sources
+
+        switch (this.mType) {
+            default: {
+                this.finish();
+                ** GOTO lbl4
+            }
+            case 4: {
+                if (!this.mSmsInfo.isNeedconfirm() && !this.mIsShowInfo) ** GOTO lbl4
+                var2_4 = Utils.getSmsPayment() / this.mSmsInfo.money;
+                if (this.mLeftSmsToSendCount == -1 || this.mLeftSmsToSendCount == var2_4) ** GOTO lbl94
+                this.showDialog(27);
+                ** GOTO lbl4
+lbl94:
+                // 1 sources
+
+                this.buildPaymentView();
+                ** GOTO lbl4
+            }
+            case 5: 
+        }
+        this.showDialog(23);
+        ** while (true)
+    }
+
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.mIsValid = this.initPayment();
+        if (this.mIsValid) {
+            Utils.init((Context)this.getApplicationContext());
+            Utils.initTitleBar((Activity)this);
+            this.buildPaymentView();
+            this.confirmEnterPaymentPoint();
+            new HandlerProxy(this.getApplicationContext()).handleRequest();
+        }
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    protected Dialog onCreateDialog(int n) {
+        switch (n) {
+            default: {
+                return super.onCreateDialog(n);
+            }
+            case 0: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u8be5\u5e94\u7528\u8981\u6c42\u652f\u4ed8\u7684\u91d1\u989d\u4e0d\u7b26\u5408\u8981\u6c42\uff0c\u4e0d\u80fd\u6210\u529f\u652f\u4ed8\u3002", (DialogUtil.WarningDialogListener)this);
+            }
+            case 22: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"CPID\u4e3a\u5b57\u7b26\u4e32\u548c\u6570\u5b57\u4efb\u610f\u7ec4\u5408\uff0c\u4e0d\u80fd\u7531\u4e2d\u6587\u5b57\u7b26\u3001\u6807\u70b9\u7b26\u53f7\u6216\u7a7a\u683c\uff0c\u957f\u5ea6\u4e0d\u8d85\u8fc710\u4e2a\u82f1\u6587\u5b57\u7b26\u3002", (DialogUtil.WarningDialogListener)this);
+            }
+            case 2: {
+                return DialogUtil.createOKWarningDialogSupportLink((Context)this, (int)n, (String)"\u4ec0\u4e48\u662fU\u70b9?", (String)"U\u70b9\u662f<a href='http://wap.uc.cn'>UC-\u4f18\u89c6</a>\u63d0\u4f9b\u7684\u4e00\u79cd\u865a\u62df\u8d27\u5e01\uff0c\u4e3b\u8981\u7528\u4e8e\u8d2d\u4e70\u8f6f\u4ef6\u548c\u6e38\u620f\u91cc\u7684\u5185\u5bb9\uff08\u5982\uff1a\u9053\u5177\u3001\u5173\u5361\u3001\u8f6f\u4ef6\u3001\u4f7f\u7528\u65f6\u957f\u7b49\uff09\u3002<br /><br />U\u70b9\u5151\u6362\u6807\u51c6\uff1a<br />1\u5143\u53ef\u5151\u636210U\u70b9\u3002<br />\u901a\u8fc7\u4ee5\u4e0b\u94fe\u63a5\u5145\u503cU\u70b9\uff1a<br /><a href='http://pay.uc.cn'>UC-\u4f18\u89c6</a>", null);
+            }
+            case 14: {
+                return DialogUtil.createIndeterminateProgressDialog((Context)this, (int)n, (String)"\u8fde\u63a5\u670d\u52a1\u5668\uff0c\u8bf7\u7a0d\u7b49...", (boolean)false, null);
+            }
+            case 6: {
+                return DialogUtil.createIndeterminateProgressDialog((Context)this, (int)n, (String)"\u6b63\u5728\u652f\u4ed8\uff0c\u8bf7\u52ff\u5173\u95ed\u7a0b\u5e8f\uff0c\u8bf7\u7a0d\u540e......", (boolean)false, null);
+            }
+            case 7: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u652f\u4ed8\u4e0d\u6210\u529f\uff0c\u8bf7\u786e\u5b9a\u60a8\u7684\u8d26\u6237\u5f53\u4e2d\u7684\u4f59\u989d\u5145\u8db3\u5e76\u7f51\u7edc\u8fde\u63a5\u6b63\u5e38\u3002", null);
+            }
+            case 8: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u652f\u4ed8\u4e0d\u6210\u529f\uff0c\u8bf7\u786e\u5b9a\u60a8\u7684\u8d26\u6237\u5f53\u4e2d\u7684\u4f59\u989d\u5145\u8db3\u5e76\u7f51\u7edc\u8fde\u63a5\u6b63\u5e38\u3002", null);
+            }
+            case 9: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u652f\u4ed8\u4e0d\u6210\u529f\uff0c\u8bf7\u786e\u5b9a\u60a8\u7684\u8d26\u6237\u5f53\u4e2d\u7684\u4f59\u989d\u5145\u8db3\u5e76\u7f51\u7edc\u8fde\u63a5\u6b63\u5e38\u3002", null);
+            }
+            case 37: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u652f\u4ed8\u4e0d\u6210\u529f\uff0c\u60a8\u7684\u652f\u4ed8\u5bc6\u7801\u6709\u8bef\uff0c\u4e0d\u80fd\u652f\u4ed8\u6210\u529f\uff01", null);
+            }
+            case 10: {
+                return DialogUtil.createYesNoDialog((Context)this, (int)n, (CharSequence)"\u652f\u4ed8\u4e0d\u6210\u529f\uff0c\u8fde\u63a5\u670d\u52a1\u5668\u8d85\u65f6\uff0c\u662f\u5426\u91cd\u8bd5?", (DialogUtil.WarningDialogListener)this);
+            }
+            case 38: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u652f\u4ed8\u4e0d\u6210\u529f\uff0c\u60a8\u5df2\u7ecf\u7981\u6b62\u4e86\u53d1\u9001\u652f\u4ed8\u77ed\u4fe1\uff0c\u8bf7\u91cd\u65b0\u5c1d\u8bd5\u652f\u4ed8\u3002", null);
+            }
+            case 36: {
+                return DialogUtil.createYesNoDialog((Context)this, (int)n, (CharSequence)"\u60a8\u624b\u673a\u65f6\u95f4\u4e0d\u6b63\u786e\uff0c\u4e3a\u4e86\u786e\u4fdd\u5b89\u5168\u652f\u4ed8\uff0c\u662f\u5426\u9700\u8981\u7cfb\u7edf\u81ea\u52a8\u4fee\u6b63\u5e76\u5b8c\u6210\u652f\u4ed8?", (DialogUtil.WarningDialogListener)this);
+            }
+            case 11: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u652f\u4ed8\u4e0d\u6210\u529f\uff0c\u8bf7\u786e\u5b9a\u60a8\u7684\u8d26\u6237\u5f53\u4e2d\u7684\u4f59\u989d\u5145\u8db3\u5e76\u7f51\u7edc\u8fde\u63a5\u6b63\u5e38\u3002\n\u8bf7\u8054\u7cfb\u5ba2\u670d4006-400-401\u3002", null);
+            }
+            case 13: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"U\u70b9\u652f\u4ed8\u6210\u529f\uff0c\u795d\u60a8\u73a9\u7684\u5f00\u5fc3", (CharSequence)String.format("\u60a8\u7684\u4f59\u989d\u4e3a%dU\u70b9", this.mNumber, this.mBalance), (DialogUtil.WarningDialogListener)this);
+            }
+            case 5: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"U\u70b9\u4e0d\u8db3,\u4e0d\u80fd\u7ee7\u7eed\u652f\u4ed8\uff01", null);
+            }
+            case 15: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u7f51\u7edc\u8fde\u63a5\u9519\u8bef\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u540e\u518d\u8bd5\u3002", (DialogUtil.WarningDialogListener)this);
+            }
+            case 16: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)this.mSmsResultInfo, (DialogUtil.WarningDialogListener)this);
+            }
+            case 17: {
+                return DialogUtil.createIndeterminateProgressDialog((Context)this, (int)n, (String)"\u77ed\u4fe1\u53d1\u9001\u8fc7\u7a0b\u53ef\u80fd\u6301\u7eed\u4e00\u5206\u949f\uff0c\u8bf7\u8010\u5fc3\u7b49\u5f85...", (boolean)false, null);
+            }
+            case 19: {
+                return DialogUtil.createIndeterminateProgressDialog((Context)this, (int)n, (String)"\u6b63\u5728\u83b7\u53d6\u4fe1\u606f\uff0c\u8bf7\u7a0d\u5019......", (boolean)false, null);
+            }
+            case 20: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u8d2d\u4e70\u6210\u529f", (CharSequence)this.mSmsResultInfo, (DialogUtil.WarningDialogListener)this);
+            }
+            case 21: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)this.mSmsResultInfo, (DialogUtil.WarningDialogListener)this);
+            }
+            case 23: {
+                return DialogUtil.createTwoButtonsDialog((Context)this, (int)n, (CharSequence)"\u60a8\u5df2\u7ecf\u53d6\u6d88\u4e86\u8d2d\u4e70\uff0c\u5c06\u4e0d\u4f1a\u83b7\u5f97\u76f8\u5e94\u5185\u5bb9\u3002\u8bf7\u786e\u8ba4\u662f\u5426\u53d6\u6d88\uff1f", (CharSequence)"\u53d6\u6d88", (CharSequence)"\u4e0d\u53d6\u6d88", (DialogUtil.WarningDialogListener)this);
+            }
+            case 24: {
+                return DialogUtil.createTwoButtonsDialog((Context)this, (int)n, (CharSequence)Html.fromHtml((String)"\u8d2d\u4e70\u786e\u8ba4\u77ed\u4fe1\u672a\u5220\u9664\uff0c\u5982\u9700\u8d2d\u4e70\u8bf7\u518d\u6b21\u53d1\u9001\u77ed\u4fe1\u6216\u91c7\u7528\u5176\u4ed6\u652f\u4ed8\u65b9\u5f0f\uff0c<font color='red'>\u8bf7\u52ff\u5230\u77ed\u4fe1\u6536\u4ef6\u7bb1\u8fdb\u884c\u56de\u590d</font>\uff0c\u8c22\u8c22\uff01"), (CharSequence)"\u8fd4\u56de\u8d2d\u4e70\u9875", (CharSequence)"\u8fd4\u56de\u5e94\u7528", (DialogUtil.WarningDialogListener)this);
+            }
+            case 25: {
+                return DialogUtil.createTwoButtonsDialog((Context)this, (int)n, (CharSequence)"\u8d2d\u4e70\u786e\u8ba4\u77ed\u4fe1\u5df2\u5220\u9664\uff0c\u5982\u9700\u8d2d\u4e70\u8bf7\u518d\u6b21\u53d1\u9001\u77ed\u4fe1\u6216\u91c7\u7528\u5176\u4ed6\u652f\u4ed8\u65b9\u5f0f\uff0c\u8c22\u8c22\uff01", (CharSequence)"\u8fd4\u56de\u8d2d\u4e70\u9875", (CharSequence)"\u8fd4\u56de\u5e94\u7528", (DialogUtil.WarningDialogListener)this);
+            }
+            case 26: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u652f\u4ed8\u8d85\u65f6\uff0c\u70b9\u51fb\u786e\u5b9a\u91cd\u65b0\u9a8c\u8bc1\u652f\u4ed8\u7ed3\u679c\u3002\u6700\u591a \u9700\u89811\u5206\u949f\uff0c\u8bf7\u8010\u5fc3\u7b49\u5f85...", (DialogUtil.WarningDialogListener)this);
+            }
+            case 27: {
+                int n2 = this.getPayedAmount();
+                return DialogUtil.createTwoButtonsDialog((Context)this, (int)n, (CharSequence)String.format("\u60a8\u5df2\u7ecf\u652f\u4ed8\u8fc7\u3010%d\u3011\u5143\u77ed\u4fe1\uff0c\u73b0\u5728\u53d6\u6d88\u53d1\u9001\u5c06\u4e0d\u80fd\u6210\u529f\u8d2d\u4e70\u3010%s\u3011\u3002\u5982\u53d6\u6d88\u53d1\u9001\u5df2\u4ed8\u91d1\u989d\u4e0d\u4f1a\u8fd4\u8fd8\uff0c\u53ea\u80fd\u8ba1\u7b97\u5230\u60a8\u4e0b\u6b21\u8d2d\u4e70\u3010%s\u3011\u4e2d\u3002\u8bf7\u518d\u6b21\u786e\u8ba4\u662f\u5426\u53d6\u6d88\u8fd9\u6b21\u652f\u4ed8\uff1f", PrefUtil.getPayedAmount((Context)this.getApplicationContext()) + n2, this.mPaymentInfo.getPayname(), this.mPaymentInfo.getPayname()), (CharSequence)"\u8fd4\u56de\u7ee7\u7eed\u652f\u4ed8", (CharSequence)"\u786e\u8ba4\u53d6\u6d88", (DialogUtil.WarningDialogListener)this);
+            }
+            case 18: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u77ed\u4fe1\u53d1\u9001\u5931\u8d25", null);
+            }
+            case 35: {
+                return DialogUtil.createIndeterminateProgressDialog((Context)this, (int)n, (String)"U\u70b9\u652f\u4ed8\u4e2d\uff0c\u8bf7\u7a0d\u5019...", (boolean)false, null);
+            }
+            case 28: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u8bf7\u8f93\u5165\u8d26\u53f7\u548c\u5bc6\u7801\u3002", null);
+            }
+            case 29: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u5bc6\u7801\u4e3a\u7a7a\uff0c\u8bf7\u8f93\u5165\u5bc6\u7801\u3002", null);
+            }
+            case 30: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u7528\u6237\u540d\u4e3a\u7a7a\uff0c\u8bf7\u8f93\u5165\u7528\u6237\u540d\u3002", null);
+            }
+            case 31: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u7528\u6237\u540d\u5fc5\u987b\u5927\u4e8e3\u4e2a\u5b57\u3002", null);
+            }
+            case 32: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u7528\u6237\u540d\u5fc5\u987b\u5c0f\u4e8e17\u4e2a\u5b57\u3002", null);
+            }
+            case 33: {
+                return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u5bc6\u7801\u4e0d\u80fd\u4e3a\u7a7a\u3002", null);
+            }
+            case 34: 
+        }
+        return DialogUtil.createOKWarningDialog((Context)this, (int)n, (CharSequence)"\u767b\u5f55\u5931\u8d25\uff0c\u60a8\u7684\u5e10\u53f7\u548c\u5bc6\u7801\u4e0d\u5339\u914d\u3002", null);
+    }
+
     protected void onDestroy() {
         super.onDestroy();
         if (this.mIsValid) {
-            PrefUtil.logout(getApplicationContext());
+            PrefUtil.logout((Context)this.getApplicationContext());
             Utils.clearSmsInfos();
             Utils.clearUPointInfo();
             TypeFactory.clear();
@@ -1438,314 +1314,423 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
         }
     }
 
-    public static void init(Context paramContext) {
-        SyncChargeChannelHandler.init();
-        SyncPayChannelHandler.init();
-        SyncSmsInfoHandler.init();
-    }
+    /*
+     * Unable to fully structure code
+     */
+    public void onError(int var1_1, int var2_2) {
+        switch (var1_1) lbl-1000:
+        // 7 sources
 
-    @Override // com.uc.paymentsdk.network.ApiTask.TaskHandler
-    public void onSuccess(int paramInt, Object paramObject) {
-        switch (paramInt) {
-            case 3:
-                String resultstr = (String) paramObject;
-                String[] resultarr = resultstr.split("#");
-                int returncodeint = Integer.parseInt(resultarr[0]);
-                String errormsg = resultarr[1];
-                removeDialog(6);
-                if (returncodeint == -110) {
-                    showDialog(7);
-                    this.mUPayInfo.updateConsumeId();
-                    return;
-                }
-                if (returncodeint == -102 && errormsg.equals("uc_tm_modify")) {
-                    String timestr = resultarr[2];
-                    this.mUPayInfo.setTm(timestr);
-                    showDialog(36);
-                    return;
-                }
-                if (returncodeint < 0) {
-                    if (returncodeint == -102) {
-                        if (errormsg.equals("uc_password_error")) {
-                            showDialog(DIALOG_ACCOUNT_WRONG);
-                            return;
-                        }
-                        if (errormsg.equals("um_account_error")) {
-                            showDialog(5);
-                            return;
-                        }
-                        if (errormsg.equals("um_paypwd_error")) {
-                            showDialog(DIALOG_UPOINT_PAYPASS_WRONG);
-                            return;
-                        }
-                        if (errormsg.equals("um_paypwd_error")) {
-                            if (this.mType == 3) {
-                                showDialog(7);
-                                return;
-                            }
-                            if (this.mEtSavePass.isChecked()) {
-                                PrefUtil.setUCUserName(getApplicationContext(), this.mEtUsername.getText().toString());
-                                PrefUtil.setUCUserPass(getApplicationContext(), this.mEtPassword.getText().toString());
-                            } else {
-                                PrefUtil.clearUCUserName(getApplicationContext());
-                                PrefUtil.clearUCUserPass(getApplicationContext());
-                            }
-                            buildUPointPayPassView();
-                            return;
-                        }
-                        if (errormsg.equals("um_system_error")) {
-                            showDialog(7);
-                            this.mUPayInfo.updateConsumeId();
-                            return;
-                        }
-                        return;
+        {
+            default: lbl-1000:
+            // 2 sources
+
+            {
+                return;
+            }
+            case 3: {
+                switch (var2_2) {
+                    default: {
+                        this.mBtnPay.setEnabled(true);
+                        this.removeDialog(6);
+                        this.showDialog(7);
+                        ** GOTO lbl-1000
                     }
-                    return;
+                    case 425: {
+                        this.mBtnPay.setEnabled(true);
+                        this.removeDialog(6);
+                        this.showDialog(8);
+                        ** GOTO lbl-1000
+                    }
+                    case 219: {
+                        this.mBtnPay.setEnabled(false);
+                        this.removeDialog(6);
+                        this.showDialog(5);
+                        this.buildPaymentView();
+                        ** GOTO lbl-1000
+                    }
+                    case 500: {
+                        this.mBtnPay.setEnabled(true);
+                        this.removeDialog(6);
+                        this.showDialog(11);
+                        ** GOTO lbl-1000
+                    }
+                    case -1: 
                 }
-                if (this.mEtSavePass.isChecked()) {
-                    PrefUtil.setUCUserName(getApplicationContext(), this.mEtUsername.getText().toString());
-                    PrefUtil.setUCUserPass(getApplicationContext(), this.mEtPassword.getText().toString());
-                } else {
-                    PrefUtil.clearUCUserName(getApplicationContext());
-                    PrefUtil.clearUCUserPass(getApplicationContext());
-                }
-                showDialog(13);
-                return;
-            case 18:
-                UPointInfo info = (UPointInfo) paramObject;
-                initUPointPayView(info);
-                Utils.setUPointInfo(info);
-                dismissDialog(14);
-                return;
-            default:
-                return;
+                ++this.mTimeoutCounter;
+                if (this.mTimeoutCounter >= 2) ** GOTO lbl33
+                Api.pay((Context)this.getApplicationContext(), (ApiTask.TaskHandler)this, (PaymentInfo)this.mPaymentInfo, (UPointPayInfo)this.mUPayInfo);
+                ** GOTO lbl-1000
+lbl33:
+                // 1 sources
+
+                this.mTimeoutCounter = 0;
+                this.mBtnPay.setEnabled(true);
+                this.removeDialog(6);
+                this.showDialog(10);
+                ** GOTO lbl-1000
+            }
+            case 18: 
         }
+        this.dismissDialog(14);
+        this.showDialog(15);
+        this.buildPaymentView();
+        ** while (true)
     }
 
-    /* JADX WARN: Failed to find 'out' block for switch in B:10:0x001a. Please report as an issue. */
-    @Override // com.uc.paymentsdk.network.ApiTask.TaskHandler
-    public Object onPreHandle(int paramInt, HttpResponse paramHttpResponse) {
-        if (5 == paramInt || 8 == paramInt) {
+    public void onFinish() {
+        this.fillData();
+    }
+
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    public void onItemClick(AdapterView<?> var1_1, View var2_2, int var3_3, long var4_4) {
+        block2: {
+            if (var3_3 == 0) lbl-1000:
+            // 4 sources
+
+            {
+                return;
+            }
+            if (!"upoint".equals(var1_1 /* !! */  = ((CustomAdapter)((HeaderViewListAdapter)var1_1 /* !! */ .getAdapter()).getWrappedAdapter()).getItem(var3_3 - 1).getId())) break block2;
+            this.buildUPointPaymentView();
+            ** GOTO lbl-1000
+        }
+        if (!"sms".equals(var1_1 /* !! */ )) ** GOTO lbl-1000
+        this.buildSmsPaymentView();
+        ** while (true)
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public boolean onKeyDown(int n, KeyEvent keyEvent) {
+        switch (n) {
+            default: {
+                return super.onKeyDown(n, keyEvent);
+            }
+            case 4: 
+        }
+        switch (this.mType) {
+            default: {
+                return super.onKeyDown(n, keyEvent);
+            }
+            case 1: {
+                this.buildPaymentView();
+                return true;
+            }
+            case 2: {
+                this.buildUPointPaymentView();
+                return true;
+            }
+            case 3: {
+                this.buildUPointPayLoginView();
+                return true;
+            }
+            case 4: {
+                if (this.mSmsInfo.isNeedconfirm() || this.mIsShowInfo) {
+                    n = Utils.getSmsPayment() / this.mSmsInfo.money;
+                    if (this.mLeftSmsToSendCount != -1 && this.mLeftSmsToSendCount != n) {
+                        this.showDialog(27);
+                        return true;
+                    }
+                    this.buildPaymentView();
+                    return true;
+                }
+                this.buildPaymentView();
+                return true;
+            }
+            case 5: 
+        }
+        this.showDialog(23);
+        return true;
+    }
+
+    /*
+     * Enabled force condition propagation
+     */
+    public Object onPreHandle(int n, HttpResponse object) {
+        if (5 == n) return true;
+        if (8 == n) {
             return true;
         }
-        String str = Utils.getBodyString(paramInt, paramHttpResponse);
-        if (TextUtils.isEmpty(str)) {
+        String string = Utils.getBodyString((int)n, (HttpResponse)object);
+        if (TextUtils.isEmpty((CharSequence)string)) {
             return null;
         }
-        switch (paramInt) {
-            case 3:
-                try {
-                    return XMLParser.parsePayOrder(str);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            case 18:
-                try {
-                    return XMLParser.parseUPointInfo(str);
-                } catch (Exception e2) {
-                    e2.printStackTrace();
-                }
-            default:
+        switch (n) {
+            default: {
                 return null;
-        }
-    }
-
-    @Override // com.uc.paymentsdk.network.ApiTask.TaskHandler
-    public void onError(int paramInt1, int paramInt2) {
-        switch (paramInt1) {
-            case 3:
-                switch (paramInt2) {
-                    case -1:
-                        this.mTimeoutCounter++;
-                        if (this.mTimeoutCounter < 2) {
-                            Api.pay(getApplicationContext(), this, this.mPaymentInfo, this.mUPayInfo);
-                            return;
-                        }
-                        this.mTimeoutCounter = 0;
-                        this.mBtnPay.setEnabled(true);
-                        removeDialog(6);
-                        showDialog(10);
-                        return;
-                    case Constants.ERROR_CODE_INSUFFICIENT_BALANCE /* 219 */:
-                        this.mBtnPay.setEnabled(false);
-                        removeDialog(6);
-                        showDialog(5);
-                        buildPaymentView();
-                        return;
-                    case Constants.ERROR_CODE_ARG_OUT_OF_SCROPE /* 425 */:
-                        this.mBtnPay.setEnabled(true);
-                        removeDialog(6);
-                        showDialog(8);
-                        return;
-                    case Constants.ERROR_CODE_UNKNOWN /* 500 */:
-                        this.mBtnPay.setEnabled(true);
-                        removeDialog(6);
-                        showDialog(11);
-                        return;
-                    default:
-                        this.mBtnPay.setEnabled(true);
-                        removeDialog(6);
-                        showDialog(7);
-                        return;
-                }
-            case 18:
-                dismissDialog(14);
-                showDialog(15);
-                buildPaymentView();
-                return;
-            default:
-                return;
-        }
-    }
-
-    @Override // android.widget.AdapterView.OnItemClickListener
-    public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {
-        if (paramInt != 0) {
-            IType localIType = ((CustomAdapter) ((HeaderViewListAdapter) paramAdapterView.getAdapter()).getWrappedAdapter()).getItem(paramInt - 1);
-            String str = localIType.getId();
-            if (TypeFactory.TYPE_PAY_UPOINT.equals(str)) {
-                buildUPointPaymentView();
-            } else if ("sms".equals(str)) {
-                buildSmsPaymentView();
             }
-        }
-    }
-
-    /* JADX WARN: Failed to find 'out' block for switch in B:2:0x0001. Please report as an issue. */
-    @Override // android.app.Activity, android.view.KeyEvent.Callback
-    public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent) {
-        switch (paramInt) {
-            case 4:
-                switch (this.mType) {
-                    case 1:
-                        buildPaymentView();
-                        return true;
-                    case 2:
-                        buildUPointPaymentView();
-                        return true;
-                    case 3:
-                        buildUPointPayLoginView();
-                        return true;
-                    case 4:
-                        if (this.mSmsInfo.isNeedconfirm() || this.mIsShowInfo) {
-                            int i = Utils.getSmsPayment();
-                            int j = i / this.mSmsInfo.money;
-                            if (this.mLeftSmsToSendCount != -1 && this.mLeftSmsToSendCount != j) {
-                                showDialog(DIALOG_PAY_SMS_RETRY_MULTIPLE);
-                            } else {
-                                buildPaymentView();
-                            }
-                        } else {
-                            buildPaymentView();
-                        }
-                        return true;
-                    case 5:
-                        showDialog(23);
-                        return true;
+            case 3: {
+                try {
+                    return XMLParser.parsePayOrder((String)string);
                 }
-            default:
-                return super.onKeyDown(paramInt, paramKeyEvent);
+                catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+            }
+            case 18: 
+        }
+        try {
+            return XMLParser.parseUPointInfo((String)string);
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
+            return null;
         }
     }
 
-    @Override // com.uc.paymentsdk.network.chain.Handler.OnFinishListener
-    public void onFinish() {
-        fillData();
+    protected void onPrepareDialog(int n, Dialog dialog) {
+        super.onPrepareDialog(n, dialog);
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
     }
 
-    /* loaded from: classes.dex */
-    private class SmsContent extends ContentObserver {
-        private static final String BODY = "body";
-        private static final String NUMBER = "address";
-        private Cursor mCursor;
+    /*
+     * Unable to fully structure code
+     */
+    public void onSuccess(int var1_1, Object var2_2) {
+        switch (var1_1) lbl-1000:
+        // 12 sources
 
-        public SmsContent(android.os.Handler arg2) {
-            super(arg2);
+        {
+            default: lbl-1000:
+            // 2 sources
+
+            {
+                return;
+            }
+            case 3: {
+                var3_3 = ((String)var2_2).split("#");
+                var1_1 = Integer.parseInt(var3_3[0]);
+                var2_2 = var3_3[1];
+                this.removeDialog(6);
+                if (var1_1 != -110) ** GOTO lbl14
+                this.showDialog(7);
+                this.mUPayInfo.updateConsumeId();
+                ** GOTO lbl-1000
+lbl14:
+                // 1 sources
+
+                if (var1_1 != -102 || !var2_2.equals("uc_tm_modify")) ** GOTO lbl19
+                var2_2 = var3_3[2];
+                this.mUPayInfo.setTm((String)var2_2);
+                this.showDialog(36);
+                ** GOTO lbl-1000
+lbl19:
+                // 1 sources
+
+                if (var1_1 >= 0) ** GOTO lbl47
+                if (var1_1 != -102) ** GOTO lbl-1000
+                if (!var2_2.equals("uc_password_error")) ** GOTO lbl24
+                this.showDialog(34);
+                ** GOTO lbl-1000
+lbl24:
+                // 1 sources
+
+                if (!var2_2.equals("um_account_error")) ** GOTO lbl27
+                this.showDialog(5);
+                ** GOTO lbl-1000
+lbl27:
+                // 1 sources
+
+                if (!var2_2.equals("um_paypwd_error")) ** GOTO lbl30
+                this.showDialog(37);
+                ** GOTO lbl-1000
+lbl30:
+                // 1 sources
+
+                if (!var2_2.equals("um_paypwd_error")) ** GOTO lbl43
+                if (this.mType != 3) ** GOTO lbl34
+                this.showDialog(7);
+                ** GOTO lbl-1000
+lbl34:
+                // 1 sources
+
+                if (!this.mEtSavePass.isChecked()) ** GOTO lbl40
+                PrefUtil.setUCUserName((Context)this.getApplicationContext(), (String)this.mEtUsername.getText().toString());
+                PrefUtil.setUCUserPass((Context)this.getApplicationContext(), (String)this.mEtPassword.getText().toString());
+lbl37:
+                // 2 sources
+
+                while (true) {
+                    this.buildUPointPayPassView();
+                    ** GOTO lbl-1000
+                    break;
+                }
+lbl40:
+                // 1 sources
+
+                PrefUtil.clearUCUserName((Context)this.getApplicationContext());
+                PrefUtil.clearUCUserPass((Context)this.getApplicationContext());
+                ** continue;
+lbl43:
+                // 1 sources
+
+                if (!var2_2.equals("um_system_error")) ** GOTO lbl-1000
+                this.showDialog(7);
+                this.mUPayInfo.updateConsumeId();
+                ** GOTO lbl-1000
+lbl47:
+                // 1 sources
+
+                if (!this.mEtSavePass.isChecked()) ** GOTO lbl53
+                PrefUtil.setUCUserName((Context)this.getApplicationContext(), (String)this.mEtUsername.getText().toString());
+                PrefUtil.setUCUserPass((Context)this.getApplicationContext(), (String)this.mEtPassword.getText().toString());
+lbl50:
+                // 2 sources
+
+                while (true) {
+                    this.showDialog(13);
+                    ** GOTO lbl-1000
+                    break;
+                }
+lbl53:
+                // 1 sources
+
+                PrefUtil.clearUCUserName((Context)this.getApplicationContext());
+                PrefUtil.clearUCUserPass((Context)this.getApplicationContext());
+                ** continue;
+            }
+            case 18: 
         }
+        var2_2 = (UPointInfo)var2_2;
+        this.initUPointPayView((UPointInfo)var2_2);
+        Utils.setUPointInfo((UPointInfo)var2_2);
+        this.dismissDialog(14);
+        ** while (true)
+    }
 
-        @Override // android.database.ContentObserver
-        public void onChange(boolean paramBoolean) {
-            super.onChange(paramBoolean);
-            Uri localUri = Uri.parse("content://sms/inbox");
-            this.mCursor = PaymentsActivity.this.managedQuery(localUri, new String[]{"_id", NUMBER, BODY}, " address like ? or address like ? and read=?", new String[]{String.valueOf(PaymentsActivity.this.mSmsInfo.getSmsnumber()) + "%%", String.valueOf(PaymentsActivity.this.mSmsInfo.getSmsConfirmNumber()) + "%%", "0"}, "date desc");
-            if (this.mCursor != null) {
-                if (this.mCursor.moveToFirst()) {
-                    if (PaymentsActivity.this.mSmsId <= 0 || PaymentsActivity.this.mSmsId <= this.mCursor.getInt(0)) {
-                        if (PaymentsActivity.this.mLeftSmsToReceiveCount <= 1) {
-                            PaymentsActivity.this.mSmsHander.removeCallbacks(PaymentsActivity.this.mSmsRunnable);
-                            PaymentsActivity.this.getContentResolver().unregisterContentObserver(PaymentsActivity.this.mSmsContent);
-                            try {
-                                PaymentsActivity.this.unregisterReceiver(PaymentsActivity.this.mSmsReceiver);
-                            } catch (IllegalArgumentException e) {
-                            }
-                        }
-                        PaymentsActivity.this.mSmsId = this.mCursor.getInt(0);
-                        ContentValues localContentValues = new ContentValues();
-                        localContentValues.put("read", "1");
-                        try {
-                            PaymentsActivity.this.getContentResolver().update(localUri, localContentValues, " _id=?", new String[]{new StringBuilder().append(PaymentsActivity.this.mSmsId).toString()});
-                        } catch (SQLiteAbortException localSQLiteAbortException) {
-                            localSQLiteAbortException.printStackTrace();
-                        }
-                        String smscontent = this.mCursor.getString(this.mCursor.getColumnIndex(BODY));
-                        String smsaddress = this.mCursor.getString(this.mCursor.getColumnIndex(NUMBER));
-                        if (4 == PaymentsActivity.this.mType) {
-                            if (PaymentsActivity.this.mSmsInfo.isNeedconfirm()) {
-                                PaymentsActivity.this.removeDialog(17);
-                                String smsconfirmnumber = PaymentsActivity.this.mSmsInfo.parseConfirmSmsConfirmNumber(smscontent);
-                                if (PaymentsActivity.this.mSmsInfo.isSuccess(smscontent) && smsconfirmnumber != null) {
-                                    PaymentsActivity.this.mSmsHander.removeCallbacks(PaymentsActivity.this.mSmsRunnable);
-                                    PaymentsActivity.this.buildSmsPaymentConfirmView(smsaddress, smsconfirmnumber);
-                                } else {
-                                    PaymentsActivity.this.removeDialog(17);
-                                    PaymentsActivity.this.mSmsResultInfo = Constants.TEXT_PAY_SMS_FAILED_INSUFFENT_BALANCE;
-                                    PaymentsActivity.this.showDialog(21);
-                                }
-                            } else {
-                                PrefUtil.setPayedAmount(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this.getPayedAmount());
-                                if (PaymentsActivity.this.mLeftSmsToReceiveCount <= 1) {
-                                    if (PaymentsActivity.this.mLeftSmsToReceiveCount <= 1) {
-                                        PaymentsActivity.this.removeDialog(17);
-                                    }
-                                    PaymentsActivity.this.mSmsResultInfo = "支付已完成，祝您玩得开心。";
-                                    PaymentsActivity.this.showDialog(20);
-                                } else {
-                                    PaymentsActivity.this.mLeftSmsToReceiveCount--;
-                                }
-                                if (PaymentsActivity.this.mSmsInfo.getSmstype() == 1) {
-                                    Api.postSmsPayment(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this, PaymentsActivity.this.mPaymentInfo.getCpID(), PaymentsActivity.this.mPaymentInfo.getmGameID(), PaymentsActivity.this.mPaymentInfo.getmActionID(), Utils.getSmsPayment(), PaymentsActivity.this.mPaymentInfo.getmActionID(), PaymentsActivity.this.mSmsInfo.getSmschannelid(), PaymentsActivity.this.mSmsInfo.getSmsnumber(), PaymentsActivity.this.mSmsInfo.getContent(), PaymentsActivity.this.mSmsInfo.getSmstype());
-                                }
-                            }
-                        } else {
-                            PaymentsActivity.this.removeDialog(17);
-                            boolean bool = PaymentsActivity.this.mSmsInfo.parseConfirmResultSms(smscontent);
-                            if (!bool) {
-                                PaymentsActivity.this.mSmsResultInfo = smscontent;
-                                PaymentsActivity.this.showDialog(21);
-                            } else {
-                                PrefUtil.setPayedAmount(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this.getPayedAmount());
-                                if (PaymentsActivity.this.mLeftSmsToReceiveCount <= 1) {
-                                    PaymentsActivity.this.mSmsResultInfo = smscontent.replace(Constants.SMS_SUCCESS, Constants_H.MONEY_TXT_18);
-                                    PaymentsActivity.this.showDialog(20);
-                                } else {
-                                    PaymentsActivity.this.mLeftSmsToReceiveCount--;
-                                    PaymentsActivity.this.mLeftSmsToSendCount--;
-                                    PaymentsActivity.this.mSmsHander.removeCallbacks(PaymentsActivity.this.mSmsRunnable);
-                                    PaymentsActivity.this.removeDialog(17);
-                                    PaymentsActivity.this.buildSmsPaymentView();
-                                }
-                                if (PaymentsActivity.this.mSmsInfo.getSmstype() == 1) {
-                                    Api.postSmsPayment(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this, PaymentsActivity.this.mPaymentInfo.getCpID(), PaymentsActivity.this.mPaymentInfo.getmGameID(), PaymentsActivity.this.mPaymentInfo.getmActionID(), Utils.getSmsPayment(), PaymentsActivity.this.mPaymentInfo.getmActionID(), PaymentsActivity.this.mSmsInfo.getSmschannelid(), PaymentsActivity.this.mSmsInfo.getSmsnumber(), PaymentsActivity.this.mSmsInfo.getContent(), PaymentsActivity.this.mSmsInfo.getSmstype());
-                                }
-                            }
-                        }
-                    } else {
-                        this.mCursor.close();
-                        return;
+    /*
+     * Unable to fully structure code
+     */
+    public void onWarningDialogCancel(int var1_1) {
+        switch (var1_1) lbl-1000:
+        // 2 sources
+
+        {
+            default: lbl-1000:
+            // 2 sources
+
+            {
+                return;
+            }
+            case 24: 
+            case 25: {
+                if (this.mSmsHander != null && this.mSmsRunnable != null) {
+                    this.mSmsHander.removeCallbacks(this.mSmsRunnable);
+                    this.getContentResolver().unregisterContentObserver(this.mSmsContent);
+                    this.unregisterReceiver(this.mSmsReceiver);
+                }
+lbl11:
+                // 4 sources
+
+                while (true) {
+                    this.finish();
+                    ** GOTO lbl-1000
+                    break;
+                }
+            }
+            case 27: 
+        }
+        if (this.mSmsHander != null && this.mSmsRunnable != null) {
+            this.mSmsHander.removeCallbacks(this.mSmsRunnable);
+            this.getContentResolver().unregisterContentObserver(this.mSmsContent);
+            this.unregisterReceiver(this.mSmsReceiver);
+        }
+lbl20:
+        // 4 sources
+
+        while (true) {
+            this.buildPaymentView();
+            ** continue;
+            break;
+        }
+        catch (IllegalArgumentException var2_2) {
+            ** continue;
+        }
+        catch (IllegalArgumentException var2_3) {
+            ** continue;
+        }
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    public void onWarningDialogOK(int var1_1) {
+        block18: {
+            switch (var1_1) lbl-1000:
+            // 7 sources
+
+            {
+                default: lbl-1000:
+                // 3 sources
+
+                {
+                    return;
+                }
+                case 10: {
+                    this.pay();
+                    ** GOTO lbl-1000
+                }
+                case 36: {
+                    this.pay();
+                    ** GOTO lbl-1000
+                }
+                case 20: {
+                    PrefUtil.clearPayedAmount((Context)this.getApplicationContext());
+                }
+                case 13: {
+                    this.setResult(-1, new Intent());
+                    this.finish();
+                    ** GOTO lbl-1000
+                }
+                case 0: 
+                case 1: 
+                case 22: {
+                    this.finish();
+                    ** GOTO lbl-1000
+                }
+                case 21: 
+                case 25: {
+                    if (this.mSmsHander != null && this.mSmsRunnable != null) {
+                        this.mSmsHander.removeCallbacks(this.mSmsRunnable);
+                    }
+                    if (this.mSmsContent != null) {
+                        this.getContentResolver().unregisterContentObserver(this.mSmsContent);
+                    }
+                    this.unregisterReceiver(this.mSmsReceiver);
+                }
+                case 15: 
+                case 16: 
+                case 24: lbl-1000:
+                // 2 sources
+
+                {
+                    while (true) {
+                        this.buildPaymentView();
+                        ** GOTO lbl-1000
+                        break;
                     }
                 }
-                this.mCursor.close();
+                case 23: {
+                    this.showDialog(24);
+                    ** GOTO lbl-1000
+                }
+                case 26: 
             }
+            if (4 != this.mType) break block18;
+            this.sendFirstSms(this.mSmsInfo);
+            ** GOTO lbl-1000
+        }
+        this.sendConfirmSms(this.mConfirmSmsInfoString);
+        ** while (true)
+        catch (IllegalArgumentException var2_2) {
+            ** continue;
         }
     }
 }

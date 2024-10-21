@@ -1,13 +1,29 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  android.graphics.Bitmap
+ *  android.graphics.Bitmap$Config
+ *  android.graphics.BitmapFactory
+ *  android.graphics.BitmapFactory$Options
+ *  android.graphics.Canvas
+ *  android.graphics.Matrix
+ *  android.graphics.Paint
+ *  com.android.Util.AndroidUtil
+ *  javax.microedition.lcdui.Graphics
+ */
 package javax.microedition.lcdui;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import com.android.Util.AndroidUtil;
 import java.io.IOException;
 import java.io.InputStream;
+import javax.microedition.lcdui.Graphics;
 
-/* loaded from: classes.dex */
 public class Image {
     private Graphics img_g;
     private Bitmap mBitmap;
@@ -15,66 +31,81 @@ public class Image {
     private Image() {
     }
 
-    public static Image createImage(byte[] imageData, int imageOffset, int imageLength) {
+    public static Image createImage(int n, int n2) {
         Image image = new Image();
-        image.mBitmap = BitmapFactory.decodeByteArray(imageData, imageOffset, imageLength);
+        image.mBitmap = Bitmap.createBitmap((int)n, (int)n2, (Bitmap.Config)Bitmap.Config.RGB_565);
         return image;
     }
 
-    public static Image createImage(Image source, int x, int y, int width, int height, int transform) {
-        int tmp_w = width;
-        int tmp_h = height;
-        if (transform > 3) {
-            tmp_w = height;
-            tmp_h = width;
-        }
+    public static Image createImage(int n, int n2, int n3) {
         Image image = new Image();
-        System.arraycopy(Graphics.tTrans[transform], 0, Graphics.tTransTemp, 0, 9);
-        Graphics.tTransTemp[2] = Graphics.tTransXY[transform][0] * tmp_w;
-        Graphics.tTransTemp[5] = Graphics.tTransXY[transform][1] * tmp_h;
-        Graphics.regionMatrix.setValues(Graphics.tTransTemp);
-        image.mBitmap = Bitmap.createBitmap(source.getBitMapInpackage(), x, y, width, height, Graphics.regionMatrix, false);
+        image.mBitmap = Bitmap.createBitmap((int)n, (int)n2, (Bitmap.Config)Bitmap.Config.RGB_565);
         return image;
     }
 
-    public static Image createImage(int width, int height) {
+    public static Image createImage(String string) throws IOException {
         Image image = new Image();
-        image.mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-        return image;
-    }
-
-    public static Image createImage(int width, int height, int flag) {
-        Image image = new Image();
-        image.mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-        return image;
-    }
-
-    public static Image createImage(String name) throws IOException {
-        Image image = new Image();
-        InputStream is = AndroidUtil.getResourceAsStream(name);
-        image.mBitmap = BitmapFactory.decodeStream(is);
+        image.mBitmap = BitmapFactory.decodeStream((InputStream)AndroidUtil.getResourceAsStream((String)string));
         if (image.mBitmap == null) {
             throw new IOException();
         }
         return image;
     }
 
-    public Bitmap getBitMapInpackage() {
+    public static Image createImage(String string, int n) throws IOException {
+        Image image = new Image();
+        InputStream inputStream = AndroidUtil.getResourceAsStream((String)string);
+        string = new BitmapFactory.Options();
+        ((BitmapFactory.Options)string).inInputShareable = true;
+        ((BitmapFactory.Options)string).inSampleSize = n;
+        image.mBitmap = BitmapFactory.decodeStream((InputStream)inputStream, null, (BitmapFactory.Options)string);
+        if (image.mBitmap == null) {
+            throw new IOException();
+        }
+        return image;
+    }
+
+    public static Image createImage(Image image, int n, int n2, int n3, int n4, int n5) {
+        int n6 = n3;
+        int n7 = n4;
+        int n8 = n6;
+        if (n5 > 3) {
+            n8 = n4;
+            n7 = n6 = n3;
+        }
+        Image image2 = new Image();
+        System.arraycopy(Graphics.tTrans[n5], 0, Graphics.tTransTemp, 0, 9);
+        Graphics.tTransTemp[2] = Graphics.tTransXY[n5][0] * n8;
+        Graphics.tTransTemp[5] = Graphics.tTransXY[n5][1] * n7;
+        Graphics.regionMatrix.setValues(Graphics.tTransTemp);
+        image2.mBitmap = Bitmap.createBitmap((Bitmap)image.getBitMapInpackage(), (int)n, (int)n2, (int)n3, (int)n4, (Matrix)Graphics.regionMatrix, (boolean)false);
+        return image2;
+    }
+
+    public static Image createImage(byte[] byArray, int n, int n2) {
+        Image image = new Image();
+        image.mBitmap = BitmapFactory.decodeByteArray((byte[])byArray, (int)n, (int)n2);
+        return image;
+    }
+
+    public static Image createRGBImage(int[] nArray, int n, int n2, boolean bl) {
+        Image image = new Image();
+        image.mBitmap = Bitmap.createBitmap((int[])nArray, (int)n, (int)n2, (Bitmap.Config)Bitmap.Config.ARGB_8888);
+        return image;
+    }
+
+    public Bitmap getBitMap() {
         return this.mBitmap;
     }
 
-    public static Image createRGBImage(int[] rgb, int width, int height, boolean processAlpha) {
-        Image image = new Image();
-        image.mBitmap = Bitmap.createBitmap(rgb, width, height, Bitmap.Config.ARGB_8888);
-        return image;
+    Bitmap getBitMapInpackage() {
+        return this.mBitmap;
     }
 
     public Graphics getGraphics() {
         if (this.mBitmap.isMutable()) {
             if (this.img_g == null) {
-                android.graphics.Canvas imagecanvas = new android.graphics.Canvas(this.mBitmap);
-                Paint painter = new Paint();
-                this.img_g = new Graphics(imagecanvas, painter, this.mBitmap);
+                this.img_g = new Graphics(new Canvas(this.mBitmap), new Paint(), this.mBitmap);
             }
             return this.img_g;
         }
@@ -85,8 +116,8 @@ public class Image {
         return this.mBitmap.getHeight();
     }
 
-    public void getRGB(int[] rgbData, int offset, int scanlength, int x, int y, int width, int height) {
-        this.mBitmap.getPixels(rgbData, offset, scanlength, x, y, width, height);
+    public void getRGB(int[] nArray, int n, int n2, int n3, int n4, int n5, int n6) {
+        this.mBitmap.getPixels(nArray, n, n2, n3, n4, n5, n6);
     }
 
     public int getWidth() {
@@ -95,22 +126,5 @@ public class Image {
 
     public boolean isMutable() {
         return this.mBitmap.isMutable();
-    }
-
-    public Bitmap getBitMap() {
-        return this.mBitmap;
-    }
-
-    public static Image createImage(String name, int zoom) throws IOException {
-        Image image = new Image();
-        InputStream is = AndroidUtil.getResourceAsStream(name);
-        BitmapFactory.Options opts = new BitmapFactory.Options();
-        opts.inInputShareable = true;
-        opts.inSampleSize = zoom;
-        image.mBitmap = BitmapFactory.decodeStream(is, null, opts);
-        if (image.mBitmap == null) {
-            throw new IOException();
-        }
-        return image;
     }
 }

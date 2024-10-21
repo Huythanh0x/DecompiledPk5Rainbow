@@ -1,6 +1,8 @@
+/*
+ * Decompiled with CFR.
+ */
 package main;
 
-/* loaded from: classes.dex */
 public interface Key_H {
     public static final byte KEY_C = -8;
     public static final byte KEY_DOWN_ARROW = -2;

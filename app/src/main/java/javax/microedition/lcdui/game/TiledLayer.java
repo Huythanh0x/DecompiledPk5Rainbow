@@ -1,5 +1,13 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  javax.microedition.lcdui.game.Layer
+ */
 package javax.microedition.lcdui.game;
 
-/* loaded from: classes.dex */
-public class TiledLayer extends Layer {
+import javax.microedition.lcdui.game.Layer;
+
+public class TiledLayer
+extends Layer {
 }

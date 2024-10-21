@@ -1,183 +1,91 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  android.app.AlertDialog$Builder
+ *  android.content.Context
+ *  android.content.DialogInterface
+ *  android.content.DialogInterface$OnClickListener
+ *  android.widget.Button
+ *  android.widget.ListAdapter
+ *  android.widget.SpinnerAdapter
+ *  com.uc.paymentsdk.commons.ui.TitleSpinner$DropDownAdapter
+ */
 package com.uc.paymentsdk.commons.ui;
 
-import android.R;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.database.DataSetObserver;
 import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.SpinnerAdapter;
+import com.uc.paymentsdk.commons.ui.TitleSpinner;
 
-/* loaded from: classes.dex */
-public class TitleSpinner extends Button implements DialogInterface.OnClickListener {
+public class TitleSpinner
+extends Button
+implements DialogInterface.OnClickListener {
     private SpinnerAdapter mAdapter;
     private int mNextSelectedPosition;
     private DialogInterface.OnClickListener mOnClickListener;
     private CharSequence mPrompt;
 
-    public TitleSpinner(Context paramContext) {
-        super(paramContext);
-        init();
+    public TitleSpinner(Context context) {
+        super(context);
+        this.init();
     }
 
-    public TitleSpinner(Context paramContext, AttributeSet paramAttributeSet) {
-        super(paramContext, paramAttributeSet);
-        init();
+    public TitleSpinner(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.init();
     }
 
     private void init() {
         this.mNextSelectedPosition = -1;
-        setGravity(19);
-        setBackgroundResource(R.drawable.btn_dropdown);
+        this.setGravity(19);
+        this.setBackgroundResource(17301510);
     }
 
     public int getSelectedItemPosition() {
         return this.mNextSelectedPosition;
     }
 
-    public void setSelection(int paramInt) {
-        this.mNextSelectedPosition = paramInt;
-        setText(this.mAdapter.getItem(paramInt).toString());
-    }
-
-    public void setAdapter(SpinnerAdapter paramSpinnerAdapter) {
-        this.mAdapter = paramSpinnerAdapter;
-    }
-
-    @Override // android.content.DialogInterface.OnClickListener
-    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-        setSelection(paramInt);
-        paramDialogInterface.dismiss();
+    public void onClick(DialogInterface dialogInterface, int n) {
+        this.setSelection(n);
+        dialogInterface.dismiss();
         if (this.mOnClickListener != null) {
-            this.mOnClickListener.onClick(paramDialogInterface, paramInt);
+            this.mOnClickListener.onClick(dialogInterface, n);
         }
     }
 
-    @Override // android.view.View
     public boolean performClick() {
-        boolean bool = super.performClick();
-        if (!bool) {
-            bool = true;
-            AlertDialog.Builder localBuilder = new AlertDialog.Builder(getContext());
+        boolean bl;
+        boolean bl2 = bl = super.performClick();
+        if (!bl) {
+            bl2 = true;
+            AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
             if (this.mPrompt != null) {
-                localBuilder.setTitle(this.mPrompt);
+                builder.setTitle(this.mPrompt);
             }
-            localBuilder.setSingleChoiceItems(new DropDownAdapter(this.mAdapter), getSelectedItemPosition(), this).show();
+            builder.setSingleChoiceItems((ListAdapter)new DropDownAdapter(this.mAdapter), this.getSelectedItemPosition(), (DialogInterface.OnClickListener)this).show();
         }
-        return bool;
+        return bl2;
     }
 
-    public void setOnClickListener(DialogInterface.OnClickListener paramOnClickListener) {
-        this.mOnClickListener = paramOnClickListener;
+    public void setAdapter(SpinnerAdapter spinnerAdapter) {
+        this.mAdapter = spinnerAdapter;
     }
 
-    public void setPrompt(CharSequence paramCharSequence) {
-        this.mPrompt = paramCharSequence;
+    public void setOnClickListener(DialogInterface.OnClickListener onClickListener) {
+        this.mOnClickListener = onClickListener;
     }
 
-    /* loaded from: classes.dex */
-    private static class DropDownAdapter implements ListAdapter, SpinnerAdapter {
-        private SpinnerAdapter mAdapter;
-        private ListAdapter mListAdapter;
+    public void setPrompt(CharSequence charSequence) {
+        this.mPrompt = charSequence;
+    }
 
-        public DropDownAdapter(SpinnerAdapter paramSpinnerAdapter) {
-            this.mAdapter = paramSpinnerAdapter;
-            if (paramSpinnerAdapter instanceof SpinnerAdapter) {
-                this.mListAdapter = (ListAdapter) paramSpinnerAdapter;
-            }
-        }
-
-        @Override // android.widget.Adapter
-        public int getCount() {
-            if (this.mAdapter == null) {
-                return 0;
-            }
-            return this.mAdapter.getCount();
-        }
-
-        @Override // android.widget.Adapter
-        public Object getItem(int paramInt) {
-            if (this.mAdapter == null) {
-                return null;
-            }
-            return this.mAdapter.getItem(paramInt);
-        }
-
-        @Override // android.widget.Adapter
-        public long getItemId(int paramInt) {
-            if (this.mAdapter == null) {
-                return -1L;
-            }
-            return this.mAdapter.getItemId(paramInt);
-        }
-
-        @Override // android.widget.Adapter
-        public View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
-            return getDropDownView(paramInt, paramView, paramViewGroup);
-        }
-
-        @Override // android.widget.SpinnerAdapter
-        public View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup) {
-            if (this.mAdapter == null) {
-                return null;
-            }
-            return this.mAdapter.getDropDownView(paramInt, paramView, paramViewGroup);
-        }
-
-        @Override // android.widget.Adapter
-        public boolean hasStableIds() {
-            return this.mAdapter != null && this.mAdapter.hasStableIds();
-        }
-
-        @Override // android.widget.Adapter
-        public void registerDataSetObserver(DataSetObserver paramDataSetObserver) {
-            if (this.mAdapter != null) {
-                this.mAdapter.registerDataSetObserver(paramDataSetObserver);
-            }
-        }
-
-        @Override // android.widget.Adapter
-        public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver) {
-            if (this.mAdapter != null) {
-                this.mAdapter.unregisterDataSetObserver(paramDataSetObserver);
-            }
-        }
-
-        @Override // android.widget.ListAdapter
-        public boolean areAllItemsEnabled() {
-            ListAdapter localListAdapter = this.mListAdapter;
-            if (localListAdapter != null) {
-                return localListAdapter.areAllItemsEnabled();
-            }
-            return true;
-        }
-
-        @Override // android.widget.ListAdapter
-        public boolean isEnabled(int paramInt) {
-            ListAdapter localListAdapter = this.mListAdapter;
-            if (localListAdapter != null) {
-                return localListAdapter.isEnabled(paramInt);
-            }
-            return true;
-        }
-
-        @Override // android.widget.Adapter
-        public int getItemViewType(int paramInt) {
-            return 0;
-        }
-
-        @Override // android.widget.Adapter
-        public int getViewTypeCount() {
-            return 1;
-        }
-
-        @Override // android.widget.Adapter
-        public boolean isEmpty() {
-            return getCount() == 0;
-        }
+    public void setSelection(int n) {
+        this.mNextSelectedPosition = n;
+        this.setText(this.mAdapter.getItem(n).toString());
     }
 }

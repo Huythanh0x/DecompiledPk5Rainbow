@@ -1,5 +1,7 @@
+/*
+ * Decompiled with CFR.
+ */
 package res;
 
-/* loaded from: classes.dex */
 public class FileLoader {
 }

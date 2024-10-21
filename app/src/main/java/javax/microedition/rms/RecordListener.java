@@ -1,10 +1,17 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  javax.microedition.rms.RecordStore
+ */
 package javax.microedition.rms;
 
-/* loaded from: classes.dex */
+import javax.microedition.rms.RecordStore;
+
 public interface RecordListener {
-    void recordAdded(RecordStore recordStore, int i);
+    public void recordAdded(RecordStore var1, int var2);
 
-    void recordChanged(RecordStore recordStore, int i);
+    public void recordChanged(RecordStore var1, int var2);
 
-    void recordDeleted(RecordStore recordStore, int i);
+    public void recordDeleted(RecordStore var1, int var2);
 }

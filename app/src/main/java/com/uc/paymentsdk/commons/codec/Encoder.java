@@ -1,6 +1,13 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  com.uc.paymentsdk.commons.codec.EncoderException
+ */
 package com.uc.paymentsdk.commons.codec;
 
-/* loaded from: classes.dex */
+import com.uc.paymentsdk.commons.codec.EncoderException;
+
 public interface Encoder {
-    Object encode(Object obj) throws EncoderException;
+    public Object encode(Object var1) throws EncoderException;
 }

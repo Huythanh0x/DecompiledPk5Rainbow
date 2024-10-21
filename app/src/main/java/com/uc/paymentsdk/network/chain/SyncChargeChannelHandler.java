@@ -1,3 +1,19 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  android.text.TextUtils
+ *  com.uc.paymentsdk.network.Api
+ *  com.uc.paymentsdk.network.ApiTask$TaskHandler
+ *  com.uc.paymentsdk.network.JSONParser
+ *  com.uc.paymentsdk.network.chain.Handler
+ *  com.uc.paymentsdk.network.chain.Handler$OnFinishListener
+ *  com.uc.paymentsdk.util.PrefUtil
+ *  com.uc.paymentsdk.util.Utils
+ *  org.apache.http.HttpResponse
+ *  org.json.JSONException
+ */
 package com.uc.paymentsdk.network.chain;
 
 import android.content.Context;
@@ -11,169 +27,116 @@ import com.uc.paymentsdk.util.Utils;
 import org.apache.http.HttpResponse;
 import org.json.JSONException;
 
-/* loaded from: classes.dex */
-public class SyncChargeChannelHandler extends Handler implements ApiTask.TaskHandler {
+public class SyncChargeChannelHandler
+extends Handler
+implements ApiTask.TaskHandler {
     private static int sStatus;
-    private final Integer LOCK;
+    private final Integer LOCK = 0;
     private Handler.OnFinishListener mOnFinishListener;
 
-    public SyncChargeChannelHandler(Context paramContext) {
-        super(paramContext);
-        this.LOCK = 0;
+    public SyncChargeChannelHandler(Context context) {
+        super(context);
     }
 
-    public SyncChargeChannelHandler(Context paramContext, Handler.OnFinishListener paramOnFinishListener) {
-        super(paramContext);
-        this.LOCK = 0;
-        this.mOnFinishListener = paramOnFinishListener;
+    public SyncChargeChannelHandler(Context context, Handler.OnFinishListener onFinishListener) {
+        super(context);
+        this.mOnFinishListener = onFinishListener;
+    }
+
+    static /* synthetic */ Integer access$0(SyncChargeChannelHandler syncChargeChannelHandler) {
+        return syncChargeChannelHandler.LOCK;
     }
 
     public static void init() {
         sStatus = 0;
     }
 
-    @Override // com.uc.paymentsdk.network.chain.Handler
+    /*
+     * Unable to fully structure code
+     */
     public void handleRequest() {
-        switch (sStatus) {
-            case 0:
-                sStatus = 1;
-                Api.syncChargeChannel(this.mContext, this);
+        switch (SyncChargeChannelHandler.sStatus) lbl-1000:
+        // 4 sources
+
+        {
+            default: lbl-1000:
+            // 2 sources
+
+            {
                 return;
-            case 1:
-                new Thread(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncChargeChannelHandler.1
-                    AnonymousClass1() {
-                    }
-
-                    @Override // java.lang.Runnable
-                    public void run() {
-                        synchronized (SyncChargeChannelHandler.this.LOCK) {
-                            try {
-                                SyncChargeChannelHandler.this.LOCK.wait();
-                            } catch (InterruptedException localInterruptedException) {
-                                localInterruptedException.printStackTrace();
-                            }
-                        }
-                        SyncChargeChannelHandler.this.mHandler.post(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncChargeChannelHandler.1.1
-                            RunnableC00001() {
-                            }
-
-                            @Override // java.lang.Runnable
-                            public void run() {
-                                SyncChargeChannelHandler.this.handleRequest();
-                            }
-                        });
-                    }
-
-                    /* renamed from: com.uc.paymentsdk.network.chain.SyncChargeChannelHandler$1$1 */
-                    /* loaded from: classes.dex */
-                    class RunnableC00001 implements Runnable {
-                        RunnableC00001() {
-                        }
-
-                        @Override // java.lang.Runnable
-                        public void run() {
-                            SyncChargeChannelHandler.this.handleRequest();
-                        }
-                    }
-                }).start();
-                return;
-            case 2:
-                if (getSuccessor() == null) {
-                    if (this.mOnFinishListener != null) {
-                        this.mOnFinishListener.onFinish();
-                        return;
-                    }
-                    return;
+            }
+            case 2: {
+                if (this.getSuccessor() != null) ** GOTO lbl10
+                if (this.mOnFinishListener != null) {
+                    this.mOnFinishListener.onFinish();
                 }
-                getSuccessor().handleRequest();
-                return;
-            default:
-                return;
+                ** GOTO lbl-1000
+lbl10:
+                // 1 sources
+
+                this.getSuccessor().handleRequest();
+                ** GOTO lbl-1000
+            }
+            case 1: {
+                new Thread((Runnable)new /* Unavailable Anonymous Inner Class!! */).start();
+                ** GOTO lbl-1000
+            }
+            case 0: 
         }
+        SyncChargeChannelHandler.sStatus = 1;
+        Api.syncChargeChannel((Context)this.mContext, (ApiTask.TaskHandler)this);
+        ** while (true)
     }
 
-    /* renamed from: com.uc.paymentsdk.network.chain.SyncChargeChannelHandler$1 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass1 implements Runnable {
-        AnonymousClass1() {
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            synchronized (SyncChargeChannelHandler.this.LOCK) {
-                try {
-                    SyncChargeChannelHandler.this.LOCK.wait();
-                } catch (InterruptedException localInterruptedException) {
-                    localInterruptedException.printStackTrace();
-                }
-            }
-            SyncChargeChannelHandler.this.mHandler.post(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncChargeChannelHandler.1.1
-                RunnableC00001() {
-                }
-
-                @Override // java.lang.Runnable
-                public void run() {
-                    SyncChargeChannelHandler.this.handleRequest();
-                }
-            });
-        }
-
-        /* renamed from: com.uc.paymentsdk.network.chain.SyncChargeChannelHandler$1$1 */
-        /* loaded from: classes.dex */
-        class RunnableC00001 implements Runnable {
-            RunnableC00001() {
-            }
-
-            @Override // java.lang.Runnable
-            public void run() {
-                SyncChargeChannelHandler.this.handleRequest();
-            }
-        }
-    }
-
-    @Override // com.uc.paymentsdk.network.ApiTask.TaskHandler
-    public void onSuccess(int paramInt, Object paramObject) {
-        PrefUtil.syncChargeChannels(this.mContext, (String[]) paramObject);
-        sStatus = 2;
-        synchronized (this.LOCK) {
-            this.LOCK.notifyAll();
-        }
-        if (getSuccessor() == null) {
+    /*
+     * Enabled unnecessary exception pruning
+     */
+    public void onError(int n, int n2) {
+        sStatus = 0;
+        Integer n3 = this.LOCK;
+        // MONITORENTER : n3
+        this.LOCK.notifyAll();
+        // MONITOREXIT : n3
+        if (this.getSuccessor() == null) {
             if (this.mOnFinishListener != null) {
                 this.mOnFinishListener.onFinish();
-                return;
             }
             return;
         }
-        getSuccessor().handleRequest();
+        this.getSuccessor().handleRequest();
     }
 
-    @Override // com.uc.paymentsdk.network.ApiTask.TaskHandler
-    public Object onPreHandle(int paramInt, HttpResponse paramHttpResponse) {
-        String str = Utils.getBodyString(paramInt, paramHttpResponse);
-        if (TextUtils.isEmpty(str)) {
+    /*
+     * Enabled force condition propagation
+     */
+    public Object onPreHandle(int n, HttpResponse object) {
+        if (TextUtils.isEmpty((CharSequence)(object = Utils.getBodyString((int)n, (HttpResponse)object)))) {
             return null;
         }
         try {
-            return JSONParser.parseChargeChannel(str);
-        } catch (JSONException e) {
+            return JSONParser.parseChargeChannel((String)object);
+        }
+        catch (JSONException jSONException) {
             return null;
         }
     }
 
-    @Override // com.uc.paymentsdk.network.ApiTask.TaskHandler
-    public void onError(int paramInt1, int paramInt2) {
-        sStatus = 0;
-        synchronized (this.LOCK) {
-            this.LOCK.notifyAll();
-        }
-        if (getSuccessor() == null) {
+    /*
+     * Enabled unnecessary exception pruning
+     */
+    public void onSuccess(int n, Object object) {
+        PrefUtil.syncChargeChannels((Context)this.mContext, (String[])((String[])object));
+        sStatus = 2;
+        Integer n2 = this.LOCK;
+        // MONITORENTER : n2
+        this.LOCK.notifyAll();
+        // MONITOREXIT : n2
+        if (this.getSuccessor() == null) {
             if (this.mOnFinishListener != null) {
                 this.mOnFinishListener.onFinish();
-                return;
             }
             return;
         }
-        getSuccessor().handleRequest();
+        this.getSuccessor().handleRequest();
     }
 }

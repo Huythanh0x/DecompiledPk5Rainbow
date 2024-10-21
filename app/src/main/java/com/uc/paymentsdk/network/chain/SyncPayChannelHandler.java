@@ -1,3 +1,18 @@
+/*
+ * Decompiled with CFR.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  android.text.TextUtils
+ *  com.uc.paymentsdk.network.Api
+ *  com.uc.paymentsdk.network.ApiTask$TaskHandler
+ *  com.uc.paymentsdk.network.XMLParser
+ *  com.uc.paymentsdk.network.chain.Handler
+ *  com.uc.paymentsdk.network.chain.Handler$OnFinishListener
+ *  com.uc.paymentsdk.util.PrefUtil
+ *  com.uc.paymentsdk.util.Utils
+ *  org.apache.http.HttpResponse
+ */
 package com.uc.paymentsdk.network.chain;
 
 import android.content.Context;
@@ -10,169 +25,123 @@ import com.uc.paymentsdk.util.PrefUtil;
 import com.uc.paymentsdk.util.Utils;
 import org.apache.http.HttpResponse;
 
-/* loaded from: classes.dex */
-public class SyncPayChannelHandler extends Handler implements ApiTask.TaskHandler {
+public class SyncPayChannelHandler
+extends Handler
+implements ApiTask.TaskHandler {
     private static int sStatus;
-    private final Integer LOCK;
+    private final Integer LOCK = 0;
     private Handler.OnFinishListener mOnFinishListener;
 
-    public SyncPayChannelHandler(Context paramContext) {
-        super(paramContext);
-        this.LOCK = 0;
+    public SyncPayChannelHandler(Context context) {
+        super(context);
     }
 
-    public SyncPayChannelHandler(Context paramContext, Handler.OnFinishListener paramOnFinishListener) {
-        super(paramContext);
-        this.LOCK = 0;
-        this.mOnFinishListener = paramOnFinishListener;
+    public SyncPayChannelHandler(Context context, Handler.OnFinishListener onFinishListener) {
+        super(context);
+        this.mOnFinishListener = onFinishListener;
+    }
+
+    static /* synthetic */ Integer access$0(SyncPayChannelHandler syncPayChannelHandler) {
+        return syncPayChannelHandler.LOCK;
     }
 
     public static void init() {
         sStatus = 0;
     }
 
-    @Override // com.uc.paymentsdk.network.chain.Handler
+    /*
+     * Unable to fully structure code
+     */
     public void handleRequest() {
-        switch (sStatus) {
-            case 0:
-                sStatus = 1;
-                Api.syncPayChannel(this.mContext, this);
+        switch (SyncPayChannelHandler.sStatus) lbl-1000:
+        // 4 sources
+
+        {
+            default: lbl-1000:
+            // 2 sources
+
+            {
                 return;
-            case 1:
-                new Thread(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncPayChannelHandler.1
-                    AnonymousClass1() {
-                    }
-
-                    @Override // java.lang.Runnable
-                    public void run() {
-                        synchronized (SyncPayChannelHandler.this.LOCK) {
-                            try {
-                                SyncPayChannelHandler.this.LOCK.wait();
-                            } catch (InterruptedException localInterruptedException) {
-                                localInterruptedException.printStackTrace();
-                            }
-                        }
-                        SyncPayChannelHandler.this.mHandler.post(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncPayChannelHandler.1.1
-                            RunnableC00011() {
-                            }
-
-                            @Override // java.lang.Runnable
-                            public void run() {
-                                SyncPayChannelHandler.this.handleRequest();
-                            }
-                        });
-                    }
-
-                    /* renamed from: com.uc.paymentsdk.network.chain.SyncPayChannelHandler$1$1 */
-                    /* loaded from: classes.dex */
-                    class RunnableC00011 implements Runnable {
-                        RunnableC00011() {
-                        }
-
-                        @Override // java.lang.Runnable
-                        public void run() {
-                            SyncPayChannelHandler.this.handleRequest();
-                        }
-                    }
-                }).start();
-                return;
-            case 2:
-                if (getSuccessor() == null) {
-                    if (this.mOnFinishListener != null) {
-                        this.mOnFinishListener.onFinish();
-                        return;
-                    }
-                    return;
+            }
+            case 2: {
+                if (this.getSuccessor() != null) ** GOTO lbl10
+                if (this.mOnFinishListener != null) {
+                    this.mOnFinishListener.onFinish();
                 }
-                getSuccessor().handleRequest();
-                return;
-            default:
-                return;
+                ** GOTO lbl-1000
+lbl10:
+                // 1 sources
+
+                this.getSuccessor().handleRequest();
+                ** GOTO lbl-1000
+            }
+            case 1: {
+                new Thread((Runnable)new /* Unavailable Anonymous Inner Class!! */).start();
+                ** GOTO lbl-1000
+            }
+            case 0: 
         }
+        SyncPayChannelHandler.sStatus = 1;
+        Api.syncPayChannel((Context)this.mContext, (ApiTask.TaskHandler)this);
+        ** while (true)
     }
 
-    /* renamed from: com.uc.paymentsdk.network.chain.SyncPayChannelHandler$1 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass1 implements Runnable {
-        AnonymousClass1() {
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            synchronized (SyncPayChannelHandler.this.LOCK) {
-                try {
-                    SyncPayChannelHandler.this.LOCK.wait();
-                } catch (InterruptedException localInterruptedException) {
-                    localInterruptedException.printStackTrace();
-                }
-            }
-            SyncPayChannelHandler.this.mHandler.post(new Runnable() { // from class: com.uc.paymentsdk.network.chain.SyncPayChannelHandler.1.1
-                RunnableC00011() {
-                }
-
-                @Override // java.lang.Runnable
-                public void run() {
-                    SyncPayChannelHandler.this.handleRequest();
-                }
-            });
-        }
-
-        /* renamed from: com.uc.paymentsdk.network.chain.SyncPayChannelHandler$1$1 */
-        /* loaded from: classes.dex */
-        class RunnableC00011 implements Runnable {
-            RunnableC00011() {
-            }
-
-            @Override // java.lang.Runnable
-            public void run() {
-                SyncPayChannelHandler.this.handleRequest();
-            }
-        }
-    }
-
-    @Override // com.uc.paymentsdk.network.ApiTask.TaskHandler
-    public void onSuccess(int paramInt, Object paramObject) {
-        PrefUtil.syncPayChannels(this.mContext, (String) paramObject);
-        sStatus = 2;
-        synchronized (this.LOCK) {
-            this.LOCK.notifyAll();
-        }
-        if (getSuccessor() == null) {
+    /*
+     * Enabled unnecessary exception pruning
+     */
+    public void onError(int n, int n2) {
+        sStatus = 0;
+        Integer n3 = this.LOCK;
+        // MONITORENTER : n3
+        this.LOCK.notifyAll();
+        // MONITOREXIT : n3
+        if (this.getSuccessor() == null) {
             if (this.mOnFinishListener != null) {
                 this.mOnFinishListener.onFinish();
-                return;
             }
             return;
         }
-        getSuccessor().handleRequest();
+        this.getSuccessor().handleRequest();
     }
 
-    @Override // com.uc.paymentsdk.network.ApiTask.TaskHandler
-    public Object onPreHandle(int paramInt, HttpResponse paramHttpResponse) {
-        String str = Utils.getBodyString(paramInt, paramHttpResponse);
-        if (TextUtils.isEmpty(str)) {
-            return null;
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    public Object onPreHandle(int var1_1, HttpResponse var2_2) {
+        if (TextUtils.isEmpty((CharSequence)(var2_2 /* !! */  = Utils.getBodyString((int)var1_1, (HttpResponse)var2_2 /* !! */ )))) {
+            var2_2 /* !! */  = null;
+lbl3:
+            // 3 sources
+
+            return var2_2 /* !! */ ;
         }
         try {
-            return XMLParser.parsePayChannel(str);
-        } catch (Exception e) {
-            return null;
+            var2_2 /* !! */  = XMLParser.parsePayChannel((String)var2_2 /* !! */ );
+            ** GOTO lbl3
+        }
+        catch (Exception var2_3) {
+            var2_2 /* !! */  = null;
+            ** continue;
         }
     }
 
-    @Override // com.uc.paymentsdk.network.ApiTask.TaskHandler
-    public void onError(int paramInt1, int paramInt2) {
-        sStatus = 0;
-        synchronized (this.LOCK) {
-            this.LOCK.notifyAll();
-        }
-        if (getSuccessor() == null) {
+    /*
+     * Enabled unnecessary exception pruning
+     */
+    public void onSuccess(int n, Object object) {
+        PrefUtil.syncPayChannels((Context)this.mContext, (String)((String)object));
+        sStatus = 2;
+        object = this.LOCK;
+        // MONITORENTER : object
+        this.LOCK.notifyAll();
+        // MONITOREXIT : object
+        if (this.getSuccessor() == null) {
             if (this.mOnFinishListener != null) {
                 this.mOnFinishListener.onFinish();
-                return;
             }
             return;
         }
-        getSuccessor().handleRequest();
+        this.getSuccessor().handleRequest();
     }
 }

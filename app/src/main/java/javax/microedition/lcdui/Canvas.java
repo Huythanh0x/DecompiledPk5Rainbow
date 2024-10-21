@@ -261,7 +261,7 @@ public abstract class Canvas extends View implements View.OnTouchListener, View.
      * @param event the motion event
      * @return true if the event was handled, false otherwise
      */
-    @Override
+    @Override // android.view.View.OnTouchListener
     public boolean onTouch(View v, MotionEvent event) {
         int x = (int) (event.getX() / this.keyxx);
         int y = (int) (event.getY() / this.keyyy);
@@ -288,7 +288,7 @@ public abstract class Canvas extends View implements View.OnTouchListener, View.
      * @param event the key event
      * @return true if the event was handled, false otherwise
      */
-    @Override
+    @Override // android.view.View.OnKeyListener
     public boolean onKey(View v, int keyCode, KeyEvent event) {
         switch (event.getAction()) {
             case 0:

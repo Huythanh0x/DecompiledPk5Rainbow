@@ -8,27 +8,14 @@ import javax.microedition.lcdui.Image;
  * It supports two types of data storage: byte arrays and short arrays.
  */
 public class Sprite {
-
-    /**
-     * The image associated with the sprite.
-     */
     public Image img;
-
-    /**
-     * Indicates the type of data storage used.
-     * True for byte arrays, false for short arrays.
-     */
-    private boolean type;
-
-    /**
-     * Byte array representation of module data.
-     */
-    private byte[][] module_byte;
-
-    /**
-     * Byte array representation of frame data.
-     */
-    private byte[][][] frame_byte;
+    private boolean type = true;
+    private byte[][] module_byte = null;
+    private byte[][][] frame_byte = null;
+    private byte[][][] action_byte = null;
+    private short[][] module_short = null;
+    private short[][][] frame_short = null;
+    private short[][][] action_short = null;
 
     /**
      * Byte array representation of action data.
@@ -207,4 +194,3 @@ public class Sprite {
         return this.type ? this.frame_byte[i].length : this.frame_short[i].length;
     }
 }
-

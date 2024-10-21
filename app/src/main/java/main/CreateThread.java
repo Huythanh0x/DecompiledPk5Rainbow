@@ -25,7 +25,7 @@ public class CreateThread extends Thread {
      * The run method is executed when the thread is started. It performs different tasks based on the
      * thread type, such as initializing the game map, loading items and monsters, or initializing a battle.
      */
-    @Override
+    @Override // java.lang.Thread, java.lang.Runnable
     public void run() {
         try {
             this.gr.createOver = (byte) 0;

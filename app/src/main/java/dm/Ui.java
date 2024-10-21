@@ -43,7 +43,6 @@ import main.Key_H;
  *   <li>{@link #fillRect(int, int, int, int, int)}: Fills a rectangle with a color.</li>
  *   <li>{@link #drawLine(int, int, int, int, int)}: Draws a line with a color.</li>
  *   <li>{@link #drawRect(int, int, int, int, int)}: Draws a rectangle with a color.</li>
- *   <li>{@link #fillArc(int, int, int, int, int, int)}: Fills an arc with a color.</li>
  *   <li>{@link #drawString(String, int, int, int, int, int)}: Draws a string with a color and mode.</li>
  *   <li>{@link #drawStringColor(String, int, int, int, int)}: Draws a string with multiple colors.</li>
  *   <li>{@link #drawStringY(StringBuffer[], int, int, int, int, int)}: Draws multiple strings vertically.</li>

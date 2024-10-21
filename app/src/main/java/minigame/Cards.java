@@ -44,9 +44,9 @@ public class Cards implements MiniGame_H {
         this.lv = (byte) lv_;
         this.findN = null;
         //todo thanh0x fix here [][]
-        this.findN = new byte[this.num[this.lv][0]][this.num[this.lv][1]];
+        this.findN = (byte[][]) Array.newInstance((Class<?>) Byte.TYPE, this.num[this.lv][0], this.num[this.lv][1]);
         this.findC = null;
-        this.findC = new byte[this.num[this.lv][0]][this.num[this.lv][1]];
+        this.findC = (byte[][]) Array.newInstance((Class<?>) Byte.TYPE, this.num[this.lv][0], this.num[this.lv][1]);
         this.length = (byte) 9;
         go(mode);
     }

@@ -54,9 +54,6 @@ public final class AndroidHttpClient implements HttpClient {
     private RuntimeException mLeakedException = new IllegalStateException("AndroidHttpClient created and never closed");
     public static long DEFAULT_SYNC_MIN_GZIP_BYTES = 256;
     private static final HttpRequestInterceptor sThreadCheckInterceptor = new HttpRequestInterceptor() { // from class: com.uc.paymentsdk.network.AndroidHttpClient.1
-        AnonymousClass1() {
-        }
-
         @Override // org.apache.http.HttpRequestInterceptor
         public void process(HttpRequest paramHttpRequest, HttpContext paramHttpContext) {
             if (Looper.myLooper() != null && Looper.myLooper() == Looper.getMainLooper()) {
@@ -64,20 +61,6 @@ public final class AndroidHttpClient implements HttpClient {
             }
         }
     };
-
-    /* renamed from: com.uc.paymentsdk.network.AndroidHttpClient$1 */
-    /* loaded from: classes.dex */
-    class AnonymousClass1 implements HttpRequestInterceptor {
-        AnonymousClass1() {
-        }
-
-        @Override // org.apache.http.HttpRequestInterceptor
-        public void process(HttpRequest paramHttpRequest, HttpContext paramHttpContext) {
-            if (Looper.myLooper() != null && Looper.myLooper() == Looper.getMainLooper()) {
-                throw new RuntimeException("This thread forbids HTTP requests");
-            }
-        }
-    }
 
     public static AndroidHttpClient newInstance(String paramString, Context paramContext) {
         BasicHttpParams localBasicHttpParams = new BasicHttpParams();
@@ -113,10 +96,6 @@ public final class AndroidHttpClient implements HttpClient {
 
     private AndroidHttpClient(ClientConnectionManager paramClientConnectionManager, HttpParams paramHttpParams) {
         this.delegate = new DefaultHttpClient(paramClientConnectionManager, paramHttpParams) { // from class: com.uc.paymentsdk.network.AndroidHttpClient.2
-            AnonymousClass2(ClientConnectionManager paramClientConnectionManager2, HttpParams paramHttpParams2) {
-                super(paramClientConnectionManager2, paramHttpParams2);
-            }
-
             @Override // org.apache.http.impl.client.DefaultHttpClient, org.apache.http.impl.client.AbstractHttpClient
             protected BasicHttpProcessor createHttpProcessor() {
                 BasicHttpProcessor localBasicHttpProcessor = super.createHttpProcessor();
@@ -135,33 +114,6 @@ public final class AndroidHttpClient implements HttpClient {
                 return localBasicHttpContext;
             }
         };
-    }
-
-    /* JADX INFO: Access modifiers changed from: package-private */
-    /* renamed from: com.uc.paymentsdk.network.AndroidHttpClient$2 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass2 extends DefaultHttpClient {
-        AnonymousClass2(ClientConnectionManager paramClientConnectionManager2, HttpParams paramHttpParams2) {
-            super(paramClientConnectionManager2, paramHttpParams2);
-        }
-
-        @Override // org.apache.http.impl.client.DefaultHttpClient, org.apache.http.impl.client.AbstractHttpClient
-        protected BasicHttpProcessor createHttpProcessor() {
-            BasicHttpProcessor localBasicHttpProcessor = super.createHttpProcessor();
-            localBasicHttpProcessor.addRequestInterceptor(AndroidHttpClient.sThreadCheckInterceptor);
-            localBasicHttpProcessor.addRequestInterceptor(new CurlLogger(AndroidHttpClient.this, null));
-            return localBasicHttpProcessor;
-        }
-
-        @Override // org.apache.http.impl.client.DefaultHttpClient, org.apache.http.impl.client.AbstractHttpClient
-        protected HttpContext createHttpContext() {
-            BasicHttpContext localBasicHttpContext = new BasicHttpContext();
-            localBasicHttpContext.setAttribute("http.authscheme-registry", getAuthSchemes());
-            localBasicHttpContext.setAttribute("http.cookiespec-registry", getCookieSpecs());
-            localBasicHttpContext.setAttribute("http.auth.credentials-provider", getCredentialsProvider());
-            localBasicHttpContext.setAttribute("http.cookie-store", getCookieStore());
-            return localBasicHttpContext;
-        }
     }
 
     public void useCmwapConnection() {
@@ -398,10 +350,12 @@ public final class AndroidHttpClient implements HttpClient {
             this(str, i);
         }
 
+        /* JADX INFO: Access modifiers changed from: private */
         public boolean isLoggable() {
             return Log.isLoggable(this.tag, this.level);
         }
 
+        /* JADX INFO: Access modifiers changed from: private */
         public void println(String paramString) {
             Log.println(this.level, this.tag, paramString);
         }

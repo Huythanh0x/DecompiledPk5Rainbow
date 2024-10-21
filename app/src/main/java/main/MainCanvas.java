@@ -88,7 +88,7 @@ public final class MainCanvas extends FullCanvas implements Runnable {
      */
     /* JADX WARN: Code restructure failed: missing block: B:13:0x0039, code lost:
     
-        if (dm.Ms.keyRepeat == false) goto L76;
+        if (dm.Ms.keyRepeat == false) goto L17;
      */
     /* JADX WARN: Code restructure failed: missing block: B:14:0x003b, code lost:
     
@@ -102,16 +102,17 @@ public final class MainCanvas extends FullCanvas implements Runnable {
     @Override // java.lang.Runnable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void run() {
         /*
             Method dump skipped, instructions count: 252
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: main.MainCanvas.run():void");
     }
 
+    /* JADX INFO: Access modifiers changed from: package-private */
     public void createFlashImage() {
         if (this.flashSP == null) {
             this.flashSP = Ms.i().createSprite("data/fm", false);
@@ -137,6 +138,7 @@ public final class MainCanvas extends FullCanvas implements Runnable {
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: package-private */
     public void goMain_menu() {
         Sound.i().setMusicId(7);
         Sound.i().setMusic(false);
@@ -532,6 +534,7 @@ public final class MainCanvas extends FullCanvas implements Runnable {
         this.load_c++;
     }
 
+    /* JADX INFO: Access modifiers changed from: package-private */
     public void goHELP_dialog(int mode) {
         this.game_state = 40;
         this.menu_state = 4;

@@ -59,6 +59,7 @@ public class Image {
         return image;
     }
 
+    /* JADX INFO: Access modifiers changed from: package-private */
     public Bitmap getBitMapInpackage() {
         return this.mBitmap;
     }

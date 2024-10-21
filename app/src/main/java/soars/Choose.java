@@ -37,9 +37,6 @@ public class Choose extends Activity {
         this.btn = (Button) findViewById(R.id.button1);
         this.btn2 = (Button) findViewById(R.id.button2);
         this.btn.setOnClickListener(new View.OnClickListener() { // from class: soars.Choose.1
-            AnonymousClass1() {
-            }
-
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 SMSSender.smsSender.setSmsValue(0);
@@ -47,40 +44,11 @@ public class Choose extends Activity {
             }
         });
         this.btn2.setOnClickListener(new View.OnClickListener() { // from class: soars.Choose.2
-            AnonymousClass2() {
-            }
-
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 SMSSender.smsSender.setSmsValue(1);
                 Choose.this.finishFromChild(Choose.this.getParent());
             }
         });
-    }
-
-    /* renamed from: soars.Choose$1 */
-    /* loaded from: classes.dex */
-    class AnonymousClass1 implements View.OnClickListener {
-        AnonymousClass1() {
-        }
-
-        @Override // android.view.View.OnClickListener
-        public void onClick(View v) {
-            SMSSender.smsSender.setSmsValue(0);
-            Choose.this.finishFromChild(Choose.this.getParent());
-        }
-    }
-
-    /* renamed from: soars.Choose$2 */
-    /* loaded from: classes.dex */
-    class AnonymousClass2 implements View.OnClickListener {
-        AnonymousClass2() {
-        }
-
-        @Override // android.view.View.OnClickListener
-        public void onClick(View v) {
-            SMSSender.smsSender.setSmsValue(1);
-            Choose.this.finishFromChild(Choose.this.getParent());
-        }
     }
 }

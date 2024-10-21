@@ -59,11 +59,13 @@ public final class Graphics {
         initPaint();
     }
 
+    /* JADX INFO: Access modifiers changed from: package-private */
     public void setCanvas(android.graphics.Canvas canvas) {
         this.canvas = canvas;
         initPaint();
     }
 
+    /* JADX INFO: Access modifiers changed from: package-private */
     public Graphics(android.graphics.Canvas canvas, Paint painter, Bitmap bitmap) {
         this.canvas = canvas;
         this.graphicbitmap = bitmap;

@@ -151,9 +151,6 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
     private int mType;
     private UPointPayInfo mUPayInfo;
     private final BroadcastReceiver mSmsReceiver = new BroadcastReceiver() { // from class: com.uc.paymentsdk.payment.PaymentsActivity.1
-        AnonymousClass1() {
-        }
-
         @Override // android.content.BroadcastReceiver
         public void onReceive(Context paramContext, Intent paramIntent) {
             switch (getResultCode()) {
@@ -233,9 +230,6 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
         }
     };
     private final Runnable mSmsRunnable = new Runnable() { // from class: com.uc.paymentsdk.payment.PaymentsActivity.2
-        AnonymousClass2() {
-        }
-
         @Override // java.lang.Runnable
         public void run() {
             if (PaymentsActivity.this.mSmsContent != null) {
@@ -259,121 +253,6 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
             }
         }
     };
-
-    /* renamed from: com.uc.paymentsdk.payment.PaymentsActivity$1 */
-    /* loaded from: classes.dex */
-    class AnonymousClass1 extends BroadcastReceiver {
-        AnonymousClass1() {
-        }
-
-        @Override // android.content.BroadcastReceiver
-        public void onReceive(Context paramContext, Intent paramIntent) {
-            switch (getResultCode()) {
-                case -1:
-                    if (4 == PaymentsActivity.this.mType) {
-                        if (PaymentsActivity.this.mSmsInfo.isNeedconfirm()) {
-                            try {
-                                Thread.sleep(5000L);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            PaymentsActivity.this.removeDialog(17);
-                            String smsConfirmText = PaymentsActivity.this.mSmsInfo.getSmsConfirmContent();
-                            String smsaddress = PaymentsActivity.this.mSmsInfo.getSmsConfirmNumber();
-                            PaymentsActivity.this.buildSmsPaymentConfirmView(smsaddress, smsConfirmText);
-                            return;
-                        }
-                        PaymentsActivity.this.mLeftSmsToSendCount--;
-                        PaymentsActivity.this.removeDialog(17);
-                        PrefUtil.setPayedAmount(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this.getPayedAmount());
-                        if (PaymentsActivity.this.mLeftSmsToSendCount < 1) {
-                            try {
-                                PaymentsActivity.this.unregisterReceiver(PaymentsActivity.this.mSmsReceiver);
-                            } catch (IllegalArgumentException e2) {
-                            }
-                            PaymentsActivity.this.mSmsResultInfo = "支付已完成，祝您玩得开心。";
-                            PaymentsActivity.this.showDialog(20);
-                        } else {
-                            PaymentsActivity.this.buildSmsPaymentView();
-                        }
-                        if (PaymentsActivity.this.mSmsInfo.getSmstype() == 1) {
-                            Api.postSmsPayment(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this, PaymentsActivity.this.mPaymentInfo.getCpID(), PaymentsActivity.this.mPaymentInfo.getmGameID(), PaymentsActivity.this.mPaymentInfo.getmActionID(), Utils.getSmsPayment(), PaymentsActivity.this.mPaymentInfo.getmActionID(), PaymentsActivity.this.mSmsInfo.getSmschannelid(), PaymentsActivity.this.mSmsInfo.getSmsnumber(), PaymentsActivity.this.mSmsInfo.getContent(), PaymentsActivity.this.mSmsInfo.getSmstype());
-                            return;
-                        }
-                        return;
-                    }
-                    PaymentsActivity.this.removeDialog(17);
-                    PaymentsActivity.this.mLeftSmsToSendCount--;
-                    PrefUtil.setPayedAmount(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this.getPayedAmount());
-                    if (PaymentsActivity.this.mLeftSmsToSendCount < 1) {
-                        try {
-                            PaymentsActivity.this.unregisterReceiver(PaymentsActivity.this.mSmsReceiver);
-                        } catch (IllegalArgumentException e3) {
-                        }
-                        PaymentsActivity.this.mSmsResultInfo = "支付已完成，祝您玩得开心。";
-                        PaymentsActivity.this.showDialog(20);
-                    } else {
-                        PaymentsActivity.this.buildSmsPaymentView();
-                    }
-                    if (PaymentsActivity.this.mSmsInfo.getSmstype() == 1) {
-                        Api.postSmsPayment(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this, PaymentsActivity.this.mPaymentInfo.getCpID(), PaymentsActivity.this.mPaymentInfo.getmGameID(), PaymentsActivity.this.mPaymentInfo.getmActionID(), Utils.getSmsPayment(), PaymentsActivity.this.mPaymentInfo.getmActionID(), PaymentsActivity.this.mSmsInfo.getSmschannelid(), PaymentsActivity.this.mSmsInfo.getSmsnumber(), PaymentsActivity.this.mSmsInfo.getContent(), PaymentsActivity.this.mSmsInfo.getSmstype());
-                        return;
-                    }
-                    return;
-                case 1:
-                case 133404:
-                    return;
-                case 2:
-                    PaymentsActivity.this.removeDialog(17);
-                    PaymentsActivity.this.mSmsResultInfo = "当前手机设置为飞行模式，不能发送短信。";
-                    PaymentsActivity.this.showDialog(21);
-                    if ((PaymentsActivity.this.mLeftSmsToSendCount != -1 || 5 == PaymentsActivity.this.mType) && PaymentsActivity.this.mSmsContent != null) {
-                        PaymentsActivity.this.getContentResolver().unregisterContentObserver(PaymentsActivity.this.mSmsContent);
-                        return;
-                    }
-                    return;
-                default:
-                    PaymentsActivity.this.removeDialog(17);
-                    PaymentsActivity.this.mSmsResultInfo = Constants.TEXT_PAY_SMS_FAILED_INSUFFENT_BALANCE;
-                    PaymentsActivity.this.showDialog(21);
-                    if ((PaymentsActivity.this.mLeftSmsToSendCount != -1 || 5 == PaymentsActivity.this.mType) && PaymentsActivity.this.mSmsContent != null) {
-                        PaymentsActivity.this.getContentResolver().unregisterContentObserver(PaymentsActivity.this.mSmsContent);
-                        return;
-                    }
-                    return;
-            }
-        }
-    }
-
-    /* renamed from: com.uc.paymentsdk.payment.PaymentsActivity$2 */
-    /* loaded from: classes.dex */
-    class AnonymousClass2 implements Runnable {
-        AnonymousClass2() {
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            if (PaymentsActivity.this.mSmsContent != null) {
-                PaymentsActivity.this.getContentResolver().unregisterContentObserver(PaymentsActivity.this.mSmsContent);
-            }
-            PaymentsActivity.this.removeDialog(17);
-            if (PaymentsActivity.this.mSmsInfo.needconfirm) {
-                PaymentsActivity.this.mSmsResultInfo = "对不起，接收确认短信超时，请重新尝试支付！";
-                PaymentsActivity.this.showDialog(21);
-            } else if (PaymentsActivity.this.mLeftSmsToSendCount > 0) {
-                PaymentsActivity.this.mSmsResultInfo = "对不起，短信支付已经超时，请重新支付！";
-                PaymentsActivity.this.showDialog(21);
-            } else {
-                PrefUtil.setPayedAmount(PaymentsActivity.this.getApplicationContext(), PaymentsActivity.this.getPayedAmount());
-                PaymentsActivity.this.mSmsResultInfo = "感谢您的使用，祝您玩得开心！";
-                PaymentsActivity.this.showDialog(20);
-            }
-            try {
-                PaymentsActivity.this.unregisterReceiver(PaymentsActivity.this.mSmsReceiver);
-            } catch (IllegalArgumentException e) {
-            }
-        }
-    }
 
     @Override // android.app.Activity
     protected void onCreate(Bundle paramBundle) {
@@ -545,6 +424,7 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     public int getPayedAmount() {
         int i = Utils.getSmsPayment() - PrefUtil.getPayedAmount(getApplicationContext());
         int j = i / this.mSmsInfo.money;
@@ -862,6 +742,7 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
         setContentView(scrollView);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     public void buildSmsPaymentView() {
         this.mType = 4;
         this.mSmsId = 0;
@@ -921,13 +802,13 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
                     TextView tvInfo2;
                     TextView waitTV;
 
-                    AnonymousClass3(TextView waitTextView2, TextView beforeSendText2, int smsPayCount2, Button cancelButton2, Button submitBtn2, RelativeLayout relativeLayout2) {
-                        this.waitTV = waitTextView2;
-                        this.tvInfo2 = beforeSendText2;
-                        this.smsPayment = smsPayCount2;
-                        this.cancelBtn = cancelButton2;
-                        this.okBtn = submitBtn2;
-                        this.contentPanel = relativeLayout2;
+                    {
+                        this.waitTV = waitTextView;
+                        this.tvInfo2 = beforeSendText;
+                        this.smsPayment = smsPayCount;
+                        this.cancelBtn = cancelButton;
+                        this.okBtn = submitBtn;
+                        this.contentPanel = relativeLayout;
                     }
 
                     @Override // com.uc.paymentsdk.network.chain.Handler.OnFinishListener
@@ -943,7 +824,7 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
                     }
                 }).handleRequest();
             } else {
-                initSmsPayView(waitTextView2, beforeSendText2, smsPayCount2, cancelButton2, submitBtn2, relativeLayout2);
+                initSmsPayView(waitTextView, beforeSendText, smsPayCount, cancelButton, submitBtn, relativeLayout);
             }
         } catch (SimCardNotSupportException localSimCardNotSupportException) {
             this.mSmsResultInfo = localSimCardNotSupportException.getMessage();
@@ -951,38 +832,7 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
         }
     }
 
-    /* renamed from: com.uc.paymentsdk.payment.PaymentsActivity$3 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass3 implements Handler.OnFinishListener {
-        Button cancelBtn;
-        RelativeLayout contentPanel;
-        Button okBtn;
-        int smsPayment;
-        TextView tvInfo2;
-        TextView waitTV;
-
-        AnonymousClass3(TextView waitTextView2, TextView beforeSendText2, int smsPayCount2, Button cancelButton2, Button submitBtn2, RelativeLayout relativeLayout2) {
-            this.waitTV = waitTextView2;
-            this.tvInfo2 = beforeSendText2;
-            this.smsPayment = smsPayCount2;
-            this.cancelBtn = cancelButton2;
-            this.okBtn = submitBtn2;
-            this.contentPanel = relativeLayout2;
-        }
-
-        @Override // com.uc.paymentsdk.network.chain.Handler.OnFinishListener
-        public void onFinish() {
-            if (Utils.getSmsInfos() != null) {
-                PaymentsActivity.this.mIsSynced = true;
-                PaymentsActivity.this.removeDialog(19);
-                PaymentsActivity.this.initSmsPayView(this.waitTV, this.tvInfo2, this.smsPayment, this.cancelBtn, this.okBtn, this.contentPanel);
-            } else {
-                PaymentsActivity.this.removeDialog(19);
-                PaymentsActivity.this.showDialog(15);
-            }
-        }
-    }
-
+    /* JADX INFO: Access modifiers changed from: private */
     public void initSmsPayView(TextView tvSmsMessage, TextView tvSmsText, int payMoney, Button cancelBtn, Button okBtn, RelativeLayout tableLayout) {
         Spanned showtext;
         Spanned showtext2;
@@ -1068,6 +918,7 @@ public class PaymentsActivity extends Activity implements View.OnClickListener, 
         setContentView(tableLayout);
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     public void buildSmsPaymentConfirmView(String smsaddress, String smsconfirmnumber) {
         this.mType = 5;
         try {

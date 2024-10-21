@@ -385,14 +385,14 @@ public class Utils {
                         localWindowManager.getDefaultDisplay().getMetrics(localObject);
                         sIsHdpi = ((double) localObject.density) > 1.0d;
                     }
-                } catch (IllegalArgumentException e) {
+                } catch (IllegalAccessException e) {
                     sIsHdpi = false;
-                } catch (NoSuchFieldException e2) {
+                } catch (SecurityException e2) {
                     sIsHdpi = false;
                 }
-            } catch (IllegalAccessException e3) {
+            } catch (IllegalArgumentException e3) {
                 sIsHdpi = false;
-            } catch (SecurityException e4) {
+            } catch (NoSuchFieldException e4) {
                 sIsHdpi = false;
             }
         } catch (PackageManager.NameNotFoundException e5) {
@@ -491,15 +491,15 @@ public class Utils {
                     } else {
                         localStringBuilder.append(str);
                     }
-                } catch (IOException localIOException2) {
-                    localIOException2.printStackTrace();
+                } finally {
                     try {
                         paramInputStream.close();
                     } catch (IOException localIOException42) {
                         localIOException42.printStackTrace();
                     }
                 }
-            } finally {
+            } catch (IOException localIOException2) {
+                localIOException2.printStackTrace();
                 try {
                     paramInputStream.close();
                 } catch (IOException localIOException43) {

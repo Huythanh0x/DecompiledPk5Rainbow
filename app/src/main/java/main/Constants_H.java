@@ -657,400 +657,400 @@ public class Constants_H {
     public static final byte _SHOW = 4;
     public static final byte sellPrice = 10;
 
-    /* renamed from: 万能药 */
+    /* renamed from: 万能药, reason: contains not printable characters */
     public static final byte f0 = 8;
 
-    /* renamed from: 五彩果实 */
+    /* renamed from: 五彩果实, reason: contains not printable characters */
     public static final byte f1 = 27;
 
-    /* renamed from: 亲和天使 */
+    /* renamed from: 亲和天使, reason: contains not printable characters */
     public static final byte f2 = 41;
 
-    /* renamed from: 健壮体魄 */
+    /* renamed from: 健壮体魄, reason: contains not printable characters */
     public static final byte f3 = 2;
 
-    /* renamed from: 兴奋菇 */
+    /* renamed from: 兴奋菇, reason: contains not printable characters */
     public static final byte f4 = 12;
 
-    /* renamed from: 兽魂 */
+    /* renamed from: 兽魂, reason: contains not printable characters */
     public static final byte f5 = 17;
 
-    /* renamed from: 军心涣散 */
+    /* renamed from: 军心涣散, reason: contains not printable characters */
     public static final byte f6 = 26;
 
-    /* renamed from: 初级治疗 */
+    /* renamed from: 初级治疗, reason: contains not printable characters */
     public static final byte f7 = 27;
 
-    /* renamed from: 动作攻击 */
+    /* renamed from: 动作攻击, reason: contains not printable characters */
     public static final byte f8 = 1;
 
-    /* renamed from: 动作死亡 */
+    /* renamed from: 动作死亡, reason: contains not printable characters */
     public static final byte f9 = 2;
 
-    /* renamed from: 动作站立 */
+    /* renamed from: 动作站立, reason: contains not printable characters */
     public static final byte f10 = 0;
 
-    /* renamed from: 卖出 */
+    /* renamed from: 卖出, reason: contains not printable characters */
     public static final byte f11 = 4;
 
-    /* renamed from: 古鲸之心 */
+    /* renamed from: 古鲸之心, reason: contains not printable characters */
     public static final byte f12 = 29;
 
-    /* renamed from: 和谐攻击 */
+    /* renamed from: 和谐攻击, reason: contains not printable characters */
     public static final byte f13 = 9;
 
-    /* renamed from: 噬魂 */
+    /* renamed from: 噬魂, reason: contains not printable characters */
     public static final byte f14 = 20;
 
-    /* renamed from: 圣灵宽恕 */
+    /* renamed from: 圣灵宽恕, reason: contains not printable characters */
     public static final byte f15 = 13;
 
-    /* renamed from: 地狱之火 */
+    /* renamed from: 地狱之火, reason: contains not printable characters */
     public static final byte f16 = 22;
 
-    /* renamed from: 坐船 */
+    /* renamed from: 坐船, reason: contains not printable characters */
     public static final byte f17 = 5;
 
-    /* renamed from: 坚韧石 */
+    /* renamed from: 坚韧石, reason: contains not printable characters */
     public static final byte f18 = 16;
 
-    /* renamed from: 大师球 */
+    /* renamed from: 大师球, reason: contains not printable characters */
     public static final byte f19 = 11;
 
-    /* renamed from: 大海意志 */
+    /* renamed from: 大海意志, reason: contains not printable characters */
     public static final byte f20 = 47;
 
-    /* renamed from: 天怒 */
+    /* renamed from: 天怒, reason: contains not printable characters */
     public static final byte f21 = 14;
 
-    /* renamed from: 天空意志 */
+    /* renamed from: 天空意志, reason: contains not printable characters */
     public static final byte f22 = 45;
 
-    /* renamed from: 天羽 */
+    /* renamed from: 天羽, reason: contains not printable characters */
     public static final byte f23 = 23;
 
-    /* renamed from: 学习技能 */
+    /* renamed from: 学习技能, reason: contains not printable characters */
     public static final byte f24 = 35;
 
-    /* renamed from: 宝箱 */
+    /* renamed from: 宝箱, reason: contains not printable characters */
     public static final byte f25 = 32;
 
-    /* renamed from: 宠物的蛋 */
+    /* renamed from: 宠物的蛋, reason: contains not printable characters */
     public static final byte f26 = 3;
 
-    /* renamed from: 宠物蛋 */
+    /* renamed from: 宠物蛋, reason: contains not printable characters */
     public static final byte f27 = 58;
 
-    /* renamed from: 封印球 */
+    /* renamed from: 封印球, reason: contains not printable characters */
     public static final byte f28 = 9;
 
-    /* renamed from: 封闭技能 */
+    /* renamed from: 封闭技能, reason: contains not printable characters */
     public static final byte f29 = 30;
 
-    /* renamed from: 封闭效果 */
+    /* renamed from: 封闭效果, reason: contains not printable characters */
     public static final byte f30 = 6;
 
-    /* renamed from: 尖牙利齿 */
+    /* renamed from: 尖牙利齿, reason: contains not printable characters */
     public static final byte f31 = 32;
 
-    /* renamed from: 巧克力 */
+    /* renamed from: 巧克力, reason: contains not printable characters */
     public static final byte f32 = 2;
 
-    /* renamed from: 幸运之星 */
+    /* renamed from: 幸运之星, reason: contains not printable characters */
     public static final byte f33 = 39;
 
-    /* renamed from: 异化材料 */
+    /* renamed from: 异化材料, reason: contains not printable characters */
     public static final byte f34 = 34;
 
-    /* renamed from: 忠诚伙伴 */
+    /* renamed from: 忠诚伙伴, reason: contains not printable characters */
     public static final byte f35 = 40;
 
-    /* renamed from: 怒意狂暴 */
+    /* renamed from: 怒意狂暴, reason: contains not printable characters */
     public static final byte f36 = 17;
 
-    /* renamed from: 意志坚定 */
+    /* renamed from: 意志坚定, reason: contains not printable characters */
     public static final byte f37 = 8;
 
-    /* renamed from: 意志涣散 */
+    /* renamed from: 意志涣散, reason: contains not printable characters */
     public static final byte f38 = 7;
 
-    /* renamed from: 战斗店 */
+    /* renamed from: 战斗店, reason: contains not printable characters */
     public static final byte f39 = 0;
 
-    /* renamed from: 战斗道具 */
+    /* renamed from: 战斗道具, reason: contains not printable characters */
     public static final byte f40 = 0;
 
-    /* renamed from: 扑咬 */
+    /* renamed from: 扑咬, reason: contains not printable characters */
     public static final byte f41 = 15;
 
-    /* renamed from: 技能卷轴 */
+    /* renamed from: 技能卷轴, reason: contains not printable characters */
     public static final byte f42 = 2;
 
-    /* renamed from: 撕裂击 */
+    /* renamed from: 撕裂击, reason: contains not printable characters */
     public static final byte f43 = 16;
 
-    /* renamed from: 撕裂效果 */
+    /* renamed from: 撕裂效果, reason: contains not printable characters */
     public static final byte f44 = 2;
 
-    /* renamed from: 无效果 */
+    /* renamed from: 无效果, reason: contains not printable characters */
     public static final byte f45 = 7;
 
-    /* renamed from: 昏睡效果 */
+    /* renamed from: 昏睡效果, reason: contains not printable characters */
     public static final byte f46 = 1;
 
-    /* renamed from: 普通攻击 */
+    /* renamed from: 普通攻击, reason: contains not printable characters */
     public static final byte f47 = 25;
 
-    /* renamed from: 暴风旋阵 */
+    /* renamed from: 暴风旋阵, reason: contains not printable characters */
     public static final byte f48 = 11;
 
-    /* renamed from: 替身木偶 */
+    /* renamed from: 替身木偶, reason: contains not printable characters */
     public static final byte f49 = 48;
 
-    /* renamed from: 朱果 */
+    /* renamed from: 朱果, reason: contains not printable characters */
     public static final byte f50 = 19;
 
-    /* renamed from: 枯黄枝叶 */
+    /* renamed from: 枯黄枝叶, reason: contains not printable characters */
     public static final byte f51 = 3;
 
-    /* renamed from: 树瘴石 */
+    /* renamed from: 树瘴石, reason: contains not printable characters */
     public static final byte f52 = 18;
 
-    /* renamed from: 树神之怒 */
+    /* renamed from: 树神之怒, reason: contains not printable characters */
     public static final byte f53 = 4;
 
-    /* renamed from: 植物 */
+    /* renamed from: 植物, reason: contains not printable characters */
     public static final byte f54 = 0;
 
-    /* renamed from: 死亡之触 */
+    /* renamed from: 死亡之触, reason: contains not printable characters */
     public static final byte f55 = 29;
 
-    /* renamed from: 残忍攻击 */
+    /* renamed from: 残忍攻击, reason: contains not printable characters */
     public static final byte f56 = 10;
 
-    /* renamed from: 毒液攻击 */
+    /* renamed from: 毒液攻击, reason: contains not printable characters */
     public static final byte f57 = 31;
 
-    /* renamed from: 水泡 */
+    /* renamed from: 水泡, reason: contains not printable characters */
     public static final byte f58 = 20;
 
-    /* renamed from: 没有天赋 */
+    /* renamed from: 没有天赋, reason: contains not printable characters */
     public static final byte f59 = 0;
 
-    /* renamed from: 浑浊水质 */
+    /* renamed from: 浑浊水质, reason: contains not printable characters */
     public static final byte f60 = 11;
 
-    /* renamed from: 海洋 */
+    /* renamed from: 海洋, reason: contains not printable characters */
     public static final byte f61 = 4;
 
-    /* renamed from: 深海珊瑚 */
+    /* renamed from: 深海珊瑚, reason: contains not printable characters */
     public static final byte f62 = 21;
 
-    /* renamed from: 熊之铠甲 */
+    /* renamed from: 熊之铠甲, reason: contains not printable characters */
     public static final byte f63 = 26;
 
-    /* renamed from: 特殊 */
+    /* renamed from: 特殊, reason: contains not printable characters */
     public static final byte f64 = 5;
 
-    /* renamed from: 狂暴嘶吼 */
+    /* renamed from: 狂暴嘶吼, reason: contains not printable characters */
     public static final byte f65 = 19;
 
-    /* renamed from: 猛砸 */
+    /* renamed from: 猛砸, reason: contains not printable characters */
     public static final byte f66 = 5;
 
-    /* renamed from: 生命石 */
+    /* renamed from: 生命石, reason: contains not printable characters */
     public static final byte f67 = 7;
 
-    /* renamed from: 疾风速降 */
+    /* renamed from: 疾风速降, reason: contains not printable characters */
     public static final byte f68 = 12;
 
-    /* renamed from: 白金 */
+    /* renamed from: 白金, reason: contains not printable characters */
     public static final byte f69 = 25;
 
-    /* renamed from: 石化效果 */
+    /* renamed from: 石化效果, reason: contains not printable characters */
     public static final byte f70 = 0;
 
-    /* renamed from: 破碎外壳 */
+    /* renamed from: 破碎外壳, reason: contains not printable characters */
     public static final byte f71 = 5;
 
-    /* renamed from: 禁锢效果 */
+    /* renamed from: 禁锢效果, reason: contains not printable characters */
     public static final byte f72 = 4;
 
-    /* renamed from: 离空石 */
+    /* renamed from: 离空石, reason: contains not printable characters */
     public static final byte f73 = 22;
 
-    /* renamed from: 粉碎螺旋 */
+    /* renamed from: 粉碎螺旋, reason: contains not printable characters */
     public static final byte f74 = 8;
 
-    /* renamed from: 精原石 */
+    /* renamed from: 精原石, reason: contains not printable characters */
     public static final byte f75 = 24;
 
-    /* renamed from: 精神攻击 */
+    /* renamed from: 精神攻击, reason: contains not printable characters */
     public static final byte f76 = 34;
 
-    /* renamed from: 纯净水质 */
+    /* renamed from: 纯净水质, reason: contains not printable characters */
     public static final byte f77 = 12;
 
-    /* renamed from: 经验丰富 */
+    /* renamed from: 经验丰富, reason: contains not printable characters */
     public static final byte f78 = 37;
 
-    /* renamed from: 经验多多 */
+    /* renamed from: 经验多多, reason: contains not printable characters */
     public static final byte f79 = 36;
 
-    /* renamed from: 缠绕 */
+    /* renamed from: 缠绕, reason: contains not printable characters */
     public static final byte f80 = 0;
 
-    /* renamed from: 聚能石 */
+    /* renamed from: 聚能石, reason: contains not printable characters */
     public static final byte f81 = 4;
 
-    /* renamed from: 肆虐冲锋 */
+    /* renamed from: 肆虐冲锋, reason: contains not printable characters */
     public static final byte f82 = 18;
 
-    /* renamed from: 能量壁垒 */
+    /* renamed from: 能量壁垒, reason: contains not printable characters */
     public static final byte f83 = 35;
 
-    /* renamed from: 能量石 */
+    /* renamed from: 能量石, reason: contains not printable characters */
     public static final byte f84 = 3;
 
-    /* renamed from: 腐蚀效果 */
+    /* renamed from: 腐蚀效果, reason: contains not printable characters */
     public static final byte f85 = 5;
 
-    /* renamed from: 自然康复 */
+    /* renamed from: 自然康复, reason: contains not printable characters */
     public static final byte f86 = 4;
 
-    /* renamed from: 自然风暴 */
+    /* renamed from: 自然风暴, reason: contains not printable characters */
     public static final byte f87 = 3;
 
-    /* renamed from: 花粉纷飞 */
+    /* renamed from: 花粉纷飞, reason: contains not printable characters */
     public static final byte f88 = 1;
 
-    /* renamed from: 花草意志 */
+    /* renamed from: 花草意志, reason: contains not printable characters */
     public static final byte f89 = 43;
 
-    /* renamed from: 荆棘陷阱 */
+    /* renamed from: 荆棘陷阱, reason: contains not printable characters */
     public static final byte f90 = 2;
 
-    /* renamed from: 虎之气概 */
+    /* renamed from: 虎之气概, reason: contains not printable characters */
     public static final byte f91 = 30;
 
-    /* renamed from: 虚弱体魄 */
+    /* renamed from: 虚弱体魄, reason: contains not printable characters */
     public static final byte f92 = 1;
 
-    /* renamed from: 蜜心糖 */
+    /* renamed from: 蜜心糖, reason: contains not printable characters */
     public static final byte f93 = 13;
 
-    /* renamed from: 训练店 */
+    /* renamed from: 训练店, reason: contains not printable characters */
     public static final byte f94 = 2;
 
-    /* renamed from: 辅助店 */
+    /* renamed from: 辅助店, reason: contains not printable characters */
     public static final byte f95 = 1;
 
-    /* renamed from: 辅助道具 */
+    /* renamed from: 辅助道具, reason: contains not printable characters */
     public static final byte f96 = 1;
 
-    /* renamed from: 逃命专家 */
+    /* renamed from: 逃命专家, reason: contains not printable characters */
     public static final byte f97 = 42;
 
-    /* renamed from: 避怪丸 */
+    /* renamed from: 避怪丸, reason: contains not printable characters */
     public static final byte f98 = 14;
 
-    /* renamed from: 重生之心 */
+    /* renamed from: 重生之心, reason: contains not printable characters */
     public static final byte f99 = 38;
 
-    /* renamed from: 野兽 */
+    /* renamed from: 野兽, reason: contains not printable characters */
     public static final byte f100 = 3;
 
-    /* renamed from: 野兽意志 */
+    /* renamed from: 野兽意志, reason: contains not printable characters */
     public static final byte f101 = 44;
 
-    /* renamed from: 金之辉耀 */
+    /* renamed from: 金之辉耀, reason: contains not printable characters */
     public static final byte f102 = 31;
 
-    /* renamed from: 金属 */
+    /* renamed from: 金属, reason: contains not printable characters */
     public static final byte f103 = 1;
 
-    /* renamed from: 金属外壳 */
+    /* renamed from: 金属外壳, reason: contains not printable characters */
     public static final byte f104 = 6;
 
-    /* renamed from: 金属意志 */
+    /* renamed from: 金属意志, reason: contains not printable characters */
     public static final byte f105 = 46;
 
-    /* renamed from: 钢筋铁骨 */
+    /* renamed from: 钢筋铁骨, reason: contains not printable characters */
     public static final byte f106 = 33;
 
-    /* renamed from: 钥匙 */
+    /* renamed from: 钥匙, reason: contains not printable characters */
     public static final byte f107 = 33;
 
-    /* renamed from: 铁水浇灌 */
+    /* renamed from: 铁水浇灌, reason: contains not printable characters */
     public static final byte f108 = 7;
 
-    /* renamed from: 铁浮屠 */
+    /* renamed from: 铁浮屠, reason: contains not printable characters */
     public static final byte f109 = 6;
 
-    /* renamed from: 银杏果 */
+    /* renamed from: 银杏果, reason: contains not printable characters */
     public static final byte f110 = 5;
 
-    /* renamed from: 随身店 */
+    /* renamed from: 随身店, reason: contains not printable characters */
     public static final byte f111 = 3;
 
-    /* renamed from: 霸皇战意 */
+    /* renamed from: 霸皇战意, reason: contains not printable characters */
     public static final byte f112 = 9;
 
-    /* renamed from: 飞翔斩 */
+    /* renamed from: 飞翔斩, reason: contains not printable characters */
     public static final byte f113 = 10;
 
-    /* renamed from: 飞行 */
+    /* renamed from: 飞行, reason: contains not printable characters */
     public static final byte f114 = 2;
 
-    /* renamed from: 饮料 */
+    /* renamed from: 饮料, reason: contains not printable characters */
     public static final byte f115 = 0;
 
-    /* renamed from: 饼干 */
+    /* renamed from: 饼干, reason: contains not printable characters */
     public static final byte f116 = 1;
 
-    /* renamed from: 香水 */
+    /* renamed from: 香水, reason: contains not printable characters */
     public static final byte f117 = 15;
 
-    /* renamed from: 骑宠无 */
+    /* renamed from: 骑宠无, reason: contains not printable characters */
     public static final byte f118 = -1;
 
-    /* renamed from: 骑宠植物 */
+    /* renamed from: 骑宠植物, reason: contains not printable characters */
     public static final byte f119 = 0;
 
-    /* renamed from: 骑宠水生 */
+    /* renamed from: 骑宠水生, reason: contains not printable characters */
     public static final byte f120 = 4;
 
-    /* renamed from: 骑宠野兽 */
+    /* renamed from: 骑宠野兽, reason: contains not printable characters */
     public static final byte f121 = 3;
 
-    /* renamed from: 骑宠金属 */
+    /* renamed from: 骑宠金属, reason: contains not printable characters */
     public static final byte f122 = 1;
 
-    /* renamed from: 骑宠飞行 */
+    /* renamed from: 骑宠飞行, reason: contains not printable characters */
     public static final byte f123 = 2;
 
-    /* renamed from: 高级治疗 */
+    /* renamed from: 高级治疗, reason: contains not printable characters */
     public static final byte f124 = 28;
 
-    /* renamed from: 高级球 */
+    /* renamed from: 高级球, reason: contains not printable characters */
     public static final byte f125 = 10;
 
-    /* renamed from: 魅惑效果 */
+    /* renamed from: 魅惑效果, reason: contains not printable characters */
     public static final byte f126 = 3;
 
-    /* renamed from: 黄金果实 */
+    /* renamed from: 黄金果实, reason: contains not printable characters */
     public static final byte f127 = 28;
 
-    /* renamed from: 黄金糖 */
+    /* renamed from: 黄金糖, reason: contains not printable characters */
     public static final byte f128 = 6;
 
-    /* renamed from: 黯之罪罚 */
+    /* renamed from: 黯之罪罚, reason: contains not printable characters */
     public static final byte f129 = 23;
 
-    /* renamed from: 黯灭波 */
+    /* renamed from: 黯灭波, reason: contains not printable characters */
     public static final byte f130 = 21;
 
-    /* renamed from: 黯魔素身 */
+    /* renamed from: 黯魔素身, reason: contains not printable characters */
     public static final byte f131 = 24;
     public static int WIDTH = Player.STARTED;
     public static int HEIGHT = 240;

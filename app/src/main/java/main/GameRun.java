@@ -38,7 +38,7 @@ public class GameRun extends GameRun_F {
     public byte createOver;
     public byte dead_c;
 
-    /* renamed from: dm */
+    /* renamed from: dm, reason: collision with root package name */
     Battle f133dm;
     private Image[] effectImage;
     Battle enB;
@@ -1176,12 +1176,12 @@ public class GameRun extends GameRun_F {
     /* JADX WARN: Removed duplicated region for block: B:29:0x035d  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private void drawNidus(int r23, int r24) {
         /*
             Method dump skipped, instructions count: 978
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: main.GameRun.drawNidus(int, int):void");
     }
@@ -2849,6 +2849,7 @@ public class GameRun extends GameRun_F {
         return (byte) -1;
     }
 
+    /* JADX INFO: Access modifiers changed from: package-private */
     public void healMonster(Monster monster) {
         monster.effect = (byte) 7;
         monster.monsterPro[1] = monster.monsterPro[3];
@@ -3651,7 +3652,7 @@ public class GameRun extends GameRun_F {
 
     /* JADX WARN: Code restructure failed: missing block: B:10:0x008e, code lost:
     
-        if (dm.Ms.getRandom(100) >= r17.inhesion[9]) goto L47;
+        if (dm.Ms.getRandom(100) >= r17.inhesion[9]) goto L12;
      */
     /* JADX WARN: Code restructure failed: missing block: B:11:0x00b3, code lost:
     
@@ -3659,16 +3660,16 @@ public class GameRun extends GameRun_F {
      */
     /* JADX WARN: Code restructure failed: missing block: B:26:0x00b1, code lost:
     
-        if (dm.Ms.getRandom(100) < r17.skill[48][0]) goto L51;
+        if (dm.Ms.getRandom(100) < r17.skill[48][0]) goto L16;
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private void damage(dm.Battle r18, dm.Battle r19, dm.Monster r20, dm.Monster r21, int r22, int r23) {
         /*
             Method dump skipped, instructions count: 278
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: main.GameRun.damage(dm.Battle, dm.Battle, dm.Monster, dm.Monster, int, int):void");
     }
@@ -4500,7 +4501,7 @@ public class GameRun extends GameRun_F {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public boolean drawMagicC(int r8, int r9, int r10, int r11, int r12, int r13) {
         /*
@@ -4816,12 +4817,12 @@ public class GameRun extends GameRun_F {
     /* JADX WARN: Removed duplicated region for block: B:47:0x00a9  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private void aiEnemy() {
         /*
             Method dump skipped, instructions count: 386
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: main.GameRun.aiEnemy():void");
     }

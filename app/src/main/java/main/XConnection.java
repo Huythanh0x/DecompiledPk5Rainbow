@@ -25,7 +25,7 @@ public final class XConnection extends MIDlet {
      * Called when the MIDlet is started.
      * If the game canvas is not null, it triggers the showNotify method of the game canvas.
      */
-    @Override
+    @Override // javax.microedition.midlet.MIDlet
     public void startApp() {
         if (this.gamecanvas != null) {
             this.gamecanvas.showNotify();
@@ -36,7 +36,7 @@ public final class XConnection extends MIDlet {
      * Called when the MIDlet is paused.
      * If the game canvas is not null, it triggers the hideNotify method of the game canvas.
      */
-    @Override
+    @Override // javax.microedition.midlet.MIDlet
     public void pauseApp() {
         if (this.gamecanvas != null) {
             this.gamecanvas.hideNotify();
@@ -49,7 +49,7 @@ public final class XConnection extends MIDlet {
      *
      * @param parm a boolean parameter indicating if the MIDlet is being destroyed unconditionally.
      */
-    @Override
+    @Override // javax.microedition.midlet.MIDlet
     public void destroyApp(boolean parm) {
         this.gamecanvas.game_stop();
         notifyDestroyed();

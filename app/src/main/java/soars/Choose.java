@@ -18,6 +18,7 @@ import main.SMSSender;
 public class Choose extends Activity {
     private Button btn = null;
     private Button btn2 = null;
+
     /**
      * Handles key down events.
      *
@@ -25,7 +26,7 @@ public class Choose extends Activity {
      * @param event the KeyEvent object containing full information about the event
      * @return true if the event was handled, false otherwise
      */
-    @Override
+    @Override // android.app.Activity, android.view.KeyEvent.Callback
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case 4:
@@ -45,7 +46,7 @@ public class Choose extends Activity {
      *
      * @param savedInstanceState if the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle)
      */
-    @Override
+    @Override // android.app.Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -66,6 +67,9 @@ public class Choose extends Activity {
             }
         });
     }
+
+    /* renamed from: soars.Choose$1 */
+    /* loaded from: classes.dex */
     /**
      * Inner class to handle click events for the first button.
      */
@@ -78,12 +82,15 @@ public class Choose extends Activity {
          *
          * @param v the view that was clicked
          */
-        @Override
+        @Override // android.view.View.OnClickListener
         public void onClick(View v) {
             SMSSender.smsSender.setSmsValue(0);
             Choose.this.finishFromChild(Choose.this.getParent());
         }
     }
+
+    /* renamed from: soars.Choose$2 */
+    /* loaded from: classes.dex */
 
     /**
      * Inner class to handle click events for the second button.
@@ -97,7 +104,7 @@ public class Choose extends Activity {
          *
          * @param v the view that was clicked
          */
-        @Override
+        @Override // android.view.View.OnClickListener
         public void onClick(View v) {
             SMSSender.smsSender.setSmsValue(1);
             Choose.this.finishFromChild(Choose.this.getParent());

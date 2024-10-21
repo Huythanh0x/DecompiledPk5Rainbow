@@ -68,7 +68,7 @@ public class PetKing5 extends CwaActivity {
      * Overrides the onDestroy method of CwaActivity and Activity.
      * Cleans up resources when the activity is destroyed.
      */
-    @Override
+    @Override // javax.microedition.lcdui.CwaActivity, android.app.Activity
     public void onDestroy() {
         super.onDestroy();
     }
@@ -78,7 +78,7 @@ public class PetKing5 extends CwaActivity {
      *
      * @param savedInstanceState The saved instance state bundle.
      */
-    @Override
+    @Override // javax.microedition.lcdui.CwaActivity, android.app.Activity
     public void onCreate(Bundle savedInstanceState) {
         setFullWindow(true);
         super.onCreate(savedInstanceState);
@@ -143,7 +143,7 @@ public class PetKing5 extends CwaActivity {
      * @param resultCode The result code.
      * @param data The intent data.
      */
-    @Override
+    @Override // android.app.Activity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {

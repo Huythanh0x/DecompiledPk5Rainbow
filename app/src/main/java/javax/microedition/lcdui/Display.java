@@ -2,6 +2,7 @@ package javax.microedition.lcdui;
 
 import javax.microedition.midlet.MIDlet;
 
+/* loaded from: classes.dex */
 /**
  * The Display class is used to manage the display of MIDlet applications.
  */

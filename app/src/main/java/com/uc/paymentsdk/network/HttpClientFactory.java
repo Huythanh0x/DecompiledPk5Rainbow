@@ -1,54 +1,64 @@
 package com.uc.paymentsdk.network;
 
-import java.util.WeakHashMap;
 import org.apache.http.params.HttpProtocolParams;
+import java.util.WeakHashMap;
 
-/* loaded from: classes.dex */
-public class HttpClientFactory {
+public class HttpClientFactory
+{
     private static final int DEFAULT_SIZE = 2;
     private static final String SDK_CLIENT = "sdk";
     private static HttpClientFactory mInstance;
     private WeakHashMap<String, AndroidHttpClient> mHttpClientMap;
-
+    
     private HttpClientFactory() {
+        super();
         synchronized (this) {
-            this.mHttpClientMap = new WeakHashMap<>(2);
+            this.mHttpClientMap = new WeakHashMap<String, AndroidHttpClient>(2);
         }
     }
-
+    
     public static HttpClientFactory get() {
-        if (mInstance == null) {
-            mInstance = new HttpClientFactory();
+        if (HttpClientFactory.mInstance == null) {
+            HttpClientFactory.mInstance = new HttpClientFactory();
         }
-        return mInstance;
+        return HttpClientFactory.mInstance;
     }
-
-    public synchronized AndroidHttpClient getSDKHttpClient(String paramString) {
-        AndroidHttpClient localAndroidHttpClient;
-        AndroidHttpClient localAndroidHttpClient2;
-        if (!this.mHttpClientMap.containsKey(SDK_CLIENT) || (localAndroidHttpClient2 = this.mHttpClientMap.get(SDK_CLIENT)) == null) {
-            AndroidHttpClient localAndroidHttpClient3 = AndroidHttpClient.newInstance(paramString);
-            this.mHttpClientMap.put(SDK_CLIENT, localAndroidHttpClient3);
-            localAndroidHttpClient = localAndroidHttpClient3;
-        } else {
-            localAndroidHttpClient = localAndroidHttpClient2;
-        }
-        return localAndroidHttpClient;
-    }
-
-    public void updateUserAgent(String paramString) {
-        AndroidHttpClient localAndroidHttpClient = this.mHttpClientMap.get(SDK_CLIENT);
-        if (localAndroidHttpClient != null) {
-            HttpProtocolParams.setUserAgent(localAndroidHttpClient.getParams(), paramString);
+    
+    public void close() {
+        synchronized (this) {
+            if (this.mHttpClientMap.containsKey("sdk")) {
+                final AndroidHttpClient androidHttpClient = (AndroidHttpClient)this.mHttpClientMap.get("sdk");
+                if (androidHttpClient != null) {
+                    androidHttpClient.close();
+                }
+            }
+            this.mHttpClientMap.clear();
+            HttpClientFactory.mInstance = null;
         }
     }
-
-    public synchronized void close() {
-        AndroidHttpClient localAndroidHttpClient;
-        if (this.mHttpClientMap.containsKey(SDK_CLIENT) && (localAndroidHttpClient = this.mHttpClientMap.get(SDK_CLIENT)) != null) {
-            localAndroidHttpClient.close();
+    
+    public AndroidHttpClient getSDKHttpClient(final String s) {
+        synchronized (this) {
+            Label_0037: {
+                if (!this.mHttpClientMap.containsKey("sdk")) {
+                    break Label_0037;
+                }
+                final AndroidHttpClient androidHttpClient = (AndroidHttpClient)this.mHttpClientMap.get("sdk");
+                if (androidHttpClient == null) {
+                    break Label_0037;
+                }
+                return androidHttpClient;
+            }
+            final AndroidHttpClient instance = AndroidHttpClient.newInstance(s);
+            this.mHttpClientMap.put("sdk", instance);
+            return instance;
         }
-        this.mHttpClientMap.clear();
-        mInstance = null;
+    }
+    
+    public void updateUserAgent(final String s) {
+        final AndroidHttpClient androidHttpClient = (AndroidHttpClient)this.mHttpClientMap.get("sdk");
+        if (androidHttpClient != null) {
+            HttpProtocolParams.setUserAgent(androidHttpClient.getParams(), s);
+        }
     }
 }

@@ -1,24 +1,25 @@
 package com.uc.paymentsdk.payment.sms.receiver;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.gsm.SmsMessage;
 import android.util.Log;
+import android.telephony.gsm.SmsMessage;
+import android.content.Intent;
+import android.content.Context;
+import android.content.BroadcastReceiver;
 
-/* loaded from: classes.dex */
-public class SmsReceiver extends BroadcastReceiver {
-    @Override // android.content.BroadcastReceiver
-    public void onReceive(Context paramContext, Intent paramIntent) {
-        Bundle localBundle = paramIntent.getExtras();
-        if (localBundle != null) {
-            Object[] arrayOfObject = (Object[]) localBundle.get("pdus");
-            for (Object obj : arrayOfObject) {
-                SmsMessage localSmsMessage = SmsMessage.createFromPdu((byte[]) obj);
-                String str = localSmsMessage.getOriginatingAddress();
-                Log.i("pay", "receiver number:" + str);
-                abortBroadcast();
+public class SmsReceiver extends BroadcastReceiver
+{
+    public SmsReceiver() {
+        super();
+    }
+    
+    public void onReceive(final Context context, final Intent intent) {
+        final Bundle extras = intent.getExtras();
+        if (extras != null) {
+            final Object[] array = (Object[])extras.get("pdus");
+            for (int i = 0; i < array.length; ++i) {
+                Log.i("pay", "receiver number:" + SmsMessage.createFromPdu((byte[])array[i]).getOriginatingAddress());
+                this.abortBroadcast();
             }
         }
     }

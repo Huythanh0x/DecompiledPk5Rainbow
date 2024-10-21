@@ -1,6 +1,6 @@
 package com.uc.paymentsdk.commons.codec;
 
-/* loaded from: classes.dex */
-public interface Encoder {
-    Object encode(Object obj) throws EncoderException;
+public interface Encoder
+{
+    Object encode(final Object p0) throws EncoderException;
 }

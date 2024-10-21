@@ -1,34 +1,35 @@
 package com.uc.paymentsdk.commons.ui;
 
-import android.R;
-import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.StateListDrawable;
 import android.view.View;
-import android.widget.TextView;
-import com.uc.paymentsdk.util.Constants;
+import android.graphics.drawable.StateListDrawable;
 import com.uc.paymentsdk.util.Utils;
+import android.content.Context;
+import android.widget.TextView;
 
-/* loaded from: classes.dex */
-public class CustomTextView extends TextView {
-    public CustomTextView(Context paramContext, int paramInt) {
-        super(paramContext);
+public class CustomTextView extends TextView
+{
+    public CustomTextView(final Context context, final int n) {
+        super(context);
         if (Utils.isHdpi()) {
-            setMinHeight(80);
-        } else {
-            setMinHeight(53);
+            this.setMinHeight(80);
         }
-        setGravity(16);
-        setPadding(6, 0, 0, 0);
-        setTextAppearance(paramContext, R.style.TextAppearance.Large.Inverse);
-        StateListDrawable localStateListDrawable = new StateListDrawable();
-        localStateListDrawable.addState(View.PRESSED_ENABLED_STATE_SET, new ColorDrawable(Constants.COLOR_PRESSED));
-        if (1 != paramInt % 2) {
-            localStateListDrawable.addState(View.ENABLED_STATE_SET, new ColorDrawable(Color.parseColor("#6AF9EA97")));
-        } else {
-            localStateListDrawable.addState(View.ENABLED_STATE_SET, new ColorDrawable(-1));
+        else {
+            this.setMinHeight(53);
         }
-        setBackgroundDrawable(localStateListDrawable);
+        this.setGravity(16);
+        this.setPadding(6, 0, 0, 0);
+        this.setTextAppearance(context, 16973891);
+        final StateListDrawable backgroundDrawable = new StateListDrawable();
+        backgroundDrawable.addState(View.PRESSED_ENABLED_STATE_SET, (Drawable)new ColorDrawable(-19456));
+        if (1 != n % 2) {
+            backgroundDrawable.addState(View.ENABLED_STATE_SET, (Drawable)new ColorDrawable(Color.parseColor("#6AF9EA97")));
+        }
+        else {
+            backgroundDrawable.addState(View.ENABLED_STATE_SET, (Drawable)new ColorDrawable(-1));
+        }
+        this.setBackgroundDrawable((Drawable)backgroundDrawable);
     }
 }

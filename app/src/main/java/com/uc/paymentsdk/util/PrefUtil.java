@@ -1,15 +1,15 @@
 package com.uc.paymentsdk.util;
 
+import android.preference.PreferenceManager;
+import com.uc.paymentsdk.model.TypeFactory;
+import java.util.ArrayList;
+import com.uc.paymentsdk.model.IType;
+import android.content.SharedPreferences$Editor;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import com.uc.paymentsdk.model.IType;
-import com.uc.paymentsdk.model.TypeFactory;
-import com.uc.paymentsdk.payment.PaymentInfo;
-import java.util.ArrayList;
 
-/* loaded from: classes.dex */
-public class PrefUtil {
+public class PrefUtil
+{
     public static final String EXTRA_TYPE = "type";
     public static final String P_ARRIVE_COUNT = "pref.com.uc.androidsdk.arrive";
     public static final String P_AVAILABLE_CHARGE_TYPE = "pref.com.uc.androidsdk.availableChargeType";
@@ -22,333 +22,350 @@ public class PrefUtil {
     public static final String P_USERNAME = "pref.com.uc.androidsdk.username";
     public static final String P_USER_SESSION = "pref.com.uc.androidsdk.usersession";
     private static boolean sIsLogin;
-    public static SharedPreferences sPref = null;
-
-    private static synchronized void init(Context paramContext) {
+    public static SharedPreferences sPref;
+    
+    static {
+        PrefUtil.sPref = null;
+    }
+    
+    public PrefUtil() {
+        super();
+    }
+    
+    public static void clearArriveCount(final Context context) {
+        setArriveCount(context, 0);
+    }
+    
+    public static void clearPayedAmount(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        PrefUtil.sPref.edit().remove(String.valueOf(Utils.getPaymentInfo().getmActionID()) + "_payedAmount").commit();
+    }
+    
+    public static void clearUCUserName(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        final SharedPreferences$Editor edit = PrefUtil.sPref.edit();
+        edit.remove("pref.com.uc.androidsdk.username");
+        edit.commit();
+    }
+    
+    public static void clearUCUserPass(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        final SharedPreferences$Editor edit = PrefUtil.sPref.edit();
+        edit.remove("pref.com.uc.androidsdk.passowrd");
+        edit.commit();
+    }
+    
+    public static void decreaseArriveCount(final Context context) {
         synchronized (PrefUtil.class) {
-            if (sPref == null) {
-                sPref = PreferenceManager.getDefaultSharedPreferences(paramContext);
-            }
-            sIsLogin = false;
-        }
-    }
-
-    public static SharedPreferences.Editor getEditor() {
-        if (sPref == null) {
-            return null;
-        }
-        return sPref.edit();
-    }
-
-    public static void setUCUserName(Context paramContext, String paramString) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        SharedPreferences.Editor localEditor = sPref.edit();
-        localEditor.putString(P_USERNAME, paramString);
-        localEditor.commit();
-    }
-
-    public static String getUCUserName(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        return sPref.getString(P_USERNAME, null);
-    }
-
-    public static void clearUCUserName(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        SharedPreferences.Editor localEditor = sPref.edit();
-        localEditor.remove(P_USERNAME);
-        localEditor.commit();
-    }
-
-    public static void setUCUserPass(Context paramContext, String paramString) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        SharedPreferences.Editor localEditor = sPref.edit();
-        localEditor.putString(P_PASSWORD, paramString);
-        localEditor.commit();
-    }
-
-    public static String getUCUserPass(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        return sPref.getString(P_PASSWORD, null);
-    }
-
-    public static void clearUCUserPass(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        SharedPreferences.Editor localEditor = sPref.edit();
-        localEditor.remove(P_PASSWORD);
-        localEditor.commit();
-    }
-
-    public static void setUserSession(Context paramContext, String paramString) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        SharedPreferences.Editor localEditor = sPref.edit();
-        localEditor.putString(P_USER_SESSION, paramString);
-        localEditor.commit();
-    }
-
-    public static String getUserSession(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        return sPref.getString(P_USER_SESSION, null);
-    }
-
-    public static int getArriveCount(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        return sPref.getInt(P_ARRIVE_COUNT, 0);
-    }
-
-    private static synchronized void setArriveCount(Context paramContext, int paramInt) {
-        synchronized (PrefUtil.class) {
-            if (sPref == null) {
-                init(paramContext);
-            }
-            sPref.edit().putInt(P_ARRIVE_COUNT, paramInt).commit();
-        }
-    }
-
-    public static void clearArriveCount(Context paramContext) {
-        setArriveCount(paramContext, 0);
-    }
-
-    public static synchronized void increaseArriveCount(Context paramContext) {
-        synchronized (PrefUtil.class) {
-            int i = getArriveCount(paramContext);
-            setArriveCount(paramContext, i + 1);
-        }
-    }
-
-    public static synchronized void decreaseArriveCount(Context paramContext) {
-        synchronized (PrefUtil.class) {
-            int i = getArriveCount(paramContext);
-            if (i > 0) {
-                setArriveCount(paramContext, i - 1);
+            final int arriveCount = getArriveCount(context);
+            if (arriveCount > 0) {
+                setArriveCount(context, arriveCount - 1);
             }
         }
     }
-
-    public static void setGFanUID(Context paramContext, int paramInt) {
-        if (sPref == null) {
-            init(paramContext);
+    
+    public static int getArriveCount(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
         }
-        SharedPreferences.Editor localEditor = sPref.edit();
-        localEditor.putInt(P_UID, paramInt);
-        localEditor.commit();
+        return PrefUtil.sPref.getInt("pref.com.uc.androidsdk.arrive", 0);
     }
-
-    public static int getGFanUID(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        return sPref.getInt(P_UID, -1);
+    
+    public static IType[] getAvailableChargeType(final Context context, final boolean b) {
+        return getDefaultChargeType(b);
     }
-
-    public static boolean isLogin(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        return sIsLogin;
+    
+    public static ArrayList<IType> getAvailablePayType(final Context context, final String s) {
+        return getDefaultPayType(s);
     }
-
-    public static void login(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
+    
+    public static String getDefaultChargeType(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
         }
-        sIsLogin = true;
+        return PrefUtil.sPref.getString("pref.com.uc.androidsdk.defaultChargeType", (String)null);
     }
-
-    public static void logout(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
+    
+    private static IType[] getDefaultChargeType(final boolean b) {
+        IType[] array;
+        if (b) {
+            array = new IType[] { TypeFactory.factory("alipay"), TypeFactory.factory("phonecard"), TypeFactory.factory("g") };
         }
-        sIsLogin = false;
-        SharedPreferences.Editor localEditor = sPref.edit();
-        localEditor.remove(P_UID);
-        localEditor.commit();
+        else {
+            array = new IType[] { TypeFactory.factory("alipay"), TypeFactory.factory("phonecard") };
+        }
+        return array;
     }
-
-    private static void setAvailableChargeType(Context paramContext, String[] paramArrayOfString) {
-        if (sPref == null) {
-            init(paramContext);
+    
+    private static ArrayList<IType> getDefaultPayType(final String s) {
+        final ArrayList list = new ArrayList();
+        if ("overage".equals(s) || "all".equals(s)) {
+            list.add(TypeFactory.factory("upoint"));
         }
-        int j = paramArrayOfString.length;
-        for (int i = 0; i < j; i++) {
-            if ("g".equals(paramArrayOfString[i])) {
-                paramArrayOfString[i] = paramArrayOfString[j - 1];
-                paramArrayOfString[j - 1] = "g";
-            } else if ("alipay".equals(paramArrayOfString[i])) {
-                paramArrayOfString[i] = paramArrayOfString[0];
-                paramArrayOfString[0] = "alipay";
+        if ("sms".equals(s) || "all".equals(s)) {
+            list.add(TypeFactory.factory("sms"));
+        }
+        return list;
+    }
+    
+    public static SharedPreferences$Editor getEditor() {
+        SharedPreferences$Editor edit;
+        if (PrefUtil.sPref == null) {
+            edit = null;
+        }
+        else {
+            edit = PrefUtil.sPref.edit();
+        }
+        return edit;
+    }
+    
+    public static int getGFanUID(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        return PrefUtil.sPref.getInt("pref.com.uc.androidsdk.uid", -1);
+    }
+    
+    public static int getPayedAmount(final Context context) {
+        final String string = String.valueOf(Utils.getPaymentInfo().getmActionID()) + "_payedAmount";
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        return PrefUtil.sPref.getInt(string, 0);
+    }
+    
+    public static String getSmsInfo(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        return PrefUtil.sPref.getString("pref.com.uc.andoridsdk.smsinfo", (String)null);
+    }
+    
+    public static String getSmsInfoVersion(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        return PrefUtil.sPref.getString("pref.com.uc.andoridsdk.smsinfo.version", (String)null);
+    }
+    
+    public static String getUCUserName(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        return PrefUtil.sPref.getString("pref.com.uc.androidsdk.username", (String)null);
+    }
+    
+    public static String getUCUserPass(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        return PrefUtil.sPref.getString("pref.com.uc.androidsdk.passowrd", (String)null);
+    }
+    
+    public static String getUserSession(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        return PrefUtil.sPref.getString("pref.com.uc.androidsdk.usersession", (String)null);
+    }
+    
+    public static void increaseArriveCount(final Context context) {
+        synchronized (PrefUtil.class) {
+            setArriveCount(context, getArriveCount(context) + 1);
+        }
+    }
+    
+    private static void init(final Context context) {
+        synchronized (PrefUtil.class) {
+            if (PrefUtil.sPref == null) {
+                PrefUtil.sPref = PreferenceManager.getDefaultSharedPreferences(context);
+            }
+            PrefUtil.sIsLogin = false;
+        }
+    }
+    
+    public static boolean isLogin(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        return PrefUtil.sIsLogin;
+    }
+    
+    public static void login(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        PrefUtil.sIsLogin = true;
+    }
+    
+    public static void logout(final Context context) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        PrefUtil.sIsLogin = false;
+        final SharedPreferences$Editor edit = PrefUtil.sPref.edit();
+        edit.remove("pref.com.uc.androidsdk.uid");
+        edit.commit();
+    }
+    
+    private static void setArriveCount(final Context context, final int n) {
+        synchronized (PrefUtil.class) {
+            if (PrefUtil.sPref == null) {
+                init(context);
+            }
+            PrefUtil.sPref.edit().putInt("pref.com.uc.androidsdk.arrive", n).commit();
+        }
+    }
+    
+    private static void setAvailableChargeType(final Context context, final String[] array) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        for (int i = 0, length = array.length; i < length; ++i) {
+            if ("g".equals(array[i])) {
+                array[i] = array[length - 1];
+                array[length - 1] = "g";
+            }
+            else if ("alipay".equals(array[i])) {
+                array[i] = array[0];
+                array[0] = "alipay";
             }
         }
-        StringBuilder localStringBuilder = new StringBuilder();
-        for (String str : paramArrayOfString) {
-            localStringBuilder.append(str).append(Constants.TERM);
+        final StringBuilder sb = new StringBuilder();
+        for (int j = 0; j < array.length; ++j) {
+            sb.append(array[j]).append(",");
         }
-        if (localStringBuilder.indexOf(Constants.TERM) != -1) {
-            localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+        if (sb.indexOf(",") != -1) {
+            sb.deleteCharAt(sb.length() - 1);
         }
-        sPref.edit().putString(P_AVAILABLE_CHARGE_TYPE, localStringBuilder.toString()).commit();
+        PrefUtil.sPref.edit().putString("pref.com.uc.androidsdk.availableChargeType", sb.toString()).commit();
     }
-
-    public static IType[] getAvailableChargeType(Context paramContext, boolean paramBoolean) {
-        return getDefaultChargeType(paramBoolean);
-    }
-
-    private static void setAvailablePayType(Context paramContext, String paramString) {
-        if (sPref == null) {
-            init(paramContext);
+    
+    private static void setAvailablePayType(final Context context, final String str) {
+        if (PrefUtil.sPref == null) {
+            init(context);
         }
-        if (paramString.indexOf("sms") > paramString.indexOf(paramString)) {
-            String[] arrayOfString = paramString.split(Constants.TERM);
-            int j = arrayOfString.length;
-            for (int i = 0; i < j; i++) {
-                if ("sms".equals(arrayOfString[i])) {
-                    arrayOfString[i] = arrayOfString[j - 1];
-                    arrayOfString[j - 1] = "sms";
-                } else if (TypeFactory.TYPE_PAY_UPOINT.equals(arrayOfString[i])) {
-                    arrayOfString[i] = arrayOfString[0];
-                    arrayOfString[0] = TypeFactory.TYPE_PAY_UPOINT;
+        String string = str;
+        if (str.indexOf("sms") > str.indexOf(str)) {
+            final String[] split = str.split(",");
+            for (int i = 0, length = split.length; i < length; ++i) {
+                if ("sms".equals(split[i])) {
+                    split[i] = split[length - 1];
+                    split[length - 1] = "sms";
+                }
+                else if ("upoint".equals(split[i])) {
+                    split[i] = split[0];
+                    split[0] = "upoint";
                 }
             }
-            StringBuilder localStringBuilder = new StringBuilder();
-            for (String str : arrayOfString) {
-                localStringBuilder.append(str).append(Constants.TERM);
+            final StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < split.length; ++j) {
+                sb.append(split[j]).append(",");
             }
-            if (localStringBuilder.indexOf(Constants.TERM) != -1) {
-                localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+            if (sb.indexOf(",") != -1) {
+                sb.deleteCharAt(sb.length() - 1);
             }
-            paramString = localStringBuilder.toString();
+            string = sb.toString();
         }
-        sPref.edit().putString(P_AVAILABLE_PAY_TYPE, paramString).commit();
+        PrefUtil.sPref.edit().putString("pref.com.uc.androidsdk.availablePayType", string).commit();
     }
-
-    public static ArrayList<IType> getAvailablePayType(Context paramContext, String paramString) {
-        return getDefaultPayType(paramString);
-    }
-
-    public static String getDefaultChargeType(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
+    
+    public static void setDefaultChargeType(final Context context, final String s) {
+        if (PrefUtil.sPref == null) {
+            init(context);
         }
-        return sPref.getString(P_DEFAULT_CHARGE_TYPE, null);
-    }
-
-    public static void setDefaultChargeType(Context paramContext, String paramString) {
-        if (sPref == null) {
-            init(paramContext);
+        final SharedPreferences$Editor edit = PrefUtil.sPref.edit();
+        if (s == null) {
+            edit.remove("pref.com.uc.androidsdk.defaultChargeType");
         }
-        SharedPreferences.Editor localEditor = sPref.edit();
-        if (paramString == null) {
-            localEditor.remove(P_DEFAULT_CHARGE_TYPE);
-        } else {
-            localEditor.putString(P_DEFAULT_CHARGE_TYPE, paramString);
+        else {
+            edit.putString("pref.com.uc.androidsdk.defaultChargeType", s);
         }
-        localEditor.commit();
+        edit.commit();
     }
-
-    private static IType[] getDefaultChargeType(boolean paramBoolean) {
-        return paramBoolean ? new IType[]{TypeFactory.factory("alipay"), TypeFactory.factory("phonecard"), TypeFactory.factory("g")} : new IType[]{TypeFactory.factory("alipay"), TypeFactory.factory("phonecard")};
-    }
-
-    private static ArrayList<IType> getDefaultPayType(String paramString) {
-        ArrayList<IType> localArrayList = new ArrayList<>();
-        if (PaymentInfo.PAYTYPE_OVERAGE.equals(paramString) || PaymentInfo.PAYTYPE_ALL.equals(paramString)) {
-            localArrayList.add(TypeFactory.factory(TypeFactory.TYPE_PAY_UPOINT));
+    
+    public static void setGFanUID(final Context context, final int n) {
+        if (PrefUtil.sPref == null) {
+            init(context);
         }
-        if ("sms".equals(paramString) || PaymentInfo.PAYTYPE_ALL.equals(paramString)) {
-            localArrayList.add(TypeFactory.factory("sms"));
-        }
-        return localArrayList;
+        final SharedPreferences$Editor edit = PrefUtil.sPref.edit();
+        edit.putInt("pref.com.uc.androidsdk.uid", n);
+        edit.commit();
     }
-
-    public static boolean supportChargeType(Context paramContext, String paramString) {
-        IType[] arrayOfIType = getAvailableChargeType(paramContext, true);
-        for (IType iType : arrayOfIType) {
-            if (paramString.equals(iType.getId())) {
+    
+    public static void setPayedAmount(final Context context, final int n) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        PrefUtil.sPref.edit().putInt(String.valueOf(Utils.getPaymentInfo().getmActionID()) + "_payedAmount", getPayedAmount(context) + n).commit();
+    }
+    
+    public static void setSmsInfo(final Context context, final String s) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        PrefUtil.sPref.edit().putString("pref.com.uc.andoridsdk.smsinfo", s).commit();
+    }
+    
+    public static void setSmsInfoVersion(final Context context, final String s) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        PrefUtil.sPref.edit().putString("pref.com.uc.andoridsdk.smsinfo.version", s).commit();
+    }
+    
+    public static void setUCUserName(final Context context, final String s) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        final SharedPreferences$Editor edit = PrefUtil.sPref.edit();
+        edit.putString("pref.com.uc.androidsdk.username", s);
+        edit.commit();
+    }
+    
+    public static void setUCUserPass(final Context context, final String s) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        final SharedPreferences$Editor edit = PrefUtil.sPref.edit();
+        edit.putString("pref.com.uc.androidsdk.passowrd", s);
+        edit.commit();
+    }
+    
+    public static void setUserSession(final Context context, final String s) {
+        if (PrefUtil.sPref == null) {
+            init(context);
+        }
+        final SharedPreferences$Editor edit = PrefUtil.sPref.edit();
+        edit.putString("pref.com.uc.androidsdk.usersession", s);
+        edit.commit();
+    }
+    
+    public static boolean supportChargeType(final Context context, final String s) {
+        final IType[] availableChargeType = getAvailableChargeType(context, true);
+        for (int i = 0; i < availableChargeType.length; ++i) {
+            if (s.equals(availableChargeType[i].getId())) {
                 return true;
             }
         }
         return false;
     }
-
-    public static synchronized void syncChargeChannels(Context paramContext, String[] paramArrayOfString) {
+    
+    public static void syncChargeChannels(final Context context, final String[] array) {
         synchronized (PrefUtil.class) {
-            setAvailableChargeType(paramContext, paramArrayOfString);
+            setAvailableChargeType(context, array);
         }
     }
-
-    public static synchronized void syncPayChannels(Context paramContext, String paramString) {
+    
+    public static void syncPayChannels(final Context context, final String s) {
         synchronized (PrefUtil.class) {
-            setAvailablePayType(paramContext, paramString);
+            setAvailablePayType(context, s);
         }
-    }
-
-    public static void setSmsInfoVersion(Context paramContext, String paramString) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        sPref.edit().putString(P_SMSINFO_VERSION, paramString).commit();
-    }
-
-    public static String getSmsInfoVersion(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        return sPref.getString(P_SMSINFO_VERSION, null);
-    }
-
-    public static void setSmsInfo(Context paramContext, String paramString) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        sPref.edit().putString(P_SMSINFO, paramString).commit();
-    }
-
-    public static String getSmsInfo(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        return sPref.getString(P_SMSINFO, null);
-    }
-
-    public static int getPayedAmount(Context paramContext) {
-        String str = String.valueOf(Utils.getPaymentInfo().getmActionID()) + "_payedAmount";
-        if (sPref == null) {
-            init(paramContext);
-        }
-        return sPref.getInt(str, 0);
-    }
-
-    public static void setPayedAmount(Context paramContext, int paramInt) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        String str = String.valueOf(Utils.getPaymentInfo().getmActionID()) + "_payedAmount";
-        int i = getPayedAmount(paramContext);
-        sPref.edit().putInt(str, i + paramInt).commit();
-    }
-
-    public static void clearPayedAmount(Context paramContext) {
-        if (sPref == null) {
-            init(paramContext);
-        }
-        String str = String.valueOf(Utils.getPaymentInfo().getmActionID()) + "_payedAmount";
-        sPref.edit().remove(str).commit();
     }
 }

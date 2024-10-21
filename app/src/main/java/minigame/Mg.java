@@ -2,62 +2,65 @@ package minigame;
 
 import main.GameRun;
 
-/* loaded from: classes.dex */
-public class Mg {
+public class Mg
+{
     private static Mg mgListener;
     private MiniGame_H mg;
     public byte type;
-
+    
     public Mg() {
-        mgListener = this;
+        super();
+        Mg.mgListener = this;
     }
-
+    
     public static Mg i() {
-        if (mgListener == null) {
-            mgListener = new Mg();
+        if (Mg.mgListener == null) {
+            Mg.mgListener = new Mg();
         }
-        return mgListener;
+        return Mg.mgListener;
     }
-
-    private void setGame(GameRun gr, int i) {
+    
+    private void setGame(final GameRun gameRun, final int n) {
         this.mg = null;
-        this.type = (byte) i;
-        switch (i) {
-            case 0:
-                this.mg = new Racing(gr);
-                return;
-            case 1:
-                this.mg = new Bearer(gr);
-                return;
-            case 2:
-                this.mg = new Cards(gr);
-                return;
-            case 3:
-                this.mg = new Guess(gr);
-                return;
-            default:
-                return;
+        this.type = (byte)n;
+        switch (n) {
+            case 0: {
+                this.mg = new Racing(gameRun);
+                break;
+            }
+            case 1: {
+                this.mg = new Bearer(gameRun);
+                break;
+            }
+            case 2: {
+                this.mg = new Cards(gameRun);
+                break;
+            }
+            case 3: {
+                this.mg = new Guess(gameRun);
+                break;
+            }
         }
     }
-
-    public void go(GameRun gr, int i, int mode, int lv) {
+    
+    public void go(final GameRun gameRun, final int n, final int n2, final int n3) {
         GameRun.run_state = 69;
-        setGame(gr, i);
-        this.mg.go(mode, lv);
+        this.setGame(gameRun, n);
+        this.mg.go(n2, n3);
     }
-
-    public void paint() {
-        this.mg.patin();
-    }
-
-    public void run() {
-        this.mg.run();
-    }
-
-    public void key(GameRun gr) {
+    
+    public void key(final GameRun gameRun) {
         if (this.mg.key()) {
             GameRun.run_state = -10;
             this.mg = null;
         }
+    }
+    
+    public void paint() {
+        this.mg.patin();
+    }
+    
+    public void run() {
+        this.mg.run();
     }
 }

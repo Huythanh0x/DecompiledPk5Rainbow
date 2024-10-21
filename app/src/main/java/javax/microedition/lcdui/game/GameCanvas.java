@@ -1,12 +1,12 @@
 package javax.microedition.lcdui.game;
 
-import android.content.Context;
-import android.util.AttributeSet;
-import javax.microedition.lcdui.Canvas;
 import javax.microedition.lcdui.Graphics;
+import android.util.AttributeSet;
+import android.content.Context;
+import javax.microedition.lcdui.Canvas;
 
-/* loaded from: classes.dex */
-public abstract class GameCanvas extends Canvas {
+public abstract class GameCanvas extends Canvas
+{
     public static final int DOWN_PRESSED = 64;
     public static final int FIRE_PRESSED = 256;
     public static final int GAME_A_PRESSED = 512;
@@ -16,12 +16,11 @@ public abstract class GameCanvas extends Canvas {
     public static final int LEFT_PRESSED = 4;
     public static final int RIGHT_PRESSED = 32;
     public static final int UP_PRESSED = 2;
-
-    public GameCanvas(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    
+    public GameCanvas(final Context context, final AttributeSet set) {
+        super(context, set);
     }
-
-    @Override // javax.microedition.lcdui.Canvas
-    public void paint(Graphics g) {
+    
+    public void paint(final Graphics graphics) {
     }
 }

@@ -1,7 +1,7 @@
 package main;
 
-/* loaded from: classes.dex */
-public interface Key_H {
+public interface Key_H
+{
     public static final byte KEY_C = -8;
     public static final byte KEY_DOWN_ARROW = -2;
     public static final byte KEY_LEFT_ARROW = -3;

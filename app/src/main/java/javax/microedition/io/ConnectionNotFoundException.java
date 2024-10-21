@@ -1,13 +1,14 @@
 package javax.microedition.io;
 
-/* loaded from: classes.dex */
-public class ConnectionNotFoundException extends Exception {
-    private static final long serialVersionUID = 1;
-
+public class ConnectionNotFoundException extends Exception
+{
+    private static final long serialVersionUID = 1L;
+    
     public ConnectionNotFoundException() {
+        super();
     }
-
-    public ConnectionNotFoundException(String s) {
-        super(s);
+    
+    public ConnectionNotFoundException(final String message) {
+        super(message);
     }
 }

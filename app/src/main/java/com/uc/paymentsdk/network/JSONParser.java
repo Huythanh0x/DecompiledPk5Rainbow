@@ -1,69 +1,78 @@
 package com.uc.paymentsdk.network;
 
-import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.util.ArrayList;
 
-/* loaded from: classes.dex */
-public class JSONParser {
-    public static ArrayList<String> parseAlipayOrder(String paramString) throws JSONException {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        int i = localJSONObject.getInt("resultCode");
-        if (1 != i) {
-            return null;
+public class JSONParser
+{
+    public JSONParser() {
+        super();
+    }
+    
+    public static ArrayList<String> parseAlipayOrder(final String s) throws JSONException {
+        final JSONObject jsonObject = new JSONObject(s);
+        ArrayList list;
+        if (1 == jsonObject.getInt("resultCode")) {
+            list = new ArrayList(2);
+            list.add(jsonObject.getString("alipayParam"));
+            list.add(jsonObject.getString("orderNo"));
         }
-        ArrayList localArrayList = new ArrayList(2);
-        localArrayList.add(localJSONObject.getString("alipayParam"));
-        localArrayList.add(localJSONObject.getString("orderNo"));
-        return localArrayList;
-    }
-
-    public static int parseAlipayResult(String paramString) throws JSONException {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        return localJSONObject.getInt("resultCode");
-    }
-
-    public static int parseChargeG(String paramString) throws JSONException {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        return localJSONObject.getInt("resultCode");
-    }
-
-    public static ArrayList<Integer> parseJifengquanAndGBalance(String paramString) throws JSONException {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        int i = localJSONObject.getInt("resultCode");
-        if (1 != i) {
-            return null;
+        else {
+            list = null;
         }
-        ArrayList localArrayList = new ArrayList(2);
-        localArrayList.add(Integer.valueOf(localJSONObject.getInt("gVolume")));
-        localArrayList.add(Integer.valueOf(localJSONObject.getInt("gMoney")));
-        return localArrayList;
+        return list;
     }
-
-    public static String[] parseChargeChannel(String paramString) throws JSONException {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        int i = localJSONObject.getInt("resultCode");
-        if (1 == i) {
-            JSONArray localJSONArray = localJSONObject.getJSONArray("channels");
-            String[] arrayOfString = new String[localJSONArray.length()];
-            int k = localJSONArray.length();
-            for (int j = 0; j < k; j++) {
-                int m = localJSONArray.getInt(j);
-                switch (m) {
-                    case 1:
-                        arrayOfString[j] = "alipay";
+    
+    public static int parseAlipayResult(final String s) throws JSONException {
+        return new JSONObject(s).getInt("resultCode");
+    }
+    
+    public static String[] parseChargeChannel(final String s) throws JSONException {
+        final JSONObject jsonObject = new JSONObject(s);
+        String[] array;
+        if (1 == jsonObject.getInt("resultCode")) {
+            final JSONArray jsonArray = jsonObject.getJSONArray("channels");
+            array = new String[jsonArray.length()];
+            for (int i = 0; i < jsonArray.length(); ++i) {
+                switch (jsonArray.getInt(i)) {
+                    case 1: {
+                        array[i] = "alipay";
                         break;
-                    case 2:
-                        arrayOfString[j] = "g";
+                    }
+                    case 2: {
+                        array[i] = "g";
                         break;
-                    case 3:
-                        arrayOfString[j] = "phonecard";
+                    }
+                    case 3: {
+                        array[i] = "phonecard";
                         break;
+                    }
                 }
             }
-            return arrayOfString;
         }
-        return null;
+        else {
+            array = null;
+        }
+        return array;
+    }
+    
+    public static int parseChargeG(final String s) throws JSONException {
+        return new JSONObject(s).getInt("resultCode");
+    }
+    
+    public static ArrayList<Integer> parseJifengquanAndGBalance(final String s) throws JSONException {
+        final JSONObject jsonObject = new JSONObject(s);
+        ArrayList list;
+        if (1 == jsonObject.getInt("resultCode")) {
+            list = new ArrayList(2);
+            list.add(Integer.valueOf(jsonObject.getInt("gVolume")));
+            list.add(Integer.valueOf(jsonObject.getInt("gMoney")));
+        }
+        else {
+            list = null;
+        }
+        return list;
     }
 }

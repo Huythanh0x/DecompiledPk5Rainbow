@@ -1,40 +1,50 @@
 package javax.microedition.rms;
 
-import android.database.Cursor;
 import javax.microedition.lcdui.CwaActivity;
+import android.database.Cursor;
 
-/* loaded from: classes.dex */
-public class RecordEnumeration {
-    public Cursor cursor = null;
-    public Cursor old_cursor = null;
-
+public class RecordEnumeration
+{
+    public Cursor cursor;
+    public Cursor old_cursor;
+    
+    public RecordEnumeration() {
+        super();
+        this.cursor = null;
+        this.old_cursor = null;
+    }
+    
+    public void checkDestroy() {
+        if (this.cursor == null) {
+            throw new IllegalStateException("");
+        }
+    }
+    
     public void destroy() {
-        checkDestroy();
+        this.checkDestroy();
         this.cursor = null;
     }
-
+    
     public int nextRecordId() {
         CwaActivity.getInstance().startManagingCursor(this.cursor);
+        int n;
         if (this.cursor.moveToNext()) {
-            return this.cursor.getInt(0) + 1;
+            n = this.cursor.getInt(0) + 1;
         }
-        return 0;
+        else {
+            n = 0;
+        }
+        return n;
     }
-
+    
     public void reset() {
         CwaActivity.getInstance().startManagingCursor(this.cursor);
         CwaActivity.getInstance().startManagingCursor(this.old_cursor);
-        checkDestroy();
+        this.checkDestroy();
         if (this.old_cursor != null) {
             this.cursor = this.old_cursor;
             return;
         }
         throw new IllegalStateException();
-    }
-
-    public void checkDestroy() {
-        if (this.cursor == null) {
-            throw new IllegalStateException("");
-        }
     }
 }

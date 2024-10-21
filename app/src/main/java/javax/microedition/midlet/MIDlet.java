@@ -1,48 +1,49 @@
 package javax.microedition.midlet;
 
+import javax.microedition.io.ConnectionNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
-import javax.microedition.io.ConnectionNotFoundException;
 import javax.microedition.lcdui.CwaActivity;
 
-/* loaded from: classes.dex */
-public abstract class MIDlet {
-    public abstract void destroyApp(boolean z) throws MIDletStateChangeException;
-
-    protected abstract void pauseApp();
-
-    protected abstract void startApp() throws MIDletStateChangeException;
-
+public abstract class MIDlet
+{
+    protected MIDlet() {
+        super();
+    }
+    
+    protected abstract void destroyApp(final boolean p0) throws MIDletStateChangeException;
+    
+    public final String getAppProperty(final String s) {
+        return MIDletManager.getInstance().getAppProperty(this, s);
+    }
+    
     public final void notifyDestroyed() {
         MIDletManager.getInstance().notifyDestroyed();
         MIDletManager.getInstance().notifyExit();
     }
-
+    
     public final void notifyPaused() {
         MIDletManager.getInstance().notifyPaused();
     }
-
-    public final String getAppProperty(String key) {
-        return MIDletManager.getInstance().getAppProperty(this, key);
-    }
-
-    public final boolean platformRequest(String URL) throws ConnectionNotFoundException {
-        if (URL.startsWith("http://")) {
-            Uri uri = Uri.parse(URL);
-            Intent it = new Intent("android.intent.action.VIEW", uri);
-            CwaActivity.getInstance().startActivity(it);
-            return true;
+    
+    protected abstract void pauseApp();
+    
+    public final boolean platformRequest(final String s) throws ConnectionNotFoundException {
+        if (s.startsWith("http://")) {
+            CwaActivity.getInstance().startActivity(new Intent("android.intent.action.VIEW", Uri.parse(s)));
         }
-        if (URL.startsWith("tel:")) {
-            Uri uri2 = Uri.parse(URL);
-            Intent it2 = new Intent("android.intent.action.DIAL", uri2);
-            CwaActivity.getInstance().startActivity(it2);
-            return true;
+        else {
+            if (!s.startsWith("tel:")) {
+                throw new ConnectionNotFoundException(s);
+            }
+            CwaActivity.getInstance().startActivity(new Intent("android.intent.action.DIAL", Uri.parse(s)));
         }
-        throw new ConnectionNotFoundException(URL);
+        return true;
     }
-
+    
     public void resumeRequest() {
         MIDletManager.getInstance().notifyResumed();
     }
+    
+    protected abstract void startApp() throws MIDletStateChangeException;
 }

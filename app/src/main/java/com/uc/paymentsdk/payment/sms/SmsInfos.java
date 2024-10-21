@@ -1,53 +1,61 @@
 package com.uc.paymentsdk.payment.sms;
 
+import java.util.Iterator;
 import android.content.Context;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-/* loaded from: classes.dex */
-public class SmsInfos {
-    public ArrayList<SmsInfo> smsInfos = new ArrayList<>();
-
-    public void add(SmsInfo paramSmsInfo) {
-        this.smsInfos.add(paramSmsInfo);
+public class SmsInfos
+{
+    public ArrayList<SmsInfo> smsInfos;
+    
+    public SmsInfos() {
+        super();
+        this.smsInfos = new ArrayList<SmsInfo>();
     }
-
-    public SmsInfo filterSmsInfo(Context paramContext, int paymoney) throws SimCardNotSupportException {
-        ArrayList<Integer> smsSuitPriceArr = null;
-        int maxMoney = 0;
-        int selectIndex = -1;
-        if (this.smsInfos.size() == 1) {
-            return this.smsInfos.get(0);
-        }
-        for (int i = 0; i < this.smsInfos.size(); i++) {
-            SmsInfo localSmsInfo = this.smsInfos.get(i);
-            if (smsSuitPriceArr == null) {
-                smsSuitPriceArr = parsePayment(paymoney);
+    
+    private static ArrayList<Integer> parsePayment(final int n) {
+        final ArrayList list = new ArrayList();
+        int i = n;
+        do {
+            if (n % i == 0) {
+                list.add(Integer.valueOf(i));
             }
-            Iterator<Integer> smsSuitriceIte = smsSuitPriceArr.iterator();
-            while (smsSuitriceIte.hasNext()) {
-                Integer aPrice = smsSuitriceIte.next();
-                if (localSmsInfo.money == aPrice.intValue() && localSmsInfo.money > maxMoney) {
-                    maxMoney = localSmsInfo.money;
-                    selectIndex = i;
+        } while (--i > 0);
+        return list;
+    }
+    
+    public void add(final SmsInfo e) {
+        this.smsInfos.add(e);
+    }
+    
+    public SmsInfo filterSmsInfo(final Context context, final int n) throws SimCardNotSupportException {
+        ArrayList<Integer> list = null;
+        int money = 0;
+        int index = -1;
+        SmsInfo smsInfo;
+        if (this.smsInfos.size() == 1) {
+            smsInfo = this.smsInfos.get(0);
+        }
+        else {
+            ArrayList<Integer> payment;
+            for (int i = 0; i < this.smsInfos.size(); ++i, list = payment) {
+                final SmsInfo smsInfo2 = (SmsInfo)this.smsInfos.get(i);
+                if ((payment = list) == null) {
+                    payment = parsePayment(n);
+                }
+                final Iterator<Integer> iterator = payment.iterator();
+                while (iterator.hasNext()) {
+                    if (smsInfo2.money == Integer.valueOf(iterator.next()) && smsInfo2.money > money) {
+                        money = smsInfo2.money;
+                        index = i;
+                    }
                 }
             }
-        }
-        if (selectIndex != -1) {
-            return this.smsInfos.get(selectIndex);
-        }
-        throw new SimCardNotSupportException("对不起，您所使用的手机运营商不支持此短信激活功能。");
-    }
-
-    private static ArrayList<Integer> parsePayment(int paymoney) {
-        ArrayList<Integer> smsSuitPrice = new ArrayList<>();
-        int i = paymoney;
-        do {
-            if (paymoney % i == 0) {
-                smsSuitPrice.add(Integer.valueOf(i));
+            if (index == -1) {
+                throw new SimCardNotSupportException("\u5bf9\u4e0d\u8d77\uff0c\u60a8\u6240\u4f7f\u7528\u7684\u624b\u673a\u8fd0\u8425\u5546\u4e0d\u652f\u6301\u6b64\u77ed\u4fe1\u6fc0\u6d3b\u529f\u80fd\u3002");
             }
-            i--;
-        } while (i > 0);
-        return smsSuitPrice;
+            smsInfo = this.smsInfos.get(index);
+        }
+        return smsInfo;
     }
 }

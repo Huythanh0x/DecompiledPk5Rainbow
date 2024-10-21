@@ -1,16 +1,18 @@
 package javax.microedition.lcdui;
 
-import android.content.Context;
-import android.util.AttributeSet;
+import android.view.MotionEvent;
+import javax.microedition.midlet.MIDletManager;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
 import com.android.Util.AndroidUtil;
-import javax.microedition.midlet.MIDletManager;
+import android.util.AttributeSet;
+import android.content.Context;
+import android.view.View$OnKeyListener;
+import android.view.View$OnTouchListener;
+import android.view.View;
 
-/* loaded from: classes.dex */
-public abstract class Canvas extends View implements View.OnTouchListener, View.OnKeyListener {
+public abstract class Canvas extends View implements View$OnTouchListener, View$OnKeyListener
+{
     public static final int DOWN = 20;
     public static final int FIRE = 23;
     public static final int GAME_A = 9;
@@ -37,80 +39,54 @@ public abstract class Canvas extends View implements View.OnTouchListener, View.
     public float keyyy;
     float scale_x;
     float scale_y;
-
-    protected abstract void paint(Graphics graphics);
-
-    public Canvas() {
+    
+    protected Canvas() {
         super(CwaActivity.getContextInstance());
         this.scale_x = 1.0f;
         this.scale_y = 1.0f;
-        setFocusable(true);
-        setFocusableInTouchMode(true);
-        setLongClickable(true);
-        setOnKeyListener(this);
-        setOnTouchListener(this);
+        this.setFocusable(true);
+        this.setFocusableInTouchMode(true);
+        this.setLongClickable(true);
+        this.setOnKeyListener((View$OnKeyListener)this);
+        this.setOnTouchListener((View$OnTouchListener)this);
     }
-
-    public Canvas(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    
+    protected Canvas(final Context context, final AttributeSet set) {
+        super(context, set);
         this.scale_x = 1.0f;
         this.scale_y = 1.0f;
-        setFocusable(true);
-        setFocusableInTouchMode(true);
-        setLongClickable(true);
-        setOnKeyListener(this);
-        setOnTouchListener(this);
+        this.setFocusable(true);
+        this.setFocusableInTouchMode(true);
+        this.setLongClickable(true);
+        this.setOnKeyListener((View$OnKeyListener)this);
+        this.setOnTouchListener((View$OnTouchListener)this);
     }
-
-    public void setFullScreenMode(boolean mode) {
+    
+    public int getScreenHeight() {
+        return AndroidUtil.SCREEN_HEIGHT;
     }
-
-    protected void keyPressed(int keyCode) {
+    
+    public int getScreenWidth() {
+        return AndroidUtil.SCREEN_WIDTH;
     }
-
-    protected void keyRepeated(int keyCode) {
-    }
-
-    protected void keyReleased(int keyCode) {
-    }
-
-    protected void pointerPressed(int x, int y) {
-    }
-
-    protected void pointerReleased(int x, int y) {
-    }
-
-    protected void pointerDragged(int x, int y) {
-    }
-
-    public final void repaint(int x, int y, int width, int height) {
-        postInvalidate(x, y, x + width, y + height);
-    }
-
-    public final void repaint() {
-        postInvalidate();
-    }
-
-    public final void serviceRepaints() {
-    }
-
-    public void showNotify() {
-    }
-
+    
     public void hideNotify() {
     }
-
-    public void setScale(float x, float y) {
-        this.scale_x = x;
-        this.scale_y = y;
-        this.g.getXY(x, y);
+    
+    protected void keyPressed(final int n) {
     }
-
-    @Override // android.view.View
-    protected void onDraw(android.graphics.Canvas canvas) {
+    
+    protected void keyReleased(final int n) {
+    }
+    
+    protected void keyRepeated(final int n) {
+    }
+    
+    protected void onDraw(final android.graphics.Canvas canvas) {
         if (this.g == null) {
             this.g = new Graphics(canvas);
-        } else {
+        }
+        else {
             this.g.setCanvas(canvas);
         }
         if (this.scale_x != 1.0f && this.scale_y != 1.0f) {
@@ -119,60 +95,97 @@ public abstract class Canvas extends View implements View.OnTouchListener, View.
         if (this.g.isAutoResetPainter()) {
             this.g.painterReset();
         }
-        paint(this.g);
+        this.paint(this.g);
         AndroidUtil.cv.open();
     }
-
-    @Override // android.view.View.OnTouchListener
-    public boolean onTouch(View v, MotionEvent event) {
-        int x = (int) (event.getX() / this.keyxx);
-        int y = (int) (event.getY() / this.keyyy);
-        switch (event.getAction()) {
-            case 0:
-                pointerPressed(x, y);
-                return true;
-            case 1:
-                pointerReleased(x, y);
-                return true;
-            case 2:
-                pointerDragged(x, y);
-                return true;
-            default:
-                return true;
-        }
-    }
-
-    @Override // android.view.View.OnKeyListener
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
-        switch (event.getAction()) {
-            case 0:
-                if (keyCode == 25) {
+    
+    public boolean onKey(final View view, final int n, final KeyEvent keyEvent) {
+        boolean b = false;
+        switch (keyEvent.getAction()) {
+            default: {
+                Log.e("Canvas", "not this key");
+                b = false;
+                break;
+            }
+            case 0: {
+                if (n == 25) {
                     CwaActivity.getInstance().audioManager.adjustStreamVolume(3, -1, 0);
-                } else if (keyCode == 24) {
+                }
+                else if (n == 24) {
                     CwaActivity.getInstance().audioManager.adjustStreamVolume(3, 1, 0);
-                } else if (keyCode == 4) {
-                    if (event.getRepeatCount() == 0) {
+                }
+                else if (n == 4) {
+                    if (keyEvent.getRepeatCount() == 0) {
                         MIDletManager.getInstance().notifyPaused();
                         CwaActivity.getInstance().showExitDialog();
                     }
-                } else {
-                    keyPressed(event.getKeyCode());
                 }
-                return true;
-            case 1:
-                keyReleased(event.getKeyCode());
-                return true;
-            default:
-                Log.e("Canvas", "not this key");
-                return false;
+                else {
+                    this.keyPressed(keyEvent.getKeyCode());
+                }
+                b = true;
+                break;
+            }
+            case 1: {
+                this.keyReleased(keyEvent.getKeyCode());
+                b = true;
+                break;
+            }
         }
+        return b;
     }
-
-    public int getScreenWidth() {
-        return AndroidUtil.SCREEN_WIDTH;
+    
+    public boolean onTouch(final View view, final MotionEvent motionEvent) {
+        final int n = (int)(motionEvent.getX() / this.keyxx);
+        final int n2 = (int)(motionEvent.getY() / this.keyyy);
+        switch (motionEvent.getAction()) {
+            case 0: {
+                this.pointerPressed(n, n2);
+                break;
+            }
+            case 1: {
+                this.pointerReleased(n, n2);
+                break;
+            }
+            case 2: {
+                this.pointerDragged(n, n2);
+                break;
+            }
+        }
+        return true;
     }
-
-    public int getScreenHeight() {
-        return AndroidUtil.SCREEN_HEIGHT;
+    
+    protected abstract void paint(final Graphics p0);
+    
+    protected void pointerDragged(final int n, final int n2) {
+    }
+    
+    protected void pointerPressed(final int n, final int n2) {
+    }
+    
+    protected void pointerReleased(final int n, final int n2) {
+    }
+    
+    public final void repaint() {
+        this.postInvalidate();
+    }
+    
+    public final void repaint(final int n, final int n2, final int n3, final int n4) {
+        this.postInvalidate(n, n2, n + n3, n2 + n4);
+    }
+    
+    public final void serviceRepaints() {
+    }
+    
+    public void setFullScreenMode(final boolean b) {
+    }
+    
+    public void setScale(final float scale_x, final float scale_y) {
+        this.scale_x = scale_x;
+        this.scale_y = scale_y;
+        this.g.getXY(scale_x, scale_y);
+    }
+    
+    public void showNotify() {
     }
 }

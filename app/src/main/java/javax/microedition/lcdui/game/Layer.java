@@ -1,5 +1,8 @@
 package javax.microedition.lcdui.game;
 
-/* loaded from: classes.dex */
-public abstract class Layer {
+public abstract class Layer
+{
+    public Layer() {
+        super();
+    }
 }

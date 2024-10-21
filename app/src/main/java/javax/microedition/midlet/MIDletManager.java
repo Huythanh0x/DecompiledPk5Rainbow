@@ -1,78 +1,90 @@
 package javax.microedition.midlet;
 
+import javax.microedition.lcdui.Display;
+import javax.microedition.lcdui.CwaActivity;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import javax.microedition.lcdui.CwaActivity;
-import javax.microedition.lcdui.Display;
 
-/* loaded from: classes.dex */
-public class MIDletManager {
+public class MIDletManager
+{
     private static MIDletManager jam;
+    private boolean autoLaunch;
     private MIDlet currentMidlet;
-    private boolean autoLaunch = true;
-    private boolean paused = false;
-    private boolean destroyed = true;
-    private Map<String, String> midlets = new LinkedHashMap();
-    private Map<String, String> jad = new LinkedHashMap();
-
+    private boolean destroyed;
+    private Map<String, String> jad;
+    private Map<String, String> midlets;
+    private boolean paused;
+    
     private MIDletManager() {
+        super();
+        this.autoLaunch = true;
+        this.paused = false;
+        this.destroyed = true;
+        this.midlets = new LinkedHashMap<String, String>();
+        this.jad = new LinkedHashMap<String, String>();
     }
-
+    
     public static final MIDletManager getInstance() {
-        if (jam == null) {
-            jam = new MIDletManager();
+        if (MIDletManager.jam == null) {
+            MIDletManager.jam = new MIDletManager();
         }
-        return jam;
+        return MIDletManager.jam;
     }
-
-    public void setAutoLaunch(boolean autoLaunch) {
-        this.autoLaunch = autoLaunch;
+    
+    public final String getAppProperty(final MIDlet miDlet, final String s) {
+        return this.jad.get(s);
     }
-
+    
+    public MIDlet getCurrenMIDlet() {
+        return this.currentMidlet;
+    }
+    
     public boolean isAutoLaunch() {
         return this.autoLaunch;
     }
-
-    public final String getAppProperty(MIDlet midlet, String key) {
-        return this.jad.get(key);
-    }
-
+    
     public final void notifyDestroyed() {
-        if (this.currentMidlet != null && !this.destroyed) {
+        while (true) {
+            if (this.currentMidlet == null || this.destroyed) {
+                break Label_0027;
+            }
             this.destroyed = true;
             try {
                 this.currentMidlet.destroyApp(true);
-            } catch (MIDletStateChangeException e) {
-                e.printStackTrace();
+                this.jad.clear();
+                this.midlets.clear();
             }
+            catch (final MIDletStateChangeException ex) {
+                ex.printStackTrace();
+                continue;
+            }
+            break;
         }
-        this.jad.clear();
-        this.midlets.clear();
     }
-
+    
     public final void notifyExit() {
         CwaActivity.getInstance().finish();
     }
-
+    
     public final void notifyPaused() {
         if (this.currentMidlet != null && !this.paused) {
             this.paused = true;
             Display.getCanvas().hideNotify();
         }
     }
-
+    
     public final void notifyResumed() {
         if (this.currentMidlet != null && this.paused) {
             this.paused = false;
             Display.getCanvas().showNotify();
         }
     }
-
-    public MIDlet getCurrenMIDlet() {
-        return this.currentMidlet;
+    
+    public void setAutoLaunch(final boolean autoLaunch) {
+        this.autoLaunch = autoLaunch;
     }
-
-    public void setMIDlet(MIDlet midlet) {
-        this.currentMidlet = midlet;
+    
+    public void setMIDlet(final MIDlet currentMidlet) {
+        this.currentMidlet = currentMidlet;
     }
 }

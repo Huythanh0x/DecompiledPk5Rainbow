@@ -1,183 +1,178 @@
 package com.uc.paymentsdk.commons.ui;
 
-import android.R;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.database.DataSetObserver;
-import android.util.AttributeSet;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.View;
 import android.widget.ListAdapter;
+import android.app.AlertDialog$Builder;
+import android.content.DialogInterface;
+import android.util.AttributeSet;
+import android.content.Context;
 import android.widget.SpinnerAdapter;
+import android.content.DialogInterface$OnClickListener;
+import android.widget.Button;
 
-/* loaded from: classes.dex */
-public class TitleSpinner extends Button implements DialogInterface.OnClickListener {
+public class TitleSpinner extends Button implements DialogInterface$OnClickListener
+{
     private SpinnerAdapter mAdapter;
     private int mNextSelectedPosition;
-    private DialogInterface.OnClickListener mOnClickListener;
+    private DialogInterface$OnClickListener mOnClickListener;
     private CharSequence mPrompt;
-
-    public TitleSpinner(Context paramContext) {
-        super(paramContext);
-        init();
+    
+    public TitleSpinner(final Context context) {
+        super(context);
+        this.init();
     }
-
-    public TitleSpinner(Context paramContext, AttributeSet paramAttributeSet) {
-        super(paramContext, paramAttributeSet);
-        init();
+    
+    public TitleSpinner(final Context context, final AttributeSet set) {
+        super(context, set);
+        this.init();
     }
-
+    
     private void init() {
         this.mNextSelectedPosition = -1;
-        setGravity(19);
-        setBackgroundResource(R.drawable.btn_dropdown);
+        this.setGravity(19);
+        this.setBackgroundResource(17301510);
     }
-
+    
     public int getSelectedItemPosition() {
         return this.mNextSelectedPosition;
     }
-
-    public void setSelection(int paramInt) {
-        this.mNextSelectedPosition = paramInt;
-        setText(this.mAdapter.getItem(paramInt).toString());
-    }
-
-    public void setAdapter(SpinnerAdapter paramSpinnerAdapter) {
-        this.mAdapter = paramSpinnerAdapter;
-    }
-
-    @Override // android.content.DialogInterface.OnClickListener
-    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-        setSelection(paramInt);
-        paramDialogInterface.dismiss();
+    
+    public void onClick(final DialogInterface dialogInterface, final int selection) {
+        this.setSelection(selection);
+        dialogInterface.dismiss();
         if (this.mOnClickListener != null) {
-            this.mOnClickListener.onClick(paramDialogInterface, paramInt);
+            this.mOnClickListener.onClick(dialogInterface, selection);
         }
     }
-
-    @Override // android.view.View
+    
     public boolean performClick() {
-        boolean bool = super.performClick();
-        if (!bool) {
-            bool = true;
-            AlertDialog.Builder localBuilder = new AlertDialog.Builder(getContext());
+        boolean performClick;
+        if (!(performClick = super.performClick())) {
+            performClick = true;
+            final AlertDialog$Builder alertDialog$Builder = new AlertDialog$Builder(this.getContext());
             if (this.mPrompt != null) {
-                localBuilder.setTitle(this.mPrompt);
+                alertDialog$Builder.setTitle(this.mPrompt);
             }
-            localBuilder.setSingleChoiceItems(new DropDownAdapter(this.mAdapter), getSelectedItemPosition(), this).show();
+            alertDialog$Builder.setSingleChoiceItems((ListAdapter)new DropDownAdapter(this.mAdapter), this.getSelectedItemPosition(), (DialogInterface$OnClickListener)this).show();
         }
-        return bool;
+        return performClick;
     }
-
-    public void setOnClickListener(DialogInterface.OnClickListener paramOnClickListener) {
-        this.mOnClickListener = paramOnClickListener;
+    
+    public void setAdapter(final SpinnerAdapter mAdapter) {
+        this.mAdapter = mAdapter;
     }
-
-    public void setPrompt(CharSequence paramCharSequence) {
-        this.mPrompt = paramCharSequence;
+    
+    public void setOnClickListener(final DialogInterface$OnClickListener mOnClickListener) {
+        this.mOnClickListener = mOnClickListener;
     }
-
-    /* loaded from: classes.dex */
-    private static class DropDownAdapter implements ListAdapter, SpinnerAdapter {
+    
+    public void setPrompt(final CharSequence mPrompt) {
+        this.mPrompt = mPrompt;
+    }
+    
+    public void setSelection(final int mNextSelectedPosition) {
+        this.mNextSelectedPosition = mNextSelectedPosition;
+        this.setText((CharSequence)this.mAdapter.getItem(mNextSelectedPosition).toString());
+    }
+    
+    private static class DropDownAdapter implements ListAdapter, SpinnerAdapter
+    {
         private SpinnerAdapter mAdapter;
         private ListAdapter mListAdapter;
-
-        public DropDownAdapter(SpinnerAdapter paramSpinnerAdapter) {
-            this.mAdapter = paramSpinnerAdapter;
-            if (paramSpinnerAdapter instanceof SpinnerAdapter) {
-                this.mListAdapter = (ListAdapter) paramSpinnerAdapter;
+        
+        public DropDownAdapter(final SpinnerAdapter mAdapter) {
+            super();
+            this.mAdapter = mAdapter;
+            if (mAdapter instanceof SpinnerAdapter) {
+                this.mListAdapter = (ListAdapter)mAdapter;
             }
         }
-
-        @Override // android.widget.Adapter
-        public int getCount() {
-            if (this.mAdapter == null) {
-                return 0;
-            }
-            return this.mAdapter.getCount();
-        }
-
-        @Override // android.widget.Adapter
-        public Object getItem(int paramInt) {
-            if (this.mAdapter == null) {
-                return null;
-            }
-            return this.mAdapter.getItem(paramInt);
-        }
-
-        @Override // android.widget.Adapter
-        public long getItemId(int paramInt) {
-            if (this.mAdapter == null) {
-                return -1L;
-            }
-            return this.mAdapter.getItemId(paramInt);
-        }
-
-        @Override // android.widget.Adapter
-        public View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
-            return getDropDownView(paramInt, paramView, paramViewGroup);
-        }
-
-        @Override // android.widget.SpinnerAdapter
-        public View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup) {
-            if (this.mAdapter == null) {
-                return null;
-            }
-            return this.mAdapter.getDropDownView(paramInt, paramView, paramViewGroup);
-        }
-
-        @Override // android.widget.Adapter
-        public boolean hasStableIds() {
-            return this.mAdapter != null && this.mAdapter.hasStableIds();
-        }
-
-        @Override // android.widget.Adapter
-        public void registerDataSetObserver(DataSetObserver paramDataSetObserver) {
-            if (this.mAdapter != null) {
-                this.mAdapter.registerDataSetObserver(paramDataSetObserver);
-            }
-        }
-
-        @Override // android.widget.Adapter
-        public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver) {
-            if (this.mAdapter != null) {
-                this.mAdapter.unregisterDataSetObserver(paramDataSetObserver);
-            }
-        }
-
-        @Override // android.widget.ListAdapter
+        
         public boolean areAllItemsEnabled() {
-            ListAdapter localListAdapter = this.mListAdapter;
-            if (localListAdapter != null) {
-                return localListAdapter.areAllItemsEnabled();
-            }
-            return true;
+            final ListAdapter mListAdapter = this.mListAdapter;
+            return mListAdapter == null || mListAdapter.areAllItemsEnabled();
         }
-
-        @Override // android.widget.ListAdapter
-        public boolean isEnabled(int paramInt) {
-            ListAdapter localListAdapter = this.mListAdapter;
-            if (localListAdapter != null) {
-                return localListAdapter.isEnabled(paramInt);
+        
+        public int getCount() {
+            int count;
+            if (this.mAdapter == null) {
+                count = 0;
             }
-            return true;
+            else {
+                count = this.mAdapter.getCount();
+            }
+            return count;
         }
-
-        @Override // android.widget.Adapter
-        public int getItemViewType(int paramInt) {
+        
+        public View getDropDownView(final int n, View dropDownView, final ViewGroup viewGroup) {
+            if (this.mAdapter == null) {
+                dropDownView = null;
+            }
+            else {
+                dropDownView = this.mAdapter.getDropDownView(n, dropDownView, viewGroup);
+            }
+            return dropDownView;
+        }
+        
+        public Object getItem(final int n) {
+            Object item;
+            if (this.mAdapter == null) {
+                item = null;
+            }
+            else {
+                item = this.mAdapter.getItem(n);
+            }
+            return item;
+        }
+        
+        public long getItemId(final int n) {
+            long itemId;
+            if (this.mAdapter == null) {
+                itemId = -1L;
+            }
+            else {
+                itemId = this.mAdapter.getItemId(n);
+            }
+            return itemId;
+        }
+        
+        public int getItemViewType(final int n) {
             return 0;
         }
-
-        @Override // android.widget.Adapter
+        
+        public View getView(final int n, final View view, final ViewGroup viewGroup) {
+            return this.getDropDownView(n, view, viewGroup);
+        }
+        
         public int getViewTypeCount() {
             return 1;
         }
-
-        @Override // android.widget.Adapter
+        
+        public boolean hasStableIds() {
+            return this.mAdapter != null && this.mAdapter.hasStableIds();
+        }
+        
         public boolean isEmpty() {
-            return getCount() == 0;
+            return this.getCount() == 0;
+        }
+        
+        public boolean isEnabled(final int n) {
+            final ListAdapter mListAdapter = this.mListAdapter;
+            return mListAdapter == null || mListAdapter.isEnabled(n);
+        }
+        
+        public void registerDataSetObserver(final DataSetObserver dataSetObserver) {
+            if (this.mAdapter != null) {
+                this.mAdapter.registerDataSetObserver(dataSetObserver);
+            }
+        }
+        
+        public void unregisterDataSetObserver(final DataSetObserver dataSetObserver) {
+            if (this.mAdapter != null) {
+                this.mAdapter.unregisterDataSetObserver(dataSetObserver);
+            }
         }
     }
 }

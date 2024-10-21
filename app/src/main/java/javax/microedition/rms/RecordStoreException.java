@@ -1,13 +1,14 @@
 package javax.microedition.rms;
 
-/* loaded from: classes.dex */
-public class RecordStoreException extends Exception {
-    private static final long serialVersionUID = 1;
-
-    public RecordStoreException(String message) {
-        super(message);
-    }
-
+public class RecordStoreException extends Exception
+{
+    private static final long serialVersionUID = 1L;
+    
     public RecordStoreException() {
+        super();
+    }
+    
+    public RecordStoreException(final String message) {
+        super(message);
     }
 }

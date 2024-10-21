@@ -1,11 +1,10 @@
 package main;
 
-import android.util.DisplayMetrics;
 import javax.microedition.lcdui.CwaActivity;
-import javax.microedition.media.Player;
+import android.util.DisplayMetrics;
 
-/* loaded from: classes.dex */
-public class Constants_H {
+public class Constants_H
+{
     public static final byte ABOUT_BUTTON = 4;
     public static final byte ABOUT_MENU = 5;
     public static final byte ACTION_ENEMY = 10;
@@ -45,25 +44,25 @@ public class Constants_H {
     public static final byte BATTLE_NUM = 2;
     public static final byte BATTLE_OVER = -15;
     public static final byte BATTLE_STATE = -31;
-    public static final String BATTLE_TXT_0 = "攻击";
-    public static final String BATTLE_TXT_1 = "道具";
-    public static final String BATTLE_TXT_10 = "需要的技能值不够！";
-    public static final String BATTLE_TXT_11 = "被动技能无法使用!";
-    public static final String BATTLE_TXT_12 = "敌人出现了，战斗吧！";
-    public static final String BATTLE_TXT_13 = "考验的时刻来了，训练师！";
-    public static final String BATTLE_TXT_14 = "尽情捕捉宠物吧！";
-    public static final String BATTLE_TXT_15 = "忠诚度降低，攻击力下降，请及时补充！";
-    public static final String BATTLE_TXT_16 = "要做什么？";
-    public static final String BATTLE_TXT_17 = "可以进化了";
-    public static final String BATTLE_TXT_18 = "忠诚度减少";
-    public static final String BATTLE_TXT_2 = "宠物";
-    public static final String BATTLE_TXT_3 = "商店";
-    public static final String BATTLE_TXT_4 = "逃跑";
-    public static final String BATTLE_TXT_5 = "宠物忠诚度为0，请立刻补充！";
-    public static final String BATTLE_TXT_6 = "忠诚度过低，宠物不服从主人命令";
-    public static final String BATTLE_TXT_7 = "捕获";
-    public static final String BATTLE_TXT_8 = "已成功！";
-    public static final String BATTLE_TXT_9 = "没有捕获到";
+    public static final String BATTLE_TXT_0 = "\u653b\u51fb";
+    public static final String BATTLE_TXT_1 = "\u9053\u5177";
+    public static final String BATTLE_TXT_10 = "\u9700\u8981\u7684\u6280\u80fd\u503c\u4e0d\u591f\uff01";
+    public static final String BATTLE_TXT_11 = "\u88ab\u52a8\u6280\u80fd\u65e0\u6cd5\u4f7f\u7528!";
+    public static final String BATTLE_TXT_12 = "\u654c\u4eba\u51fa\u73b0\u4e86\uff0c\u6218\u6597\u5427\uff01";
+    public static final String BATTLE_TXT_13 = "\u8003\u9a8c\u7684\u65f6\u523b\u6765\u4e86\uff0c\u8bad\u7ec3\u5e08\uff01";
+    public static final String BATTLE_TXT_14 = "\u5c3d\u60c5\u6355\u6349\u5ba0\u7269\u5427\uff01";
+    public static final String BATTLE_TXT_15 = "\u5fe0\u8bda\u5ea6\u964d\u4f4e\uff0c\u653b\u51fb\u529b\u4e0b\u964d\uff0c\u8bf7\u53ca\u65f6\u8865\u5145\uff01";
+    public static final String BATTLE_TXT_16 = "\u8981\u505a\u4ec0\u4e48\uff1f";
+    public static final String BATTLE_TXT_17 = "\u53ef\u4ee5\u8fdb\u5316\u4e86";
+    public static final String BATTLE_TXT_18 = "\u5fe0\u8bda\u5ea6\u51cf\u5c11";
+    public static final String BATTLE_TXT_2 = "\u5ba0\u7269";
+    public static final String BATTLE_TXT_3 = "\u5546\u5e97";
+    public static final String BATTLE_TXT_4 = "\u9003\u8dd1";
+    public static final String BATTLE_TXT_5 = "\u5ba0\u7269\u5fe0\u8bda\u5ea6\u4e3a0\uff0c\u8bf7\u7acb\u523b\u8865\u5145\uff01";
+    public static final String BATTLE_TXT_6 = "\u5fe0\u8bda\u5ea6\u8fc7\u4f4e\uff0c\u5ba0\u7269\u4e0d\u670d\u4ece\u4e3b\u4eba\u547d\u4ee4";
+    public static final String BATTLE_TXT_7 = "\u6355\u83b7";
+    public static final String BATTLE_TXT_8 = "\u5df2\u6210\u529f\uff01";
+    public static final String BATTLE_TXT_9 = "\u6ca1\u6709\u6355\u83b7\u5230";
     public static final byte BG_H = 108;
     public static final byte BIKE = 1;
     public static final byte BLACK_SRC = 22;
@@ -100,14 +99,14 @@ public class Constants_H {
     public static final byte C_WIDTH_1 = 19;
     public static final byte DONGA = 4;
     public static final byte DOOR = 8;
-    public static final String EFFECT_TXT_0 = "石化效果无法行动，受到的伤害减少30%";
-    public static final String EFFECT_TXT_1 = "昏睡效果，命中率下降50%";
-    public static final String EFFECT_TXT_2 = "撕裂效果，减少当前血量的10%";
-    public static final String EFFECT_TXT_3 = "魅惑效果，不能逃跑，增加捕获宠物的几率";
-    public static final String EFFECT_TXT_4 = "禁锢效果，不能逃跑，不能换怪，不能使用道具";
-    public static final String EFFECT_TXT_5 = "腐蚀效果，每回合受到一定伤害";
-    public static final String EFFECT_TXT_6 = "封闭效果，不能使用4级以上技能";
-    public static final String EFFECT_TXT_7 = "封闭效果，对幽暗鬼王不起作用";
+    public static final String EFFECT_TXT_0 = "\u77f3\u5316\u6548\u679c\u65e0\u6cd5\u884c\u52a8\uff0c\u53d7\u5230\u7684\u4f24\u5bb3\u51cf\u5c1130%";
+    public static final String EFFECT_TXT_1 = "\u660f\u7761\u6548\u679c\uff0c\u547d\u4e2d\u7387\u4e0b\u964d50%";
+    public static final String EFFECT_TXT_2 = "\u6495\u88c2\u6548\u679c\uff0c\u51cf\u5c11\u5f53\u524d\u8840\u91cf\u768410%";
+    public static final String EFFECT_TXT_3 = "\u9b45\u60d1\u6548\u679c\uff0c\u4e0d\u80fd\u9003\u8dd1\uff0c\u589e\u52a0\u6355\u83b7\u5ba0\u7269\u7684\u51e0\u7387";
+    public static final String EFFECT_TXT_4 = "\u7981\u9522\u6548\u679c\uff0c\u4e0d\u80fd\u9003\u8dd1\uff0c\u4e0d\u80fd\u6362\u602a\uff0c\u4e0d\u80fd\u4f7f\u7528\u9053\u5177";
+    public static final String EFFECT_TXT_5 = "\u8150\u8680\u6548\u679c\uff0c\u6bcf\u56de\u5408\u53d7\u5230\u4e00\u5b9a\u4f24\u5bb3";
+    public static final String EFFECT_TXT_6 = "\u5c01\u95ed\u6548\u679c\uff0c\u4e0d\u80fd\u4f7f\u75284\u7ea7\u4ee5\u4e0a\u6280\u80fd";
+    public static final String EFFECT_TXT_7 = "\u5c01\u95ed\u6548\u679c\uff0c\u5bf9\u5e7d\u6697\u9b3c\u738b\u4e0d\u8d77\u4f5c\u7528";
     public static final byte ENEMY_BE_HIT = -87;
     public static final byte ENEMY_ESCAPE = -86;
     public static final byte ENEMY_SELECT = 1;
@@ -146,38 +145,38 @@ public class Constants_H {
     public static final byte GAME_PAUSE = 70;
     public static final byte GAME_RELEASE = 102;
     public static final byte GAME_RUN = 30;
-    public static final String GAME_TXT_0 = "奖品列表";
-    public static final String GAME_TXT_1 = "价格：";
-    public static final String GAME_TXT_10 = "请选择道具：";
-    public static final String GAME_TXT_11 = "不好意思，没有猜对。";
-    public static final String GAME_TXT_12 = "需要的参加费：";
-    public static final String GAME_TXT_13 = "在限定时间里接尽量多的球到框里，最后根据框里球的分数来换取金钱。";
-    public static final String GAME_TXT_14 = "球的分数：";
-    public static final String GAME_TXT_15 = "分数：";
-    public static final String GAME_TXT_16 = "球总数：";
-    public static final String GAME_TXT_17 = "游戏开始";
-    public static final String GAME_TXT_18 = "可错次数：";
-    public static final String GAME_TXT_19 = "次";
-    public static final String GAME_TXT_2 = "所需金额：";
-    public static final String GAME_TXT_20 = "游戏失败！！！";
-    public static final String GAME_TXT_21 = "胜利次数：";
-    public static final String GAME_TXT_22 = "请指出";
-    public static final String GAME_TXT_23 = "所在箱子";
-    public static final String GAME_TXT_24 = "您真厉害！";
-    public static final String GAME_TXT_25 = "说不定下次就能行的。";
-    public static final String GAME_TXT_26 = "选择你认为会得第一的一只宠物和押注的大小，注数越大获胜后的奖励越丰厚！";
-    public static final String GAME_TXT_27 = "开始游戏#n离开游戏";
-    public static final String GAME_TXT_28 = "点击屏幕继续";
-    public static final String GAME_TXT_29 = "经验";
-    public static final String GAME_TXT_3 = "一注：#n投入100金，#n获胜得120金。#n二注：#n投入300金，#n获胜得350金。#n三注：#n投入1000金，#n获胜得1200金。";
-    public static final String GAME_TXT_30 = "宠物档次";
-    public static final String GAME_TXT_31 = "兴奋度";
-    public static final String GAME_TXT_4 = "请选择押注大小：";
-    public static final String GAME_TXT_5 = "请选择押注的宠物：";
-    public static final String GAME_TXT_6 = "每喂一个兴奋菇花费10金，可增加一格兴奋度。";
-    public static final String GAME_TXT_7 = "游戏规则";
-    public static final String GAME_TXT_8 = "一注100金#n二注300金#n三注1000金";
-    public static final String GAME_TXT_9 = "兴奋度：";
+    public static final String GAME_TXT_0 = "\u5956\u54c1\u5217\u8868";
+    public static final String GAME_TXT_1 = "\u4ef7\u683c\uff1a";
+    public static final String GAME_TXT_10 = "\u8bf7\u9009\u62e9\u9053\u5177\uff1a";
+    public static final String GAME_TXT_11 = "\u4e0d\u597d\u610f\u601d\uff0c\u6ca1\u6709\u731c\u5bf9\u3002";
+    public static final String GAME_TXT_12 = "\u9700\u8981\u7684\u53c2\u52a0\u8d39\uff1a";
+    public static final String GAME_TXT_13 = "\u5728\u9650\u5b9a\u65f6\u95f4\u91cc\u63a5\u5c3d\u91cf\u591a\u7684\u7403\u5230\u6846\u91cc\uff0c\u6700\u540e\u6839\u636e\u6846\u91cc\u7403\u7684\u5206\u6570\u6765\u6362\u53d6\u91d1\u94b1\u3002";
+    public static final String GAME_TXT_14 = "\u7403\u7684\u5206\u6570\uff1a";
+    public static final String GAME_TXT_15 = "\u5206\u6570\uff1a";
+    public static final String GAME_TXT_16 = "\u7403\u603b\u6570\uff1a";
+    public static final String GAME_TXT_17 = "\u6e38\u620f\u5f00\u59cb";
+    public static final String GAME_TXT_18 = "\u53ef\u9519\u6b21\u6570\uff1a";
+    public static final String GAME_TXT_19 = "\u6b21";
+    public static final String GAME_TXT_2 = "\u6240\u9700\u91d1\u989d\uff1a";
+    public static final String GAME_TXT_20 = "\u6e38\u620f\u5931\u8d25\uff01\uff01\uff01";
+    public static final String GAME_TXT_21 = "\u80dc\u5229\u6b21\u6570\uff1a";
+    public static final String GAME_TXT_22 = "\u8bf7\u6307\u51fa";
+    public static final String GAME_TXT_23 = "\u6240\u5728\u7bb1\u5b50";
+    public static final String GAME_TXT_24 = "\u60a8\u771f\u5389\u5bb3\uff01";
+    public static final String GAME_TXT_25 = "\u8bf4\u4e0d\u5b9a\u4e0b\u6b21\u5c31\u80fd\u884c\u7684\u3002";
+    public static final String GAME_TXT_26 = "\u9009\u62e9\u4f60\u8ba4\u4e3a\u4f1a\u5f97\u7b2c\u4e00\u7684\u4e00\u53ea\u5ba0\u7269\u548c\u62bc\u6ce8\u7684\u5927\u5c0f\uff0c\u6ce8\u6570\u8d8a\u5927\u83b7\u80dc\u540e\u7684\u5956\u52b1\u8d8a\u4e30\u539a\uff01";
+    public static final String GAME_TXT_27 = "\u5f00\u59cb\u6e38\u620f#n\u79bb\u5f00\u6e38\u620f";
+    public static final String GAME_TXT_28 = "\u70b9\u51fb\u5c4f\u5e55\u7ee7\u7eed";
+    public static final String GAME_TXT_29 = "\u7ecf\u9a8c";
+    public static final String GAME_TXT_3 = "\u4e00\u6ce8\uff1a#n\u6295\u5165100\u91d1\uff0c#n\u83b7\u80dc\u5f97120\u91d1\u3002#n\u4e8c\u6ce8\uff1a#n\u6295\u5165300\u91d1\uff0c#n\u83b7\u80dc\u5f97350\u91d1\u3002#n\u4e09\u6ce8\uff1a#n\u6295\u51651000\u91d1\uff0c#n\u83b7\u80dc\u5f971200\u91d1\u3002";
+    public static final String GAME_TXT_30 = "\u5ba0\u7269\u6863\u6b21";
+    public static final String GAME_TXT_31 = "\u5174\u594b\u5ea6";
+    public static final String GAME_TXT_4 = "\u8bf7\u9009\u62e9\u62bc\u6ce8\u5927\u5c0f\uff1a";
+    public static final String GAME_TXT_5 = "\u8bf7\u9009\u62e9\u62bc\u6ce8\u7684\u5ba0\u7269\uff1a";
+    public static final String GAME_TXT_6 = "\u6bcf\u5582\u4e00\u4e2a\u5174\u594b\u83c7\u82b1\u8d3910\u91d1\uff0c\u53ef\u589e\u52a0\u4e00\u683c\u5174\u594b\u5ea6\u3002";
+    public static final String GAME_TXT_7 = "\u6e38\u620f\u89c4\u5219";
+    public static final String GAME_TXT_8 = "\u4e00\u6ce8100\u91d1#n\u4e8c\u6ce8300\u91d1#n\u4e09\u6ce81000\u91d1";
+    public static final String GAME_TXT_9 = "\u5174\u594b\u5ea6\uff1a";
     public static final byte GAME_WIN = 50;
     public static final byte GETKIND0 = 0;
     public static final byte GETKIND1 = 1;
@@ -206,6 +205,7 @@ public class Constants_H {
     public static final byte HCELL_HEIGHT = 10;
     public static final byte HCELL_WIDTH = 10;
     public static final byte HEAL_MAP = 16;
+    public static int HEIGHT = 0;
     public static final int HEIGHT_ = 360;
     public static int HEIGHT_H = 0;
     public static final int HEIGHT_H_ = 180;
@@ -228,27 +228,27 @@ public class Constants_H {
     public static final byte ITEM_SEC = 19;
     public static final byte ITEM_SET = 9;
     public static final byte ITEM_THR = 23;
-    public static final String ITEM_TXT_0 = "道具";
-    public static final String ITEM_TXT_1 = "辅助";
-    public static final String ITEM_TXT_2 = "卷轴";
-    public static final String ITEM_TXT_3 = "寄存宠物";
-    public static final String ITEM_TXT_4 = "道具";
-    public static final String ITEM_TXT_5 = "矿石";
-    public static final String ITEM_TXT_6 = "徽章";
-    public static final String ITEM_TXT_7 = "孵化";
+    public static final String ITEM_TXT_0 = "\u9053\u5177";
+    public static final String ITEM_TXT_1 = "\u8f85\u52a9";
+    public static final String ITEM_TXT_2 = "\u5377\u8f74";
+    public static final String ITEM_TXT_3 = "\u5bc4\u5b58\u5ba0\u7269";
+    public static final String ITEM_TXT_4 = "\u9053\u5177";
+    public static final String ITEM_TXT_5 = "\u77ff\u77f3";
+    public static final String ITEM_TXT_6 = "\u5fbd\u7ae0";
+    public static final String ITEM_TXT_7 = "\u5b75\u5316";
     public static final byte ITEM_TYPE = 4;
     public static final byte KEY_TIME = 10;
-    public static final String LEVEL_TXT_0 = "您当前的训练师等级已达到上限！";
-    public static final String LEVEL_TXT_1 = "当前训练师等级为#7";
-    public static final String LEVEL_TXT_10 = "#0，您商店能存放的宠物#7暴增到";
-    public static final String LEVEL_TXT_2 = "#0距离下次升级还需要捕捉#7";
-    public static final String LEVEL_TXT_3 = "#0只不同的宠物，努力获得新宠吧。";
-    public static final String LEVEL_TXT_4 = "此次您没有捕获到全新的宠物，捕获并不是唯一途径，有些宠物需要通过进化才能获得哦。";
-    public static final String LEVEL_TXT_5 = "此次您捕获了";
-    public static final String LEVEL_TXT_6 = "个新宠物，这里是王国训练师机构奖励给您的";
-    public static final String LEVEL_TXT_7 = "个徽章，希望再接再厉哦。";
-    public static final String LEVEL_TXT_8 = "恭喜您的训练师等级已提升为#7";
-    public static final String LEVEL_TXT_9 = "#0，您随身可携带宠物数量#7暴增到";
+    public static final String LEVEL_TXT_0 = "\u60a8\u5f53\u524d\u7684\u8bad\u7ec3\u5e08\u7b49\u7ea7\u5df2\u8fbe\u5230\u4e0a\u9650\uff01";
+    public static final String LEVEL_TXT_1 = "\u5f53\u524d\u8bad\u7ec3\u5e08\u7b49\u7ea7\u4e3a#7";
+    public static final String LEVEL_TXT_10 = "#0\uff0c\u60a8\u5546\u5e97\u80fd\u5b58\u653e\u7684\u5ba0\u7269#7\u66b4\u589e\u5230";
+    public static final String LEVEL_TXT_2 = "#0\u8ddd\u79bb\u4e0b\u6b21\u5347\u7ea7\u8fd8\u9700\u8981\u6355\u6349#7";
+    public static final String LEVEL_TXT_3 = "#0\u53ea\u4e0d\u540c\u7684\u5ba0\u7269\uff0c\u52aa\u529b\u83b7\u5f97\u65b0\u5ba0\u5427\u3002";
+    public static final String LEVEL_TXT_4 = "\u6b64\u6b21\u60a8\u6ca1\u6709\u6355\u83b7\u5230\u5168\u65b0\u7684\u5ba0\u7269\uff0c\u6355\u83b7\u5e76\u4e0d\u662f\u552f\u4e00\u9014\u5f84\uff0c\u6709\u4e9b\u5ba0\u7269\u9700\u8981\u901a\u8fc7\u8fdb\u5316\u624d\u80fd\u83b7\u5f97\u54e6\u3002";
+    public static final String LEVEL_TXT_5 = "\u6b64\u6b21\u60a8\u6355\u83b7\u4e86";
+    public static final String LEVEL_TXT_6 = "\u4e2a\u65b0\u5ba0\u7269\uff0c\u8fd9\u91cc\u662f\u738b\u56fd\u8bad\u7ec3\u5e08\u673a\u6784\u5956\u52b1\u7ed9\u60a8\u7684";
+    public static final String LEVEL_TXT_7 = "\u4e2a\u5fbd\u7ae0\uff0c\u5e0c\u671b\u518d\u63a5\u518d\u5389\u54e6\u3002";
+    public static final String LEVEL_TXT_8 = "\u606d\u559c\u60a8\u7684\u8bad\u7ec3\u5e08\u7b49\u7ea7\u5df2\u63d0\u5347\u4e3a#7";
+    public static final String LEVEL_TXT_9 = "#0\uff0c\u60a8\u968f\u8eab\u53ef\u643a\u5e26\u5ba0\u7269\u6570\u91cf#7\u66b4\u589e\u5230";
     public static final byte LINE_HEIGHT = 18;
     public static final byte LIST_INFO = 68;
     public static final byte LOAD_GAME = 0;
@@ -276,34 +276,34 @@ public class Constants_H {
     public static final byte MINI_SELL = 12;
     public static final byte MINI_SKILL = 13;
     public static final byte MISSION = 18;
-    public static final String MISSION_TXT_0 = "主线任务";
-    public static final String MISSION_TXT_1 = "分支任务";
-    public static final String MISSION_TXT_2 = "#4主线任务#0已更新，点击#7工具包内的主线按钮#0可查看任务表。";
-    public static final String MISSION_TXT_3 = "#4分支任务#0已更新，点击#7工具包内的支线按钮#0可查看任务表。";
-    public static final String MISSION_TXT_4 = "主线完成度：";
-    public static final String MISSION_TXT_5 = "分支完成度：";
-    public static final String MISSION_TXT_6 = "完成";
+    public static final String MISSION_TXT_0 = "\u4e3b\u7ebf\u4efb\u52a1";
+    public static final String MISSION_TXT_1 = "\u5206\u652f\u4efb\u52a1";
+    public static final String MISSION_TXT_2 = "#4\u4e3b\u7ebf\u4efb\u52a1#0\u5df2\u66f4\u65b0\uff0c\u70b9\u51fb#7\u5de5\u5177\u5305\u5185\u7684\u4e3b\u7ebf\u6309\u94ae#0\u53ef\u67e5\u770b\u4efb\u52a1\u8868\u3002";
+    public static final String MISSION_TXT_3 = "#4\u5206\u652f\u4efb\u52a1#0\u5df2\u66f4\u65b0\uff0c\u70b9\u51fb#7\u5de5\u5177\u5305\u5185\u7684\u652f\u7ebf\u6309\u94ae#0\u53ef\u67e5\u770b\u4efb\u52a1\u8868\u3002";
+    public static final String MISSION_TXT_4 = "\u4e3b\u7ebf\u5b8c\u6210\u5ea6\uff1a";
+    public static final String MISSION_TXT_5 = "\u5206\u652f\u5b8c\u6210\u5ea6\uff1a";
+    public static final String MISSION_TXT_6 = "\u5b8c\u6210";
     public static final byte MMAP_P = 6;
     public static final byte MMAP_PH = 3;
-    public static final String MONEY_TXT_0 = "金";
-    public static final String MONEY_TXT_1 = "徽章";
-    public static final String MONEY_TXT_10 = "，是否卖出？";
-    public static final String MONEY_TXT_11 = "获得徽章：";
-    public static final String MONEY_TXT_12 = "这个宝箱是空的。";
-    public static final String MONEY_TXT_13 = "失去：";
-    public static final String MONEY_TXT_14 = "是否";
-    public static final String MONEY_TXT_15 = "购买";
-    public static final String MONEY_TXT_16 = "卖出";
-    public static final String MONEY_TXT_17 = "现有：";
-    public static final String MONEY_TXT_18 = "购买成功";
-    public static final String MONEY_TXT_2 = "金钱不足！";
-    public static final String MONEY_TXT_3 = "徽章不足！";
-    public static final String MONEY_TXT_4 = "背包空间不足。";
-    public static final String MONEY_TXT_5 = "数量已到上限";
-    public static final String MONEY_TXT_6 = "需要：";
-    public static final String MONEY_TXT_7 = "获得：";
-    public static final String MONEY_TXT_8 = "数量：";
-    public static final String MONEY_TXT_9 = "获得金钱：";
+    public static final String MONEY_TXT_0 = "\u91d1";
+    public static final String MONEY_TXT_1 = "\u5fbd\u7ae0";
+    public static final String MONEY_TXT_10 = "\uff0c\u662f\u5426\u5356\u51fa\uff1f";
+    public static final String MONEY_TXT_11 = "\u83b7\u5f97\u5fbd\u7ae0\uff1a";
+    public static final String MONEY_TXT_12 = "\u8fd9\u4e2a\u5b9d\u7bb1\u662f\u7a7a\u7684\u3002";
+    public static final String MONEY_TXT_13 = "\u5931\u53bb\uff1a";
+    public static final String MONEY_TXT_14 = "\u662f\u5426";
+    public static final String MONEY_TXT_15 = "\u8d2d\u4e70";
+    public static final String MONEY_TXT_16 = "\u5356\u51fa";
+    public static final String MONEY_TXT_17 = "\u73b0\u6709\uff1a";
+    public static final String MONEY_TXT_18 = "\u8d2d\u4e70\u6210\u529f";
+    public static final String MONEY_TXT_2 = "\u91d1\u94b1\u4e0d\u8db3\uff01";
+    public static final String MONEY_TXT_3 = "\u5fbd\u7ae0\u4e0d\u8db3\uff01";
+    public static final String MONEY_TXT_4 = "\u80cc\u5305\u7a7a\u95f4\u4e0d\u8db3\u3002";
+    public static final String MONEY_TXT_5 = "\u6570\u91cf\u5df2\u5230\u4e0a\u9650";
+    public static final String MONEY_TXT_6 = "\u9700\u8981\uff1a";
+    public static final String MONEY_TXT_7 = "\u83b7\u5f97\uff1a";
+    public static final String MONEY_TXT_8 = "\u6570\u91cf\uff1a";
+    public static final String MONEY_TXT_9 = "\u83b7\u5f97\u91d1\u94b1\uff1a";
     public static final byte MONSTER_2_LEN = 8;
     public static final byte MONSTER_AGILE = 5;
     public static final byte MONSTER_APPEAR = -50;
@@ -368,20 +368,20 @@ public class Constants_H {
     public static final byte M_LENGTH = 8;
     public static final byte M_TYPE = 3;
     public static final byte M_WIDTH = 19;
-    public static final String NAME_TXT_0 = "塞其";
-    public static final String NAME_TXT_1 = "安琪儿";
-    public static final String NAME_TXT_10 = "罗伯特";
-    public static final String NAME_TXT_11 = "蓝发女孩";
-    public static final String NAME_TXT_12 = "神秘东方男子";
-    public static final String NAME_TXT_13 = "南宫云";
-    public static final String NAME_TXT_2 = "幽暗鬼王";
-    public static final String NAME_TXT_3 = "普罗校长";
-    public static final String NAME_TXT_4 = "杰奇校长";
-    public static final String NAME_TXT_5 = "普罗";
-    public static final String NAME_TXT_6 = "道具阿姐";
-    public static final String NAME_TXT_7 = "寄存阿妹";
-    public static final String NAME_TXT_8 = "卷轴大叔";
-    public static final String NAME_TXT_9 = "矿石大叔";
+    public static final String NAME_TXT_0 = "\u585e\u5176";
+    public static final String NAME_TXT_1 = "\u5b89\u742a\u513f";
+    public static final String NAME_TXT_10 = "\u7f57\u4f2f\u7279";
+    public static final String NAME_TXT_11 = "\u84dd\u53d1\u5973\u5b69";
+    public static final String NAME_TXT_12 = "\u795e\u79d8\u4e1c\u65b9\u7537\u5b50";
+    public static final String NAME_TXT_13 = "\u5357\u5bab\u4e91";
+    public static final String NAME_TXT_2 = "\u5e7d\u6697\u9b3c\u738b";
+    public static final String NAME_TXT_3 = "\u666e\u7f57\u6821\u957f";
+    public static final String NAME_TXT_4 = "\u6770\u5947\u6821\u957f";
+    public static final String NAME_TXT_5 = "\u666e\u7f57";
+    public static final String NAME_TXT_6 = "\u9053\u5177\u963f\u59d0";
+    public static final String NAME_TXT_7 = "\u5bc4\u5b58\u963f\u59b9";
+    public static final String NAME_TXT_8 = "\u5377\u8f74\u5927\u53d4";
+    public static final String NAME_TXT_9 = "\u77ff\u77f3\u5927\u53d4";
     public static final byte NEW_GAME_BUTTON = 1;
     public static final byte NEW_GAME_MENU = 2;
     public static final byte NIDUS_NUM = 5;
@@ -398,63 +398,65 @@ public class Constants_H {
     public static final byte NPC_TYPE_NIDUS = 1;
     public static final byte NPC_TYPE_SHADOW = 2;
     public static final byte NPC_TYPE_SHADOW0 = 3;
+    public static final int OFF_HEIGHT;
     public static final int OFF_HEIGHT_ = 380;
+    public static final int OFF_WIDTH;
     public static final int OFF_WIDTH_ = 660;
     public static final byte OPTION_BUTTON = 2;
     public static final byte OVER = 100;
     public static final byte PAUSE = 99;
-    public static final String PAUSE_TXT_0 = "保存游戏";
-    public static final String PAUSE_TXT_1 = "查看宠物";
-    public static final String PAUSE_TXT_10 = "关   于";
-    public static final String PAUSE_TXT_11 = "退出游戏";
-    public static final String PAUSE_TXT_12 = "普通技能";
-    public static final String PAUSE_TXT_13 = "天赋技能";
-    public static final String PAUSE_TXT_14 = "基本属性";
-    public static final String PAUSE_TXT_15 = "进化素材";
-    public static final String PAUSE_TXT_16 = "菜单";
-    public static final String PAUSE_TXT_17 = "系统";
-    public static final String PAUSE_TXT_18 = "是否存盘?";
-    public static final String PAUSE_TXT_19 = "游戏暂停，点击屏幕返回。";
-    public static final String PAUSE_TXT_2 = "人物背包";
-    public static final String PAUSE_TXT_20 = "保存游戏中";
-    public static final String PAUSE_TXT_21 = "点击屏幕跳过";
-    public static final String PAUSE_TXT_22 = "是";
-    public static final String PAUSE_TXT_23 = "否";
-    public static final String PAUSE_TXT_24 = "查看任务";
-    public static final String PAUSE_TXT_3 = "宠物图鉴";
-    public static final String PAUSE_TXT_4 = "返回游戏";
-    public static final String PAUSE_TXT_5 = "读取进度";
-    public static final String PAUSE_TXT_6 = "声音";
-    public static final String PAUSE_TXT_7 = "游戏帮助";
-    public static final String PAUSE_TXT_8 = "回主菜单";
-    public static final String PAUSE_TXT_9 = "新游戏";
+    public static final String PAUSE_TXT_0 = "\u4fdd\u5b58\u6e38\u620f";
+    public static final String PAUSE_TXT_1 = "\u67e5\u770b\u5ba0\u7269";
+    public static final String PAUSE_TXT_10 = "\u5173   \u4e8e";
+    public static final String PAUSE_TXT_11 = "\u9000\u51fa\u6e38\u620f";
+    public static final String PAUSE_TXT_12 = "\u666e\u901a\u6280\u80fd";
+    public static final String PAUSE_TXT_13 = "\u5929\u8d4b\u6280\u80fd";
+    public static final String PAUSE_TXT_14 = "\u57fa\u672c\u5c5e\u6027";
+    public static final String PAUSE_TXT_15 = "\u8fdb\u5316\u7d20\u6750";
+    public static final String PAUSE_TXT_16 = "\u83dc\u5355";
+    public static final String PAUSE_TXT_17 = "\u7cfb\u7edf";
+    public static final String PAUSE_TXT_18 = "\u662f\u5426\u5b58\u76d8?";
+    public static final String PAUSE_TXT_19 = "\u6e38\u620f\u6682\u505c\uff0c\u70b9\u51fb\u5c4f\u5e55\u8fd4\u56de\u3002";
+    public static final String PAUSE_TXT_2 = "\u4eba\u7269\u80cc\u5305";
+    public static final String PAUSE_TXT_20 = "\u4fdd\u5b58\u6e38\u620f\u4e2d";
+    public static final String PAUSE_TXT_21 = "\u70b9\u51fb\u5c4f\u5e55\u8df3\u8fc7";
+    public static final String PAUSE_TXT_22 = "\u662f";
+    public static final String PAUSE_TXT_23 = "\u5426";
+    public static final String PAUSE_TXT_24 = "\u67e5\u770b\u4efb\u52a1";
+    public static final String PAUSE_TXT_3 = "\u5ba0\u7269\u56fe\u9274";
+    public static final String PAUSE_TXT_4 = "\u8fd4\u56de\u6e38\u620f";
+    public static final String PAUSE_TXT_5 = "\u8bfb\u53d6\u8fdb\u5ea6";
+    public static final String PAUSE_TXT_6 = "\u58f0\u97f3";
+    public static final String PAUSE_TXT_7 = "\u6e38\u620f\u5e2e\u52a9";
+    public static final String PAUSE_TXT_8 = "\u56de\u4e3b\u83dc\u5355";
+    public static final String PAUSE_TXT_9 = "\u65b0\u6e38\u620f";
     public static final byte POP_NIDUS = 16;
-    public static final String POP_TXT_0 = "技能";
-    public static final String POP_TXT_1 = "参战";
-    public static final String POP_TXT_10 = "不回复";
-    public static final String POP_TXT_11 = "回复";
-    public static final String POP_TXT_12 = "继续";
-    public static final String POP_TXT_13 = "放弃";
-    public static final String POP_TXT_14 = "离开";
-    public static final String POP_TXT_15 = "天赋";
-    public static final String POP_TXT_16 = "选择蛋";
-    public static final String POP_TXT_17 = "查看孵化";
-    public static final String POP_TXT_18 = "孵化";
-    public static final String POP_TXT_2 = "进化";
-    public static final String POP_TXT_3 = "放生";
-    public static final String POP_TXT_4 = "返回";
-    public static final String POP_TXT_5 = "使用";
-    public static final String POP_TXT_6 = "学习";
-    public static final String POP_TXT_7 = "存放";
-    public static final String POP_TXT_8 = "取出";
-    public static final String POP_TXT_9 = "卖宠";
-    public static final String PRO_TXT_0 = "生命";
-    public static final String PRO_TXT_1 = "能量";
-    public static final String PRO_TXT_2 = "档次";
-    public static final String PRO_TXT_3 = "力量";
-    public static final String PRO_TXT_4 = "防御";
-    public static final String PRO_TXT_5 = "敏捷";
-    public static final String PRO_TXT_7 = "被动";
+    public static final String POP_TXT_0 = "\u6280\u80fd";
+    public static final String POP_TXT_1 = "\u53c2\u6218";
+    public static final String POP_TXT_10 = "\u4e0d\u56de\u590d";
+    public static final String POP_TXT_11 = "\u56de\u590d";
+    public static final String POP_TXT_12 = "\u7ee7\u7eed";
+    public static final String POP_TXT_13 = "\u653e\u5f03";
+    public static final String POP_TXT_14 = "\u79bb\u5f00";
+    public static final String POP_TXT_15 = "\u5929\u8d4b";
+    public static final String POP_TXT_16 = "\u9009\u62e9\u86cb";
+    public static final String POP_TXT_17 = "\u67e5\u770b\u5b75\u5316";
+    public static final String POP_TXT_18 = "\u5b75\u5316";
+    public static final String POP_TXT_2 = "\u8fdb\u5316";
+    public static final String POP_TXT_3 = "\u653e\u751f";
+    public static final String POP_TXT_4 = "\u8fd4\u56de";
+    public static final String POP_TXT_5 = "\u4f7f\u7528";
+    public static final String POP_TXT_6 = "\u5b66\u4e60";
+    public static final String POP_TXT_7 = "\u5b58\u653e";
+    public static final String POP_TXT_8 = "\u53d6\u51fa";
+    public static final String POP_TXT_9 = "\u5356\u5ba0";
+    public static final String PRO_TXT_0 = "\u751f\u547d";
+    public static final String PRO_TXT_1 = "\u80fd\u91cf";
+    public static final String PRO_TXT_2 = "\u6863\u6b21";
+    public static final String PRO_TXT_3 = "\u529b\u91cf";
+    public static final String PRO_TXT_4 = "\u9632\u5fa1";
+    public static final String PRO_TXT_5 = "\u654f\u6377";
+    public static final String PRO_TXT_7 = "\u88ab\u52a8";
     public static final byte P_BACK_MAP = 5;
     public static final byte P_INFO = 3;
     public static final byte P_ITEM = 2;
@@ -482,6 +484,7 @@ public class Constants_H {
     public static final byte RUN_IN_MAP = -10;
     public static final byte RUN_LEVEL_UP = 20;
     public static final byte SAVEING = 100;
+    public static final short SCREEN_X;
     public static final short SCREEN_Y = 252;
     public static final short SECOND_ROW = 188;
     public static final byte SEC_SKILL = 3;
@@ -501,7 +504,7 @@ public class Constants_H {
     public static final byte SKILL_SET = 14;
     public static final byte SMS_LEVEL = -21;
     public static final byte SMS_PAUSE = -20;
-    public static final String SMS_TXT_0 = "购买8000金#n购买80000金#n购买10徽章#n购买50徽章#n宠物升级#n购买神龟#n正版验证#n战斗复活#n短信商城";
+    public static final String SMS_TXT_0 = "\u8d2d\u4e708000\u91d1#n\u8d2d\u4e7080000\u91d1#n\u8d2d\u4e7010\u5fbd\u7ae0#n\u8d2d\u4e7050\u5fbd\u7ae0#n\u5ba0\u7269\u5347\u7ea7#n\u8d2d\u4e70\u795e\u9f9f#n\u6b63\u7248\u9a8c\u8bc1#n\u6218\u6597\u590d\u6d3b#n\u77ed\u4fe1\u5546\u57ce";
     public static final byte SOUND_SET_MENU = 3;
     public static final int SRC_BATTLE_H;
     public static final int SRC_BATTLE_H_ = 196;
@@ -526,115 +529,115 @@ public class Constants_H {
     public static final byte THE_NPC = 9;
     public static final byte TIME_PER_FRAME = 60;
     public static final byte TISHI_MENU = 6;
-    public static final String TXT_0 = "已经死亡，无法使用！";
-    public static final String TXT_1 = "不需要使用这个道具";
-    public static final String TXT_10 = "习得技能：";
-    public static final String TXT_100 = "材料不足，不能孵化";
-    public static final String TXT_101 = "孵化所需材料";
-    public static final String TXT_102 = "按确定键完成孵化";
-    public static final String TXT_103 = "，不能通过该地形";
-    public static final String TXT_104 = "宠物图鉴已更新";
-    public static final String TXT_105 = "宠物空间已满，无法获得新的宠物，请整理寄存所空出一个空间。";
-    public static final String TXT_106 = "经验已满，可以孵化了。";
-    public static final String TXT_107 = "奇异兽不仅跑得快而且可以不遇敌，现提供试骑体验，正版验证后需购买！";
-    public static final String TXT_11 = "获得经验：";
-    static final String TXT_111 = "携带的宠物全都牺牲了!";
-    public static final String TXT_12 = "您的宠物已经无法获得经验";
-    public static final String TXT_13 = "身上必须携带一只能参战的宠物！";
-    public static final String TXT_14 = "失去宠物：";
-    public static final String TXT_15 = "可进化";
-    public static final String TXT_16 = "次";
-    public static final String TXT_17 = "确定进化该宠物？";
-    public static final String TXT_18 = "材料不足，不能进化！";
-    public static final String TXT_19 = "进化成  ";
-    public static final String TXT_2 = "没有异常！";
-    public static final String TXT_20 = "未知宠物";
-    public static final String TXT_21 = "发现地点";
-    public static final String TXT_22 = "进";
-    public static final String TXT_23 = "化";
-    public static final String TXT_24 = "材料：";
-    public static final String TXT_25 = "未知";
-    public static final String TXT_26 = "已捕获";
-    public static final String TXT_27 = "未捕获";
-    public static final String TXT_28 = "发现度 ";
-    public static final String TXT_29 = "捕捉种类 ";
-    public static final String TXT_3 = "忠诚度已满";
-    public static final String TXT_30 = "恭喜您把所有的宠物都收集齐了";
-    public static final String TXT_31 = "是否保存游戏?";
-    public static final String TXT_32 = "是否读取进度?";
-    public static final String TXT_33 = "之前未保存的部分将会丢失，是否继续？";
-    public static final String TXT_34 = "无法逃跑！";
-    public static final String TXT_35 = "逃跑失败！";
-    public static final String TXT_36 = "被怪物";
-    public static final String TXT_37 = "禁锢中";
-    public static final String TXT_38 = "的电眼魅惑了";
-    public static final String TXT_39 = "特殊情况，无法捕获！";
-    public static final String TXT_4 = "没有死亡！";
-    public static final String TXT_40 = "无法使用道具！";
-    public static final String TXT_41 = "无法更换宠物！";
-    public static final String TXT_42 = "沉睡之歌效果，怪物强制换场！";
-    public static final String TXT_43 = "所能携带的宠物已经达到上限！";
-    public static final String TXT_44 = "号学习技能";
-    public static final String TXT_45 = "已拥有该技能";
-    public static final String TXT_46 = "该技能不能替换！";
-    public static final String TXT_47 = "放生的宠物将会消失，是否继续？";
-    public static final String TXT_48 = "宠物空间已满";
-    public static final String TXT_49 = "获得宠物：";
-    public static final String TXT_5 = "当前宠物不能参战";
-    public static final String TXT_50 = "携带已满，";
-    public static final String TXT_51 = "已转入寄放处";
-    public static final String TXT_52 = "您携带的宠物已回复。";
-    public static final String TXT_53 = "回复需要金钱";
-    public static final String TXT_54 = "是否回复所有宠物？";
-    public static final String TXT_55 = "流着泪逃跑了！";
-    public static final String TXT_56 = "拼了命的逃跑了！";
-    public static final String TXT_57 = "盯了你一眼，逃走了！";
-    public static final String TXT_58 = "道具不足！";
-    public static final String TXT_59 = "战斗失败了,训练师的梦想不能实现了!";
-    public static final String TXT_6 = "目前没有怪兽";
-    public static final String TXT_60 = "你要继续游戏，确定吗？";
-    public static final String TXT_61 = "获得了";
-    public static final String TXT_62 = "已拥有";
-    public static final String TXT_63 = "躲避怪物效果";
-    public static final String TXT_64 = "等级没有达到15级，不能进化！";
-    public static final String TXT_65 = "等级没有达到25级，不能进化！";
-    public static final String TXT_66 = "等级没有达到30级，不能进化！";
-    public static final String TXT_67 = "是否保存进度？";
-    public static final String TXT_68 = "这将清除您之前的所有记录，是否继续？";
-    public static final String TXT_69 = "是否打开音乐?";
-    public static final String TXT_7 = "闪避";
-    public static final String TXT_70 = "需要训练师";
-    public static final String TXT_71 = "级才能学习！";
-    public static final String TXT_72 = "存储空间不足！";
-    public static final String TXT_73 = "金属克野兽，野兽克植物，植物克飞行，飞行克海洋，海洋克金属";
-    public static final String TXT_74 = "训练师等级：";
-    public static final String TXT_75 = "没有";
-    public static final String TXT_76 = "钥匙，钥匙在商店中可以购买。";
-    public static final String TXT_77 = "宝箱，宝箱在战斗后一定几率获得。";
-    public static final String TXT_78 = "游戏地图";
-    public static final String TXT_79 = "该区域没有地图！";
-    public static final String TXT_8 = "升到了";
-    public static final String TXT_80 = "人物当前位置：";
-    public static final String TXT_81 = "保存进度完成";
-    public static final String TXT_82 = "坐骑";
-    public static final String TXT_83 = "9:骑乘";
-    public static final String TXT_84 = "不可进化";
-    public static final String TXT_85 = "捕获";
-    public static final String TXT_86 = "任务";
-    public static final String TXT_87 = "进化";
-    public static final String TXT_88 = "异化";
-    public static final String TXT_89 = "竞技场";
-    public static final String TXT_9 = "级";
-    public static final String TXT_90 = "（关闭声音游戏更流畅）";
-    public static final String TXT_91 = "不能更换坐骑";
-    public static final String TXT_92 = "下坐骑#n植物坐骑#n金属坐骑#n飞行坐骑#n野兽坐骑#n海洋坐骑#n无此坐骑";
-    public static final String TXT_93 = "还没有获得该骑宠";
-    public static final String TXT_94 = "只能在水里使用";
-    public static final String TXT_95 = "此位置目前是空的";
-    public static final String TXT_96 = "的宠物蛋";
-    public static final String TXT_97 = "孵化中...";
-    public static final String TXT_98 = "孵化已完成";
-    public static final String TXT_99 = "孵化所已经没有空位了";
+    public static final String TXT_0 = "\u5df2\u7ecf\u6b7b\u4ea1\uff0c\u65e0\u6cd5\u4f7f\u7528\uff01";
+    public static final String TXT_1 = "\u4e0d\u9700\u8981\u4f7f\u7528\u8fd9\u4e2a\u9053\u5177";
+    public static final String TXT_10 = "\u4e60\u5f97\u6280\u80fd\uff1a";
+    public static final String TXT_100 = "\u6750\u6599\u4e0d\u8db3\uff0c\u4e0d\u80fd\u5b75\u5316";
+    public static final String TXT_101 = "\u5b75\u5316\u6240\u9700\u6750\u6599";
+    public static final String TXT_102 = "\u6309\u786e\u5b9a\u952e\u5b8c\u6210\u5b75\u5316";
+    public static final String TXT_103 = "\uff0c\u4e0d\u80fd\u901a\u8fc7\u8be5\u5730\u5f62";
+    public static final String TXT_104 = "\u5ba0\u7269\u56fe\u9274\u5df2\u66f4\u65b0";
+    public static final String TXT_105 = "\u5ba0\u7269\u7a7a\u95f4\u5df2\u6ee1\uff0c\u65e0\u6cd5\u83b7\u5f97\u65b0\u7684\u5ba0\u7269\uff0c\u8bf7\u6574\u7406\u5bc4\u5b58\u6240\u7a7a\u51fa\u4e00\u4e2a\u7a7a\u95f4\u3002";
+    public static final String TXT_106 = "\u7ecf\u9a8c\u5df2\u6ee1\uff0c\u53ef\u4ee5\u5b75\u5316\u4e86\u3002";
+    public static final String TXT_107 = "\u5947\u5f02\u517d\u4e0d\u4ec5\u8dd1\u5f97\u5feb\u800c\u4e14\u53ef\u4ee5\u4e0d\u9047\u654c\uff0c\u73b0\u63d0\u4f9b\u8bd5\u9a91\u4f53\u9a8c\uff0c\u6b63\u7248\u9a8c\u8bc1\u540e\u9700\u8d2d\u4e70\uff01";
+    public static final String TXT_11 = "\u83b7\u5f97\u7ecf\u9a8c\uff1a";
+    static final String TXT_111 = "\u643a\u5e26\u7684\u5ba0\u7269\u5168\u90fd\u727a\u7272\u4e86!";
+    public static final String TXT_12 = "\u60a8\u7684\u5ba0\u7269\u5df2\u7ecf\u65e0\u6cd5\u83b7\u5f97\u7ecf\u9a8c";
+    public static final String TXT_13 = "\u8eab\u4e0a\u5fc5\u987b\u643a\u5e26\u4e00\u53ea\u80fd\u53c2\u6218\u7684\u5ba0\u7269\uff01";
+    public static final String TXT_14 = "\u5931\u53bb\u5ba0\u7269\uff1a";
+    public static final String TXT_15 = "\u53ef\u8fdb\u5316";
+    public static final String TXT_16 = "\u6b21";
+    public static final String TXT_17 = "\u786e\u5b9a\u8fdb\u5316\u8be5\u5ba0\u7269\uff1f";
+    public static final String TXT_18 = "\u6750\u6599\u4e0d\u8db3\uff0c\u4e0d\u80fd\u8fdb\u5316\uff01";
+    public static final String TXT_19 = "\u8fdb\u5316\u6210  ";
+    public static final String TXT_2 = "\u6ca1\u6709\u5f02\u5e38\uff01";
+    public static final String TXT_20 = "\u672a\u77e5\u5ba0\u7269";
+    public static final String TXT_21 = "\u53d1\u73b0\u5730\u70b9";
+    public static final String TXT_22 = "\u8fdb";
+    public static final String TXT_23 = "\u5316";
+    public static final String TXT_24 = "\u6750\u6599\uff1a";
+    public static final String TXT_25 = "\u672a\u77e5";
+    public static final String TXT_26 = "\u5df2\u6355\u83b7";
+    public static final String TXT_27 = "\u672a\u6355\u83b7";
+    public static final String TXT_28 = "\u53d1\u73b0\u5ea6 ";
+    public static final String TXT_29 = "\u6355\u6349\u79cd\u7c7b ";
+    public static final String TXT_3 = "\u5fe0\u8bda\u5ea6\u5df2\u6ee1";
+    public static final String TXT_30 = "\u606d\u559c\u60a8\u628a\u6240\u6709\u7684\u5ba0\u7269\u90fd\u6536\u96c6\u9f50\u4e86";
+    public static final String TXT_31 = "\u662f\u5426\u4fdd\u5b58\u6e38\u620f?";
+    public static final String TXT_32 = "\u662f\u5426\u8bfb\u53d6\u8fdb\u5ea6?";
+    public static final String TXT_33 = "\u4e4b\u524d\u672a\u4fdd\u5b58\u7684\u90e8\u5206\u5c06\u4f1a\u4e22\u5931\uff0c\u662f\u5426\u7ee7\u7eed\uff1f";
+    public static final String TXT_34 = "\u65e0\u6cd5\u9003\u8dd1\uff01";
+    public static final String TXT_35 = "\u9003\u8dd1\u5931\u8d25\uff01";
+    public static final String TXT_36 = "\u88ab\u602a\u7269";
+    public static final String TXT_37 = "\u7981\u9522\u4e2d";
+    public static final String TXT_38 = "\u7684\u7535\u773c\u9b45\u60d1\u4e86";
+    public static final String TXT_39 = "\u7279\u6b8a\u60c5\u51b5\uff0c\u65e0\u6cd5\u6355\u83b7\uff01";
+    public static final String TXT_4 = "\u6ca1\u6709\u6b7b\u4ea1\uff01";
+    public static final String TXT_40 = "\u65e0\u6cd5\u4f7f\u7528\u9053\u5177\uff01";
+    public static final String TXT_41 = "\u65e0\u6cd5\u66f4\u6362\u5ba0\u7269\uff01";
+    public static final String TXT_42 = "\u6c89\u7761\u4e4b\u6b4c\u6548\u679c\uff0c\u602a\u7269\u5f3a\u5236\u6362\u573a\uff01";
+    public static final String TXT_43 = "\u6240\u80fd\u643a\u5e26\u7684\u5ba0\u7269\u5df2\u7ecf\u8fbe\u5230\u4e0a\u9650\uff01";
+    public static final String TXT_44 = "\u53f7\u5b66\u4e60\u6280\u80fd";
+    public static final String TXT_45 = "\u5df2\u62e5\u6709\u8be5\u6280\u80fd";
+    public static final String TXT_46 = "\u8be5\u6280\u80fd\u4e0d\u80fd\u66ff\u6362\uff01";
+    public static final String TXT_47 = "\u653e\u751f\u7684\u5ba0\u7269\u5c06\u4f1a\u6d88\u5931\uff0c\u662f\u5426\u7ee7\u7eed\uff1f";
+    public static final String TXT_48 = "\u5ba0\u7269\u7a7a\u95f4\u5df2\u6ee1";
+    public static final String TXT_49 = "\u83b7\u5f97\u5ba0\u7269\uff1a";
+    public static final String TXT_5 = "\u5f53\u524d\u5ba0\u7269\u4e0d\u80fd\u53c2\u6218";
+    public static final String TXT_50 = "\u643a\u5e26\u5df2\u6ee1\uff0c";
+    public static final String TXT_51 = "\u5df2\u8f6c\u5165\u5bc4\u653e\u5904";
+    public static final String TXT_52 = "\u60a8\u643a\u5e26\u7684\u5ba0\u7269\u5df2\u56de\u590d\u3002";
+    public static final String TXT_53 = "\u56de\u590d\u9700\u8981\u91d1\u94b1";
+    public static final String TXT_54 = "\u662f\u5426\u56de\u590d\u6240\u6709\u5ba0\u7269\uff1f";
+    public static final String TXT_55 = "\u6d41\u7740\u6cea\u9003\u8dd1\u4e86\uff01";
+    public static final String TXT_56 = "\u62fc\u4e86\u547d\u7684\u9003\u8dd1\u4e86\uff01";
+    public static final String TXT_57 = "\u76ef\u4e86\u4f60\u4e00\u773c\uff0c\u9003\u8d70\u4e86\uff01";
+    public static final String TXT_58 = "\u9053\u5177\u4e0d\u8db3\uff01";
+    public static final String TXT_59 = "\u6218\u6597\u5931\u8d25\u4e86,\u8bad\u7ec3\u5e08\u7684\u68a6\u60f3\u4e0d\u80fd\u5b9e\u73b0\u4e86!";
+    public static final String TXT_6 = "\u76ee\u524d\u6ca1\u6709\u602a\u517d";
+    public static final String TXT_60 = "\u4f60\u8981\u7ee7\u7eed\u6e38\u620f\uff0c\u786e\u5b9a\u5417\uff1f";
+    public static final String TXT_61 = "\u83b7\u5f97\u4e86";
+    public static final String TXT_62 = "\u5df2\u62e5\u6709";
+    public static final String TXT_63 = "\u8eb2\u907f\u602a\u7269\u6548\u679c";
+    public static final String TXT_64 = "\u7b49\u7ea7\u6ca1\u6709\u8fbe\u523015\u7ea7\uff0c\u4e0d\u80fd\u8fdb\u5316\uff01";
+    public static final String TXT_65 = "\u7b49\u7ea7\u6ca1\u6709\u8fbe\u523025\u7ea7\uff0c\u4e0d\u80fd\u8fdb\u5316\uff01";
+    public static final String TXT_66 = "\u7b49\u7ea7\u6ca1\u6709\u8fbe\u523030\u7ea7\uff0c\u4e0d\u80fd\u8fdb\u5316\uff01";
+    public static final String TXT_67 = "\u662f\u5426\u4fdd\u5b58\u8fdb\u5ea6\uff1f";
+    public static final String TXT_68 = "\u8fd9\u5c06\u6e05\u9664\u60a8\u4e4b\u524d\u7684\u6240\u6709\u8bb0\u5f55\uff0c\u662f\u5426\u7ee7\u7eed\uff1f";
+    public static final String TXT_69 = "\u662f\u5426\u6253\u5f00\u97f3\u4e50?";
+    public static final String TXT_7 = "\u95ea\u907f";
+    public static final String TXT_70 = "\u9700\u8981\u8bad\u7ec3\u5e08";
+    public static final String TXT_71 = "\u7ea7\u624d\u80fd\u5b66\u4e60\uff01";
+    public static final String TXT_72 = "\u5b58\u50a8\u7a7a\u95f4\u4e0d\u8db3\uff01";
+    public static final String TXT_73 = "\u91d1\u5c5e\u514b\u91ce\u517d\uff0c\u91ce\u517d\u514b\u690d\u7269\uff0c\u690d\u7269\u514b\u98de\u884c\uff0c\u98de\u884c\u514b\u6d77\u6d0b\uff0c\u6d77\u6d0b\u514b\u91d1\u5c5e";
+    public static final String TXT_74 = "\u8bad\u7ec3\u5e08\u7b49\u7ea7\uff1a";
+    public static final String TXT_75 = "\u6ca1\u6709";
+    public static final String TXT_76 = "\u94a5\u5319\uff0c\u94a5\u5319\u5728\u5546\u5e97\u4e2d\u53ef\u4ee5\u8d2d\u4e70\u3002";
+    public static final String TXT_77 = "\u5b9d\u7bb1\uff0c\u5b9d\u7bb1\u5728\u6218\u6597\u540e\u4e00\u5b9a\u51e0\u7387\u83b7\u5f97\u3002";
+    public static final String TXT_78 = "\u6e38\u620f\u5730\u56fe";
+    public static final String TXT_79 = "\u8be5\u533a\u57df\u6ca1\u6709\u5730\u56fe\uff01";
+    public static final String TXT_8 = "\u5347\u5230\u4e86";
+    public static final String TXT_80 = "\u4eba\u7269\u5f53\u524d\u4f4d\u7f6e\uff1a";
+    public static final String TXT_81 = "\u4fdd\u5b58\u8fdb\u5ea6\u5b8c\u6210";
+    public static final String TXT_82 = "\u5750\u9a91";
+    public static final String TXT_83 = "9:\u9a91\u4e58";
+    public static final String TXT_84 = "\u4e0d\u53ef\u8fdb\u5316";
+    public static final String TXT_85 = "\u6355\u83b7";
+    public static final String TXT_86 = "\u4efb\u52a1";
+    public static final String TXT_87 = "\u8fdb\u5316";
+    public static final String TXT_88 = "\u5f02\u5316";
+    public static final String TXT_89 = "\u7ade\u6280\u573a";
+    public static final String TXT_9 = "\u7ea7";
+    public static final String TXT_90 = "\uff08\u5173\u95ed\u58f0\u97f3\u6e38\u620f\u66f4\u6d41\u7545\uff09";
+    public static final String TXT_91 = "\u4e0d\u80fd\u66f4\u6362\u5750\u9a91";
+    public static final String TXT_92 = "\u4e0b\u5750\u9a91#n\u690d\u7269\u5750\u9a91#n\u91d1\u5c5e\u5750\u9a91#n\u98de\u884c\u5750\u9a91#n\u91ce\u517d\u5750\u9a91#n\u6d77\u6d0b\u5750\u9a91#n\u65e0\u6b64\u5750\u9a91";
+    public static final String TXT_93 = "\u8fd8\u6ca1\u6709\u83b7\u5f97\u8be5\u9a91\u5ba0";
+    public static final String TXT_94 = "\u53ea\u80fd\u5728\u6c34\u91cc\u4f7f\u7528";
+    public static final String TXT_95 = "\u6b64\u4f4d\u7f6e\u76ee\u524d\u662f\u7a7a\u7684";
+    public static final String TXT_96 = "\u7684\u5ba0\u7269\u86cb";
+    public static final String TXT_97 = "\u5b75\u5316\u4e2d...";
+    public static final String TXT_98 = "\u5b75\u5316\u5df2\u5b8c\u6210";
+    public static final String TXT_99 = "\u5b75\u5316\u6240\u5df2\u7ecf\u6ca1\u6709\u7a7a\u4f4d\u4e86";
     public static final byte TYPE_CARPET = 0;
     public static final byte TYPE_ROAD = 1;
     public static final byte TYPE_SIFANG = 2;
@@ -645,6 +648,7 @@ public class Constants_H {
     public static final byte VIEW_NIDUS = 66;
     public static final byte WALK = 0;
     public static final byte WATER = 2;
+    public static int WIDTH = 0;
     public static final int WIDTH_ = 640;
     public static int WIDTH_H = 0;
     public static final int WIDTH_H_ = 320;
@@ -656,432 +660,172 @@ public class Constants_H {
     public static final byte _BROW = 6;
     public static final byte _SHOW = 4;
     public static final byte sellPrice = 10;
-
-    /* renamed from: 万能药 */
-    public static final byte f0 = 8;
-
-    /* renamed from: 五彩果实 */
-    public static final byte f1 = 27;
-
-    /* renamed from: 亲和天使 */
-    public static final byte f2 = 41;
-
-    /* renamed from: 健壮体魄 */
-    public static final byte f3 = 2;
-
-    /* renamed from: 兴奋菇 */
-    public static final byte f4 = 12;
-
-    /* renamed from: 兽魂 */
-    public static final byte f5 = 17;
-
-    /* renamed from: 军心涣散 */
-    public static final byte f6 = 26;
-
-    /* renamed from: 初级治疗 */
-    public static final byte f7 = 27;
-
-    /* renamed from: 动作攻击 */
-    public static final byte f8 = 1;
-
-    /* renamed from: 动作死亡 */
-    public static final byte f9 = 2;
-
-    /* renamed from: 动作站立 */
-    public static final byte f10 = 0;
-
-    /* renamed from: 卖出 */
-    public static final byte f11 = 4;
-
-    /* renamed from: 古鲸之心 */
-    public static final byte f12 = 29;
-
-    /* renamed from: 和谐攻击 */
-    public static final byte f13 = 9;
-
-    /* renamed from: 噬魂 */
-    public static final byte f14 = 20;
-
-    /* renamed from: 圣灵宽恕 */
-    public static final byte f15 = 13;
-
-    /* renamed from: 地狱之火 */
-    public static final byte f16 = 22;
-
-    /* renamed from: 坐船 */
-    public static final byte f17 = 5;
-
-    /* renamed from: 坚韧石 */
-    public static final byte f18 = 16;
-
-    /* renamed from: 大师球 */
-    public static final byte f19 = 11;
-
-    /* renamed from: 大海意志 */
-    public static final byte f20 = 47;
-
-    /* renamed from: 天怒 */
-    public static final byte f21 = 14;
-
-    /* renamed from: 天空意志 */
-    public static final byte f22 = 45;
-
-    /* renamed from: 天羽 */
-    public static final byte f23 = 23;
-
-    /* renamed from: 学习技能 */
-    public static final byte f24 = 35;
-
-    /* renamed from: 宝箱 */
-    public static final byte f25 = 32;
-
-    /* renamed from: 宠物的蛋 */
-    public static final byte f26 = 3;
-
-    /* renamed from: 宠物蛋 */
-    public static final byte f27 = 58;
-
-    /* renamed from: 封印球 */
-    public static final byte f28 = 9;
-
-    /* renamed from: 封闭技能 */
-    public static final byte f29 = 30;
-
-    /* renamed from: 封闭效果 */
-    public static final byte f30 = 6;
-
-    /* renamed from: 尖牙利齿 */
-    public static final byte f31 = 32;
-
-    /* renamed from: 巧克力 */
-    public static final byte f32 = 2;
-
-    /* renamed from: 幸运之星 */
-    public static final byte f33 = 39;
-
-    /* renamed from: 异化材料 */
-    public static final byte f34 = 34;
-
-    /* renamed from: 忠诚伙伴 */
-    public static final byte f35 = 40;
-
-    /* renamed from: 怒意狂暴 */
-    public static final byte f36 = 17;
-
-    /* renamed from: 意志坚定 */
-    public static final byte f37 = 8;
-
-    /* renamed from: 意志涣散 */
-    public static final byte f38 = 7;
-
-    /* renamed from: 战斗店 */
-    public static final byte f39 = 0;
-
-    /* renamed from: 战斗道具 */
-    public static final byte f40 = 0;
-
-    /* renamed from: 扑咬 */
-    public static final byte f41 = 15;
-
-    /* renamed from: 技能卷轴 */
-    public static final byte f42 = 2;
-
-    /* renamed from: 撕裂击 */
-    public static final byte f43 = 16;
-
-    /* renamed from: 撕裂效果 */
-    public static final byte f44 = 2;
-
-    /* renamed from: 无效果 */
-    public static final byte f45 = 7;
-
-    /* renamed from: 昏睡效果 */
-    public static final byte f46 = 1;
-
-    /* renamed from: 普通攻击 */
-    public static final byte f47 = 25;
-
-    /* renamed from: 暴风旋阵 */
-    public static final byte f48 = 11;
-
-    /* renamed from: 替身木偶 */
-    public static final byte f49 = 48;
-
-    /* renamed from: 朱果 */
-    public static final byte f50 = 19;
-
-    /* renamed from: 枯黄枝叶 */
-    public static final byte f51 = 3;
-
-    /* renamed from: 树瘴石 */
-    public static final byte f52 = 18;
-
-    /* renamed from: 树神之怒 */
-    public static final byte f53 = 4;
-
-    /* renamed from: 植物 */
-    public static final byte f54 = 0;
-
-    /* renamed from: 死亡之触 */
-    public static final byte f55 = 29;
-
-    /* renamed from: 残忍攻击 */
-    public static final byte f56 = 10;
-
-    /* renamed from: 毒液攻击 */
-    public static final byte f57 = 31;
-
-    /* renamed from: 水泡 */
-    public static final byte f58 = 20;
-
-    /* renamed from: 没有天赋 */
-    public static final byte f59 = 0;
-
-    /* renamed from: 浑浊水质 */
-    public static final byte f60 = 11;
-
-    /* renamed from: 海洋 */
-    public static final byte f61 = 4;
-
-    /* renamed from: 深海珊瑚 */
-    public static final byte f62 = 21;
-
-    /* renamed from: 熊之铠甲 */
-    public static final byte f63 = 26;
-
-    /* renamed from: 特殊 */
-    public static final byte f64 = 5;
-
-    /* renamed from: 狂暴嘶吼 */
-    public static final byte f65 = 19;
-
-    /* renamed from: 猛砸 */
-    public static final byte f66 = 5;
-
-    /* renamed from: 生命石 */
-    public static final byte f67 = 7;
-
-    /* renamed from: 疾风速降 */
-    public static final byte f68 = 12;
-
-    /* renamed from: 白金 */
-    public static final byte f69 = 25;
-
-    /* renamed from: 石化效果 */
-    public static final byte f70 = 0;
-
-    /* renamed from: 破碎外壳 */
-    public static final byte f71 = 5;
-
-    /* renamed from: 禁锢效果 */
-    public static final byte f72 = 4;
-
-    /* renamed from: 离空石 */
-    public static final byte f73 = 22;
-
-    /* renamed from: 粉碎螺旋 */
-    public static final byte f74 = 8;
-
-    /* renamed from: 精原石 */
-    public static final byte f75 = 24;
-
-    /* renamed from: 精神攻击 */
-    public static final byte f76 = 34;
-
-    /* renamed from: 纯净水质 */
-    public static final byte f77 = 12;
-
-    /* renamed from: 经验丰富 */
-    public static final byte f78 = 37;
-
-    /* renamed from: 经验多多 */
-    public static final byte f79 = 36;
-
-    /* renamed from: 缠绕 */
-    public static final byte f80 = 0;
-
-    /* renamed from: 聚能石 */
-    public static final byte f81 = 4;
-
-    /* renamed from: 肆虐冲锋 */
-    public static final byte f82 = 18;
-
-    /* renamed from: 能量壁垒 */
-    public static final byte f83 = 35;
-
-    /* renamed from: 能量石 */
-    public static final byte f84 = 3;
-
-    /* renamed from: 腐蚀效果 */
-    public static final byte f85 = 5;
-
-    /* renamed from: 自然康复 */
-    public static final byte f86 = 4;
-
-    /* renamed from: 自然风暴 */
-    public static final byte f87 = 3;
-
-    /* renamed from: 花粉纷飞 */
-    public static final byte f88 = 1;
-
-    /* renamed from: 花草意志 */
-    public static final byte f89 = 43;
-
-    /* renamed from: 荆棘陷阱 */
-    public static final byte f90 = 2;
-
-    /* renamed from: 虎之气概 */
-    public static final byte f91 = 30;
-
-    /* renamed from: 虚弱体魄 */
-    public static final byte f92 = 1;
-
-    /* renamed from: 蜜心糖 */
-    public static final byte f93 = 13;
-
-    /* renamed from: 训练店 */
-    public static final byte f94 = 2;
-
-    /* renamed from: 辅助店 */
-    public static final byte f95 = 1;
-
-    /* renamed from: 辅助道具 */
-    public static final byte f96 = 1;
-
-    /* renamed from: 逃命专家 */
-    public static final byte f97 = 42;
-
-    /* renamed from: 避怪丸 */
-    public static final byte f98 = 14;
-
-    /* renamed from: 重生之心 */
-    public static final byte f99 = 38;
-
-    /* renamed from: 野兽 */
-    public static final byte f100 = 3;
-
-    /* renamed from: 野兽意志 */
-    public static final byte f101 = 44;
-
-    /* renamed from: 金之辉耀 */
-    public static final byte f102 = 31;
-
-    /* renamed from: 金属 */
-    public static final byte f103 = 1;
-
-    /* renamed from: 金属外壳 */
-    public static final byte f104 = 6;
-
-    /* renamed from: 金属意志 */
-    public static final byte f105 = 46;
-
-    /* renamed from: 钢筋铁骨 */
-    public static final byte f106 = 33;
-
-    /* renamed from: 钥匙 */
-    public static final byte f107 = 33;
-
-    /* renamed from: 铁水浇灌 */
-    public static final byte f108 = 7;
-
-    /* renamed from: 铁浮屠 */
-    public static final byte f109 = 6;
-
-    /* renamed from: 银杏果 */
-    public static final byte f110 = 5;
-
-    /* renamed from: 随身店 */
-    public static final byte f111 = 3;
-
-    /* renamed from: 霸皇战意 */
-    public static final byte f112 = 9;
-
-    /* renamed from: 飞翔斩 */
-    public static final byte f113 = 10;
-
-    /* renamed from: 飞行 */
-    public static final byte f114 = 2;
-
-    /* renamed from: 饮料 */
-    public static final byte f115 = 0;
-
-    /* renamed from: 饼干 */
-    public static final byte f116 = 1;
-
-    /* renamed from: 香水 */
-    public static final byte f117 = 15;
-
-    /* renamed from: 骑宠无 */
-    public static final byte f118 = -1;
-
-    /* renamed from: 骑宠植物 */
-    public static final byte f119 = 0;
-
-    /* renamed from: 骑宠水生 */
-    public static final byte f120 = 4;
-
-    /* renamed from: 骑宠野兽 */
-    public static final byte f121 = 3;
-
-    /* renamed from: 骑宠金属 */
-    public static final byte f122 = 1;
-
-    /* renamed from: 骑宠飞行 */
-    public static final byte f123 = 2;
-
-    /* renamed from: 高级治疗 */
-    public static final byte f124 = 28;
-
-    /* renamed from: 高级球 */
-    public static final byte f125 = 10;
-
-    /* renamed from: 魅惑效果 */
-    public static final byte f126 = 3;
-
-    /* renamed from: 黄金果实 */
-    public static final byte f127 = 28;
-
-    /* renamed from: 黄金糖 */
-    public static final byte f128 = 6;
-
-    /* renamed from: 黯之罪罚 */
-    public static final byte f129 = 23;
-
-    /* renamed from: 黯灭波 */
-    public static final byte f130 = 21;
-
-    /* renamed from: 黯魔素身 */
-    public static final byte f131 = 24;
-    public static int WIDTH = Player.STARTED;
-    public static int HEIGHT = 240;
-    public static final short SCREEN_X = (short) WIDTH;
-    public static final int OFF_WIDTH = WIDTH + 20;
-    public static final int OFF_HEIGHT = HEIGHT + 20;
-
+    public static final byte \u4e07\u80fd\u836f = 8;
+    public static final byte \u4e94\u5f69\u679c\u5b9e = 27;
+    public static final byte \u4eb2\u548c\u5929\u4f7f = 41;
+    public static final byte \u5065\u58ee\u4f53\u9b44 = 2;
+    public static final byte \u5174\u594b\u83c7 = 12;
+    public static final byte \u517d\u9b42 = 17;
+    public static final byte \u519b\u5fc3\u6da3\u6563 = 26;
+    public static final byte \u521d\u7ea7\u6cbb\u7597 = 27;
+    public static final byte \u52a8\u4f5c\u653b\u51fb = 1;
+    public static final byte \u52a8\u4f5c\u6b7b\u4ea1 = 2;
+    public static final byte \u52a8\u4f5c\u7ad9\u7acb = 0;
+    public static final byte \u5356\u51fa = 4;
+    public static final byte \u53e4\u9cb8\u4e4b\u5fc3 = 29;
+    public static final byte \u548c\u8c10\u653b\u51fb = 9;
+    public static final byte \u566c\u9b42 = 20;
+    public static final byte \u5723\u7075\u5bbd\u6055 = 13;
+    public static final byte \u5730\u72f1\u4e4b\u706b = 22;
+    public static final byte \u5750\u8239 = 5;
+    public static final byte \u575a\u97e7\u77f3 = 16;
+    public static final byte \u5927\u5e08\u7403 = 11;
+    public static final byte \u5927\u6d77\u610f\u5fd7 = 47;
+    public static final byte \u5929\u6012 = 14;
+    public static final byte \u5929\u7a7a\u610f\u5fd7 = 45;
+    public static final byte \u5929\u7fbd = 23;
+    public static final byte \u5b66\u4e60\u6280\u80fd = 35;
+    public static final byte \u5b9d\u7bb1 = 32;
+    public static final byte \u5ba0\u7269\u7684\u86cb = 3;
+    public static final byte \u5ba0\u7269\u86cb = 58;
+    public static final byte \u5c01\u5370\u7403 = 9;
+    public static final byte \u5c01\u95ed\u6280\u80fd = 30;
+    public static final byte \u5c01\u95ed\u6548\u679c = 6;
+    public static final byte \u5c16\u7259\u5229\u9f7f = 32;
+    public static final byte \u5de7\u514b\u529b = 2;
+    public static final byte \u5e78\u8fd0\u4e4b\u661f = 39;
+    public static final byte \u5f02\u5316\u6750\u6599 = 34;
+    public static final byte \u5fe0\u8bda\u4f19\u4f34 = 40;
+    public static final byte \u6012\u610f\u72c2\u66b4 = 17;
+    public static final byte \u610f\u5fd7\u575a\u5b9a = 8;
+    public static final byte \u610f\u5fd7\u6da3\u6563 = 7;
+    public static final byte \u6218\u6597\u5e97 = 0;
+    public static final byte \u6218\u6597\u9053\u5177 = 0;
+    public static final byte \u6251\u54ac = 15;
+    public static final byte \u6280\u80fd\u5377\u8f74 = 2;
+    public static final byte \u6495\u88c2\u51fb = 16;
+    public static final byte \u6495\u88c2\u6548\u679c = 2;
+    public static final byte \u65e0\u6548\u679c = 7;
+    public static final byte \u660f\u7761\u6548\u679c = 1;
+    public static final byte \u666e\u901a\u653b\u51fb = 25;
+    public static final byte \u66b4\u98ce\u65cb\u9635 = 11;
+    public static final byte \u66ff\u8eab\u6728\u5076 = 48;
+    public static final byte \u6731\u679c = 19;
+    public static final byte \u67af\u9ec4\u679d\u53f6 = 3;
+    public static final byte \u6811\u7634\u77f3 = 18;
+    public static final byte \u6811\u795e\u4e4b\u6012 = 4;
+    public static final byte \u690d\u7269 = 0;
+    public static final byte \u6b7b\u4ea1\u4e4b\u89e6 = 29;
+    public static final byte \u6b8b\u5fcd\u653b\u51fb = 10;
+    public static final byte \u6bd2\u6db2\u653b\u51fb = 31;
+    public static final byte \u6c34\u6ce1 = 20;
+    public static final byte \u6ca1\u6709\u5929\u8d4b = 0;
+    public static final byte \u6d51\u6d4a\u6c34\u8d28 = 11;
+    public static final byte \u6d77\u6d0b = 4;
+    public static final byte \u6df1\u6d77\u73ca\u745a = 21;
+    public static final byte \u718a\u4e4b\u94e0\u7532 = 26;
+    public static final byte \u7279\u6b8a = 5;
+    public static final byte \u72c2\u66b4\u5636\u543c = 19;
+    public static final byte \u731b\u7838 = 5;
+    public static final byte \u751f\u547d\u77f3 = 7;
+    public static final byte \u75be\u98ce\u901f\u964d = 12;
+    public static final byte \u767d\u91d1 = 25;
+    public static final byte \u77f3\u5316\u6548\u679c = 0;
+    public static final byte \u7834\u788e\u5916\u58f3 = 5;
+    public static final byte \u7981\u9522\u6548\u679c = 4;
+    public static final byte \u79bb\u7a7a\u77f3 = 22;
+    public static final byte \u7c89\u788e\u87ba\u65cb = 8;
+    public static final byte \u7cbe\u539f\u77f3 = 24;
+    public static final byte \u7cbe\u795e\u653b\u51fb = 34;
+    public static final byte \u7eaf\u51c0\u6c34\u8d28 = 12;
+    public static final byte \u7ecf\u9a8c\u4e30\u5bcc = 37;
+    public static final byte \u7ecf\u9a8c\u591a\u591a = 36;
+    public static final byte \u7f20\u7ed5 = 0;
+    public static final byte \u805a\u80fd\u77f3 = 4;
+    public static final byte \u8086\u8650\u51b2\u950b = 18;
+    public static final byte \u80fd\u91cf\u58c1\u5792 = 35;
+    public static final byte \u80fd\u91cf\u77f3 = 3;
+    public static final byte \u8150\u8680\u6548\u679c = 5;
+    public static final byte \u81ea\u7136\u5eb7\u590d = 4;
+    public static final byte \u81ea\u7136\u98ce\u66b4 = 3;
+    public static final byte \u82b1\u7c89\u7eb7\u98de = 1;
+    public static final byte \u82b1\u8349\u610f\u5fd7 = 43;
+    public static final byte \u8346\u68d8\u9677\u9631 = 2;
+    public static final byte \u864e\u4e4b\u6c14\u6982 = 30;
+    public static final byte \u865a\u5f31\u4f53\u9b44 = 1;
+    public static final byte \u871c\u5fc3\u7cd6 = 13;
+    public static final byte \u8bad\u7ec3\u5e97 = 2;
+    public static final byte \u8f85\u52a9\u5e97 = 1;
+    public static final byte \u8f85\u52a9\u9053\u5177 = 1;
+    public static final byte \u9003\u547d\u4e13\u5bb6 = 42;
+    public static final byte \u907f\u602a\u4e38 = 14;
+    public static final byte \u91cd\u751f\u4e4b\u5fc3 = 38;
+    public static final byte \u91ce\u517d = 3;
+    public static final byte \u91ce\u517d\u610f\u5fd7 = 44;
+    public static final byte \u91d1\u4e4b\u8f89\u8000 = 31;
+    public static final byte \u91d1\u5c5e = 1;
+    public static final byte \u91d1\u5c5e\u5916\u58f3 = 6;
+    public static final byte \u91d1\u5c5e\u610f\u5fd7 = 46;
+    public static final byte \u94a2\u7b4b\u94c1\u9aa8 = 33;
+    public static final byte \u94a5\u5319 = 33;
+    public static final byte \u94c1\u6c34\u6d47\u704c = 7;
+    public static final byte \u94c1\u6d6e\u5c60 = 6;
+    public static final byte \u94f6\u674f\u679c = 5;
+    public static final byte \u968f\u8eab\u5e97 = 3;
+    public static final byte \u9738\u7687\u6218\u610f = 9;
+    public static final byte \u98de\u7fd4\u65a9 = 10;
+    public static final byte \u98de\u884c = 2;
+    public static final byte \u996e\u6599 = 0;
+    public static final byte \u997c\u5e72 = 1;
+    public static final byte \u9999\u6c34 = 15;
+    public static final byte \u9a91\u5ba0\u65e0 = -1;
+    public static final byte \u9a91\u5ba0\u690d\u7269 = 0;
+    public static final byte \u9a91\u5ba0\u6c34\u751f = 4;
+    public static final byte \u9a91\u5ba0\u91ce\u517d = 3;
+    public static final byte \u9a91\u5ba0\u91d1\u5c5e = 1;
+    public static final byte \u9a91\u5ba0\u98de\u884c = 2;
+    public static final byte \u9ad8\u7ea7\u6cbb\u7597 = 28;
+    public static final byte \u9ad8\u7ea7\u7403 = 10;
+    public static final byte \u9b45\u60d1\u6548\u679c = 3;
+    public static final byte \u9ec4\u91d1\u679c\u5b9e = 28;
+    public static final byte \u9ec4\u91d1\u7cd6 = 6;
+    public static final byte \u9eef\u4e4b\u7f6a\u7f5a = 23;
+    public static final byte \u9eef\u706d\u6ce2 = 21;
+    public static final byte \u9eef\u9b54\u7d20\u8eab = 24;
+    
     static {
-        WIDTH__ = 533;
-        HEIGHT__ = WIDTH_H_;
-        WIDTH_H = WIDTH >> 1;
-        HEIGHT_H = HEIGHT >> 1;
-        SRC_BATTLE_H = HEIGHT_H + 16;
-        SRC_BATTLE_H__ = (HEIGHT__ / 2) + 16;
-        XCELLS = (byte) (WIDTH / 20);
-        YCELLS = (byte) (HEIGHT / 20);
-        HALF_XCELLS = (byte) (XCELLS >> 1);
-        HALF_YCELLS = (byte) (YCELLS >> 1);
-        ROW_CELLS = (byte) (XCELLS + 1);
-        COL_SELLS = (byte) (YCELLS + 1);
-        DisplayMetrics dm2 = new DisplayMetrics();
-        CwaActivity.getInstance().getWindowManager().getDefaultDisplay().getMetrics(dm2);
-        WIDTH__ = dm2.widthPixels;
-        HEIGHT__ = dm2.heightPixels;
-        WIDTH_H = WIDTH >> 1;
-        HEIGHT_H = HEIGHT >> 1;
-        XCELLS = (byte) (WIDTH / 20);
-        YCELLS = (byte) (HEIGHT / 20);
-        HALF_XCELLS = (byte) (XCELLS >> 1);
-        HALF_YCELLS = (byte) (YCELLS >> 1);
-        ROW_CELLS = (byte) (XCELLS + 1);
-        COL_SELLS = (byte) (YCELLS + 1);
+        Constants_H.WIDTH = 400;
+        Constants_H.HEIGHT = 240;
+        Constants_H.WIDTH__ = 533;
+        Constants_H.HEIGHT__ = 320;
+        Constants_H.WIDTH_H = Constants_H.WIDTH >> 1;
+        Constants_H.HEIGHT_H = Constants_H.HEIGHT >> 1;
+        SRC_BATTLE_H = Constants_H.HEIGHT_H + 16;
+        SRC_BATTLE_H__ = Constants_H.HEIGHT__ / 2 + 16;
+        Constants_H.XCELLS = (byte)(Constants_H.WIDTH / 20);
+        Constants_H.YCELLS = (byte)(Constants_H.HEIGHT / 20);
+        Constants_H.HALF_XCELLS = (byte)(Constants_H.XCELLS >> 1);
+        Constants_H.HALF_YCELLS = (byte)(Constants_H.YCELLS >> 1);
+        Constants_H.ROW_CELLS = (byte)(Constants_H.XCELLS + 1);
+        Constants_H.COL_SELLS = (byte)(Constants_H.YCELLS + 1);
+        SCREEN_X = (short)Constants_H.WIDTH;
+        OFF_WIDTH = Constants_H.WIDTH + 20;
+        OFF_HEIGHT = Constants_H.HEIGHT + 20;
+        final DisplayMetrics displayMetrics = new DisplayMetrics();
+        CwaActivity.getInstance().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        Constants_H.WIDTH__ = displayMetrics.widthPixels;
+        Constants_H.HEIGHT__ = displayMetrics.heightPixels;
+        Constants_H.WIDTH_H = Constants_H.WIDTH >> 1;
+        Constants_H.HEIGHT_H = Constants_H.HEIGHT >> 1;
+        Constants_H.XCELLS = (byte)(Constants_H.WIDTH / 20);
+        Constants_H.YCELLS = (byte)(Constants_H.HEIGHT / 20);
+        Constants_H.HALF_XCELLS = (byte)(Constants_H.XCELLS >> 1);
+        Constants_H.HALF_YCELLS = (byte)(Constants_H.YCELLS >> 1);
+        Constants_H.ROW_CELLS = (byte)(Constants_H.XCELLS + 1);
+        Constants_H.COL_SELLS = (byte)(Constants_H.YCELLS + 1);
+    }
+    
+    public Constants_H() {
+        super();
     }
 }

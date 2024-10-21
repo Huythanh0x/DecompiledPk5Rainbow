@@ -1,6 +1,6 @@
 package com.uc.paymentsdk.commons.codec;
 
-/* loaded from: classes.dex */
-public interface Decoder {
-    Object decode(Object obj) throws DecoderException;
+public interface Decoder
+{
+    Object decode(final Object p0) throws DecoderException;
 }

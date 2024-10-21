@@ -1,21 +1,24 @@
 package com.uc.paymentsdk.commons.codec;
 
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.MessageDigest;
 
-/* loaded from: classes.dex */
-public class MD5 {
-    public static String getMD5(String val) throws NoSuchAlgorithmException {
-        MessageDigest md5 = MessageDigest.getInstance("MD5");
-        md5.update(val.getBytes());
-        byte[] m = md5.digest();
-        return getString(m);
+public class MD5
+{
+    public MD5() {
+        super();
     }
-
-    private static String getString(byte[] b) {
-        StringBuffer sb = new StringBuffer();
-        for (byte b2 : b) {
-            sb.append((int) b2);
+    
+    public static String getMD5(final String s) throws NoSuchAlgorithmException {
+        final MessageDigest instance = MessageDigest.getInstance("MD5");
+        instance.update(s.getBytes());
+        return getString(instance.digest());
+    }
+    
+    private static String getString(final byte[] array) {
+        final StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < array.length; ++i) {
+            sb.append(array[i]);
         }
         return sb.toString();
     }

@@ -1,7 +1,7 @@
 package javax.microedition.media;
 
-/* loaded from: classes.dex */
-public interface PlayerListener {
+public interface PlayerListener
+{
     public static final String CLOSED = "closed";
     public static final String DEVICE_AVAILABLE = "deviceAvailable";
     public static final String DEVICE_UNAVAILABLE = "deviceUnavailable";
@@ -11,6 +11,6 @@ public interface PlayerListener {
     public static final String STARTED = "started";
     public static final String STOPPED = "stopped";
     public static final String VOLUME_CHANGED = "volumeChanged";
-
-    void playerUpdate(Player player, String str, Object obj);
+    
+    void playerUpdate(final Player p0, final String p1, final Object p2);
 }

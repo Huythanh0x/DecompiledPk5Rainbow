@@ -8,45 +8,47 @@ import java.io.IOException;
 import java.io.InputStream;
 import javax.microedition.lcdui.CwaActivity;
 
-/* loaded from: classes.dex */
 public class AndroidUtil {
     private static final String LOG = "PIC_ERROR";
     public static int SCREEN_HEIGHT;
     public static int SCREEN_WIDTH;
     private static AudioManager aManager;
-    public static ConditionVariable cv = new ConditionVariable(true);
-    public static AssetManager am = CwaActivity.getInstance().getAssets();
+    public static AssetManager am;
+    public static ConditionVariable cv;
+
+    static {
+        AndroidUtil.cv = new ConditionVariable(true);
+        AndroidUtil.am = CwaActivity.getInstance().getAssets();
+    }
+
+    public static int getCurrentMusic() {
+        if(CwaActivity.getContextInstance() != null) {
+            AndroidUtil.aManager = (AudioManager)CwaActivity.getContextInstance().getSystemService("audio");
+            return AndroidUtil.aManager.getStreamVolume(3);
+        }
+        return -1;
+    }
 
     public static InputStream getResourceAsStream(String name) {
         InputStream is = null;
         try {
-            if (name.indexOf(47) == 0) {
-                is = am.open(name.substring(1, name.length()));
-            } else {
-                is = am.open(name);
+            is = name.indexOf(0x2F) == 0 ? AndroidUtil.am.open(name.substring(1, name.length())) : AndroidUtil.am.open(name);
+            if(is == null) {
+                Log.e("PIC_ERROR", name + " is not exist");
             }
-            if (is == null) {
-                Log.e(LOG, String.valueOf(name) + " is not exist");
-            }
-        } catch (IOException e) {
-            Log.e(LOG, String.valueOf(name) + " is not exist");
-            e.printStackTrace();
+        }
+        catch(IOException iOException0) {
+            Log.e("PIC_ERROR", name + " is not exist");
+            iOException0.printStackTrace();
         }
         return is;
     }
 
-    public static int getCurrentMusic() {
-        if (CwaActivity.getContextInstance() == null) {
-            return -1;
-        }
-        aManager = (AudioManager) CwaActivity.getContextInstance().getSystemService("audio");
-        return aManager.getStreamVolume(3);
-    }
-
     public static void setMusic(int volume) {
-        if (CwaActivity.getContextInstance() != null) {
-            aManager = (AudioManager) CwaActivity.getContextInstance().getSystemService("audio");
-            aManager.setStreamVolume(3, volume, 16);
+        if(CwaActivity.getContextInstance() != null) {
+            AndroidUtil.aManager = (AudioManager)CwaActivity.getContextInstance().getSystemService("audio");
+            AndroidUtil.aManager.setStreamVolume(3, volume, 16);
         }
     }
 }
+

@@ -2,40 +2,60 @@ package com.nokia.mid.ui;
 
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
-import main.Constants_H;
 
-/* loaded from: classes.dex */
 public class DirectGraphics {
+    public static int FLIP_HORIZONTAL;
+    public static int FLIP_VERTICAL;
+    public static int ROTATE_180;
+    public static int ROTATE_270;
+    public static int ROTATE_90;
+    public static int TYPE_BYTE_1_GRAY;
+    public static int TYPE_BYTE_1_GRAY_VERTICAL;
+    public static int TYPE_BYTE_2_GRAY;
+    public static int TYPE_BYTE_332_RGB;
+    public static int TYPE_BYTE_4_GRAY;
+    public static int TYPE_BYTE_8_GRAY;
+    public static int TYPE_INT_8888_ARGB;
+    public static int TYPE_INT_888_RGB;
+    public static int TYPE_USHORT_1555_ARGB;
+    public static int TYPE_USHORT_4444_ARGB;
+    public static int TYPE_USHORT_444_RGB;
+    public static int TYPE_USHORT_555_RGB;
+    public static int TYPE_USHORT_565_RGB;
     Graphics g;
-    public static int FLIP_HORIZONTAL = 8192;
-    public static int FLIP_VERTICAL = 16384;
-    public static int ROTATE_180 = Constants_H.HEIGHT_H_;
-    public static int ROTATE_270 = 270;
-    public static int ROTATE_90 = 90;
-    public static int TYPE_BYTE_1_GRAY = 1;
-    public static int TYPE_BYTE_1_GRAY_VERTICAL = -1;
-    public static int TYPE_BYTE_2_GRAY = 2;
-    public static int TYPE_BYTE_332_RGB = 332;
-    public static int TYPE_BYTE_4_GRAY = 4;
-    public static int TYPE_BYTE_8_GRAY = 8;
-    public static int TYPE_INT_888_RGB = 888;
-    public static int TYPE_INT_8888_ARGB = 8888;
-    public static int TYPE_USHORT_1555_ARGB = 1555;
-    public static int TYPE_USHORT_444_RGB = 444;
-    public static int TYPE_USHORT_4444_ARGB = 4444;
-    public static int TYPE_USHORT_555_RGB = 555;
-    public static int TYPE_USHORT_565_RGB = 565;
-    static int[] transA = {0, 6, 3, 5, 2, 4, 1, 7};
-    static int[] transB = {1, 7, 2, 4};
+    static int[] transA;
+    static int[] transB;
+
+    static {
+        DirectGraphics.FLIP_HORIZONTAL = 0x2000;
+        DirectGraphics.FLIP_VERTICAL = 0x4000;
+        DirectGraphics.ROTATE_180 = 180;
+        DirectGraphics.ROTATE_270 = 270;
+        DirectGraphics.ROTATE_90 = 90;
+        DirectGraphics.TYPE_BYTE_1_GRAY = 1;
+        DirectGraphics.TYPE_BYTE_1_GRAY_VERTICAL = -1;
+        DirectGraphics.TYPE_BYTE_2_GRAY = 2;
+        DirectGraphics.TYPE_BYTE_332_RGB = 332;
+        DirectGraphics.TYPE_BYTE_4_GRAY = 4;
+        DirectGraphics.TYPE_BYTE_8_GRAY = 8;
+        DirectGraphics.TYPE_INT_888_RGB = 888;
+        DirectGraphics.TYPE_INT_8888_ARGB = 8888;
+        DirectGraphics.TYPE_USHORT_1555_ARGB = 0x613;
+        DirectGraphics.TYPE_USHORT_444_RGB = 444;
+        DirectGraphics.TYPE_USHORT_4444_ARGB = 4444;
+        DirectGraphics.TYPE_USHORT_555_RGB = 555;
+        DirectGraphics.TYPE_USHORT_565_RGB = 565;
+        DirectGraphics.transA = new int[]{0, 6, 3, 5, 2, 4, 1, 7};
+        DirectGraphics.transB = new int[]{1, 7, 2, 4};
+    }
 
     public void drawImage(Image img, int x, int y, int anchor, int trans) {
         int tmpTrans;
-        if ((trans & 8192) != 0) {
-            tmpTrans = transA[((trans - 8192) / ROTATE_90) + 4];
-        } else if ((trans & 16384) != 0) {
-            tmpTrans = transB[(trans - 16384) / ROTATE_90];
-        } else {
-            tmpTrans = transA[trans / ROTATE_90];
+        if((trans & 0x2000) == 0) {
+            tmpTrans = (trans & 0x4000) == 0 ? DirectGraphics.transA[trans / DirectGraphics.ROTATE_90] : DirectGraphics.transB[(trans - 0x4000) / DirectGraphics.ROTATE_90];
+        }
+        else {
+            tmpTrans = DirectGraphics.transA[(trans - 0x2000) / DirectGraphics.ROTATE_90 + 4];
         }
         this.g.drawRegion(img, 0, 0, img.getWidth(), img.getHeight(), tmpTrans, x, y, anchor);
     }
@@ -46,3 +66,4 @@ public class DirectGraphics {
         this.g.fillTriangle(xPoints[0], yPoints[0], xPoints[3], yPoints[3], xPoints[2], yPoints[2]);
     }
 }
+

@@ -1,71 +1,61 @@
 package com.uc.paymentsdk.model;
 
-import com.uc.paymentsdk.util.Constants;
 import com.uc.paymentsdk.util.Utils;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
 
-/* loaded from: classes.dex */
 public class TypeFactory {
     public static final String TYPE_PAY_SMS = "sms";
     public static final String TYPE_PAY_UPOINT = "upoint";
-    private static HashMap<String, SoftReference<IType>> sTypes;
+    private static HashMap sTypes;
 
-    public static synchronized IType factory(String paramString) {
+    public static void clear() {
+        TypeFactory.sTypes = null;
+    }
+
+    public static IType factory(String paramString) {
         IType localObject;
-        IType localObject2;
-        IType localObject3;
-        synchronized (TypeFactory.class) {
-            if (sTypes == null) {
-                sTypes = new HashMap<>(4);
+        synchronized(TypeFactory.class) {
+            if(TypeFactory.sTypes == null) {
+                TypeFactory.sTypes = new HashMap(4);
             }
-            if (!sTypes.containsKey(paramString) || (localObject3 = sTypes.get(paramString).get()) == null) {
-                if (TYPE_PAY_UPOINT.equals(paramString) || "sms".equals(paramString)) {
-                    localObject = new PayType(paramString, getTypeName(paramString), getTypeDesc(paramString), getTypeIconFileName(paramString));
-                } else {
-                    localObject = new ChargeType(paramString, getTypeName(paramString), getTypeDesc(paramString), getTypeIconFileName(paramString));
+            if(TypeFactory.sTypes.containsKey(paramString)) {
+                IType localObject = (IType)((SoftReference)TypeFactory.sTypes.get(paramString)).get();
+                if(localObject != null) {
+                    return localObject;
                 }
-                sTypes.put(paramString, new SoftReference<>(localObject));
-                localObject2 = localObject;
-            } else {
-                localObject2 = localObject3;
+                goto label_10;
             }
+            else {
+            label_10:
+                PayType localObject = "upoint".equals(paramString) || "sms".equals(paramString) ? new PayType(paramString, null, TypeFactory.getTypeDesc(paramString), TypeFactory.getTypeIconFileName(paramString)) : new ChargeType(paramString, null, TypeFactory.getTypeDesc(paramString), TypeFactory.getTypeIconFileName(paramString));
+                TypeFactory.sTypes.put(paramString, new SoftReference(localObject));
+                localObject = localObject;
+            }
+            return localObject;
         }
-        return localObject2;
     }
 
     private static String getTypeDesc(String paramString) {
-        if (TYPE_PAY_UPOINT.equals(paramString)) {
-            return "用U点购买<br /><small><small><font color='#999999'>10U点价值1元</font></small></small>";
+        if("upoint".equals(paramString)) {
+            return "用U点购买<br /><small><small><font color=\'#999999\'>10U点价值1元</font></small></small>";
         }
-        if ("sms".equals(paramString)) {
-            return String.format("发短信直接购买<br /><small><small><font color='#999999'>发送%s元短信，可购买该内容</font></small></small>", Integer.valueOf(Utils.getSmsPayment()));
+        if(!"sms".equals(paramString)) {
+            throw new IllegalArgumentException("type not supported. " + paramString);
         }
-        throw new IllegalArgumentException("type not supported. " + paramString);
-    }
-
-    private static String getTypeName(String paramString) {
-        return null;
+        return String.format("发短信直接购买<br /><small><small><font color=\'#999999\'>发送%s元短信，可购买该内容</font></small></small>", Utils.getSmsPayment());
     }
 
     private static String getTypeIconFileName(String paramString) {
-        boolean bool = Utils.isHdpi();
-        if (TYPE_PAY_UPOINT.equals(paramString)) {
-            if (bool) {
-                return "upoint_logo_hdpi.png";
-            }
+        if("upoint".equals(paramString)) {
             return "upoint_logo.png";
         }
-        if ("sms".equals(paramString)) {
-            if (bool) {
-                return Constants.RES_TYPE_SMS_ICON_HDPI;
-            }
-            return Constants.RES_TYPE_SMS_ICON;
+        if(!"sms".equals(paramString)) {
+            throw new IllegalArgumentException("type not supported.");
         }
-        throw new IllegalArgumentException(Constants.ERROR_TYPE_NOT_SUPPORTED);
+        return "sms_logo.png";
     }
 
-    public static void clear() {
-        sTypes = null;
-    }
+    private static String getTypeName(String paramString) [...] // Inlined contents
 }
+

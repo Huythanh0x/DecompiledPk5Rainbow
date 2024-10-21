@@ -1,11 +1,10 @@
 package main;
 
-/* loaded from: classes.dex */
 public interface Key_H {
     public static final byte KEY_C = -8;
     public static final byte KEY_DOWN_ARROW = -2;
     public static final byte KEY_LEFT_ARROW = -3;
-    public static final byte KEY_NUM0 = 48;
+    public static final byte KEY_NUM0 = 0x30;
     public static final byte KEY_NUM1 = 49;
     public static final byte KEY_NUM2 = 50;
     public static final byte KEY_NUM3 = 51;
@@ -23,4 +22,6 @@ public interface Key_H {
     public static final byte KEY_SOFTKEY3 = -5;
     public static final byte KEY_STAR = 42;
     public static final byte KEY_UP_ARROW = -1;
+
 }
+

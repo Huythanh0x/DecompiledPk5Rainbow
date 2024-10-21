@@ -1,6 +1,5 @@
 package javax.microedition.rms;
 
-/* loaded from: classes.dex */
 public interface ExtendedRecordListener extends RecordListener {
     public static final int RECORDSTORE_CLOSE = 9;
     public static final int RECORDSTORE_DELETE = 10;
@@ -10,7 +9,8 @@ public interface ExtendedRecordListener extends RecordListener {
     public static final int RECORD_DELETE = 4;
     public static final int RECORD_READ = 2;
 
-    void recordEvent(int i, long j, RecordStore recordStore, int i2);
+    void recordEvent(int arg1, long arg2, RecordStore arg3, int arg4);
 
-    void recordStoreEvent(int i, long j, String str);
+    void recordStoreEvent(int arg1, long arg2, String arg3);
 }
+

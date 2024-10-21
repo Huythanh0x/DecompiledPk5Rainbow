@@ -3,11 +3,11 @@ package com.uc.paymentsdk.commons.codec;
 import java.io.ByteArrayOutputStream;
 import java.util.Random;
 
-/* loaded from: classes.dex */
 public class Crypter {
-    private static Random random = new Random();
+    private ByteArrayOutputStream baos;
     private int contextStart;
     private int crypt;
+    private boolean header;
     private byte[] key;
     private byte[] out;
     private int padding;
@@ -15,104 +15,167 @@ public class Crypter {
     private int pos;
     private int preCrypt;
     private byte[] prePlain;
-    private boolean header = true;
-    private ByteArrayOutputStream baos = new ByteArrayOutputStream(8);
+    private static Random random;
 
-    private static long getUnsignedInt(byte[] paramArrayOfByte, int paramInt1, int paramInt2) {
-        int i;
-        long l = 0;
-        if (paramInt2 > 8) {
-            i = paramInt1 + 8;
-        } else {
-            i = paramInt1 + paramInt2;
-        }
-        for (int j = paramInt1; j < i; j++) {
-            l = (l << 8) | (paramArrayOfByte[j] & 255);
-        }
-        return ((-1) & l) | (l >>> 32);
+    static {
+        Crypter.random = new Random();
     }
 
+    public Crypter() {
+        this.header = true;
+        this.baos = new ByteArrayOutputStream(8);
+    }
+
+    private byte[] decipher(byte[] paramArrayOfByte) {
+        long v = Crypter.getUnsignedInt(paramArrayOfByte, 0, 4);
+        long v1 = Crypter.getUnsignedInt(paramArrayOfByte, 4, 4);
+        long v2 = Crypter.getUnsignedInt(this.key, 0, 4);
+        long v3 = Crypter.getUnsignedInt(this.key, 4, 4);
+        long v4 = Crypter.getUnsignedInt(this.key, 8, 4);
+        long v5 = Crypter.getUnsignedInt(this.key, 12, 4);
+        long v6 = 0xE3779B90L;
+        for(int v7 = 16; v7 > 0; --v7) {
+            v1 = v1 - ((v << 4) + v4 ^ v + v6 ^ (v >>> 5) + v5) & 0xFFFFFFFFL;
+            v = v - ((v1 << 4) + v2 ^ v1 + v6 ^ (v1 >>> 5) + v3) & 0xFFFFFFFFL;
+            v6 = v6 - 0x9E3779B9L & 0xFFFFFFFFL;
+        }
+        this.baos.reset();
+        this.writeInt(((int)v));
+        this.writeInt(((int)v1));
+        return this.baos.toByteArray();
+    }
+
+    private byte[] decipher(byte[] paramArrayOfByte, int paramInt) [...] // Inlined contents
+
     public byte[] decrypt(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2) {
-        if (paramArrayOfByte2 == null) {
+        if(paramArrayOfByte2 == null) {
             return null;
         }
         this.preCrypt = 0;
         this.crypt = 0;
         this.key = paramArrayOfByte2;
         byte[] arrayOfByte = new byte[paramInt1 + 8];
-        if (paramInt2 % 8 != 0 || paramInt2 < 16) {
+        if(paramInt2 % 8 != 0 || paramInt2 < 16) {
             return null;
         }
-        this.prePlain = decipher(paramArrayOfByte1, paramInt1);
+        this.prePlain = this.decipher(paramArrayOfByte1, paramInt1);
         this.pos = this.prePlain[0] & 7;
-        int i = (paramInt2 - this.pos) - 10;
-        if (i < 0) {
+        int i = paramInt2 - this.pos - 10;
+        if(i < 0) {
             return null;
         }
-        for (int j = paramInt1; j < arrayOfByte.length; j++) {
+        for(int j = paramInt1; j < arrayOfByte.length; ++j) {
             arrayOfByte[j] = 0;
         }
         this.out = new byte[i];
         this.preCrypt = 0;
         this.crypt = 8;
         this.contextStart = 8;
-        this.pos++;
+        ++this.pos;
         this.padding = 1;
-        while (this.padding <= 2) {
-            if (this.pos < 8) {
-                this.pos++;
-                this.padding++;
+        while(true) {
+            if(this.padding > 2) {
+                int j = 0;
+                while(true) {
+                    if(i == 0) {
+                        this.padding = 1;
+                        while(true) {
+                            if(this.padding >= 8) {
+                                return this.out;
+                            }
+                            if(this.pos < 8) {
+                                if((arrayOfByte[this.preCrypt + paramInt1 + this.pos] ^ this.prePlain[this.pos]) != 0) {
+                                    return null;
+                                }
+                                ++this.pos;
+                            }
+                            if(this.pos == 8) {
+                                arrayOfByte = paramArrayOfByte1;
+                                this.preCrypt = this.crypt;
+                                if(!this.decrypt8Bytes(paramArrayOfByte1, paramInt1, paramInt2)) {
+                                    return null;
+                                }
+                            }
+                            ++this.padding;
+                        }
+                    }
+                    if(this.pos < 8) {
+                        this.out[j] = (byte)(arrayOfByte[this.preCrypt + paramInt1 + this.pos] ^ this.prePlain[this.pos]);
+                        ++j;
+                        --i;
+                        ++this.pos;
+                    }
+                    if(this.pos == 8) {
+                        arrayOfByte = paramArrayOfByte1;
+                        this.preCrypt = this.crypt - 8;
+                        if(!this.decrypt8Bytes(paramArrayOfByte1, paramInt1, paramInt2)) {
+                            break;
+                        }
+                    }
+                }
+                return null;
             }
-            if (this.pos == 8) {
+            if(this.pos < 8) {
+                ++this.pos;
+                ++this.padding;
+            }
+            if(this.pos == 8) {
                 arrayOfByte = paramArrayOfByte1;
-                if (!decrypt8Bytes(paramArrayOfByte1, paramInt1, paramInt2)) {
-                    return null;
+                if(!this.decrypt8Bytes(paramArrayOfByte1, paramInt1, paramInt2)) {
+                    break;
                 }
             }
         }
-        int j2 = 0;
-        while (i != 0) {
-            if (this.pos < 8) {
-                this.out[j2] = (byte) (arrayOfByte[(this.preCrypt + paramInt1) + this.pos] ^ this.prePlain[this.pos]);
-                j2++;
-                i--;
-                this.pos++;
-            }
-            if (this.pos == 8) {
-                arrayOfByte = paramArrayOfByte1;
-                this.preCrypt = this.crypt - 8;
-                if (!decrypt8Bytes(paramArrayOfByte1, paramInt1, paramInt2)) {
-                    return null;
-                }
-            }
-        }
-        this.padding = 1;
-        while (this.padding < 8) {
-            if (this.pos < 8) {
-                if ((arrayOfByte[(this.preCrypt + paramInt1) + this.pos] ^ this.prePlain[this.pos]) != 0) {
-                    return null;
-                }
-                this.pos++;
-            }
-            if (this.pos == 8) {
-                arrayOfByte = paramArrayOfByte1;
-                this.preCrypt = this.crypt;
-                if (!decrypt8Bytes(paramArrayOfByte1, paramInt1, paramInt2)) {
-                    return null;
-                }
-            }
-            this.padding++;
-        }
-        return this.out;
+        return null;
     }
 
     public byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2) {
-        return decrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte2);
+        return this.decrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte2);
+    }
+
+    private boolean decrypt8Bytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2) {
+        this.pos = 0;
+        while(true) {
+            if(this.pos >= 8) {
+                this.prePlain = this.decipher(this.prePlain);
+                if(this.prePlain == null) {
+                    return false;
+                }
+                this.contextStart += 8;
+                this.crypt += 8;
+                this.pos = 0;
+                return true;
+            }
+            if(this.contextStart + this.pos >= paramInt2) {
+                return true;
+            }
+            this.prePlain[this.pos] = (byte)(this.prePlain[this.pos] ^ paramArrayOfByte[this.crypt + paramInt1 + this.pos]);
+            ++this.pos;
+        }
+    }
+
+    private byte[] encipher(byte[] paramArrayOfByte) {
+        long l1 = Crypter.getUnsignedInt(paramArrayOfByte, 0, 4);
+        long l2 = Crypter.getUnsignedInt(paramArrayOfByte, 4, 4);
+        long v2 = Crypter.getUnsignedInt(this.key, 0, 4);
+        long v3 = Crypter.getUnsignedInt(this.key, 4, 4);
+        long v4 = Crypter.getUnsignedInt(this.key, 8, 4);
+        long v5 = Crypter.getUnsignedInt(this.key, 12, 4);
+        long l7 = 0L;
+        for(int i = 16; i > 0; --i) {
+            l7 = l7 + 0x9E3779B9L & 0xFFFFFFFFL;
+            l1 = l1 + ((l2 << 4) + v2 ^ l2 + l7 ^ (l2 >>> 5) + v3) & 0xFFFFFFFFL;
+            l2 = l2 + ((l1 << 4) + v4 ^ l1 + l7 ^ (l1 >>> 5) + v5) & 0xFFFFFFFFL;
+        }
+        this.baos.reset();
+        this.writeInt(((int)l1));
+        this.writeInt(((int)l2));
+        return this.baos.toByteArray();
     }
 
     public byte[] encrypt(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2) {
         int i;
-        if (paramArrayOfByte2 == null) {
+        if(paramArrayOfByte2 == null) {
             return paramArrayOfByte1;
         }
         this.plain = new byte[8];
@@ -124,155 +187,79 @@ public class Crypter {
         this.key = paramArrayOfByte2;
         this.header = true;
         this.pos = (paramInt2 + 10) % 8;
-        if (this.pos != 0) {
+        if(this.pos != 0) {
             this.pos = 8 - this.pos;
         }
         this.out = new byte[this.pos + paramInt2 + 10];
-        this.plain[0] = (byte) ((rand() & 248) | this.pos);
-        for (int i2 = 1; i2 <= this.pos; i2++) {
-            this.plain[i2] = (byte) (rand() & 255);
+        byte[] arr_b2 = this.plain;
+        arr_b2[0] = (byte)(this.rand() & 0xF8 | this.pos);
+        for(int i = 1; i <= this.pos; ++i) {
+            byte[] arr_b3 = this.plain;
+            arr_b3[i] = (byte)(this.rand() & 0xFF);
         }
-        this.pos++;
-        for (int i3 = 0; i3 < 8; i3++) {
-            this.prePlain[i3] = 0;
+        ++this.pos;
+        for(int i = 0; i < 8; ++i) {
+            this.prePlain[i] = 0;
         }
         this.padding = 1;
-        while (this.padding <= 2) {
-            if (this.pos < 8) {
-                byte[] bArr = this.plain;
-                int i4 = this.pos;
-                this.pos = i4 + 1;
-                bArr[i4] = (byte) (rand() & 255);
-                this.padding++;
+        while(this.padding <= 2) {
+            if(this.pos < 8) {
+                byte[] arr_b4 = this.plain;
+                int v4 = this.pos;
+                this.pos = v4 + 1;
+                arr_b4[v4] = (byte)(this.rand() & 0xFF);
+                ++this.padding;
             }
-            if (this.pos == 8) {
-                encrypt8Bytes();
+            if(this.pos == 8) {
+                this.encrypt8Bytes();
             }
         }
-        int i5 = paramInt1;
-        while (paramInt2 > 0) {
-            if (this.pos < 8) {
-                byte[] bArr2 = this.plain;
-                int i6 = this.pos;
-                this.pos = i6 + 1;
-                i = i5 + 1;
-                bArr2[i6] = paramArrayOfByte1[i5];
-                paramInt2--;
-            } else {
-                i = i5;
+        for(int i = paramInt1; paramInt2 > 0; i = i) {
+            if(this.pos < 8) {
+                int v6 = this.pos;
+                this.pos = v6 + 1;
+                i = i + 1;
+                this.plain[v6] = paramArrayOfByte1[i];
+                --paramInt2;
             }
-            if (this.pos != 8) {
-                i5 = i;
-            } else {
-                encrypt8Bytes();
-                i5 = i;
+            else {
+                i = i;
+            }
+            if(this.pos == 8) {
+                this.encrypt8Bytes();
             }
         }
         this.padding = 1;
-        while (this.padding <= 7) {
-            if (this.pos < 8) {
-                byte[] bArr3 = this.plain;
-                int i7 = this.pos;
-                this.pos = i7 + 1;
-                bArr3[i7] = 0;
-                this.padding++;
+        while(this.padding <= 7) {
+            if(this.pos < 8) {
+                int v8 = this.pos;
+                this.pos = v8 + 1;
+                this.plain[v8] = 0;
+                ++this.padding;
             }
-            if (this.pos == 8) {
-                encrypt8Bytes();
+            if(this.pos == 8) {
+                this.encrypt8Bytes();
             }
         }
         return this.out;
     }
 
     public byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2) {
-        return encrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte2);
-    }
-
-    private byte[] encipher(byte[] paramArrayOfByte) {
-        int i = 16;
-        long l1 = getUnsignedInt(paramArrayOfByte, 0, 4);
-        long l2 = getUnsignedInt(paramArrayOfByte, 4, 4);
-        long l3 = getUnsignedInt(this.key, 0, 4);
-        long l4 = getUnsignedInt(this.key, 4, 4);
-        long l5 = getUnsignedInt(this.key, 8, 4);
-        long l6 = getUnsignedInt(this.key, 12, 4);
-        long l7 = 0;
-        long l8 = (-1640531527) & 4294967295L;
-        while (true) {
-            int i2 = i;
-            i = i2 - 1;
-            if (i2 > 0) {
-                l7 = (l7 + l8) & 4294967295L;
-                l1 = (l1 + ((((l2 << 4) + l3) ^ (l2 + l7)) ^ ((l2 >>> 5) + l4))) & 4294967295L;
-                l2 = (l2 + ((((l1 << 4) + l5) ^ (l1 + l7)) ^ ((l1 >>> 5) + l6))) & 4294967295L;
-            } else {
-                this.baos.reset();
-                writeInt((int) l1);
-                writeInt((int) l2);
-                return this.baos.toByteArray();
-            }
-        }
-    }
-
-    private byte[] decipher(byte[] paramArrayOfByte, int paramInt) {
-        int i = 16;
-        long l1 = getUnsignedInt(paramArrayOfByte, paramInt, 4);
-        long l2 = getUnsignedInt(paramArrayOfByte, paramInt + 4, 4);
-        long l3 = getUnsignedInt(this.key, 0, 4);
-        long l4 = getUnsignedInt(this.key, 4, 4);
-        long l5 = getUnsignedInt(this.key, 8, 4);
-        long l6 = getUnsignedInt(this.key, 12, 4);
-        long l7 = (-478700656) & 4294967295L;
-        long l8 = (-1640531527) & 4294967295L;
-        while (true) {
-            int i2 = i;
-            i = i2 - 1;
-            if (i2 > 0) {
-                l2 = (l2 - ((((l1 << 4) + l5) ^ (l1 + l7)) ^ ((l1 >>> 5) + l6))) & 4294967295L;
-                l1 = (l1 - ((((l2 << 4) + l3) ^ (l2 + l7)) ^ ((l2 >>> 5) + l4))) & 4294967295L;
-                l7 = (l7 - l8) & 4294967295L;
-            } else {
-                this.baos.reset();
-                writeInt((int) l1);
-                writeInt((int) l2);
-                return this.baos.toByteArray();
-            }
-        }
-    }
-
-    private void writeInt(int paramInt) {
-        this.baos.write(paramInt >>> 24);
-        this.baos.write(paramInt >>> 16);
-        this.baos.write(paramInt >>> 8);
-        this.baos.write(paramInt);
-    }
-
-    private byte[] decipher(byte[] paramArrayOfByte) {
-        return decipher(paramArrayOfByte, 0);
+        return this.encrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte2);
     }
 
     private void encrypt8Bytes() {
         this.pos = 0;
-        while (this.pos < 8) {
-            if (this.header) {
-                int tmp29_26 = this.pos;
-                byte[] tmp29_22 = this.plain;
-                tmp29_22[tmp29_26] = (byte) (tmp29_22[tmp29_26] ^ this.prePlain[this.pos]);
-            } else {
-                int tmp54_51 = this.pos;
-                byte[] tmp54_47 = this.plain;
-                tmp54_47[tmp54_51] = (byte) (tmp54_47[tmp54_51] ^ this.out[this.preCrypt + this.pos]);
-            }
-            this.pos++;
+        while(this.pos < 8) {
+            this.plain[this.pos] = this.header ? ((byte)(this.plain[this.pos] ^ this.prePlain[this.pos])) : ((byte)(this.plain[this.pos] ^ this.out[this.preCrypt + this.pos]));
+            ++this.pos;
         }
-        byte[] arrayOfByte = encipher(this.plain);
-        System.arraycopy(arrayOfByte, 0, this.out, this.crypt, 8);
+        System.arraycopy(this.encipher(this.plain), 0, this.out, this.crypt, 8);
         this.pos = 0;
-        while (this.pos < 8) {
+        while(this.pos < 8) {
             int tmp137_136 = this.crypt + this.pos;
-            byte[] tmp137_125 = this.out;
-            tmp137_125[tmp137_136] = (byte) (tmp137_125[tmp137_136] ^ this.prePlain[this.pos]);
-            this.pos++;
+            this.out[tmp137_136] = (byte)(this.out[tmp137_136] ^ this.prePlain[this.pos]);
+            ++this.pos;
         }
         System.arraycopy(this.plain, 0, this.prePlain, 0, 8);
         this.preCrypt = this.crypt;
@@ -281,28 +268,23 @@ public class Crypter {
         this.header = false;
     }
 
-    private boolean decrypt8Bytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2) {
-        this.pos = 0;
-        while (this.pos < 8) {
-            if (this.contextStart + this.pos >= paramInt2) {
-                return true;
-            }
-            int tmp37_34 = this.pos;
-            byte[] tmp37_30 = this.prePlain;
-            tmp37_30[tmp37_34] = (byte) (tmp37_30[tmp37_34] ^ paramArrayOfByte[(this.crypt + paramInt1) + this.pos]);
-            this.pos++;
+    private static long getUnsignedInt(byte[] paramArrayOfByte, int paramInt1, int paramInt2) {
+        long l = 0L;
+        for(int j = paramInt1; j < (paramInt2 <= 8 ? paramInt1 + paramInt2 : paramInt1 + 8); ++j) {
+            l = l << 8 | ((long)(paramArrayOfByte[j] & 0xFF));
         }
-        this.prePlain = decipher(this.prePlain);
-        if (this.prePlain == null) {
-            return false;
-        }
-        this.contextStart += 8;
-        this.crypt += 8;
-        this.pos = 0;
-        return true;
+        return l | l >>> 0x20;
     }
 
     private int rand() {
-        return random.nextInt();
+        return Crypter.random.nextInt();
+    }
+
+    private void writeInt(int paramInt) {
+        this.baos.write(paramInt >>> 24);
+        this.baos.write(paramInt >>> 16);
+        this.baos.write(paramInt >>> 8);
+        this.baos.write(paramInt);
     }
 }
+

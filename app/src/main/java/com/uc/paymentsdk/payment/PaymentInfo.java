@@ -2,7 +2,6 @@ package com.uc.paymentsdk.payment;
 
 import java.io.Serializable;
 
-/* loaded from: classes.dex */
 public class PaymentInfo implements Serializable {
     public static final String CHANNELID = "70";
     public static final String EXTINFO = "00";
@@ -41,91 +40,92 @@ public class PaymentInfo implements Serializable {
         this.mActionID = actionid;
     }
 
-    public String getUsername() {
-        return this.mUsername;
-    }
-
-    public void setUsername(String paramString) {
-        this.mUsername = paramString;
-    }
-
-    public String getPayname() {
-        return this.mPayName;
-    }
-
-    public void setPayname(String paramString) {
-        this.mPayName = paramString;
-    }
-
-    public int getMoney() {
-        return this.mMoney;
-    }
-
-    public void setMoney(int paramInt) {
-        this.mMoney = paramInt;
-    }
-
-    public String getPaytype() {
-        return this.mPayType;
-    }
-
-    public void setPaytype(String paramString) {
-        this.mPayType = paramString;
-    }
-
-    public String getPassword() {
-        return this.mPassword;
-    }
-
-    public void setPassword(String paramString) {
-        this.mPassword = paramString;
-    }
-
-    public String getPaydesc() {
-        return this.mPayDesc;
-    }
-
-    public void setPaydesc(String paramString) {
-        this.mPayDesc = paramString;
-    }
-
     public String getAppkey() {
         return this.mAppkey;
-    }
-
-    public void setAppkey(String paramString) {
-        this.mAppkey = paramString;
-    }
-
-    public String getOrderID() {
-        return this.mOrderID;
-    }
-
-    public void setOrderID(String paramString) {
-        this.mOrderID = paramString;
     }
 
     public String getCpID() {
         return this.mCpID;
     }
 
-    public void setCpID(String paramString) {
-        this.mCpID = paramString;
+    public int getMoney() {
+        return this.mMoney;
     }
 
-    public String getmGameID() {
-        return this.mGameID;
+    public String getOrderID() {
+        return this.mOrderID;
     }
 
-    public void setmGameID(String mGameID) {
-        this.mGameID = mGameID;
+    public String getPassword() {
+        return this.mPassword;
+    }
+
+    public String getPaydesc() {
+        return this.mPayDesc;
+    }
+
+    public String getPayname() {
+        return this.mPayName;
+    }
+
+    public String getPaytype() {
+        return this.mPayType;
+    }
+
+    public String getUsername() {
+        return this.mUsername;
     }
 
     public String getmActionID() {
         return this.mActionID;
     }
 
+    public String getmGameID() {
+        return this.mGameID;
+    }
+
+    public void setAppkey(String paramString) {
+        this.mAppkey = paramString;
+    }
+
+    public void setCpID(String paramString) {
+        this.mCpID = paramString;
+    }
+
+    public void setMoney(int paramInt) {
+        this.mMoney = paramInt;
+    }
+
+    public void setOrderID(String paramString) {
+        this.mOrderID = paramString;
+    }
+
+    public void setPassword(String paramString) {
+        this.mPassword = paramString;
+    }
+
+    public void setPaydesc(String paramString) {
+        this.mPayDesc = paramString;
+    }
+
+    public void setPayname(String paramString) {
+        this.mPayName = paramString;
+    }
+
+    public void setPaytype(String paramString) {
+        this.mPayType = paramString;
+    }
+
+    public void setUsername(String paramString) {
+        this.mUsername = paramString;
+    }
+
     public void setmActionID(String mActionID) {
         this.mActionID = mActionID;
     }
+
+    public void setmGameID(String mGameID) {
+        this.mGameID = mGameID;
+    }
 }
+

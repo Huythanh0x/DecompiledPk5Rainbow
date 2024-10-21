@@ -1,197 +1,137 @@
 package javax.microedition.media;
 
 import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer;
 import android.util.Log;
 import com.android.Util.AndroidUtil;
-import com.uc.paymentsdk.util.Constants;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.Vector;
 import javax.microedition.media.control.ToneControl;
 import javax.microedition.media.control.VolumeControl;
 
-/* loaded from: classes.dex */
 public class Player implements MediaPlayer.OnCompletionListener {
     public static final int CLOSED = 0;
     public static final int PREFETCHED = 300;
     public static final int REALIZED = 200;
     public static final int STARTED = 400;
-    public static final long TIME_UNKNOWN = -1;
+    public static final long TIME_UNKNOWN = -1L;
     public static final int UNREALIZED = 100;
     private String dateSource;
     private int loopCount;
+    private MediaPlayer mp;
     private int playedCount;
+    private Vector playerListeners;
+    private int state;
     private String type;
-    private int state = 100;
-    private MediaPlayer mp = new MediaPlayer();
-    private Vector<PlayerListener> playerListeners = new Vector<>();
 
     public Player() {
+        this.state = 100;
+        this.mp = new MediaPlayer();
+        this.playerListeners = new Vector();
         this.mp.setOnCompletionListener(this);
         this.mp.setLooping(false);
         this.dateSource = null;
         this.type = null;
     }
 
-    public void setDatasource(String dataSource) {
-        this.dateSource = dataSource;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Control getControl(String controlType) {
-        if (controlType.indexOf("VolumeControl") != -1) {
-            VolumeControl vc = new VolumeControl();
-            return vc;
-        }
-        if (controlType.indexOf("ToneControl") != -1) {
-            ToneControl tc = new ToneControl();
-            return tc;
-        }
-        Log.e("ERROR", "PLAYER IS ERROR");
-        return null;
-    }
-
-    public void realize() throws MediaException {
-        if (this.state < 200) {
-            try {
-                if (Manager.getIsLocator()) {
-                    this.mp.setDataSource(this.dateSource);
-                } else {
-                    AssetFileDescriptor afd = AndroidUtil.am.openFd(this.dateSource);
-                    this.mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-                }
-                this.state = REALIZED;
-            } catch (IOException e) {
-                throw new MediaException();
-            }
+    public void addPlayerListener(PlayerListener playerListener) {
+        if(!this.playerListeners.contains(playerListener)) {
+            this.playerListeners.add(playerListener);
         }
     }
 
-    public void prefetch() throws MediaException {
-        if (this.state < 300) {
-            if (this.state < 200) {
-                realize();
+    public void close() {
+        if(this.mp != null) {
+            if(this.state == 400) {
+                this.onEvent("stopped", null);
+                this.mp.stop();
             }
-            try {
-                this.mp.prepare();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (IllegalStateException e2) {
-                e2.printStackTrace();
-            }
-            this.state = PREFETCHED;
-        }
-    }
-
-    public void start() throws MediaException {
-        if (this.state < 400) {
-            if (this.state < 200) {
-                realize();
-            }
-            if (this.state < 300) {
-                prefetch();
-            }
-            if (this.state == 200 || this.state == 300) {
-                this.playedCount = 0;
-                try {
-                    this.mp.start();
-                    onEvent(PlayerListener.STARTED, null);
-                    this.state = STARTED;
-                } catch (IllegalStateException e) {
-                    onEvent("error", e.getMessage());
-                    throw new MediaException();
-                }
-            }
-        }
-    }
-
-    public void stop() throws MediaException {
-        if (this.state >= 400) {
-            try {
-                this.mp.pause();
-                onEvent(PlayerListener.STOPPED, null);
-                this.state = PREFETCHED;
-            } catch (IllegalStateException e) {
-                onEvent("error", e.getMessage());
-                throw new MediaException();
-            }
+            this.mp.release();
+            this.onEvent("closed", null);
+            this.state = 0;
         }
     }
 
     public void deallocate() {
     }
 
-    public void close() {
-        if (this.mp != null) {
-            if (this.state == 400) {
-                onEvent(PlayerListener.STOPPED, null);
-                this.mp.stop();
-            }
-            this.mp.release();
-            onEvent(PlayerListener.CLOSED, null);
-            this.state = 0;
-        }
+    public String getContentType() {
+        return this.type;
     }
 
-    public long setMediaTime(long now) throws MediaException {
-        int mill_now = ((int) now) / Constants.PAYMENT_MAX;
-        if (mill_now < 0) {
-            mill_now = 0;
-            now = 0;
-        } else if (mill_now > this.mp.getDuration()) {
-            mill_now = this.mp.getDuration();
-            now = this.mp.getDuration() * Constants.PAYMENT_MAX;
+    public Control getControl(String controlType) {
+        if(controlType.indexOf("VolumeControl") != -1) {
+            return new VolumeControl();
         }
-        this.mp.seekTo(mill_now);
-        return now;
+        if(controlType.indexOf("ToneControl") != -1) {
+            return new ToneControl();
+        }
+        Log.e("ERROR", "PLAYER IS ERROR");
+        return null;
+    }
+
+    public long getDuration() {
+        long duration = (long)(this.mp.getDuration() * 1000);
+        return duration > 0L ? duration : -1L;
     }
 
     public long getMediaTime() {
-        long mediaTime = this.mp.getCurrentPosition() * Constants.PAYMENT_MAX;
-        if (mediaTime <= 0) {
-            return -1L;
-        }
-        return mediaTime;
+        long mediaTime = (long)(this.mp.getCurrentPosition() * 1000);
+        return mediaTime > 0L ? mediaTime : -1L;
     }
 
     public int getState() {
         return this.state;
     }
 
-    public long getDuration() {
-        long duration = this.mp.getDuration() * Constants.PAYMENT_MAX;
-        if (duration <= 0) {
-            return -1L;
-        }
-        return duration;
-    }
-
-    public String getContentType() {
-        return this.type;
-    }
-
-    public void setLoopCount(int count) throws IllegalArgumentException, IllegalStateException {
-        if (this.state == 400) {
-            throw new IllegalStateException("player is close");
-        }
-        if (count == 0) {
-            throw new IllegalArgumentException("loopcount is 0");
-        }
-        if (count == -1 || count > 1) {
-            this.mp.setLooping(true);
-            this.loopCount = count;
-        } else {
-            Log.e("Player", "Loop count < -1");
+    @Override  // android.media.MediaPlayer$OnCompletionListener
+    public void onCompletion(MediaPlayer mp) {
+        if(mp == this.mp) {
+            ++this.playedCount;
+            if(this.playedCount >= this.loopCount && this.loopCount != -1) {
+                mp.setLooping(false);
+                this.onEvent("endOfMedia", null);
+            }
         }
     }
 
-    public void addPlayerListener(PlayerListener playerListener) {
-        if (!this.playerListeners.contains(playerListener)) {
-            this.playerListeners.add(playerListener);
+    private final void onEvent(String event, Object eventData) {
+        for(Object object1: this.playerListeners) {
+            ((PlayerListener)object1).playerUpdate(this, event, eventData);
+        }
+    }
+
+    public void prefetch() throws MediaException {
+        if(this.state >= 300) {
+            return;
+        }
+        if(this.state < 200) {
+            this.realize();
+        }
+        try {
+            this.mp.prepare();
+        }
+        catch(IllegalStateException illegalStateException0) {
+            illegalStateException0.printStackTrace();
+        }
+        catch(IOException iOException0) {
+            iOException0.printStackTrace();
+        }
+        this.state = 300;
+    }
+
+    public void realize() throws MediaException {
+        if(this.state >= 200) {
+            return;
+        }
+        try {
+            AssetFileDescriptor assetFileDescriptor0 = AndroidUtil.am.openFd(this.dateSource);
+            this.mp.setDataSource(assetFileDescriptor0.getFileDescriptor(), assetFileDescriptor0.getStartOffset(), assetFileDescriptor0.getLength());
+            this.state = 200;
+        }
+        catch(IOException unused_ex) {
+            throw new MediaException();
         }
     }
 
@@ -199,22 +139,79 @@ public class Player implements MediaPlayer.OnCompletionListener {
         this.playerListeners.remove(playerListener);
     }
 
-    @Override // android.media.MediaPlayer.OnCompletionListener
-    public void onCompletion(MediaPlayer mp) {
-        if (mp == this.mp) {
-            this.playedCount++;
-            if (this.playedCount >= this.loopCount && this.loopCount != -1) {
-                mp.setLooping(false);
-                onEvent(PlayerListener.END_OF_MEDIA, null);
+    public void setDatasource(String dataSource) {
+        this.dateSource = dataSource;
+    }
+
+    public void setLoopCount(int count) throws IllegalArgumentException, IllegalStateException {
+        if(this.state == 400) {
+            throw new IllegalStateException("player is close");
+        }
+        if(count == 0) {
+            throw new IllegalArgumentException("loopcount is 0");
+        }
+        if(count == -1 || count > 1) {
+            this.mp.setLooping(true);
+            this.loopCount = count;
+            return;
+        }
+        Log.e("Player", "Loop count < -1");
+    }
+
+    public long setMediaTime(long now) throws MediaException {
+        int mill_now = ((int)now) / 1000;
+        if(mill_now < 0) {
+            mill_now = 0;
+            now = 0L;
+        }
+        else if(mill_now > this.mp.getDuration()) {
+            mill_now = this.mp.getDuration();
+            now = (long)(this.mp.getDuration() * 1000);
+        }
+        this.mp.seekTo(mill_now);
+        return now;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void start() throws MediaException {
+        if(this.state < 400) {
+            if(this.state < 200) {
+                this.realize();
+            }
+            if(this.state < 300) {
+                this.prefetch();
+            }
+            if(this.state == 200 || this.state == 300) {
+                try {
+                    this.playedCount = 0;
+                    this.mp.start();
+                }
+                catch(IllegalStateException illegalStateException0) {
+                    this.onEvent("error", illegalStateException0.getMessage());
+                    throw new MediaException();
+                }
+                this.onEvent("started", null);
+                this.state = 400;
             }
         }
     }
 
-    private final void onEvent(String event, Object eventData) {
-        Iterator<PlayerListener> it = this.playerListeners.iterator();
-        while (it.hasNext()) {
-            PlayerListener playerListener = it.next();
-            playerListener.playerUpdate(this, event, eventData);
+    public void stop() throws MediaException {
+        if(this.state < 400) {
+            return;
         }
+        try {
+            this.mp.pause();
+        }
+        catch(IllegalStateException illegalStateException0) {
+            this.onEvent("error", illegalStateException0.getMessage());
+            throw new MediaException();
+        }
+        this.onEvent("stopped", null);
+        this.state = 300;
     }
 }
+

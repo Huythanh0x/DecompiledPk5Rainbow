@@ -6,40 +6,35 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import javax.microedition.lcdui.CwaActivity;
 
-/* loaded from: classes.dex */
 public class RecordStore {
     public static final int AUTHMODE_ANY = 1;
     public static final int AUTHMODE_PRIVATE = 0;
-    private static final long INT_MAX = 2147483647L;
+    private static final long INT_MAX = 0x7FFFFFFFL;
     private SQLiteDatabase db;
     private String table_name;
 
     public int addRecord(byte[] data, int offset, int numBytes) throws RecordStoreNotOpenException, RecordStoreException, RecordStoreFullException {
         byte[] datarecord = new byte[numBytes];
         int i = offset;
-        int j = 0;
-        while (i < numBytes + offset) {
+        for(int j = 0; i < numBytes + offset; ++j) {
             datarecord[j] = data[i];
-            i++;
-            j++;
+            ++i;
         }
         ContentValues values = new ContentValues();
         values.put("content", datarecord);
-        int result = (int) this.db.insert(this.table_name, null, values);
-        return result;
+        return (int)this.db.insert(this.table_name, null, values);
     }
 
     public void closeRecordStore() throws RecordStoreNotOpenException, RecordStoreException {
-        if (this.db != null && this.db.isOpen()) {
+        if(this.db != null && this.db.isOpen()) {
             this.db.close();
-        } else {
-            new RecordStoreNotOpenException("RecordStore is not open");
+            return;
         }
+        new RecordStoreNotOpenException("RecordStore is not open");
     }
 
     public void deleteRecord(int recordId) throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException {
-        String sql = "delete from " + this.table_name + " where _ID=" + recordId;
-        this.db.execSQL(sql);
+        this.db.execSQL("delete from " + this.table_name + " where _ID=" + recordId);
     }
 
     public static void deleteRecordStore(String recordStoreName) throws RecordStoreException, RecordStoreNotFoundException {
@@ -48,10 +43,10 @@ public class RecordStore {
 
     public RecordEnumeration enumerateRecords(RecordFilter filter, RecordComparator comparator, boolean keepUpdated) throws RecordStoreNotOpenException {
         RecordEnumeration record_enumeration = new RecordEnumeration();
-        Cursor cursor = this.db.query(this.table_name, null, null, null, null, null, null);
-        CwaActivity.getInstance().startManagingCursor(cursor);
-        record_enumeration.cursor = cursor;
-        record_enumeration.old_cursor = cursor;
+        Cursor cursor0 = this.db.query(this.table_name, null, null, null, null, null, null);
+        CwaActivity.getInstance().startManagingCursor(cursor0);
+        record_enumeration.cursor = cursor0;
+        record_enumeration.old_cursor = cursor0;
         return record_enumeration;
     }
 
@@ -60,61 +55,47 @@ public class RecordStore {
     }
 
     public int getNextRecordID() throws RecordStoreNotOpenException, RecordStoreException {
-        Cursor cursor = this.db.query(this.table_name, null, null, null, null, null, null);
-        CwaActivity.getInstance().startManagingCursor(cursor);
-        if (!cursor.moveToLast()) {
-            return -1;
-        }
-        int result = cursor.getInt(0) + 1;
-        return result;
+        Cursor cursor0 = this.db.query(this.table_name, null, null, null, null, null, null);
+        CwaActivity.getInstance().startManagingCursor(cursor0);
+        return cursor0.moveToLast() ? cursor0.getInt(0) + 1 : -1;
     }
 
     public int getNumRecords() throws RecordStoreNotOpenException {
-        Cursor cursor = this.db.query(this.table_name, null, null, null, null, null, null);
-        CwaActivity.getInstance().startManagingCursor(cursor);
-        int result = cursor.getCount();
-        return result;
-    }
-
-    public byte[] getRecord(int recordId) throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException {
-        Cursor cursor = this.db.query(this.table_name, null, "_id=" + recordId, null, null, null, null);
-        CwaActivity.getInstance().startManagingCursor(cursor);
-        if (!cursor.moveToNext()) {
-            return null;
-        }
-        byte[] data = cursor.getBlob(1);
-        return data;
+        Cursor cursor0 = this.db.query(this.table_name, null, null, null, null, null, null);
+        CwaActivity.getInstance().startManagingCursor(cursor0);
+        return cursor0.getCount();
     }
 
     public int getRecord(int recordId, byte[] buffer, int offset) throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException {
-        Cursor cursor = this.db.query(this.table_name, null, "_id=" + recordId, null, null, null, null);
-        CwaActivity.getInstance().startManagingCursor(cursor);
-        if (!cursor.moveToNext()) {
-            return -1;
+        Cursor cursor0 = this.db.query(this.table_name, null, "_id=" + recordId, null, null, null, null);
+        CwaActivity.getInstance().startManagingCursor(cursor0);
+        if(cursor0.moveToNext()) {
+            byte[] arr_b1 = cursor0.getBlob(1);
+            int i = offset;
+            for(int j = 0; i < arr_b1.length; ++j) {
+                buffer[j] = arr_b1[i];
+                ++i;
+            }
+            return arr_b1 == null ? -1 : recordId;
         }
-        byte[] data = cursor.getBlob(1);
-        int i = offset;
-        int j = 0;
-        while (i < data.length) {
-            buffer[j] = data[i];
-            i++;
-            j++;
-        }
-        if (data == null) {
-            return -1;
-        }
-        return recordId;
+        return -1;
+    }
+
+    public byte[] getRecord(int recordId) throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException {
+        Cursor cursor0 = this.db.query(this.table_name, null, "_id=" + recordId, null, null, null, null);
+        CwaActivity.getInstance().startManagingCursor(cursor0);
+        return cursor0.moveToNext() ? cursor0.getBlob(1) : null;
     }
 
     public int getRecordSize(int recordId) throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException {
-        Cursor cursor = this.db.query(this.table_name, null, "_id=" + recordId, null, null, null, null);
-        CwaActivity.getInstance().startManagingCursor(cursor);
-        if (!cursor.moveToNext()) {
-            return -1;
-        }
-        byte[] data = cursor.getBlob(1);
-        int result = data.length;
-        return result;
+        Cursor cursor0 = this.db.query(this.table_name, null, "_id=" + recordId, null, null, null, null);
+        CwaActivity.getInstance().startManagingCursor(cursor0);
+        return cursor0.moveToNext() ? cursor0.getBlob(1).length : -1;
+    }
+
+    public int getSizeAvailable() throws RecordStoreNotOpenException {
+        long v = this.db.getMaximumSize();
+        return v <= 0x7FFFFFFFL ? ((int)v) : 0x7FFFFFFF;
     }
 
     public static RecordStore openRecordStore(String recordStoreName, boolean createIfNecessary) throws RecordStoreException, RecordStoreFullException, RecordStoreNotFoundException {
@@ -123,42 +104,33 @@ public class RecordStore {
         rs.db = CwaActivity.getContextInstance().openOrCreateDatabase(recordStoreName, 0, null);
         try {
             rs.db.query(recordStoreName, null, null, null, null, null, null);
-        } catch (Exception e) {
-            if (!createIfNecessary) {
-                if (rs.db.isOpen()) {
+        }
+        catch(Exception unused_ex) {
+            if(!createIfNecessary) {
+                if(rs.db.isOpen()) {
                     rs.db.close();
                 }
                 throw new RecordStoreException();
             }
             Log.d("RMS", "no table and create table");
-            String sql = "create table " + recordStoreName + "(_id integer primary key autoincrement,content text not null);";
-            rs.db.execSQL(sql);
+            rs.db.execSQL("create table " + recordStoreName + "(" + "_id" + " integer primary key autoincrement,content text not null);");
         }
         return rs;
     }
 
     public void setRecord(int recordId, byte[] newData, int offset, int numBytes) throws RecordStoreNotOpenException, InvalidRecordIDException, RecordStoreException, RecordStoreFullException {
-        if (getRecord(recordId) == null) {
+        if(this.getRecord(recordId) == null) {
             throw new InvalidRecordIDException("recordId is invalid");
         }
         byte[] datarecord = new byte[numBytes];
         int i = offset;
-        int j = 0;
-        while (i < numBytes + offset) {
+        for(int j = 0; i < numBytes + offset; ++j) {
             datarecord[j] = newData[i];
-            i++;
-            j++;
+            ++i;
         }
         ContentValues values = new ContentValues();
         values.put("content", datarecord);
         this.db.update(this.table_name, values, " _ID=" + recordId, null);
     }
-
-    public int getSizeAvailable() throws RecordStoreNotOpenException {
-        long sizeavailable = this.db.getMaximumSize();
-        if (sizeavailable > INT_MAX) {
-            return Integer.MAX_VALUE;
-        }
-        return (int) sizeavailable;
-    }
 }
+

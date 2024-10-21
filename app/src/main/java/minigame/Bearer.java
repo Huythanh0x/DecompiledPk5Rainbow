@@ -28,6 +28,7 @@ public class Bearer implements MiniGame_H {
     private short[][] gDate = {new short[]{9, 1, 10, 2, 11, 4, 27, 8, 2, -10}, new short[]{50, 100, 150, 200}, new short[]{60, 40, 30, 10}, new short[]{8, 6, 13, 3, 20, 5, 30, 10}};
     private short[][] ballDate = {new short[]{10, 20, 60, 10, 220}, new short[]{13, 40, 60, 12, Constants_H.FIRST_ROW}, new short[]{10, 40, 60, 10, 120}};
     private short[] money = {150, 200, 300, 450};
+    //todo thanh0x fix here [][]
     private short[][] xy = (short[][]) Array.newInstance((Class<?>) Short.TYPE, 40, 7);
     private short[] myxy = {0, 275, 67, 10};
     private byte[] ball_time = {20, 15, 10, 5};

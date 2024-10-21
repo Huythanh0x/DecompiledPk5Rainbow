@@ -17,6 +17,7 @@ import javax.microedition.media.Player;
 public class Map implements Key_H {
     private static Npc cur_npc;
     private static Graphics g;
+    //todo thanh0x fix here [][]
     static Sprite[][] npcSp = new Sprite[3];
     private byte action_5;
     public byte[] bMission;
@@ -1593,6 +1594,7 @@ public class Map implements Key_H {
                 return (byte) -1;
             }
         }
+        //todo thanh0x fix unreachable statement
         return i;
     }
 

@@ -1,5 +1,6 @@
 package dm;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 import com.android.Util.AndroidUtil;
 import com.uc.paymentsdk.util.Constants;
@@ -17,6 +18,7 @@ import main.Key_H;
 
 /* loaded from: classes.dex */
 public class Ms implements Key_H {
+    //todo thanh0x fix here [][]
     public static int key;
     public static boolean keyRepeat;
     private static Ms msListener;
@@ -50,6 +52,7 @@ public class Ms implements Key_H {
         return this.sleep_time;
     }
 
+    @SuppressLint("LongLogTag")
     public byte[] rmsOptions(int recordId, byte[] info, int flag) {
         try {
             if (rms == null) {

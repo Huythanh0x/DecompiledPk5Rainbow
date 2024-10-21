@@ -337,6 +337,7 @@ public class Guess implements MiniGame_H {
         this.imgBox[1] = Ms.i().createImage("data/brow/m3");
         this.boxNum = new byte[2];
         this.gameData = new byte[][]{new byte[]{-60, 17, 90}, new byte[]{8, 13, 20, 30}, new byte[]{1, 2, 3, 3}, new byte[]{6, 4, 2, 2}, new byte[]{83, 30, 55}};
+        //todo thanh0x fix here [][]
         this.box = (int[][]) Array.newInstance((Class<?>) Integer.TYPE, 3, 4);
         this.imgMon = new Sprite[3];
         go(mode);

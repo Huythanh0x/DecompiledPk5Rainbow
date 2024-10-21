@@ -38,7 +38,7 @@ public class CwaActivity extends Activity {
     }
 
     private void killBackgroundProcess() {
-        ActivityManager activityManager = (ActivityManager) getSystemService("activity");
+        ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> apps = activityManager.getRunningAppProcesses();
         int mypid = Process.myPid();
         for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : apps) {
@@ -148,9 +148,6 @@ public class CwaActivity extends Activity {
 
     public void showExitDialog() {
         new AlertDialog.Builder(this).setMessage("确认退出？").setPositiveButton(Constants_H.PAUSE_TXT_22, new DialogInterface.OnClickListener() { // from class: javax.microedition.lcdui.CwaActivity.1
-            AnonymousClass1() {
-            }
-
             @Override // android.content.DialogInterface.OnClickListener
             public void onClick(DialogInterface dialog, int which) {
                 if (which == -1) {
@@ -159,9 +156,6 @@ public class CwaActivity extends Activity {
                 }
             }
         }).setNegativeButton(Constants_H.PAUSE_TXT_23, new DialogInterface.OnClickListener() { // from class: javax.microedition.lcdui.CwaActivity.2
-            AnonymousClass2() {
-            }
-
             @Override // android.content.DialogInterface.OnClickListener
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

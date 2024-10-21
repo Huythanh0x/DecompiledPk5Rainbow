@@ -31,6 +31,7 @@ public class Racing implements MiniGame_H {
     private final byte NUM = 4;
     private final short MAP_HEIGHT = 450;
     private final short WIN_HEIGHT = 70;
+    //todo thanh0x fix here [][]
     private byte[][] now_a = (byte[][]) Array.newInstance((Class<?>) Byte.TYPE, 4, 3);
 
     public Racing(GameRun gr_) {

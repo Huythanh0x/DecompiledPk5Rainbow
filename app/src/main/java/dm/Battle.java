@@ -19,6 +19,7 @@ public class Battle {
     public byte[] countS = new byte[10];
     public byte[] ceff = new byte[6];
     public short[] cThrow = new short[4];
+    //todo thanh0x fix here [][]
     public short[][] hit = (short[][]) Array.newInstance((Class<?>) Short.TYPE, 3, 5);
     public boolean b_renascence = false;
     public byte act_num = 1;

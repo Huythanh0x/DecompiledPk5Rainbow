@@ -1,5 +1,6 @@
 package javax.microedition.media.control;
 
+import android.content.Context;
 import android.media.AudioManager;
 import android.util.Log;
 import javax.microedition.lcdui.CwaActivity;
@@ -13,7 +14,7 @@ import javax.microedition.media.Control;
 public class VolumeControl implements Control {
     private boolean mute = false;
     private int currentVolume = 0;
-    private AudioManager audioManager = (AudioManager) CwaActivity.getContextInstance().getSystemService("audio");
+    private AudioManager audioManager = (AudioManager) CwaActivity.getContextInstance().getSystemService(Context.AUDIO_SERVICE);
     private int maxVolume = this.audioManager.getStreamMaxVolume(3);
     private float percent = 100 / this.maxVolume;
 

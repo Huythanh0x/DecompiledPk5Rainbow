@@ -1,5 +1,10 @@
-package javax.microedition.lcdui.game;
+package javax.microedition.lcdui.game.TiledLayer;
+import javax.microedition.lcdui.game.Layer;
 
-/* loaded from: classes.dex */
-public class TiledLayer extends Layer {
+public class TiledLayer extends Layer	// class@000148 from classes.dex
+{
+
+    public void TiledLayer(){
+       super();
+    }
 }

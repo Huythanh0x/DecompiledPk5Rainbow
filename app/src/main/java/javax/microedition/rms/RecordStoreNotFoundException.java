@@ -1,13 +1,15 @@
-package javax.microedition.rms;
+package javax.microedition.rms.RecordStoreNotFoundException;
+import javax.microedition.rms.RecordStoreException;
+import java.lang.String;
 
-/* loaded from: classes.dex */
-public class RecordStoreNotFoundException extends RecordStoreException {
-    private static final long serialVersionUID = 1;
+public class RecordStoreNotFoundException extends RecordStoreException	// class@00015d from classes.dex
+{
+    private static final long serialVersionUID = 0x1;
 
-    public RecordStoreNotFoundException(String message) {
-        super(message);
+    public void RecordStoreNotFoundException(){
+       super();
     }
-
-    public RecordStoreNotFoundException() {
+    public void RecordStoreNotFoundException(String message){
+       super(message);
     }
 }

@@ -1,13 +1,15 @@
-package javax.microedition.midlet;
+package javax.microedition.midlet.MIDletStateChangeException;
+import java.lang.Exception;
+import java.lang.String;
 
-/* loaded from: classes.dex */
-public class MIDletStateChangeException extends Exception {
-    private static final long serialVersionUID = 1;
+public class MIDletStateChangeException extends Exception	// class@000152 from classes.dex
+{
+    private static final long serialVersionUID = 0x1;
 
-    public MIDletStateChangeException() {
+    public void MIDletStateChangeException(){
+       super();
     }
-
-    public MIDletStateChangeException(String s) {
-        super(s);
+    public void MIDletStateChangeException(String s){
+       super(s);
     }
 }

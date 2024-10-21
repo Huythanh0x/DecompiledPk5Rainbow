@@ -1,6 +1,7 @@
-package javax.microedition.rms;
+package javax.microedition.rms.RecordFilter;
 
-/* loaded from: classes.dex */
-public interface RecordFilter {
-    boolean matches(byte[] bArr);
+public interface abstract RecordFilter	// class@000158 from classes.dex
+{
+
+    boolean matches(byte[] p0);
 }

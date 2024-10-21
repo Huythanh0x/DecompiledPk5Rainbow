@@ -1,6 +1,8 @@
-package com.uc.paymentsdk.commons.codec;
+package com.uc.paymentsdk.commons.codec.Decoder;
+import java.lang.Object;
 
-/* loaded from: classes.dex */
-public interface Decoder {
-    Object decode(Object obj) throws DecoderException;
+public interface abstract Decoder	// class@000089 from classes.dex
+{
+
+    Object decode(Object p0);
 }

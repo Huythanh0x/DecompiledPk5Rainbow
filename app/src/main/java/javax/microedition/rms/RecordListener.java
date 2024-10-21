@@ -1,10 +1,10 @@
-package javax.microedition.rms;
+package javax.microedition.rms.RecordListener;
+import javax.microedition.rms.RecordStore;
 
-/* loaded from: classes.dex */
-public interface RecordListener {
-    void recordAdded(RecordStore recordStore, int i);
+public interface abstract RecordListener	// class@000159 from classes.dex
+{
 
-    void recordChanged(RecordStore recordStore, int i);
-
-    void recordDeleted(RecordStore recordStore, int i);
+    void recordAdded(RecordStore p0,int p1);
+    void recordChanged(RecordStore p0,int p1);
+    void recordDeleted(RecordStore p0,int p1);
 }

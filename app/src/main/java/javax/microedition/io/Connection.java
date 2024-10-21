@@ -1,8 +1,7 @@
-package javax.microedition.io;
+package javax.microedition.io.Connection;
 
-import java.io.IOException;
+public interface abstract Connection	// class@000139 from classes.dex
+{
 
-/* loaded from: classes.dex */
-public interface Connection {
-    void close() throws IOException;
+    void close();
 }

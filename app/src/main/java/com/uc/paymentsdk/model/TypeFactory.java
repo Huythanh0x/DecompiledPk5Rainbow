@@ -1,71 +1,72 @@
-package com.uc.paymentsdk.model;
-
-import com.uc.paymentsdk.util.Constants;
-import com.uc.paymentsdk.util.Utils;
-import java.lang.ref.SoftReference;
+package com.uc.paymentsdk.model.TypeFactory;
+import java.lang.Object;
+import java.lang.String;
+import com.uc.paymentsdk.model.IType;
 import java.util.HashMap;
+import java.lang.ref.SoftReference;
+import com.uc.paymentsdk.model.PayType;
+import com.uc.paymentsdk.model.ChargeType;
+import com.uc.paymentsdk.util.Utils;
+import java.lang.Integer;
+import java.lang.IllegalArgumentException;
+import java.lang.StringBuilder;
 
-/* loaded from: classes.dex */
-public class TypeFactory {
+public class TypeFactory	// class@000098 from classes.dex
+{
     public static final String TYPE_PAY_SMS = "sms";
     public static final String TYPE_PAY_UPOINT = "upoint";
-    private static HashMap<String, SoftReference<IType>> sTypes;
+    private static HashMap sTypes;
 
-    public static synchronized IType factory(String paramString) {
-        IType localObject;
-        IType localObject2;
-        IType localObject3;
-        synchronized (TypeFactory.class) {
-            if (sTypes == null) {
-                sTypes = new HashMap<>(4);
-            }
-            if (!sTypes.containsKey(paramString) || (localObject3 = sTypes.get(paramString).get()) == null) {
-                if (TYPE_PAY_UPOINT.equals(paramString) || "sms".equals(paramString)) {
-                    localObject = new PayType(paramString, getTypeName(paramString), getTypeDesc(paramString), getTypeIconFileName(paramString));
-                } else {
-                    localObject = new ChargeType(paramString, getTypeName(paramString), getTypeDesc(paramString), getTypeIconFileName(paramString));
-                }
-                sTypes.put(paramString, new SoftReference<>(localObject));
-                localObject2 = localObject;
-            } else {
-                localObject2 = localObject3;
-            }
-        }
-        return localObject2;
+    public void TypeFactory(){
+       super();
     }
-
-    private static String getTypeDesc(String paramString) {
-        if (TYPE_PAY_UPOINT.equals(paramString)) {
-            return "用U点购买<br /><small><small><font color='#999999'>10U点价值1元</font></small></small>";
-        }
-        if ("sms".equals(paramString)) {
-            return String.format("发短信直接购买<br /><small><small><font color='#999999'>发送%s元短信，可购买该内容</font></small></small>", Integer.valueOf(Utils.getSmsPayment()));
-        }
-        throw new IllegalArgumentException("type not supported. " + paramString);
+    public static void clear(){
+       TypeFactory.sTypes = null;
     }
-
-    private static String getTypeName(String paramString) {
-        return null;
+    public static synchronized IType factory(String paramString){
+       IType iType;
+       IType localObject;
+       _monitor_enter(TypeFactory.class);
+       if (TypeFactory.sTypes == null) {
+          TypeFactory.sTypes = new HashMap(4);
+       }
+       if (TypeFactory.sTypes.containsKey(paramString) && (iType = TypeFactory.sTypes.get(paramString).get()) != null) {
+          localObject = iType;
+       }else if(!"upoint".equals(paramString) && !"sms".equals(paramString)){
+          iType = new ChargeType(paramString, TypeFactory.getTypeName(paramString), TypeFactory.getTypeDesc(paramString), TypeFactory.getTypeIconFileName(paramString));
+       }else {
+          iType = new PayType(paramString, TypeFactory.getTypeName(paramString), TypeFactory.getTypeDesc(paramString), TypeFactory.getTypeIconFileName(paramString));
+       }
+       TypeFactory.sTypes.put(paramString, new SoftReference(iType));
+       localObject = iType;
+       _monitor_exit(TypeFactory.class);
+       return localObject;
     }
-
-    private static String getTypeIconFileName(String paramString) {
-        boolean bool = Utils.isHdpi();
-        if (TYPE_PAY_UPOINT.equals(paramString)) {
-            if (bool) {
-                return "upoint_logo_hdpi.png";
-            }
-            return "upoint_logo.png";
-        }
-        if ("sms".equals(paramString)) {
-            if (bool) {
-                return Constants.RES_TYPE_SMS_ICON_HDPI;
-            }
-            return Constants.RES_TYPE_SMS_ICON;
-        }
-        throw new IllegalArgumentException(Constants.ERROR_TYPE_NOT_SUPPORTED);
+    private static String getTypeDesc(String paramString){
+       String str;
+       if ("upoint".equals(paramString)) {
+          str = "\x75\x02U\x70\x02\x8d\x02\x4e\x02<br /><small><small><font color=\'#999999\'>10U\x70\x02\x4e\x02\x50\x021\x51\x02</font></small></small>";
+       }else if("sms".equals(paramString)){
+          Object[] objArray = new Object[]{Integer.valueOf(Utils.getSmsPayment())};
+          str = String.format("\x53\x02\x77\x02\x4f\x02\x76\x02\x63\x02\x8d\x02\x4e\x02<br /><small><small><font color=\'#999999\'>\x53\x02\x90\x02%s\x51\x02\x77\x02\x4f\x02\xff\x02\x53\x02\x8d\x02\x4e\x02\x8b\x02\x51\x02\x5b\x02</font></small></small>", objArray);
+       }else {
+          throw new IllegalArgumentException("type not supported. "+paramString);
+       }
+       return str;
     }
-
-    public static void clear() {
-        sTypes = null;
+    private static String getTypeIconFileName(String paramString){
+       String str;
+       boolean bool = Utils.isHdpi();
+       if ("upoint".equals(paramString)) {
+          str = (bool)? "upoint_logo_hdpi.png": "upoint_logo.png";
+       }else if("sms".equals(paramString)){
+          str = (bool)? "sms_logo_hdpi.png": "sms_logo.png";
+       }else {
+          throw new IllegalArgumentException("type not supported.");
+       }
+       return str;
+    }
+    private static String getTypeName(String paramString){
+       return null;
     }
 }

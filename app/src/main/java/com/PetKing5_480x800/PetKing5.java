@@ -1,138 +1,155 @@
-package com.PetKing5_480x800;
-
-import android.app.AlertDialog;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import com.uc.paymentsdk.payment.PaymentInfo;
-import com.uc.paymentsdk.payment.PaymentsActivity;
+package com.PetKing5_480x800.PetKing5;
 import javax.microedition.lcdui.CwaActivity;
-import main.GameRun;
 import main.SMSSender;
+import android.content.Context;
+import com.uc.paymentsdk.payment.PaymentsActivity;
+import android.content.Intent;
+import java.lang.StringBuilder;
+import java.lang.String;
+import android.util.Log;
+import main.GameRun;
+import main.MainCanvas;
+import main.Map;
+import java.lang.Exception;
+import java.lang.System;
+import java.io.PrintStream;
+import android.os.Bundle;
 import main.XConnection;
+import javax.microedition.midlet.MIDlet;
+import java.lang.Class;
+import com.uc.paymentsdk.payment.PaymentInfo;
+import java.io.Serializable;
 
-/* loaded from: classes.dex */
-public class PetKing5 extends CwaActivity {
+public class PetKing5 extends CwaActivity	// class@000079 from classes.dex
+{
     AlertDialog ad;
     XConnection instance;
-    public static Intent intent = null;
-    public static GameRun gr = null;
+    public static GameRun gr;
+    public static Intent intent;
 
-    public PetKing5() {
-        SMSSender.pk = this;
-        PaymentsActivity.init(this);
+    static {
+       PetKing5.intent = null;
+       PetKing5.gr = null;
     }
-
-    @Override // javax.microedition.lcdui.CwaActivity, android.app.Activity
-    public void onDestroy() {
-        super.onDestroy();
+    public void PetKing5(){
+       super();
+       SMSSender.pk = this;
+       PaymentsActivity.init(this);
     }
-
-    @Override // javax.microedition.lcdui.CwaActivity, android.app.Activity
-    public void onCreate(Bundle savedInstanceState) {
-        setFullWindow(true);
-        super.onCreate(savedInstanceState);
-        this.instance = new XConnection();
-        setMIDlet(this.instance);
-        setContentView();
-        intent = getIntent();
-    }
-
-    public void setSmshah() {
-        switch (SMSSender.smsType) {
-            case 1:
-                Intent intent2 = new Intent(getApplicationContext(), (Class<?>) PaymentsActivity.class);
-                PaymentInfo info = new PaymentInfo("购买5000金", "22", "01", "身为四大家族之首的贵公子，没钱可不行！立刻拥有5000金。", 20);
-                intent2.putExtra(PaymentsActivity.EXTRA_KEY_PAYMENTINFO, info);
-                startActivityForResult(intent2, 0);
-                return;
-            case 2:
-            default:
-                return;
-            case 3:
-                Intent intent1 = new Intent(getApplicationContext(), (Class<?>) PaymentsActivity.class);
-                PaymentInfo info1 = new PaymentInfo("购买10徽章", "22", "02", "购买该特殊道具，立刻拥有10徽章，能购买双倍经验，宠物技能，强大的宠物捕获球等各种神奇的道具。", 20);
-                intent1.putExtra(PaymentsActivity.EXTRA_KEY_PAYMENTINFO, info1);
-                startActivityForResult(intent1, 0);
-                return;
-            case 4:
-                Intent intent22 = new Intent(getApplicationContext(), (Class<?>) PaymentsActivity.class);
-                PaymentInfo info2 = new PaymentInfo("宠物升5级", "22", "03", "让您随身携带的全部宠物立刻升5级（超过70级宠物不能再升级）", 20);
-                intent22.putExtra(PaymentsActivity.EXTRA_KEY_PAYMENTINFO, info2);
-                startActivityForResult(intent22, 0);
-                return;
-            case 5:
-                Intent intent3 = new Intent(getApplicationContext(), (Class<?>) PaymentsActivity.class);
-                PaymentInfo info3 = new PaymentInfo("购买奇异兽", "22", "04", "购买该特殊道具，获得可爱的奇异兽，移动速度可以提高一倍，且不会遇到任何敌人！无限使用，心动不如行动，快购买吧！", 20);
-                intent3.putExtra(PaymentsActivity.EXTRA_KEY_PAYMENTINFO, info3);
-                startActivityForResult(intent3, 0);
-                return;
-            case 6:
-                Intent intent4 = new Intent(getApplicationContext(), (Class<?>) PaymentsActivity.class);
-                PaymentInfo info4 = new PaymentInfo("正版验证", "22", "05", "游戏试玩结束，购买此项将开启后续所有游戏内容、地图。同时将免费赠送您5枚徽章（可购买强力道具）", 40);
-                intent4.putExtra(PaymentsActivity.EXTRA_KEY_PAYMENTINFO, info4);
-                startActivityForResult(intent4, 0);
-                return;
-            case 7:
-                Intent intent5 = new Intent(getApplicationContext(), (Class<?>) PaymentsActivity.class);
-                PaymentInfo info5 = new PaymentInfo("升级复活", "22", "06", "让您携带的所有宠物全恢复，同时立刻让您携带的宠物提升5级（超过70级宠物不能再升级），让接下来的战斗变的更轻松。", 20);
-                intent5.putExtra(PaymentsActivity.EXTRA_KEY_PAYMENTINFO, info5);
-                startActivityForResult(intent5, 0);
-                return;
-        }
-    }
-
-    @Override // android.app.Activity
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 0) {
-            if (-1 == resultCode) {
-                Log.e(new StringBuilder().append(resultCode).toString(), "================resultCode");
-                Log.e("成功", "成功");
-                SMSSender.i(SMSSender.gr).setSendSms(4);
-                try {
-                    if (SMSSender.smsType == 6) {
-                        SMSSender.i(SMSSender.gr).sendSuccess();
-                        SMSSender.i(SMSSender.gr).setSendSms(-1);
-                        GameRun.run_state = -10;
-                        GameRun.mc.temp_state = GameRun.run_state;
-                        GameRun.mc.setSmsIsSetRun_state(true);
-                        SMSSender.gr.map.setRegState(true);
-                    } else {
-                        SMSSender.i(SMSSender.gr).sendSuccess();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+       SMSSender sMSSender;
+       Exception e;
+       try{
+          int i = -1;
+          super.onActivityResult(requestCode, resultCode, data);
+          if (!requestCode) {
+             if (i == resultCode) {
+                Log.e(resultCode, "================resultCode");
+                Log.e("\x62\x02\x52\x02", "\x62\x02\x52\x02");
+                sMSSender = SMSSender.i(SMSSender.gr);
+                i = 4;
+                sMSSender.setSendSms(i);
+                if (SMSSender.smsType == 6) {
+                   SMSSender.i(SMSSender.gr).sendSuccess();
+                   SMSSender.i(SMSSender.gr).setSendSms(-1);
+                   GameRun.run_state = -10;
+                   GameRun.mc.temp_state = GameRun.run_state;
+                   GameRun.mc.setSmsIsSetRun_state(true);
+                   SMSSender.gr.map.setRegState(true);
+                }else {
+                   SMSSender.i(SMSSender.gr).sendSuccess();
                 }
-                data.getStringExtra(PaymentsActivity.EXTRA_KEY_NUMBER);
-                data.getStringExtra(PaymentsActivity.EXTRA_KEY_ORDER_ID);
-            } else {
-                SMSSender.i(SMSSender.gr).setSendSms(-1);
-                try {
-                    if (SMSSender.smsType == 7) {
-                        SMSSender.i(SMSSender.gr).sms_a = true;
-                        SMSSender.gr.goGameOver();
-                        System.out.println("ccccccccc");
-                        GameRun.mc.setSmsIsSetRun_state(true);
-                    } else if (SMSSender.smsType == 5) {
-                        GameRun.run_state = -10;
-                        GameRun.mc.temp_state = GameRun.run_state;
-                        SMSSender.gr.map.setRegState(false);
-                        GameRun.mc.setSmsIsSetRun_state(true);
-                    } else if (SMSSender.smsType == 6) {
-                        GameRun.run_state = -10;
-                        GameRun.mc.setSmsIsSetRun_state(true);
-                        SMSSender.gr.map.setRegState(false);
-                    } else if (SMSSender.smsType == 1 && SMSSender.i(SMSSender.gr).getSmsSenderMenuState() != 0) {
-                        GameRun.mc.setSmsIsSetRun_state(true);
-                        GameRun.run_state = SMSSender.i(SMSSender.gr).getTstate();
-                    }
-                } catch (Exception e2) {
-                    e2.printStackTrace();
+             }else {
+                sMSSender = SMSSender.i(SMSSender.gr);
+                try{
+                   sMSSender.setSendSms(i);
+                   if (SMSSender.smsType == 7) {
+                      SMSSender.i(SMSSender.gr).sms_a = true;
+                      SMSSender.gr.goGameOver();
+                      System.out.println("ccccccccc");
+                      GameRun.mc.setSmsIsSetRun_state(true);
+                   }else if(SMSSender.smsType == 5){
+                      GameRun.run_state = -10;
+                      GameRun.mc.temp_state = GameRun.run_state;
+                      SMSSender.gr.map.setRegState(false);
+                      GameRun.mc.setSmsIsSetRun_state(true);
+                   }else if(SMSSender.smsType == 6){
+                      GameRun.run_state = -10;
+                      GameRun.mc.setSmsIsSetRun_state(true);
+                      SMSSender.gr.map.setRegState(false);
+                   }else if(SMSSender.smsType == 1 && SMSSender.i(SMSSender.gr).getSmsSenderMenuState()){
+                      GameRun.mc.setSmsIsSetRun_state(true);
+                      GameRun.run_state = SMSSender.i(SMSSender.gr).getTstate();
+                   }
+                }catch(java.lang.Exception e3){
+                   e = e3;
+                   e.printStackTrace();
                 }
-            }
-        }
-        SMSSender.i(SMSSender.gr);
-        SMSSender.isWorking = false;
+             }
+          }
+          SMSSender.i(SMSSender.gr);
+          SMSSender.isWorking = false;
+          return;
+       }catch(java.lang.Exception e3){
+          e = e3;
+          e.printStackTrace();
+       }
+       data.getStringExtra("number");
+       data.getStringExtra("orderId");
+    }
+    public void onCreate(Bundle savedInstanceState){
+       this.setFullWindow(true);
+       super.onCreate(savedInstanceState);
+       this.instance = new XConnection();
+       this.setMIDlet(this.instance);
+       this.setContentView();
+       PetKing5.intent = this.getIntent();
+    }
+    protected void onDestroy(){
+       super.onDestroy();
+    }
+    public void setSmshah(){
+       Intent v16;
+       String DebugAdress = "10086";
+       switch (SMSSender.smsType){
+           case 1:
+             Intent intent = new Intent(this.getApplicationContext(), PaymentsActivity.class);
+             PaymentInfo info = new PaymentInfo("\x8d\x02\x4e\x025000\x91\x02", "22", "01", "\x8e\x02\x4e\x02\x56\x02\x59\x02\x5b\x02\x65\x02\x4e\x02\x99\x02\x76\x02\x8d\x02\x51\x02\x5b\x02\xff\x02\x6c\x02\x94\x02\x53\x02\x4e\x02\x88\x02\xff\x02\x7a\x02\x52\x02\x62\x02\x67\x025000\x91\x02\x30\x02", 20);
+             intent.putExtra("com.mappn.sdk.paymentinfo", info);
+             this.startActivityForResult(intent, 0);
+             break;
+           case 2:
+           case 3:
+             v16 = new Intent(this.getApplicationContext(), PaymentsActivity.class);
+             PaymentInfo info1 = new PaymentInfo("\x8d\x02\x4e\x0210\x5f\x02\x7a\x02", "22", "02", "\x8d\x02\x4e\x02\x8b\x02\x72\x02\x6b\x02\x90\x02\x51\x02\xff\x02\x7a\x02\x52\x02\x62\x02\x67\x0210\x5f\x02\x7a\x02\xff\x02\x80\x02\x8d\x02\x4e\x02\x53\x02\x50\x02\x7e\x02\x9a\x02\xff\x02\x5b\x02\x72\x02\x62\x02\x80\x02\xff\x02\x5f\x02\x59\x02\x76\x02\x5b\x02\x72\x02\x63\x02\x83\x02\x74\x02\x7b\x02\x54\x02\x79\x02\x79\x02\x59\x02\x76\x02\x90\x02\x51\x02\x30\x02", 20);
+             v16.putExtra("com.mappn.sdk.paymentinfo", info1);
+             this.startActivityForResult(v16, 0);
+             break;
+           case 4:
+             v16 = new Intent(this.getApplicationContext(), PaymentsActivity.class);
+             PaymentInfo info2 = new PaymentInfo("\x5b\x02\x72\x02\x53\x025\x7e\x02", "22", "03", "\x8b\x02\x60\x02\x96\x02\x8e\x02\x64\x02\x5e\x02\x76\x02\x51\x02\x90\x02\x5b\x02\x72\x02\x7a\x02\x52\x02\x53\x025\x7e\x02\xff\x02\x8d\x02\x8f\x0270\x7e\x02\x5b\x02\x72\x02\x4e\x02\x80\x02\x51\x02\x53\x02\x7e\x02\xff\x02", 20);
+             v17.putExtra("com.mappn.sdk.paymentinfo", info2);
+             this.startActivityForResult(v17, 0);
+             break;
+           case 5:
+             v16 = new Intent(this.getApplicationContext(), PaymentsActivity.class);
+             PaymentInfo info3 = new PaymentInfo("\x8d\x02\x4e\x02\x59\x02\x5f\x02\x51\x02", "22", "04", "\x8d\x02\x4e\x02\x8b\x02\x72\x02\x6b\x02\x90\x02\x51\x02\xff\x02\x83\x02\x5f\x02\x53\x02\x72\x02\x76\x02\x59\x02\x5f\x02\x51\x02\xff\x02\x79\x02\x52\x02\x90\x02\x5e\x02\x53\x02\x4e\x02\x63\x02\x9a\x02\x4e\x02\x50\x02\xff\x02\x4e\x02\x4e\x02\x4f\x02\x90\x02\x52\x02\x4e\x02\x4f\x02\x65\x02\x4e\x02\xff\x02\x65\x02\x96\x02\x4f\x02\x75\x02\xff\x02\x5f\x02\x52\x02\x4e\x02\x59\x02\x88\x02\x52\x02\xff\x02\x5f\x02\x8d\x02\x4e\x02\x54\x02\xff\x02", 20);
+             v18.putExtra("com.mappn.sdk.paymentinfo", info3);
+             this.startActivityForResult(v18, 0);
+             break;
+           case 6:
+             v16 = new Intent(this.getApplicationContext(), PaymentsActivity.class);
+             PaymentInfo info4 = new PaymentInfo("\x6b\x02\x72\x02\x9a\x02\x8b\x02", "22", "05", "\x6e\x02\x62\x02\x8b\x02\x73\x02\x7e\x02\x67\x02\xff\x02\x8d\x02\x4e\x02\x6b\x02\x98\x02\x5c\x02\x5f\x02\x54\x02\x54\x02\x7e\x02\x62\x02\x67\x02\x6e\x02\x62\x02\x51\x02\x5b\x02\x30\x02\x57\x02\x56\x02\x30\x02\x54\x02\x65\x02\x5c\x02\x51\x02\x8d\x02\x8d\x02\x90\x02\x60\x025\x67\x02\x5f\x02\x7a\x02\xff\x02\x53\x02\x8d\x02\x4e\x02\x5f\x02\x52\x02\x90\x02\x51\x02\xff\x02", 40);
+             v19.putExtra("com.mappn.sdk.paymentinfo", info4);
+             this.startActivityForResult(v19, 0);
+             break;
+           case 7:
+             v16 = new Intent(this.getApplicationContext(), PaymentsActivity.class);
+             PaymentInfo info5 = new PaymentInfo("\x53\x02\x7e\x02\x59\x02\x6d\x02", "22", "06", "\x8b\x02\x60\x02\x64\x02\x5e\x02\x76\x02\x62\x02\x67\x02\x5b\x02\x72\x02\x51\x02\x60\x02\x59\x02\xff\x02\x54\x02\x65\x02\x7a\x02\x52\x02\x8b\x02\x60\x02\x64\x02\x5e\x02\x76\x02\x5b\x02\x72\x02\x63\x02\x53\x025\x7e\x02\xff\x02\x8d\x02\x8f\x0270\x7e\x02\x5b\x02\x72\x02\x4e\x02\x80\x02\x51\x02\x53\x02\x7e\x02\xff\x02\xff\x02\x8b\x02\x63\x02\x4e\x02\x67\x02\x76\x02\x62\x02\x65\x02\x53\x02\x76\x02\x66\x02\x8f\x02\x67\x02\x30\x02", 20);
+             v20.putExtra("com.mappn.sdk.paymentinfo", info5);
+             this.startActivityForResult(v20, 0);
+             break;
+       }
+       return;
     }
 }

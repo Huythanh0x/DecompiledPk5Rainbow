@@ -1,53 +1,67 @@
-package com.uc.paymentsdk.payment.sms;
-
-import android.content.Context;
+package com.uc.paymentsdk.payment.sms.SmsInfos;
+import java.lang.Object;
 import java.util.ArrayList;
+import java.lang.Integer;
+import com.uc.paymentsdk.payment.sms.SmsInfo;
+import android.content.Context;
 import java.util.Iterator;
+import com.uc.paymentsdk.payment.sms.SimCardNotSupportException;
+import java.lang.String;
 
-/* loaded from: classes.dex */
-public class SmsInfos {
-    public ArrayList<SmsInfo> smsInfos = new ArrayList<>();
+public class SmsInfos	// class@0000b8 from classes.dex
+{
+    public ArrayList smsInfos;
 
-    public void add(SmsInfo paramSmsInfo) {
-        this.smsInfos.add(paramSmsInfo);
+    public void SmsInfos(){
+       super();
+       this.smsInfos = new ArrayList();
     }
-
-    public SmsInfo filterSmsInfo(Context paramContext, int paymoney) throws SimCardNotSupportException {
-        ArrayList<Integer> smsSuitPriceArr = null;
-        int maxMoney = 0;
-        int selectIndex = -1;
-        if (this.smsInfos.size() == 1) {
-            return this.smsInfos.get(0);
-        }
-        for (int i = 0; i < this.smsInfos.size(); i++) {
-            SmsInfo localSmsInfo = this.smsInfos.get(i);
-            if (smsSuitPriceArr == null) {
-                smsSuitPriceArr = parsePayment(paymoney);
-            }
-            Iterator<Integer> smsSuitriceIte = smsSuitPriceArr.iterator();
-            while (smsSuitriceIte.hasNext()) {
-                Integer aPrice = smsSuitriceIte.next();
-                if (localSmsInfo.money == aPrice.intValue() && localSmsInfo.money > maxMoney) {
-                    maxMoney = localSmsInfo.money;
-                    selectIndex = i;
+    private static ArrayList parsePayment(int paymoney){
+       int ix;
+       ArrayList smsSuitPrice = new ArrayList();
+       int i = paymoney;
+       do {
+          if (!(ix = paymoney % i)) {
+             smsSuitPrice.add(Integer.valueOf(i));
+          }
+       } while ((i--) <= 0);
+       return smsSuitPrice;
+    }
+    public void add(SmsInfo paramSmsInfo){
+       this.smsInfos.add(paramSmsInfo);
+    }
+    public SmsInfo filterSmsInfo(Context paramContext,int paymoney){
+       SmsInfos smsInfos;
+       SmsInfo smsInfo;
+       ArrayList smsSuitPriceArr = null;
+       int maxMoney = 0;
+       int selectIndex = -1;
+       if (this.smsInfos.size() == 1) {
+          smsInfos = this.smsInfos.get(0);
+          smsInfo = this;
+       }else {
+          int i = 0;
+          while (i < this.smsInfos.size()) {
+             SmsInfo smsInfo1 = this.smsInfos.get(i);
+             if (smsSuitPriceArr == null) {
+                smsSuitPriceArr = SmsInfos.parsePayment(paymoney);
+             }
+             Iterator smsSuitriceIte = smsSuitPriceArr.iterator();
+             while (smsSuitriceIte.hasNext()) {
+                if (smsInfo1.money == smsSuitriceIte.next().intValue() && smsInfo1.money > maxMoney) {
+                   maxMoney = smsInfo1.money;
+                   selectIndex = i;
                 }
-            }
-        }
-        if (selectIndex != -1) {
-            return this.smsInfos.get(selectIndex);
-        }
-        throw new SimCardNotSupportException("对不起，您所使用的手机运营商不支持此短信激活功能。");
-    }
-
-    private static ArrayList<Integer> parsePayment(int paymoney) {
-        ArrayList<Integer> smsSuitPrice = new ArrayList<>();
-        int i = paymoney;
-        do {
-            if (paymoney % i == 0) {
-                smsSuitPrice.add(Integer.valueOf(i));
-            }
-            i--;
-        } while (i > 0);
-        return smsSuitPrice;
+             }
+             i++;
+          }
+          if (selectIndex != -1) {
+             smsInfos = this.smsInfos.get(selectIndex);
+             smsInfo = this;
+          }else {
+             throw new SimCardNotSupportException("\x5b\x02\x4e\x02\x8d\x02\xff\x02\x60\x02\x62\x02\x4f\x02\x75\x02\x76\x02\x62\x02\x67\x02\x8f\x02\x84\x02\x55\x02\x4e\x02\x65\x02\x63\x02\x6b\x02\x77\x02\x4f\x02\x6f\x02\x6d\x02\x52\x02\x80\x02\x30\x02");
+          }
+       }
+       return smsInfo;
     }
 }

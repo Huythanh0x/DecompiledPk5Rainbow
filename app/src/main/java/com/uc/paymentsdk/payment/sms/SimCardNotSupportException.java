@@ -1,10 +1,12 @@
-package com.uc.paymentsdk.payment.sms;
+package com.uc.paymentsdk.payment.sms.SimCardNotSupportException;
+import java.lang.Exception;
+import java.lang.String;
 
-/* loaded from: classes.dex */
-public class SimCardNotSupportException extends Exception {
-    private static final long serialVersionUID = 138909963862716722L;
+public class SimCardNotSupportException extends Exception	// class@0000b6 from classes.dex
+{
+    private static final long serialVersionUID = 0x1ed81e04bccb132;
 
-    public SimCardNotSupportException(String paramString) {
-        super(paramString);
+    public void SimCardNotSupportException(String paramString){
+       super(paramString);
     }
 }

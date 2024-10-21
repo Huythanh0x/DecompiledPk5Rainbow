@@ -1,615 +1,111 @@
-package com.uc.paymentsdk.util;
-
-import android.R;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.ProgressDialog;
+package com.uc.paymentsdk.util.DialogUtil;
+import java.lang.Object;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.text.Html;
+import java.lang.String;
+import com.uc.paymentsdk.util.DialogUtil$ProgressDialogListener;
+import android.app.ProgressDialog;
+import java.lang.CharSequence;
+import com.uc.paymentsdk.util.DialogUtil$1;
+import android.content.DialogInterface$OnClickListener;
+import com.uc.paymentsdk.util.DialogUtil$2;
+import android.content.DialogInterface$OnCancelListener;
+import com.uc.paymentsdk.util.DialogUtil$3;
+import android.content.DialogInterface$OnDismissListener;
+import android.app.Dialog;
+import java.lang.RuntimeException;
+import com.uc.paymentsdk.util.DialogUtil$6;
+import com.uc.paymentsdk.util.DialogUtil$WarningDialogListener;
+import android.app.AlertDialog$Builder;
 import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import com.uc.paymentsdk.util.DialogUtil$4;
+import com.uc.paymentsdk.util.DialogUtil$5;
+import android.app.AlertDialog;
 import android.widget.TextView;
+import android.text.method.MovementMethod;
+import android.text.method.LinkMovementMethod;
+import android.text.Spanned;
+import android.text.Html;
+import android.widget.LinearLayout;
+import android.view.View;
+import android.widget.ScrollView;
+import com.uc.paymentsdk.util.DialogUtil$10;
+import com.uc.paymentsdk.util.DialogUtil$11;
+import com.uc.paymentsdk.util.DialogUtil$7;
+import com.uc.paymentsdk.util.DialogUtil$8;
+import com.uc.paymentsdk.util.DialogUtil$9;
 
-/* loaded from: classes.dex */
-public class DialogUtil {
+public class DialogUtil	// class@0000d4 from classes.dex
+{
 
-    /* loaded from: classes.dex */
-    public interface CheckBoxWarningDialogListener {
-        void onWarningDialogCancel(int i);
-
-        void onWarningDialogOK(int i, boolean z);
+    public void DialogUtil(){
+       super();
     }
-
-    /* loaded from: classes.dex */
-    public interface EditTextDialogListener {
-        void onEditTextDialogCancel(int i);
-
-        void onEditTextDialogOK(int i, String str);
+    public static ProgressDialog createDeterminateProgressDialog(Context paramContext,int paramInt,String paramString,boolean paramBoolean,DialogUtil$ProgressDialogListener paramProgressDialogListener){
+       ProgressDialog localProgressDialog = new ProgressDialog(paramContext);
+       localProgressDialog.setIcon(0x108009b);
+       localProgressDialog.setTitle(paramString);
+       localProgressDialog.setProgressStyle(1);
+       Context context = paramContext;
+       int id = paramInt;
+       DialogUtil$ProgressDialogListener listener = paramProgressDialogListener;
+       if (paramBoolean) {
+          localProgressDialog.setButton(paramContext.getString(0x1040000), new DialogUtil$1(context, id, listener));
+          localProgressDialog.setOnCancelListener(new DialogUtil$2(context, id, listener));
+       }
+       if (!paramBoolean) {
+          localProgressDialog.setOnDismissListener(new DialogUtil$3(context, id));
+       }
+       return localProgressDialog;
     }
-
-    /* loaded from: classes.dex */
-    public interface InfoDialogListener {
-        void onInfoDialogOK(int i);
+    public static Dialog createIndeterminateProgressDialog(Context paramContext,int paramInt,String paramString,boolean paramBoolean,DialogUtil$ProgressDialogListener paramProgressDialogListener){
+       Context context = paramContext;
+       int id = paramInt;
+       ProgressDialog localProgressDialog = new ProgressDialog(paramContext);
+       if (paramString == null) {
+          throw new RuntimeException("Must provide a hint string for input dialog");
+       }
+       localProgressDialog.setCancelable(paramBoolean);
+       localProgressDialog.setMessage(paramString);
+       localProgressDialog.setOnCancelListener(new DialogUtil$6(context, id));
+       return localProgressDialog;
     }
-
-    /* loaded from: classes.dex */
-    public interface InputDialogListener {
-        void onInputDialogCancel(int i);
-
-        void onInputDialogOK(int i, String str);
+    public static Dialog createOKWarningDialog(Context paramContext,int paramInt,CharSequence paramCharSequence,DialogUtil$WarningDialogListener paramWarningDialogListener){
+       return DialogUtil.createOKWarningDialog(paramContext, paramInt, null, paramCharSequence, paramWarningDialogListener);
     }
-
-    /* loaded from: classes.dex */
-    public interface ListCheckboxDialogListener {
-        void onListDialogCancel(int i, CharSequence[] charSequenceArr);
-
-        void onListDialogOK(int i, CharSequence[] charSequenceArr, int i2, int i3);
+    public static Dialog createOKWarningDialog(Context paramContext,int paramInt,CharSequence paramCharSequence1,CharSequence paramCharSequence2,DialogUtil$WarningDialogListener paramWarningDialogListener){
+       Context context = paramContext;
+       int id = paramInt;
+       DialogUtil$WarningDialogListener listener = paramWarningDialogListener;
+       AlertDialog$Builder uBuilder = new AlertDialog$Builder(paramContext).setCancelable(true);
+       String str = (TextUtils.isEmpty(paramCharSequence1))? "\x53\x02\x75\x02\x95\x02\x8b\x02": paramCharSequence1;
+       return uBuilder.setTitle(str).setMessage(paramCharSequence2).setPositiveButton("\x78\x02\x5b\x02", new DialogUtil$4(context, id, listener)).setOnCancelListener(new DialogUtil$5(context, id, listener)).create();
     }
-
-    /* loaded from: classes.dex */
-    public interface ListDIalogListener {
-        void onListDialogOK(int i, int i2);
+    public static Dialog createOKWarningDialogSupportLink(Context paramContext,int paramInt,String paramString1,String paramString2,DialogUtil$WarningDialogListener paramWarningDialogListener){
+       TextView localTextView = new TextView(paramContext);
+       localTextView.setPadding(10, 10, 10, 10);
+       localTextView.setTextAppearance(paramContext, 0x1030045);
+       localTextView.setBackgroundColor(-1);
+       localTextView.setLinkTextColor(-24576);
+       localTextView.setMovementMethod(LinkMovementMethod.getInstance());
+       localTextView.setText(Html.fromHtml(paramString2));
+       LinearLayout localLinearLayout = new LinearLayout(paramContext);
+       localLinearLayout.setOrientation(1);
+       localLinearLayout.addView(localTextView);
+       ScrollView localScrollView = new ScrollView(paramContext);
+       localScrollView.setVerticalFadingEdgeEnabled(false);
+       localScrollView.addView(localLinearLayout);
+       Context context = paramContext;
+       int id = paramInt;
+       DialogUtil$WarningDialogListener listener = paramWarningDialogListener;
+       return new AlertDialog$Builder(paramContext).setTitle(paramString1).setView(localScrollView).setPositiveButton("\x78\x02\x5b\x02", null).setPositiveButton("\x78\x02\x5b\x02", new DialogUtil$10(context, id, listener)).setOnCancelListener(new DialogUtil$11(context, id, listener)).create();
     }
-
-    /* loaded from: classes.dex */
-    public interface ListDialogListener2 {
-        void onListDialogCancel2(int i, Object[] objArr);
-
-        void onListDialogOK2(int i, Object[] objArr, int i2);
+    public static Dialog createTwoButtonsDialog(Context paramContext,int paramInt,CharSequence paramCharSequence1,CharSequence paramCharSequence2,CharSequence paramCharSequence3,DialogUtil$WarningDialogListener paramWarningDialogListener){
+       Context context = paramContext;
+       int id = paramInt;
+       DialogUtil$WarningDialogListener listener = paramWarningDialogListener;
+       return new AlertDialog$Builder(paramContext).setTitle("\x6c\x02\x61\x02").setMessage(paramCharSequence1).setPositiveButton(paramCharSequence2, new DialogUtil$7(context, id, listener)).setNegativeButton(paramCharSequence3, new DialogUtil$8(context, id, listener)).setOnCancelListener(new DialogUtil$9(context, id)).create();
     }
-
-    /* loaded from: classes.dex */
-    public interface ProgressDialogListener {
-        void onProgressDialogCancel(int i);
-    }
-
-    /* loaded from: classes.dex */
-    public interface RatingDialogListener {
-        void onRatingDialogCancel();
-
-        void onRatingDialogOK(int i, float f);
-    }
-
-    /* loaded from: classes.dex */
-    public interface RegisterDialogListener {
-        void onRegisterDialogCancel(int i);
-
-        void onRegisterDialogOK(int i, String str, String str2, String str3);
-    }
-
-    /* loaded from: classes.dex */
-    public interface UserPwdDialogListener {
-        void onUserPwdDialogCancel(int i);
-
-        void onUserPwdDialogOK(int i, String str, String str2, boolean z);
-
-        void onUserPwdDialogRegister(int i);
-    }
-
-    /* loaded from: classes.dex */
-    public interface WarningDialogListener {
-        void onWarningDialogCancel(int i);
-
-        void onWarningDialogOK(int i);
-    }
-
-    public static ProgressDialog createDeterminateProgressDialog(Context paramContext, int paramInt, String paramString, boolean paramBoolean, ProgressDialogListener paramProgressDialogListener) {
-        ProgressDialog localProgressDialog = new ProgressDialog(paramContext);
-        localProgressDialog.setIcon(R.drawable.ic_dialog_info);
-        localProgressDialog.setTitle(paramString);
-        localProgressDialog.setProgressStyle(1);
-        if (paramBoolean) {
-            localProgressDialog.setButton(paramContext.getString(R.string.cancel), new DialogInterface.OnClickListener() { // from class: com.uc.paymentsdk.util.DialogUtil.1
-                private final /* synthetic */ Context val$context;
-                private final /* synthetic */ int val$id;
-                private final /* synthetic */ ProgressDialogListener val$listener;
-
-                AnonymousClass1(Context paramContext2, int paramInt2, ProgressDialogListener paramProgressDialogListener2) {
-                    paramContext = paramContext2;
-                    paramInt = paramInt2;
-                    paramProgressDialogListener = paramProgressDialogListener2;
-                }
-
-                @Override // android.content.DialogInterface.OnClickListener
-                public void onClick(DialogInterface paramDialogInterface, int paramInt2) {
-                    if (paramContext instanceof Activity) {
-                        ((Activity) paramContext).removeDialog(paramInt);
-                    }
-                    if (paramProgressDialogListener != null) {
-                        paramProgressDialogListener.onProgressDialogCancel(paramInt);
-                    }
-                }
-            });
-            localProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() { // from class: com.uc.paymentsdk.util.DialogUtil.2
-                private final /* synthetic */ Context val$context;
-                private final /* synthetic */ int val$id;
-                private final /* synthetic */ ProgressDialogListener val$listener;
-
-                AnonymousClass2(Context paramContext2, int paramInt2, ProgressDialogListener paramProgressDialogListener2) {
-                    paramContext = paramContext2;
-                    paramInt = paramInt2;
-                    paramProgressDialogListener = paramProgressDialogListener2;
-                }
-
-                @Override // android.content.DialogInterface.OnCancelListener
-                public void onCancel(DialogInterface paramDialogInterface) {
-                    if (paramContext instanceof Activity) {
-                        ((Activity) paramContext).removeDialog(paramInt);
-                    }
-                    if (paramProgressDialogListener != null) {
-                        paramProgressDialogListener.onProgressDialogCancel(paramInt);
-                    }
-                }
-            });
-        }
-        if (!paramBoolean) {
-            localProgressDialog.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: com.uc.paymentsdk.util.DialogUtil.3
-                private final /* synthetic */ Context val$context;
-                private final /* synthetic */ int val$id;
-
-                AnonymousClass3(Context paramContext2, int paramInt2) {
-                    paramContext = paramContext2;
-                    paramInt = paramInt2;
-                }
-
-                @Override // android.content.DialogInterface.OnDismissListener
-                public void onDismiss(DialogInterface paramDialogInterface) {
-                    if (paramContext instanceof Activity) {
-                        ((Activity) paramContext).removeDialog(paramInt);
-                    }
-                }
-            });
-        }
-        return localProgressDialog;
-    }
-
-    /* renamed from: com.uc.paymentsdk.util.DialogUtil$1 */
-    /* loaded from: classes.dex */
-    class AnonymousClass1 implements DialogInterface.OnClickListener {
-        private final /* synthetic */ Context val$context;
-        private final /* synthetic */ int val$id;
-        private final /* synthetic */ ProgressDialogListener val$listener;
-
-        AnonymousClass1(Context paramContext2, int paramInt2, ProgressDialogListener paramProgressDialogListener2) {
-            paramContext = paramContext2;
-            paramInt = paramInt2;
-            paramProgressDialogListener = paramProgressDialogListener2;
-        }
-
-        @Override // android.content.DialogInterface.OnClickListener
-        public void onClick(DialogInterface paramDialogInterface, int paramInt2) {
-            if (paramContext instanceof Activity) {
-                ((Activity) paramContext).removeDialog(paramInt);
-            }
-            if (paramProgressDialogListener != null) {
-                paramProgressDialogListener.onProgressDialogCancel(paramInt);
-            }
-        }
-    }
-
-    /* renamed from: com.uc.paymentsdk.util.DialogUtil$2 */
-    /* loaded from: classes.dex */
-    class AnonymousClass2 implements DialogInterface.OnCancelListener {
-        private final /* synthetic */ Context val$context;
-        private final /* synthetic */ int val$id;
-        private final /* synthetic */ ProgressDialogListener val$listener;
-
-        AnonymousClass2(Context paramContext2, int paramInt2, ProgressDialogListener paramProgressDialogListener2) {
-            paramContext = paramContext2;
-            paramInt = paramInt2;
-            paramProgressDialogListener = paramProgressDialogListener2;
-        }
-
-        @Override // android.content.DialogInterface.OnCancelListener
-        public void onCancel(DialogInterface paramDialogInterface) {
-            if (paramContext instanceof Activity) {
-                ((Activity) paramContext).removeDialog(paramInt);
-            }
-            if (paramProgressDialogListener != null) {
-                paramProgressDialogListener.onProgressDialogCancel(paramInt);
-            }
-        }
-    }
-
-    /* renamed from: com.uc.paymentsdk.util.DialogUtil$3 */
-    /* loaded from: classes.dex */
-    class AnonymousClass3 implements DialogInterface.OnDismissListener {
-        private final /* synthetic */ Context val$context;
-        private final /* synthetic */ int val$id;
-
-        AnonymousClass3(Context paramContext2, int paramInt2) {
-            paramContext = paramContext2;
-            paramInt = paramInt2;
-        }
-
-        @Override // android.content.DialogInterface.OnDismissListener
-        public void onDismiss(DialogInterface paramDialogInterface) {
-            if (paramContext instanceof Activity) {
-                ((Activity) paramContext).removeDialog(paramInt);
-            }
-        }
-    }
-
-    public static Dialog createOKWarningDialog(Context paramContext, int paramInt, CharSequence paramCharSequence, WarningDialogListener paramWarningDialogListener) {
-        return createOKWarningDialog(paramContext, paramInt, null, paramCharSequence, paramWarningDialogListener);
-    }
-
-    public static Dialog createOKWarningDialog(Context paramContext, int paramInt, CharSequence paramCharSequence1, CharSequence paramCharSequence2, WarningDialogListener paramWarningDialogListener) {
-        return new AlertDialog.Builder(paramContext).setCancelable(true).setTitle(TextUtils.isEmpty(paramCharSequence1) ? Constants.ERROR_TITLE : paramCharSequence1).setMessage(paramCharSequence2).setPositiveButton("确定", new DialogInterface.OnClickListener() { // from class: com.uc.paymentsdk.util.DialogUtil.4
-            private final /* synthetic */ Context val$context;
-            private final /* synthetic */ int val$id;
-            private final /* synthetic */ WarningDialogListener val$listener;
-
-            AnonymousClass4(Context paramContext2, int paramInt2, WarningDialogListener paramWarningDialogListener2) {
-                paramContext = paramContext2;
-                paramInt = paramInt2;
-                paramWarningDialogListener = paramWarningDialogListener2;
-            }
-
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface paramDialogInterface, int paramInt2) {
-                if (paramContext instanceof Activity) {
-                    ((Activity) paramContext).removeDialog(paramInt);
-                }
-                if (paramWarningDialogListener != null) {
-                    paramWarningDialogListener.onWarningDialogOK(paramInt);
-                }
-            }
-        }).setOnCancelListener(new DialogInterface.OnCancelListener() { // from class: com.uc.paymentsdk.util.DialogUtil.5
-            private final /* synthetic */ Context val$context;
-            private final /* synthetic */ int val$id;
-            private final /* synthetic */ WarningDialogListener val$listener;
-
-            AnonymousClass5(Context paramContext2, int paramInt2, WarningDialogListener paramWarningDialogListener2) {
-                paramContext = paramContext2;
-                paramInt = paramInt2;
-                paramWarningDialogListener = paramWarningDialogListener2;
-            }
-
-            @Override // android.content.DialogInterface.OnCancelListener
-            public void onCancel(DialogInterface paramDialogInterface) {
-                if (paramContext instanceof Activity) {
-                    ((Activity) paramContext).removeDialog(paramInt);
-                }
-                if (paramWarningDialogListener != null) {
-                    paramWarningDialogListener.onWarningDialogOK(paramInt);
-                }
-            }
-        }).create();
-    }
-
-    /* renamed from: com.uc.paymentsdk.util.DialogUtil$4 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass4 implements DialogInterface.OnClickListener {
-        private final /* synthetic */ Context val$context;
-        private final /* synthetic */ int val$id;
-        private final /* synthetic */ WarningDialogListener val$listener;
-
-        AnonymousClass4(Context paramContext2, int paramInt2, WarningDialogListener paramWarningDialogListener2) {
-            paramContext = paramContext2;
-            paramInt = paramInt2;
-            paramWarningDialogListener = paramWarningDialogListener2;
-        }
-
-        @Override // android.content.DialogInterface.OnClickListener
-        public void onClick(DialogInterface paramDialogInterface, int paramInt2) {
-            if (paramContext instanceof Activity) {
-                ((Activity) paramContext).removeDialog(paramInt);
-            }
-            if (paramWarningDialogListener != null) {
-                paramWarningDialogListener.onWarningDialogOK(paramInt);
-            }
-        }
-    }
-
-    /* renamed from: com.uc.paymentsdk.util.DialogUtil$5 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass5 implements DialogInterface.OnCancelListener {
-        private final /* synthetic */ Context val$context;
-        private final /* synthetic */ int val$id;
-        private final /* synthetic */ WarningDialogListener val$listener;
-
-        AnonymousClass5(Context paramContext2, int paramInt2, WarningDialogListener paramWarningDialogListener2) {
-            paramContext = paramContext2;
-            paramInt = paramInt2;
-            paramWarningDialogListener = paramWarningDialogListener2;
-        }
-
-        @Override // android.content.DialogInterface.OnCancelListener
-        public void onCancel(DialogInterface paramDialogInterface) {
-            if (paramContext instanceof Activity) {
-                ((Activity) paramContext).removeDialog(paramInt);
-            }
-            if (paramWarningDialogListener != null) {
-                paramWarningDialogListener.onWarningDialogOK(paramInt);
-            }
-        }
-    }
-
-    public static Dialog createIndeterminateProgressDialog(Context paramContext, int paramInt, String paramString, boolean paramBoolean, ProgressDialogListener paramProgressDialogListener) {
-        ProgressDialog localProgressDialog = new ProgressDialog(paramContext);
-        if (paramString == null) {
-            throw new RuntimeException("Must provide a hint string for input dialog");
-        }
-        localProgressDialog.setCancelable(paramBoolean);
-        localProgressDialog.setMessage(paramString);
-        localProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() { // from class: com.uc.paymentsdk.util.DialogUtil.6
-            private final /* synthetic */ Context val$context;
-            private final /* synthetic */ int val$id;
-
-            AnonymousClass6(Context paramContext2, int paramInt2) {
-                paramContext = paramContext2;
-                paramInt = paramInt2;
-            }
-
-            @Override // android.content.DialogInterface.OnCancelListener
-            public void onCancel(DialogInterface paramDialogInterface) {
-                if (paramContext instanceof Activity) {
-                    ((Activity) paramContext).removeDialog(paramInt);
-                }
-            }
-        });
-        return localProgressDialog;
-    }
-
-    /* JADX INFO: Access modifiers changed from: package-private */
-    /* renamed from: com.uc.paymentsdk.util.DialogUtil$6 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass6 implements DialogInterface.OnCancelListener {
-        private final /* synthetic */ Context val$context;
-        private final /* synthetic */ int val$id;
-
-        AnonymousClass6(Context paramContext2, int paramInt2) {
-            paramContext = paramContext2;
-            paramInt = paramInt2;
-        }
-
-        @Override // android.content.DialogInterface.OnCancelListener
-        public void onCancel(DialogInterface paramDialogInterface) {
-            if (paramContext instanceof Activity) {
-                ((Activity) paramContext).removeDialog(paramInt);
-            }
-        }
-    }
-
-    public static Dialog createTwoButtonsDialog(Context paramContext, int paramInt, CharSequence paramCharSequence1, CharSequence paramCharSequence2, CharSequence paramCharSequence3, WarningDialogListener paramWarningDialogListener) {
-        return new AlertDialog.Builder(paramContext).setTitle("注意").setMessage(paramCharSequence1).setPositiveButton(paramCharSequence2, new DialogInterface.OnClickListener() { // from class: com.uc.paymentsdk.util.DialogUtil.7
-            private final /* synthetic */ Context val$context;
-            private final /* synthetic */ int val$id;
-            private final /* synthetic */ WarningDialogListener val$listener;
-
-            AnonymousClass7(Context paramContext2, int paramInt2, WarningDialogListener paramWarningDialogListener2) {
-                paramContext = paramContext2;
-                paramInt = paramInt2;
-                paramWarningDialogListener = paramWarningDialogListener2;
-            }
-
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface paramDialogInterface, int paramInt2) {
-                if (paramContext instanceof Activity) {
-                    ((Activity) paramContext).removeDialog(paramInt);
-                }
-                if (paramWarningDialogListener != null) {
-                    paramWarningDialogListener.onWarningDialogOK(paramInt);
-                }
-            }
-        }).setNegativeButton(paramCharSequence3, new DialogInterface.OnClickListener() { // from class: com.uc.paymentsdk.util.DialogUtil.8
-            private final /* synthetic */ Context val$context;
-            private final /* synthetic */ int val$id;
-            private final /* synthetic */ WarningDialogListener val$listener;
-
-            AnonymousClass8(Context paramContext2, int paramInt2, WarningDialogListener paramWarningDialogListener2) {
-                paramContext = paramContext2;
-                paramInt = paramInt2;
-                paramWarningDialogListener = paramWarningDialogListener2;
-            }
-
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface paramDialogInterface, int paramInt2) {
-                if (paramContext instanceof Activity) {
-                    ((Activity) paramContext).removeDialog(paramInt);
-                    if (paramWarningDialogListener != null) {
-                        paramWarningDialogListener.onWarningDialogCancel(paramInt);
-                    }
-                }
-            }
-        }).setOnCancelListener(new DialogInterface.OnCancelListener() { // from class: com.uc.paymentsdk.util.DialogUtil.9
-            private final /* synthetic */ Context val$context;
-            private final /* synthetic */ int val$id;
-
-            AnonymousClass9(Context paramContext2, int paramInt2) {
-                paramContext = paramContext2;
-                paramInt = paramInt2;
-            }
-
-            @Override // android.content.DialogInterface.OnCancelListener
-            public void onCancel(DialogInterface paramDialogInterface) {
-                if (paramContext instanceof Activity) {
-                    ((Activity) paramContext).removeDialog(paramInt);
-                }
-            }
-        }).create();
-    }
-
-    /* renamed from: com.uc.paymentsdk.util.DialogUtil$7 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass7 implements DialogInterface.OnClickListener {
-        private final /* synthetic */ Context val$context;
-        private final /* synthetic */ int val$id;
-        private final /* synthetic */ WarningDialogListener val$listener;
-
-        AnonymousClass7(Context paramContext2, int paramInt2, WarningDialogListener paramWarningDialogListener2) {
-            paramContext = paramContext2;
-            paramInt = paramInt2;
-            paramWarningDialogListener = paramWarningDialogListener2;
-        }
-
-        @Override // android.content.DialogInterface.OnClickListener
-        public void onClick(DialogInterface paramDialogInterface, int paramInt2) {
-            if (paramContext instanceof Activity) {
-                ((Activity) paramContext).removeDialog(paramInt);
-            }
-            if (paramWarningDialogListener != null) {
-                paramWarningDialogListener.onWarningDialogOK(paramInt);
-            }
-        }
-    }
-
-    /* renamed from: com.uc.paymentsdk.util.DialogUtil$8 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass8 implements DialogInterface.OnClickListener {
-        private final /* synthetic */ Context val$context;
-        private final /* synthetic */ int val$id;
-        private final /* synthetic */ WarningDialogListener val$listener;
-
-        AnonymousClass8(Context paramContext2, int paramInt2, WarningDialogListener paramWarningDialogListener2) {
-            paramContext = paramContext2;
-            paramInt = paramInt2;
-            paramWarningDialogListener = paramWarningDialogListener2;
-        }
-
-        @Override // android.content.DialogInterface.OnClickListener
-        public void onClick(DialogInterface paramDialogInterface, int paramInt2) {
-            if (paramContext instanceof Activity) {
-                ((Activity) paramContext).removeDialog(paramInt);
-                if (paramWarningDialogListener != null) {
-                    paramWarningDialogListener.onWarningDialogCancel(paramInt);
-                }
-            }
-        }
-    }
-
-    /* renamed from: com.uc.paymentsdk.util.DialogUtil$9 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass9 implements DialogInterface.OnCancelListener {
-        private final /* synthetic */ Context val$context;
-        private final /* synthetic */ int val$id;
-
-        AnonymousClass9(Context paramContext2, int paramInt2) {
-            paramContext = paramContext2;
-            paramInt = paramInt2;
-        }
-
-        @Override // android.content.DialogInterface.OnCancelListener
-        public void onCancel(DialogInterface paramDialogInterface) {
-            if (paramContext instanceof Activity) {
-                ((Activity) paramContext).removeDialog(paramInt);
-            }
-        }
-    }
-
-    public static Dialog createYesNoDialog(Context paramContext, int paramInt, CharSequence paramCharSequence, WarningDialogListener paramWarningDialogListener) {
-        return createTwoButtonsDialog(paramContext, paramInt, paramCharSequence, "确定", "取消", paramWarningDialogListener);
-    }
-
-    public static Dialog createOKWarningDialogSupportLink(Context paramContext, int paramInt, String paramString1, String paramString2, WarningDialogListener paramWarningDialogListener) {
-        TextView localTextView = new TextView(paramContext);
-        localTextView.setPadding(10, 10, 10, 10);
-        localTextView.setTextAppearance(paramContext, R.style.TextAppearance.Medium.Inverse);
-        localTextView.setBackgroundColor(-1);
-        localTextView.setLinkTextColor(Constants.COLOR_LINK_TEXT);
-        localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-        localTextView.setText(Html.fromHtml(paramString2));
-        LinearLayout localLinearLayout = new LinearLayout(paramContext);
-        localLinearLayout.setOrientation(1);
-        localLinearLayout.addView(localTextView);
-        ScrollView localScrollView = new ScrollView(paramContext);
-        localScrollView.setVerticalFadingEdgeEnabled(false);
-        localScrollView.addView(localLinearLayout);
-        return new AlertDialog.Builder(paramContext).setTitle(paramString1).setView(localScrollView).setPositiveButton("确定", (DialogInterface.OnClickListener) null).setPositiveButton("确定", new DialogInterface.OnClickListener() { // from class: com.uc.paymentsdk.util.DialogUtil.10
-            private final /* synthetic */ Context val$context;
-            private final /* synthetic */ int val$id;
-            private final /* synthetic */ WarningDialogListener val$listener;
-
-            AnonymousClass10(Context paramContext2, int paramInt2, WarningDialogListener paramWarningDialogListener2) {
-                paramContext = paramContext2;
-                paramInt = paramInt2;
-                paramWarningDialogListener = paramWarningDialogListener2;
-            }
-
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface paramDialogInterface, int paramInt2) {
-                if (paramContext instanceof Activity) {
-                    ((Activity) paramContext).removeDialog(paramInt);
-                }
-                if (paramWarningDialogListener != null) {
-                    paramWarningDialogListener.onWarningDialogOK(paramInt);
-                }
-            }
-        }).setOnCancelListener(new DialogInterface.OnCancelListener() { // from class: com.uc.paymentsdk.util.DialogUtil.11
-            private final /* synthetic */ Context val$context;
-            private final /* synthetic */ int val$id;
-            private final /* synthetic */ WarningDialogListener val$listener;
-
-            AnonymousClass11(Context paramContext2, int paramInt2, WarningDialogListener paramWarningDialogListener2) {
-                paramContext = paramContext2;
-                paramInt = paramInt2;
-                paramWarningDialogListener = paramWarningDialogListener2;
-            }
-
-            @Override // android.content.DialogInterface.OnCancelListener
-            public void onCancel(DialogInterface paramDialogInterface) {
-                if (paramContext instanceof Activity) {
-                    ((Activity) paramContext).removeDialog(paramInt);
-                }
-                if (paramWarningDialogListener != null) {
-                    paramWarningDialogListener.onWarningDialogOK(paramInt);
-                }
-            }
-        }).create();
-    }
-
-    /* JADX INFO: Access modifiers changed from: package-private */
-    /* renamed from: com.uc.paymentsdk.util.DialogUtil$10 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass10 implements DialogInterface.OnClickListener {
-        private final /* synthetic */ Context val$context;
-        private final /* synthetic */ int val$id;
-        private final /* synthetic */ WarningDialogListener val$listener;
-
-        AnonymousClass10(Context paramContext2, int paramInt2, WarningDialogListener paramWarningDialogListener2) {
-            paramContext = paramContext2;
-            paramInt = paramInt2;
-            paramWarningDialogListener = paramWarningDialogListener2;
-        }
-
-        @Override // android.content.DialogInterface.OnClickListener
-        public void onClick(DialogInterface paramDialogInterface, int paramInt2) {
-            if (paramContext instanceof Activity) {
-                ((Activity) paramContext).removeDialog(paramInt);
-            }
-            if (paramWarningDialogListener != null) {
-                paramWarningDialogListener.onWarningDialogOK(paramInt);
-            }
-        }
-    }
-
-    /* JADX INFO: Access modifiers changed from: package-private */
-    /* renamed from: com.uc.paymentsdk.util.DialogUtil$11 */
-    /* loaded from: classes.dex */
-    public class AnonymousClass11 implements DialogInterface.OnCancelListener {
-        private final /* synthetic */ Context val$context;
-        private final /* synthetic */ int val$id;
-        private final /* synthetic */ WarningDialogListener val$listener;
-
-        AnonymousClass11(Context paramContext2, int paramInt2, WarningDialogListener paramWarningDialogListener2) {
-            paramContext = paramContext2;
-            paramInt = paramInt2;
-            paramWarningDialogListener = paramWarningDialogListener2;
-        }
-
-        @Override // android.content.DialogInterface.OnCancelListener
-        public void onCancel(DialogInterface paramDialogInterface) {
-            if (paramContext instanceof Activity) {
-                ((Activity) paramContext).removeDialog(paramInt);
-            }
-            if (paramWarningDialogListener != null) {
-                paramWarningDialogListener.onWarningDialogOK(paramInt);
-            }
-        }
+    public static Dialog createYesNoDialog(Context paramContext,int paramInt,CharSequence paramCharSequence,DialogUtil$WarningDialogListener paramWarningDialogListener){
+       return DialogUtil.createTwoButtonsDialog(paramContext, paramInt, paramCharSequence, "\x78\x02\x5b\x02", "\x53\x02\x6d\x02", paramWarningDialogListener);
     }
 }

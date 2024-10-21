@@ -3,20 +3,24 @@ package com.uc.paymentsdk.commons.codec;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/* loaded from: classes.dex */
 public class MD5 {
-    public static String getMD5(String val) throws NoSuchAlgorithmException {
-        MessageDigest md5 = MessageDigest.getInstance("MD5");
-        md5.update(val.getBytes());
-        byte[] m = md5.digest();
-        return getString(m);
-    }
+   public MD5() {
+      super();
+   }
 
-    private static String getString(byte[] b) {
-        StringBuffer sb = new StringBuffer();
-        for (byte b2 : b) {
-            sb.append((int) b2);
-        }
-        return sb.toString();
-    }
+   public static String getMD5(String var0) throws NoSuchAlgorithmException {
+      MessageDigest var1 = MessageDigest.getInstance("MD5");
+      var1.update(var0.getBytes());
+      return getString(var1.digest());
+   }
+
+   private static String getString(byte[] var0) {
+      StringBuffer var2 = new StringBuffer();
+
+      for(int var1 = 0; var1 < var0.length; ++var1) {
+         var2.append(var0[var1]);
+      }
+
+      return var2.toString();
+   }
 }

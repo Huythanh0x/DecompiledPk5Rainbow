@@ -7,51 +7,61 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.uc.paymentsdk.model.IType;
-import com.uc.paymentsdk.util.Constants;
 import com.uc.paymentsdk.util.Utils;
 
-/* loaded from: classes.dex */
 public class CustomAdapter extends BaseAdapter {
-    private static Drawable sIcon;
-    private Context mContext;
-    private IType[] mItems;
+   private static Drawable sIcon;
+   private Context mContext;
+   private IType[] mItems;
 
-    public CustomAdapter(Context paramContext, IType[] paramArrayOfIType) {
-        this.mContext = paramContext;
-        this.mItems = paramArrayOfIType;
-        if (sIcon == null) {
-            sIcon = Utils.getDrawableFromFile(Constants.RES_LIST_ITEM_MORE_ICON);
-        }
-    }
+   public CustomAdapter(Context var1, IType[] var2) {
+      super();
+      this.mContext = var1;
+      this.mItems = var2;
+      if (sIcon == null) {
+         sIcon = Utils.getDrawableFromFile("more.png");
+      }
 
-    @Override // android.widget.Adapter
-    public View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
-        CustomTextView localCustomTextView = new CustomTextView(this.mContext, paramInt);
-        localCustomTextView.setTextColor(-12303292);
-        localCustomTextView.setText(Html.fromHtml(this.mItems[paramInt].getDesc()));
-        localCustomTextView.setCompoundDrawablePadding(6);
-        localCustomTextView.setCompoundDrawablesWithIntrinsicBounds(this.mItems[paramInt].getIcon(), (Drawable) null, sIcon, (Drawable) null);
-        return localCustomTextView;
-    }
+   }
 
-    @Override // android.widget.Adapter
-    public int getCount() {
-        if (this.mItems == null) {
-            return 0;
-        }
-        return this.mItems.length;
-    }
+   public int getCount() {
+      int var1;
+      if (this.mItems == null) {
+         var1 = 0;
+      } else {
+         var1 = this.mItems.length;
+      }
 
-    @Override // android.widget.Adapter
-    public IType getItem(int paramInt) {
-        if (this.mItems == null) {
-            return null;
-        }
-        return this.mItems[paramInt];
-    }
+      return var1;
+   }
 
-    @Override // android.widget.Adapter
-    public long getItemId(int paramInt) {
-        return paramInt;
-    }
+   public IType getItem(int var1) {
+      IType var2;
+      if (this.mItems == null) {
+         var2 = null;
+      } else {
+         var2 = this.mItems[var1];
+      }
+
+      return var2;
+   }
+
+   // $FF: synthetic method
+   // $FF: bridge method
+   public Object getItem(int var1) {
+      return this.getItem(var1);
+   }
+
+   public long getItemId(int var1) {
+      return (long)var1;
+   }
+
+   public View getView(int var1, View var2, ViewGroup var3) {
+      CustomTextView var4 = new CustomTextView(this.mContext, var1);
+      var4.setTextColor(-12303292);
+      var4.setText(Html.fromHtml(this.mItems[var1].getDesc()));
+      var4.setCompoundDrawablePadding(6);
+      var4.setCompoundDrawablesWithIntrinsicBounds(this.mItems[var1].getIcon(), (Drawable)null, sIcon, (Drawable)null);
+      return var4;
+   }
 }

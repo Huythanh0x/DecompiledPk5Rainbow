@@ -2,107 +2,194 @@ package com.uc.paymentsdk.network;
 
 import android.content.Context;
 import com.uc.paymentsdk.commons.codec.MD5;
-import com.uc.paymentsdk.network.ApiTask;
 import com.uc.paymentsdk.payment.PaymentInfo;
 import com.uc.paymentsdk.payment.upoint.UPointPayInfo;
-import com.uc.paymentsdk.util.Constants;
 import com.uc.paymentsdk.util.PrefUtil;
 import com.uc.paymentsdk.util.Utils;
 import java.util.HashMap;
 
-/* loaded from: classes.dex */
 public class Api {
-    public static void pay(Context paramContext, ApiTask.TaskHandler paramTaskHandler, PaymentInfo paramPaymentInfo, UPointPayInfo upayinfo) {
-        HashMap<String, Object> localHashMap = new HashMap<>(9);
-        localHashMap.put("user_id", upayinfo.getUserid());
-        localHashMap.put("&cpid", upayinfo.getCpid());
-        localHashMap.put("&gameid", upayinfo.getGameid());
-        localHashMap.put("&optid", paramPaymentInfo.getmActionID());
-        localHashMap.put("&u_money", Integer.valueOf(upayinfo.getUpoint()));
-        localHashMap.put("&charge", Integer.valueOf(upayinfo.getUmoney()));
-        localHashMap.put("&consume_id", upayinfo.getConsumeid());
-        localHashMap.put("&ucid", upayinfo.getUsersession());
-        localHashMap.put("&sign", upayinfo.getSign());
-        localHashMap.put("&uc_token", upayinfo.getUctoken());
-        localHashMap.put("&pay_pwd", upayinfo.getPaypwd());
-        localHashMap.put("&consume_time", upayinfo.getTm());
-        localHashMap.put("&tm", upayinfo.getTm());
-        localHashMap.put("&eid", UPointPayInfo.getEid());
-        localHashMap.put("&ch_code", upayinfo.getChcode());
-        new ApiTask(paramContext, 3, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
-    }
+   public Api() {
+      super();
+   }
 
-    public static void confirmPayResult(Context paramContext, ApiTask.TaskHandler paramTaskHandler, String paramString1, String paramString2) {
-        HashMap<String, Object> localHashMap = new HashMap<>(2);
-        localHashMap.put("order_id", paramString1);
-        localHashMap.put("app_key", paramString2);
-        new ApiTask(paramContext, 5, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
-    }
+   public static void confirmPayResult(Context var0, ApiTask$TaskHandler var1, String var2, String var3) {
+      HashMap var4 = new HashMap(2);
+      var4.put("order_id", var2);
+      var4.put("app_key", var3);
+      (new ApiTask(var0, 5, var1, var4, "post")).execute(new Void[0]);
+   }
 
-    public static void queryUPointDiscount(Context paramContext, ApiTask.TaskHandler paramTaskHandler, String cpid, String gameid, int charge) {
-        HashMap<String, Object> localHashMap = new HashMap<>(1);
-        localHashMap.put("cpid", cpid);
-        localHashMap.put("gameid", gameid);
-        localHashMap.put("u_money", Integer.valueOf(charge));
-        new ApiTask(paramContext, 18, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
-    }
+   public static void pay(Context var0, ApiTask$TaskHandler var1, PaymentInfo var2, UPointPayInfo var3) {
+      HashMap var4 = new HashMap(9);
+      var4.put("user_id", var3.getUserid());
+      var4.put("&cpid", var3.getCpid());
+      var4.put("&gameid", var3.getGameid());
+      var4.put("&optid", var2.getmActionID());
+      var4.put("&u_money", var3.getUpoint());
+      var4.put("&charge", var3.getUmoney());
+      var4.put("&consume_id", var3.getConsumeid());
+      var4.put("&ucid", var3.getUsersession());
+      var4.put("&sign", var3.getSign());
+      var4.put("&uc_token", var3.getUctoken());
+      var4.put("&pay_pwd", var3.getPaypwd());
+      var4.put("&consume_time", var3.getTm());
+      var4.put("&tm", var3.getTm());
+      var4.put("&eid", UPointPayInfo.getEid());
+      var4.put("&ch_code", var3.getChcode());
+      (new ApiTask(var0, 3, var1, var4, "post")).execute(new Void[0]);
+   }
 
-    public static void syncChargeChannel(Context paramContext, ApiTask.TaskHandler paramTaskHandler) {
-        HashMap<String, Object> localHashMap = new HashMap<>(1);
-        localHashMap.put("action", "getRechargeChannels");
-        new ApiTask(paramContext, 17, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
-    }
+   public static void postSmsPayment(Context var0, ApiTask$TaskHandler var1, String var2, String var3, String var4, int var5, String var6, String var7, String var8, String var9, int var10) {
+      String var12 = Utils.getSessionID(var0);
+      String var14 = Utils.createARanConsumeID(20);
+      String var13 = "";
 
-    public static void syncPayChannel(Context paramContext, ApiTask.TaskHandler paramTaskHandler) {
-        HashMap<String, Object> localHashMap = new HashMap<>(0);
-        new ApiTask(paramContext, 6, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
-    }
+      String var11;
+      label68: {
+         label72: {
+            StringBuilder var15;
+            boolean var10001;
+            label66: {
+               label73: {
+                  try {
+                     var15 = new StringBuilder;
+                     if (var12.length() <= 5) {
+                        break label73;
+                     }
+                  } catch (Exception var22) {
+                     var10001 = false;
+                     break label72;
+                  }
 
-    public static void syncUPointDiscount(Context paramContext, ApiTask.TaskHandler paramTaskHandler, String cpid, String gameid, int charge) {
-        HashMap<String, Object> localHashMap = new HashMap<>(1);
-        localHashMap.put("cpid", cpid);
-        localHashMap.put("gameid", gameid);
-        localHashMap.put("u_money", Integer.valueOf(charge));
-        new ApiTask(paramContext, 18, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
-    }
+                  try {
+                     var11 = var12.substring(0, 5);
+                     break label66;
+                  } catch (Exception var21) {
+                     var10001 = false;
+                     break label72;
+                  }
+               }
 
-    public static void syncSmsInfo(Context paramContext, ApiTask.TaskHandler paramTaskHandler, String cpid, String gameid) {
-        HashMap<String, Object> localHashMap = new HashMap<>(1);
-        String usersession = Utils.getSessionID(paramContext);
-        if (usersession == null) {
-            usersession = Utils.createARanSessionid(8);
-            PrefUtil.setUserSession(paramContext, usersession);
-        }
-        localHashMap.put("user_id", usersession);
-        localHashMap.put("cpid", cpid);
-        localHashMap.put("gameid", gameid);
-        localHashMap.put("area", "");
-        localHashMap.put("imsi", Utils.getSimNumber(paramContext));
-        new ApiTask(paramContext, 7, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
-    }
+               var11 = var12;
+            }
 
-    public static void postSmsPayment(Context paramContext, ApiTask.TaskHandler paramTaskHandler, String cpid, String gameid, String optid, int charge, String optobj, String sms_channel, String sms_port, String sms_content, int sms_type) {
-        String usersession = Utils.getSessionID(paramContext);
-        Object consumeid = Utils.createARanConsumeID(20);
-        String sign = "";
-        try {
-            sign = MD5.getMD5(String.valueOf(usersession.length() <= 5 ? usersession : usersession.substring(0, 5)) + (cpid.length() <= 5 ? cpid : cpid.substring(0, 5)) + (gameid.length() <= 5 ? gameid : gameid.substring(0, 5)) + charge);
-        } catch (Exception e) {
-        }
-        HashMap<String, Object> localHashMap = new HashMap<>(4);
-        localHashMap.put("user_id", usersession);
-        localHashMap.put("cpid", cpid);
-        localHashMap.put("gameid", gameid);
-        localHashMap.put("optid", optid);
-        localHashMap.put("consume_id", consumeid);
-        localHashMap.put("charge", Integer.valueOf(charge));
-        localHashMap.put("optobj", optobj);
-        localHashMap.put("sms_channel", sms_channel);
-        localHashMap.put("sms_port", sms_port);
-        localHashMap.put("sms_content", sms_content);
-        localHashMap.put("sms_type", Integer.valueOf(sms_type));
-        localHashMap.put("sendtime", Utils.getCurrentTime(false));
-        localHashMap.put("sign", sign);
-        new ApiTask(paramContext, 8, paramTaskHandler, localHashMap, Constants.POST).execute(new Void[0]);
-    }
+            label74: {
+               label55: {
+                  try {
+                     var15.<init>(String.valueOf(var11));
+                     if (var2.length() > 5) {
+                        break label55;
+                     }
+                  } catch (Exception var20) {
+                     var10001 = false;
+                     break label72;
+                  }
+
+                  var11 = var2;
+                  break label74;
+               }
+
+               try {
+                  var11 = var2.substring(0, 5);
+               } catch (Exception var19) {
+                  var10001 = false;
+                  break label72;
+               }
+            }
+
+            label46: {
+               label75: {
+                  try {
+                     var15 = var15.append(var11);
+                     if (var3.length() <= 5) {
+                        break label75;
+                     }
+                  } catch (Exception var18) {
+                     var10001 = false;
+                     break label72;
+                  }
+
+                  try {
+                     var11 = var3.substring(0, 5);
+                     break label46;
+                  } catch (Exception var17) {
+                     var10001 = false;
+                     break label72;
+                  }
+               }
+
+               var11 = var3;
+            }
+
+            try {
+               var11 = MD5.getMD5(var15.append(var11).append(var5).toString());
+               break label68;
+            } catch (Exception var16) {
+               var10001 = false;
+            }
+         }
+
+         var11 = var13;
+      }
+
+      HashMap var23 = new HashMap(4);
+      var23.put("user_id", var12);
+      var23.put("cpid", var2);
+      var23.put("gameid", var3);
+      var23.put("optid", var4);
+      var23.put("consume_id", var14);
+      var23.put("charge", var5);
+      var23.put("optobj", var6);
+      var23.put("sms_channel", var7);
+      var23.put("sms_port", var8);
+      var23.put("sms_content", var9);
+      var23.put("sms_type", var10);
+      var23.put("sendtime", Utils.getCurrentTime(false));
+      var23.put("sign", var11);
+      (new ApiTask(var0, 8, var1, var23, "post")).execute(new Void[0]);
+   }
+
+   public static void queryUPointDiscount(Context var0, ApiTask$TaskHandler var1, String var2, String var3, int var4) {
+      HashMap var5 = new HashMap(1);
+      var5.put("cpid", var2);
+      var5.put("gameid", var3);
+      var5.put("u_money", var4);
+      (new ApiTask(var0, 18, var1, var5, "post")).execute(new Void[0]);
+   }
+
+   public static void syncChargeChannel(Context var0, ApiTask$TaskHandler var1) {
+      HashMap var2 = new HashMap(1);
+      var2.put("action", "getRechargeChannels");
+      (new ApiTask(var0, 17, var1, var2, "post")).execute(new Void[0]);
+   }
+
+   public static void syncPayChannel(Context var0, ApiTask$TaskHandler var1) {
+      (new ApiTask(var0, 6, var1, new HashMap(0), "post")).execute(new Void[0]);
+   }
+
+   public static void syncSmsInfo(Context var0, ApiTask$TaskHandler var1, String var2, String var3) {
+      HashMap var6 = new HashMap(1);
+      String var5 = Utils.getSessionID(var0);
+      String var4 = var5;
+      if (var5 == null) {
+         var4 = Utils.createARanSessionid(8);
+         PrefUtil.setUserSession(var0, var4);
+      }
+
+      var6.put("user_id", var4);
+      var6.put("cpid", var2);
+      var6.put("gameid", var3);
+      var6.put("area", "");
+      var6.put("imsi", Utils.getSimNumber(var0));
+      (new ApiTask(var0, 7, var1, var6, "post")).execute(new Void[0]);
+   }
+
+   public static void syncUPointDiscount(Context var0, ApiTask$TaskHandler var1, String var2, String var3, int var4) {
+      HashMap var5 = new HashMap(1);
+      var5.put("cpid", var2);
+      var5.put("gameid", var3);
+      var5.put("u_money", var4);
+      (new ApiTask(var0, 18, var1, var5, "post")).execute(new Void[0]);
+   }
 }

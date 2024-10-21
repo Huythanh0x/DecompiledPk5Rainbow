@@ -3,53 +3,57 @@ package com.uc.paymentsdk.commons.codec;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/* loaded from: classes.dex */
 public class DigestUtils {
-    static MessageDigest getDigest(String paramString) {
-        try {
-            return MessageDigest.getInstance(paramString);
-        } catch (NoSuchAlgorithmException localNoSuchAlgorithmException) {
-            throw new RuntimeException(localNoSuchAlgorithmException.getMessage());
-        }
-    }
+   public DigestUtils() {
+      super();
+   }
 
-    private static MessageDigest getMd5Digest() {
-        return getDigest("MD5");
-    }
+   static MessageDigest getDigest(String var0) {
+      try {
+         MessageDigest var2 = MessageDigest.getInstance(var0);
+         return var2;
+      } catch (NoSuchAlgorithmException var1) {
+         throw new RuntimeException(var1.getMessage());
+      }
+   }
 
-    private static MessageDigest getShaDigest() {
-        return getDigest("SHA");
-    }
+   private static MessageDigest getMd5Digest() {
+      return getDigest("MD5");
+   }
 
-    public static byte[] md5(byte[] paramArrayOfByte) {
-        return getMd5Digest().digest(paramArrayOfByte);
-    }
+   private static MessageDigest getShaDigest() {
+      return getDigest("SHA");
+   }
 
-    public static byte[] md5(String paramString) {
-        return md5(paramString.getBytes());
-    }
+   public static byte[] md5(String var0) {
+      return md5(var0.getBytes());
+   }
 
-    public static String md5Hex(byte[] paramArrayOfByte) {
-        return new String(Hex.encodeHex(md5(paramArrayOfByte)));
-    }
+   public static byte[] md5(byte[] var0) {
+      return getMd5Digest().digest(var0);
+   }
 
-    public static String md5Hex(String paramString) {
-        return new String(Hex.encodeHex(md5(paramString)));
-    }
+   public static String md5Hex(String var0) {
+      return new String(Hex.encodeHex(md5(var0)));
+   }
 
-    public static byte[] sha(byte[] paramArrayOfByte) {
-        return getShaDigest().digest(paramArrayOfByte);
-    }
+   public static String md5Hex(byte[] var0) {
+      return new String(Hex.encodeHex(md5(var0)));
+   }
 
-    public static byte[] sha(String paramString) {
-        return sha(paramString.getBytes());
-    }
+   public static byte[] sha(String var0) {
+      return sha(var0.getBytes());
+   }
 
-    public static String shaHex(byte[] paramArrayOfByte) {
-        return new String(Hex.encodeHex(sha(paramArrayOfByte)));
-    }
+   public static byte[] sha(byte[] var0) {
+      return getShaDigest().digest(var0);
+   }
 
-    public static String shaHex(String paramString) {
-        return new String(Hex.encodeHex(sha(paramString)));
-    }
+   public static String shaHex(String var0) {
+      return new String(Hex.encodeHex(sha(var0)));
+   }
+
+   public static String shaHex(byte[] var0) {
+      return new String(Hex.encodeHex(sha(var0)));
+   }
 }

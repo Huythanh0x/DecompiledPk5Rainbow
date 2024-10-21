@@ -38,6 +38,5 @@ android {
 }
 
 dependencies {
-    implementation files('libs/uc_payment_sdk.jar')
     // some dependencies
 }

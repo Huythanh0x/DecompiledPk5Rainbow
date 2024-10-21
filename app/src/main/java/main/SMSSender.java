@@ -1,21 +1,13 @@
 package main;
 
 import android.util.Log;
-
 import com.PetKing5_480x800.PetKing5;
-
 import dm.Ms;
 import dm.Sound;
 import dm.Ui;
+import java.lang.reflect.Array;
 
-/**
- *
- */
-/**
- * The SMSSender class is responsible for handling SMS-related operations within the game.
- * It implements the Key_H interface and provides methods for creating, sending, and managing SMS messages.
- * This class also handles various game states and user interactions related to SMS functionalities.
- */
+/* loaded from: classes.dex */
 public class SMSSender implements Key_H {
     public static GameRun gr;
     public static boolean isWorking;
@@ -25,548 +17,331 @@ public class SMSSender implements Key_H {
     private StringBuffer[] about;
     private byte currentPage;
     public byte idSmsLevel;
-    public byte[][] menu;
     private String[][] menuTxt;
     public byte menu_state;
     public PointerKey pkey;
-    public byte[] sel;
-    public byte sendSms;
     public byte showLine;
-    public byte[][] smsCount;
-    public boolean sms_a = true;
-    public boolean sms_b = false;
     public byte tMyState;
     private int tState;
     private byte totalPage;
+    public boolean sms_a = true;
+    public boolean sms_b = false;
+    public byte[][] menu = {new byte[]{0, 2, 4, 5}, new byte[]{6}, new byte[]{7}, new byte[]{8}, new byte[]{2}};
+    public byte[] sel = new byte[2];
+    public byte[][] smsCount = {new byte[]{4, 1, 1}, new byte[]{2, 1, 2}, new byte[]{4, 1, 3}, new byte[]{1, 1, 4}, new byte[]{2, 1, 5}, new byte[]{1, 1}, new byte[]{2, 1, 6}, new byte[]{2, 1, 5}};
+    public byte sendSms = -1;
 
-    /**
-     * Constructs an SMSSender instance with the specified GameRun object.
-     * Initializes various SMS-related properties and creates SMS messages.
-     *
-     * @param var1 the GameRun instance associated with this SMSSender
-     */
-    public SMSSender(GameRun var1) {
-        super();
-        byte[] var5 = new byte[]{0, 2, 4, 5};
-        byte[] var4 = new byte[]{6};
-        byte[] var2 = new byte[]{8};
-        byte[] var3 = new byte[]{2};
-        this.menu = new byte[][]{var5, var4, {7}, var2, var3};
-        this.sel = new byte[2];
-        var3 = new byte[]{4, 1, 3};
-        var2 = new byte[]{1, 1, 0};
-        this.smsCount = new byte[][]{{4, 1, 1}, {2, 1, 2}, var3, {1, 1, 4}, {2, 1, 5}, var2, {2, 1, 6}, {2, 1, 5}};
-        this.sendSms = -1;
-        gr = var1;
+    public SMSSender(GameRun gr_) {
+        gr = gr_;
         smsSender = this;
-
         try {
-            this.createSMS();
-        } catch (Exception var6) {
-            var6.printStackTrace();
+            createSMS();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-
     }
 
-    /**
-     * Creates SMS messages and initializes the menu text.
-     */
-    private void createSMS() {
-        this.menuTxt = new String[][]{{"商城"}, {"购买30000金", ""}, {"购买5000金", "身为四大家族之首的贵公子，没钱可不行！立刻拥有5000金。"}, {"购买50徽章", ""}, {"购买10徽章", "购买该特殊道具，立刻拥有10徽章，能购买双倍经验，宠物技能，强大的宠物捕获球等各种神奇的道具。"}, {"宠物升5级", "让您随身携带的全部宠物立刻升5级（超过70级宠物不能再升级）"}, {"购买奇异兽", "购买该特殊道具，获得可爱的奇异兽，移动速度可以提高一倍，且不会遇到任何敌人！无限使用，心动不如行动，快购买吧！"}, {"正版验证", "游戏试玩结束，购买此项将开启后续所有游戏内容、地图。同时将免费赠送您5枚徽章（可购买强力道具）"}, {"升级复活", "让您携带的所有宠物全恢复，同时立刻让您携带的宠物提升5级（超过70级宠物不能再升级），让接下来的战斗变的更轻松。"}};
-    }
-
-    /**
-     * Draws the SMS-related UI elements.
-     */
-    private void draw0() {
-        boolean var4 = true;
-        boolean var6 = true;
-        boolean var5 = true;
-        boolean var7 = true;
-        if (this.sendSms > -1) {
-            String var9 = "";
-            boolean var2;
-            boolean var3;
-            String var8;
-            if (this.sendSms == 0) {
-                byte var1 = this.smsCount[smsType][2];
-                if (var1 < 0) {
-                    var1 = 0;
-                } else {
-                    var1 = gr.rmsSms[var1];
-                }
-
-                var8 = this.getSmsTip(var1, this.smsCount[smsType][1] - var1);
-                var3 = var7;
-                var2 = var6;
-            } else {
-                var2 = var6;
-                var3 = var7;
-                var8 = var9;
-                if (this.sendSms != 1) {
-                    var2 = var6;
-                    var3 = var7;
-                    var8 = var9;
-                    if (this.sendSms != 2) {
-                        var2 = var6;
-                        var3 = var7;
-                        var8 = var9;
-                        if (this.sendSms != 3) {
-                            if (this.sendSms > 3 && this.sendSms < 15 || this.sendSms > 23 && this.sendSms < 34) {
-                                var9 = "购买已成功！";
-                                var5 = false;
-                                var4 = false;
-                                var2 = var4;
-                                var3 = var5;
-                                var8 = var9;
-                                if (this.sendSms > 23) {
-                                    var2 = var4;
-                                    var3 = var5;
-                                    var8 = var9;
-                                    if (this.sendSms < 34) {
-                                        ++this.sendSms;
-                                        var2 = var4;
-                                        var3 = var5;
-                                        var8 = var9;
-                                    }
-                                }
-                            } else if (this.sendSms == 15) {
-                                var8 = "自动保存游戏。";
-                                var3 = false;
-                                var2 = false;
-                            } else {
-                                var2 = var6;
-                                var3 = var7;
-                                var8 = var9;
-                                if (this.sendSms < 23) {
-                                    var9 = "保存游戏成功。";
-                                    ++this.sendSms;
-                                    var5 = false;
-                                    var4 = false;
-                                    if (smsType == 5 && this.sendSms == 23) {
-                                        gr.say("购买已成功！游戏已保存。#n新游戏后此功能不再要求付费。", -1);
-                                        var2 = var4;
-                                        var3 = var5;
-                                        var8 = var9;
-                                    } else {
-                                        var2 = var4;
-                                        var3 = var5;
-                                        var8 = var9;
-                                        if (smsType == 6) {
-                                            var2 = var4;
-                                            var3 = var5;
-                                            var8 = var9;
-                                            if (this.sendSms == 23) {
-                                                gr.say("购买已成功！获得5枚徽章(背包的卷轴界面可查看）。游戏已保存。#n新游戏后此功能不再要求付费。", 0);
-                                                var2 = var4;
-                                                var3 = var5;
-                                                var8 = var9;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            var4 = var2;
-            var5 = var3;
-            if (this.sendSms != 3) {
-                var4 = var2;
-                var5 = var3;
-                if (this.sendSms != 1) {
-                    var4 = var2;
-                    var5 = var3;
-                    if (this.sendSms != 2) {
-                        gr.showString(var8, Constants_H.HEIGHT_H - 50, 0);
-                        var5 = var3;
-                        var4 = var2;
-                    }
-                }
-            }
-        }
-
-        Ui.i().drawYesNo(var4, var5);
-    }
-
-    /**
-     * Generates a tip message for SMS sending.
-     *
-     * @param var1 the number of SMS messages already sent
-     * @param var2 the number of SMS messages required to complete the purchase
-     * @return a string containing the SMS tip message
-     */
-    private String getSmsTip(int var1, int var2) {
-        return "" + "您已发送" + var1 + "条短信。" + "购买此项，还需发送" + var2 + "条短信。" + "确认发送短信吗？";
-    }
-
-    /**
-     * Sets the showLine property to 3.
-     */
-    private void goWord() {
-        this.showLine = 3;
-    }
-
-    /**
-     * Returns the singleton instance of SMSSender.
-     * If the instance does not exist, it creates a new one.
-     *
-     * @param var0 the GameRun instance associated with this SMSSender
-     * @return the singleton instance of SMSSender
-     */
-    public static SMSSender i(GameRun var0) {
+    public static SMSSender i(GameRun gr_) {
         if (smsSender == null) {
-            smsSender = new SMSSender(var0);
+            smsSender = new SMSSender(gr_);
         }
-
         return smsSender;
     }
 
-    /**
-     * Restores the previous game state.
-     */
-    private void outState() {
-        if (this.tState != -1) {
-            GameRun.run_state = this.tState;
-            gr.map.my.state = this.tMyState;
-        } else {
-            GameRun.run_state = -10;
-        }
-
+    private void createSMS() {
+        this.menuTxt = new String[][]{new String[]{"商城"}, new String[]{"购买30000金", ""}, new String[]{"购买5000金", "身为四大家族之首的贵公子，没钱可不行！立刻拥有5000金。"}, new String[]{"购买50徽章", ""}, new String[]{"购买10徽章", "购买该特殊道具，立刻拥有10徽章，能购买双倍经验，宠物技能，强大的宠物捕获球等各种神奇的道具。"}, new String[]{"宠物升5级", "让您随身携带的全部宠物立刻升5级（超过70级宠物不能再升级）"}, new String[]{"购买奇异兽", "购买该特殊道具，获得可爱的奇异兽，移动速度可以提高一倍，且不会遇到任何敌人！无限使用，心动不如行动，快购买吧！"}, new String[]{"正版验证", "游戏试玩结束，购买此项将开启后续所有游戏内容、地图。同时将免费赠送您5枚徽章（可购买强力道具）"}, new String[]{"升级复活", "让您携带的所有宠物全恢复，同时立刻让您携带的宠物提升5级（超过70级宠物不能再升级），让接下来的战斗变的更轻松。"}};
     }
 
-    /**
-     * Draws the SMS menu and related UI elements.
-     */
-    public void draw() {
-        if (this.menu_state == 0) {
-            int var1 = 640 - 2;
-            int var4 = 360 - 1;
-            Ui.i().fillRectB();
-            Ui.i().drawK2(1, 1, var1, var4, 0);
-            Ui.i().drawK1(320 - 75, 1 + 3, 150, 28 - 4, 4);
-            Ui.i().drawString(this.menuTxt[this.menu[this.menu_state][0]][0], 320, 1 + 1, 17, 0, 1);
-            Log.e("sk", "draw");
-            int var3 = 1 + 5;
-            int var2 = 1 + 29;
-            int var5 = var1 - 10;
-            var1 = var2;
-            if (this.menu[this.menu_state].length > 1) {
-                Ui.i().drawK1(var3, var2, var5 - 15, 28 * this.showLine, 1);
-                Ui.i().sliding(var3 + 628 - 13, var2, 28 * this.showLine, this.sel[0] - 1, this.menu[this.menu_state].length - 1, true);
-                Ui.i().drawListKY(this.showLine, var3, var2 + 2, var5 - 15, 2, 28, -1, this.sel[0] - this.sel[1], 4, 2);
-
-                for(var1 = this.sel[1]; var1 < this.sel[1] + this.showLine && var1 < this.menu[this.menu_state].length; ++var1) {
-                    Ui var7 = Ui.i();
-                    String var8 = this.menuTxt[this.menu[this.menu_state][var1]][0];
-                    byte var6 = this.sel[1];
-                    byte var9;
-                    if (this.sel[0] == var1) {
-                        var9 = 0;
-                    } else {
-                        var9 = 3;
-                    }
-
-                    var7.drawString(var8, var3 + 314, (var1 - var6) * 28 + 32, 17, var9, 0);
-                    if (this.pkey.isSelect(var3, (var1 - this.sel[1]) * 28 + 32, 640, 28)) {
-                        this.sel[0] = (byte)var1;
-                        this.setSmsType();
-                    }
-                }
-
-                var1 = this.showLine * 28 + 5 + 30;
-            }
-
-            Ui.i().drawK1(var3, var1, var5, var4 - (var1 + 10), 2);
-            this.draw0();
-        }
-
-    }
-
-    /**
-     * Returns the current sendSms value.
-     *
-     * @return the current sendSms value
-     */
-    public byte getSendSms() {
-        return this.sendSms;
-    }
-
-    /**
-     * Returns the current menu state.
-     *
-     * @return the current menu state
-     */
-    public byte getSmsSenderMenuState() {
-        return this.menu_state;
-    }
-
-    /**
-     * Returns the current tState value.
-     *
-     * @return the current tState value
-     */
-    public int getTstate() {
-        return this.tState;
-    }
-
-    /**
-     * Sets the game state and menu state based on the provided parameters.
-     *
-     * @param var1 the menu state to set
-     * @param var2 a boolean indicating whether to save the current game state
-     */
-    public void go(int var1, boolean var2) {
-        if (var2) {
+    public void go(int menu_state_, boolean bb) {
+        if (bb) {
             this.tState = GameRun.run_state;
             this.tMyState = gr.map.my.state;
         } else {
             this.tState = -1;
         }
-
         this.sms_a = true;
         this.sms_b = false;
         GameRun.run_state = -20;
-        this.menu_state = (byte)var1;
-        byte[] var4 = this.sel;
-        byte[] var5 = this.sel;
-        byte var6;
-        if (this.menu[this.menu_state].length > 1) {
-            var6 = 1;
+        this.menu_state = (byte) menu_state_;
+        byte[] bArr = this.sel;
+        byte[] bArr2 = this.sel;
+        byte b = (byte) (this.menu[this.menu_state].length > 1 ? 1 : 0);
+        bArr2[1] = b;
+        bArr[0] = b;
+        smsType = (byte) (this.menu[this.menu_state][this.sel[0]] - 1);
+        goWord();
+        if (smsType == 5 || smsType == 6 || smsType == 7 || (this.menu_state == 4 && smsType == 1)) {
+            this.sendSms = (byte) 1;
         } else {
-            var6 = 0;
-        }
-
-        byte var3 = (byte)var6;
-        var5[1] = var3;
-        var4[0] = var3;
-        smsType = (byte)(this.menu[this.menu_state][this.sel[0]] - 1);
-        this.goWord();
-        if (smsType != 5 && smsType != 6 && smsType != 7 && (this.menu_state != 4 || smsType != 1)) {
-            this.sendSms = -1;
+            this.sendSms = (byte) -1;
             isWorking = false;
-        } else {
-            this.sendSms = 1;
         }
-
     }
 
-    /**
-     * Levels up all the player's monsters by 5 levels.
-     */
-    public void goLevel() {
-        GameRun.run_state = -21;
-        this.idSmsLevel = 0;
-        gr.b_c = 0;
-        if (this.tState != -31) {
-            gr.levelUp_in_battle = null;
-            GameRun var3 = gr;
-            int var1 = gr.max_takes;
-            var3.levelUp_in_battle = new byte[var1][2];
-            gr.proReplace = null;
-            var3 = gr;
-            var1 = gr.myMonsters.length;
-            var3.proReplace = new short[var1][7];
-        }
-
-        for(byte var4 = 0; var4 < gr.myMon_length; ++var4) {
-            if (gr.myMonsters[var4].monster[2] >= 70) {
-                gr.healMonster(gr.myMonsters[var4]);
-            } else {
-                gr.proReplace[var4][6] = gr.myMonsters[var4].monster[2];
-                gr.levelUp_in_battle[var4][0] = 1;
-                gr.levelUp_in_battle[var4][1] = -1;
-
-                for(byte var2 = 0; var2 < 5; ++var2) {
-                    gr.levelPro(var4, false);
-                    gr.getMagic(gr.myMonsters[var4]);
-                    if (gr.getSkill != -1) {
-                        gr.levelUp_in_battle[var4][1] = gr.getSkill;
-                    }
-                }
-            }
-        }
-
+    private void goWord() {
+        this.showLine = (byte) 3;
     }
 
-    /**
-     * Checks if any of the player's monsters can level up.
-     *
-     * @return true if any monster can level up, false otherwise
-     */
-    public boolean isMyMonLevel() {
-        byte var1 = (byte)(gr.myMon_length - 1);
-
-        boolean var2;
-        while(true) {
-            if (var1 <= -1) {
-                var2 = false;
-                break;
-            }
-
-            if (gr.myMonsters[var1].monster[2] < 70) {
-                var2 = true;
-                break;
-            }
-
-            --var1;
-        }
-
-        return var2;
+    public void paint() {
+        draw();
     }
 
-    /**
-     * Handles key input for SMS-related actions.
-     */
+    public void run() {
+        if (this.sendSms == 1) {
+            this.sendSms = (byte) 2;
+            pk.setSmshah();
+        }
+    }
+
+    public void setSmsType() {
+        smsType = (byte) (this.menu[this.menu_state][this.sel[0]] - 1);
+    }
+
     public void key() {
         if (this.sendSms == -1 && Ms.i().key_Up_Down()) {
             if (!Ms.i().key_delay() && this.menu[this.menu_state].length > 1) {
                 Ms.i().selectS(this.sel, 1, this.menu[this.menu_state].length, this.showLine);
-                this.setSmsType();
+                setSmsType();
+                return;
             }
-        } else if ((this.sendSms == -1 || this.sendSms == 0) && Ms.i().key_S1()) {
+            return;
+        }
+        if ((this.sendSms == -1 || this.sendSms == 0) && Ms.i().key_S1()) {
             Ms.i().keyRelease();
-            if (smsType != 4 || this.sel[0] == 7 || gr.myMon_length >= 1 && this.isMyMonLevel()) {
-                this.sendSms = 1;
-            } else {
-                this.sendSms = -1;
+            if (smsType == 4 && this.sel[0] != 7 && (gr.myMon_length < 1 || !isMyMonLevel())) {
+                this.sendSms = (byte) -1;
                 gr.say("目前没有可以升级的宠物！", 0);
+                return;
+            } else {
+                this.sendSms = (byte) 1;
+                return;
             }
-        } else if ((this.sendSms == -1 || this.sendSms == 0 || this.sendSms == 3 || this.sendSms == 24) && Ms.i().key_S2()) {
+        }
+        if ((this.sendSms == -1 || this.sendSms == 0 || this.sendSms == 3 || this.sendSms == 24) && Ms.i().key_S2()) {
             Ms.i().keyRelease();
-            this.outState();
+            outState();
             if (smsType == 6) {
                 GameRun.run_state = -10;
                 isWorking = true;
             }
-
-            this.sendSms = -1;
+            this.sendSms = (byte) -1;
         }
-
     }
 
-    /**
-     * Handles key input for leveling up monsters.
-     */
-    public void keyLevel() {
-        if (!Ms.i().key_delay() && gr.b_c == 1 && gr.say_s == 0) {
-            gr.b_c = 0;
+    public void draw() {
+        if (this.menu_state == 0) {
+            int i = Constants_H.WIDTH_ - 2;
+            int i2 = Constants_H.HEIGHT_ - 1;
+            Ui.i().fillRectB();
+            Ui.i().drawK2(1, 1, i, i2, 0);
+            Ui.i().drawK1(Constants_H.WIDTH_H_ - 75, 1 + 3, 150, 28 - 4, 4);
+            Ui.i().drawString(this.menuTxt[this.menu[this.menu_state][0]][0], Constants_H.WIDTH_H_, 1 + 1, 17, 0, 1);
+            Log.e("sk", "draw");
+            int i3 = 1 + 5;
+            int i4 = 28 + 1;
+            int i5 = 1 + 29;
+            int i6 = i - 10;
+            if (this.menu[this.menu_state].length > 1) {
+                Ui.i().drawK1(i3, i5, i6 - 15, 28 * this.showLine, 1);
+                Ui.i().sliding((i3 + 628) - 13, i5, 28 * this.showLine, this.sel[0] - 1, this.menu[this.menu_state].length - 1, true);
+                Ui.i().drawListKY(this.showLine, i3, i5 + 2, i6 - 15, 2, 28, -1, this.sel[0] - this.sel[1], 4, 2);
+                int i7 = this.sel[1];
+                while (i7 < this.sel[1] + this.showLine && i7 < this.menu[this.menu_state].length) {
+                    int i8 = i6 >> 1;
+                    int i9 = i5 + 2;
+                    Ui.i().drawString(this.menuTxt[this.menu[this.menu_state][i7]][0], i3 + 314, ((i7 - this.sel[1]) * 28) + 32, 17, this.sel[0] == i7 ? 0 : 3, 0);
+                    int i10 = i5 + 2;
+                    if (this.pkey.isSelect(i3, ((i7 - this.sel[1]) * 28) + 32, Constants_H.WIDTH_, 28)) {
+                        this.sel[0] = (byte) i7;
+                        setSmsType();
+                    }
+                    i7++;
+                }
+                i5 = (this.showLine * 28) + 5 + 30;
+            }
+            Ui.i().drawK1(i3, i5, i6, i2 - (i5 + 10), 2);
+            draw0();
         }
-
     }
 
-    /**
-     * Paints the SMS-related UI elements.
-     */
-    public void paint() {
-        this.draw();
+    private void draw0() {
+        boolean bLeft = true;
+        boolean bRight = true;
+        if (this.sendSms > -1) {
+            String smsTip = "";
+            if (this.sendSms == 0) {
+                int i = this.smsCount[smsType][2];
+                int i2 = i < 0 ? 0 : gr.rmsSms[i];
+                smsTip = getSmsTip(i2, this.smsCount[smsType][1] - i2);
+            } else if (this.sendSms != 1 && this.sendSms != 2 && this.sendSms != 3) {
+                if ((this.sendSms > 3 && this.sendSms < 15) || (this.sendSms > 23 && this.sendSms < 34)) {
+                    smsTip = "购买已成功！";
+                    bRight = false;
+                    bLeft = false;
+                    if (this.sendSms > 23 && this.sendSms < 34) {
+                        this.sendSms = (byte) (this.sendSms + 1);
+                    }
+                } else if (this.sendSms == 15) {
+                    smsTip = "自动保存游戏。";
+                    bRight = false;
+                    bLeft = false;
+                } else if (this.sendSms < 23) {
+                    smsTip = "保存游戏成功。";
+                    this.sendSms = (byte) (this.sendSms + 1);
+                    bRight = false;
+                    bLeft = false;
+                    if (smsType == 5 && this.sendSms == 23) {
+                        gr.say("购买已成功！游戏已保存。#n新游戏后此功能不再要求付费。", -1);
+                    } else if (smsType == 6 && this.sendSms == 23) {
+                        gr.say("购买已成功！获得5枚徽章(背包的卷轴界面可查看）。游戏已保存。#n新游戏后此功能不再要求付费。", 0);
+                    }
+                }
+            }
+            if (this.sendSms != 3 && this.sendSms != 1 && this.sendSms != 2) {
+                gr.showString(smsTip, Constants_H.HEIGHT_H - 50, 0);
+            }
+        }
+        Ui.i().drawYesNo(bLeft, bRight);
     }
 
-    /**
-     * Paints the UI elements related to leveling up monsters.
-     */
+    private String getSmsTip(int i0, int i1) {
+        String tip = String.valueOf("") + "您已发送" + i0 + "条短信。购买此项，还需发送" + i1 + "条短信。确认发送短信吗？";
+        return tip;
+    }
+
+    private void outState() {
+        if (this.tState != -1) {
+            GameRun.run_state = this.tState;
+            gr.map.my.state = this.tMyState;
+            return;
+        }
+        GameRun.run_state = -10;
+    }
+
     public void paintLevel() {
         if (gr.b_c == 1) {
             gr.drawEvolveUI(0, this.idSmsLevel, true);
         }
-
     }
 
-    /**
-     * Runs the SMS sending process.
-     */
-    public void run() {
-        if (this.sendSms == 1) {
-            this.sendSms = 2;
-            pk.setSmshah();
-        }
-
-    }
-
-    /**
-     * Runs the process for leveling up monsters.
-     */
     public void runLevel() {
         if (gr.b_c == 0) {
             if (gr.levelUp_in_battle[this.idSmsLevel][0] == 1) {
                 gr.levelUp_in_battle[this.idSmsLevel][0] = 0;
-                gr.b_c = 1;
+                gr.b_c = (byte) 1;
                 gr.say_s = 52;
                 gr.levelPro(this.idSmsLevel, true);
-                gr.setStringB("生命;+" + gr.proReplace[this.idSmsLevel][0] + "#n" + "能量" + ";+" + gr.proReplace[this.idSmsLevel][1], Constants_H.WIDTH, 0);
-                gr.setStringB("力量;+" + gr.proReplace[this.idSmsLevel][3] + "#n" + "防御" + ";+" + gr.proReplace[this.idSmsLevel][4] + "#n" + "敏捷" + ";+" + gr.proReplace[this.idSmsLevel][5], Constants_H.WIDTH, 1);
+                gr.setStringB("生命;+" + ((int) gr.proReplace[this.idSmsLevel][0]) + "#n" + Constants_H.PRO_TXT_1 + ";+" + ((int) gr.proReplace[this.idSmsLevel][1]), Constants_H.WIDTH, 0);
+                gr.setStringB("力量;+" + ((int) gr.proReplace[this.idSmsLevel][3]) + "#n" + Constants_H.PRO_TXT_4 + ";+" + ((int) gr.proReplace[this.idSmsLevel][4]) + "#n" + Constants_H.PRO_TXT_5 + ";+" + ((int) gr.proReplace[this.idSmsLevel][5]), Constants_H.WIDTH, 1);
                 gr.initMonStream(2, gr.mList_id[gr.myMonsters[this.idSmsLevel].monster[0]][0], 1);
             } else {
-                ++this.idSmsLevel;
+                this.idSmsLevel = (byte) (this.idSmsLevel + 1);
             }
-
             if (this.idSmsLevel >= gr.myMon_length) {
                 if (this.tState == -1) {
                     GameRun.run_state = -20;
                     gr.levelUp_in_battle = null;
                     gr.proReplace = null;
-                } else {
-                    GameRun.run_state = this.tState;
-                    if (this.tState == -31) {
-                        gr.initMonStream(2, gr.mList_id[gr.myB.getMon().monster[0]][0], 1);
-                        gr.myB.act_num = 0;
-                        gr.initSkillList(gr.myB.getMon());
+                    return;
+                }
+                GameRun.run_state = this.tState;
+                if (this.tState == -31) {
+                    gr.initMonStream(2, gr.mList_id[gr.myB.getMon().monster[0]][0], 1);
+                    gr.myB.act_num = (byte) 0;
+                    gr.initSkillList(gr.myB.getMon());
+                    for (byte i = 0; i < gr.myMon_length; i = (byte) (i + 1)) {
+                        gr.proReplace[gr.myMonsters[i].monster[1]][6] = gr.myMonsters[i].monster[2];
+                    }
+                    return;
+                }
+                return;
+            }
+            return;
+        }
+        if (gr.b_c == 1) {
+            gr.say_s = (byte) Ms.i().mathSpeedDown(gr.say_s, 4, true);
+        }
+    }
 
-                        for(byte var1 = 0; var1 < gr.myMon_length; ++var1) {
-                            gr.proReplace[gr.myMonsters[var1].monster[1]][6] = gr.myMonsters[var1].monster[2];
-                        }
+    public void keyLevel() {
+        if (!Ms.i().key_delay() && gr.b_c == 1 && gr.say_s == 0) {
+            gr.b_c = (byte) 0;
+        }
+    }
+
+    public void goLevel() {
+        GameRun.run_state = -21;
+        this.idSmsLevel = (byte) 0;
+        gr.b_c = (byte) 0;
+        if (this.tState != -31) {
+            gr.levelUp_in_battle = null;
+            gr.levelUp_in_battle = (byte[][]) Array.newInstance((Class<?>) Byte.TYPE, gr.max_takes, 2);
+            gr.proReplace = null;
+            gr.proReplace = (short[][]) Array.newInstance((Class<?>) Short.TYPE, gr.myMonsters.length, 7);
+        }
+        for (byte i = 0; i < gr.myMon_length; i = (byte) (i + 1)) {
+            if (gr.myMonsters[i].monster[2] >= 70) {
+                gr.healMonster(gr.myMonsters[i]);
+            } else {
+                gr.proReplace[i][6] = gr.myMonsters[i].monster[2];
+                gr.levelUp_in_battle[i][0] = 1;
+                gr.levelUp_in_battle[i][1] = -1;
+                for (byte j = 0; j < 5; j = (byte) (j + 1)) {
+                    gr.levelPro(i, false);
+                    gr.getMagic(gr.myMonsters[i]);
+                    if (gr.getSkill != -1) {
+                        gr.levelUp_in_battle[i][1] = gr.getSkill;
                     }
                 }
             }
-        } else if (gr.b_c == 1) {
-            gr.say_s = (byte)Ms.i().mathSpeedDown(gr.say_s, 4, true);
         }
-
     }
 
+    public boolean isMyMonLevel() {
+        int i = gr.myMon_length - 1;
+        while (true) {
+            byte i2 = (byte) i;
+            if (i2 > -1) {
+                if (gr.myMonsters[i2].monster[2] < 70) {
+                    return true;
+                }
+                i = i2 - 1;
+            } else {
+                return false;
+            }
+        }
+    }
 
-    /**
-     * Handles the success of an SMS send operation.
-     */
+    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
     public void sendSuccess() {
         if (this.sendSms == 4 && this.smsCount[smsType][1] > 1) {
-            byte[] var3 = gr.rmsSms;
-            byte var2 = this.smsCount[smsType][2];
-            byte var1 = (byte)(var3[var2] + 1);
-            var3[var2] = var1;
-            if (var1 != this.smsCount[smsType][1]) {
-                this.sendSms = 0;
+            byte[] bArr = gr.rmsSms;
+            byte b = this.smsCount[smsType][2];
+            byte b2 = (byte) (bArr[b] + 1);
+            bArr[b] = b2;
+            if (b2 != this.smsCount[smsType][1]) {
+                this.sendSms = (byte) 0;
                 Ms.i().rmsOptions(5, gr.rmsSms, 2);
-                Ms.i().rmsOptions(5, (byte[])null, 4);
+                Ms.i().rmsOptions(5, null, 4);
             } else {
                 gr.rmsSms[this.smsCount[smsType][2]] = 0;
             }
         }
-
-        GameRun var4;
         switch (smsType) {
-            case 0:
-            default:
-                break;
             case 1:
-                var4 = gr;
-                var4.money += 5000;
+                gr.money += 5000;
                 gr.say("购买5000金币", -1);
                 GameRun.run_state = -10;
                 GameRun.mc.temp_state = GameRun.run_state;
                 break;
             case 2:
-                var4 = gr;
-                var4.coin += 50;
+                gr.coin += 50;
                 gr.say("在卷轴商店中才能看到徽章数量", -1);
                 GameRun.run_state = -10;
                 GameRun.mc.temp_state = GameRun.run_state;
                 break;
             case 3:
-                var4 = gr;
-                var4.coin += 10;
+                gr.coin += 10;
                 gr.say("在卷轴商店中才能看到徽章数量", -1);
                 GameRun.run_state = -10;
                 GameRun.mc.temp_state = GameRun.run_state;
@@ -576,8 +351,7 @@ public class SMSSender implements Key_H {
                 gr.say("携带的宠物全部升5级,宠物页面查看新属性", 0, -1);
                 GameRun.run_state = -10;
                 GameRun.mc.temp_state = GameRun.run_state;
-            case 7:
-                this.goLevel();
+                goLevel();
                 GameRun.mc.setSmsIsSetRun_state(true);
                 GameRun.run_state = -10;
                 GameRun.mc.temp_state = GameRun.run_state;
@@ -590,55 +364,54 @@ public class SMSSender implements Key_H {
                 break;
             case 6:
                 gr.rmsSms[this.smsCount[smsType][2]] = 10;
-                var4 = gr;
-                var4.coin += 5;
+                gr.coin += 5;
                 this.sms_b = true;
                 gr.say("购买后此功能不再要求付费", 0, -1);
                 GameRun.run_state = -10;
                 GameRun.mc.temp_state = GameRun.run_state;
+                break;
+            case 7:
+                goLevel();
+                GameRun.mc.setSmsIsSetRun_state(true);
+                GameRun.run_state = -10;
+                GameRun.mc.temp_state = GameRun.run_state;
+                break;
         }
-
         gr.saveGame();
         if (this.menu_state != 0) {
-            this.sendSms = -1;
+            this.sendSms = (byte) -1;
             if (gr.say_c == 0) {
-                this.outState();
+                outState();
                 GameRun.mc.setSmsIsSetRun_state(true);
                 GameRun.run_state = -10;
                 GameRun.mc.temp_state = GameRun.run_state;
             }
         } else {
-            this.sendSms = -1;
+            this.sendSms = (byte) -1;
             Sound.i().setMusic(false);
         }
-
-        this.sendSms = -1;
+        this.sendSms = (byte) -1;
         GameRun.run_state = -10;
         GameRun.mc.temp_state = GameRun.run_state;
     }
 
-    /**
-     * Sets the sendSms value.
-     *
-     * @param var1 the value to set for sendSms
-     */
-    public void setSendSms(int var1) {
-        this.sendSms = (byte)var1;
+    public byte getSendSms() {
+        return this.sendSms;
     }
 
-    /**
-     * Sets the SMS type based on the current menu selection.
-     */
-    public void setSmsType() {
-        smsType = (byte)(this.menu[this.menu_state][this.sel[0]] - 1);
+    public void setSendSms(int value) {
+        this.sendSms = (byte) value;
     }
 
-    /**
-     * Sets the SMS value based on the current SMS type.
-     *
-     * @param var1 the value to set for the SMS
-     */
-    public void setSmsValue(int var1) {
+    public byte getSmsSenderMenuState() {
+        return this.menu_state;
+    }
+
+    public int getTstate() {
+        return this.tState;
+    }
+
+    public void setSmsValue(int type) {
         switch (smsType) {
             case 1:
             case 2:
@@ -647,6 +420,7 @@ public class SMSSender implements Key_H {
             case 5:
             case 6:
             default:
+                return;
         }
     }
 }

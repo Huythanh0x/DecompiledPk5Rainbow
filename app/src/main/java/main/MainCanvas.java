@@ -1,8 +1,6 @@
 package main;
 
 import android.util.Log;
-
-import com.android.Util.AndroidUtil;
 import com.nokia.mid.ui.DirectGraphics;
 import com.nokia.mid.ui.DirectUtils;
 import com.nokia.mid.ui.FullCanvas;
@@ -174,68 +172,17 @@ public final class MainCanvas extends FullCanvas implements Runnable {
         dm.Ms.i().runDelay();
         paint();
      */
-
     @Override // java.lang.Runnable
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+        To view partially-correct code enable 'Show inconsistent code' option in preferences
+    */
     public void run() {
-        while (!this.quitGame) {
-            try {
-                this.starttime = System.currentTimeMillis();
-                if (!SMSSender.isWorking) {
-                    AndroidUtil.cv.block();
-                    AndroidUtil.cv.close();
-                    if (this.game_state != 98) {
-                        Sound.i().soundPlay();
-                    }
-                    switch (this.game_state) {
-                        case 20:
-                            if (this.gr.createOver == -1) {
-                                this.gr.time_count = (byte) 60;
-                                paint();
-                            } else if (this.gr.time_count < 60) {
-                                GameRun gameRun = this.gr;
-                                gameRun.time_count = (byte) (gameRun.time_count + 1);
-                            }
-                            if (this.gr.threadType == 0 && this.gr.createOver == -1 && this.gr.time_count == 60) {
-                                Ms.i().rmsOptions(0, (byte[]) null, 4);
-                                this.gr.start();
-                                break;
-                            }
-                            break;
-                        case 30:
-                            this.gr.run_gameRun();
-                            if (!this.gr.runPauseIco()) {
-                                this.pkey.runMove();
-                                break;
-                            } else {
-                                this.pkey.isGo = false;
-                                break;
-                            }
-                    }
-                    Ms.i();
-                    if (Ms.keyRepeat) {
-                        keyProcess();
-                    }
-                    Ms.i().runDelay();
-                    paint();
-                }
-                this.timetaken = System.currentTimeMillis() - this.starttime;
-                if (Ms.i().getSleep() > 0) {
-                    Thread.sleep(Ms.i().getSleep());
-                    Ms.i().sleep(0);
-                } else {
-                    long j = 60 - this.timetaken;
-                    if (j < 10) {
-                        j = 10;
-                    }
-                    Thread.sleep(j);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                do {
-                } while (!Ms.i().key_Num0());
-            }
-        }
-        this.game.destroyApp(true);
+        /*
+            Method dump skipped, instructions count: 252
+            To view this dump change 'Code comments level' option to 'DEBUG'
+        */
+        throw new UnsupportedOperationException("Method not decompiled: main.MainCanvas.run():void");
     }
 
     public void createFlashImage() {

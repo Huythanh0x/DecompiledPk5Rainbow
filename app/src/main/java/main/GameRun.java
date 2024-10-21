@@ -1,7 +1,6 @@
 package main;
 
 import android.util.Log;
-
 import com.PetKing5_480x800.PetKing5;
 import com.nokia.mid.ui.DirectGraphics;
 import com.uc.paymentsdk.util.Constants;
@@ -11,7 +10,7 @@ import dm.Ms;
 import dm.Sound;
 import dm.Sprite;
 import dm.Ui;
-
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.microedition.lcdui.Canvas;
 import javax.microedition.lcdui.Graphics;
@@ -1056,136 +1055,105 @@ public class GameRun extends GameRun_F {
         if (Ms.i().key_Up_Down()) {
             this.popMenu = Ms.i().select(this.popMenu, 0, this.about_a.length - 1);
         }
-
         if (Ms.i().key_S1_Num5()) {
-            byte var2 = this.items[this.selectx][this.select[0][0]][0];
-            if (!Ms.i().equals(this.about_a[this.popMenu], "使用")) {
-                if (Ms.i().equals(this.about_a[this.popMenu], "学习")) {
-                    this.mini_state = 13;
-                    this.getSkill = (byte)(var2 - 9);
-                    this.goVIEW_MONSTER();
-                } else if (Ms.i().equals(this.about_a[this.popMenu], "孵化")) {
-                    if (this.addNidus(var2 - 58)) {
-                        this.deleteItems(var2, 1);
-                        this.select_it[this.selectx] = this.select[0][0];
-                        this.select_st[this.selectx] = this.select[0][1];
-                    } else {
-                        this.say("孵化所已经没有空位了", 0);
-                    }
-
-                    this.popMenu = -1;
-                } else {
-                    this.popMenu = -1;
-                }
-            } else {
-                switch (var2) {
+            byte id = this.items[this.selectx][this.select[0][0]][0];
+            if (Ms.i().equals(this.about_a[this.popMenu], Constants_H.POP_TXT_5)) {
+                switch (id) {
                     case 9:
                     case 10:
                     case 11:
-                        if (this.battle_type != 4 && this.battle_type != 1) {
-                            this.say("特殊情况，无法捕获！", 1);
-                            Ms.i().sleep(400);
+                        if (this.battle_type == 4 || this.battle_type == 1) {
+                            goCatchMonster();
+                            break;
+                        } else {
+                            say(Constants_H.TXT_39, 1);
+                            Ms.i().sleep(Player.STARTED);
                             break;
                         }
-
-                        this.goCatchMonster();
-                        break;
-                    case 14:
-                    case 15:
-                        this.popMenu = -1;
+                    case Canvas.KEY_NUM7 /* 14 */:
+                    case Canvas.KEY_NUM8 /* 15 */:
+                        this.popMenu = (byte) -1;
                         if (this.map.notMeet == 0) {
-                            this.map.notMeet(1, var2);
-                            this.say("使用" + this.getNameItem(var2) + "，" + "获得了" + "躲避怪物效果", 1);
-                            this.deleteItems(var2, 1);
+                            this.map.notMeet(1, id);
+                            say(Constants_H.POP_TXT_5 + getNameItem(id) + Constants.TEXT_PAY_SMS_CONFIRM_INDEXOF + Constants_H.TXT_61 + Constants_H.TXT_63, 1);
+                            deleteItems(id, 1);
+                            break;
                         } else if (this.map.notMeet == 1) {
-                            this.say("已拥有躲避怪物效果", 0);
+                            say("已拥有躲避怪物效果", 0);
+                            break;
                         }
                         break;
                     case 32:
-                    case 33:
-                        byte var1;
-                        if (var2 == 32) {
-                            var1 = 33;
-                        } else {
-                            var1 = 32;
-                        }
-
-                        if (this.findItem(-2, var1, true) > 0) {
-                            this.deleteItems(32, 1);
-                            this.deleteItems(33, 1);
-                            var1 = 3;
-                            var2 = 1;
-                            byte var3 = -1;
+                    case Constants_H.G_HCENTER_BOTTOM /* 33 */:
+                        if (findItem(-2, id == 32 ? 33 : 32, true) > 0) {
+                            deleteItems(32, 1);
+                            deleteItems(33, 1);
+                            byte type = 3;
+                            byte d = 1;
+                            byte rId = -1;
                             Ms.i();
-                            byte var4 = (byte)Ms.getRandom(100);
-                            if (var4 < 70) {
-                                var1 = 0;
-                            } else if (var4 < 85) {
-                                var1 = 1;
-                            } else if (var4 < 95) {
-                                var1 = 2;
+                            byte rand = (byte) Ms.getRandom(100);
+                            if (rand < 70) {
+                                type = 0;
+                            } else if (rand < 85) {
+                                type = 1;
+                            } else if (rand < 95) {
+                                type = 2;
                             }
-
                             Ms.i();
-
-                            label96: {
-                                for(var4 = (byte)Ms.getRandom(100); var2 < this.itemMine[var1].length; var2 = (byte)(var2 + 2)) {
-                                    if (var4 < this.itemMine[var1][var2]) {
-                                        var2 = this.itemMine[var1][var2 - 1];
-                                        break label96;
+                            byte rand2 = (byte) Ms.getRandom(100);
+                            while (true) {
+                                if (d < this.itemMine[type].length) {
+                                    if (rand2 >= this.itemMine[type][d]) {
+                                        d = (byte) (d + 2);
+                                    } else {
+                                        rId = this.itemMine[type][d - 1];
                                     }
                                 }
-
-                                var2 = var3;
                             }
-
-                            byte var7;
-                            if (var2 == 34 && this.findItem(-2, var2, true) > 0) {
-                                var7 = -1;
-                            } else {
-                                label114: {
-                                    if (var2 != -1) {
-                                        var7 = var2;
-                                        if (this.findItem(-2, var2, true) < 99) {
-                                            break label114;
-                                        }
-                                    }
-
-                                    var7 = -1;
-                                }
+                            if (rId == 34 && findItem(-2, rId, true) > 0) {
+                                rId = -1;
+                            } else if (rId == -1 || findItem(-2, rId, true) >= 99) {
+                                rId = -1;
                             }
-
-                            if (var7 != -1) {
-                                this.addItem(var7, 1);
-                                this.say("获得：" + this.getNameItem(var7) + "x1", 0);
+                            if (rId != -1) {
+                                addItem(rId, 1);
+                                say(Constants_H.MONEY_TXT_7 + getNameItem(rId) + "x1", 0);
                             } else {
-                                this.say("这个宝箱是空的。", 0);
+                                say(Constants_H.MONEY_TXT_12, 0);
                             }
                         } else {
-                            StringBuilder var6 = new StringBuilder("没有");
-                            String var5;
-                            if (var2 == 32) {
-                                var5 = "钥匙，钥匙在商店中可以购买。";
-                            } else {
-                                var5 = "宝箱，宝箱在战斗后一定几率获得。";
-                            }
-
-                            this.say(var6.append(var5).toString(), 0);
+                            say(Constants_H.TXT_75 + (id == 32 ? Constants_H.TXT_76 : Constants_H.TXT_77), 0);
                         }
-
-                        this.popMenu = -1;
+                        this.popMenu = (byte) -1;
                         break;
                     default:
-                        this.goVIEW_MONSTER();
-                        this.mini_state = 15;
+                        goVIEW_MONSTER();
+                        this.mini_state = (byte) 15;
+                        break;
                 }
+            } else if (Ms.i().equals(this.about_a[this.popMenu], Constants_H.POP_TXT_6)) {
+                this.mini_state = (byte) 13;
+                this.getSkill = (byte) (id - 9);
+                goVIEW_MONSTER();
+            } else if (Ms.i().equals(this.about_a[this.popMenu], "孵化")) {
+                if (addNidus(id - Constants_H.f27)) {
+                    deleteItems(id, 1);
+                    this.select_it[this.selectx] = this.select[0][0];
+                    this.select_st[this.selectx] = this.select[0][1];
+                } else {
+                    say(Constants_H.TXT_99, 0);
+                }
+                this.popMenu = (byte) -1;
+            } else {
+                this.popMenu = (byte) -1;
             }
-
             Ms.i().correctSelect(this.select[0], this.itemsLength[this.selectx], this.list_rows);
-        } else if (Ms.i().key_S2()) {
-            this.popMenu = -1;
+            return;
         }
-
+        if (Ms.i().key_S2()) {
+            this.popMenu = (byte) -1;
+        }
     }
 
     private void keyMY_BAG() {
@@ -1270,112 +1238,12 @@ public class GameRun extends GameRun_F {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct code enable 'Show inconsistent code' option in preferences
     */
-    private void drawNidus(int var1, int var2) {
-        if (this.mini_state == 16) {
-            this.drawSelectMenu(this.about_d, 320 - 75, 180 - (this.about_d.length >> 1) * 25, 150, 1, 0, this.popMenu);
-        } else {
-            Ui.i().fillRectB();
-            this.drawBG0(this.bg_c, var1 + 1, 108, 0, var2);
-            Log.e("sk", "drawNidus");
-            Ui.i().drawString(this.popMenu + 1 + "/" + 5, var1 + 10, 106, 36, 0, 2);
-            Ui var8 = Ui.i();
-            String var7;
-            if (this.getRid(this.popMenu) == -2) {
-                var7 = "此位置目前是空的";
-            } else {
-                var7 = this.monsterT[this.monster_pro[this.getNid(this.popMenu)][6]] + "的宠物蛋";
-            }
-
-            var8.drawString(var7, var1 + 20, 110, 0, 1, 0);
-            boolean var5;
-            if (this.getRid(this.popMenu) != -2) {
-                label69: {
-                    if (this.b_c < 2) {
-                        byte var4 = this.mon_action;
-                        if (this.b_c == 1) {
-                            var5 = false;
-                        } else {
-                            var5 = true;
-                        }
-
-                        if (this.drawCartoonOne(1, 1, var4, 377, 97, var5, 0)) {
-                            this.initMonStream(2, this.mList_id[this.getNid(this.popMenu)][0], 1);
-                            this.b_c = 2;
-                            break label69;
-                        }
-                    }
-
-                    if (this.b_c > 1 && this.b_c < 14) {
-                        this.drawClipPic(this.mList_id[this.getNid(this.popMenu)][1], 1, 377, 97, 80, 77, 15, this.b_c - 2, 0);
-                        byte var3 = (byte)(this.b_c + 1);
-                        this.b_c = var3;
-                        if (var3 == 14) {
-                            this.b_c = -1;
-                        }
-
-                        this.mon_action = (byte)(this.mList_id[this.getNid(this.popMenu)][1] * 3);
-                    }
-                }
-
-                if (this.b_c != -1) {
-                    short var10 = (short)(var2 - 40);
-                    this.str_cur = this.getNexp(this.popMenu, 1) + "/" + this.getNexp(this.popMenu, 3);
-                    Ui.i().drawBarOne(var1 + 20, 158, var10, Ms.i().mathPercent(this.getNexp(this.popMenu, 1), var10 - 2, this.getNexp(this.popMenu, 3)), Ms.i().mathPercent(this.getNexp(this.popMenu, 1), var10 - 2, this.getNexp(this.popMenu, 3)), 2);
-                    Ui.i().drawNum(this.str_cur, var1 + 20 + (var10 - this.str_cur.length() * 8 >> 1), 164, 0, 0);
-                    var8 = Ui.i();
-                    if (this.getNexp(this.popMenu, 1) == this.getNexp(this.popMenu, 3)) {
-                        var7 = "孵化已完成";
-                    } else {
-                        var7 = "孵化中...";
-                    }
-
-                    var8.drawString(var7, var1 + 20 + (var10 >> 1), 164, 17, 3, 1);
-                    Ui.i().drawString("孵化所需材料", var1 + 20 + (var10 >> 1), 208, 17, 3, 1);
-                    this.drawEvolveMake(this.getNid(this.popMenu), var1 + 25, 239, 28);
-                } else {
-                    Ui.i().drawStringY(this.about_a, var1 + 26, 155, 0, 3, 30, 3, 0);
-                    Ui.i().drawStringY(this.about_b, var1 + 126, 155, 0, 3, 30, 3, 0);
-                    Ui.i().drawString("档次：", var1 + 20 + 50, 258, 0, 3, 1);
-                    this.drawMonKind(this.monster_pro[this.getNid(this.popMenu)][5], var1 + 23 + 100 + 10, 263, 0);
-                }
-
-                if (this.getNexp(this.popMenu, 1) == this.getNexp(this.popMenu, 3)) {
-                    Ui.i().drawString("按确定键完成孵化", var1 + 20, 360 - 25 - 21, 0, 0, 0);
-                }
-            }
-
-            if (this.b_c == -2) {
-                Ui.i().drawTriangle(320, 120, 150, true, true);
-            }
-
-            Ui var11 = Ui.i();
-            if (this.getRid(this.popMenu) == -2) {
-                var5 = false;
-            } else {
-                var5 = true;
-            }
-
-            boolean var6;
-            if (this.b_c != -1) {
-                var6 = true;
-            } else {
-                var6 = false;
-            }
-
-            var11.drawYesNo(var5, var6);
-            byte var9 = this.pkey.selectMenuX(2, 0, 0, 320, 360);
-            if (var9 != -1) {
-                if (var9 == 0) {
-                    var9 = -3;
-                } else {
-                    var9 = -4;
-                }
-
-                Ms.key = var9;
-                Ms.keyRepeat = true;
-            }
-        }
-
+    private void drawNidus(int r23, int r24) {
+        /*
+            Method dump skipped, instructions count: 978
+            To view this dump change 'Code comments level' option to 'DEBUG'
+        */
+        throw new UnsupportedOperationException("Method not decompiled: main.GameRun.drawNidus(int, int):void");
     }
 
     private void keyNidus() {
@@ -2569,39 +2437,24 @@ public class GameRun extends GameRun_F {
         this.move_y = (short) -14;
     }
 
-    private void setEvolveStringB(Monster var1) {
-        byte var4 = (byte)(var1.monster[0] + 1);
-        byte var6 = var1.monster[2];
-        boolean var5 = false;
-        boolean var3 = var5;
-        byte var2 = var4;
-        if (this.monsterMake[var1.monster[0]][0] > 0) {
-            var3 = var5;
-            var2 = var4;
-            if (this.findItem(-2, 34, true) > 0) {
-                var2 = this.monsterMake[var1.monster[0]][0];
-                var3 = true;
-            }
+    private void setEvolveStringB(Monster monster) {
+        byte eid = (byte) (monster.monster[0] + 1);
+        byte level = monster.monster[2];
+        boolean b_e = false;
+        if (this.monsterMake[monster.monster[0]][0] > 0 && findItem(-2, 34, true) > 0) {
+            eid = this.monsterMake[monster.monster[0]][0];
+            b_e = true;
         }
-
         this.proReplace = null;
-        this.proReplace = new short[1][6];
-        this.proReplace[0][0] = (short)(this.getbuffRateV(var1, this.monster_pro[var2][0] + this.monster_pro[var2][7] * var6 / 10) - var1.monsterPro[2]);
-        this.proReplace[0][1] = (short)(this.monster_pro[var2][1] + this.monster_pro[var2][8] * var6 / 10 - var1.monsterPro[3]);
-        short[] var7 = this.proReplace[0];
-        byte var8;
-        if (var3) {
-            var8 = var1.monster[5];
-        } else {
-            var8 = 1;
-        }
-
-        var7[2] = (short)(-var8);
-        this.proReplace[0][3] = (byte)(this.monster_pro[var2][3] + this.monster_pro[var2][10] * var6 / 10 - var1.monsterPro[6]);
-        this.proReplace[0][4] = (byte)(this.monster_pro[var2][4] + this.monster_pro[var2][11] * var6 / 10 - var1.monsterPro[7]);
-        this.proReplace[0][5] = (byte)(this.monster_pro[var2][2] + this.monster_pro[var2][9] * var6 / 10 - var1.monsterPro[5]);
-        this.setStringB("生命：+" + this.proReplace[0][0] + "#n" + "能量" + "：+" + this.proReplace[0][1] + "#n" + "进化" + "：" + this.proReplace[0][2], Constants_H.WIDTH, 0);
-        this.setStringB("力量：+" + this.proReplace[0][3] + "#n" + "防御" + "：+" + this.proReplace[0][4] + "#n" + "敏捷" + "：+" + this.proReplace[0][5], Constants_H.WIDTH, 1);
+        this.proReplace = (short[][]) Array.newInstance((Class<?>) Short.TYPE, 1, 6);
+        this.proReplace[0][0] = (short) (getbuffRateV(monster, this.monster_pro[eid][0] + ((this.monster_pro[eid][7] * level) / 10)) - monster.monsterPro[2]);
+        this.proReplace[0][1] = (short) ((this.monster_pro[eid][1] + ((this.monster_pro[eid][8] * level) / 10)) - monster.monsterPro[3]);
+        this.proReplace[0][2] = (short) (-(b_e ? monster.monster[5] : (byte) 1));
+        this.proReplace[0][3] = (byte) ((this.monster_pro[eid][3] + ((this.monster_pro[eid][10] * level) / 10)) - monster.monsterPro[6]);
+        this.proReplace[0][4] = (byte) ((this.monster_pro[eid][4] + ((this.monster_pro[eid][11] * level) / 10)) - monster.monsterPro[7]);
+        this.proReplace[0][5] = (byte) ((this.monster_pro[eid][2] + ((this.monster_pro[eid][9] * level) / 10)) - monster.monsterPro[5]);
+        setStringB("生命：+" + ((int) this.proReplace[0][0]) + "#n" + Constants_H.PRO_TXT_1 + "：+" + ((int) this.proReplace[0][1]) + "#n进化：" + ((int) this.proReplace[0][2]), Constants_H.WIDTH, 0);
+        setStringB("力量：+" + ((int) this.proReplace[0][3]) + "#n" + Constants_H.PRO_TXT_4 + "：+" + ((int) this.proReplace[0][4]) + "#n" + Constants_H.PRO_TXT_5 + "：+" + ((int) this.proReplace[0][5]), Constants_H.WIDTH, 1);
         this.proReplace = null;
     }
 
@@ -2865,42 +2718,49 @@ public class GameRun extends GameRun_F {
         	at jadx.core.dex.visitors.InitCodeVariables.initCodeVars(InitCodeVariables.java:45)
         	at jadx.core.dex.visitors.InitCodeVariables.visit(InitCodeVariables.java:29)
         */
+    private void drawMonsterHp(dm.Monster r14, int r15, int r16, int r17, int r18, int r19, 
+    /*  JADX ERROR: JadxRuntimeException in pass: InitCodeVariables
+        jadx.core.utils.exceptions.JadxRuntimeException: Several immutable types in one variable: [int, short], vars: [r20v0 ??, r20v1 ??, r20v2 ??, r20v3 ??]
+        	at jadx.core.dex.visitors.InitCodeVariables.setCodeVarType(InitCodeVariables.java:107)
+        	at jadx.core.dex.visitors.InitCodeVariables.setCodeVar(InitCodeVariables.java:83)
+        	at jadx.core.dex.visitors.InitCodeVariables.initCodeVar(InitCodeVariables.java:74)
+        	at jadx.core.dex.visitors.InitCodeVariables.initCodeVar(InitCodeVariables.java:57)
+        	at jadx.core.dex.visitors.InitCodeVariables.initCodeVars(InitCodeVariables.java:45)
+        */
+    /*  JADX ERROR: Method generation error
+        jadx.core.utils.exceptions.JadxRuntimeException: Code variable not set in r20v0 ??
+        	at jadx.core.dex.instructions.args.SSAVar.getCodeVar(SSAVar.java:237)
+        	at jadx.core.codegen.MethodGen.addMethodArguments(MethodGen.java:223)
+        	at jadx.core.codegen.MethodGen.addDefinition(MethodGen.java:168)
+        	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:401)
+        	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:335)
+        	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$3(ClassGen.java:301)
+        	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+        	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+        	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
+        	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:261)
+        	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.end(ReferencePipeline.java:285)
+        	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:571)
+        	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+        	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+        	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+        	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+        	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:636)
+        	at jadx.core.codegen.ClassGen.addInnerClsAndMethods(ClassGen.java:297)
+        	at jadx.core.codegen.ClassGen.addClassBody(ClassGen.java:286)
+        	at jadx.core.codegen.ClassGen.addClassBody(ClassGen.java:270)
+        	at jadx.core.codegen.ClassGen.addClassCode(ClassGen.java:161)
+        	at jadx.core.codegen.ClassGen.makeClass(ClassGen.java:103)
+        	at jadx.core.codegen.CodeGen.wrapCodeGen(CodeGen.java:45)
+        	at jadx.core.codegen.CodeGen.generateJavaCode(CodeGen.java:34)
+        	at jadx.core.codegen.CodeGen.generate(CodeGen.java:22)
+        	at jadx.core.ProcessClass.process(ProcessClass.java:80)
+        	at jadx.core.ProcessClass.generateCode(ProcessClass.java:118)
+        	at jadx.core.dex.nodes.ClassNode.generateClassCode(ClassNode.java:400)
+        	at jadx.core.dex.nodes.ClassNode.decompile(ClassNode.java:388)
+        	at jadx.core.dex.nodes.ClassNode.getCode(ClassNode.java:338)
+        */
 
-    private void drawMonsterHp(Monster var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-        int var8;
-        short var9;
-        short var14;
-        if (var5 < 2) {
-            var9 = var1.monsterPro[var5 + 0];
-            short var10 = var1.monsterPro[var5 + 2];
-            var8 = var7;
-            var14 = var10;
-        } else {
-            var8 = var7;
-            if (var7 == 0) {
-                var8 = var1.monsterPro[4];
-            }
-
-            var9 = (short)var8;
-            var14 = this.getMonsterExp(var1);
-        }
-
-        Ui.i().drawBarOne(var2, var3, var4, Ms.i().mathPercent(var8, var4 - 2, var14), Ms.i().mathPercent(var9, var4 - 2, var14), var5);
-        if (var6 != 2) {
-            String var12 = var9 + "/" + var14;
-            Ui var11 = Ui.i();
-            var7 = var12.length();
-            byte var13;
-            if (var6 == 1) {
-                var13 = 5;
-            } else {
-                var13 = 0;
-            }
-
-            var11.drawNum(var12, (var4 - var7 * 8 >> 1) + var2, var13 + var3, 0, 0);
-        }
-
-    }
     private short getMonsterExp(Monster monster) {
         return (short) (((monster.monster[2] * 210) / 10) - 2);
     }
@@ -3865,86 +3725,12 @@ public class GameRun extends GameRun_F {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct code enable 'Show inconsistent code' option in preferences
     */
-    private void damage(Battle var1, Battle var2, Monster var3, Monster var4, int var5, int var6) {
-        int var11 = var3.monster[2];
-        int var7 = var4.monster[2];
-        byte var14 = 0;
-        int var9 = var3.monsterPro[6];
-        int var10 = var4.monsterPro[7];
-        byte var13 = this.skill[var5][0];
-        var7 = var11 - var7;
-        byte var8 = 100;
-        var9 = var9 * var13 * (1000 - var10 * 5) / 10000;
-        var10 /= 10;
-        int var12 = var11 / (var13 * 2);
-        var11 = (var11 - 1) / 10;
-        if (var7 > 10) {
-            var5 = 10;
-        } else {
-            var5 = var7;
-            if (var7 < -10) {
-                var5 = -10;
-            }
-        }
-
-        var7 = (var5 * 4 + 100) * (var9 - var10 - var12 + 6 - var11) / 100;
-        var13 = var14;
-        if (var4.effect == 0) {
-            var13 = -30;
-        }
-
-        label43: {
-            byte var15;
-            label47: {
-                var9 = (var1.countS[1] + var13 + 100) * var7 / 100;
-                var15 = 1;
-                if (var3.isBuffRate(9)) {
-                    Ms.i();
-                    if (Ms.getRandom(100) < this.inhesion[9]) {
-                        break label47;
-                    }
-                }
-
-                if (var4.isMonReel(48)) {
-                    Ms.i();
-                    if (Ms.getRandom(100) < this.skill[48][0]) {
-                        break label47;
-                    }
-                }
-
-                var14 = var15;
-                var5 = var9;
-                if (var3.isBuffRate(10)) {
-                    Ms.i();
-                    var14 = var15;
-                    var5 = var9;
-                    if (Ms.getRandom(100) < this.inhesion[10]) {
-                        var5 = var9 * 15 / 10;
-                        var14 = 2;
-                    }
-                }
-                break label43;
-            }
-
-            var5 = var9 >> 1;
-            var14 = var15;
-        }
-
-        byte var16 = var8;
-        if (var4.monster[3] == 1) {
-            var16 = var8;
-            if (var4.isMonReel(33)) {
-                var16 = this.skill[33][0];
-            }
-        }
-
-        var7 = var5 * var16 / 100;
-        var5 = var7;
-        if (var7 < 1) {
-            var5 = 1;
-        }
-
-        var2.addHit(var5, var14, 0);
+    private void damage(dm.Battle r18, dm.Battle r19, dm.Monster r20, dm.Monster r21, int r22, int r23) {
+        /*
+            Method dump skipped, instructions count: 278
+            To view this dump change 'Code comments level' option to 'DEBUG'
+        */
+        throw new UnsupportedOperationException("Method not decompiled: main.GameRun.damage(dm.Battle, dm.Battle, dm.Monster, dm.Monster, int, int):void");
     }
 
     private byte isShuXing(Monster am, Monster dm2) {
@@ -4924,14 +4710,13 @@ public class GameRun extends GameRun_F {
         }
     }
 
-
     public void goBattlePVC() {
         this.enemyList = null;
-        this.enemyList = new byte[1][2];
-        this.getEnemy(this.enemyList[0], -1, 0);
+        this.enemyList = (byte[][]) Array.newInstance((Class<?>) Byte.TYPE, 1, 2);
+        getEnemy(this.enemyList[0], -1, 0);
         Sound.i().setMusicId(6);
         Sound.i().setMusic(true);
-        this.goBattle();
+        goBattle();
     }
 
     private void goBattleState() {
@@ -5008,54 +4793,51 @@ public class GameRun extends GameRun_F {
     }
 
     public void goBattle() {
-        this.first_battle = 0;
-        this.lastSkill = 0;
-        this.b_c = 0;
-        this.cur_a = 0;
+        this.first_battle = (byte) 0;
+        this.lastSkill = (byte) 0;
+        this.b_c = (byte) 0;
+        this.cur_a = (byte) 0;
         this.mon_in_battle = null;
         this.mon_in_battle = new byte[this.max_takes + 1];
         this.levelUp_in_battle = null;
-        int var2 = this.max_takes;
-        this.levelUp_in_battle = new byte[var2][2];
+        this.levelUp_in_battle = (byte[][]) Array.newInstance((Class<?>) Byte.TYPE, this.max_takes, 2);
         this.proReplace = null;
-        var2 = this.myMonsters.length;
-        this.proReplace = new short[var2][7];
+        this.proReplace = (short[][]) Array.newInstance((Class<?>) Short.TYPE, this.myMonsters.length, 7);
         this.myB = new Battle(this.myMonsters);
-        this.enemy_init();
-
-        byte var1;
-        for(var1 = 0; var1 < this.myMon_length; ++var1) {
-            this.myMonsters[var1].effect = 7;
-            this.myMonsters[var1].effect_time = 0;
-            this.myMonsters[var1].monster[1] = var1;
-            this.proReplace[var1][6] = this.myMonsters[var1].monster[2];
+        enemy_init();
+        for (byte i = 0; i < this.myMon_length; i = (byte) (i + 1)) {
+            this.myMonsters[i].effect = (byte) 7;
+            this.myMonsters[i].effect_time = (byte) 0;
+            this.myMonsters[i].monster[1] = i;
+            this.proReplace[i][6] = this.myMonsters[i].monster[2];
         }
-
-        for(byte var5 = 0; var5 < this.myMon_length; ++var5) {
-            if (this.myMonsters[var5].monsterPro[0] > 0) {
-                byte[] var3 = this.mon_in_battle;
-                byte[] var4 = this.mon_in_battle;
-                var1 = (byte)(var4[0] + 1);
-                var4[0] = var1;
-                var3[var1] = this.myMonsters[var5].monster[1];
-                if (var5 != 0) {
-                    this.changeMonster(this.myMonsters[var5], this.myMonsters[0]);
-                }
+        byte i2 = 0;
+        while (true) {
+            if (i2 >= this.myMon_length) {
                 break;
             }
+            if (this.myMonsters[i2].monsterPro[0] <= 0) {
+                i2 = (byte) (i2 + 1);
+            } else {
+                byte[] bArr = this.mon_in_battle;
+                byte[] bArr2 = this.mon_in_battle;
+                byte b = (byte) (bArr2[0] + 1);
+                bArr2[0] = b;
+                bArr[b] = this.myMonsters[i2].monster[1];
+                if (i2 != 0) {
+                    changeMonster(this.myMonsters[i2], this.myMonsters[0]);
+                }
+            }
         }
-
         if (this.effectImage == null) {
             this.effectImage = Ms.i().createImageArray(7, "data/brow/e");
         }
-
         if (this.imgBattle == null) {
             this.imgBattle = Ms.i().createImageArray(5, "data/battle/b");
         }
-
-        this.map.my.state = 15;
+        this.map.my.state = (byte) 15;
         run_state = -30;
-        this.view_state = -1;
+        this.view_state = (byte) -1;
         new CreateThread(this, 1);
     }
 

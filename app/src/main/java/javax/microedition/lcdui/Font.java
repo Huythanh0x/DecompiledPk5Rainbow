@@ -70,7 +70,7 @@ public final class Font {
      */
     public static Font getDefaultFont() {
         Font font = new Font();
-        int style = 0;
+        int style = 0 | 0;
         font.tTypeface = Typeface.create(Typeface.SANS_SERIF, style);
         font.tmpPaint.setTypeface(font.tTypeface);
         font.tmpPaint.setTextSize(fontSize[0]);

@@ -926,7 +926,7 @@ public class Map implements Key_H {
                 return;
             }
             if (this.eventGoing == 3 && this.gr.sell_money > 0) {
-                this.gr.say("获得：徽章x" + this.gr.sell_money, 0);
+                this.gr.say("Obtained: Badge x" + this.gr.sell_money, 0);
                 this.eventGoing = (byte) 4;
             } else {
                 short[] sArr2 = this.event_now;
@@ -991,7 +991,7 @@ public class Map implements Key_H {
                 this.now_eV1 = getNpcLayer(event_temp);
                 this.now_eV2 = getNpcId(event_temp);
                 this.npcName = this.npcNameData[this.now_eV2];
-                if (this.npcName.equals("路人")) {
+                if (this.npcName.equals("Passerby")) {
                     this.npcName = null;
                 }
                 this.now_eV2 = this.npc[this.now_eV1][this.now_eV2].other[2];
@@ -1069,7 +1069,7 @@ public class Map implements Key_H {
         if (this.my.state == 2 && this.eventGoing == 0) {
             if ((this.npc[0][this.get_meet].other[4] == 1 || this.npc[0][this.get_meet].other[4] == 3) && this.npc[0][this.get_meet].other[5] > 0) {
                 this.npcName = this.npcNameData[this.get_meet];
-                if (this.npcName.equals("路人")) {
+                if (this.npcName.equals("Passerby")) {
                     this.npcName = null;
                 }
                 initNpcFaceOne(this.npcName);
@@ -1622,7 +1622,7 @@ public class Map implements Key_H {
             } else if (this.npc[0][type].other[8] != -4) {
                 this.my.state = (byte) 2;
                 this.get_meet = type;
-                if (this.npc[0][type].other[8] != 2 && this.npc[0][type].other[8] != 3 && !this.npcNameData[type].equals("路人")) {
+                if (this.npc[0][type].other[8] != 2 && this.npc[0][type].other[8] != 3 && !this.npcNameData[type].equals("Passerby")) {
                     this.bDirTalk = true;
                     this.npcDirTalk = this.npc[0][type].other[7];
                     byte[] bArr2 = this.npc[0][type].other;
@@ -1660,7 +1660,7 @@ public class Map implements Key_H {
             this.gr.say(Constants_H.MONEY_TXT_9 + (this.item[this.get_meet][4] * 100) + Constants_H.MONEY_TXT_0, 0);
         } else if (id == -1) {
             this.gr.coin += this.item[this.get_meet][4];
-            this.gr.say(Constants_H.MONEY_TXT_11 + ((int) this.item[this.get_meet][4]) + "徽章", 0);
+            this.gr.say(Constants_H.MONEY_TXT_11 + ((int) this.item[this.get_meet][4]) + "Badge", 0);
         } else {
             this.gr.getItem(id, this.item[this.get_meet][4]);
         }
@@ -1684,7 +1684,7 @@ public class Map implements Key_H {
         }
         this.checkType = checkIfNpc(this.npc[0], A_X + _speed_x, A_Y + _speed_y);
         if (this.checkType != -1) {
-            if (!this.npcNameData[this.checkType].equals("路人") || this.npc[0][this.checkType].other[5] > 0) {
+            if (!this.npcNameData[this.checkType].equals("Passerby") || this.npc[0][this.checkType].other[5] > 0) {
                 this.checkNpcT = this.checkType;
             }
             return (byte) 1;
@@ -2809,7 +2809,7 @@ public class Map implements Key_H {
                     }
                 } else {
                     if ((npc[id].other[4] == 1 || npc[id].other[4] == 2) && isNpcSrc(npc[id].x, npc[id].y)) {
-                        if (npc[id].other[8] != 3 && !this.npcNameData[id].equals("路人")) {
+                        if (npc[id].other[8] != 3 && !this.npcNameData[id].equals("Passerby")) {
                             g.drawImage(this.imgShadow, this.map_x + npc[id].x + 10, this.map_y + npc[id].y + 20, 33);
                         }
                         drawNpcAniOne(npc, id);

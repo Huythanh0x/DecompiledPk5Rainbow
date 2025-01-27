@@ -194,7 +194,7 @@ public class GameRun_F implements Key_H {
     }
 
     public void drawZero(String str, int y) {
-        Ui.i().drawString("点击屏幕" + str, Constants_H.WIDTH_H, y, 1 | 32, 0, 0);
+        Ui.i().drawString("Tap Screen" + str, Constants_H.WIDTH_H, y, 1 | 32, 0, 0);
     }
 
     public void gogoWord(String string, int x, int y, int w, int color, int strT, int speed) {

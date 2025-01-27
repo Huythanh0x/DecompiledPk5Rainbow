@@ -59,7 +59,7 @@ public class PointerKey implements Key_H {
             if (Ms.i().isRect(x - 1, y - 1, 2, 2, this.button_pos[check_no][i][0], this.button_pos[check_no][i][1], this.button_pos[check_no][i][2], this.button_pos[check_no][i][3])) {
                 Ms.key = this.button_pos[check_no][i][4];
                 if (check_no == 3 && Ms.key == 53) {
-                    Log.e("touch", "按下确定键。。。menu_state: " + this.mc.menu_state);
+                    Log.e("touch", "Press the OK key...menu_state:" + this.mc.menu_state);
                 }
                 Ms.keyRepeat = true;
                 initPointer();

@@ -49,7 +49,7 @@ public class SMSSender implements Key_H {
     }
 
     private void createSMS() {
-        this.menuTxt = new String[][]{new String[]{"商城"}, new String[]{"购买30000金", ""}, new String[]{"购买5000金", "身为四大家族之首的贵公子，没钱可不行！立刻拥有5000金。"}, new String[]{"购买50徽章", ""}, new String[]{"购买10徽章", "购买该特殊道具，立刻拥有10徽章，能购买双倍经验，宠物技能，强大的宠物捕获球等各种神奇的道具。"}, new String[]{"宠物升5级", "让您随身携带的全部宠物立刻升5级（超过70级宠物不能再升级）"}, new String[]{"购买奇异兽", "购买该特殊道具，获得可爱的奇异兽，移动速度可以提高一倍，且不会遇到任何敌人！无限使用，心动不如行动，快购买吧！"}, new String[]{"正版验证", "游戏试玩结束，购买此项将开启后续所有游戏内容、地图。同时将免费赠送您5枚徽章（可购买强力道具）"}, new String[]{"升级复活", "让您携带的所有宠物全恢复，同时立刻让您携带的宠物提升5级（超过70级宠物不能再升级），让接下来的战斗变的更轻松。"}};
+        this.menuTxt = new String[][]{new String[]{"Mall"}, new String[]{"Buy 30000 gold", ""}, new String[]{"Buy 5000 gold", "As the noble son of the head of the four major families, you can't be without money! Get 5000 gold immediately."}, new String[]{"Buy 50 badges", ""}, new String[]{"Buy 10 badges", "Buy this special item and immediately have 10 badges, which can be used to purchase double experience, pet skills, powerful pet capture balls, and other magical items."}, new String[]{"Pet level up 5", "Let all the pets you carry level up by 5 immediately (pets over level 70 cannot level up anymore)"}, new String[]{"Buy strange beast", "Buy this special item to obtain a cute strange beast, which can double your movement speed and you won't encounter any enemies! Unlimited use, take action now, buy it now!"}, new String[]{"Genuine verification", "The game trial is over, buy this item to unlock all subsequent game content and maps. You will also be given 5 badges for free (which can be used to buy powerful items)"}, new String[]{"Upgrade revival", "Restore all the pets you carry, and at the same time immediately upgrade the pets you carry by 5 levels (pets over level 70 cannot level up anymore), making the next battle easier."}};
     }
 
     public void go(int menu_state_, boolean bb) {
@@ -110,7 +110,7 @@ public class SMSSender implements Key_H {
             Ms.i().keyRelease();
             if (smsType == 4 && this.sel[0] != 7 && (gr.myMon_length < 1 || !isMyMonLevel())) {
                 this.sendSms = (byte) -1;
-                gr.say("目前没有可以升级的宠物！", 0);
+                gr.say("No pets that can be upgraded at the moment!", 0);
                 return;
             } else {
                 this.sendSms = (byte) 1;
@@ -175,25 +175,25 @@ public class SMSSender implements Key_H {
                 smsTip = getSmsTip(i2, this.smsCount[smsType][1] - i2);
             } else if (this.sendSms != 1 && this.sendSms != 2 && this.sendSms != 3) {
                 if ((this.sendSms > 3 && this.sendSms < 15) || (this.sendSms > 23 && this.sendSms < 34)) {
-                    smsTip = "购买已成功！";
+                    smsTip = "Purchase successful!";
                     bRight = false;
                     bLeft = false;
                     if (this.sendSms > 23 && this.sendSms < 34) {
                         this.sendSms = (byte) (this.sendSms + 1);
                     }
                 } else if (this.sendSms == 15) {
-                    smsTip = "自动保存游戏。";
+                    smsTip = "Auto save game.";
                     bRight = false;
                     bLeft = false;
                 } else if (this.sendSms < 23) {
-                    smsTip = "保存游戏成功。";
+                    smsTip = "Save game successful.";
                     this.sendSms = (byte) (this.sendSms + 1);
                     bRight = false;
                     bLeft = false;
                     if (smsType == 5 && this.sendSms == 23) {
-                        gr.say("购买已成功！游戏已保存。#n新游戏后此功能不再要求付费。", -1);
+                        gr.say("Purchase successful! Game saved. #nThis function will no longer require payment after a new game.", -1);
                     } else if (smsType == 6 && this.sendSms == 23) {
-                        gr.say("购买已成功！获得5枚徽章(背包的卷轴界面可查看）。游戏已保存。#n新游戏后此功能不再要求付费。", 0);
+                        gr.say("Purchase successful! Obtain 5 badges (can be viewed in the scroll interface of the backpack). Game saved. #nThis function will no longer require payment after a new game.", 0);
                     }
                 }
             }
@@ -205,7 +205,7 @@ public class SMSSender implements Key_H {
     }
 
     private String getSmsTip(int i0, int i1) {
-        String tip = String.valueOf("") + "您已发送" + i0 + "条短信。购买此项，还需发送" + i1 + "条短信。确认发送短信吗？";
+        String tip = String.valueOf("") + "You have sent" + i0 + "SMS messages. To purchase this item, you still need to send" + i1 + "SMS messages. Confirm to send SMS?";
         return tip;
     }
 
@@ -231,8 +231,8 @@ public class SMSSender implements Key_H {
                 gr.b_c = (byte) 1;
                 gr.say_s = 52;
                 gr.levelPro(this.idSmsLevel, true);
-                gr.setStringB("生命;+" + ((int) gr.proReplace[this.idSmsLevel][0]) + "#n" + Constants_H.PRO_TXT_1 + ";+" + ((int) gr.proReplace[this.idSmsLevel][1]), Constants_H.WIDTH, 0);
-                gr.setStringB("力量;+" + ((int) gr.proReplace[this.idSmsLevel][3]) + "#n" + Constants_H.PRO_TXT_4 + ";+" + ((int) gr.proReplace[this.idSmsLevel][4]) + "#n" + Constants_H.PRO_TXT_5 + ";+" + ((int) gr.proReplace[this.idSmsLevel][5]), Constants_H.WIDTH, 1);
+                gr.setStringB("HP;+" + ((int) gr.proReplace[this.idSmsLevel][0]) + "#n" + Constants_H.PRO_TXT_1 + ";+" + ((int) gr.proReplace[this.idSmsLevel][1]), Constants_H.WIDTH, 0);
+                gr.setStringB("Strength;+" + ((int) gr.proReplace[this.idSmsLevel][3]) + "#n" + Constants_H.PRO_TXT_4 + ";+" + ((int) gr.proReplace[this.idSmsLevel][4]) + "#n" + Constants_H.PRO_TXT_5 + ";+" + ((int) gr.proReplace[this.idSmsLevel][5]), Constants_H.WIDTH, 1);
                 gr.initMonStream(2, gr.mList_id[gr.myMonsters[this.idSmsLevel].monster[0]][0], 1);
             } else {
                 this.idSmsLevel = (byte) (this.idSmsLevel + 1);
@@ -332,25 +332,25 @@ public class SMSSender implements Key_H {
         switch (smsType) {
             case 1:
                 gr.money += 5000;
-                gr.say("购买5000金币", -1);
+                gr.say("Buy 5000 gold coins", -1);
                 GameRun.run_state = -10;
                 GameRun.mc.temp_state = GameRun.run_state;
                 break;
             case 2:
                 gr.coin += 50;
-                gr.say("在卷轴商店中才能看到徽章数量", -1);
+                gr.say("The number of badges can only be seen in the scroll shop", -1);
                 GameRun.run_state = -10;
                 GameRun.mc.temp_state = GameRun.run_state;
                 break;
             case 3:
                 gr.coin += 10;
-                gr.say("在卷轴商店中才能看到徽章数量", -1);
+                gr.say("The number of badges can only be seen in the scroll shop", -1);
                 GameRun.run_state = -10;
                 GameRun.mc.temp_state = GameRun.run_state;
                 break;
             case 4:
                 this.tState = -1;
-                gr.say("携带的宠物全部升5级,宠物页面查看新属性", 0, -1);
+                gr.say("All carried pets level up by 5, view the new attributes on the pet page", 0, -1);
                 GameRun.run_state = -10;
                 GameRun.mc.temp_state = GameRun.run_state;
                 goLevel();
@@ -360,7 +360,7 @@ public class SMSSender implements Key_H {
                 break;
             case 5:
                 gr.rmsSms[0] = 10;
-                gr.say("购买后此功能不再要求付费", 0, -1);
+                gr.say("This function no longer requires payment after purchase", 0, -1);
                 GameRun.run_state = -10;
                 GameRun.mc.temp_state = GameRun.run_state;
                 break;
@@ -368,7 +368,7 @@ public class SMSSender implements Key_H {
                 gr.rmsSms[this.smsCount[smsType][2]] = 10;
                 gr.coin += 5;
                 this.sms_b = true;
-                gr.say("购买后此功能不再要求付费", 0, -1);
+                gr.say("This function no longer requires payment after purchase", 0, -1);
                 GameRun.run_state = -10;
                 GameRun.mc.temp_state = GameRun.run_state;
                 break;

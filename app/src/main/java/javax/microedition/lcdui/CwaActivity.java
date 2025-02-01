@@ -147,7 +147,7 @@ public class CwaActivity extends Activity {
     }
 
     public void showExitDialog() {
-        new AlertDialog.Builder(this).setMessage("确认退出？").setPositiveButton(Constants_H.PAUSE_TXT_22, new DialogInterface.OnClickListener() { // from class: javax.microedition.lcdui.CwaActivity.1
+        new AlertDialog.Builder(this).setMessage("Confirm Exit?").setPositiveButton(Constants_H.PAUSE_TXT_22, new DialogInterface.OnClickListener() { // from class: javax.microedition.lcdui.CwaActivity.1
             @Override // android.content.DialogInterface.OnClickListener
             public void onClick(DialogInterface dialog, int which) {
                 if (which == -1) {

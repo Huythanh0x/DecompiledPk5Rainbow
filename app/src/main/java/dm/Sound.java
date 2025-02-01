@@ -258,7 +258,7 @@ public final class Sound {
         if (this.vc_snd == null) {
             this.vc_snd = (VolumeControl) this.snd_music.getControl("VolumeControl");
         }
-        Log.e("", "这个游戏的音乐是" + volume);
+        Log.e("", "The music of this game is" + volume);
         this.vc_snd.setLevelForMenu(volume);
     }
 
@@ -271,7 +271,7 @@ public final class Sound {
         if (this.vc_snd == null) {
             this.vc_snd = (VolumeControl) this.snd_music.getControl("VolumeControl");
         }
-        Log.e("", "这个游戏的音乐是" + volume);
+        Log.e("", "The music of this game is" + volume);
         this.vc_snd.setLevel(volume);
     }
 

@@ -33,7 +33,7 @@ public class Choose extends Activity {
                 GameRun gameRun = PetKing5.gr;
                 SMSSender.i(PetKing5.gr);
                 gameRun.falselly(SMSSender.smsType);
-                System.out.println("我的");
+                System.out.println("My");
                 finishFromChild(getParent());
                 return true;
             default:

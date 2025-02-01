@@ -300,7 +300,7 @@ public final class MainCanvas extends FullCanvas implements Runnable {
                         return;
                     case 5:
                         Ui.i().drawK0(0, 0, Constants_H.WIDTH_, Constants_H.HEIGHT_, 2);
-                        this.gr.setStringB("宠物王国5-彩虹#n开发商：#n华娱无线#n客服电话：#n010-88901665#n客服Email:#ngeekan@imy.cn", Constants_H.WIDTH_ - 50, 0);
+                        this.gr.setStringB("Pet Kingdom 5 - Rainbow#nDeveloper:#nHuayu Wireless#nCustomer Service Phone:#n010-88901665#nCustomer Service Email:#ngeekan@imy.cn", Constants_H.WIDTH_ - 50, 0);
                         this.gr.drawHelpStr(g2, this.gr.about_a, this.gr.line_max, Constants_H.WIDTH_H_, 10, 1 | 16);
                         Ui.i().drawYesNo(false, true);
                         return;
@@ -354,17 +354,17 @@ public final class MainCanvas extends FullCanvas implements Runnable {
         if (this.game_state == 98) {
             if (GameRun.run_state != -20 && GameRun.run_state != -21) {
                 this.game_state = 30;
-                System.out.println("在这?");
+                System.out.println("Here?");
             }
             repaint();
             GameRun.run_state = 98;
             this.game_state = 98;
-            System.out.println("还是在这?");
+            System.out.println("Or here?");
             Sound.i().soundStop();
             return;
         }
         this.fisrt_paint = (byte) 0;
-        System.out.println("不会在这吧？");
+        System.out.println("It wouldn't be here, would it?");
     }
 
     public void setSmsIsSetRun_state(boolean state) {
@@ -380,12 +380,12 @@ public final class MainCanvas extends FullCanvas implements Runnable {
     public void doShowNotify() {
         this.game_state = this.temp_gamestate;
         if (!checkSmsRun_stateIsTrue()) {
-            System.out.println("在这？");
+            System.out.println("Here?");
             GameRun.run_state = this.temp_state;
         } else {
             setSmsIsSetRun_state(false);
             if (GameRun.run_state == 98) {
-                System.out.println("在这？？");
+                System.out.println("Here??");
                 GameRun.run_state = this.temp_state;
             }
         }
@@ -538,7 +538,7 @@ public final class MainCanvas extends FullCanvas implements Runnable {
                 }
             case 98:
                 if (Ms.i().key_Num0() || Ms.i().key_S1_Num5()) {
-                    System.out.println("按键处理这里执行吗");
+                    System.out.println("Is the key processing done here?");
                     doShowNotify();
                 }
                 Ms.i().keyRelease();
@@ -612,7 +612,7 @@ public final class MainCanvas extends FullCanvas implements Runnable {
         this.logo_c = 0;
         this.help_state = (byte) mode;
         this.gr.line_max = (byte) 11;
-        this.gr.setStringB("游戏帮助#n玩家扮演一名宠物训练师，为了解决国家的危机而踏上了冒险之旅。#n操作提示#n点击主线任务图标：主线任务#n点击支线任务图标：支线任务#n点击地图图标：游戏地图#n点击屏幕控制上下左右移动#n本版本只支持横屏游戏", Constants_H.WIDTH - 50, 0);
+        this.gr.setStringB("Game Help#nYou play as a pet trainer embarking on an adventure to solve the crisis of the country.#nOperation tips#nClick on the main quest icon: Main quest#nClick on the side quest icon: Side quest#nClick on the map icon: Game map#nClick on the screen to control the up, down, left and right movement#nThis version only supports landscape mode", Constants_H.WIDTH - 50, 0);
     }
 
     void goABOUT() {
@@ -623,7 +623,7 @@ public final class MainCanvas extends FullCanvas implements Runnable {
         this.logo_c = 0;
         this.gr.line_max = (byte) 11;
         this.help_state = (byte) 0;
-        this.gr.setStringB("宠物王国5-彩虹#n开发商：华娱无线#n客服电话：#n010-88901665#n客服Email:#ngeekan@imy.cn", Constants_H.WIDTH - 50, 0);
+        this.gr.setStringB("Pet Kingdom 5 - Rainbow#nDeveloper: Huayu Wireless#nCustomer Service Phone:#n010-88901665#nCustomer Service Email:#ngeekan@imy.cn", Constants_H.WIDTH - 50, 0);
     }
 
     private void newGame() {
@@ -643,7 +643,7 @@ public final class MainCanvas extends FullCanvas implements Runnable {
     }
 
     public void goGameLoading() {
-        Log.e("loading", "游戏状态：GAME_LOADING");
+        Log.e("loading", "Game State: GAME_LOADING");
         this.game_state = 20;
         this.gr.time_count = (byte) 0;
         this.flashSP = null;

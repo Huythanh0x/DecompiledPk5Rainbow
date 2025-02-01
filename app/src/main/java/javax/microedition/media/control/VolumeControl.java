@@ -51,8 +51,8 @@ public class VolumeControl implements Control {
         int androidLevel = (int) (level / this.percent);
         if (!this.mute) {
             this.currentVolume = androidLevel;
-            Log.e("", "这个游戏的管理器的比例值是" + this.percent);
-            Log.e("", "这个游戏的管理器声音是" + androidLevel);
+            Log.e("", "The ratio value of this game manager is" + this.percent);
+            Log.e("", "The sound of this game manager is" + androidLevel);
         }
         return level;
     }
@@ -72,8 +72,8 @@ public class VolumeControl implements Control {
         int androidLevel = (int) (level / this.percent);
         if (!this.mute) {
             this.currentVolume = androidLevel;
-            Log.e("", "这个游戏的管理器的比例值是" + this.percent);
-            Log.e("", "这个游戏的管理器声音是" + androidLevel);
+            Log.e("", "The ratio value of this game manager is" + this.percent);
+            Log.e("", "The sound of this game manager is" + androidLevel);
             Log.e("", "dddddddddddddddddddddd");
             this.audioManager.setStreamVolume(3, androidLevel, 16);
         }

@@ -278,7 +278,7 @@ public class Cards implements MiniGame_H {
             Ui.i().drawNum(new StringBuilder().append(this.count / 10).toString(), Constants_H.WIDTH_H_ + 10, 29, 36, 2);
         } else {
             Ui.i().drawString(Constants_H.GAME_TXT_17, Constants_H.WIDTH_H_, 4, 17, 3, 0);
-            this.gr.showStringM(Constants_H.GAME_TXT_18 + (this.time < 0 ? 0 : this.time - 1) + "次", Constants_H.WIDTH_H_ + Player.REALIZED, Constants_H.HEIGHT_H_ - 75, 5, 0);
+            this.gr.showStringM(Constants_H.GAME_TXT_18 + (this.time < 0 ? 0 : this.time - 1) + "times", Constants_H.WIDTH_H_ + Player.REALIZED, Constants_H.HEIGHT_H_ - 75, 5, 0);
         }
     }
 

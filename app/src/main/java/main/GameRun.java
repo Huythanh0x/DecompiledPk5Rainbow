@@ -281,8 +281,8 @@ public class GameRun extends GameRun_F {
                         this.b_c = (byte) 1;
                         this.say_s = 52;
                         levelPro(this.myB.now_id, true);
-                        setStringB("生命;+" + ((int) this.proReplace[this.myB.now_id][0]) + "#n" + Constants_H.PRO_TXT_1 + ";+" + ((int) this.proReplace[this.myB.now_id][1]), Constants_H.WIDTH, 0);
-                        setStringB("力量;+" + ((int) this.proReplace[this.myB.now_id][3]) + "#n" + Constants_H.PRO_TXT_4 + ";+" + ((int) this.proReplace[this.myB.now_id][4]) + "#n" + Constants_H.PRO_TXT_5 + ";+" + ((int) this.proReplace[this.myB.now_id][5]), Constants_H.WIDTH, 1);
+                        setStringB("HP;+" + ((int) this.proReplace[this.myB.now_id][0]) + "#n" + Constants_H.PRO_TXT_1 + ";+" + ((int) this.proReplace[this.myB.now_id][1]), Constants_H.WIDTH, 0);
+                        setStringB("Strength;+" + ((int) this.proReplace[this.myB.now_id][3]) + "#n" + Constants_H.PRO_TXT_4 + ";+" + ((int) this.proReplace[this.myB.now_id][4]) + "#n" + Constants_H.PRO_TXT_5 + ";+" + ((int) this.proReplace[this.myB.now_id][5]), Constants_H.WIDTH, 1);
                         initMonStream(2, this.mList_id[this.myB.getMon().monster[0]][0], 1);
                     } else {
                         Battle battle = this.myB;
@@ -380,7 +380,7 @@ public class GameRun extends GameRun_F {
                     if (Ms.getRandom(100) < getRate) {
                         this.enB.action = (byte) 2;
                         this.enB.dead = (byte) 1;
-                        say("捕获" + getNameMon(this.enB.getMon().monster[0]) + Constants_H.BATTLE_TXT_8, 0);
+                        say("Capture" + getNameMon(this.enB.getMon().monster[0]) + Constants_H.BATTLE_TXT_8, 0);
                         if (getMonster(this.enB.getMon(), -1, false) == 0) {
                             this.myMonsters[this.myMon_length - 1].monster[1] = (byte) (this.myMon_length - 1);
                         }
@@ -435,7 +435,7 @@ public class GameRun extends GameRun_F {
             case 100:
                 if (this.b_c == 1) {
                     saveGame();
-                    say("游戏已保存。", 0);
+                    say("Game saved.", 0);
                     this.b_c = (byte) 0;
                     goRUN_IN_MAP(true);
                     return;
@@ -510,7 +510,7 @@ public class GameRun extends GameRun_F {
                 break;
             case 51:
                 this.map.drawBlackSRC(g, 30, true);
-                drawZero("结束", Constants_H.HEIGHT_ - 10);
+                drawZero("End", Constants_H.HEIGHT_ - 10);
                 break;
             case Constants.JIFENGQUAN_G_RATIO /* 60 */:
                 mc.drawRectBG();
@@ -676,9 +676,9 @@ public class GameRun extends GameRun_F {
 
     public void goBUY_ITEM(int id, int mode) {
         if (mode != 1) {
-            setAction_str(new String[]{"道具", Constants_H.ITEM_TXT_5, "徽章"});
+            setAction_str(new String[]{"Items", Constants_H.ITEM_TXT_5, "Badge"});
         } else {
-            setAction_str(new String[]{"道具", Constants_H.ITEM_TXT_1, Constants_H.ITEM_TXT_2});
+            setAction_str(new String[]{"Items", Constants_H.ITEM_TXT_1, Constants_H.ITEM_TXT_2});
         }
         this.cur_a = (byte) id;
         this.cur_b = (byte) mode;
@@ -748,8 +748,8 @@ public class GameRun extends GameRun_F {
         Ui.i().sliding(Constants_H.WIDTH_ - 15, 37 + 5, (this.list_rows * 30) - 6, this.select[0][0], i2, true);
         if (i2 > 0) {
             i2 = this.cur_b == 1 ? this.items[this.cur_a][this.select[0][0]][0] : this.buyItem[this.cur_a][this.select[0][0]];
-            if (this.item_help[i2].toString().contains("复活死亡的宠物并为其回复生命值的")) {
-                showStringM("复活死亡的宠物并为其回复生命值的30%,请勿在宠物战斗中购买!", Constants_H.WIDTH_H_, (this.list_rows * 30) + 37 + 18, 10, 3);
+            if (this.item_help[i2].toString().contains("Revive the dead pet and restore its HP")) {
+                showStringM("Revive the dead pet and restore 30% of its HP, please do not buy during pet battles!", Constants_H.WIDTH_H_, (this.list_rows * 30) + 37 + 18, 10, 3);
             } else {
                 showStringM(this.item_help[i2].toString(), Constants_H.WIDTH_H_, (this.list_rows * 30) + 37 + 18, 10, 3);
             }
@@ -759,7 +759,7 @@ public class GameRun extends GameRun_F {
             if (this.buyOk == 1 && this.cur_b != 1 && this.buyItem[this.cur_a][this.select[0][0]] >= 35 && this.makeLevel[this.buyItem[this.cur_a][this.select[0][0]] - 35] > this.rmsOther[3]) {
                 Ui.i().drawKuang(-5, Constants_H.HEIGHT_H_ - 50, Constants_H.WIDTH_ + 10, 108);
                 showStringM(Constants_H.TXT_70 + ((int) this.makeLevel[this.buyItem[this.cur_a][this.select[0][0]] - 35]) + Constants_H.TXT_71, Constants_H.WIDTH_H_, Constants_H.HEIGHT_H_ - 25, 12, 9);
-                showString("是否购买？", Constants_H.HEIGHT_H_ + 25, 0);
+                showString("Purchase?", Constants_H.HEIGHT_H_ + 25, 0);
             } else {
                 drawBuy(i2, Constants_H.WIDTH_H_, Constants_H.HEIGHT_H_, 150, 50, this.cur_b == 1 ? 1 : this.cur_a == 2 ? 16 : 17);
             }
@@ -786,7 +786,7 @@ public class GameRun extends GameRun_F {
         if ((d & 1) != 0) {
             s.append(Constants_H.MONEY_TXT_0);
         } else {
-            s.append("徽章");
+            s.append("Badge");
         }
         Ui.i().drawString(s.toString(), x, t + 25 + 4, 17, 6, 0);
         if ((d & 16) != 0) {
@@ -961,7 +961,7 @@ public class GameRun extends GameRun_F {
     }
 
     public void drawMoney(int x, int y, int c, boolean bb) {
-        String s = String.valueOf(bb ? this.coin : this.money) + (bb ? "徽章" : Constants_H.MONEY_TXT_0);
+        String s = String.valueOf(bb ? this.coin : this.money) + (bb ? "Badge" : Constants_H.MONEY_TXT_0);
         Ui i = Ui.i();
         int i2 = bb ? 53 : 52;
         int stringWidth = (x - (Ms.i().getStringWidth(s) >> 1)) - 1;
@@ -992,7 +992,7 @@ public class GameRun extends GameRun_F {
                     drawItem(this.buyItem[itemType][i], x + 2, y + 4 + ((i - sel[1]) * 30), 0);
                     byte color = (byte) (sel[0] == i ? 0 : 3);
                     Ui.i().drawString(getNameItem(this.buyItem[itemType][i]), x + 20, y + ((i - sel[1]) * 30), 0, color, 0);
-                    String str2 = itemType == 2 ? "徽章" : Constants_H.MONEY_TXT_0;
+                    String str2 = itemType == 2 ? "Badge" : Constants_H.MONEY_TXT_0;
                     int i5 = ((i - sel[1]) * 30) + y + 1;
                     Graphics graphics3 = g;
                     Graphics graphics4 = g;
@@ -1037,11 +1037,11 @@ public class GameRun extends GameRun_F {
         String ts = Constants_H.POP_TXT_4;
         byte id = this.items[selectx][select_i][0];
         if ((selectx == 0 || id == 32 || id == 33) && isBagUse(id)) {
-            ts = "使用#n返回";
+            ts = "Use#nBack";
         } else if (selectx == 2) {
-            ts = "学习#n返回";
+            ts = "Learn#nBack";
         } else if (this.view_state == 2 && selectx == 3) {
-            ts = "孵化#n返回";
+            ts = "Hatch#nBack";
         }
         setStringB(ts, Constants_H.WIDTH, 0);
         this.popMenu = (byte) 0;
@@ -1079,7 +1079,7 @@ public class GameRun extends GameRun_F {
                             deleteItems(id, 1);
                             break;
                         } else if (this.map.notMeet == 1) {
-                            say("已拥有躲避怪物效果", 0);
+                            say("Already have the avoid monster effect", 0);
                             break;
                         }
                         break;
@@ -1137,7 +1137,7 @@ public class GameRun extends GameRun_F {
                 this.mini_state = (byte) 13;
                 this.getSkill = (byte) (id - 9);
                 goVIEW_MONSTER();
-            } else if (Ms.i().equals(this.about_a[this.popMenu], "孵化")) {
+            } else if (Ms.i().equals(this.about_a[this.popMenu], "Hatch")) {
                 if (addNidus(id - Constants_H.f27)) {
                     deleteItems(id, 1);
                     this.select_it[this.selectx] = this.select[0][0];
@@ -1213,7 +1213,7 @@ public class GameRun extends GameRun_F {
 
     public void goVIEW_COMPUTER(int pop) {
         run_state = 65;
-        setStringB("存放#n取出#n离开", Constants_H.WIDTH, 3);
+        setStringB("Deposit#nWithdraw#nLeave", Constants_H.WIDTH, 3);
         this.popMenu = (byte) pop;
     }
 
@@ -1227,7 +1227,7 @@ public class GameRun extends GameRun_F {
     public void goNidus(int pop) {
         run_state = 66;
         this.mini_state = (byte) 16;
-        setStringB("查看孵化#n选择蛋#n离开", Constants_H.WIDTH, 3);
+        setStringB("View hatch#nSelect egg#nLeave", Constants_H.WIDTH, 3);
         this.popMenu = (byte) pop;
         this.b_c = (byte) -2;
     }
@@ -1340,14 +1340,14 @@ public class GameRun extends GameRun_F {
 
     private void setNidusPro(int i, int level) {
         StringBuffer sbuff = new StringBuffer();
-        sbuff.append("生命：" + (this.monster_pro[i][0] + ((this.monster_pro[i][7] * level) / 10)) + "#n");
-        sbuff.append("能量：" + (this.monster_pro[i][1] + ((this.monster_pro[i][8] * level) / 10)) + "#n");
-        sbuff.append("进化：" + ((int) this.monster_pro[i][12]));
+        sbuff.append("HP:" + (this.monster_pro[i][0] + ((this.monster_pro[i][7] * level) / 10)) + "#n");
+        sbuff.append("Energy:" + (this.monster_pro[i][1] + ((this.monster_pro[i][8] * level) / 10)) + "#n");
+        sbuff.append("Evolve:" + ((int) this.monster_pro[i][12]));
         setStringB(sbuff.toString(), Constants_H.WIDTH, 0);
         sbuff.delete(0, sbuff.length());
-        sbuff.append("力量：" + (this.monster_pro[i][3] + ((this.monster_pro[i][10] * level) / 10)) + "#n");
-        sbuff.append("防御：" + (this.monster_pro[i][4] + ((this.monster_pro[i][11] * level) / 10)) + "#n");
-        sbuff.append("敏捷：" + (this.monster_pro[i][4] + ((this.monster_pro[i][11] * level) / 10)));
+        sbuff.append("Strength:" + (this.monster_pro[i][3] + ((this.monster_pro[i][10] * level) / 10)) + "#n");
+        sbuff.append("Defense:" + (this.monster_pro[i][4] + ((this.monster_pro[i][11] * level) / 10)) + "#n");
+        sbuff.append("Agility:" + (this.monster_pro[i][4] + ((this.monster_pro[i][11] * level) / 10)));
         setStringB(sbuff.toString(), Constants_H.WIDTH, 1);
     }
 
@@ -1471,7 +1471,7 @@ public class GameRun extends GameRun_F {
     }
 
     private String getInfoType(int i) {
-        return i == -1 ? Constants_H.TXT_86 : i == -2 ? "进化" : i == -3 ? Constants_H.TXT_88 : i == -4 ? Constants_H.TXT_89 : i == -5 ? "孵化" : "捕获";
+        return i == -1 ? Constants_H.TXT_86 : i == -2 ? "Evolve" : i == -3 ? Constants_H.TXT_88 : i == -4 ? Constants_H.TXT_89 : i == -5 ? "Hatch" : "Capture";
     }
 
     private byte getSelInfo() {
@@ -1619,7 +1619,7 @@ public class GameRun extends GameRun_F {
             if (monsters[this.select[0][0]].monster[5] == 0) {
                 Ui.i().drawString(Constants_H.TXT_84, lx + 115, ly + 12, 0, 0, 1);
             } else {
-                Ui.i().drawString(Constants_H.TXT_15 + ((int) monsters[this.select[0][0]].monster[5]) + "次", lx + 115, ly + 12, 0, 0, 1);
+                Ui.i().drawString(Constants_H.TXT_15 + ((int) monsters[this.select[0][0]].monster[5]) + "times", lx + 115, ly + 12, 0, 0, 1);
             }
         }
         drawMonPro(monsters, lx, ly);
@@ -1687,7 +1687,7 @@ public class GameRun extends GameRun_F {
         Ui.i().drawListKY(show_num, x, y, w, 3, fontH, 0, sel[0] - sel[1], 4, 2);
         while (i < sel[1] + show_num && i < this.skill_list[8]) {
             Ui.i().drawUi(this.skill_list[i] > 25 ? 50 : 51, x + 8, y + 8 + ((i - sel[1]) * fontH), 0, 0);
-            Log.e("sk", "普通攻击");
+            Log.e("sk", "Normal attack");
             Ui.i().drawString(getNameSkill(this.skill_list[i]).toString(), x + 21, y + 1 + ((i - sel[1]) * fontH), 0, sel[0] == i ? 0 : 3, 0);
             Ui i2 = Ui.i();
             String str = this.skill_list[i] <= 30 ? String.valueOf((int) this.skill[this.skill_list[i]][1]) + Constants_H.PRO_TXT_1 : Constants_H.PRO_TXT_7;
@@ -1960,8 +1960,8 @@ public class GameRun extends GameRun_F {
         this.select[0][0] = this.selecty;
         this.cur_c = (byte) 0;
         this.popMenu = (byte) -1;
-        setStringB("生命#n能量#n档次", Constants_H.WIDTH, 0);
-        setStringB("力量#n防御#n敏捷", Constants_H.WIDTH, 1);
+        setStringB("HP#nEnergy#nRank", Constants_H.WIDTH, 0);
+        setStringB("Strength#nDefense#nAgility", Constants_H.WIDTH, 1);
     }
 
     private void drawEvolveMake(int id, int x, int y, int fontH) {
@@ -2003,29 +2003,29 @@ public class GameRun extends GameRun_F {
                         return;
                     }
                     if (this.mini_state != 13) {
-                        StringBuffer sbuff = new StringBuffer("天赋#n技能");
+                        StringBuffer sbuff = new StringBuffer("Talent#nSkill");
                         if (this.mini_state == 4) {
                             if (mon[this.select[0][0]].monster[5] > 0) {
-                                sbuff.append("#n进化");
+                                sbuff.append("#nEvolve");
                             }
                             if (this.t_length > 1) {
-                                sbuff.append("#n存放#n卖宠");
+                                sbuff.append("#nDeposit#nSell Pet");
                             }
                         } else if (this.mini_state == 6) {
                             if (this.map.gmErr) {
-                                sbuff.append("#n卖宠");
+                                sbuff.append("#nSell Pet");
                             } else {
-                                sbuff.append("#n取出#n卖宠");
+                                sbuff.append("#nWithdraw#nSell Pet");
                             }
                         } else {
                             if (this.select[0][0] != 0) {
-                                sbuff.append("#n参战");
+                                sbuff.append("#nJoin battle");
                             }
                             if (mon[this.select[0][0]].monster[5] > 0) {
-                                sbuff.append("#n进化");
+                                sbuff.append("#nEvolve");
                             }
                             if (this.t_length > 1) {
-                                sbuff.append("#n放生");
+                                sbuff.append("#nRelease");
                             }
                         }
                         setStringB(sbuff.toString(), Constants_H.WIDTH, 3);
@@ -2038,7 +2038,7 @@ public class GameRun extends GameRun_F {
                 if (this.view_state < 0) {
                     if (this.mini_state != 15) {
                         if (this.select[0][0] != 0) {
-                            setStringB("参战#n技能", Constants_H.WIDTH, 3);
+                            setStringB("Join battle#nSkill", Constants_H.WIDTH, 3);
                         } else {
                             setStringB(Constants_H.POP_TXT_0, Constants_H.WIDTH, 3);
                         }
@@ -2124,7 +2124,7 @@ public class GameRun extends GameRun_F {
             initSkillList(mon);
             this.bg_c = mon.monster[3];
             restMove(1, 0);
-            say("请选择要替换的技能！", 0);
+            say("Please select the skill to replace!", 0);
             return;
         }
         if (mon.monster[14] == -1) {
@@ -2236,8 +2236,8 @@ public class GameRun extends GameRun_F {
         this.popMenu = (byte) -1;
         this.list_rows = (byte) 5;
         this.mon_action = (byte) 0;
-        setStringB("生命#n能量#n档次", Constants_H.WIDTH, 0);
-        setStringB("力量#n防御#n敏捷", Constants_H.WIDTH, 1);
+        setStringB("HP#nEnergy#nRank", Constants_H.WIDTH, 0);
+        setStringB("Strength#nDefense#nAgility", Constants_H.WIDTH, 1);
         this.cur_mon = this.mini_state == 6 ? this.cMonsters[this.select[0][0]] : this.myMonsters[this.select[0][0]];
         if (this.t_length != 0) {
             setShowPro(this.cur_mon);
@@ -2266,11 +2266,11 @@ public class GameRun extends GameRun_F {
         run_state = 25;
         this.popMenu = (byte) -1;
         if (this.view_state == 1) {
-            setAction_str(new String[]{"道具", Constants_H.ITEM_TXT_1, Constants_H.ITEM_TXT_2, "孵化"});
+            setAction_str(new String[]{"Items", Constants_H.ITEM_TXT_1, Constants_H.ITEM_TXT_2, "Hatch"});
         } else if (this.view_state == -1) {
-            setAction_str(new String[]{"道具"});
+            setAction_str(new String[]{"Items"});
         } else if (this.view_state == 2) {
-            setAction_str(new String[]{"孵化"});
+            setAction_str(new String[]{"Hatch"});
         }
         this.selectx = (byte) type;
         this.selecty = (byte) 0;
@@ -2334,7 +2334,7 @@ public class GameRun extends GameRun_F {
                 this.popMenu = (byte) -1;
                 return;
             }
-            if (Ms.i().equals(this.about_d[this.popMenu], "进化")) {
+            if (Ms.i().equals(this.about_d[this.popMenu], "Evolve")) {
                 setEvolveStringB(this.myMonsters[this.select[0][0]]);
                 this.bg_c = this.myMonsters[this.select[0][0]].monster[3];
                 this.b_c = (byte) 0;
@@ -2455,8 +2455,8 @@ public class GameRun extends GameRun_F {
         this.proReplace[0][3] = (byte) ((this.monster_pro[eid][3] + ((this.monster_pro[eid][10] * level) / 10)) - monster.monsterPro[6]);
         this.proReplace[0][4] = (byte) ((this.monster_pro[eid][4] + ((this.monster_pro[eid][11] * level) / 10)) - monster.monsterPro[7]);
         this.proReplace[0][5] = (byte) ((this.monster_pro[eid][2] + ((this.monster_pro[eid][9] * level) / 10)) - monster.monsterPro[5]);
-        setStringB("生命：+" + ((int) this.proReplace[0][0]) + "#n" + Constants_H.PRO_TXT_1 + "：+" + ((int) this.proReplace[0][1]) + "#n进化：" + ((int) this.proReplace[0][2]), Constants_H.WIDTH, 0);
-        setStringB("力量：+" + ((int) this.proReplace[0][3]) + "#n" + Constants_H.PRO_TXT_4 + "：+" + ((int) this.proReplace[0][4]) + "#n" + Constants_H.PRO_TXT_5 + "：+" + ((int) this.proReplace[0][5]), Constants_H.WIDTH, 1);
+        setStringB("HP: +" + ((int) this.proReplace[0][0]) + "#n" + Constants_H.PRO_TXT_1 + "：+" + ((int) this.proReplace[0][1]) + "#nEvolve:" + ((int) this.proReplace[0][2]), Constants_H.WIDTH, 0);
+        setStringB("Strength: +" + ((int) this.proReplace[0][3]) + "#n" + Constants_H.PRO_TXT_4 + "：+" + ((int) this.proReplace[0][4]) + "#n" + Constants_H.PRO_TXT_5 + "：+" + ((int) this.proReplace[0][5]), Constants_H.WIDTH, 1);
         this.proReplace = null;
     }
 
@@ -3024,7 +3024,7 @@ public class GameRun extends GameRun_F {
         if (addItem(item_id, count) != 1) {
             return (byte) -1;
         }
-        say("获得：“" + getNameItem((byte) item_id) + "”x" + count, 0);
+        say("Obtained: "" + getNameItem((byte) item_id) + "”x" + count, 0);
         return (byte) 1;
     }
 
@@ -3286,10 +3286,10 @@ public class GameRun extends GameRun_F {
 
     public void say(String string, int flag) {
         Log.e("soars", string);
-        if (string.equals("#7点击屏幕或用导航键#0控制上下左右移动。")) {
-            string = "#7点击屏幕#0控制上下左右移动。";
-        } else if (string.contains("菜单键")) {
-            string.replace("菜单键", "右下方工具按钮");
+        if (string.equals("#7 Tap the screen or use the navigation keys #0 to control up, down, left and right movement.")) {
+            string = "#7 Tap the screen #0 to control up, down, left and right movement.";
+        } else if (string.contains("Menu key")) {
+            string.replace("Menu key", "Bottom right tool button");
         }
         this.sayStr.add(string);
         this.sayFlag.add(Integer.valueOf(flag));
@@ -3984,7 +3984,7 @@ public class GameRun extends GameRun_F {
             case -5:
                 if (this.proReplace[this.myB.now_id][2] > -1) {
                     String s = String.valueOf(getNameMon(this.myMonsters[this.myB.now_id].monster[0])) + Constants_H.TXT_11;
-                    Log.e("sk", "获得经验");
+                    Log.e("sk", "Obtain experience");
                     Ui.i().drawString(s, 204, 308, 36, 1, 0);
                     Ui.i().drawNum(new StringBuilder().append((int) this.proReplace[this.myB.now_id][2]).toString(), 220, 315, 0, 1);
                     return;
@@ -4264,7 +4264,7 @@ public class GameRun extends GameRun_F {
                     if (this.say_c == 0) {
                         this.isKillAll = true;
                         if (!isSay) {
-                            say("携带的宠物全都牺牲了!", -1, 1);
+                            say("All the carried pets have sacrificed!", -1, 1);
                         }
                     }
                 } else {
@@ -4358,7 +4358,7 @@ public class GameRun extends GameRun_F {
                         }
                         if (this.cur_a == 1) {
                             if (this.myB.getMon().effect == 4) {
-                                say("禁锢中无法使用道具！", -1);
+                                say("Cannot use items while imprisoned!", -1);
                                 return;
                             } else {
                                 goMY_BAG(0);
@@ -4367,7 +4367,7 @@ public class GameRun extends GameRun_F {
                         }
                         if (this.cur_a == 2) {
                             if (this.myB.getMon().effect == 4) {
-                                say("禁锢中无法更换宠物！", -1);
+                                say("Cannot change pets while imprisoned!", -1);
                                 return;
                             } else {
                                 this.view_state = (byte) -2;
@@ -4724,7 +4724,7 @@ public class GameRun extends GameRun_F {
     }
 
     private void goBattleState() {
-        setAction_str(new String[]{Constants_H.BATTLE_TXT_0, "道具", Constants_H.BATTLE_TXT_2, Constants_H.BATTLE_TXT_3, Constants_H.BATTLE_TXT_4});
+        setAction_str(new String[]{Constants_H.BATTLE_TXT_0, "Items", Constants_H.BATTLE_TXT_2, Constants_H.BATTLE_TXT_3, Constants_H.BATTLE_TXT_4});
         run_state = -31;
         this.battle_state = this.mini_state == 1 ? (byte) 2 : (byte) 1;
     }
@@ -5001,7 +5001,7 @@ public class GameRun extends GameRun_F {
                 return false;
             }
         }
-        say("您的宠物不需要回复！", 0);
+        say("Your pets do not need restoring!", 0);
         return true;
     }
 
@@ -5061,7 +5061,7 @@ public class GameRun extends GameRun_F {
                 run_state = -10;
                 mc.temp_state = run_state;
                 mc.setSmsIsSetRun_state(true);
-                System.out.println("  我的mc.setSmsIsSetRun_state(true);");
+                System.out.println("  My mc.setSmsIsSetRun_state(true);");
                 this.map.setRegState(false);
             } else if (id == 1) {
                 if (SMSSender.i(this).getSmsSenderMenuState() != 0) {

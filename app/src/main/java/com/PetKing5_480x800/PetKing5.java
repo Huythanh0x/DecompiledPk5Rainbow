@@ -96,7 +96,7 @@ public class PetKing5 extends CwaActivity {
         switch (SMSSender.smsType) {
             case 1:
                 Intent intent2 = new Intent(getApplicationContext(), (Class<?>) PaymentsActivity.class);
-                PaymentInfo info = new PaymentInfo("购买5000金", "22", "01", "身为四大家族之首的贵公子，没钱可不行！立刻拥有5000金。", 20);
+                PaymentInfo info = new PaymentInfo("Buy 5000 gold", "22", "01", "As the noble son of the head of the four major families, you can't be without money! Get 5000 gold immediately.", 20);
                 intent2.putExtra(PaymentsActivity.EXTRA_KEY_PAYMENTINFO, info);
                 startActivityForResult(intent2, 0);
                 return;
@@ -105,31 +105,31 @@ public class PetKing5 extends CwaActivity {
                 return;
             case 3:
                 Intent intent1 = new Intent(getApplicationContext(), (Class<?>) PaymentsActivity.class);
-                PaymentInfo info1 = new PaymentInfo("购买10徽章", "22", "02", "购买该特殊道具，立刻拥有10徽章，能购买双倍经验，宠物技能，强大的宠物捕获球等各种神奇的道具。", 20);
+                PaymentInfo info1 = new PaymentInfo("Buy 10 badges", "22", "02", "Buy this special item and immediately have 10 badges, which can be used to purchase double experience, pet skills, powerful pet capture balls, and other magical items.", 20);
                 intent1.putExtra(PaymentsActivity.EXTRA_KEY_PAYMENTINFO, info1);
                 startActivityForResult(intent1, 0);
                 return;
             case 4:
                 Intent intent22 = new Intent(getApplicationContext(), (Class<?>) PaymentsActivity.class);
-                PaymentInfo info2 = new PaymentInfo("宠物升5级", "22", "03", "让您随身携带的全部宠物立刻升5级（超过70级宠物不能再升级）", 20);
+                PaymentInfo info2 = new PaymentInfo("Pet level up 5", "22", "03", "Let all the pets you carry level up by 5 immediately (pets over level 70 cannot level up anymore)", 20);
                 intent22.putExtra(PaymentsActivity.EXTRA_KEY_PAYMENTINFO, info2);
                 startActivityForResult(intent22, 0);
                 return;
             case 5:
                 Intent intent3 = new Intent(getApplicationContext(), (Class<?>) PaymentsActivity.class);
-                PaymentInfo info3 = new PaymentInfo("购买奇异兽", "22", "04", "购买该特殊道具，获得可爱的奇异兽，移动速度可以提高一倍，且不会遇到任何敌人！无限使用，心动不如行动，快购买吧！", 20);
+                PaymentInfo info3 = new PaymentInfo("Buy strange beast", "22", "04", "Buy this special item to obtain a cute strange beast, which can double your movement speed and you won't encounter any enemies! Unlimited use, take action now, buy it now!", 20);
                 intent3.putExtra(PaymentsActivity.EXTRA_KEY_PAYMENTINFO, info3);
                 startActivityForResult(intent3, 0);
                 return;
             case 6:
                 Intent intent4 = new Intent(getApplicationContext(), (Class<?>) PaymentsActivity.class);
-                PaymentInfo info4 = new PaymentInfo("正版验证", "22", "05", "游戏试玩结束，购买此项将开启后续所有游戏内容、地图。同时将免费赠送您5枚徽章（可购买强力道具）", 40);
+                PaymentInfo info4 = new PaymentInfo("Genuine verification", "22", "05", "The game trial is over, buy this item to unlock all subsequent game content and maps. You will also be given 5 badges for free (which can be used to buy powerful items)", 40);
                 intent4.putExtra(PaymentsActivity.EXTRA_KEY_PAYMENTINFO, info4);
                 startActivityForResult(intent4, 0);
                 return;
             case 7:
                 Intent intent5 = new Intent(getApplicationContext(), (Class<?>) PaymentsActivity.class);
-                PaymentInfo info5 = new PaymentInfo("升级复活", "22", "06", "让您携带的所有宠物全恢复，同时立刻让您携带的宠物提升5级（超过70级宠物不能再升级），让接下来的战斗变的更轻松。", 20);
+                PaymentInfo info5 = new PaymentInfo("Upgrade revival", "22", "06", "Restore all the pets you carry, and at the same time immediately upgrade the pets you carry by 5 levels (pets over level 70 cannot level up anymore), making the next battle easier.", 20);
                 intent5.putExtra(PaymentsActivity.EXTRA_KEY_PAYMENTINFO, info5);
                 startActivityForResult(intent5, 0);
                 return;
@@ -149,7 +149,7 @@ public class PetKing5 extends CwaActivity {
         if (requestCode == 0) {
             if (-1 == resultCode) {
                 Log.e(new StringBuilder().append(resultCode).toString(), "================resultCode");
-                Log.e("成功", "成功");
+                Log.e("Successful", "Successful");
                 SMSSender.i(SMSSender.gr).setSendSms(4);
                 try {
                     if (SMSSender.smsType == 6) {
